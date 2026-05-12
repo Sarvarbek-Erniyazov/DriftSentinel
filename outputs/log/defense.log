@@ -1,0 +1,46 @@
+2026-05-12 16:19:51 | INFO     | defense              | ======================================================================
+2026-05-12 16:19:51 | INFO     | defense              | DriftSentinel — Adversarial Defense System
+2026-05-12 16:19:51 | INFO     | defense              | ======================================================================
+2026-05-12 16:19:51 | INFO     | defense              | 
+Step 1: Fitting defense system
+2026-05-12 16:19:51 | INFO     | defense              | Fitting defense system on training data...
+2026-05-12 16:19:51 | INFO     | defense              |   Layer 1 (InputValidator) fitted
+2026-05-12 16:19:52 | INFO     | defense              |   Layer 2 (AnomalyDetector) fitted
+2026-05-12 16:19:52 | INFO     | defense              |   Layer 4 (FeatureSmoother) fitted on 6 features
+2026-05-12 16:19:52 | INFO     | defense              | 
+Step 2: Defense on CLEAN test data
+2026-05-12 16:19:52 | INFO     | defense              |   Clean samples   : 45
+2026-05-12 16:19:52 | INFO     | defense              |   Suspicious      : 941
+2026-05-12 16:19:52 | INFO     | defense              |   Adversarial flag: 14
+2026-05-12 16:19:52 | INFO     | defense              |   False positive rate: 0.014
+2026-05-12 16:19:52 | INFO     | defense              | 
+Step 3: Defense on ATTACKED test data
+2026-05-12 16:19:52 | INFO     | defense              |   Clean samples   : 0
+2026-05-12 16:19:52 | INFO     | defense              |   Suspicious      : 987
+2026-05-12 16:19:52 | INFO     | defense              |   Adversarial flag: 13
+2026-05-12 16:19:52 | INFO     | defense              |   Detection rate  : 1.000
+2026-05-12 16:19:52 | INFO     | defense              | 
+Step 4: Defense effectiveness summary
+2026-05-12 16:19:52 | INFO     | defense              | --------------------------------------------------
+2026-05-12 16:19:52 | INFO     | defense              |   Layer                        Clean   Attacked     Lift
+2026-05-12 16:19:52 | INFO     | defense              |   -------------------------------------------------------
+2026-05-12 16:19:52 | INFO     | defense              |   L1_InputValidation           0.936      1.000   +0.064
+2026-05-12 16:19:52 | INFO     | defense              |   L2_AnomalyDetection          0.077      0.098   +0.021
+2026-05-12 16:19:52 | INFO     | defense              |   L3_Consistency               0.280      0.121   -0.159
+2026-05-12 16:19:52 | INFO     | defense              |   L4_Smoothing                 0.000      0.000   +0.000
+2026-05-12 16:19:52 | INFO     | defense              |   L5_EnsembleAgreement         0.002      0.018   +0.016
+2026-05-12 16:19:52 | INFO     | defense              | --------------------------------------------------
+2026-05-12 16:19:52 | INFO     | defense              |   Overall detection rate (clean)  : 0.955
+2026-05-12 16:19:52 | INFO     | defense              |   Overall detection rate (attacked): 1.000
+2026-05-12 16:19:52 | INFO     | defense              |   Detection lift                   : +0.045
+2026-05-12 16:19:52 | INFO     | defense              | 
+Step 5: Generating defense dashboard
+2026-05-12 16:19:54 | INFO     | defense              |   Saved: 31_defense_results_lgbm_v1.png
+2026-05-12 16:19:54 | INFO     | defense              |   Defense report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\defense_report_lgbm_v1.json
+2026-05-12 16:19:54 | INFO     | defense              | ======================================================================
+2026-05-12 16:19:54 | INFO     | defense              | Defense System Complete
+2026-05-12 16:19:54 | INFO     | defense              |   False positive rate : 0.014
+2026-05-12 16:19:54 | INFO     | defense              |   Detection rate      : 1.000
+2026-05-12 16:19:54 | INFO     | defense              |   Detection lift      : +0.045
+2026-05-12 16:19:54 | INFO     | defense              |   Next: README.md
+2026-05-12 16:19:54 | INFO     | defense              | ======================================================================

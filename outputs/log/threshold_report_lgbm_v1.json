@@ -1,0 +1,39 @@
+{
+  "model_name": "lgbm_v1",
+  "val_thresholds": {
+    "f1_max": 0.3401,
+    "youden": 0.4784,
+    "cost": 0.1282,
+    "prec50": 0.2169,
+    "fixed_05": 0.5
+  },
+  "test_oracle_thresholds": {
+    "f1_max": 0.3621,
+    "youden": 0.4784,
+    "cost": 0.0445,
+    "prec50": 0.5289,
+    "fixed_05": 0.5
+  },
+  "threshold_shift": {
+    "f1_max": 0.022,
+    "youden": 0.0,
+    "cost": -0.0837
+  },
+  "recommended_threshold": 0.1282,
+  "recommended_method": "cost_sensitive",
+  "test_performance": {
+    "fixed_05": {
+      "f1": 0.4683,
+      "recall": 0.453
+    },
+    "cost_sensitive": {
+      "f1": 0.5126,
+      "recall": 0.995
+    }
+  },
+  "window_analysis": {
+    "val_mean_threshold": 0.3384,
+    "test_mean_threshold": 0.3957,
+    "threshold_drift": 0.0573
+  }
+}

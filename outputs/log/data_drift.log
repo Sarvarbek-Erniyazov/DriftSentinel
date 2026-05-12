@@ -1,0 +1,42 @@
+2026-05-11 21:33:24 | INFO     | data_drift           | ======================================================================
+2026-05-11 21:33:24 | INFO     | data_drift           | DriftSentinel — Data Drift Detector  [fit reference]
+2026-05-11 21:33:24 | INFO     | data_drift           | ======================================================================
+2026-05-11 21:33:24 | INFO     | data_drift           | Reference window : val  shape=(20949, 55)
+2026-05-11 21:33:24 | INFO     | data_drift           | Features to monitor: 53
+2026-05-11 21:33:24 | INFO     | data_drift           | Reference statistics computed for 53 features
+2026-05-11 21:33:24 | INFO     | data_drift           | ======================================================================
+2026-05-11 21:33:24 | INFO     | data_drift           | DriftSentinel — Data Drift Detection
+2026-05-11 21:33:24 | INFO     | data_drift           |   Reference  : val  (20,949 rows)
+2026-05-11 21:33:24 | INFO     | data_drift           |   Production : test  (17,325 rows)
+2026-05-11 21:33:24 | INFO     | data_drift           | ======================================================================
+2026-05-11 21:33:24 | INFO     | data_drift           | ----------------------------------------------------------------------
+2026-05-11 21:33:24 | INFO     | data_drift           | Drift Detection Results: val → test
+2026-05-11 21:33:24 | INFO     | data_drift           | ----------------------------------------------------------------------
+2026-05-11 21:33:24 | INFO     | data_drift           |   Total features     : 53
+2026-05-11 21:33:24 | INFO     | data_drift           |   Drift detected     : 25 (47.2%)
+2026-05-11 21:33:24 | INFO     | data_drift           |   PSI Critical       : 0
+2026-05-11 21:33:24 | INFO     | data_drift           |   PSI Moderate       : 0
+2026-05-11 21:33:24 | INFO     | data_drift           |   PSI Stable         : 53
+2026-05-11 21:33:24 | INFO     | data_drift           | ----------------------------------------------------------------------
+2026-05-11 21:33:24 | INFO     | data_drift           | Feature                                           PSI      Level     KS     JS   Score  Drift
+2026-05-11 21:33:24 | INFO     | data_drift           | ----------------------------------------------------------------------
+2026-05-11 21:33:24 | INFO     | data_drift           |   FE_multi_channel_utilizer                    0.0556     STABLE 0.1074 0.0831  0.1859    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   FE_total_clinical_contacts                   0.0399     STABLE 0.0821 0.0748  0.1542    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   FE_lab_to_procedure_ratio                    0.0412     STABLE 0.0711 0.0718  0.1476    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   medical_specialty                            0.0169     STABLE 0.0586 0.0477  0.0936    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   payer_code                                   0.0191     STABLE 0.0263 0.0508   0.088    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   number_outpatient                            0.0207     STABLE 0.0566 0.0388  0.0849    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   discharge_disposition_id                     0.0154     STABLE 0.0603 0.0411  0.0848    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   FE_labs_per_day                              0.0147     STABLE 0.0472 0.0443  0.0836    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   FE_diagnoses_per_day                          0.014     STABLE 0.0489 0.0415  0.0802    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   diag_2                                       0.0149     STABLE 0.0392 0.0431  0.0794    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   number_diagnoses                             0.0114     STABLE 0.0494 0.0375  0.0733    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   FE_labs_per_day_x_comorbidity                0.0019     STABLE 0.0505 0.0424  0.0722    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   time_in_hospital                             0.0062     STABLE 0.0341 0.0278  0.0516    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   FE_glycemic_x_emergency                      0.0063     STABLE 0.0289 0.0281  0.0503    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   FE_meds_per_day                               0.006     STABLE 0.0262 0.0289  0.0501    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   diag_1                                       0.0068     STABLE 0.0231 0.0292  0.0501    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   age                                          0.0056     STABLE 0.0285 0.0265  0.0476    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   FE_diag_med_ratio                            0.0054     STABLE 0.0283 0.0258  0.0465    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   FE_n_med_decreases                           0.0043     STABLE 0.0239 0.0232  0.0408    YES
+2026-05-11 21:33:24 | INFO     | data_drift           |   admission_type_id                            0.0031     STABLE 0.0328 0.0197  0.0386    YES

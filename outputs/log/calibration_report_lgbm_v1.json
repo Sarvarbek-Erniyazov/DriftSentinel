@@ -1,0 +1,46 @@
+{
+  "model_name": "lgbm_v1",
+  "best_method": "isotonic",
+  "temperature": 1.3051,
+  "pre_calibration": {
+    "val": {
+      "name": "pre_val",
+      "ece": 0.0884,
+      "mce": 0.1111,
+      "brier": 0.2301,
+      "mean_proba": 0.5648,
+      "mean_label": 0.4764,
+      "proba_label_gap": 0.0884
+    },
+    "test": {
+      "name": "pre_test",
+      "ece": 0.2054,
+      "mce": 0.2406,
+      "brier": 0.252,
+      "mean_proba": 0.5418,
+      "mean_label": 0.3364,
+      "proba_label_gap": 0.2054
+    }
+  },
+  "post_calibration": {
+    "isotonic": {
+      "name": "isotonic_test",
+      "ece": 0.1173,
+      "mce": 0.155,
+      "brier": 0.2223,
+      "mean_proba": 0.4525,
+      "mean_label": 0.3364,
+      "proba_label_gap": 0.1161
+    },
+    "temperature": {
+      "name": "temperature_test",
+      "ece": 0.1958,
+      "mce": 0.2244,
+      "brier": 0.2468,
+      "mean_proba": 0.5322,
+      "mean_label": 0.3364,
+      "proba_label_gap": 0.1958
+    }
+  },
+  "ece_improvement": 0.0881
+}

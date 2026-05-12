@@ -1,0 +1,221 @@
+{
+  "timestamp": "2026-05-12T16:26:05.071531",
+  "system_health": "DEGRADED",
+  "n_pass": 31,
+  "n_warn": 1,
+  "n_fail": 0,
+  "category_status": {
+    "DATA": "PASS",
+    "MODELS": "PASS",
+    "DRIFT": "WARN",
+    "UNCERTAINTY": "PASS",
+    "ADVERSARIAL": "PASS"
+  },
+  "checks": {
+    "DATA": [
+      {
+        "name": "data_file_train_fs.parquet",
+        "status": "PASS",
+        "message": "exists (1.3 MB)",
+        "value": 1.2550458908081055
+      },
+      {
+        "name": "data_file_val_fs.parquet",
+        "status": "PASS",
+        "message": "exists (0.5 MB)",
+        "value": 0.4539499282836914
+      },
+      {
+        "name": "data_file_test_fs.parquet",
+        "status": "PASS",
+        "message": "exists (0.4 MB)",
+        "value": 0.37714099884033203
+      },
+      {
+        "name": "data_file_production_val.parquet",
+        "status": "PASS",
+        "message": "exists (0.5 MB)",
+        "value": 0.4539499282836914
+      },
+      {
+        "name": "data_file_production_test.parquet",
+        "status": "PASS",
+        "message": "exists (0.4 MB)",
+        "value": 0.37714099884033203
+      },
+      {
+        "name": "data_feature_count",
+        "status": "PASS",
+        "message": "53 features (expected 53)",
+        "value": 53
+      },
+      {
+        "name": "data_null_free",
+        "status": "PASS",
+        "message": "nulls=0",
+        "value": 0
+      },
+      {
+        "name": "data_target_readmitted_binary",
+        "status": "PASS",
+        "message": "present",
+        "value": null
+      },
+      {
+        "name": "data_target_readmitted_multi",
+        "status": "PASS",
+        "message": "present",
+        "value": null
+      },
+      {
+        "name": "data_train_shape",
+        "status": "PASS",
+        "message": "train=(63492, 55)",
+        "value": [
+          63492,
+          55
+        ]
+      }
+    ],
+    "MODELS": [
+      {
+        "name": "model_file_lgbm_v1.pkl",
+        "status": "PASS",
+        "message": "exists (1.1 MB)",
+        "value": 1.1481084823608398
+      },
+      {
+        "name": "model_file_lgbm_v2.pkl",
+        "status": "PASS",
+        "message": "exists (2.0 MB)",
+        "value": 1.9788703918457031
+      },
+      {
+        "name": "model_file_logreg_v1.pkl",
+        "status": "PASS",
+        "message": "exists (0.0 MB)",
+        "value": 0.0094451904296875
+      },
+      {
+        "name": "model_prediction_range",
+        "status": "PASS",
+        "message": "probabilities in [0,1]: True",
+        "value": 0.42575847713376724
+      },
+      {
+        "name": "model_prediction_no_nan",
+        "status": "PASS",
+        "message": "no NaN in predictions",
+        "value": null
+      },
+      {
+        "name": "model_prediction_sanity",
+        "status": "PASS",
+        "message": "mean proba=0.4258 (in [0.2, 0.8])",
+        "value": 0.42575847713376724
+      },
+      {
+        "name": "registry_active_model",
+        "status": "PASS",
+        "message": "active=lgbm_v2",
+        "value": "lgbm_v2"
+      },
+      {
+        "name": "registry_model_count",
+        "status": "PASS",
+        "message": "2 model(s) registered",
+        "value": 2
+      }
+    ],
+    "DRIFT": [
+      {
+        "name": "drift_report_concept_drift",
+        "status": "PASS",
+        "message": "exists | last modified: 2026-05-11 21:40",
+        "value": null
+      },
+      {
+        "name": "drift_report_data_drift",
+        "status": "PASS",
+        "message": "exists | last modified: 2026-05-11 21:29",
+        "value": null
+      },
+      {
+        "name": "drift_report_feature_drift",
+        "status": "PASS",
+        "message": "exists | last modified: 2026-05-11 21:33",
+        "value": null
+      },
+      {
+        "name": "alert_system_status",
+        "status": "WARN",
+        "message": "system_status=CRITICAL | CRITICAL=4 HIGH=5 total=9",
+        "value": "CRITICAL"
+      },
+      {
+        "name": "alert_auc_degradation",
+        "status": "PASS",
+        "message": "AUC degradation=+0.0305",
+        "value": 0.0305
+      }
+    ],
+    "UNCERTAINTY": [
+      {
+        "name": "artifact_isotonic_calibrator",
+        "status": "PASS",
+        "message": "exists (2.2 KB)",
+        "value": 2.23046875
+      },
+      {
+        "name": "artifact_temperature_scaler",
+        "status": "PASS",
+        "message": "exists (0.1 KB)",
+        "value": 0.083984375
+      },
+      {
+        "name": "artifact_conformal_predictor",
+        "status": "PASS",
+        "message": "exists (1474.1 KB)",
+        "value": 1474.1083984375
+      },
+      {
+        "name": "artifact_feature_selector",
+        "status": "PASS",
+        "message": "exists (16.0 KB)",
+        "value": 15.9521484375
+      },
+      {
+        "name": "artifact_label_encoders",
+        "status": "PASS",
+        "message": "exists (2.9 KB)",
+        "value": 2.853515625
+      },
+      {
+        "name": "calibration_ece_improvement",
+        "status": "PASS",
+        "message": "ECE improvement=+0.0881 best_method=isotonic",
+        "value": 0.0881
+      },
+      {
+        "name": "conformal_coverage_90",
+        "status": "PASS",
+        "message": "empirical_coverage=0.9139 (target=0.90) satisfied=True",
+        "value": 0.9139
+      }
+    ],
+    "ADVERSARIAL": [
+      {
+        "name": "adversarial_robustness_score",
+        "status": "PASS",
+        "message": "score=0.8954 tier=ROBUST",
+        "value": 0.8954
+      },
+      {
+        "name": "adversarial_detection_rate",
+        "status": "PASS",
+        "message": "detection_rate=1.000 false_positive_rate=0.014",
+        "value": 1.0
+      }
+    ]
+  }
+}

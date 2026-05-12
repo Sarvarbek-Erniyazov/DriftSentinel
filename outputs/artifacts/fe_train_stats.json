@@ -1,0 +1,6 @@
+{
+  "utilization_high_threshold": 62.0,
+  "diagnosis_high_threshold": 9.0,
+  "lab_high_threshold": 56.0,
+  "prior_util_high_threshold": 1.0986122886681098
+}

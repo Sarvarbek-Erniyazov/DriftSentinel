@@ -1,0 +1,63 @@
+{
+  "drop_cols": [
+    "encounter_id",
+    "patient_nbr",
+    "examide",
+    "citoglipton",
+    "acetohexamide",
+    "troglitazone",
+    "metformin-rosiglitazone",
+    "metformin-pioglitazone",
+    "glimepiride-pioglitazone"
+  ],
+  "high_miss_cols": [
+    "weight",
+    "max_glu_serum",
+    "A1Cresult"
+  ],
+  "log1p_cols": [
+    "number_outpatient",
+    "number_emergency"
+  ],
+  "med_ordinal_cols": [
+    "metformin",
+    "repaglinide",
+    "nateglinide",
+    "glimepiride",
+    "glipizide",
+    "glyburide",
+    "pioglitazone",
+    "rosiglitazone",
+    "insulin"
+  ],
+  "med_binary_cols": [
+    "chlorpropamide",
+    "tolbutamide",
+    "acarbose",
+    "miglitol",
+    "tolazamide",
+    "glyburide-metformin",
+    "glipizide-metformin"
+  ],
+  "label_encode_cols": [
+    "race",
+    "gender",
+    "payer_code",
+    "medical_specialty",
+    "change",
+    "diabetesMed",
+    "diag_1",
+    "diag_2",
+    "diag_3"
+  ],
+  "target_binary_map": {
+    "NO": 0,
+    "<30": 1,
+    ">30": 1
+  },
+  "target_multi_map": {
+    "NO": 0,
+    "<30": 1,
+    ">30": 2
+  }
+}

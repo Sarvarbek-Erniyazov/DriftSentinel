@@ -1,0 +1,10 @@
+alpha,target_coverage,empirical_coverage,coverage_gap,coverage_satisfied,cov_positive_class,cov_negative_class,n_test,n_covered,set_size_mean,n_empty_sets,n_singleton,n_both_classes,q_hat,method,predictor_key,split
+0.05,0.95,1.0,0.05,True,1.0,1.0,17325,17325,2.0,0,0,17325,1.0,aps,aps_a05,test
+0.1,0.9,1.0,0.1,True,1.0,1.0,17325,17325,2.0,0,0,17325,1.0,aps,aps_a10,test
+0.2,0.8,1.0,0.2,True,1.0,1.0,17325,17325,2.0,0,0,17325,1.0,aps,aps_a20,test
+0.05,0.95,0.9718,0.0218,True,0.9616,0.977,17325,16837,1.8597,0,2431,14894,0.7171,lac,lac_a05,test
+0.1,0.9,0.9139,0.0139,True,0.8919,0.925,17325,15833,1.6787,0,5567,11758,0.6384,lac,lac_a10,test
+0.2,0.8,0.8214,0.0214,True,0.7471,0.859,17325,14230,1.4179,0,10085,7240,0.5754,lac,lac_a20,test
+0.05,0.95,0.9718,0.0218,True,0.9616,0.977,17325,16837,1.8597,0,2431,14894,0.7171,thr,thr_a05,test
+0.1,0.9,0.9139,0.0139,True,0.8919,0.925,17325,15833,1.6787,0,5567,11758,0.6384,thr,thr_a10,test
+0.2,0.8,0.8214,0.0214,True,0.7471,0.859,17325,14230,1.4179,0,10085,7240,0.5754,thr,thr_a20,test

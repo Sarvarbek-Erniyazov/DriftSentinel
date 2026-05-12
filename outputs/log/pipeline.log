@@ -1,0 +1,52 @@
+2026-05-11 20:54:32 | INFO     | pipeline             | ======================================================================
+2026-05-11 20:54:32 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-05-11 20:54:32 | INFO     | pipeline             | ======================================================================
+2026-05-11 20:54:32 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-05-11 20:54:32 | INFO     | pipeline             | Stage 1 complete — 0.45s
+2026-05-11 20:54:32 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-05-11 20:54:32 | INFO     | pipeline             | Stage 2 complete — 0.08s
+2026-05-11 20:54:32 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-05-11 20:54:33 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.14s
+2026-05-11 20:54:33 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-05-11 20:54:33 | INFO     | pipeline             | Stage 4 complete — 0.49s
+2026-05-11 20:54:33 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-05-11 20:54:33 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.19s
+2026-05-11 20:54:33 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-05-11 20:55:24 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 50.85s
+2026-05-11 20:55:24 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-05-11 20:55:26 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected drift in temporal split)
+2026-05-11 20:55:26 | WARNING  | pipeline             |   FAIL=12 items are expected temporal drift signals
+2026-05-11 20:55:26 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-05-11 20:55:26 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-05-11 20:55:26 | INFO     | pipeline             | Stage 7 complete — 2.11s
+2026-05-11 20:55:26 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-05-11 20:55:26 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\train_fs.parquet  shape=(63492, 55)
+2026-05-11 20:55:26 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\val_fs.parquet    shape=(20949, 55)
+2026-05-11 20:55:26 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\test_fs.parquet   shape=(17325, 55)
+2026-05-11 20:55:26 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_val.parquet
+2026-05-11 20:55:26 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_test.parquet
+2026-05-11 20:55:26 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\pipeline_objects.pkl
+2026-05-11 20:55:26 | INFO     | pipeline             | Stage 8 complete — 0.20s
+2026-05-11 20:55:26 | INFO     | pipeline             | 
+======================================================================
+2026-05-11 20:55:26 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-05-11 20:55:26 | INFO     | pipeline             |   Total time          : 54.49s
+2026-05-11 20:55:26 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-05-11 20:55:26 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-05-11 20:55:26 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-05-11 20:55:26 | INFO     | pipeline             |   Selected features   : 53
+2026-05-11 20:55:26 | INFO     | pipeline             |   PSI drifted         : 7
+2026-05-11 20:55:26 | INFO     | pipeline             |   KS  drifted         : 90
+2026-05-11 20:55:26 | INFO     | pipeline             |   Pipeline ready      : True
+2026-05-11 20:55:26 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\pipeline_summary.json
+2026-05-11 20:55:26 | INFO     | pipeline             | ======================================================================
+2026-05-11 20:55:26 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-05-11 20:55:26 | INFO     | pipeline             | ======================================================================

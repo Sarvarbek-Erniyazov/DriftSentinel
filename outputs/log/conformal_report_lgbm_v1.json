@@ -1,0 +1,110 @@
+{
+  "model_name": "lgbm_v1",
+  "n_predictors": 9,
+  "thr_90_coverage": 0.9139,
+  "thr_90_gap": 0.0139,
+  "thr_90_set_size": 1.6787,
+  "thr_90_satisfied": true,
+  "n_drift_signals": 0,
+  "drift_results": {
+    "thr_a05": {
+      "val_coverage": 0.9676,
+      "test_coverage": 0.9718,
+      "coverage_delta": 0.0042,
+      "target_coverage": 0.95,
+      "guarantee_held": true,
+      "val_set_size": 1.8298,
+      "test_set_size": 1.8597,
+      "set_size_delta": 0.0299,
+      "drift_signal": false
+    },
+    "thr_a10": {
+      "val_coverage": 0.9041,
+      "test_coverage": 0.9139,
+      "coverage_delta": 0.0098,
+      "target_coverage": 0.9,
+      "guarantee_held": true,
+      "val_set_size": 1.6264,
+      "test_set_size": 1.6787,
+      "set_size_delta": 0.0523,
+      "drift_signal": false
+    },
+    "thr_a20": {
+      "val_coverage": 0.8124,
+      "test_coverage": 0.8214,
+      "coverage_delta": 0.009,
+      "target_coverage": 0.8,
+      "guarantee_held": true,
+      "val_set_size": 1.3884,
+      "test_set_size": 1.4179,
+      "set_size_delta": 0.0295,
+      "drift_signal": false
+    },
+    "lac_a05": {
+      "val_coverage": 0.9676,
+      "test_coverage": 0.9718,
+      "coverage_delta": 0.0042,
+      "target_coverage": 0.95,
+      "guarantee_held": true,
+      "val_set_size": 1.8298,
+      "test_set_size": 1.8597,
+      "set_size_delta": 0.0299,
+      "drift_signal": false
+    },
+    "lac_a10": {
+      "val_coverage": 0.9041,
+      "test_coverage": 0.9139,
+      "coverage_delta": 0.0098,
+      "target_coverage": 0.9,
+      "guarantee_held": true,
+      "val_set_size": 1.6264,
+      "test_set_size": 1.6787,
+      "set_size_delta": 0.0523,
+      "drift_signal": false
+    },
+    "lac_a20": {
+      "val_coverage": 0.8124,
+      "test_coverage": 0.8214,
+      "coverage_delta": 0.009,
+      "target_coverage": 0.8,
+      "guarantee_held": true,
+      "val_set_size": 1.3884,
+      "test_set_size": 1.4179,
+      "set_size_delta": 0.0295,
+      "drift_signal": false
+    },
+    "aps_a05": {
+      "val_coverage": 1.0,
+      "test_coverage": 1.0,
+      "coverage_delta": 0.0,
+      "target_coverage": 0.95,
+      "guarantee_held": true,
+      "val_set_size": 2.0,
+      "test_set_size": 2.0,
+      "set_size_delta": 0.0,
+      "drift_signal": false
+    },
+    "aps_a10": {
+      "val_coverage": 1.0,
+      "test_coverage": 1.0,
+      "coverage_delta": 0.0,
+      "target_coverage": 0.9,
+      "guarantee_held": true,
+      "val_set_size": 2.0,
+      "test_set_size": 2.0,
+      "set_size_delta": 0.0,
+      "drift_signal": false
+    },
+    "aps_a20": {
+      "val_coverage": 1.0,
+      "test_coverage": 1.0,
+      "coverage_delta": 0.0,
+      "target_coverage": 0.8,
+      "guarantee_held": true,
+      "val_set_size": 2.0,
+      "test_set_size": 2.0,
+      "set_size_delta": 0.0,
+      "drift_signal": false
+    }
+  }
+}

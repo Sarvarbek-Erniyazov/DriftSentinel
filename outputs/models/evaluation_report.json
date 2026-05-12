@@ -1,0 +1,190 @@
+{
+  "lgbm": {
+    "threshold": 0.39580328665647607,
+    "metrics_by_split": {
+      "train": {
+        "split": "train",
+        "n_samples": 63492,
+        "pos_rate": 0.4897,
+        "pred_rate": 0.6671,
+        "mean_proba": 0.4901,
+        "auc": 0.7891,
+        "avg_prec": 0.7768,
+        "f1": 0.7292,
+        "precision": 0.6322,
+        "recall": 0.8613,
+        "brier": 0.1904,
+        "threshold": 0.39580328665647607
+      },
+      "val": {
+        "split": "val",
+        "n_samples": 20949,
+        "pos_rate": 0.4764,
+        "pred_rate": 0.8362,
+        "mean_proba": 0.5648,
+        "auc": 0.6865,
+        "avg_prec": 0.6503,
+        "f1": 0.6735,
+        "precision": 0.5286,
+        "recall": 0.9278,
+        "brier": 0.2301,
+        "threshold": 0.39580328665647607
+      },
+      "test": {
+        "split": "test",
+        "n_samples": 17325,
+        "pos_rate": 0.3364,
+        "pred_rate": 0.8281,
+        "mean_proba": 0.5418,
+        "auc": 0.656,
+        "avg_prec": 0.4842,
+        "f1": 0.5299,
+        "precision": 0.3726,
+        "recall": 0.9171,
+        "brier": 0.252,
+        "threshold": 0.39580328665647607
+      }
+    },
+    "degradation": {
+      "degradation": {
+        "auc": {
+          "train": 0.7891,
+          "val": 0.6865,
+          "test": 0.656,
+          "delta": -0.0305,
+          "direction": "\u2193"
+        },
+        "f1": {
+          "train": 0.7292,
+          "val": 0.6735,
+          "test": 0.5299,
+          "delta": -0.1436,
+          "direction": "\u2193"
+        },
+        "precision": {
+          "train": 0.6322,
+          "val": 0.5286,
+          "test": 0.3726,
+          "delta": -0.156,
+          "direction": "\u2193"
+        },
+        "recall": {
+          "train": 0.8613,
+          "val": 0.9278,
+          "test": 0.9171,
+          "delta": -0.0107,
+          "direction": "\u2193"
+        },
+        "brier": {
+          "train": 0.1904,
+          "val": 0.2301,
+          "test": 0.252,
+          "delta": 0.0219,
+          "direction": "\u2191"
+        },
+        "mean_proba": {
+          "train": 0.4901,
+          "val": 0.5648,
+          "test": 0.5418,
+          "delta": -0.023,
+          "direction": "\u2193"
+        }
+      },
+      "severity": "MILD"
+    }
+  },
+  "logreg": {
+    "threshold": 0.38703140830800403,
+    "metrics_by_split": {
+      "train": {
+        "split": "train",
+        "n_samples": 63492,
+        "pos_rate": 0.4897,
+        "pred_rate": 0.7638,
+        "mean_proba": 0.4947,
+        "auc": 0.6728,
+        "avg_prec": 0.6524,
+        "f1": 0.6685,
+        "precision": 0.5486,
+        "recall": 0.8555,
+        "brier": 0.2279,
+        "threshold": 0.38703140830800403
+      },
+      "val": {
+        "split": "val",
+        "n_samples": 20949,
+        "pos_rate": 0.4764,
+        "pred_rate": 0.8821,
+        "mean_proba": 0.5325,
+        "auc": 0.6451,
+        "avg_prec": 0.6129,
+        "f1": 0.6519,
+        "precision": 0.5019,
+        "recall": 0.9295,
+        "brier": 0.2364,
+        "threshold": 0.38703140830800403
+      },
+      "test": {
+        "split": "test",
+        "n_samples": 17325,
+        "pos_rate": 0.3364,
+        "pred_rate": 0.8838,
+        "mean_proba": 0.5131,
+        "auc": 0.6286,
+        "avg_prec": 0.453,
+        "f1": 0.5154,
+        "precision": 0.3558,
+        "recall": 0.9348,
+        "brier": 0.2442,
+        "threshold": 0.38703140830800403
+      }
+    },
+    "degradation": {
+      "degradation": {
+        "auc": {
+          "train": 0.6728,
+          "val": 0.6451,
+          "test": 0.6286,
+          "delta": -0.0165,
+          "direction": "\u2193"
+        },
+        "f1": {
+          "train": 0.6685,
+          "val": 0.6519,
+          "test": 0.5154,
+          "delta": -0.1365,
+          "direction": "\u2193"
+        },
+        "precision": {
+          "train": 0.5486,
+          "val": 0.5019,
+          "test": 0.3558,
+          "delta": -0.1461,
+          "direction": "\u2193"
+        },
+        "recall": {
+          "train": 0.8555,
+          "val": 0.9295,
+          "test": 0.9348,
+          "delta": 0.0053,
+          "direction": "\u2191"
+        },
+        "brier": {
+          "train": 0.2279,
+          "val": 0.2364,
+          "test": 0.2442,
+          "delta": 0.0078,
+          "direction": "\u2191"
+        },
+        "mean_proba": {
+          "train": 0.4947,
+          "val": 0.5325,
+          "test": 0.5131,
+          "delta": -0.0194,
+          "direction": "\u2193"
+        }
+      },
+      "severity": "MILD"
+    }
+  }
+}
