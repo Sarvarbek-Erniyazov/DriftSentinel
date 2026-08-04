@@ -1,0 +1,76 @@
+{
+  "comparable_splits": [
+    "test"
+  ],
+  "excluded_splits": {
+    "train": "in-sample for both models",
+    "val": "fitted on by lgbm_v2"
+  },
+  "test_auc": {
+    "lgbm_v1": 0.656,
+    "lgbm_v2": 0.6648,
+    "delta": 0.0088,
+    "winner": "lgbm_v2"
+  },
+  "test_f1": {
+    "lgbm_v1": 0.5299,
+    "lgbm_v2": 0.5368,
+    "delta": 0.0069,
+    "winner": "lgbm_v2"
+  },
+  "test_precision": {
+    "lgbm_v1": 0.3726,
+    "lgbm_v2": 0.391,
+    "delta": 0.0184,
+    "winner": "lgbm_v2"
+  },
+  "test_recall": {
+    "lgbm_v1": 0.9171,
+    "lgbm_v2": 0.8559,
+    "delta": -0.0612,
+    "winner": "lgbm_v1"
+  },
+  "test_brier": {
+    "lgbm_v1": 0.252,
+    "lgbm_v2": 0.2322,
+    "delta": -0.0198,
+    "winner": "lgbm_v2"
+  },
+  "verdict": "PROMOTE",
+  "test_auc_delta": 0.0088,
+  "val_auc_delta": null,
+  "val_comparison_available": false,
+  "significance": {
+    "delong": {
+      "auc_1": 0.6559858592217874,
+      "auc_2": 0.6648233232518238,
+      "delta_auc_1_minus_2": -0.00883746403003638,
+      "se_delta": 0.0018186214142190055,
+      "ci95_delta": [
+        -0.012401962001905631,
+        -0.005272966058167129
+      ],
+      "z": -4.859430314050035,
+      "p_value": 1.1772400921576007e-06,
+      "n_pos": 5828,
+      "n_neg": 11497,
+      "significant_at_0.05": true,
+      "method": "DeLong, DeLong & Clarke-Pearson (1988), correlated ROC curves"
+    },
+    "bootstrap": {
+      "n_boot_effective": 2000,
+      "resampling_unit": "patient (cluster)",
+      "cluster_robust": true,
+      "caveat": null,
+      "mean_auc_1": 0.6560358725637814,
+      "mean_auc_2": 0.6648854969125818,
+      "delta_auc_2_minus_1": 0.008849624348800504,
+      "ci95": [
+        0.005395357239010146,
+        0.012349197158629404
+      ],
+      "excludes_zero": true
+    },
+    "patient_id_recovery": "OK: verified against the label sequence (14,305 patients / 17,325 rows)"
+  }
+}

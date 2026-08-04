@@ -26,7 +26,15 @@ from src.monitoring.logger import get_logger
 
 logger = get_logger("engineer")
 
-ARTIFACTS_DIR = Path(r"C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts")
+# Tier 2C.6 reproducibility: this was a HARDCODED ABSOLUTE PATH to one
+# developer's machine, so `pipeline.py` did not reproduce anything from raw
+# data on a clean clone -- it read from and wrote to a directory that exists
+# nowhere else. On Linux CI the same literal resolves to a RELATIVE folder
+# whose name contains backslashes, so artifacts land somewhere harmless-
+# looking and the run still 'succeeds'. It worked on exactly one machine,
+# which is why nothing caught it. Now derived from this file's location.
+ROOT = Path(__file__).resolve().parents[2]
+ARTIFACTS_DIR = ROOT / "outputs" / "artifacts"
 ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Target columns — NEVER used in feature construction ───────────────────
@@ -548,7 +556,13 @@ class FeatureEngineer:
         logger.info("Leakage guard: FE_ features vs target correlation")
 
         fe_cols     = [c for c in df.columns if c.startswith("FE_")]
-        target_cols = [c for c in TARGET_COLS if c in df.columns]
+        # Tier 2A.1 determinism: TARGET_COLS is a SET, and Python randomises
+        # string hashing per process (PYTHONHASHSEED), so iterating it gave a
+        # different COLUMN ORDER on every run. Values were identical, but the
+        # parquet bytes were not — which breaks byte-identical reproducibility
+        # and is dangerous for any consumer using POSITIONAL indexing (X[:, i]),
+        # as the adversarial modules do. sorted() pins the order.
+        target_cols = [c for c in sorted(TARGET_COLS) if c in df.columns]
 
         if not target_cols:
             logger.info("  No target columns found in DataFrame — skip")

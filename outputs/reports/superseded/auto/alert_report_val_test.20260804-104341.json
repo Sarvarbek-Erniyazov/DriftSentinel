@@ -1,0 +1,165 @@
+{
+  "timestamp": "2026-05-11T21:42:38.779768",
+  "model_name": "lgbm_v1",
+  "ref_name": "val",
+  "prod_name": "test",
+  "system_status": "CRITICAL",
+  "recommendation": "IMMEDIATE ACTION REQUIRED. Model is unreliable in production. Halt predictions or apply fallback model. Trigger emergency retraining pipeline.",
+  "alert_counts": {
+    "CRITICAL": 4,
+    "HIGH": 5
+  },
+  "total_alerts": 9,
+  "alerts": [
+    {
+      "alert_id": "CD-002",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "CRITICAL",
+      "title": "Model F1 Score Degradation",
+      "description": "F1 dropped 0.1436 points. Precision: 0.5286 \u2192 0.3726 (-0.1560). Recall: 0.9278 \u2192 0.9171.",
+      "metric": "f1_degradation",
+      "value": 0.1436,
+      "threshold": 0.05,
+      "features": [],
+      "action": "Review precision-recall tradeoff. Consider threshold recalibration before retraining.",
+      "timestamp": "2026-05-11T21:42:38.773497"
+    },
+    {
+      "alert_id": "CD-003",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "CRITICAL",
+      "title": "Concept Drift Evidence: 8/8 Signals Fired",
+      "description": "Concept drift confirmed by 8 independent signals: auc_drop, f1_drop, brier_increase, cusum_alarm, ph_alarm, prediction_drift, label_drift, auc_slope_negative. CUSUM first alarm at 3.92% of stream.",
+      "metric": "n_evidence",
+      "value": 8.0,
+      "threshold": 4.0,
+      "features": [],
+      "action": "Initiate drift investigation protocol. Run feature_drift analysis to identify root cause features.",
+      "timestamp": "2026-05-11T21:42:38.773497"
+    },
+    {
+      "alert_id": "DD-001",
+      "alert_type": "DATA_DRIFT",
+      "level": "CRITICAL",
+      "title": "Data Drift: 25/53 Features Drifted",
+      "description": "47.2% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: FE_multi_channel_utilizer, FE_total_clinical_contacts, FE_lab_to_procedure_ratio, medical_specialty, payer_code.",
+      "metric": "drift_rate",
+      "value": 0.4717,
+      "threshold": 0.25,
+      "features": [
+        "FE_multi_channel_utilizer",
+        "FE_total_clinical_contacts",
+        "FE_lab_to_procedure_ratio",
+        "medical_specialty",
+        "payer_code"
+      ],
+      "action": "Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.",
+      "timestamp": "2026-05-11T21:42:38.774023"
+    },
+    {
+      "alert_id": "LS-001",
+      "alert_type": "LABEL_SHIFT",
+      "level": "CRITICAL",
+      "title": "Target Label Distribution Shift Detected",
+      "description": "Readmission rate shifted from 0.4764 (reference) to 0.3364 (production). Delta: -0.1400 (14.0pp change). This indicates real-world outcome distribution has changed.",
+      "metric": "label_shift_delta",
+      "value": 0.14,
+      "threshold": 0.05,
+      "features": [],
+      "action": "Investigate clinical/operational changes in the data source. Label shift may require re-stratification of training data. Review class weights and decision threshold.",
+      "timestamp": "2026-05-11T21:42:38.774574"
+    },
+    {
+      "alert_id": "CD-001",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "HIGH",
+      "title": "Model AUC Degradation Detected",
+      "description": "Model AUC dropped from 0.6865 (reference) to 0.6560 (production). Degradation: 0.0305.",
+      "metric": "auc_degradation",
+      "value": 0.0305,
+      "threshold": 0.03,
+      "features": [],
+      "action": "Trigger model retraining on recent data. Investigate feature drift in high-impact features.",
+      "timestamp": "2026-05-11T21:42:38.773497"
+    },
+    {
+      "alert_id": "CD-004",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "HIGH",
+      "title": "CUSUM Sequential Drift Alarm",
+      "description": "CUSUM detected 109 alarms. First alarm at index 1502 (3.92% into stream). Mean error shift: 0.4504 \u2192 0.4590.",
+      "metric": "cusum_alarms",
+      "value": 109.0,
+      "threshold": 1.0,
+      "features": [],
+      "action": "Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.",
+      "timestamp": "2026-05-11T21:42:38.773497"
+    },
+    {
+      "alert_id": "CD-005",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "HIGH",
+      "title": "Page-Hinkley Gradual Drift Alarm",
+      "description": "Page-Hinkley detected gradual drift. First alarm at 62.95% of stream. PH statistic: 30.6233.",
+      "metric": "ph_statistic",
+      "value": 30.6233,
+      "threshold": 50.0,
+      "features": [],
+      "action": "Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.",
+      "timestamp": "2026-05-11T21:42:38.773497"
+    },
+    {
+      "alert_id": "FI-001",
+      "alert_type": "FEATURE_IMPACT",
+      "level": "HIGH",
+      "title": "High-Impact Feature Drift: FE_multi_channel_utilizer",
+      "description": "Feature 'FE_multi_channel_utilizer' has highest impact score (0.4556). Drift score: 0.1859. SHAP contribution: 0.232922 (reference). SHAP \u0394: -5.5%.",
+      "metric": "impact_score",
+      "value": 0.4556,
+      "threshold": 0.35,
+      "features": [
+        "FE_multi_channel_utilizer",
+        "FE_lab_to_procedure_ratio",
+        "payer_code",
+        "number_diagnoses",
+        "discharge_disposition_id"
+      ],
+      "action": "Feature 'FE_multi_channel_utilizer' is both drifted and important. Retrain with recent data emphasizing this feature. Consider feature-specific monitoring dashboard.",
+      "timestamp": "2026-05-11T21:42:38.775086"
+    },
+    {
+      "alert_id": "FI-002",
+      "alert_type": "FEATURE_IMPACT",
+      "level": "HIGH",
+      "title": "16 High-Risk Features Identified",
+      "description": "16 features classified as HIGH risk (drift \u00d7 importance score >= 0.35). FE_ features: 0.1818 mean impact. Raw features: 0.2215 mean impact.",
+      "metric": "n_high_risk_features",
+      "value": 16.0,
+      "threshold": 5.0,
+      "features": [
+        "FE_multi_channel_utilizer",
+        "FE_lab_to_procedure_ratio",
+        "payer_code",
+        "number_diagnoses",
+        "discharge_disposition_id",
+        "diag_1",
+        "FE_high_prior_utilization",
+        "medical_specialty",
+        "age",
+        "FE_total_active_meds"
+      ],
+      "action": "Prioritize retraining pipeline. Focus data collection on high-risk drifted features.",
+      "timestamp": "2026-05-11T21:42:38.775086"
+    }
+  ],
+  "drift_summary": {
+    "concept_severity": "CRITICAL",
+    "n_evidence": 8,
+    "auc_degradation": 0.0305,
+    "f1_degradation": 0.1436,
+    "n_data_drifted": 25,
+    "n_data_critical": 0,
+    "n_feature_high": 16,
+    "label_shift_delta": -0.14
+  }
+}

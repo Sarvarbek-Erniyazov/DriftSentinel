@@ -351,20 +351,50 @@ def check_alert_status() -> list[CheckResult]:
         n_high        = alert_report.get("alert_counts", {}).get("HIGH",     0)
         total_alerts  = alert_report.get("total_alerts", 0)
 
-        status_map = {
-            "CRITICAL": "WARN",   # drift detected — expected behavior
+        # ── Phase 1.0 (audit F24): blanket downgrade removed ──────────────
+        #
+        # This was a flat map collapsing CRITICAL, HIGH and MODERATE all to
+        # WARN, justified by a single trailing comment ("drift detected —
+        # expected behavior"). That is a severity mapping tuned to produce a
+        # desired output: it made the health check green-ish no matter what the
+        # alert system said, and it could not distinguish "drift detected, as
+        # this project intends" from "the model is broken".
+        #
+        # The distinction that actually matters is not the severity LEVEL, it is
+        # whether the alerting reflects EXPECTED between-split shift or an
+        # unexpected failure. So the check now reports the alert status
+        # faithfully, and separately records whether it is consistent with the
+        # drift this project deliberately studies.
+        #
+        # Tier 0 supplies the calibration that makes this meaningful: under the
+        # no-drift random control the alert system now reports STABLE on 20/20
+        # seeds (outputs/reports/regime_random.json). A non-STABLE status is
+        # therefore informative rather than inevitable.
+        FAITHFUL_STATUS = {
+            "CRITICAL": "FAIL",   # no longer silently downgraded
             "HIGH"    : "WARN",
             "MODERATE": "WARN",
             "STABLE"  : "PASS",
         }
-        check_status = status_map.get(system_status, "WARN")
+        check_status = FAITHFUL_STATUS.get(system_status, "WARN")
+
+        # A single, NAMED exemption, applied per-check rather than as a blanket
+        # rule: the entry-cohort split is expected to produce drift alerts, and
+        # that expectation is evidenced, not asserted.
+        drift_is_expected_here = system_status in ("CRITICAL", "HIGH", "MODERATE")
+        exemption = ""
+        if drift_is_expected_here:
+            exemption = (" | EXPECTED: the deployed reference/production windows "
+                         "are an entry-cohort split, which Tier 0 shows produces "
+                         "real shift (3.30/6 signals vs 0.25/6 on the no-drift "
+                         "control). Reported at face value, not downgraded.")
 
         results.append(CheckResult(
             "alert_system_status",
             check_status,
             f"system_status={system_status} | "
             f"CRITICAL={n_critical} HIGH={n_high} "
-            f"total={total_alerts}",
+            f"total={total_alerts}{exemption}",
             system_status
         ))
 
@@ -498,20 +528,42 @@ def check_adversarial_status() -> list[CheckResult]:
         with open(def_path) as f:
             def_report = json.load(f)
 
-        detection_rate = def_report.get(
-            "attacked", {}
-        ).get("detection_rate", 0)
-        fp_rate = def_report.get(
-            "clean", {}
-        ).get("false_positive_rate", 1)
+        # TIER 1.7 — schema-drift guard.
+        #
+        # This block previously read def_report["attacked"]["detection_rate"]
+        # and ["clean"]["false_positive_rate"]. Tier 1.2 replaced that schema
+        # (those two numbers were the misleading pair: "detection 1.000, FP
+        # 0.014" while 94% of clean traffic was flagged). The `.get(..., 0)` /
+        # `.get(..., 1)` defaults meant this check did not fail — it silently
+        # reported detection_rate=0.000 from a key that no longer existed.
+        #
+        # A health check that reports a default when its input is missing is
+        # worse than one that errors: it produces a confident wrong answer.
+        # It now reports UNKNOWN when the schema does not match.
+        cm = def_report.get("confusion_matrix_corrected", {}).get("rates")
+        roc = def_report.get("roc", {})
 
-        results.append(CheckResult(
-            "adversarial_detection_rate",
-            "PASS" if detection_rate >= 0.80 else "WARN",
-            f"detection_rate={detection_rate:.3f} "
-            f"false_positive_rate={fp_rate:.3f}",
-            detection_rate
-        ))
+        if not cm or "detection_at_matched_fpr" not in roc:
+            results.append(CheckResult(
+                "adversarial_defense_schema",
+                "WARN",
+                (f"defense report present but schema not recognised "
+                 f"(keys: {sorted(def_report)[:6]}...) — refusing to report a "
+                 f"default value"),
+            ))
+        else:
+            # Detection is only meaningful WITH its false-positive rate (R3).
+            tpr_at_5 = roc["detection_at_matched_fpr"].get("tpr_at_fpr_0.05")
+            clean_flagged = cm["clean_flagged_any"]
+            auc = roc.get("auc")
+            results.append(CheckResult(
+                "adversarial_detection_at_matched_fpr",
+                "PASS" if (tpr_at_5 or 0) >= 0.80 else "WARN",
+                (f"TPR@FPR=5%={tpr_at_5:.3f} ROC_AUC={auc:.3f} "
+                 f"clean_flagged_any={clean_flagged:.3f} "
+                 f"(bare detection rates are not reported — see Tier 1.2)"),
+                tpr_at_5,
+            ))
     else:
         results.append(CheckResult(
             "adversarial_defense",

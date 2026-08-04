@@ -1,0 +1,65 @@
+# DriftSentinel — FULL research environment (pipeline, tests, determinism)
+#
+# The repository root `requirements.txt` is deliberately the SLIM console
+# runtime, because Streamlit Community Cloud installs that file and only that
+# file. Everything needed to reproduce the artifacts lives here.
+#
+#   pip install -r requirements-dev.txt
+#
+# This file includes the console runtime, so one install covers both.
+-r requirements.txt
+
+# ── originally: pinned dependencies ───────────────────────────────────────
+#
+# This file was EMPTY until Tier 1.6 (audit F21), while the README claimed the
+# pipeline "runs end-to-end from raw data". On a clean environment that claim
+# was false: four packages were missing, three of them blocking.
+#
+# Found by actually trying to run the code, in this order:
+#   lightgbm  — blocked every model fit (Tier 0 could not start)
+#   pyarrow   — blocked every parquet read (Tier 1.1 registry run)
+#   seaborn   — src/models/evaluator.py could not be imported at all
+#   shap      — src/pipelines/pipeline.py could not be imported at all
+#
+# Verified: all 28 modules under src/ import cleanly, and 33/33 tests pass.
+#
+# Python 3.12.10.  NOTE: the original pipeline artifacts were produced under
+# Python 3.11 (see the cpython-311 bytecode caches); Tier 0 onward runs on 3.12.
+# The 3.11 environment is not reproducible from this file.
+
+# ── Core numerics ──────────────────────────────────────────────────────────
+numpy==2.4.6
+pandas==2.3.3
+scipy==1.18.0
+
+# ── Modelling ──────────────────────────────────────────────────────────────
+scikit-learn==1.9.0
+lightgbm==4.7.0
+
+# ── IO ─────────────────────────────────────────────────────────────────────
+joblib==1.5.3            # model serialization with provenance (src/monitoring/model_io.py)
+# pyarrow: pinned in requirements.txt (console runtime) and inherited here
+PyYAML==6.0.3
+
+# ── Plotting ───────────────────────────────────────────────────────────────
+matplotlib==3.11.0
+seaborn==0.13.2          # imported by src/models/evaluator.py
+
+# ── Interpretability ───────────────────────────────────────────────────────
+shap==0.52.0             # imported by src/pipelines/pipeline.py
+
+# ── Testing ────────────────────────────────────────────────────────────────
+pytest==8.4.2
+
+# ── Known version-drift issues (tracked, not yet resolved) ─────────────────
+#
+# 1. numpy was 2.5.1 when the Tier 0 reports were generated; installing shap
+#    resolved it down to 2.4.6. `outputs/reports/temporal_validity.json` and
+#    `regime_random.json` therefore record a numpy version that this file does
+#    not pin. Re-run under the pinned set to make them agree — the results are
+#    seeded and expected to be identical, but "expected" is not "verified".
+#
+# 2. `outputs/models/*.pkl` were pickled under scikit-learn 1.7.2 and raise
+#    InconsistentVersionWarning under the pinned 1.9.0. Pinning cannot fix an
+#    artifact that was serialized by a different version — see
+#    docs/TIER_1_7_SCOPE.md (pickle fragility).

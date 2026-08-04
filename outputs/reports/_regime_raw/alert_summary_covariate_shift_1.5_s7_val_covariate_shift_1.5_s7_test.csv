@@ -1,0 +1,5 @@
+alert_id,level,type,title,metric,value,threshold,action,timestamp
+DD-001,CRITICAL,DATA_DRIFT,Data Drift: 23/28 Features Drifted,drift_rate,0.8214285714285714,0.25,Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.,2026-08-04T10:30:44.626192
+DD-002,CRITICAL,DATA_DRIFT,1 Features with Critical PSI (>0.20),n_critical_psi,1.0,1.0,Retrain preprocessing encoders on recent data. Verify data collection pipeline for these features.,2026-08-04T10:30:44.626192
+CD-004,LOW,CONCEPT_DRIFT,CUSUM Sequential Alarm [DIAGNOSTIC — not evidence],cusum_alarms,232.0,1.0,Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.,2026-08-04T10:30:44.626192
+CD-005,LOW,CONCEPT_DRIFT,Page-Hinkley Sequential Alarm [DIAGNOSTIC — not evidence],ph_statistic,35.3744,50.0,Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.,2026-08-04T10:30:44.626192

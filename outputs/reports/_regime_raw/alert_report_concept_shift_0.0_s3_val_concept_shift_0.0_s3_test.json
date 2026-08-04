@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-08-04T10:30:17.545682",
+  "model_name": "concept_shift_0.0_s3",
+  "ref_name": "concept_shift_0.0_s3_val",
+  "prod_name": "concept_shift_0.0_s3_test",
+  "system_status": "STABLE",
+  "recommendation": "No significant drift. Continue normal monitoring.",
+  "alert_counts": {
+    "MEDIUM": 1,
+    "LOW": 2
+  },
+  "total_alerts": 3,
+  "alerts": [
+    {
+      "alert_id": "DD-001",
+      "alert_type": "DATA_DRIFT",
+      "level": "MEDIUM",
+      "title": "Data Drift: 1/28 Features Drifted",
+      "description": "3.6% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: num_medications.",
+      "metric": "drift_rate",
+      "value": 0.0357,
+      "threshold": 0.25,
+      "features": [
+        "num_medications"
+      ],
+      "action": "Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.",
+      "timestamp": "2026-08-04T10:30:17.545682"
+    },
+    {
+      "alert_id": "CD-004",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "CUSUM Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "CUSUM detected 148 alarms. First alarm at index 296 (0.73% into stream). Mean error shift: 0.1742 \u2192 0.1878.",
+      "metric": "cusum_alarms",
+      "value": 148.0,
+      "threshold": 1.0,
+      "features": [],
+      "action": "Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.",
+      "timestamp": "2026-08-04T10:30:17.545682"
+    },
+    {
+      "alert_id": "CD-005",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "Page-Hinkley Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "Page-Hinkley detected gradual drift. First alarm at 11.05% of stream. PH statistic: 20.4648.",
+      "metric": "ph_statistic",
+      "value": 20.4648,
+      "threshold": 50.0,
+      "features": [],
+      "action": "Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.",
+      "timestamp": "2026-08-04T10:30:17.545682"
+    }
+  ],
+  "drift_summary": {
+    "concept_severity": "NONE",
+    "n_evidence": 0,
+    "auc_degradation": -0.0009,
+    "f1_degradation": -0.0095,
+    "n_data_drifted": 1,
+    "n_data_critical": 0,
+    "n_feature_high": null,
+    "label_shift_delta": 0.0041
+  }
+}

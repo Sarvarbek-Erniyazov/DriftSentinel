@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-05-12T16:26:05.071531",
+  "timestamp": "2026-08-04T11:06:43.957634",
   "system_health": "DEGRADED",
-  "n_pass": 31,
-  "n_warn": 1,
+  "n_pass": 29,
+  "n_warn": 3,
   "n_fail": 0,
   "category_status": {
     "DATA": "PASS",
-    "MODELS": "PASS",
+    "MODELS": "WARN",
     "DRIFT": "WARN",
     "UNCERTAINTY": "PASS",
-    "ADVERSARIAL": "PASS"
+    "ADVERSARIAL": "WARN"
   },
   "checks": {
     "DATA": [
@@ -17,31 +17,31 @@
         "name": "data_file_train_fs.parquet",
         "status": "PASS",
         "message": "exists (1.3 MB)",
-        "value": 1.2550458908081055
+        "value": 1.255915641784668
       },
       {
         "name": "data_file_val_fs.parquet",
         "status": "PASS",
         "message": "exists (0.5 MB)",
-        "value": 0.4539499282836914
+        "value": 0.4541044235229492
       },
       {
         "name": "data_file_test_fs.parquet",
         "status": "PASS",
         "message": "exists (0.4 MB)",
-        "value": 0.37714099884033203
+        "value": 0.3770322799682617
       },
       {
         "name": "data_file_production_val.parquet",
         "status": "PASS",
         "message": "exists (0.5 MB)",
-        "value": 0.4539499282836914
+        "value": 0.4541044235229492
       },
       {
         "name": "data_file_production_test.parquet",
         "status": "PASS",
         "message": "exists (0.4 MB)",
-        "value": 0.37714099884033203
+        "value": 0.3770322799682617
       },
       {
         "name": "data_feature_count",
@@ -81,26 +81,26 @@
       {
         "name": "model_file_lgbm_v1.pkl",
         "status": "PASS",
-        "message": "exists (1.1 MB)",
-        "value": 1.1481084823608398
+        "message": "exists (0.8 MB)",
+        "value": 0.8324985504150391
       },
       {
         "name": "model_file_lgbm_v2.pkl",
         "status": "PASS",
         "message": "exists (2.0 MB)",
-        "value": 1.9788703918457031
+        "value": 1.9643068313598633
       },
       {
         "name": "model_file_logreg_v1.pkl",
         "status": "PASS",
         "message": "exists (0.0 MB)",
-        "value": 0.0094451904296875
+        "value": 0.007943153381347656
       },
       {
         "name": "model_prediction_range",
         "status": "PASS",
         "message": "probabilities in [0,1]: True",
-        "value": 0.42575847713376724
+        "value": 0.08218140532870283
       },
       {
         "name": "model_prediction_no_nan",
@@ -110,15 +110,15 @@
       },
       {
         "name": "model_prediction_sanity",
-        "status": "PASS",
-        "message": "mean proba=0.4258 (in [0.2, 0.8])",
-        "value": 0.42575847713376724
+        "status": "WARN",
+        "message": "mean proba=0.0822 (outside [0.2, 0.8])",
+        "value": 0.08218140532870283
       },
       {
         "name": "registry_active_model",
         "status": "PASS",
-        "message": "active=lgbm_v2",
-        "value": "lgbm_v2"
+        "message": "active=lgbm_v1",
+        "value": "lgbm_v1"
       },
       {
         "name": "registry_model_count",
@@ -131,40 +131,40 @@
       {
         "name": "drift_report_concept_drift",
         "status": "PASS",
-        "message": "exists | last modified: 2026-05-11 21:40",
+        "message": "exists | last modified: 2026-08-04 11:04",
         "value": null
       },
       {
         "name": "drift_report_data_drift",
         "status": "PASS",
-        "message": "exists | last modified: 2026-05-11 21:29",
+        "message": "exists | last modified: 2026-08-04 11:03",
         "value": null
       },
       {
         "name": "drift_report_feature_drift",
         "status": "PASS",
-        "message": "exists | last modified: 2026-05-11 21:33",
+        "message": "exists | last modified: 2026-08-04 11:04",
         "value": null
       },
       {
         "name": "alert_system_status",
         "status": "WARN",
-        "message": "system_status=CRITICAL | CRITICAL=4 HIGH=5 total=9",
-        "value": "CRITICAL"
+        "message": "system_status=HIGH | CRITICAL=1 HIGH=3 total=7 | EXPECTED: the deployed reference/production windows are an entry-cohort split, which Tier 0 shows produces real shift (3.30/6 signals vs 0.25/6 on the no-drift control). Reported at face value, not downgraded.",
+        "value": "HIGH"
       },
       {
         "name": "alert_auc_degradation",
         "status": "PASS",
-        "message": "AUC degradation=+0.0305",
-        "value": 0.0305
+        "message": "AUC degradation=+0.0202",
+        "value": 0.0202
       }
     ],
     "UNCERTAINTY": [
       {
         "name": "artifact_isotonic_calibrator",
         "status": "PASS",
-        "message": "exists (2.2 KB)",
-        "value": 2.23046875
+        "message": "exists (1.7 KB)",
+        "value": 1.74609375
       },
       {
         "name": "artifact_temperature_scaler",
@@ -181,40 +181,40 @@
       {
         "name": "artifact_feature_selector",
         "status": "PASS",
-        "message": "exists (16.0 KB)",
-        "value": 15.9521484375
+        "message": "exists (8.9 KB)",
+        "value": 8.9248046875
       },
       {
         "name": "artifact_label_encoders",
         "status": "PASS",
-        "message": "exists (2.9 KB)",
-        "value": 2.853515625
+        "message": "exists (2.5 KB)",
+        "value": 2.4931640625
       },
       {
         "name": "calibration_ece_improvement",
         "status": "PASS",
-        "message": "ECE improvement=+0.0881 best_method=isotonic",
-        "value": 0.0881
+        "message": "ECE improvement=+0.0177 best_method=isotonic",
+        "value": 0.0177
       },
       {
         "name": "conformal_coverage_90",
         "status": "PASS",
-        "message": "empirical_coverage=0.9139 (target=0.90) satisfied=True",
-        "value": 0.9139
+        "message": "empirical_coverage=0.9168 (target=0.90) satisfied=True",
+        "value": 0.9168
       }
     ],
     "ADVERSARIAL": [
       {
         "name": "adversarial_robustness_score",
         "status": "PASS",
-        "message": "score=0.8954 tier=ROBUST",
-        "value": 0.8954
+        "message": "score=0.8224 tier=ROBUST",
+        "value": 0.8224
       },
       {
-        "name": "adversarial_detection_rate",
-        "status": "PASS",
-        "message": "detection_rate=1.000 false_positive_rate=0.014",
-        "value": 1.0
+        "name": "adversarial_detection_at_matched_fpr",
+        "status": "WARN",
+        "message": "TPR@FPR=5%=0.064 ROC_AUC=0.565 clean_flagged_any=0.077 (bare detection rates are not reported \u2014 see Tier 1.2)",
+        "value": 0.064
       }
     ]
   }

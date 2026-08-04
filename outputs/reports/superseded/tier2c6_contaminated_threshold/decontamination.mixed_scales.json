@@ -1,0 +1,138 @@
+{
+  "phase": "2A.4",
+  "title": "Decontamination of threshold, conformal and calibration",
+  "val_split_by_patient": {
+    "calibration_rows": 10367,
+    "audit_rows": 10582,
+    "calibration_patients": 7151,
+    "audit_patients": 7152,
+    "patient_disjoint": true,
+    "why_by_patient": "row-level halving would place a patient's encounters on both sides, leaking calibration into audit"
+  },
+  "calibration_ece": {
+    "contaminated_fit_on_full_val": {
+      "val_ece_IN_SAMPLE": 0.0,
+      "test_ece_held_out": 0.008,
+      "label": "val ECE is IN-SAMPLE \u2014 the calibrator was fitted on it"
+    },
+    "decontaminated_fit_on_val_calibration_half": {
+      "calibration_half_ece_IN_SAMPLE": 0.0,
+      "audit_half_ece_HELD_OUT": 0.00568,
+      "test_ece_held_out": 0.00674
+    },
+    "optimism_val_ece": 0.00568
+  },
+  "conformal": {
+    "target_coverage": 0.9,
+    "contaminated_calibrated_on_full_val": {
+      "quantile": 0.76491,
+      "val_IN_SAMPLE": {
+        "coverage": 0.9018091555682849,
+        "mean_set_size": 1.0232469330278295,
+        "share_singleton": 0.9767530669721705,
+        "share_both_labels": 0.02324693302782949,
+        "share_empty": 0.0,
+        "n": 20949
+      },
+      "test_held_out": {
+        "coverage": 0.9168253968253969,
+        "mean_set_size": 1.0174314574314574,
+        "share_singleton": 0.9825685425685425,
+        "share_both_labels": 0.017431457431457433,
+        "share_empty": 0.0,
+        "n": 17325
+      },
+      "label": "val coverage equals the target BY CONSTRUCTION \u2014 this is what the algorithm solves for, not evidence of stability"
+    },
+    "decontaminated_calibrated_on_val_calibration_half": {
+      "quantile": 0.55172,
+      "calibration_half_IN_SAMPLE": {
+        "coverage": 0.9004533616282434,
+        "mean_set_size": 1.0054017555705603,
+        "share_singleton": 0.9945982444294396,
+        "share_both_labels": 0.0054017555705604325,
+        "share_empty": 0.0,
+        "n": 10367
+      },
+      "audit_half_HELD_OUT": {
+        "coverage": 0.8942543942543942,
+        "mean_set_size": 1.0047250047250047,
+        "share_singleton": 0.9952749952749953,
+        "share_both_labels": 0.004725004725004725,
+        "share_empty": 0.0,
+        "n": 10582
+      },
+      "test_held_out": {
+        "coverage": 0.9134199134199135,
+        "mean_set_size": 1.0038095238095237,
+        "share_singleton": 0.9961904761904762,
+        "share_both_labels": 0.0038095238095238095,
+        "share_empty": 0.0,
+        "n": 17325
+      }
+    },
+    "honest_coverage_gap_audit_minus_target": -0.00575
+  },
+  "threshold": {
+    "contaminated_selected_on_val": {
+      "threshold": 0.125,
+      "val_IN_SAMPLE": {
+        "threshold": 0.125,
+        "f1": 0.2627,
+        "precision": 0.1824,
+        "recall": 0.469,
+        "predicted_positive_rate": 0.2716
+      },
+      "test_held_out": {
+        "threshold": 0.125,
+        "f1": 0.22,
+        "precision": 0.1595,
+        "recall": 0.3543,
+        "predicted_positive_rate": 0.1958
+      },
+      "f1_drop_val_to_test": 0.0427,
+      "label": "the reference window has a threshold fitted to itself; the production window does not (audit F13)"
+    },
+    "decontaminated_selected_on_val_calibration_half": {
+      "threshold": 0.12,
+      "audit_half_HELD_OUT": {
+        "threshold": 0.12,
+        "f1": 0.256,
+        "precision": 0.1886,
+        "recall": 0.3986,
+        "predicted_positive_rate": 0.2295
+      }
+    },
+    "decontaminated_selected_on_train_holdout": {
+      "threshold": 0.18000000000000002,
+      "source": "held-out slice of train (patient-level)",
+      "val_held_out": {
+        "threshold": 0.18,
+        "f1": 0.1908,
+        "precision": 0.2528,
+        "recall": 0.1532,
+        "predicted_positive_rate": 0.064
+      },
+      "test_held_out": {
+        "threshold": 0.18,
+        "f1": 0.2122,
+        "precision": 0.1917,
+        "recall": 0.2377,
+        "predicted_positive_rate": 0.1093
+      },
+      "f1_drop_val_to_test": -0.0214
+    },
+    "threshold_optimism_in_the_reported_f1_drop": 0.0641
+  },
+  "coverage_suspicion_check": "Coverage did NOT degrade materially on the audit half. Checked rather than assumed: the calibration and audit halves are disjoint BY PATIENT (verified by assertion), and the quantile was refitted on the calibration half only. Split conformal's marginal guarantee is distribution-free and holds on any exchangeable sample, so near-target coverage on a held-out half of the SAME window is the expected result, not a sign of leakage. The meaningful test of conformal under shift is the TEST window, where exchangeability is violated \u2014 that number is reported above and is the one that matters.",
+  "patient_recovery": {
+    "val": "OK: verified against the label sequence (14,303 patients / 20,949 rows)",
+    "train": "OK: verified against the label sequence (42,910 patients / 63,492 rows)"
+  },
+  "reproducibility": {
+    "seed": 42,
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

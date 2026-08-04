@@ -1,0 +1,137 @@
+{
+  "phase": "2B.1",
+  "title": "Adaptive Conformal Inference vs static split conformal",
+  "reference": "Gibbs & Candes, NeurIPS 2021",
+  "target_coverage": 0.9,
+  "gamma": 0.01,
+  "calibration": {
+    "source": "patient-disjoint half of val (Tier 2A.4 protocol)",
+    "n": 10367,
+    "patient_recovery": "OK: verified against the label sequence (14,303 patients / 20,949 rows)"
+  },
+  "streams": {
+    "val_audit_half": {
+      "static_split_conformal": {
+        "stream": "val_audit_half",
+        "marginal_coverage": 0.89425,
+        "coverage_error": -0.00575,
+        "mean_set_size": 1.0047,
+        "share_both_labels": 0.0047,
+        "rolling_min": 0.804,
+        "rolling_max": 0.934,
+        "max_abs_rolling_deviation": 0.096,
+        "n": 10582
+      },
+      "adaptive_conformal": {
+        "stream": "val_audit_half",
+        "marginal_coverage": 0.89964,
+        "coverage_error": -0.00036,
+        "mean_set_size": 1.059,
+        "share_both_labels": 0.0682,
+        "rolling_min": 0.88,
+        "rolling_max": 0.924,
+        "max_abs_rolling_deviation": 0.024,
+        "n": 10582
+      },
+      "aci_alpha_final": 0.061
+    },
+    "test_entry_cohort": {
+      "static_split_conformal": {
+        "stream": "test_entry_cohort",
+        "marginal_coverage": 0.91342,
+        "coverage_error": 0.01342,
+        "mean_set_size": 1.0038,
+        "share_both_labels": 0.0038,
+        "rolling_min": 0.872,
+        "rolling_max": 0.944,
+        "max_abs_rolling_deviation": 0.044,
+        "n": 17325
+      },
+      "adaptive_conformal": {
+        "stream": "test_entry_cohort",
+        "marginal_coverage": 0.90038,
+        "coverage_error": 0.00038,
+        "mean_set_size": 0.9912,
+        "share_both_labels": 0.0087,
+        "rolling_min": 0.878,
+        "rolling_max": 0.922,
+        "max_abs_rolling_deviation": 0.022,
+        "n": 17325
+      },
+      "aci_alpha_final": 0.164
+    },
+    "synthetic_hard_label_shift": {
+      "static_split_conformal": {
+        "stream": "synthetic_hard_label_shift",
+        "marginal_coverage": 0.41195,
+        "coverage_error": -0.48805,
+        "mean_set_size": 1.0115,
+        "share_both_labels": 0.0115,
+        "rolling_min": 0.366,
+        "rolling_max": 0.464,
+        "max_abs_rolling_deviation": 0.534,
+        "n": 17325
+      },
+      "adaptive_conformal": {
+        "stream": "synthetic_hard_label_shift",
+        "marginal_coverage": 0.89795,
+        "coverage_error": -0.00205,
+        "mean_set_size": 1.7684,
+        "share_both_labels": 0.7684,
+        "rolling_min": 0.882,
+        "rolling_max": 0.908,
+        "max_abs_rolling_deviation": 0.018,
+        "n": 17325
+      },
+      "aci_alpha_final": 0.0061
+    },
+    "changepoint_at_50pct": {
+      "static_split_conformal": {
+        "stream": "changepoint_at_50pct",
+        "marginal_coverage": 0.66538,
+        "coverage_error": -0.23462,
+        "mean_set_size": 1.008,
+        "share_both_labels": 0.008,
+        "rolling_min": 0.37,
+        "rolling_max": 0.94,
+        "max_abs_rolling_deviation": 0.53,
+        "n": 17324
+      },
+      "adaptive_conformal": {
+        "stream": "changepoint_at_50pct",
+        "marginal_coverage": 0.8987,
+        "coverage_error": -0.0013,
+        "mean_set_size": 1.3775,
+        "share_both_labels": 0.387,
+        "rolling_min": 0.866,
+        "rolling_max": 0.922,
+        "max_abs_rolling_deviation": 0.034,
+        "n": 17324
+      },
+      "aci_alpha_final": 0.0051
+    }
+  },
+  "changepoint_recovery": {
+    "static_post_break_coverage": 0.41515,
+    "aci_post_break_coverage": 0.89702,
+    "aci_alpha_moved_from_to": [
+      0.1,
+      0.0051
+    ]
+  },
+  "verdict": {
+    "static_holds_on_real_streams": true,
+    "aci_coverage_gain_on_real_streams": 0.01304,
+    "static_fails_on_hard_synthetic_shift": true,
+    "aci_recovers_on_hard_synthetic_shift": true,
+    "implementation_falsification_passed": true,
+    "finding": "On THIS data ACI buys essentially nothing, because static split conformal already holds coverage: the val->test difference is cohort composition and observation-window truncation, not a change in P(Y|X), so exchangeability is bent rather than broken (Tier 0). ACI demonstrably works \u2014 it recovers coverage on a synthetic hard label shift where static conformal fails \u2014 so the null on the real streams is a property of the DATA, not of the method or the implementation. Reporting that is the point: adopting a modern method reflexively, on data where it buys nothing, is the reflex this remediation exists to correct. ACI remains the correct default for a deployment whose shift is not known in advance to be this benign."
+  },
+  "prediction_made_before_running": "static conformal already holds on this shift (Tier 2A.4: 0.8943 audit / 0.9134 test), so ACI was predicted to show little or no improvement on the real streams; a synthetic hard shift was included as the falsification condition for the implementation",
+  "reproducibility": {
+    "seed": 42,
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

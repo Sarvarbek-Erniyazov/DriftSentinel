@@ -31,8 +31,16 @@ from src.monitoring.logger import get_logger
 
 logger = get_logger("consistency")
 
-ARTIFACTS_DIR = Path(r"C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts")
-REPORT_DIR    = Path(r"C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log")
+# Tier 2C.6 reproducibility: this was a HARDCODED ABSOLUTE PATH to one
+# developer's machine, so `pipeline.py` did not reproduce anything from raw
+# data on a clean clone -- it read from and wrote to a directory that exists
+# nowhere else. On Linux CI the same literal resolves to a RELATIVE folder
+# whose name contains backslashes, so artifacts land somewhere harmless-
+# looking and the run still 'succeeds'. It worked on exactly one machine,
+# which is why nothing caught it. Now derived from this file's location.
+ROOT = Path(__file__).resolve().parents[2]
+ARTIFACTS_DIR = ROOT / "outputs" / "artifacts"
+REPORT_DIR    = ROOT / "outputs" / "log"
 ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
 REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -48,6 +56,93 @@ PSI_N_BINS              = 10
 
 
 # ── PSI helper ─────────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════
+# Failure classification (Phase 1.0 — audit F2)
+# ══════════════════════════════════════════════════════════════════════════
+#
+# The pipeline previously set `summary["pipeline_ready"] = True` unconditionally,
+# over a check reporting 12 FAILs. The INTENT was defensible — this project
+# studies distribution shift, so shift between splits is the subject matter, not
+# a defect — but a blanket assignment cannot distinguish "expected shift" from
+# "the schema is broken", and to a reader it looks like a disabled quality gate.
+#
+# Failures are now classified by check name. Anything not matched here is
+# UNEXPECTED and blocks the pipeline.
+
+EXPECTED_DRIFT_CHECK_PREFIXES = (
+    "psi_",            # population stability between splits — the object of study
+    "target_dist_",    # label prevalence differs between entry cohorts
+)
+
+# These must NEVER fail. They are integrity properties, not observations about
+# the data distribution, and a failure means the pipeline itself is wrong.
+INTEGRITY_CHECK_PREFIXES = (
+    "schema_", "column_", "dtype_", "total_row_coverage", "leakage_",
+    "target_leakage", "fe_", "null_spike", "constant_", "duplicate_",
+)
+
+
+def classify_failure(check_name: str) -> str:
+    """Return 'expected_drift' or 'unexpected' for a failing check."""
+    if check_name.startswith(EXPECTED_DRIFT_CHECK_PREFIXES):
+        return "expected_drift"
+    return "unexpected"
+
+
+def evaluate_gate(report: dict, drift_expected: bool = True) -> dict:
+    """
+    Evaluate the pipeline-readiness gate and return its full reasoning.
+
+    Replaces `summary["pipeline_ready"] = True`. The gate is now an expression
+    over named categories, and it logs why it decided what it decided:
+
+        ready = no unexpected failures  AND  (expected failures are permitted
+                only when drift_expected is True)
+
+    Every failure is named and attributed, so "we allowed 12 failures" becomes
+    "we allowed these 12, each of which is a distribution-shift observation,
+    and we would NOT have allowed a leakage or schema failure."
+    """
+    fails = [f for f in report.get("findings", []) if f["level"] == "FAIL"]
+    expected, unexpected = [], []
+    for f in fails:
+        entry = {"check": f["check"], "split": f["split"], "detail": f["detail"]}
+        (expected if classify_failure(f["check"]) == "expected_drift"
+         else unexpected).append(entry)
+
+    ready = (not unexpected) and (drift_expected or not expected)
+
+    if not ready:
+        if unexpected:
+            reason = (f"{len(unexpected)} UNEXPECTED failure(s) that are not "
+                      f"distribution-shift observations: "
+                      f"{[u['check'] for u in unexpected]}")
+        else:
+            reason = (f"{len(expected)} drift-related failure(s) present and "
+                      f"drift_expected=False")
+    elif expected:
+        reason = (f"{len(expected)} drift-related failure(s) permitted because "
+                  f"drift_expected=True; 0 unexpected failures. Distribution "
+                  f"shift between splits is this project's subject matter, not "
+                  f"a pipeline defect.")
+    else:
+        reason = "no failures"
+
+    return {
+        "ready": bool(ready),
+        "reason": reason,
+        "drift_expected": bool(drift_expected),
+        "n_expected_failures": len(expected),
+        "n_unexpected_failures": len(unexpected),
+        "expected_failures": expected,
+        "unexpected_failures": unexpected,
+        "rule": ("ready = (no unexpected failures) and "
+                 "(drift_expected or no expected failures)"),
+        "expected_categories": list(EXPECTED_DRIFT_CHECK_PREFIXES),
+        "integrity_categories": list(INTEGRITY_CHECK_PREFIXES),
+    }
+
+
 def _psi(reference: np.ndarray, production: np.ndarray, n_bins: int = PSI_N_BINS) -> float:
     """
     Population Stability Index.

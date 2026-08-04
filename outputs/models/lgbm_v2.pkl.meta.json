@@ -1,0 +1,25 @@
+{
+  "artifact": "lgbm_v2.pkl",
+  "created_at": "2026-08-04T21:12:14",
+  "class": "lightgbm.sklearn.LGBMClassifier",
+  "versions": {
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.18.0",
+    "scikit-learn": "1.9.0",
+    "lightgbm": "4.7.0"
+  },
+  "git_commit": "cb12747f6f7d36cdfbba2c356aa3b066a0c9191b",
+  "sha256": "4080aef90236182199966228277fa92cb0631cea0636c7f4222c1e713211e7fa",
+  "serializer": "pickle",
+  "model_name": "lgbm_v2",
+  "trigger": "drift_alert",
+  "train_splits": [
+    "train",
+    "val"
+  ],
+  "n_estimators": 300,
+  "early_stopping": false,
+  "train_rows": 84441
+}

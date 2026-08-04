@@ -1,0 +1,22 @@
+{
+  "artifact": "logreg_v1.pkl",
+  "created_at": "2026-08-04T21:12:00",
+  "class": "builtins.dict",
+  "versions": {
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.18.0",
+    "scikit-learn": "1.9.0",
+    "lightgbm": "4.7.0"
+  },
+  "git_commit": "cb12747f6f7d36cdfbba2c356aa3b066a0c9191b",
+  "sha256": "552b060e3c21dd8d15aa2eb1bb9b11397c13f95e9174f88d723f3cb18065fb54",
+  "serializer": "pickle",
+  "model_name": "logreg_v1",
+  "n_features": 53,
+  "contains": [
+    "model",
+    "scaler"
+  ]
+}

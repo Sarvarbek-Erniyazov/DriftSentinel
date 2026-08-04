@@ -1,0 +1,88 @@
+{
+  "phase": "2A.3",
+  "title": "Benjamini-Hochberg FDR across the full hypothesis-test family",
+  "alpha_uncorrected": 0.01,
+  "q_fdr": 0.05,
+  "family_size_counted": 318,
+  "audit_estimate": 265,
+  "family_size_note": "COUNTED by re-running the shipped test functions across all three windows, not read from the saved CSVs: data_drift.run_data_drift() writes data_drift_test.csv twice in one run (val->test then train->test), silently destroying the first window's results. An undercount would weaken BH in the flattering direction.",
+  "matched_level_comparison": {
+    "level_0.05": {
+      "raw": 269,
+      "fdr": 268,
+      "lost": 1
+    },
+    "level_0.01": {
+      "raw": 257,
+      "fdr": 256,
+      "lost": 1
+    }
+  },
+  "effect_size_analysis": {
+    "n_feature_windows": 159,
+    "significant_after_fdr": 141,
+    "significant_and_psi_ge_0.10": 12,
+    "significant_and_psi_ge_0.20": 8,
+    "significant_but_psi_lt_0.10": 129,
+    "interpretation": "Multiplicity is NOT the binding constraint on this evidence. With ~20k rows per window the tests are so overpowered that trivial differences reach p < 1e-10, so BH removes almost nothing. What separates real drift from detectable-but-meaningless drift is EFFECT SIZE: most feature-windows that survive FDR have PSI < 0.10, i.e. they are statistically certain and practically negligible. This is the same lesson as the Tier 1.4 label_drift rule \u2014 significance AND a minimum effect, never significance alone."
+  },
+  "significant_uncorrected_alpha01": 257,
+  "significant_after_fdr_q05": 268,
+  "note_on_cross_level_comparison": "Do NOT compare significant_uncorrected_alpha01 against significant_after_fdr_q05 \u2014 different error rates; the cross-level difference is an artifact. Use matched_level_comparison.",
+  "expected_false_positives_uncorrected": 3.2,
+  "per_window": {
+    "train->test": {
+      "n_features": 53,
+      "n_tests": 105,
+      "features_drifted_uncorrected": 47,
+      "features_drifted_fdr": 48,
+      "features_lost_to_correction": []
+    },
+    "train->val": {
+      "n_features": 53,
+      "n_tests": 105,
+      "features_drifted_uncorrected": 49,
+      "features_drifted_fdr": 50,
+      "features_lost_to_correction": []
+    },
+    "val->test": {
+      "n_features": 53,
+      "n_tests": 105,
+      "features_drifted_uncorrected": 39,
+      "features_drifted_fdr": 43,
+      "features_lost_to_correction": []
+    }
+  },
+  "per_test_type": {
+    "KS": {
+      "n": 106,
+      "significant_raw": 83,
+      "significant_fdr": 85
+    },
+    "MannWhitney": {
+      "n": 106,
+      "significant_raw": 89,
+      "significant_fdr": 93
+    },
+    "chi2": {
+      "n": 105,
+      "significant_raw": 84,
+      "significant_fdr": 89
+    },
+    "two-proportion": {
+      "n": 1,
+      "significant_raw": 1,
+      "significant_fdr": 1
+    }
+  },
+  "excluded_from_family": {
+    "PSI": "an effect size with a threshold rule, not a hypothesis test \u2014 it has no p-value and correcting it would be a category error",
+    "Jensen-Shannon": "same \u2014 a divergence, not a test"
+  },
+  "artifact": "outputs/reports/fdr_corrected_tests.csv",
+  "reproducibility": {
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

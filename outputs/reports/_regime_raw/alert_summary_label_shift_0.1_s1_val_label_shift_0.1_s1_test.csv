@@ -1,0 +1,6 @@
+alert_id,level,type,title,metric,value,threshold,action,timestamp
+CD-003,HIGH,CONCEPT_DRIFT,Concept Drift Evidence: 3/6 Voting Signals Fired,n_evidence,3.0,3.0,Initiate drift investigation protocol. Run feature_drift analysis to identify root cause features.,2026-08-04T10:30:01.564187
+LS-001,HIGH,LABEL_SHIFT,Target Label Distribution Shift Detected,label_shift_delta,0.0913,0.05,Investigate clinical/operational changes in the data source. Label shift may require re-stratification of training data. Review class weights and decision threshold.,2026-08-04T10:30:01.564187
+DD-001,MEDIUM,DATA_DRIFT,Data Drift: 1/28 Features Drifted,drift_rate,0.03571428571428571,0.25,Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.,2026-08-04T10:30:01.564187
+CD-004,LOW,CONCEPT_DRIFT,CUSUM Sequential Alarm [DIAGNOSTIC — not evidence],cusum_alarms,303.0,1.0,Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.,2026-08-04T10:30:01.564187
+CD-005,LOW,CONCEPT_DRIFT,Page-Hinkley Sequential Alarm [DIAGNOSTIC — not evidence],ph_statistic,46.9946,50.0,Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.,2026-08-04T10:30:01.564187

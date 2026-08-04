@@ -44,3 +44,168 @@ Step 5: Generating defense dashboard
 2026-05-12 16:19:54 | INFO     | defense              |   Detection lift      : +0.045
 2026-05-12 16:19:54 | INFO     | defense              |   Next: README.md
 2026-05-12 16:19:54 | INFO     | defense              | ======================================================================
+2026-08-04 10:17:40 | INFO     | defense              | ===== RUN 20260804-101740-2cebea | pid=27304 | started 2026-08-04 10:17:40 =====
+2026-08-04 10:17:40 | INFO     | defense              | ======================================================================
+2026-08-04 10:17:40 | INFO     | defense              | DriftSentinel - Adversarial Defense (corrected evaluation)
+2026-08-04 10:17:40 | INFO     | defense              | ======================================================================
+2026-08-04 10:17:40 | INFO     | defense              | Step 1: Fit defense; calibrate L1 on the val window
+2026-08-04 10:17:40 | INFO     | defense              |   L1 IQR multiplier 3.0 -> 4.5  (clean trigger 0.034, target 0.05)
+2026-08-04 10:17:40 | INFO     | defense              | Step 2: Defend 1000 clean and 1000 attacked samples
+2026-08-04 10:17:40 | INFO     | defense              | Step 3: Layer disposition (kept or dropped on evidence)
+2026-08-04 10:17:40 | INFO     | defense              |   L1_InputValidation       clean=0.045 attacked=0.045 lift=+0.000 -> DROP_NEGLIGIBLE (lift +0.000 below 0.02)
+2026-08-04 10:17:40 | INFO     | defense              |   L2_AnomalyDetection      clean=0.077 attacked=0.098 lift=+0.021 -> KEEP (lift +0.021)
+2026-08-04 10:17:40 | INFO     | defense              |   L3_Consistency           clean=0.280 attacked=0.121 lift=-0.159 -> DROP_ANTI_INFORMATIVE (fires MORE on clean (0.280) than attacked (0.121))
+2026-08-04 10:17:40 | INFO     | defense              |   L4_Smoothing             clean=0.000 attacked=0.000 lift=+0.000 -> DROP_NEVER_FIRES (never fired on clean or attacked data)
+2026-08-04 10:17:40 | INFO     | defense              |   L5_EnsembleAgreement     clean=0.002 attacked=0.018 lift=+0.016 -> DROP_NEGLIGIBLE (lift +0.016 below 0.02)
+2026-08-04 10:17:40 | INFO     | defense              |   Implemented: 5 | carrying signal: 1 -> ['L2_AnomalyDetection']
+2026-08-04 10:17:40 | INFO     | defense              | Step 4: Confusion matrices (3x2, primary artifact)
+2026-08-04 10:17:40 | INFO     | defense              |   SHIPPED  : clean flagged(any)=0.367 clean ADVERSARIAL=0.001 | attacked flagged(any)=0.248
+2026-08-04 10:17:40 | INFO     | defense              |   CORRECTED: clean flagged(any)=0.077 clean ADVERSARIAL=0.000 | attacked flagged(any)=0.098
+2026-08-04 10:17:40 | INFO     | defense              | Step 5: ROC over the continuous score
+2026-08-04 10:17:40 | INFO     | defense              |   AUC = 0.5654
+2026-08-04 10:17:40 | INFO     | defense              |     tpr_at_fpr_0.01 = 0.0130
+2026-08-04 10:17:40 | INFO     | defense              |     tpr_at_fpr_0.05 = 0.0640
+2026-08-04 10:17:40 | INFO     | defense              |     tpr_at_fpr_0.10 = 0.1360
+2026-08-04 10:17:40 | INFO     | defense              |     tpr_at_fpr_0.20 = 0.2380
+2026-08-04 10:17:41 | INFO     | defense              |   Per-layer ROC AUC (continuous statistic):
+2026-08-04 10:17:41 | INFO     | defense              |     L1_InputValidation       0.5
+2026-08-04 10:17:41 | INFO     | defense              |     L2_AnomalyDetection      0.5654
+2026-08-04 10:17:41 | INFO     | defense              |     L3_Consistency           0.4235
+2026-08-04 10:17:41 | INFO     | defense              |     L4_Smoothing             0.6016
+2026-08-04 10:17:41 | INFO     | defense              |     L5_EnsembleAgreement     0.5751
+2026-08-04 10:17:41 | INFO     | defense              |     ALL 5 layers combined    0.6169
+2026-08-04 10:17:41 | INFO     | defense              |   Saved: 43_defense_evaluation_lgbm_v1.png
+2026-08-04 10:17:41 | INFO     | defense              |   Report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\defense_report_lgbm_v1.json
+2026-08-04 10:17:41 | INFO     | defense              | ======================================================================
+2026-08-04 10:47:31 | INFO     | defense              | ===== RUN 20260804-104731-05d536 | pid=18916 | started 2026-08-04 10:47:31 =====
+2026-08-04 10:47:31 | INFO     | defense              | ======================================================================
+2026-08-04 10:47:31 | INFO     | defense              | DriftSentinel - Adversarial Defense (corrected evaluation)
+2026-08-04 10:47:31 | INFO     | defense              | ======================================================================
+2026-08-04 10:47:32 | INFO     | defense              | Step 1: Fit defense; calibrate L1 on the val window
+2026-08-04 10:47:32 | INFO     | defense              |   L1 IQR multiplier 3.0 -> 4.5  (clean trigger 0.034, target 0.05)
+2026-08-04 10:47:32 | INFO     | defense              | Step 2: Defend 1000 clean and 1000 attacked samples
+2026-08-04 10:47:32 | INFO     | defense              | Step 3: Layer disposition (kept or dropped on evidence)
+2026-08-04 10:47:32 | INFO     | defense              |   L1_InputValidation       clean=0.045 attacked=0.045 lift=+0.000 -> DROP_NEGLIGIBLE (lift +0.000 below 0.02)
+2026-08-04 10:47:32 | INFO     | defense              |   L2_AnomalyDetection      clean=0.077 attacked=0.098 lift=+0.021 -> KEEP (lift +0.021)
+2026-08-04 10:47:32 | INFO     | defense              |   L3_Consistency           clean=0.358 attacked=0.365 lift=+0.007 -> DROP_NEGLIGIBLE (lift +0.007 below 0.02)
+2026-08-04 10:47:32 | INFO     | defense              |   L4_Smoothing             clean=0.001 attacked=0.003 lift=+0.002 -> DROP_NEGLIGIBLE (lift +0.002 below 0.02)
+2026-08-04 10:47:32 | INFO     | defense              |   L5_EnsembleAgreement     clean=0.003 attacked=0.004 lift=+0.001 -> DROP_NEGLIGIBLE (lift +0.001 below 0.02)
+2026-08-04 10:47:32 | INFO     | defense              |   Implemented: 5 | carrying signal: 1 -> ['L2_AnomalyDetection']
+2026-08-04 10:47:32 | INFO     | defense              | Step 4: Confusion matrices (3x2, primary artifact)
+2026-08-04 10:47:32 | INFO     | defense              |   SHIPPED  : clean flagged(any)=0.435 clean ADVERSARIAL=0.004 | attacked flagged(any)=0.464
+2026-08-04 10:47:32 | INFO     | defense              |   CORRECTED: clean flagged(any)=0.077 clean ADVERSARIAL=0.000 | attacked flagged(any)=0.098
+2026-08-04 10:47:32 | INFO     | defense              | Step 5: ROC over the continuous score
+2026-08-04 10:47:32 | INFO     | defense              |   AUC = 0.5654
+2026-08-04 10:47:32 | INFO     | defense              |     tpr_at_fpr_0.01 = 0.0130
+2026-08-04 10:47:32 | INFO     | defense              |     tpr_at_fpr_0.05 = 0.0640
+2026-08-04 10:47:32 | INFO     | defense              |     tpr_at_fpr_0.10 = 0.1360
+2026-08-04 10:47:32 | INFO     | defense              |     tpr_at_fpr_0.20 = 0.2380
+2026-08-04 10:47:32 | INFO     | defense              |   Per-layer ROC AUC (continuous statistic):
+2026-08-04 10:47:32 | INFO     | defense              |     L1_InputValidation       0.5
+2026-08-04 10:47:32 | INFO     | defense              |     L2_AnomalyDetection      0.5654
+2026-08-04 10:47:32 | INFO     | defense              |     L3_Consistency           0.4841
+2026-08-04 10:47:32 | INFO     | defense              |     L4_Smoothing             0.5819
+2026-08-04 10:47:32 | INFO     | defense              |     L5_EnsembleAgreement     0.6383
+2026-08-04 10:47:32 | INFO     | defense              |     ALL 5 layers combined    0.651
+2026-08-04 10:47:33 | INFO     | defense              |   Saved: 43_defense_evaluation_lgbm_v1.png
+2026-08-04 10:47:33 | INFO     | defense              |   Report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\defense_report_lgbm_v1.json
+2026-08-04 10:47:33 | INFO     | defense              | ======================================================================
+2026-08-04 11:06:40 | INFO     | defense              | ===== RUN 20260804-110640-604d9f | pid=32528 | started 2026-08-04 11:06:40 =====
+2026-08-04 11:06:40 | INFO     | defense              | ======================================================================
+2026-08-04 11:06:40 | INFO     | defense              | DriftSentinel - Adversarial Defense (corrected evaluation)
+2026-08-04 11:06:40 | INFO     | defense              | ======================================================================
+2026-08-04 11:06:40 | INFO     | defense              | Step 1: Fit defense; calibrate L1 on the val window
+2026-08-04 11:06:40 | INFO     | defense              |   L1 IQR multiplier 3.0 -> 4.5  (clean trigger 0.034, target 0.05)
+2026-08-04 11:06:41 | INFO     | defense              | Step 2: Defend 1000 clean and 1000 attacked samples
+2026-08-04 11:06:41 | INFO     | defense              | Step 3: Layer disposition (kept or dropped on evidence)
+2026-08-04 11:06:41 | INFO     | defense              |   L1_InputValidation       clean=0.045 attacked=0.045 lift=+0.000 -> DROP_NEGLIGIBLE (lift +0.000 below 0.02)
+2026-08-04 11:06:41 | INFO     | defense              |   L2_AnomalyDetection      clean=0.077 attacked=0.098 lift=+0.021 -> KEEP (lift +0.021)
+2026-08-04 11:06:41 | INFO     | defense              |   L3_Consistency           clean=0.358 attacked=0.365 lift=+0.007 -> DROP_NEGLIGIBLE (lift +0.007 below 0.02)
+2026-08-04 11:06:41 | INFO     | defense              |   L4_Smoothing             clean=0.001 attacked=0.003 lift=+0.002 -> DROP_NEGLIGIBLE (lift +0.002 below 0.02)
+2026-08-04 11:06:41 | INFO     | defense              |   L5_EnsembleAgreement     clean=0.003 attacked=0.004 lift=+0.001 -> DROP_NEGLIGIBLE (lift +0.001 below 0.02)
+2026-08-04 11:06:41 | INFO     | defense              |   Implemented: 5 | carrying signal: 1 -> ['L2_AnomalyDetection']
+2026-08-04 11:06:41 | INFO     | defense              | Step 4: Confusion matrices (3x2, primary artifact)
+2026-08-04 11:06:41 | INFO     | defense              |   SHIPPED  : clean flagged(any)=0.435 clean ADVERSARIAL=0.004 | attacked flagged(any)=0.464
+2026-08-04 11:06:41 | INFO     | defense              |   CORRECTED: clean flagged(any)=0.077 clean ADVERSARIAL=0.000 | attacked flagged(any)=0.098
+2026-08-04 11:06:41 | INFO     | defense              | Step 5: ROC over the continuous score
+2026-08-04 11:06:41 | INFO     | defense              |   AUC = 0.5654
+2026-08-04 11:06:41 | INFO     | defense              |     tpr_at_fpr_0.01 = 0.0130
+2026-08-04 11:06:41 | INFO     | defense              |     tpr_at_fpr_0.05 = 0.0640
+2026-08-04 11:06:41 | INFO     | defense              |     tpr_at_fpr_0.10 = 0.1360
+2026-08-04 11:06:41 | INFO     | defense              |     tpr_at_fpr_0.20 = 0.2380
+2026-08-04 11:06:41 | INFO     | defense              |   Per-layer ROC AUC (continuous statistic):
+2026-08-04 11:06:41 | INFO     | defense              |     L1_InputValidation       0.5
+2026-08-04 11:06:41 | INFO     | defense              |     L2_AnomalyDetection      0.5654
+2026-08-04 11:06:41 | INFO     | defense              |     L3_Consistency           0.4841
+2026-08-04 11:06:41 | INFO     | defense              |     L4_Smoothing             0.5819
+2026-08-04 11:06:41 | INFO     | defense              |     L5_EnsembleAgreement     0.6383
+2026-08-04 11:06:41 | INFO     | defense              |     ALL 5 layers combined    0.651
+2026-08-04 11:06:42 | INFO     | defense              |   Saved: 43_defense_evaluation_lgbm_v1.png
+2026-08-04 11:06:42 | INFO     | defense              |   Report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\defense_report_lgbm_v1.json
+2026-08-04 11:06:42 | INFO     | defense              | ======================================================================
+2026-08-04 11:08:30 | INFO     | defense              | ===== RUN 20260804-110830-de2a72 | pid=22288 | started 2026-08-04 11:08:30 =====
+2026-08-04 11:08:30 | INFO     | defense              | ======================================================================
+2026-08-04 11:08:30 | INFO     | defense              | DriftSentinel - Adversarial Defense (corrected evaluation)
+2026-08-04 11:08:30 | INFO     | defense              | ======================================================================
+2026-08-04 11:08:30 | INFO     | defense              | Step 1: Fit defense; calibrate L1 on the val window
+2026-08-04 11:08:30 | INFO     | defense              |   L1 IQR multiplier 3.0 -> 4.5  (clean trigger 0.034, target 0.05)
+2026-08-04 11:08:31 | INFO     | defense              | Step 2: Defend 1000 clean and 1000 attacked samples
+2026-08-04 11:08:31 | INFO     | defense              | Step 3: Layer disposition (kept or dropped on evidence)
+2026-08-04 11:08:31 | INFO     | defense              |   L1_InputValidation       clean=0.045 attacked=0.045 lift=+0.000 -> DROP_NEGLIGIBLE (lift +0.000 below 0.02)
+2026-08-04 11:08:31 | INFO     | defense              |   L2_AnomalyDetection      clean=0.077 attacked=0.098 lift=+0.021 -> KEEP (lift +0.021)
+2026-08-04 11:08:31 | INFO     | defense              |   L3_Consistency           clean=0.358 attacked=0.365 lift=+0.007 -> DROP_NEGLIGIBLE (lift +0.007 below 0.02)
+2026-08-04 11:08:31 | INFO     | defense              |   L4_Smoothing             clean=0.001 attacked=0.003 lift=+0.002 -> DROP_NEGLIGIBLE (lift +0.002 below 0.02)
+2026-08-04 11:08:31 | INFO     | defense              |   L5_EnsembleAgreement     clean=0.003 attacked=0.004 lift=+0.001 -> DROP_NEGLIGIBLE (lift +0.001 below 0.02)
+2026-08-04 11:08:31 | INFO     | defense              |   Implemented: 5 | carrying signal: 1 -> ['L2_AnomalyDetection']
+2026-08-04 11:08:31 | INFO     | defense              | Step 4: Confusion matrices (3x2, primary artifact)
+2026-08-04 11:08:31 | INFO     | defense              |   SHIPPED  : clean flagged(any)=0.435 clean ADVERSARIAL=0.004 | attacked flagged(any)=0.464
+2026-08-04 11:08:31 | INFO     | defense              |   CORRECTED: clean flagged(any)=0.077 clean ADVERSARIAL=0.000 | attacked flagged(any)=0.098
+2026-08-04 11:08:31 | INFO     | defense              | Step 5: ROC over the continuous score
+2026-08-04 11:08:31 | INFO     | defense              |   AUC = 0.5654
+2026-08-04 11:08:31 | INFO     | defense              |     tpr_at_fpr_0.01 = 0.0130
+2026-08-04 11:08:31 | INFO     | defense              |     tpr_at_fpr_0.05 = 0.0640
+2026-08-04 11:08:31 | INFO     | defense              |     tpr_at_fpr_0.10 = 0.1360
+2026-08-04 11:08:31 | INFO     | defense              |     tpr_at_fpr_0.20 = 0.2380
+2026-08-04 11:08:31 | INFO     | defense              |   Per-layer ROC AUC (continuous statistic):
+2026-08-04 11:08:31 | INFO     | defense              |     L1_InputValidation       0.5
+2026-08-04 11:08:31 | INFO     | defense              |     L2_AnomalyDetection      0.5654
+2026-08-04 11:08:31 | INFO     | defense              |     L3_Consistency           0.4841
+2026-08-04 11:08:31 | INFO     | defense              |     L4_Smoothing             0.5819
+2026-08-04 11:08:31 | INFO     | defense              |     L5_EnsembleAgreement     0.6383
+2026-08-04 11:08:31 | INFO     | defense              |     ALL 5 layers combined    0.651
+2026-08-04 11:08:31 | INFO     | defense              |   Saved: 43_defense_evaluation_lgbm_v1.png
+2026-08-04 11:08:31 | INFO     | defense              |   Report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\defense_report_lgbm_v1.json
+2026-08-04 11:08:31 | INFO     | defense              | ======================================================================
+2026-08-04 18:11:14 | INFO     | defense              | ===== RUN 20260804-181114-75751d | pid=20572 | started 2026-08-04 18:11:14 =====
+2026-08-04 18:11:14 | INFO     | defense              | ======================================================================
+2026-08-04 18:11:14 | INFO     | defense              | DriftSentinel - Adversarial Defense (corrected evaluation)
+2026-08-04 18:11:14 | INFO     | defense              | ======================================================================
+2026-08-04 18:11:15 | INFO     | defense              | Step 1: Fit defense; calibrate L1 on the val window
+2026-08-04 18:11:15 | INFO     | defense              |   L1 IQR multiplier 3.0 -> 4.5  (clean trigger 0.034, target 0.05)
+2026-08-04 18:11:16 | INFO     | defense              | Step 2: Defend 1000 clean and 1000 attacked samples
+2026-08-04 18:11:16 | INFO     | defense              | Step 3: Layer disposition (kept or dropped on evidence)
+2026-08-04 18:11:16 | INFO     | defense              |   L1_InputValidation       clean=0.045 attacked=0.045 lift=+0.000 -> DROP_NEGLIGIBLE (lift +0.000 below 0.02)
+2026-08-04 18:11:16 | INFO     | defense              |   L2_AnomalyDetection      clean=0.077 attacked=0.098 lift=+0.021 -> KEEP (lift +0.021)
+2026-08-04 18:11:16 | INFO     | defense              |   L3_Consistency           clean=0.358 attacked=0.365 lift=+0.007 -> DROP_NEGLIGIBLE (lift +0.007 below 0.02)
+2026-08-04 18:11:16 | INFO     | defense              |   L4_Smoothing             clean=0.001 attacked=0.003 lift=+0.002 -> DROP_NEGLIGIBLE (lift +0.002 below 0.02)
+2026-08-04 18:11:16 | INFO     | defense              |   L5_EnsembleAgreement     clean=0.003 attacked=0.004 lift=+0.001 -> DROP_NEGLIGIBLE (lift +0.001 below 0.02)
+2026-08-04 18:11:16 | INFO     | defense              |   Implemented: 5 | carrying signal: 1 -> ['L2_AnomalyDetection']
+2026-08-04 18:11:16 | INFO     | defense              | Step 4: Confusion matrices (3x2, primary artifact)
+2026-08-04 18:11:16 | INFO     | defense              |   SHIPPED  : clean flagged(any)=0.435 clean ADVERSARIAL=0.004 | attacked flagged(any)=0.464
+2026-08-04 18:11:16 | INFO     | defense              |   CORRECTED: clean flagged(any)=0.077 clean ADVERSARIAL=0.000 | attacked flagged(any)=0.098
+2026-08-04 18:11:16 | INFO     | defense              | Step 5: ROC over the continuous score
+2026-08-04 18:11:16 | INFO     | defense              |   AUC = 0.5654
+2026-08-04 18:11:16 | INFO     | defense              |     tpr_at_fpr_0.01 = 0.0130
+2026-08-04 18:11:16 | INFO     | defense              |     tpr_at_fpr_0.05 = 0.0640
+2026-08-04 18:11:16 | INFO     | defense              |     tpr_at_fpr_0.10 = 0.1360
+2026-08-04 18:11:16 | INFO     | defense              |     tpr_at_fpr_0.20 = 0.2380
+2026-08-04 18:11:16 | INFO     | defense              |   Per-layer ROC AUC (continuous statistic):
+2026-08-04 18:11:16 | INFO     | defense              |     L1_InputValidation       0.5
+2026-08-04 18:11:16 | INFO     | defense              |     L2_AnomalyDetection      0.5654
+2026-08-04 18:11:16 | INFO     | defense              |     L3_Consistency           0.4841
+2026-08-04 18:11:16 | INFO     | defense              |     L4_Smoothing             0.5819
+2026-08-04 18:11:16 | INFO     | defense              |     L5_EnsembleAgreement     0.6383
+2026-08-04 18:11:16 | INFO     | defense              |     ALL 5 layers combined    0.651
+2026-08-04 18:11:16 | INFO     | defense              |   Saved: 43_defense_evaluation_lgbm_v1.png
+2026-08-04 18:11:16 | INFO     | defense              |   Report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\defense_report_lgbm_v1.json
+2026-08-04 18:11:16 | INFO     | defense              | ======================================================================

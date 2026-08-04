@@ -1,7 +1,7 @@
 {
   "passed": 117,
   "warned": 26,
-  "failed": 12,
+  "failed": 10,
   "findings": [
     {
       "level": "PASS",
@@ -908,18 +908,6 @@
       "check": "target_dist_readmitted_multi_class2",
       "split": "test",
       "detail": "train=0.370 test=0.248 delta=0.122"
-    },
-    {
-      "level": "FAIL",
-      "check": "target_dist_readmitted_binary_class0",
-      "split": "test",
-      "detail": "train=0.510 test=0.664 delta=0.153"
-    },
-    {
-      "level": "FAIL",
-      "check": "target_dist_readmitted_binary_class1",
-      "split": "test",
-      "detail": "train=0.490 test=0.336 delta=0.153"
     },
     {
       "level": "PASS",

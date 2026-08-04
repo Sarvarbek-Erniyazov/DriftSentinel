@@ -1,5 +1,27 @@
 # Adversarial Robustness
 
+> ## SUPERSEDED — read this banner before the body
+>
+> **Every headline number below is withdrawn.** This document is preserved as the
+> original framing, because deleting it would delete the evidence of what was
+> corrected. What replaced it:
+>
+> | Claim in this document | Status |
+> |---|---|
+> | "robustness score 0.8954 — ROBUST tier" | **WITHDRAWN.** 71.7% of finite-difference gradients on this tree ensemble are exactly zero, so FGSM/PGD had no direction to step in. ASR near zero was the null behaviour of an attack that did not execute. Replaced by threat-modelled EHR data-quality robustness: `outputs/reports/data_quality_robustness.json` |
+> | "detection rate 100%, false positive rate 1.4%" | **WITHDRAWN.** It counted one cell of the confusion matrix while **941 of 1,000 clean samples were flagged SUSPICIOUS**. Corrected: `outputs/log/defense_report_lgbm_v1.json` |
+> | "L1 Input Validation is the primary defense layer" | **WRONG, and instructively so.** L1 separated attacked from clean at AUC 0.94 only because the attack adds continuous noise to **binary** columns — a data-type violation, not adversarial detection. After repairing the degenerate bounds it separates at **AUC 0.500** |
+> | "L4 Feature Smoothing — 0.0% / 0.0% / 0.0%" (read as a dead layer) | **Half right.** Its FLAG is unreachable, but its continuous statistic separates at **AUC 0.582**. Dead flag, not dead layer |
+> | *(elsewhere)* "L4's statistic is the most informative of the five" | **BACKWARDS.** Under the 30-day target the most informative single layer is **L5 Ensemble Agreement at AUC 0.638**; L4 is 0.582. The Tier 1.2 write-up made a claim about which layer carried the most signal and got it the wrong way round |
+>
+> Corrected figures, all measured at a stated false-positive rate:
+> five-layer combined **AUC 0.651**, detection **0.129 at 5% FPR**; the kept-layer
+> score **AUC 0.5654**, detection **0.064 at 5% FPR**. There is no operating point
+> at which this system usefully detects this attack.
+>
+> Current documents: [Model Card §5.3](08_model_card.md) ·
+> [Literature Positioning](07_literature_positioning.md)
+
 ← [Back to README](../README.md)
 
 ---
@@ -13,7 +35,7 @@ and defend against them.
 |---|---|---|
 | `attacks.py` | 6 attack methods on test split | MASK_k5 strongest (ASR=4.51%) |
 | `robustness.py` | Aggregate robustness score | 0.8954 — **ROBUST tier** |
-| `defense.py` | 5-layer defense system | Detection rate=100%, FP=1.4% |
+| `defense.py` | 5-layer defense system | ~~Detection rate=100%, FP=1.4%~~ **withdrawn — see banner** |
 
 ---
 
@@ -129,9 +151,16 @@ test samples to measure detection capability.
 - **Detection rate**: 100% on attacked data
 - **Detection lift**: +4.5pp over clean baseline
 
-**L1 Input Validation** is the primary defense layer — all attacked
+~~**L1 Input Validation** is the primary defense layer — all attacked
 samples trigger out-of-bound checks (100% trigger rate). L2 Anomaly
-Detection provides secondary confirmation.
+Detection provides secondary confirmation.~~
+
+**Withdrawn.** L1's apparent power was a **schema-validity artifact**: 20 of 53
+features are binary or zero-inflated, so Q1 == Q3 and the IQR rule collapsed to a
+single point that flagged everything at *every* multiplier. What it "detected"
+was a binary feature holding a non-integer value. After repair, L1 separates at
+**AUC 0.500**, and **one** layer of five carries signal (L2, lift +0.021). The
+most informative single statistic is **L5 Ensemble Agreement, AUC 0.638**.
 
 ![Defense Results](../outputs/figure/31_defense_results_lgbm_v1.png)
 

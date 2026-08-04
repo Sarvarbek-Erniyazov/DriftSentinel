@@ -279,7 +279,7 @@ def validate(df: pd.DataFrame) -> dict:
     is_monotonic = df["encounter_id"].is_monotonic_increasing
     record("PASS" if is_monotonic else "WARN",
            "encounter_id_monotonic",
-           f"monotonic_increasing={is_monotonic} (required for temporal split)")
+           f"monotonic_increasing={is_monotonic} (informational; the split is by patient ENTRY COHORT and does not require this)")
 
     enc_min = df["encounter_id"].min()
     enc_max = df["encounter_id"].max()

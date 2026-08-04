@@ -50,3 +50,1203 @@
 2026-05-11 20:55:26 | INFO     | pipeline             | ======================================================================
 2026-05-11 20:55:26 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
 2026-05-11 20:55:26 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:37:25 | INFO     | pipeline             | ===== RUN 20260804-103724-348522 | pid=31316 | started 2026-08-04 10:37:25 =====
+2026-08-04 10:37:25 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:37:25 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 10:37:25 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:37:25 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 10:37:26 | INFO     | pipeline             | Stage 1 complete — 0.97s
+2026-08-04 10:37:26 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 10:37:27 | INFO     | pipeline             | Stage 2 complete — 0.77s
+2026-08-04 10:37:27 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 10:37:27 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.25s
+2026-08-04 10:37:27 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 10:37:28 | INFO     | pipeline             | Stage 4 complete — 0.90s
+2026-08-04 10:37:28 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 10:37:28 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.26s
+2026-08-04 10:37:28 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 10:39:24 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 115.68s
+2026-08-04 10:39:24 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 10:39:26 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 10:39:26 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 10:39:26 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 10:39:26 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 10:39:26 | INFO     | pipeline             | Stage 7 complete — 2.22s
+2026-08-04 10:39:26 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 10:39:27 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 10:39:27 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 10:39:27 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 10:39:27 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_val.parquet
+2026-08-04 10:39:27 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_test.parquet
+2026-08-04 10:39:27 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 10:39:27 | INFO     | pipeline             | Stage 8 complete — 0.30s
+2026-08-04 10:39:27 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 10:39:27 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 10:39:27 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 10:39:27 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 10:39:27 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 10:39:27 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 10:39:27 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 10:39:27 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 10:39:27 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 10:39:27 | INFO     | pipeline             |   Total time          : 121.35s
+2026-08-04 10:39:27 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 10:39:27 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 10:39:27 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 10:39:27 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 10:39:27 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 10:39:27 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 10:39:27 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 10:39:27 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\pipeline_summary.json
+2026-08-04 10:39:27 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:39:27 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 10:39:27 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:48:31 | INFO     | pipeline             | ===== RUN 20260804-104829-f5297c | pid=20016 | started 2026-08-04 10:48:31 =====
+2026-08-04 10:48:31 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:48:31 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 10:48:31 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:48:31 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 10:48:32 | INFO     | pipeline             | Stage 1 complete — 0.99s
+2026-08-04 10:48:32 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 10:48:32 | INFO     | pipeline             | Stage 2 complete — 0.52s
+2026-08-04 10:48:32 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 10:48:33 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.16s
+2026-08-04 10:48:33 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 10:48:33 | INFO     | pipeline             | Stage 4 complete — 0.53s
+2026-08-04 10:48:33 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 10:48:33 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.16s
+2026-08-04 10:48:33 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 10:50:00 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 87.15s
+2026-08-04 10:50:00 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 10:50:03 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 10:50:03 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 10:50:03 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 10:50:03 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 10:50:03 | INFO     | pipeline             | Stage 7 complete — 2.33s
+2026-08-04 10:50:03 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 10:50:03 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 10:50:03 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 10:50:03 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 10:50:03 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_val.parquet
+2026-08-04 10:50:03 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_test.parquet
+2026-08-04 10:50:03 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 10:50:03 | INFO     | pipeline             | Stage 8 complete — 0.30s
+2026-08-04 10:50:03 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 10:50:03 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 10:50:03 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 10:50:03 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 10:50:03 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 10:50:03 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 10:50:03 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 10:50:03 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 10:50:03 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 10:50:03 | INFO     | pipeline             |   Total time          : 92.16s
+2026-08-04 10:50:03 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 10:50:03 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 10:50:03 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 10:50:03 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 10:50:03 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 10:50:03 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 10:50:03 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 10:50:03 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\pipeline_summary.json
+2026-08-04 10:50:03 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:50:03 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 10:50:03 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:52:00 | INFO     | pipeline             | ===== RUN 20260804-105157-d432da | pid=31324 | started 2026-08-04 10:52:00 =====
+2026-08-04 10:52:00 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:52:00 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 10:52:00 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:52:00 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 10:52:01 | INFO     | pipeline             | Stage 1 complete — 1.86s
+2026-08-04 10:52:01 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 10:52:02 | INFO     | pipeline             | Stage 2 complete — 0.99s
+2026-08-04 10:52:02 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 10:52:03 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.23s
+2026-08-04 10:52:03 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 10:52:04 | INFO     | pipeline             | Stage 4 complete — 0.94s
+2026-08-04 10:52:04 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 10:52:04 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.22s
+2026-08-04 10:52:04 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 10:53:56 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 112.57s
+2026-08-04 10:53:56 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 10:53:59 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 10:53:59 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 10:53:59 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 10:53:59 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 10:53:59 | INFO     | pipeline             | Stage 7 complete — 2.29s
+2026-08-04 10:53:59 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 10:53:59 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 10:53:59 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 10:53:59 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 10:53:59 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_val.parquet
+2026-08-04 10:53:59 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_test.parquet
+2026-08-04 10:53:59 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 10:53:59 | INFO     | pipeline             | Stage 8 complete — 0.27s
+2026-08-04 10:53:59 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 10:53:59 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 10:53:59 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 10:53:59 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 10:53:59 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 10:53:59 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 10:53:59 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 10:53:59 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 10:53:59 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 10:53:59 | INFO     | pipeline             |   Total time          : 119.37s
+2026-08-04 10:53:59 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 10:53:59 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 10:53:59 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 10:53:59 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 10:53:59 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 10:53:59 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 10:53:59 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 10:53:59 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\pipeline_summary.json
+2026-08-04 10:53:59 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:53:59 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 10:53:59 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:54:02 | INFO     | pipeline             | ===== RUN 20260804-105400-8176e5 | pid=20152 | started 2026-08-04 10:54:02 =====
+2026-08-04 10:54:02 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:54:02 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 10:54:02 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:54:02 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 10:54:03 | INFO     | pipeline             | Stage 1 complete — 1.18s
+2026-08-04 10:54:03 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 10:54:04 | INFO     | pipeline             | Stage 2 complete — 0.90s
+2026-08-04 10:54:04 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 10:54:04 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.26s
+2026-08-04 10:54:04 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 10:54:05 | INFO     | pipeline             | Stage 4 complete — 0.93s
+2026-08-04 10:54:05 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 10:54:05 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.27s
+2026-08-04 10:54:05 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 10:56:05 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 119.27s
+2026-08-04 10:56:05 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 10:56:07 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 10:56:07 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 10:56:07 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 10:56:07 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 10:56:07 | INFO     | pipeline             | Stage 7 complete — 2.25s
+2026-08-04 10:56:07 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 10:56:07 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 10:56:07 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 10:56:07 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 10:56:07 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_val.parquet
+2026-08-04 10:56:07 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_test.parquet
+2026-08-04 10:56:07 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 10:56:07 | INFO     | pipeline             | Stage 8 complete — 0.27s
+2026-08-04 10:56:07 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 10:56:07 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 10:56:07 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 10:56:07 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 10:56:07 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 10:56:07 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 10:56:07 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 10:56:07 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 10:56:07 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 10:56:07 | INFO     | pipeline             |   Total time          : 125.33s
+2026-08-04 10:56:07 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 10:56:07 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 10:56:07 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 10:56:07 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 10:56:07 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 10:56:07 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 10:56:07 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 10:56:07 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\pipeline_summary.json
+2026-08-04 10:56:07 | INFO     | pipeline             | ======================================================================
+2026-08-04 10:56:07 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 10:56:07 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:17:39 | INFO     | pipeline             | ===== RUN 20260804-181736-383e94 | pid=31444 | started 2026-08-04 18:17:39 =====
+2026-08-04 18:17:39 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:17:39 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:17:39 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:17:39 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:17:40 | INFO     | pipeline             | Stage 1 complete — 0.93s
+2026-08-04 18:17:40 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:17:40 | INFO     | pipeline             | Stage 2 complete — 0.47s
+2026-08-04 18:17:40 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:17:40 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.15s
+2026-08-04 18:17:40 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:17:41 | INFO     | pipeline             | Stage 4 complete — 0.48s
+2026-08-04 18:17:41 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:17:41 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.16s
+2026-08-04 18:17:41 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:18:34 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 53.30s
+2026-08-04 18:18:34 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:18:35 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:18:35 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:18:35 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:18:35 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:18:35 | INFO     | pipeline             | Stage 7 complete — 1.13s
+2026-08-04 18:18:35 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:18:35 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_a\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:18:35 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_a\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:18:35 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_a\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:18:35 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_a\data\production\production_val.parquet
+2026-08-04 18:18:35 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_a\data\production\production_test.parquet
+2026-08-04 18:18:35 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_a\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:18:35 | INFO     | pipeline             | Stage 8 complete — 0.17s
+2026-08-04 18:18:35 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:18:35 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:18:35 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:18:35 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:18:35 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:18:35 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:18:35 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:18:35 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:18:35 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:18:35 | INFO     | pipeline             |   Total time          : 56.78s
+2026-08-04 18:18:35 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:18:35 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:18:35 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:18:35 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:18:35 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:18:35 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:18:35 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:18:35 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_a\outputs\log\pipeline_summary.json
+2026-08-04 18:18:35 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:18:35 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:18:35 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:18:38 | INFO     | pipeline             | ===== RUN 20260804-181836-bd5cbd | pid=17396 | started 2026-08-04 18:18:38 =====
+2026-08-04 18:18:38 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:18:38 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:18:38 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:18:38 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:18:39 | INFO     | pipeline             | Stage 1 complete — 0.89s
+2026-08-04 18:18:39 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:18:39 | INFO     | pipeline             | Stage 2 complete — 0.47s
+2026-08-04 18:18:39 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:18:39 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.15s
+2026-08-04 18:18:39 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:18:40 | INFO     | pipeline             | Stage 4 complete — 0.48s
+2026-08-04 18:18:40 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:18:40 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.15s
+2026-08-04 18:18:40 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:19:36 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 56.42s
+2026-08-04 18:19:36 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:19:38 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:19:38 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:19:38 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:19:38 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:19:38 | INFO     | pipeline             | Stage 7 complete — 1.15s
+2026-08-04 18:19:38 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:19:38 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_b\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:19:38 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_b\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:19:38 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_b\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:19:38 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_b\data\production\production_val.parquet
+2026-08-04 18:19:38 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_b\data\production\production_test.parquet
+2026-08-04 18:19:38 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_b\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:19:38 | INFO     | pipeline             | Stage 8 complete — 0.18s
+2026-08-04 18:19:38 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:19:38 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:19:38 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:19:38 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:19:38 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:19:38 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:19:38 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:19:38 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:19:38 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:19:38 | INFO     | pipeline             |   Total time          : 59.90s
+2026-08-04 18:19:38 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:19:38 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:19:38 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:19:38 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:19:38 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:19:38 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:19:38 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:19:38 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6\run_b\outputs\log\pipeline_summary.json
+2026-08-04 18:19:38 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:19:38 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:19:38 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:20:37 | INFO     | pipeline             | ===== RUN 20260804-182035-7f2ed9 | pid=30584 | started 2026-08-04 18:20:37 =====
+2026-08-04 18:20:37 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:20:37 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:20:37 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:20:37 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:20:38 | INFO     | pipeline             | Stage 1 complete — 0.88s
+2026-08-04 18:20:38 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:20:38 | INFO     | pipeline             | Stage 2 complete — 0.47s
+2026-08-04 18:20:38 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:20:38 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.15s
+2026-08-04 18:20:38 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:20:39 | INFO     | pipeline             | Stage 4 complete — 0.48s
+2026-08-04 18:20:39 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:20:39 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.15s
+2026-08-04 18:20:39 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:21:33 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 53.91s
+2026-08-04 18:21:33 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:21:34 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:21:34 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:21:34 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:21:34 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:21:34 | INFO     | pipeline             | Stage 7 complete — 1.10s
+2026-08-04 18:21:34 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:21:34 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_a\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:21:34 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_a\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:21:34 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_a\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:21:34 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_a\data\production\production_val.parquet
+2026-08-04 18:21:34 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_a\data\production\production_test.parquet
+2026-08-04 18:21:34 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_a\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:21:34 | INFO     | pipeline             | Stage 8 complete — 0.16s
+2026-08-04 18:21:34 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:21:34 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:21:34 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:21:34 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:21:34 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:21:34 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:21:34 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:21:34 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:21:34 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:21:34 | INFO     | pipeline             |   Total time          : 57.30s
+2026-08-04 18:21:34 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:21:34 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:21:34 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:21:34 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:21:34 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:21:34 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:21:34 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:21:34 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_a\outputs\log\pipeline_summary.json
+2026-08-04 18:21:34 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:21:34 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:21:34 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:21:37 | INFO     | pipeline             | ===== RUN 20260804-182135-1f3800 | pid=31680 | started 2026-08-04 18:21:37 =====
+2026-08-04 18:21:37 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:21:37 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:21:37 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:21:37 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:21:37 | INFO     | pipeline             | Stage 1 complete — 0.89s
+2026-08-04 18:21:37 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:21:38 | INFO     | pipeline             | Stage 2 complete — 0.47s
+2026-08-04 18:21:38 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:21:38 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.15s
+2026-08-04 18:21:38 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:21:39 | INFO     | pipeline             | Stage 4 complete — 0.47s
+2026-08-04 18:21:39 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:21:39 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.15s
+2026-08-04 18:21:39 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:22:41 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 62.05s
+2026-08-04 18:22:41 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:22:42 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:22:42 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:22:42 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:22:42 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:22:42 | INFO     | pipeline             | Stage 7 complete — 1.13s
+2026-08-04 18:22:42 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:22:42 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_b\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:22:42 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_b\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:22:42 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_b\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:22:42 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_b\data\production\production_val.parquet
+2026-08-04 18:22:42 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_b\data\production\production_test.parquet
+2026-08-04 18:22:42 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_b\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:22:42 | INFO     | pipeline             | Stage 8 complete — 0.18s
+2026-08-04 18:22:42 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:22:42 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:22:42 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:22:42 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:22:42 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:22:42 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:22:42 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:22:42 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:22:42 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:22:42 | INFO     | pipeline             |   Total time          : 65.50s
+2026-08-04 18:22:42 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:22:42 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:22:42 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:22:42 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:22:42 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:22:42 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:22:42 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:22:42 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5\run_b\outputs\log\pipeline_summary.json
+2026-08-04 18:22:42 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:22:42 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:22:42 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:23:49 | INFO     | pipeline             | ===== RUN 20260804-182347-f55045 | pid=26156 | started 2026-08-04 18:23:49 =====
+2026-08-04 18:23:49 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:23:49 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:23:49 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:23:49 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:23:50 | INFO     | pipeline             | Stage 1 complete — 0.85s
+2026-08-04 18:23:50 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:23:50 | INFO     | pipeline             | Stage 2 complete — 0.47s
+2026-08-04 18:23:50 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:23:50 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.15s
+2026-08-04 18:23:50 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:23:51 | INFO     | pipeline             | Stage 4 complete — 0.48s
+2026-08-04 18:23:51 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:23:51 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.15s
+2026-08-04 18:23:51 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:24:45 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 53.71s
+2026-08-04 18:24:45 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:24:46 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:24:46 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:24:46 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:24:46 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:24:46 | INFO     | pipeline             | Stage 7 complete — 1.10s
+2026-08-04 18:24:46 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:24:46 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_a\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:24:46 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_a\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:24:46 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_a\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:24:46 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_a\data\production\production_val.parquet
+2026-08-04 18:24:46 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_a\data\production\production_test.parquet
+2026-08-04 18:24:46 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_a\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:24:46 | INFO     | pipeline             | Stage 8 complete — 0.18s
+2026-08-04 18:24:46 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:24:46 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:24:46 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:24:46 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:24:46 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:24:46 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:24:46 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:24:46 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:24:46 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:24:46 | INFO     | pipeline             |   Total time          : 57.11s
+2026-08-04 18:24:46 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:24:46 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:24:46 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:24:46 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:24:46 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:24:46 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:24:46 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:24:46 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_a\outputs\log\pipeline_summary.json
+2026-08-04 18:24:46 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:24:46 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:24:46 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:24:48 | INFO     | pipeline             | ===== RUN 20260804-182447-58fe82 | pid=23936 | started 2026-08-04 18:24:48 =====
+2026-08-04 18:24:48 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:24:48 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:24:48 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:24:48 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:24:49 | INFO     | pipeline             | Stage 1 complete — 0.91s
+2026-08-04 18:24:49 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:24:50 | INFO     | pipeline             | Stage 2 complete — 0.48s
+2026-08-04 18:24:50 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:24:50 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.15s
+2026-08-04 18:24:50 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:24:50 | INFO     | pipeline             | Stage 4 complete — 0.49s
+2026-08-04 18:24:50 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:24:50 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.15s
+2026-08-04 18:24:50 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:25:50 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 59.44s
+2026-08-04 18:25:50 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:25:51 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:25:51 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:25:51 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:25:51 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:25:51 | INFO     | pipeline             | Stage 7 complete — 1.10s
+2026-08-04 18:25:51 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:25:51 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_b\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:25:51 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_b\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:25:51 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_b\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:25:51 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_b\data\production\production_val.parquet
+2026-08-04 18:25:51 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_b\data\production\production_test.parquet
+2026-08-04 18:25:51 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_b\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:25:51 | INFO     | pipeline             | Stage 8 complete — 0.17s
+2026-08-04 18:25:51 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:25:51 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:25:51 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:25:51 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:25:51 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:25:51 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:25:51 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:25:51 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:25:51 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:25:51 | INFO     | pipeline             |   Total time          : 62.88s
+2026-08-04 18:25:51 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:25:51 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:25:51 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:25:51 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:25:51 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:25:51 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:25:51 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:25:51 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd\run_b\outputs\log\pipeline_summary.json
+2026-08-04 18:25:51 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:25:51 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:25:51 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:26:17 | INFO     | pipeline             | ===== RUN 20260804-182616-767803 | pid=22596 | started 2026-08-04 18:26:17 =====
+2026-08-04 18:26:17 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:26:17 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:26:17 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:26:17 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:26:18 | INFO     | pipeline             | Stage 1 complete — 0.87s
+2026-08-04 18:26:18 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:26:19 | INFO     | pipeline             | Stage 2 complete — 0.47s
+2026-08-04 18:26:19 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:26:19 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.15s
+2026-08-04 18:26:19 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:26:19 | INFO     | pipeline             | Stage 4 complete — 0.48s
+2026-08-04 18:26:19 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:26:19 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.15s
+2026-08-04 18:26:19 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:27:18 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 58.72s
+2026-08-04 18:27:18 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:27:19 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:27:19 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:27:19 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:27:19 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:27:19 | INFO     | pipeline             | Stage 7 complete — 1.16s
+2026-08-04 18:27:19 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:27:19 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_a\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:27:19 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_a\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:27:19 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_a\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:27:19 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_a\data\production\production_val.parquet
+2026-08-04 18:27:19 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_a\data\production\production_test.parquet
+2026-08-04 18:27:19 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_a\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:27:19 | INFO     | pipeline             | Stage 8 complete — 0.19s
+2026-08-04 18:27:19 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:27:19 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:27:19 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:27:19 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:27:19 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:27:19 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:27:19 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:27:19 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:27:19 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:27:19 | INFO     | pipeline             |   Total time          : 62.20s
+2026-08-04 18:27:19 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:27:19 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:27:19 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:27:19 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:27:19 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:27:19 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:27:19 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:27:19 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_a\outputs\log\pipeline_summary.json
+2026-08-04 18:27:19 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:27:19 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:27:19 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:27:52 | INFO     | pipeline             | ===== RUN 20260804-182750-7cb05f | pid=31812 | started 2026-08-04 18:27:52 =====
+2026-08-04 18:27:52 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:27:52 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:27:52 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:27:52 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:27:53 | INFO     | pipeline             | Stage 1 complete — 0.95s
+2026-08-04 18:27:53 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:27:53 | INFO     | pipeline             | Stage 2 complete — 0.48s
+2026-08-04 18:27:53 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:27:54 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.16s
+2026-08-04 18:27:54 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:27:54 | INFO     | pipeline             | Stage 4 complete — 0.49s
+2026-08-04 18:27:54 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:27:54 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.15s
+2026-08-04 18:27:54 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:29:03 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 69.02s
+2026-08-04 18:29:03 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:29:04 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:29:04 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:29:04 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:29:04 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:29:04 | INFO     | pipeline             | Stage 7 complete — 1.25s
+2026-08-04 18:29:04 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:29:05 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_b\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:29:05 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_b\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:29:05 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_b\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:29:05 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_b\data\production\production_val.parquet
+2026-08-04 18:29:05 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_b\data\production\production_test.parquet
+2026-08-04 18:29:05 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_b\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:29:05 | INFO     | pipeline             | Stage 8 complete — 0.19s
+2026-08-04 18:29:05 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:29:05 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:29:05 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:29:05 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:29:05 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:29:05 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:29:05 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:29:05 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:29:05 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:29:05 | INFO     | pipeline             |   Total time          : 72.69s
+2026-08-04 18:29:05 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:29:05 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:29:05 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:29:05 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:29:05 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:29:05 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:29:05 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:29:05 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw\run_b\outputs\log\pipeline_summary.json
+2026-08-04 18:29:05 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:29:05 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:29:05 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:30:17 | INFO     | pipeline             | ===== RUN 20260804-183015-40a5e4 | pid=7752 | started 2026-08-04 18:30:17 =====
+2026-08-04 18:30:17 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:30:17 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:30:17 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:30:17 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:30:17 | INFO     | pipeline             | Stage 1 complete — 0.87s
+2026-08-04 18:30:17 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:30:18 | INFO     | pipeline             | Stage 2 complete — 0.91s
+2026-08-04 18:30:18 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:30:19 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.34s
+2026-08-04 18:30:19 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:30:20 | INFO     | pipeline             | Stage 4 complete — 1.13s
+2026-08-04 18:30:20 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:30:20 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.31s
+2026-08-04 18:30:20 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:32:20 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 119.45s
+2026-08-04 18:32:20 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:32:22 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:32:22 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:32:22 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:32:22 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:32:22 | INFO     | pipeline             | Stage 7 complete — 2.48s
+2026-08-04 18:32:22 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:32:22 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_a\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:32:22 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_a\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:32:22 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_a\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:32:22 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_a\data\production\production_val.parquet
+2026-08-04 18:32:22 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_a\data\production\production_test.parquet
+2026-08-04 18:32:22 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_a\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:32:22 | INFO     | pipeline             | Stage 8 complete — 0.32s
+2026-08-04 18:32:22 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:32:22 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:32:22 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:32:22 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:32:22 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:32:22 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:32:22 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:32:22 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:32:22 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:32:22 | INFO     | pipeline             |   Total time          : 125.82s
+2026-08-04 18:32:22 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:32:22 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:32:22 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:32:22 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:32:22 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:32:22 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:32:22 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:32:22 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_a\outputs\log\pipeline_summary.json
+2026-08-04 18:32:22 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:32:22 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:32:22 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:33:31 | INFO     | pipeline             | ===== RUN 20260804-183329-4cf69f | pid=16904 | started 2026-08-04 18:33:31 =====
+2026-08-04 18:33:31 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:33:31 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:33:31 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:33:31 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:33:32 | INFO     | pipeline             | Stage 1 complete — 0.90s
+2026-08-04 18:33:32 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:33:32 | INFO     | pipeline             | Stage 2 complete — 0.82s
+2026-08-04 18:33:32 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:33:33 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.25s
+2026-08-04 18:33:33 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:33:34 | INFO     | pipeline             | Stage 4 complete — 0.93s
+2026-08-04 18:33:34 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:33:34 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.26s
+2026-08-04 18:33:34 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:35:34 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 117.14s
+2026-08-04 18:35:34 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:35:36 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:35:36 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:35:36 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:35:36 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:35:36 | INFO     | pipeline             | Stage 7 complete — 2.18s
+2026-08-04 18:35:36 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:35:37 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_b\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:35:37 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_b\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:35:37 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_b\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:35:37 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_b\data\production\production_val.parquet
+2026-08-04 18:35:37 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_b\data\production\production_test.parquet
+2026-08-04 18:35:37 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_b\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:35:37 | INFO     | pipeline             | Stage 8 complete — 0.31s
+2026-08-04 18:35:37 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:35:37 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:35:37 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:35:37 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:35:37 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:35:37 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:35:37 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:35:37 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:35:37 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:35:37 | INFO     | pipeline             |   Total time          : 122.79s
+2026-08-04 18:35:37 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:35:37 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:35:37 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:35:37 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:35:37 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:35:37 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:35:37 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:35:37 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42\run_b\outputs\log\pipeline_summary.json
+2026-08-04 18:35:37 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:35:37 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:35:37 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:37:21 | INFO     | pipeline             | ===== RUN 20260804-183719-0dc347 | pid=22080 | started 2026-08-04 18:37:21 =====
+2026-08-04 18:37:21 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:37:21 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:37:21 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:37:21 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:37:22 | INFO     | pipeline             | Stage 1 complete — 0.85s
+2026-08-04 18:37:22 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:37:22 | INFO     | pipeline             | Stage 2 complete — 0.77s
+2026-08-04 18:37:22 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:37:23 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.28s
+2026-08-04 18:37:23 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:37:24 | INFO     | pipeline             | Stage 4 complete — 0.99s
+2026-08-04 18:37:24 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:37:24 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.28s
+2026-08-04 18:37:24 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:39:24 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 119.84s
+2026-08-04 18:39:24 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:39:26 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:39:26 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:39:26 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:39:26 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:39:26 | INFO     | pipeline             | Stage 7 complete — 2.37s
+2026-08-04 18:39:26 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:39:26 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_a\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:39:26 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_a\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:39:26 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_a\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:39:27 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_a\data\production\production_val.parquet
+2026-08-04 18:39:27 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_a\data\production\production_test.parquet
+2026-08-04 18:39:27 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_a\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:39:27 | INFO     | pipeline             | Stage 8 complete — 0.29s
+2026-08-04 18:39:27 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:39:27 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:39:27 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:39:27 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:39:27 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:39:27 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:39:27 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:39:27 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:39:27 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:39:27 | INFO     | pipeline             |   Total time          : 125.68s
+2026-08-04 18:39:27 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:39:27 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:39:27 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:39:27 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:39:27 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:39:27 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:39:27 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:39:27 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_a\outputs\log\pipeline_summary.json
+2026-08-04 18:39:27 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:39:27 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:39:27 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:40:33 | INFO     | pipeline             | ===== RUN 20260804-184031-3b38c4 | pid=31168 | started 2026-08-04 18:40:33 =====
+2026-08-04 18:40:33 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:40:33 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 18:40:33 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:40:33 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 18:40:34 | INFO     | pipeline             | Stage 1 complete — 0.87s
+2026-08-04 18:40:34 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 18:40:35 | INFO     | pipeline             | Stage 2 complete — 1.00s
+2026-08-04 18:40:35 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 18:40:35 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.35s
+2026-08-04 18:40:35 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 18:40:36 | INFO     | pipeline             | Stage 4 complete — 1.13s
+2026-08-04 18:40:36 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 18:40:36 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.29s
+2026-08-04 18:40:36 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 18:42:36 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 119.26s
+2026-08-04 18:42:36 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 18:42:38 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 18:42:38 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 18:42:38 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 18:42:38 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 18:42:38 | INFO     | pipeline             | Stage 7 complete — 2.47s
+2026-08-04 18:42:38 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 18:42:38 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_b\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 18:42:38 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_b\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 18:42:38 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_b\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 18:42:38 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_b\data\production\production_val.parquet
+2026-08-04 18:42:38 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_b\data\production\production_test.parquet
+2026-08-04 18:42:38 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_b\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 18:42:38 | INFO     | pipeline             | Stage 8 complete — 0.28s
+2026-08-04 18:42:38 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 18:42:38 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 18:42:38 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 18:42:38 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 18:42:38 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 18:42:38 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 18:42:38 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 18:42:38 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 18:42:38 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 18:42:38 | INFO     | pipeline             |   Total time          : 125.65s
+2026-08-04 18:42:38 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 18:42:38 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 18:42:38 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 18:42:38 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 18:42:38 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 18:42:38 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 18:42:38 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 18:42:38 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99\run_b\outputs\log\pipeline_summary.json
+2026-08-04 18:42:38 | INFO     | pipeline             | ======================================================================
+2026-08-04 18:42:38 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 18:42:38 | INFO     | pipeline             | ======================================================================
+2026-08-04 19:43:58 | INFO     | pipeline             | ===== RUN 20260804-194356-ee2c50 | pid=28552 | started 2026-08-04 19:43:58 =====
+2026-08-04 19:43:58 | INFO     | pipeline             | ======================================================================
+2026-08-04 19:43:58 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 19:43:58 | INFO     | pipeline             | ======================================================================
+2026-08-04 19:43:58 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 19:43:58 | INFO     | pipeline             | Stage 1 complete — 0.87s
+2026-08-04 19:43:58 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 19:43:59 | INFO     | pipeline             | Stage 2 complete — 0.47s
+2026-08-04 19:43:59 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 19:43:59 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.16s
+2026-08-04 19:43:59 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 19:43:59 | INFO     | pipeline             | Stage 4 complete — 0.48s
+2026-08-04 19:43:59 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 19:44:00 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.16s
+2026-08-04 19:44:00 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 19:44:52 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 51.91s
+2026-08-04 19:44:52 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 19:44:53 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 19:44:53 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 19:44:53 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 19:44:53 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 19:44:53 | INFO     | pipeline             | Stage 7 complete — 1.11s
+2026-08-04 19:44:53 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 19:44:53 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 19:44:53 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 19:44:53 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 19:44:53 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_val.parquet
+2026-08-04 19:44:53 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_test.parquet
+2026-08-04 19:44:53 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 19:44:53 | INFO     | pipeline             | Stage 8 complete — 0.16s
+2026-08-04 19:44:53 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 19:44:53 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 19:44:53 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 19:44:53 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 19:44:53 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 19:44:53 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 19:44:53 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 19:44:53 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 19:44:53 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 19:44:53 | INFO     | pipeline             |   Total time          : 55.32s
+2026-08-04 19:44:53 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 19:44:53 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 19:44:53 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 19:44:53 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 19:44:53 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 19:44:53 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 19:44:53 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 19:44:53 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\pipeline_summary.json
+2026-08-04 19:44:53 | INFO     | pipeline             | ======================================================================
+2026-08-04 19:44:53 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 19:44:53 | INFO     | pipeline             | ======================================================================
+2026-08-04 20:43:38 | INFO     | pipeline             | ===== RUN 20260804-204337-c95509 | pid=23936 | started 2026-08-04 20:43:38 =====
+2026-08-04 20:43:38 | INFO     | pipeline             | ======================================================================
+2026-08-04 20:43:38 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 20:43:38 | INFO     | pipeline             | ======================================================================
+2026-08-04 20:43:38 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 20:43:39 | INFO     | pipeline             | Stage 1 complete — 0.90s
+2026-08-04 20:43:39 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 20:43:40 | INFO     | pipeline             | Stage 2 complete — 1.00s
+2026-08-04 20:43:40 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 20:43:41 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.35s
+2026-08-04 20:43:41 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 20:43:42 | INFO     | pipeline             | Stage 4 complete — 1.11s
+2026-08-04 20:43:42 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 20:43:42 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.33s
+2026-08-04 20:43:42 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 20:45:45 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 122.77s
+2026-08-04 20:45:45 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 20:45:48 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 20:45:48 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 20:45:48 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 20:45:48 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 20:45:48 | INFO     | pipeline             | Stage 7 complete — 2.64s
+2026-08-04 20:45:48 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 20:45:48 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 20:45:48 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 20:45:48 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 20:45:48 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_val.parquet
+2026-08-04 20:45:48 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_test.parquet
+2026-08-04 20:45:48 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 20:45:48 | INFO     | pipeline             | Stage 8 complete — 0.30s
+2026-08-04 20:45:48 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 20:45:48 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 20:45:48 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 20:45:48 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 20:45:48 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 20:45:48 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 20:45:48 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 20:45:48 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 20:45:48 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 20:45:48 | INFO     | pipeline             |   Total time          : 129.40s
+2026-08-04 20:45:48 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 20:45:48 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 20:45:48 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 20:45:48 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 20:45:48 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 20:45:48 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 20:45:48 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 20:45:48 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\pipeline_summary.json
+2026-08-04 20:45:48 | INFO     | pipeline             | ======================================================================
+2026-08-04 20:45:48 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 20:45:48 | INFO     | pipeline             | ======================================================================
+2026-08-04 20:48:00 | INFO     | pipeline             | ===== RUN 20260804-204759-229d57 | pid=20292 | started 2026-08-04 20:48:00 =====
+2026-08-04 20:48:00 | INFO     | pipeline             | ======================================================================
+2026-08-04 20:48:00 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 20:48:00 | INFO     | pipeline             | ======================================================================
+2026-08-04 20:48:00 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 20:48:01 | INFO     | pipeline             | Stage 1 complete — 0.87s
+2026-08-04 20:48:01 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 20:48:02 | INFO     | pipeline             | Stage 2 complete — 0.93s
+2026-08-04 20:48:02 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 20:48:03 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.27s
+2026-08-04 20:48:03 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 20:48:04 | INFO     | pipeline             | Stage 4 complete — 1.05s
+2026-08-04 20:48:04 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 20:48:04 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.32s
+2026-08-04 20:48:04 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 20:50:08 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 123.78s
+2026-08-04 20:50:08 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 20:50:10 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 20:50:10 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 20:50:10 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 20:50:10 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 20:50:10 | INFO     | pipeline             | Stage 7 complete — 2.48s
+2026-08-04 20:50:10 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 20:50:10 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 20:50:10 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 20:50:10 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 20:50:11 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_val.parquet
+2026-08-04 20:50:11 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_test.parquet
+2026-08-04 20:50:11 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 20:50:11 | INFO     | pipeline             | Stage 8 complete — 0.35s
+2026-08-04 20:50:11 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 20:50:11 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 20:50:11 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 20:50:11 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 20:50:11 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 20:50:11 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 20:50:11 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 20:50:11 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 20:50:11 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 20:50:11 | INFO     | pipeline             |   Total time          : 130.06s
+2026-08-04 20:50:11 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 20:50:11 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 20:50:11 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 20:50:11 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 20:50:11 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 20:50:11 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 20:50:11 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 20:50:11 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\pipeline_summary.json
+2026-08-04 20:50:11 | INFO     | pipeline             | ======================================================================
+2026-08-04 20:50:11 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 20:50:11 | INFO     | pipeline             | ======================================================================
+2026-08-04 21:08:42 | INFO     | pipeline             | ===== RUN 20260804-210841-a57669 | pid=27220 | started 2026-08-04 21:08:42 =====
+2026-08-04 21:08:42 | INFO     | pipeline             | ======================================================================
+2026-08-04 21:08:42 | INFO     | pipeline             | DriftSentinel — Training Pipeline START
+2026-08-04 21:08:42 | INFO     | pipeline             | ======================================================================
+2026-08-04 21:08:42 | INFO     | pipeline             | 
+>>> STAGE 1: Data Loading
+2026-08-04 21:08:43 | INFO     | pipeline             | Stage 1 complete — 0.87s
+2026-08-04 21:08:43 | INFO     | pipeline             | 
+>>> STAGE 2: Data Validation
+2026-08-04 21:08:44 | INFO     | pipeline             | Stage 2 complete — 1.07s
+2026-08-04 21:08:44 | INFO     | pipeline             | 
+>>> STAGE 3: Patient-Level Split
+2026-08-04 21:08:45 | INFO     | pipeline             | Stage 3 complete — train=63,492 val=20,949 test=17,325 — 0.27s
+2026-08-04 21:08:45 | INFO     | pipeline             | 
+>>> STAGE 4: Preprocessing (fit on train only)
+2026-08-04 21:08:46 | INFO     | pipeline             | Stage 4 complete — 1.08s
+2026-08-04 21:08:46 | INFO     | pipeline             | 
+>>> STAGE 5: Feature Engineering (fit on train only)
+2026-08-04 21:08:46 | INFO     | pipeline             | Stage 5 complete — 38 FE_ features created — 0.33s
+2026-08-04 21:08:46 | INFO     | pipeline             | 
+>>> STAGE 6: Feature Selection (fit on train only)
+2026-08-04 21:10:50 | INFO     | pipeline             | Stage 6 complete — 53 features selected — 124.39s
+2026-08-04 21:10:50 | INFO     | pipeline             | 
+>>> STAGE 7: Consistency Check
+2026-08-04 21:10:53 | WARNING  | pipeline             | STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)
+2026-08-04 21:10:53 | WARNING  | pipeline             |   FAIL=10 items are expected entry-cohort shift signals
+2026-08-04 21:10:53 | WARNING  | pipeline             |   PSI drifted=7 — drift simulation confirmed
+2026-08-04 21:10:53 | WARNING  | pipeline             |   Pipeline proceeds — drift detection modules will address these signals
+2026-08-04 21:10:53 | INFO     | pipeline             | Stage 7 complete — 2.95s
+2026-08-04 21:10:53 | INFO     | pipeline             | 
+>>> STAGE 8: Saving processed splits
+2026-08-04 21:10:53 | INFO     | pipeline             |   train_fs.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\train_fs.parquet  shape=(63492, 55)
+2026-08-04 21:10:53 | INFO     | pipeline             |   val_fs.parquet   -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\val_fs.parquet    shape=(20949, 55)
+2026-08-04 21:10:53 | INFO     | pipeline             |   test_fs.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\train\test_fs.parquet   shape=(17325, 55)
+2026-08-04 21:10:54 | INFO     | pipeline             |   production_val.parquet  -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_val.parquet
+2026-08-04 21:10:54 | INFO     | pipeline             |   production_test.parquet -> C:\Users\sharg\Desktop\github\DriftSentinel\data\production\production_test.parquet
+2026-08-04 21:10:54 | INFO     | pipeline             |   pipeline_objects.pkl -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\pipeline_objects.pkl
+2026-08-04 21:10:54 | INFO     | pipeline             | Stage 8 complete — 0.29s
+2026-08-04 21:10:54 | INFO     | pipeline             | --------------------------------------------------
+2026-08-04 21:10:54 | INFO     | pipeline             | Pipeline readiness gate
+2026-08-04 21:10:54 | INFO     | pipeline             |   Rule                : ready = (no unexpected failures) and (drift_expected or no expected failures)
+2026-08-04 21:10:54 | INFO     | pipeline             |   Expected failures   : 10 ['psi_admission_source_id', 'psi_admission_source_id', 'psi_payer_code', 'psi_payer_code', 'psi_medical_specialty', 'psi_medical_specialty', 'psi_number_diagnoses', 'psi_FE_labs_per_day_x_comorbidity', 'target_dist_readmitted_multi_class0', 'target_dist_readmitted_multi_class2']
+2026-08-04 21:10:54 | INFO     | pipeline             |   Unexpected failures : 0 []
+2026-08-04 21:10:54 | INFO     | pipeline             |   Decision            : ready=True
+2026-08-04 21:10:54 | INFO     | pipeline             |   Reason              : 10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.
+2026-08-04 21:10:54 | INFO     | pipeline             | 
+======================================================================
+2026-08-04 21:10:54 | INFO     | pipeline             | DriftSentinel — Training Pipeline COMPLETE
+2026-08-04 21:10:54 | INFO     | pipeline             |   Total time          : 131.26s
+2026-08-04 21:10:54 | INFO     | pipeline             |   Train shape         : (63492, 55)
+2026-08-04 21:10:54 | INFO     | pipeline             |   Val shape           : (20949, 55)
+2026-08-04 21:10:54 | INFO     | pipeline             |   Test shape          : (17325, 55)
+2026-08-04 21:10:54 | INFO     | pipeline             |   Selected features   : 53
+2026-08-04 21:10:54 | INFO     | pipeline             |   PSI drifted         : 7
+2026-08-04 21:10:54 | INFO     | pipeline             |   KS  drifted         : 90
+2026-08-04 21:10:54 | INFO     | pipeline             |   Pipeline ready      : True
+2026-08-04 21:10:54 | INFO     | pipeline             |   Summary saved       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\pipeline_summary.json
+2026-08-04 21:10:54 | INFO     | pipeline             | ======================================================================
+2026-08-04 21:10:54 | INFO     | pipeline             | Next step: 02_preprocessing_audit.ipynb
+2026-08-04 21:10:54 | INFO     | pipeline             | ======================================================================

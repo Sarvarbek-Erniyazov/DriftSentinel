@@ -1,0 +1,152 @@
+{
+  "phase": "2B.2",
+  "title": "Multivariate drift detection benchmarked on known ground truth",
+  "gap_addressed": "every shipped detector is univariate and marginal, so a change in the DEPENDENCE STRUCTURE between features is undetectable",
+  "detectors": {
+    "classifier_2st": "Lopez-Paz & Oquab, ICLR 2017",
+    "mmd": "Gretton et al., JMLR 2012",
+    "bbsd": "Lipton et al. 2018; Rabanser et al., NeurIPS 2019"
+  },
+  "regimes": {
+    "random_NEGATIVE_CONTROL": {
+      "classifier_2st": {
+        "method": "Classifier two-sample test (Lopez-Paz & Oquab, ICLR 2017)",
+        "held_out_auc": 0.50666,
+        "null_auc_mean": 0.5004,
+        "null_auc_p95": 0.5037,
+        "p_permutation": 0.09523809523809523,
+        "n_permutations": 20,
+        "grouped_by_patient": true,
+        "detects_drift": false,
+        "interpretation": "AUC 0.5 means the two samples are indistinguishable; above 0.5 with a significant permutation p-value is multivariate drift, including pure dependence-structure change that every marginal test would miss"
+      },
+      "mmd": {
+        "method": "MMD two-sample test (Gretton et al., JMLR 2012)",
+        "mmd2": 0.00018328,
+        "null_mmd2_p95": 0.00031696,
+        "p_permutation": 0.18407960199004975,
+        "n_permutations": 200,
+        "subsample_per_side": 1500,
+        "kernel": "RBF, median heuristic bandwidth",
+        "detects_drift": false
+      },
+      "bbsd": {
+        "method": "Black-box shift detection (Lipton 2018; Rabanser 2019)",
+        "tests": {
+          "KS": {
+            "p_raw": 0.6130778970247086,
+            "p_adj": 0.6130778970247086,
+            "reject": false
+          },
+          "MannWhitney": {
+            "p_raw": 0.34854779953923354,
+            "p_adj": 0.6130778970247086,
+            "reject": false
+          }
+        },
+        "q_fdr": 0.05,
+        "detects_drift": false,
+        "note": "the shipped prediction_drift signal is this test WITHOUT multiple-testing correction"
+      },
+      "n_val": 20319,
+      "n_test": 20150
+    },
+    "entry_cohort": {
+      "classifier_2st": {
+        "method": "Classifier two-sample test (Lopez-Paz & Oquab, ICLR 2017)",
+        "held_out_auc": 0.69316,
+        "null_auc_mean": 0.4994,
+        "null_auc_p95": 0.50394,
+        "p_permutation": 0.047619047619047616,
+        "n_permutations": 20,
+        "grouped_by_patient": true,
+        "detects_drift": true,
+        "interpretation": "AUC 0.5 means the two samples are indistinguishable; above 0.5 with a significant permutation p-value is multivariate drift, including pure dependence-structure change that every marginal test would miss"
+      },
+      "mmd": {
+        "method": "MMD two-sample test (Gretton et al., JMLR 2012)",
+        "mmd2": 0.00242154,
+        "null_mmd2_p95": 0.00032296,
+        "p_permutation": 0.004975124378109453,
+        "n_permutations": 200,
+        "subsample_per_side": 1500,
+        "kernel": "RBF, median heuristic bandwidth",
+        "detects_drift": true
+      },
+      "bbsd": {
+        "method": "Black-box shift detection (Lipton 2018; Rabanser 2019)",
+        "tests": {
+          "KS": {
+            "p_raw": 2.9343058815373526e-62,
+            "p_adj": 2.9343058815373526e-62,
+            "reject": true
+          },
+          "MannWhitney": {
+            "p_raw": 3.207621110366108e-67,
+            "p_adj": 6.415242220732216e-67,
+            "reject": true
+          }
+        },
+        "q_fdr": 0.05,
+        "detects_drift": true,
+        "note": "the shipped prediction_drift signal is this test WITHOUT multiple-testing correction"
+      },
+      "n_val": 20949,
+      "n_test": 17325
+    },
+    "temporal": {
+      "classifier_2st": {
+        "method": "Classifier two-sample test (Lopez-Paz & Oquab, ICLR 2017)",
+        "held_out_auc": 0.67921,
+        "null_auc_mean": 0.50041,
+        "null_auc_p95": 0.50369,
+        "p_permutation": 0.047619047619047616,
+        "n_permutations": 20,
+        "grouped_by_patient": true,
+        "detects_drift": true,
+        "interpretation": "AUC 0.5 means the two samples are indistinguishable; above 0.5 with a significant permutation p-value is multivariate drift, including pure dependence-structure change that every marginal test would miss"
+      },
+      "mmd": {
+        "method": "MMD two-sample test (Gretton et al., JMLR 2012)",
+        "mmd2": 0.00211206,
+        "null_mmd2_p95": 0.00033438,
+        "p_permutation": 0.004975124378109453,
+        "n_permutations": 200,
+        "subsample_per_side": 1500,
+        "kernel": "RBF, median heuristic bandwidth",
+        "detects_drift": true
+      },
+      "bbsd": {
+        "method": "Black-box shift detection (Lipton 2018; Rabanser 2019)",
+        "tests": {
+          "KS": {
+            "p_raw": 5.57766726713788e-19,
+            "p_adj": 1.115533453427576e-18,
+            "reject": true
+          },
+          "MannWhitney": {
+            "p_raw": 5.458996325174045e-18,
+            "p_adj": 5.458996325174045e-18,
+            "reject": true
+          }
+        },
+        "q_fdr": 0.05,
+        "detects_drift": true,
+        "note": "the shipped prediction_drift signal is this test WITHOUT multiple-testing correction"
+      },
+      "n_val": 15780,
+      "n_test": 15158
+    }
+  },
+  "negative_control_check": {
+    "regime": "random_NEGATIVE_CONTROL",
+    "detectors_that_fired": [],
+    "verdict": "CALIBRATED \u2014 every multivariate detector stayed silent where drift is impossible by construction"
+  },
+  "reproducibility": {
+    "seed": 42,
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

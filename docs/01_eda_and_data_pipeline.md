@@ -138,9 +138,18 @@ Patient-level split ensures no patient appears in both train and test.
 
 ---
 
-## Patient-Level Temporal Split
+## Patient-Level Entry-Cohort Split
 
-**Strategy**: patients ordered by first `encounter_id` (ascending) → temporal proxy.
+**Strategy**: patients ordered by first `encounter_id` (ascending) → **entry-cohort
+ordering**, not a temporal split.
+
+> **Corrected in Phase 0.5.** Tier 0 verified that `encounter_id` ordering *is*
+> chronological (`outputs/reports/temporal_validity.json`, verdict SUPPORTED).
+> That does **not** make this a temporal split: sorting *patients* by their
+> *first* encounter puts every later encounter of an early-entering patient into
+> train, which is why the split's `encounter_id` ranges overlap almost entirely.
+> A genuine chronological split of *encounters* is implemented separately as the
+> `temporal` regime in `src/investigation/split_regimes.py`.
 
 | Split | Patients | Rows | Readmit rate |
 |---|---|---|---|

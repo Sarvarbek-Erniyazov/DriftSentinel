@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-08-04T10:29:26.537702",
+  "model_name": "random_s17",
+  "ref_name": "random_s17_val",
+  "prod_name": "random_s17_test",
+  "system_status": "STABLE",
+  "recommendation": "No significant drift. Continue normal monitoring.",
+  "alert_counts": {
+    "MEDIUM": 1,
+    "LOW": 2
+  },
+  "total_alerts": 3,
+  "alerts": [
+    {
+      "alert_id": "DD-001",
+      "alert_type": "DATA_DRIFT",
+      "level": "MEDIUM",
+      "title": "Data Drift: 1/28 Features Drifted",
+      "description": "3.6% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: gender.",
+      "metric": "drift_rate",
+      "value": 0.0357,
+      "threshold": 0.25,
+      "features": [
+        "gender"
+      ],
+      "action": "Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.",
+      "timestamp": "2026-08-04T10:29:26.537702"
+    },
+    {
+      "alert_id": "CD-004",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "CUSUM Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "CUSUM detected 153 alarms. First alarm at index 260 (0.64% into stream). Mean error shift: 0.1730 \u2192 0.1873.",
+      "metric": "cusum_alarms",
+      "value": 153.0,
+      "threshold": 1.0,
+      "features": [],
+      "action": "Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.",
+      "timestamp": "2026-08-04T10:29:26.537702"
+    },
+    {
+      "alert_id": "CD-005",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "Page-Hinkley Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "Page-Hinkley detected gradual drift. First alarm at 9.11% of stream. PH statistic: 8.2269.",
+      "metric": "ph_statistic",
+      "value": 8.2269,
+      "threshold": 50.0,
+      "features": [],
+      "action": "Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.",
+      "timestamp": "2026-08-04T10:29:26.537702"
+    }
+  ],
+  "drift_summary": {
+    "concept_severity": "NONE",
+    "n_evidence": 0,
+    "auc_degradation": -0.0194,
+    "f1_degradation": -0.0332,
+    "n_data_drifted": 1,
+    "n_data_critical": 0,
+    "n_feature_high": null,
+    "label_shift_delta": 0.0069
+  }
+}

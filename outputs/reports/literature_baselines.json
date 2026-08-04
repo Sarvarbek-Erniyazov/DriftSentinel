@@ -1,0 +1,135 @@
+{
+  "phase": "2C.2",
+  "title": "Literature positioning and baseline comparison",
+  "task": "30-day readmission (<30) on UCI Diabetes 130-US Hospitals, 1999-2008",
+  "novelty_statement": "Neither the task nor the dataset is novel. Readmission prediction on this dataset is well-trodden and drift detection on it is not new. The contribution is the negative-control methodology and the systematic falsification design, not the model and not the detector suite.",
+  "curation_date": "2026-08-04",
+  "external_baselines": [
+    {
+      "study": "Strack et al. (2014)",
+      "citation": "Strack B, DeShazo JP, Gennings C, Olmo JL, Ventura S, Cios KJ, Clore JN. Impact of HbA1c Measurement on Hospital Readmission Rates: Analysis of 70,000 Clinical Database Patient Records. BioMed Research International, 2014:781670.",
+      "doi": "10.1155/2014/781670",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1155/2014/781670",
+      "target": "<30 (early readmission)",
+      "model": "multivariable logistic regression",
+      "auc": null,
+      "auc_note": "No discrimination metric is reported. This is an ETIOLOGIC study \u2014 it estimates the association between HbA1c measurement and early readmission while adjusting for covariates, and reports odds ratios. Citing it as a predictive baseline would misrepresent it.",
+      "protocol": "multivariable logistic regression on ~70k filtered encounters",
+      "patient_grouped": null,
+      "role": "the source of the dataset and of the <30 / >30 / NO encoding; establishes the clinical framing, not a predictive benchmark",
+      "verified": "abstract and methods read from the publisher page"
+    },
+    {
+      "study": "Liu, Sue & Wu (2024)",
+      "citation": "Liu VB, Sue LY, Wu Y. Comparison of machine learning models for predicting 30-day readmission rates for patients with diabetes. Journal of Medical Artificial Intelligence, 2024;7:23.",
+      "doi": "10.21037/jmai-24-70",
+      "url": "https://jmai.amegroups.org/article/view/9179/html",
+      "target": "<30 (11.2% prevalence, 101,766 encounters)",
+      "model": "best of 7 (XGBoost)",
+      "auc": 0.64,
+      "auc_ci95": [
+        0.64,
+        0.65
+      ],
+      "auc_note": "range across all seven models reported: 0.48 (SVM-RBF) to 0.64 (XGBoost); tree ensembles and logistic regression all 0.62-0.64",
+      "protocol": "group 5-fold CV, encounters for the same patient kept in one fold",
+      "patient_grouped": true,
+      "role": "the PROTOCOL-MATCHED comparison: same dataset, same target, same prevalence, and patient grouping enforced as it is here",
+      "verified": "full text read from the publisher page"
+    },
+    {
+      "study": "Salim & Ibrahim (2026)",
+      "citation": "Salim SS, Ibrahim AA. A Machine Learning Approach for Predicting 30-Day Hospital Readmission in Patients with Diabetes. Healthcare (Basel), 2026;14(9):1185.",
+      "doi": "10.3390/healthcare14091185",
+      "url": "https://www.mdpi.com/2227-9032/14/9/1185",
+      "target": "<30 (11.16% prevalence, 101,766 encounters)",
+      "model": "XGBoost",
+      "auc": 0.664,
+      "auc_ci95": null,
+      "auc_note": "0.664 nested CV, 0.688 after calibration; logistic regression 0.657, random forest 0.650",
+      "protocol": "nested stratified 5-fold CV (3-fold inner)",
+      "patient_grouped": false,
+      "patient_grouped_note": "the authors state as a limitation that the cross-validation did not enforce patient-level splits, so the same patient can appear on both sides of a fold boundary",
+      "role": "the UNGROUPED comparison: identical dataset and target, protocol differing in exactly the dimension that leaks",
+      "verified": "full text read from PMC"
+    }
+  ],
+  "ours": {
+    "entry_cohort_test": {
+      "auc": 0.641,
+      "auc_ci95": [
+        0.62546,
+        0.65558
+      ],
+      "auc_std": null,
+      "protocol": "entry-cohort split, held-out test window, patient-clustered bootstrap",
+      "patient_grouped": true,
+      "source_file": "outputs/reports/headline_metrics_ci.json",
+      "source_path": "variance_components/1_estimation_patient_clustered_bootstrap/by_split/test/metrics/auc"
+    },
+    "random_patient_split_test": {
+      "auc": 0.67855,
+      "auc_ci95": null,
+      "auc_std": 0.0067,
+      "protocol": "random patient-level split, 20 seeds (Tier 0 negative control)",
+      "patient_grouped": true,
+      "source_file": "outputs/reports/headline_metrics_ci.json",
+      "source_path": "variance_components/3_split_variance_reference_only/by_split/test/auc"
+    },
+    "patient_grouped_cv_all_features": {
+      "auc": 0.68061,
+      "auc_ci95": [
+        0.67586,
+        0.68511
+      ],
+      "auc_std": 0.00774,
+      "protocol": "StratifiedGroupKFold(5) x 2 repeats, grouped by patient",
+      "patient_grouped": true,
+      "source_file": "outputs/reports/selection_ablation.json",
+      "source_path": "arms/a_all_features"
+    },
+    "patient_grouped_cv_shipped_selection": {
+      "auc": 0.67525,
+      "auc_ci95": [
+        0.67128,
+        0.67906
+      ],
+      "auc_std": 0.00667,
+      "protocol": "StratifiedGroupKFold(5) x 2 repeats, grouped by patient",
+      "patient_grouped": true,
+      "source_file": "outputs/reports/selection_ablation.json",
+      "source_path": "arms/c_full_7_stage_shipped"
+    }
+  },
+  "contrast": {
+    "within_repository_controlled": {
+      "held_fixed": "model class, hyperparameters, features, code, seed",
+      "varied": "split regime only",
+      "patient_grouped_cv_auc": 0.68061,
+      "entry_cohort_test_auc": 0.641,
+      "random_patient_split_test_auc": 0.67855,
+      "protocol_gap_cv_minus_entry_cohort": 0.03961,
+      "regime_gap_random_minus_entry_cohort": 0.03755,
+      "interpretation": "The same model on the same features scores ~0.04 AUC higher under patient-grouped CV or a random patient split than on the entry-cohort held-out window. Nothing about the model changed. A single AUC reported without naming its regime is therefore not comparable across papers, and this project's own regime matrix is what makes the gap measurable."
+    },
+    "across_published_studies_uncontrolled": {
+      "published_auc_min": 0.64,
+      "published_auc_max": 0.664,
+      "published_spread": 0.024,
+      "caveat": "NOT a controlled comparison \u2014 feature sets, preprocessing and imbalance handling all differ between these papers. Reported only to establish the order of magnitude of between-paper variation.",
+      "observation": "the between-paper spread is of the same order as the within-repository protocol gap, and the higher published number is the study that states it did not enforce patient-level splits",
+      "not_claimed": "we do NOT claim the published difference IS leakage. Two studies is not a sample, and the papers differ in more than one dimension. The claim is only that protocol variation is large enough to matter and is usually unreported."
+    },
+    "where_this_project_sits": "inside the published band on the deployed split, at or above its upper edge under the protocol-matched grouped CV. Discrimination is not this project's contribution and is not presented as one."
+  },
+  "traceability": {
+    "external_rows": "curated by hand; each carries a DOI, URL and read date",
+    "internal_rows": "read at runtime from the named generated artifacts; never typed, and a missing key raises",
+    "why_split": "R4 forbids hand-typed results, but external literature cannot be regenerated. Separating the halves keeps the rule enforceable on the half it can govern."
+  },
+  "reproducibility": {
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

@@ -26,6 +26,8 @@ import pandas as pd
 import numpy as np
 import json
 import pickle
+import matplotlib
+matplotlib.use("Agg")   # headless: figures save to disk only, no GUI window
 import matplotlib.pyplot as plt
 from pathlib import Path
 from sklearn.metrics import roc_auc_score
@@ -487,7 +489,7 @@ def _plot_coverage_profile(
     plt.tight_layout()
     path = FIGURE_DIR / f"26_conformal_coverage_{model_name}.png"
     plt.savefig(path, bbox_inches="tight")
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
 
 
@@ -572,7 +574,7 @@ def _plot_coverage_drift(
     plt.tight_layout()
     path = FIGURE_DIR / f"27_coverage_drift_{model_name}.png"
     plt.savefig(path, bbox_inches="tight")
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
 
 

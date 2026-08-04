@@ -1,12 +1,12 @@
 """
 DriftSentinel — Data Splitter
-Patient-level stratified split to prevent label leakage.
-encounter_id ordering preserved for drift simulation window.
+Patient-level ENTRY-COHORT split to prevent label leakage.
+encounter_id ordering preserved for the drift-simulation window.
 All split artifacts logged to outputs/log/splitter.log.
 
 Split strategy:
     - Group by patient_nbr (patient-level, not encounter-level)
-    - Order patients by their FIRST encounter_id (temporal proxy)
+    - Order patients by their FIRST encounter_id (ENTRY COHORT, not time)
     - 60% reference window  -> train
     - 20% production window -> val
     - 20% production window -> test
@@ -24,7 +24,15 @@ from src.monitoring.logger import get_logger
 
 logger = get_logger("splitter")
 
-ARTIFACTS_DIR = Path(r"C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts")
+# Tier 2C.6 reproducibility: this was a HARDCODED ABSOLUTE PATH to one
+# developer's machine, so `pipeline.py` did not reproduce anything from raw
+# data on a clean clone -- it read from and wrote to a directory that exists
+# nowhere else. On Linux CI the same literal resolves to a RELATIVE folder
+# whose name contains backslashes, so artifacts land somewhere harmless-
+# looking and the run still 'succeeds'. It worked on exactly one machine,
+# which is why nothing caught it. Now derived from this file's location.
+ROOT = Path(__file__).resolve().parents[2]
+ARTIFACTS_DIR = ROOT / "outputs" / "artifacts"
 ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
 
 TRAIN_RATIO = 0.60
@@ -36,7 +44,14 @@ RANDOM_SEED = 42
 def _get_patient_order(df: pd.DataFrame) -> pd.Series:
     """
     Order patients by their first encounter_id.
-    This preserves temporal structure without requiring explicit timestamps.
+
+    This orders patients by ENTRY COHORT. Tier 0 verified that encounter_id
+    ordering is chronological (outputs/reports/temporal_validity.json, verdict
+    SUPPORTED), but ordering patients by their FIRST encounter still places every
+    later encounter of an early-entering patient in the earliest split — which is
+    why the resulting splits' encounter_id ranges overlap almost entirely. This
+    is NOT a temporal split. For a genuine chronological split of encounters see
+    the `temporal` regime in src/investigation/split_regimes.py.
 
     Returns
     -------
@@ -82,7 +97,7 @@ def _compute_drift_stats(
 
 def split(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
     """
-    Patient-level temporal split of raw DataFrame.
+    Patient-level entry-cohort split of raw DataFrame.
 
     Parameters
     ----------
@@ -98,7 +113,7 @@ def split(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, d
     logger.info("=" * 70)
     logger.info("DriftSentinel — Data Splitter")
     logger.info("=" * 70)
-    logger.info(f"Strategy       : patient-level temporal split")
+    logger.info(f"Strategy       : patient-level entry-cohort split (NOT temporal)")
     logger.info(f"Ordering       : first encounter_id per patient (ascending)")
     logger.info(f"Ratios         : train={TRAIN_RATIO} / val={VAL_RATIO} / test={TEST_RATIO}")
     logger.info(f"Random seed    : {RANDOM_SEED}")

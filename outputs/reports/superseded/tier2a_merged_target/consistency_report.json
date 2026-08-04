@@ -1,0 +1,2235 @@
+{
+  "passed": 117,
+  "warned": 26,
+  "failed": 12,
+  "findings": [
+    {
+      "level": "PASS",
+      "check": "schema_missing_cols",
+      "split": "val",
+      "detail": "missing=none"
+    },
+    {
+      "level": "PASS",
+      "check": "schema_extra_cols",
+      "split": "val",
+      "detail": "extra=none"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_race",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_gender",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_age",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_admission_type_id",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_discharge_disposition_id",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_admission_source_id",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_time_in_hospital",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_payer_code",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_medical_specialty",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_num_medications",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_number_outpatient",
+      "split": "val",
+      "detail": "train=float64 val=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_diag_1",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_diag_2",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_diag_3",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_number_diagnoses",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_repaglinide",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_glimepiride",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_glipizide",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_glyburide",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_pioglitazone",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_rosiglitazone",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_weight_missing",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_max_glu_serum_missing",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_A1Cresult_missing",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_total_clinical_contacts",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_labs_per_day",
+      "split": "val",
+      "detail": "train=float64 val=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_meds_per_day",
+      "split": "val",
+      "detail": "train=float64 val=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_high_utilization",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_n_active_binary_meds",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_total_active_meds",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_n_med_increases",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_n_med_decreases",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_any_med_changed",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_diagnoses_per_day",
+      "split": "val",
+      "detail": "train=float64 val=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_diag_med_ratio",
+      "split": "val",
+      "detail": "train=float64 val=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_high_lab_load",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_no_procedures",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_lab_to_procedure_ratio",
+      "split": "val",
+      "detail": "train=float64 val=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_has_prior_inpatient",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_high_prior_utilization",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_multi_channel_utilizer",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_insulin_prescribed",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_insulin_changed",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_insulin_increased",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_metformin_prescribed",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_metformin_changed",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_on_diabetes_med",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_med_regimen_changed",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_glycemic_risk_score",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_high_util_x_med_change",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_comorbidity_x_lab_load",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_glycemic_x_emergency",
+      "split": "val",
+      "detail": "train=int64 val=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_labs_per_day_x_comorbidity",
+      "split": "val",
+      "detail": "train=float64 val=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "schema_missing_cols",
+      "split": "test",
+      "detail": "missing=none"
+    },
+    {
+      "level": "PASS",
+      "check": "schema_extra_cols",
+      "split": "test",
+      "detail": "extra=none"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_race",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_gender",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_age",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_admission_type_id",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_discharge_disposition_id",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_admission_source_id",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_time_in_hospital",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_payer_code",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_medical_specialty",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_num_medications",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_number_outpatient",
+      "split": "test",
+      "detail": "train=float64 test=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_diag_1",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_diag_2",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_diag_3",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_number_diagnoses",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_repaglinide",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_glimepiride",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_glipizide",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_glyburide",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_pioglitazone",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_rosiglitazone",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_weight_missing",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_max_glu_serum_missing",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_A1Cresult_missing",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_total_clinical_contacts",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_labs_per_day",
+      "split": "test",
+      "detail": "train=float64 test=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_meds_per_day",
+      "split": "test",
+      "detail": "train=float64 test=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_high_utilization",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_n_active_binary_meds",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_total_active_meds",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_n_med_increases",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_n_med_decreases",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_any_med_changed",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_diagnoses_per_day",
+      "split": "test",
+      "detail": "train=float64 test=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_diag_med_ratio",
+      "split": "test",
+      "detail": "train=float64 test=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_high_lab_load",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_no_procedures",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_lab_to_procedure_ratio",
+      "split": "test",
+      "detail": "train=float64 test=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_has_prior_inpatient",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_high_prior_utilization",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_multi_channel_utilizer",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_insulin_prescribed",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_insulin_changed",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_insulin_increased",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_metformin_prescribed",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_metformin_changed",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_on_diabetes_med",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_med_regimen_changed",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_glycemic_risk_score",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_high_util_x_med_change",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_comorbidity_x_lab_load",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_glycemic_x_emergency",
+      "split": "test",
+      "detail": "train=int64 test=int64"
+    },
+    {
+      "level": "PASS",
+      "check": "dtype_FE_labs_per_day_x_comorbidity",
+      "split": "test",
+      "detail": "train=float64 test=float64"
+    },
+    {
+      "level": "PASS",
+      "check": "total_row_coverage",
+      "split": "all",
+      "detail": "train=63,492 val=20,949 test=17,325 total=101,766"
+    },
+    {
+      "level": "PASS",
+      "check": "column_count_match",
+      "split": "val",
+      "detail": "train=55 val=55"
+    },
+    {
+      "level": "PASS",
+      "check": "column_count_match",
+      "split": "test",
+      "detail": "train=55 test=55"
+    },
+    {
+      "level": "PASS",
+      "check": "target_leakage_all_features",
+      "split": "train",
+      "detail": "no |r| > 0.8 among 53 features"
+    },
+    {
+      "level": "PASS",
+      "check": "fe_feature_leakage",
+      "split": "train",
+      "detail": "suspicious FE_ pairs=none"
+    },
+    {
+      "level": "WARN",
+      "check": "psi_admission_type_id",
+      "split": "test",
+      "detail": "PSI=0.1904 (MODERATE)"
+    },
+    {
+      "level": "FAIL",
+      "check": "psi_admission_source_id",
+      "split": "val",
+      "detail": "PSI=0.2909 (CRITICAL)"
+    },
+    {
+      "level": "FAIL",
+      "check": "psi_admission_source_id",
+      "split": "test",
+      "detail": "PSI=0.2027 (CRITICAL)"
+    },
+    {
+      "level": "FAIL",
+      "check": "psi_payer_code",
+      "split": "val",
+      "detail": "PSI=0.9309 (CRITICAL)"
+    },
+    {
+      "level": "FAIL",
+      "check": "psi_payer_code",
+      "split": "test",
+      "detail": "PSI=0.8402 (CRITICAL)"
+    },
+    {
+      "level": "FAIL",
+      "check": "psi_medical_specialty",
+      "split": "val",
+      "detail": "PSI=0.3278 (CRITICAL)"
+    },
+    {
+      "level": "FAIL",
+      "check": "psi_medical_specialty",
+      "split": "test",
+      "detail": "PSI=0.4430 (CRITICAL)"
+    },
+    {
+      "level": "WARN",
+      "check": "psi_number_diagnoses",
+      "split": "val",
+      "detail": "PSI=0.1681 (MODERATE)"
+    },
+    {
+      "level": "FAIL",
+      "check": "psi_number_diagnoses",
+      "split": "test",
+      "detail": "PSI=0.2588 (CRITICAL)"
+    },
+    {
+      "level": "WARN",
+      "check": "psi_FE_diagnoses_per_day",
+      "split": "test",
+      "detail": "PSI=0.1342 (MODERATE)"
+    },
+    {
+      "level": "WARN",
+      "check": "psi_FE_labs_per_day_x_comorbidity",
+      "split": "val",
+      "detail": "PSI=0.1530 (MODERATE)"
+    },
+    {
+      "level": "FAIL",
+      "check": "psi_FE_labs_per_day_x_comorbidity",
+      "split": "test",
+      "detail": "PSI=0.2146 (CRITICAL)"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_payer_code",
+      "split": "val",
+      "detail": "KS=0.4288 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_payer_code",
+      "split": "test",
+      "detail": "KS=0.4180 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_medical_specialty",
+      "split": "test",
+      "detail": "KS=0.2720 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_FE_labs_per_day_x_comorbidity",
+      "split": "test",
+      "detail": "KS=0.2316 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_number_diagnoses",
+      "split": "test",
+      "detail": "KS=0.2288 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_medical_specialty",
+      "split": "val",
+      "detail": "KS=0.2169 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_FE_labs_per_day_x_comorbidity",
+      "split": "val",
+      "detail": "KS=0.1878 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_number_diagnoses",
+      "split": "val",
+      "detail": "KS=0.1794 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_FE_diagnoses_per_day",
+      "split": "test",
+      "detail": "KS=0.1545 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_FE_has_prior_inpatient",
+      "split": "test",
+      "detail": "KS=0.1241 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_FE_diagnoses_per_day",
+      "split": "val",
+      "detail": "KS=0.1146 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_FE_meds_per_day",
+      "split": "test",
+      "detail": "KS=0.1074 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_admission_type_id",
+      "split": "test",
+      "detail": "KS=0.1006 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_FE_insulin_changed",
+      "split": "val",
+      "detail": "KS=0.0959 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "ks_drift_diag_2",
+      "split": "test",
+      "detail": "KS=0.0940 p=0.000000 \u2014 distribution shifted"
+    },
+    {
+      "level": "WARN",
+      "check": "range_oob_admission_source_id",
+      "split": "test",
+      "detail": "train=[1,22] test=[1,25]"
+    },
+    {
+      "level": "WARN",
+      "check": "range_oob_number_outpatient",
+      "split": "val",
+      "detail": "train=[0.0,3.6109179126442243] val=[0.0,3.7612001156935624]"
+    },
+    {
+      "level": "WARN",
+      "check": "range_oob_FE_meds_per_day",
+      "split": "val",
+      "detail": "train=[0.125,41.0] val=[0.0833,37.0]"
+    },
+    {
+      "level": "WARN",
+      "check": "range_oob_FE_meds_per_day",
+      "split": "test",
+      "detail": "train=[0.125,41.0] test=[0.3333,42.0]"
+    },
+    {
+      "level": "WARN",
+      "check": "range_oob_FE_diagnoses_per_day",
+      "split": "val",
+      "detail": "train=[0.1429,12.0] val=[0.1429,13.0]"
+    },
+    {
+      "level": "WARN",
+      "check": "range_oob_FE_diagnoses_per_day",
+      "split": "test",
+      "detail": "train=[0.1429,12.0] test=[0.2308,16.0]"
+    },
+    {
+      "level": "WARN",
+      "check": "range_oob_FE_lab_to_procedure_ratio",
+      "split": "test",
+      "detail": "train=[0.1429,111.0] test=[0.1429,126.0]"
+    },
+    {
+      "level": "FAIL",
+      "check": "target_dist_readmitted_multi_class0",
+      "split": "test",
+      "detail": "train=0.510 test=0.664 delta=0.153"
+    },
+    {
+      "level": "FAIL",
+      "check": "target_dist_readmitted_multi_class2",
+      "split": "test",
+      "detail": "train=0.370 test=0.248 delta=0.122"
+    },
+    {
+      "level": "FAIL",
+      "check": "target_dist_readmitted_binary_class0",
+      "split": "test",
+      "detail": "train=0.510 test=0.664 delta=0.153"
+    },
+    {
+      "level": "FAIL",
+      "check": "target_dist_readmitted_binary_class1",
+      "split": "test",
+      "detail": "train=0.490 test=0.336 delta=0.153"
+    },
+    {
+      "level": "PASS",
+      "check": "cross_split_duplicate_rows",
+      "split": "val",
+      "detail": "leaked_rows=0 (0.000%)"
+    },
+    {
+      "level": "PASS",
+      "check": "cross_split_duplicate_rows",
+      "split": "test",
+      "detail": "leaked_rows=0 (0.000%)"
+    }
+  ],
+  "ready": false,
+  "drifted_psi": [
+    "admission_type_id",
+    "admission_source_id",
+    "payer_code",
+    "medical_specialty",
+    "number_diagnoses",
+    "FE_diagnoses_per_day",
+    "FE_labs_per_day_x_comorbidity"
+  ],
+  "ks_drifted": [
+    [
+      "race",
+      "val",
+      0.0715,
+      0.0
+    ],
+    [
+      "race",
+      "test",
+      0.0933,
+      0.0
+    ],
+    [
+      "gender",
+      "test",
+      0.0206,
+      2e-05
+    ],
+    [
+      "age",
+      "val",
+      0.0495,
+      0.0
+    ],
+    [
+      "age",
+      "test",
+      0.0269,
+      0.0
+    ],
+    [
+      "admission_type_id",
+      "val",
+      0.0688,
+      0.0
+    ],
+    [
+      "admission_type_id",
+      "test",
+      0.1006,
+      0.0
+    ],
+    [
+      "discharge_disposition_id",
+      "val",
+      0.0608,
+      0.0
+    ],
+    [
+      "discharge_disposition_id",
+      "test",
+      0.0758,
+      0.0
+    ],
+    [
+      "admission_source_id",
+      "val",
+      0.0878,
+      0.0
+    ],
+    [
+      "admission_source_id",
+      "test",
+      0.0826,
+      0.0
+    ],
+    [
+      "time_in_hospital",
+      "val",
+      0.0373,
+      0.0
+    ],
+    [
+      "time_in_hospital",
+      "test",
+      0.0668,
+      0.0
+    ],
+    [
+      "payer_code",
+      "val",
+      0.4288,
+      0.0
+    ],
+    [
+      "payer_code",
+      "test",
+      0.418,
+      0.0
+    ],
+    [
+      "medical_specialty",
+      "val",
+      0.2169,
+      0.0
+    ],
+    [
+      "medical_specialty",
+      "test",
+      0.272,
+      0.0
+    ],
+    [
+      "num_medications",
+      "val",
+      0.0687,
+      0.0
+    ],
+    [
+      "num_medications",
+      "test",
+      0.065,
+      0.0
+    ],
+    [
+      "number_outpatient",
+      "val",
+      0.0818,
+      0.0
+    ],
+    [
+      "number_outpatient",
+      "test",
+      0.0252,
+      0.0
+    ],
+    [
+      "diag_1",
+      "val",
+      0.0505,
+      0.0
+    ],
+    [
+      "diag_1",
+      "test",
+      0.0341,
+      0.0
+    ],
+    [
+      "diag_2",
+      "val",
+      0.055,
+      0.0
+    ],
+    [
+      "diag_2",
+      "test",
+      0.094,
+      0.0
+    ],
+    [
+      "diag_3",
+      "val",
+      0.0279,
+      0.0
+    ],
+    [
+      "diag_3",
+      "test",
+      0.0247,
+      0.0
+    ],
+    [
+      "number_diagnoses",
+      "val",
+      0.1794,
+      0.0
+    ],
+    [
+      "number_diagnoses",
+      "test",
+      0.2288,
+      0.0
+    ],
+    [
+      "glyburide",
+      "val",
+      0.024,
+      0.0
+    ],
+    [
+      "glyburide",
+      "test",
+      0.0311,
+      0.0
+    ],
+    [
+      "pioglitazone",
+      "val",
+      0.0228,
+      0.0
+    ],
+    [
+      "pioglitazone",
+      "test",
+      0.0203,
+      2.7e-05
+    ],
+    [
+      "rosiglitazone",
+      "test",
+      0.0375,
+      0.0
+    ],
+    [
+      "max_glu_serum_missing",
+      "val",
+      0.0623,
+      0.0
+    ],
+    [
+      "max_glu_serum_missing",
+      "test",
+      0.0642,
+      0.0
+    ],
+    [
+      "A1Cresult_missing",
+      "val",
+      0.0455,
+      0.0
+    ],
+    [
+      "A1Cresult_missing",
+      "test",
+      0.0387,
+      0.0
+    ],
+    [
+      "FE_total_clinical_contacts",
+      "val",
+      0.0498,
+      0.0
+    ],
+    [
+      "FE_total_clinical_contacts",
+      "test",
+      0.0552,
+      0.0
+    ],
+    [
+      "FE_labs_per_day",
+      "val",
+      0.0684,
+      0.0
+    ],
+    [
+      "FE_labs_per_day",
+      "test",
+      0.0348,
+      0.0
+    ],
+    [
+      "FE_meds_per_day",
+      "val",
+      0.0867,
+      0.0
+    ],
+    [
+      "FE_meds_per_day",
+      "test",
+      0.1074,
+      0.0
+    ],
+    [
+      "FE_high_utilization",
+      "val",
+      0.0418,
+      0.0
+    ],
+    [
+      "FE_high_utilization",
+      "test",
+      0.0254,
+      0.0
+    ],
+    [
+      "FE_total_active_meds",
+      "val",
+      0.0501,
+      0.0
+    ],
+    [
+      "FE_total_active_meds",
+      "test",
+      0.0356,
+      0.0
+    ],
+    [
+      "FE_n_med_increases",
+      "val",
+      0.0416,
+      0.0
+    ],
+    [
+      "FE_n_med_increases",
+      "test",
+      0.0432,
+      0.0
+    ],
+    [
+      "FE_n_med_decreases",
+      "val",
+      0.0435,
+      0.0
+    ],
+    [
+      "FE_n_med_decreases",
+      "test",
+      0.0196,
+      5.6e-05
+    ],
+    [
+      "FE_any_med_changed",
+      "val",
+      0.0814,
+      0.0
+    ],
+    [
+      "FE_any_med_changed",
+      "test",
+      0.06,
+      0.0
+    ],
+    [
+      "FE_diagnoses_per_day",
+      "val",
+      0.1146,
+      0.0
+    ],
+    [
+      "FE_diagnoses_per_day",
+      "test",
+      0.1545,
+      0.0
+    ],
+    [
+      "FE_diag_med_ratio",
+      "val",
+      0.0443,
+      0.0
+    ],
+    [
+      "FE_diag_med_ratio",
+      "test",
+      0.0641,
+      0.0
+    ],
+    [
+      "FE_high_lab_load",
+      "val",
+      0.049,
+      0.0
+    ],
+    [
+      "FE_high_lab_load",
+      "test",
+      0.03,
+      0.0
+    ],
+    [
+      "FE_no_procedures",
+      "val",
+      0.0285,
+      0.0
+    ],
+    [
+      "FE_lab_to_procedure_ratio",
+      "val",
+      0.0568,
+      0.0
+    ],
+    [
+      "FE_lab_to_procedure_ratio",
+      "test",
+      0.0703,
+      0.0
+    ],
+    [
+      "FE_has_prior_inpatient",
+      "val",
+      0.0247,
+      0.0
+    ],
+    [
+      "FE_has_prior_inpatient",
+      "test",
+      0.1241,
+      0.0
+    ],
+    [
+      "FE_high_prior_utilization",
+      "val",
+      0.0424,
+      0.0
+    ],
+    [
+      "FE_high_prior_utilization",
+      "test",
+      0.0523,
+      0.0
+    ],
+    [
+      "FE_multi_channel_utilizer",
+      "val",
+      0.0492,
+      0.0
+    ],
+    [
+      "FE_multi_channel_utilizer",
+      "test",
+      0.0582,
+      0.0
+    ],
+    [
+      "FE_insulin_prescribed",
+      "val",
+      0.0739,
+      0.0
+    ],
+    [
+      "FE_insulin_prescribed",
+      "test",
+      0.0868,
+      0.0
+    ],
+    [
+      "FE_insulin_changed",
+      "val",
+      0.0959,
+      0.0
+    ],
+    [
+      "FE_insulin_changed",
+      "test",
+      0.0784,
+      0.0
+    ],
+    [
+      "FE_insulin_increased",
+      "val",
+      0.0496,
+      0.0
+    ],
+    [
+      "FE_insulin_increased",
+      "test",
+      0.0546,
+      0.0
+    ],
+    [
+      "FE_metformin_prescribed",
+      "val",
+      0.0351,
+      0.0
+    ],
+    [
+      "FE_metformin_prescribed",
+      "test",
+      0.0441,
+      0.0
+    ],
+    [
+      "FE_on_diabetes_med",
+      "val",
+      0.0417,
+      0.0
+    ],
+    [
+      "FE_on_diabetes_med",
+      "test",
+      0.0356,
+      0.0
+    ],
+    [
+      "FE_med_regimen_changed",
+      "val",
+      0.0921,
+      0.0
+    ],
+    [
+      "FE_med_regimen_changed",
+      "test",
+      0.0684,
+      0.0
+    ],
+    [
+      "FE_glycemic_risk_score",
+      "val",
+      0.0698,
+      0.0
+    ],
+    [
+      "FE_glycemic_risk_score",
+      "test",
+      0.0876,
+      0.0
+    ],
+    [
+      "FE_high_util_x_med_change",
+      "val",
+      0.0507,
+      0.0
+    ],
+    [
+      "FE_high_util_x_med_change",
+      "test",
+      0.0462,
+      0.0
+    ],
+    [
+      "FE_comorbidity_x_lab_load",
+      "val",
+      0.0849,
+      0.0
+    ],
+    [
+      "FE_comorbidity_x_lab_load",
+      "test",
+      0.08,
+      0.0
+    ],
+    [
+      "FE_glycemic_x_emergency",
+      "val",
+      0.0341,
+      0.0
+    ],
+    [
+      "FE_labs_per_day_x_comorbidity",
+      "val",
+      0.1878,
+      0.0
+    ],
+    [
+      "FE_labs_per_day_x_comorbidity",
+      "test",
+      0.2316,
+      0.0
+    ]
+  ],
+  "psi_results": {
+    "race": {
+      "val": 0.033697,
+      "test": 0.051323
+    },
+    "gender": {
+      "val": 0.000214,
+      "test": 0.001699
+    },
+    "age": {
+      "val": 0.017833,
+      "test": 0.009654
+    },
+    "admission_type_id": {
+      "val": 0.067108,
+      "test": 0.190418
+    },
+    "discharge_disposition_id": {
+      "val": 0.055473,
+      "test": 0.064265
+    },
+    "admission_source_id": {
+      "val": 0.290861,
+      "test": 0.202661
+    },
+    "time_in_hospital": {
+      "val": 0.009022,
+      "test": 0.024746
+    },
+    "payer_code": {
+      "val": 0.930884,
+      "test": 0.840212
+    },
+    "medical_specialty": {
+      "val": 0.327787,
+      "test": 0.442985
+    },
+    "num_medications": {
+      "val": 0.026146,
+      "test": 0.02116
+    },
+    "number_outpatient": {
+      "val": 0.044954,
+      "test": 0.004828
+    },
+    "diag_1": {
+      "val": 0.012182,
+      "test": 0.008989
+    },
+    "diag_2": {
+      "val": 0.006211,
+      "test": 0.017817
+    },
+    "diag_3": {
+      "val": 0.003047,
+      "test": 0.003218
+    },
+    "number_diagnoses": {
+      "val": 0.168054,
+      "test": 0.258779
+    },
+    "repaglinide": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "glimepiride": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "glipizide": {
+      "val": 0.000165,
+      "test": 0.001324
+    },
+    "glyburide": {
+      "val": 0.006271,
+      "test": 0.010924
+    },
+    "pioglitazone": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "rosiglitazone": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "weight_missing": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "max_glu_serum_missing": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "A1Cresult_missing": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_total_clinical_contacts": {
+      "val": 0.022801,
+      "test": 0.041194
+    },
+    "FE_labs_per_day": {
+      "val": 0.027022,
+      "test": 0.014951
+    },
+    "FE_meds_per_day": {
+      "val": 0.046477,
+      "test": 0.075033
+    },
+    "FE_high_utilization": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_n_active_binary_meds": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_total_active_meds": {
+      "val": 0.015979,
+      "test": 0.009612
+    },
+    "FE_n_med_increases": {
+      "val": 0.014053,
+      "test": 0.015088
+    },
+    "FE_n_med_decreases": {
+      "val": 0.015111,
+      "test": 0.003278
+    },
+    "FE_any_med_changed": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_diagnoses_per_day": {
+      "val": 0.071706,
+      "test": 0.134212
+    },
+    "FE_diag_med_ratio": {
+      "val": 0.017527,
+      "test": 0.033107
+    },
+    "FE_high_lab_load": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_no_procedures": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_lab_to_procedure_ratio": {
+      "val": 0.021552,
+      "test": 0.051181
+    },
+    "FE_has_prior_inpatient": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_high_prior_utilization": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_multi_channel_utilizer": {
+      "val": 0.013494,
+      "test": 0.014981
+    },
+    "FE_insulin_prescribed": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_insulin_changed": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_insulin_increased": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_metformin_prescribed": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_metformin_changed": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_on_diabetes_med": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_med_regimen_changed": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_glycemic_risk_score": {
+      "val": 0.005664,
+      "test": 0.007868
+    },
+    "FE_high_util_x_med_change": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_comorbidity_x_lab_load": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "FE_glycemic_x_emergency": {
+      "val": 0.011029,
+      "test": 0.000291
+    },
+    "FE_labs_per_day_x_comorbidity": {
+      "val": 0.152962,
+      "test": 0.214557
+    }
+  },
+  "ks_results": {
+    "race": {
+      "val": {
+        "stat": 0.0715,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0933,
+        "p_value": 0.0
+      }
+    },
+    "gender": {
+      "val": {
+        "stat": 0.0073,
+        "p_value": 0.37099
+      },
+      "test": {
+        "stat": 0.0206,
+        "p_value": 2e-05
+      }
+    },
+    "age": {
+      "val": {
+        "stat": 0.0495,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0269,
+        "p_value": 0.0
+      }
+    },
+    "admission_type_id": {
+      "val": {
+        "stat": 0.0688,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.1006,
+        "p_value": 0.0
+      }
+    },
+    "discharge_disposition_id": {
+      "val": {
+        "stat": 0.0608,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0758,
+        "p_value": 0.0
+      }
+    },
+    "admission_source_id": {
+      "val": {
+        "stat": 0.0878,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0826,
+        "p_value": 0.0
+      }
+    },
+    "time_in_hospital": {
+      "val": {
+        "stat": 0.0373,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0668,
+        "p_value": 0.0
+      }
+    },
+    "payer_code": {
+      "val": {
+        "stat": 0.4288,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.418,
+        "p_value": 0.0
+      }
+    },
+    "medical_specialty": {
+      "val": {
+        "stat": 0.2169,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.272,
+        "p_value": 0.0
+      }
+    },
+    "num_medications": {
+      "val": {
+        "stat": 0.0687,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.065,
+        "p_value": 0.0
+      }
+    },
+    "number_outpatient": {
+      "val": {
+        "stat": 0.0818,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0252,
+        "p_value": 0.0
+      }
+    },
+    "diag_1": {
+      "val": {
+        "stat": 0.0505,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0341,
+        "p_value": 0.0
+      }
+    },
+    "diag_2": {
+      "val": {
+        "stat": 0.055,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.094,
+        "p_value": 0.0
+      }
+    },
+    "diag_3": {
+      "val": {
+        "stat": 0.0279,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0247,
+        "p_value": 0.0
+      }
+    },
+    "number_diagnoses": {
+      "val": {
+        "stat": 0.1794,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.2288,
+        "p_value": 0.0
+      }
+    },
+    "repaglinide": {
+      "val": {
+        "stat": 0.0048,
+        "p_value": 0.854868
+      },
+      "test": {
+        "stat": 0.0017,
+        "p_value": 1.0
+      }
+    },
+    "glimepiride": {
+      "val": {
+        "stat": 0.0048,
+        "p_value": 0.864187
+      },
+      "test": {
+        "stat": 0.0132,
+        "p_value": 0.017684
+      }
+    },
+    "glipizide": {
+      "val": {
+        "stat": 0.0043,
+        "p_value": 0.936201
+      },
+      "test": {
+        "stat": 0.0119,
+        "p_value": 0.042331
+      }
+    },
+    "glyburide": {
+      "val": {
+        "stat": 0.024,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0311,
+        "p_value": 0.0
+      }
+    },
+    "pioglitazone": {
+      "val": {
+        "stat": 0.0228,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0203,
+        "p_value": 2.7e-05
+      }
+    },
+    "rosiglitazone": {
+      "val": {
+        "stat": 0.0024,
+        "p_value": 0.999988
+      },
+      "test": {
+        "stat": 0.0375,
+        "p_value": 0.0
+      }
+    },
+    "weight_missing": {
+      "val": {
+        "stat": 0.0075,
+        "p_value": 0.336395
+      },
+      "test": {
+        "stat": 0.0027,
+        "p_value": 0.99996
+      }
+    },
+    "max_glu_serum_missing": {
+      "val": {
+        "stat": 0.0623,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0642,
+        "p_value": 0.0
+      }
+    },
+    "A1Cresult_missing": {
+      "val": {
+        "stat": 0.0455,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0387,
+        "p_value": 0.0
+      }
+    },
+    "FE_total_clinical_contacts": {
+      "val": {
+        "stat": 0.0498,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0552,
+        "p_value": 0.0
+      }
+    },
+    "FE_labs_per_day": {
+      "val": {
+        "stat": 0.0684,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0348,
+        "p_value": 0.0
+      }
+    },
+    "FE_meds_per_day": {
+      "val": {
+        "stat": 0.0867,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.1074,
+        "p_value": 0.0
+      }
+    },
+    "FE_high_utilization": {
+      "val": {
+        "stat": 0.0418,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0254,
+        "p_value": 0.0
+      }
+    },
+    "FE_n_active_binary_meds": {
+      "val": {
+        "stat": 0.0055,
+        "p_value": 0.731219
+      },
+      "test": {
+        "stat": 0.0009,
+        "p_value": 1.0
+      }
+    },
+    "FE_total_active_meds": {
+      "val": {
+        "stat": 0.0501,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0356,
+        "p_value": 0.0
+      }
+    },
+    "FE_n_med_increases": {
+      "val": {
+        "stat": 0.0416,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0432,
+        "p_value": 0.0
+      }
+    },
+    "FE_n_med_decreases": {
+      "val": {
+        "stat": 0.0435,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0196,
+        "p_value": 5.6e-05
+      }
+    },
+    "FE_any_med_changed": {
+      "val": {
+        "stat": 0.0814,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.06,
+        "p_value": 0.0
+      }
+    },
+    "FE_diagnoses_per_day": {
+      "val": {
+        "stat": 0.1146,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.1545,
+        "p_value": 0.0
+      }
+    },
+    "FE_diag_med_ratio": {
+      "val": {
+        "stat": 0.0443,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0641,
+        "p_value": 0.0
+      }
+    },
+    "FE_high_lab_load": {
+      "val": {
+        "stat": 0.049,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.03,
+        "p_value": 0.0
+      }
+    },
+    "FE_no_procedures": {
+      "val": {
+        "stat": 0.0285,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0018,
+        "p_value": 1.0
+      }
+    },
+    "FE_lab_to_procedure_ratio": {
+      "val": {
+        "stat": 0.0568,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0703,
+        "p_value": 0.0
+      }
+    },
+    "FE_has_prior_inpatient": {
+      "val": {
+        "stat": 0.0247,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.1241,
+        "p_value": 0.0
+      }
+    },
+    "FE_high_prior_utilization": {
+      "val": {
+        "stat": 0.0424,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0523,
+        "p_value": 0.0
+      }
+    },
+    "FE_multi_channel_utilizer": {
+      "val": {
+        "stat": 0.0492,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0582,
+        "p_value": 0.0
+      }
+    },
+    "FE_insulin_prescribed": {
+      "val": {
+        "stat": 0.0739,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0868,
+        "p_value": 0.0
+      }
+    },
+    "FE_insulin_changed": {
+      "val": {
+        "stat": 0.0959,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0784,
+        "p_value": 0.0
+      }
+    },
+    "FE_insulin_increased": {
+      "val": {
+        "stat": 0.0496,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0546,
+        "p_value": 0.0
+      }
+    },
+    "FE_metformin_prescribed": {
+      "val": {
+        "stat": 0.0351,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0441,
+        "p_value": 0.0
+      }
+    },
+    "FE_metformin_changed": {
+      "val": {
+        "stat": 0.0006,
+        "p_value": 1.0
+      },
+      "test": {
+        "stat": 0.0006,
+        "p_value": 1.0
+      }
+    },
+    "FE_on_diabetes_med": {
+      "val": {
+        "stat": 0.0417,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0356,
+        "p_value": 0.0
+      }
+    },
+    "FE_med_regimen_changed": {
+      "val": {
+        "stat": 0.0921,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0684,
+        "p_value": 0.0
+      }
+    },
+    "FE_glycemic_risk_score": {
+      "val": {
+        "stat": 0.0698,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0876,
+        "p_value": 0.0
+      }
+    },
+    "FE_high_util_x_med_change": {
+      "val": {
+        "stat": 0.0507,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.0462,
+        "p_value": 0.0
+      }
+    },
+    "FE_comorbidity_x_lab_load": {
+      "val": {
+        "stat": 0.0849,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.08,
+        "p_value": 0.0
+      }
+    },
+    "FE_glycemic_x_emergency": {
+      "val": {
+        "stat": 0.0341,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.007,
+        "p_value": 0.512531
+      }
+    },
+    "FE_labs_per_day_x_comorbidity": {
+      "val": {
+        "stat": 0.1878,
+        "p_value": 0.0
+      },
+      "test": {
+        "stat": 0.2316,
+        "p_value": 0.0
+      }
+    }
+  }
+}

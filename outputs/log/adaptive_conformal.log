@@ -1,0 +1,25 @@
+2026-08-04 15:49:02 | INFO     | adaptive_conformal   | ===== RUN 20260804-154900-14f7ff | pid=22624 | started 2026-08-04 15:49:02 =====
+2026-08-04 15:49:02 | INFO     | adaptive_conformal   | ==============================================================================
+2026-08-04 15:49:02 | INFO     | adaptive_conformal   | Tier 2B.1 — Adaptive Conformal Inference (Gibbs & Candes 2021)
+2026-08-04 15:49:02 | INFO     | adaptive_conformal   | ==============================================================================
+2026-08-04 15:49:03 | INFO     | adaptive_conformal   |   calibration: 10,367 rows (patient-disjoint from audit)
+2026-08-04 15:49:03 | INFO     | adaptive_conformal   | --------------------------------------------------------------
+2026-08-04 15:49:03 | INFO     | adaptive_conformal   | STREAM: val_audit_half  (n=10,582)
+2026-08-04 15:49:03 | INFO     | adaptive_conformal   |   static : coverage 0.8942 (err -0.0057) set 1.005 max|roll dev| 0.0960
+2026-08-04 15:49:03 | INFO     | adaptive_conformal   |   ACI    : coverage 0.8996 (err -0.0004) set 1.059 max|roll dev| 0.0240
+2026-08-04 15:49:03 | INFO     | adaptive_conformal   | --------------------------------------------------------------
+2026-08-04 15:49:03 | INFO     | adaptive_conformal   | STREAM: test_entry_cohort  (n=17,325)
+2026-08-04 15:49:03 | INFO     | adaptive_conformal   |   static : coverage 0.9134 (err +0.0134) set 1.004 max|roll dev| 0.0440
+2026-08-04 15:49:03 | INFO     | adaptive_conformal   |   ACI    : coverage 0.9004 (err +0.0004) set 0.991 max|roll dev| 0.0220
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   | --------------------------------------------------------------
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   | STREAM: synthetic_hard_label_shift  (n=17,325)
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   |   static : coverage 0.4119 (err -0.4880) set 1.012 max|roll dev| 0.5340
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   |   ACI    : coverage 0.8980 (err -0.0021) set 1.768 max|roll dev| 0.0180
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   | --------------------------------------------------------------
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   | STREAM: changepoint_at_50pct  (n=17,324)
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   |   static : coverage 0.6654 (err -0.2346) set 1.008 max|roll dev| 0.5300
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   |   ACI    : coverage 0.8987 (err -0.0013) set 1.377 max|roll dev| 0.0340
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   | --------------------------------------------------------------
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   | POST-BREAK coverage: static 0.4152 | ACI 0.8970
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   | Report: adaptive_conformal.json
+2026-08-04 15:49:04 | INFO     | adaptive_conformal   | ==============================================================================

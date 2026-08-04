@@ -1,0 +1,14 @@
+2026-08-04 18:07:52 | INFO     | literature_baselines | ===== RUN 20260804-180752-57a035 | pid=13464 | started 2026-08-04 18:07:52 =====
+2026-08-04 18:07:52 | INFO     | literature_baselines | ==============================================================================
+2026-08-04 18:07:52 | INFO     | literature_baselines | DriftSentinel — Tier 2C.2  literature positioning
+2026-08-04 18:07:52 | INFO     | literature_baselines | ==============================================================================
+2026-08-04 18:07:52 | INFO     | literature_baselines |   ours[entry_cohort_test] AUC=0.64100  <- headline_metrics_ci.json
+2026-08-04 18:07:52 | INFO     | literature_baselines |   ours[random_patient_split_test] AUC=0.67855  <- headline_metrics_ci.json
+2026-08-04 18:07:52 | INFO     | literature_baselines |   ours[patient_grouped_cv_all_features] AUC=0.68061  <- selection_ablation.json
+2026-08-04 18:07:52 | INFO     | literature_baselines |   ours[patient_grouped_cv_shipped_selection] AUC=0.67525  <- selection_ablation.json
+2026-08-04 18:07:52 | INFO     | literature_baselines | --------------------------------------------------------------
+2026-08-04 18:07:52 | INFO     | literature_baselines | protocol gap (grouped CV - entry-cohort test): +0.0396
+2026-08-04 18:07:52 | INFO     | literature_baselines | regime gap  (random split - entry-cohort test): +0.0376
+2026-08-04 18:07:52 | INFO     | literature_baselines | published band: 0.64-0.664
+2026-08-04 18:07:52 | INFO     | literature_baselines | Report: literature_baselines.json
+2026-08-04 18:07:52 | INFO     | literature_baselines | ==============================================================================

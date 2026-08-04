@@ -1,0 +1,70 @@
+{
+  "timestamp": "2026-08-04T10:30:43.577013",
+  "model_name": "covariate_shift_0.5_s7",
+  "ref_name": "covariate_shift_0.5_s7_val",
+  "prod_name": "covariate_shift_0.5_s7_test",
+  "system_status": "HIGH",
+  "recommendation": "Model performance significantly degraded. Schedule retraining within 24 hours. Increase monitoring frequency.",
+  "alert_counts": {
+    "CRITICAL": 1,
+    "LOW": 2
+  },
+  "total_alerts": 3,
+  "alerts": [
+    {
+      "alert_id": "DD-001",
+      "alert_type": "DATA_DRIFT",
+      "level": "CRITICAL",
+      "title": "Data Drift: 14/28 Features Drifted",
+      "description": "50.0% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: number_diagnoses, num_medications, age, time_in_hospital, diag_3.",
+      "metric": "drift_rate",
+      "value": 0.5,
+      "threshold": 0.25,
+      "features": [
+        "number_diagnoses",
+        "num_medications",
+        "age",
+        "time_in_hospital",
+        "diag_3"
+      ],
+      "action": "Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.",
+      "timestamp": "2026-08-04T10:30:43.577013"
+    },
+    {
+      "alert_id": "CD-004",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "CUSUM Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "CUSUM detected 252 alarms. First alarm at index 288 (0.71% into stream). Mean error shift: 0.1631 \u2192 0.1946.",
+      "metric": "cusum_alarms",
+      "value": 252.0,
+      "threshold": 1.0,
+      "features": [],
+      "action": "Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.",
+      "timestamp": "2026-08-04T10:30:43.577013"
+    },
+    {
+      "alert_id": "CD-005",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "Page-Hinkley Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "Page-Hinkley detected gradual drift. First alarm at 7.1% of stream. PH statistic: 38.2154.",
+      "metric": "ph_statistic",
+      "value": 38.2154,
+      "threshold": 50.0,
+      "features": [],
+      "action": "Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.",
+      "timestamp": "2026-08-04T10:30:43.577013"
+    }
+  ],
+  "drift_summary": {
+    "concept_severity": "MILD",
+    "n_evidence": 1,
+    "auc_degradation": -0.0011,
+    "f1_degradation": -0.0037,
+    "n_data_drifted": 14,
+    "n_data_critical": 0,
+    "n_feature_high": null,
+    "label_shift_delta": 0.0037
+  }
+}

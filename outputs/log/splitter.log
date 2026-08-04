@@ -53,3 +53,1347 @@
 2026-05-11 20:54:33 | INFO     | splitter             | Splitter completed successfully
 2026-05-11 20:54:33 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
 2026-05-11 20:54:33 | INFO     | splitter             | ======================================================================
+2026-08-04 10:37:27 | INFO     | splitter             | ===== RUN 20260804-103724-348522 | pid=31316 | started 2026-08-04 10:37:27 =====
+2026-08-04 10:37:27 | INFO     | splitter             | ======================================================================
+2026-08-04 10:37:27 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 10:37:27 | INFO     | splitter             | ======================================================================
+2026-08-04 10:37:27 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 10:37:27 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 10:37:27 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 10:37:27 | INFO     | splitter             | Random seed    : 42
+2026-08-04 10:37:27 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:37:27 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 10:37:27 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 10:37:27 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 10:37:27 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 10:37:27 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:37:27 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 10:37:27 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 10:37:27 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 10:37:27 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 10:37:27 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:37:27 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 10:37:27 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 10:37:27 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 10:37:27 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 10:37:27 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 10:37:27 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:37:27 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 10:37:27 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 10:37:27 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 10:37:27 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 10:37:27 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 10:37:27 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 10:37:27 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:37:27 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 10:37:27 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 10:37:27 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 10:37:27 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 10:37:27 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:37:27 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 10:37:27 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 10:37:27 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 10:37:27 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 10:37:27 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:37:27 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 10:37:27 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 10:37:27 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 10:37:27 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 10:37:27 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 10:37:27 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 10:37:27 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 10:37:27 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:37:27 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 10:37:27 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 10:37:27 | INFO     | splitter             | ======================================================================
+2026-08-04 10:37:27 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 10:37:27 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 10:37:27 | INFO     | splitter             | ======================================================================
+2026-08-04 10:48:32 | INFO     | splitter             | ===== RUN 20260804-104829-f5297c | pid=20016 | started 2026-08-04 10:48:32 =====
+2026-08-04 10:48:32 | INFO     | splitter             | ======================================================================
+2026-08-04 10:48:32 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 10:48:32 | INFO     | splitter             | ======================================================================
+2026-08-04 10:48:32 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 10:48:32 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 10:48:32 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 10:48:32 | INFO     | splitter             | Random seed    : 42
+2026-08-04 10:48:32 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:48:32 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 10:48:32 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 10:48:32 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 10:48:32 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 10:48:32 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:48:32 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 10:48:32 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 10:48:32 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 10:48:32 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 10:48:32 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:48:32 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 10:48:33 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 10:48:33 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 10:48:33 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 10:48:33 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 10:48:33 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:48:33 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 10:48:33 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 10:48:33 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 10:48:33 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 10:48:33 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 10:48:33 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 10:48:33 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:48:33 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 10:48:33 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 10:48:33 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 10:48:33 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 10:48:33 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:48:33 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 10:48:33 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 10:48:33 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 10:48:33 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 10:48:33 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:48:33 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 10:48:33 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 10:48:33 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 10:48:33 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 10:48:33 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 10:48:33 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 10:48:33 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 10:48:33 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:48:33 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 10:48:33 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 10:48:33 | INFO     | splitter             | ======================================================================
+2026-08-04 10:48:33 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 10:48:33 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 10:48:33 | INFO     | splitter             | ======================================================================
+2026-08-04 10:52:02 | INFO     | splitter             | ===== RUN 20260804-105157-d432da | pid=31324 | started 2026-08-04 10:52:02 =====
+2026-08-04 10:52:02 | INFO     | splitter             | ======================================================================
+2026-08-04 10:52:02 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 10:52:02 | INFO     | splitter             | ======================================================================
+2026-08-04 10:52:02 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 10:52:02 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 10:52:02 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 10:52:02 | INFO     | splitter             | Random seed    : 42
+2026-08-04 10:52:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:52:02 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 10:52:02 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 10:52:02 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 10:52:02 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 10:52:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:52:02 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 10:52:02 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 10:52:02 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 10:52:02 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 10:52:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:52:02 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 10:52:02 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 10:52:02 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 10:52:02 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 10:52:02 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 10:52:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:52:02 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 10:52:03 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 10:52:03 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 10:52:03 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 10:52:03 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 10:52:03 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 10:52:03 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:52:03 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 10:52:03 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 10:52:03 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 10:52:03 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 10:52:03 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:52:03 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 10:52:03 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 10:52:03 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 10:52:03 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 10:52:03 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:52:03 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 10:52:03 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 10:52:03 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 10:52:03 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 10:52:03 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 10:52:03 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 10:52:03 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 10:52:03 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:52:03 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 10:52:03 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 10:52:03 | INFO     | splitter             | ======================================================================
+2026-08-04 10:52:03 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 10:52:03 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 10:52:03 | INFO     | splitter             | ======================================================================
+2026-08-04 10:54:04 | INFO     | splitter             | ===== RUN 20260804-105400-8176e5 | pid=20152 | started 2026-08-04 10:54:04 =====
+2026-08-04 10:54:04 | INFO     | splitter             | ======================================================================
+2026-08-04 10:54:04 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 10:54:04 | INFO     | splitter             | ======================================================================
+2026-08-04 10:54:04 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 10:54:04 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 10:54:04 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 10:54:04 | INFO     | splitter             | Random seed    : 42
+2026-08-04 10:54:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:54:04 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 10:54:04 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 10:54:04 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 10:54:04 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 10:54:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:54:04 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 10:54:04 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 10:54:04 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 10:54:04 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 10:54:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:54:04 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 10:54:04 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 10:54:04 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 10:54:04 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 10:54:04 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 10:54:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:54:04 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 10:54:04 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 10:54:04 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 10:54:04 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 10:54:04 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 10:54:04 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 10:54:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:54:04 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 10:54:04 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 10:54:04 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 10:54:04 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 10:54:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:54:04 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 10:54:04 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 10:54:04 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 10:54:04 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 10:54:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:54:04 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 10:54:04 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 10:54:04 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 10:54:04 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 10:54:04 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 10:54:04 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 10:54:04 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 10:54:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 10:54:04 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 10:54:04 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 10:54:04 | INFO     | splitter             | ======================================================================
+2026-08-04 10:54:04 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 10:54:04 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 10:54:04 | INFO     | splitter             | ======================================================================
+2026-08-04 11:30:04 | INFO     | splitter             | ===== RUN 20260804-113003-e838de | pid=16256 | started 2026-08-04 11:30:04 =====
+2026-08-04 11:30:04 | INFO     | splitter             | ======================================================================
+2026-08-04 11:30:04 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 11:30:04 | INFO     | splitter             | ======================================================================
+2026-08-04 11:30:04 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 11:30:04 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 11:30:04 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 11:30:04 | INFO     | splitter             | Random seed    : 42
+2026-08-04 11:30:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 11:30:04 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 11:30:04 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 11:30:04 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 11:30:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 11:30:04 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 11:30:04 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 11:30:04 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 11:30:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 11:30:04 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 11:30:04 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 11:30:04 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 11:30:04 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 11:30:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 11:30:04 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 11:30:04 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 11:30:04 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 11:30:04 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 11:30:04 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 11:30:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 11:30:04 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 11:30:04 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 11:30:04 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 11:30:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 11:30:04 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 11:30:04 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 11:30:04 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 11:30:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 11:30:04 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 11:30:04 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 11:30:04 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 11:30:04 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 11:30:04 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 11:30:04 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 11:30:04 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 11:30:04 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 11:30:04 | INFO     | splitter             | ======================================================================
+2026-08-04 11:30:04 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 11:30:04 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 11:30:04 | INFO     | splitter             | ======================================================================
+2026-08-04 11:30:52 | INFO     | splitter             | ===== RUN 20260804-113051-66454f | pid=22816 | started 2026-08-04 11:30:52 =====
+2026-08-04 11:30:52 | INFO     | splitter             | ======================================================================
+2026-08-04 11:30:52 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 11:30:52 | INFO     | splitter             | ======================================================================
+2026-08-04 11:30:52 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 11:30:52 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 11:30:52 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 11:30:52 | INFO     | splitter             | Random seed    : 42
+2026-08-04 11:30:52 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 11:30:52 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 11:30:52 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 11:30:52 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 11:30:52 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 11:30:52 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 11:30:52 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 11:30:52 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 11:30:52 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 11:30:52 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 11:30:52 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 11:30:52 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 11:30:52 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 11:30:52 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 11:30:52 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 11:30:52 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 11:30:52 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 11:30:52 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 11:30:52 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 11:30:52 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 11:30:52 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 11:30:52 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 11:30:52 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 11:30:52 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 11:30:52 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 11:30:52 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 11:30:52 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 11:30:52 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 11:30:52 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 11:30:52 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 11:30:52 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 11:30:52 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 11:30:52 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 11:30:52 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 11:30:52 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 11:30:52 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 11:30:52 | INFO     | splitter             | ======================================================================
+2026-08-04 11:30:52 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 11:30:52 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 11:30:52 | INFO     | splitter             | ======================================================================
+2026-08-04 11:31:05 | INFO     | splitter             | ===== RUN 20260804-113104-3e56fe | pid=28552 | started 2026-08-04 11:31:05 =====
+2026-08-04 11:31:05 | INFO     | splitter             | ======================================================================
+2026-08-04 11:31:05 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 11:31:05 | INFO     | splitter             | ======================================================================
+2026-08-04 11:31:05 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 11:31:05 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 11:31:05 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 11:31:05 | INFO     | splitter             | Random seed    : 42
+2026-08-04 11:31:05 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:31:05 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 11:31:05 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 11:31:05 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 11:31:05 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 11:31:05 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:31:05 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 11:31:05 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 11:31:05 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 11:31:05 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 11:31:05 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:31:05 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 11:31:05 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 11:31:05 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 11:31:05 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 11:31:05 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 11:31:05 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:31:05 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 11:31:05 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 11:31:05 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 11:31:05 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 11:31:05 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 11:31:05 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 11:31:05 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:31:05 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 11:31:05 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 11:31:05 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 11:31:05 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 11:31:05 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:31:05 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 11:31:05 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 11:31:05 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 11:31:05 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 11:31:05 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:31:05 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 11:31:05 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 11:31:05 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 11:31:05 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 11:31:05 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 11:31:05 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 11:31:05 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 11:31:05 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:31:05 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 11:31:05 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 11:31:05 | INFO     | splitter             | ======================================================================
+2026-08-04 11:31:05 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 11:31:05 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 11:31:05 | INFO     | splitter             | ======================================================================
+2026-08-04 11:38:57 | INFO     | splitter             | ===== RUN 20260804-113856-c66aba | pid=18084 | started 2026-08-04 11:38:57 =====
+2026-08-04 11:38:57 | INFO     | splitter             | ======================================================================
+2026-08-04 11:38:57 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 11:38:57 | INFO     | splitter             | ======================================================================
+2026-08-04 11:38:57 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 11:38:57 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 11:38:57 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 11:38:57 | INFO     | splitter             | Random seed    : 42
+2026-08-04 11:38:57 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:38:57 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 11:38:57 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 11:38:57 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 11:38:57 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 11:38:57 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:38:57 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 11:38:57 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 11:38:57 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 11:38:57 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 11:38:57 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:38:57 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 11:38:57 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 11:38:57 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 11:38:57 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 11:38:57 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 11:38:57 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:38:57 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 11:38:57 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 11:38:57 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 11:38:57 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 11:38:57 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 11:38:57 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 11:38:57 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:38:57 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 11:38:57 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 11:38:57 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 11:38:57 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 11:38:57 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:38:57 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 11:38:57 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 11:38:57 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 11:38:57 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 11:38:57 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:38:57 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 11:38:57 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 11:38:57 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 11:38:57 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 11:38:57 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 11:38:57 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 11:38:57 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 11:38:57 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 11:38:57 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 11:38:57 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 11:38:57 | INFO     | splitter             | ======================================================================
+2026-08-04 11:38:57 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 11:38:57 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 11:38:57 | INFO     | splitter             | ======================================================================
+2026-08-04 18:17:40 | INFO     | splitter             | ===== RUN 20260804-181736-383e94 | pid=31444 | started 2026-08-04 18:17:40 =====
+2026-08-04 18:17:40 | INFO     | splitter             | ======================================================================
+2026-08-04 18:17:40 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:17:40 | INFO     | splitter             | ======================================================================
+2026-08-04 18:17:40 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:17:40 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:17:40 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:17:40 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:17:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:17:40 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:17:40 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:17:40 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:17:40 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:17:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:17:40 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:17:40 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:17:40 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:17:40 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:17:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:17:40 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:17:40 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:17:40 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:17:40 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:17:40 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:17:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:17:40 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:17:40 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:17:40 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:17:40 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:17:40 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:17:40 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:17:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:17:40 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:17:40 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:17:40 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:17:40 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:17:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:17:40 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:17:40 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:17:40 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:17:40 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:17:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:17:40 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:17:40 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:17:40 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:17:40 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:17:40 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:17:40 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:17:40 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:17:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:17:40 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:17:40 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:17:40 | INFO     | splitter             | ======================================================================
+2026-08-04 18:17:40 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:17:40 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:17:40 | INFO     | splitter             | ======================================================================
+2026-08-04 18:18:39 | INFO     | splitter             | ===== RUN 20260804-181836-bd5cbd | pid=17396 | started 2026-08-04 18:18:39 =====
+2026-08-04 18:18:39 | INFO     | splitter             | ======================================================================
+2026-08-04 18:18:39 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:18:39 | INFO     | splitter             | ======================================================================
+2026-08-04 18:18:39 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:18:39 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:18:39 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:18:39 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:18:39 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:18:39 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:18:39 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:18:39 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:18:39 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:18:39 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:18:39 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:18:39 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:18:39 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:18:39 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:18:39 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:18:39 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:18:39 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:18:39 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:18:39 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:18:39 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:18:39 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:18:39 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:18:39 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:18:39 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:18:39 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:18:39 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:18:39 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:18:39 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:18:39 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:18:39 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:18:39 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:18:39 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:18:39 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:18:39 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:18:39 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:18:39 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:18:39 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:18:39 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:18:39 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:18:39 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:18:39 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:18:39 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:18:39 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:18:39 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:18:39 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:18:39 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:18:39 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:18:39 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:18:39 | INFO     | splitter             | ======================================================================
+2026-08-04 18:18:39 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:18:39 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:18:39 | INFO     | splitter             | ======================================================================
+2026-08-04 18:20:38 | INFO     | splitter             | ===== RUN 20260804-182035-7f2ed9 | pid=30584 | started 2026-08-04 18:20:38 =====
+2026-08-04 18:20:38 | INFO     | splitter             | ======================================================================
+2026-08-04 18:20:38 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:20:38 | INFO     | splitter             | ======================================================================
+2026-08-04 18:20:38 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:20:38 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:20:38 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:20:38 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:20:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:20:38 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:20:38 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:20:38 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:20:38 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:20:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:20:38 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:20:38 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:20:38 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:20:38 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:20:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:20:38 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:20:38 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:20:38 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:20:38 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:20:38 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:20:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:20:38 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:20:38 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:20:38 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:20:38 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:20:38 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:20:38 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:20:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:20:38 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:20:38 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:20:38 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:20:38 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:20:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:20:38 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:20:38 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:20:38 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:20:38 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:20:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:20:38 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:20:38 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:20:38 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:20:38 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:20:38 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:20:38 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:20:38 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:20:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:20:38 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:20:38 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:20:38 | INFO     | splitter             | ======================================================================
+2026-08-04 18:20:38 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:20:38 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:20:38 | INFO     | splitter             | ======================================================================
+2026-08-04 18:21:38 | INFO     | splitter             | ===== RUN 20260804-182135-1f3800 | pid=31680 | started 2026-08-04 18:21:38 =====
+2026-08-04 18:21:38 | INFO     | splitter             | ======================================================================
+2026-08-04 18:21:38 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:21:38 | INFO     | splitter             | ======================================================================
+2026-08-04 18:21:38 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:21:38 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:21:38 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:21:38 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:21:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:21:38 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:21:38 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:21:38 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:21:38 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:21:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:21:38 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:21:38 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:21:38 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:21:38 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:21:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:21:38 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:21:38 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:21:38 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:21:38 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:21:38 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:21:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:21:38 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:21:38 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:21:38 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:21:38 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:21:38 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:21:38 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:21:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:21:38 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:21:38 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:21:38 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:21:38 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:21:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:21:38 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:21:38 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:21:38 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:21:38 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:21:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:21:38 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:21:38 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:21:38 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:21:38 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:21:38 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:21:38 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:21:38 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:21:38 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:21:38 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:21:38 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:21:38 | INFO     | splitter             | ======================================================================
+2026-08-04 18:21:38 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:21:38 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:21:38 | INFO     | splitter             | ======================================================================
+2026-08-04 18:23:50 | INFO     | splitter             | ===== RUN 20260804-182347-f55045 | pid=26156 | started 2026-08-04 18:23:50 =====
+2026-08-04 18:23:50 | INFO     | splitter             | ======================================================================
+2026-08-04 18:23:50 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:23:50 | INFO     | splitter             | ======================================================================
+2026-08-04 18:23:50 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:23:50 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:23:50 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:23:50 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:23:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:23:50 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:23:50 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:23:50 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:23:50 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:23:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:23:50 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:23:50 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:23:50 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:23:50 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:23:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:23:50 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:23:50 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:23:50 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:23:50 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:23:50 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:23:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:23:50 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:23:50 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:23:50 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:23:50 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:23:50 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:23:50 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:23:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:23:50 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:23:50 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:23:50 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:23:50 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:23:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:23:50 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:23:50 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:23:50 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:23:50 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:23:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:23:50 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:23:50 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:23:50 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:23:50 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:23:50 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:23:50 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:23:50 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:23:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:23:50 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:23:50 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:23:50 | INFO     | splitter             | ======================================================================
+2026-08-04 18:23:50 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:23:50 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:23:50 | INFO     | splitter             | ======================================================================
+2026-08-04 18:24:50 | INFO     | splitter             | ===== RUN 20260804-182447-58fe82 | pid=23936 | started 2026-08-04 18:24:50 =====
+2026-08-04 18:24:50 | INFO     | splitter             | ======================================================================
+2026-08-04 18:24:50 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:24:50 | INFO     | splitter             | ======================================================================
+2026-08-04 18:24:50 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:24:50 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:24:50 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:24:50 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:24:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:24:50 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:24:50 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:24:50 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:24:50 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:24:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:24:50 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:24:50 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:24:50 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:24:50 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:24:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:24:50 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:24:50 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:24:50 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:24:50 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:24:50 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:24:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:24:50 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:24:50 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:24:50 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:24:50 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:24:50 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:24:50 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:24:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:24:50 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:24:50 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:24:50 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:24:50 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:24:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:24:50 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:24:50 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:24:50 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:24:50 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:24:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:24:50 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:24:50 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:24:50 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:24:50 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:24:50 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:24:50 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:24:50 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:24:50 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:24:50 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:24:50 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:24:50 | INFO     | splitter             | ======================================================================
+2026-08-04 18:24:50 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:24:50 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:24:50 | INFO     | splitter             | ======================================================================
+2026-08-04 18:26:19 | INFO     | splitter             | ===== RUN 20260804-182616-767803 | pid=22596 | started 2026-08-04 18:26:19 =====
+2026-08-04 18:26:19 | INFO     | splitter             | ======================================================================
+2026-08-04 18:26:19 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:26:19 | INFO     | splitter             | ======================================================================
+2026-08-04 18:26:19 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:26:19 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:26:19 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:26:19 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:26:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:26:19 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:26:19 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:26:19 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:26:19 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:26:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:26:19 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:26:19 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:26:19 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:26:19 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:26:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:26:19 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:26:19 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:26:19 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:26:19 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:26:19 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:26:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:26:19 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:26:19 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:26:19 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:26:19 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:26:19 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:26:19 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:26:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:26:19 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:26:19 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:26:19 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:26:19 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:26:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:26:19 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:26:19 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:26:19 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:26:19 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:26:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:26:19 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:26:19 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:26:19 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:26:19 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:26:19 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:26:19 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:26:19 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:26:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:26:19 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:26:19 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:26:19 | INFO     | splitter             | ======================================================================
+2026-08-04 18:26:19 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:26:19 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:26:19 | INFO     | splitter             | ======================================================================
+2026-08-04 18:27:53 | INFO     | splitter             | ===== RUN 20260804-182750-7cb05f | pid=31812 | started 2026-08-04 18:27:53 =====
+2026-08-04 18:27:53 | INFO     | splitter             | ======================================================================
+2026-08-04 18:27:53 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:27:53 | INFO     | splitter             | ======================================================================
+2026-08-04 18:27:53 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:27:53 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:27:53 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:27:53 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:27:53 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:27:53 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:27:53 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:27:53 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:27:53 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:27:53 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:27:53 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:27:53 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:27:53 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:27:53 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:27:53 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:27:53 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:27:53 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:27:53 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:27:53 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:27:53 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:27:53 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:27:53 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:27:53 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:27:53 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:27:54 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:27:54 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:27:54 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:27:54 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:27:54 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:27:54 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:27:54 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:27:54 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:27:54 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:27:54 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:27:54 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:27:54 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:27:54 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:27:54 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:27:54 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:27:54 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:27:54 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:27:54 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:27:54 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:27:54 | INFO     | splitter             | ======================================================================
+2026-08-04 18:27:54 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:27:54 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:27:54 | INFO     | splitter             | ======================================================================
+2026-08-04 18:30:18 | INFO     | splitter             | ===== RUN 20260804-183015-40a5e4 | pid=7752 | started 2026-08-04 18:30:18 =====
+2026-08-04 18:30:18 | INFO     | splitter             | ======================================================================
+2026-08-04 18:30:18 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:30:18 | INFO     | splitter             | ======================================================================
+2026-08-04 18:30:18 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:30:18 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:30:18 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:30:18 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:30:18 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:30:18 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:30:18 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:30:18 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:30:18 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:30:18 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:30:18 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:30:18 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:30:18 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:30:18 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:30:18 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:30:18 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:30:18 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:30:18 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:30:18 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:30:18 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:30:18 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:30:18 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:30:18 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:30:18 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:30:18 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:30:18 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:30:18 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:30:18 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:30:18 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:30:19 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:30:19 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:30:19 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:30:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:30:19 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:30:19 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:30:19 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:30:19 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:30:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:30:19 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:30:19 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:30:19 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:30:19 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:30:19 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:30:19 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:30:19 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:30:19 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:30:19 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:30:19 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:30:19 | INFO     | splitter             | ======================================================================
+2026-08-04 18:30:19 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:30:19 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:30:19 | INFO     | splitter             | ======================================================================
+2026-08-04 18:33:32 | INFO     | splitter             | ===== RUN 20260804-183329-4cf69f | pid=16904 | started 2026-08-04 18:33:32 =====
+2026-08-04 18:33:32 | INFO     | splitter             | ======================================================================
+2026-08-04 18:33:32 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:33:32 | INFO     | splitter             | ======================================================================
+2026-08-04 18:33:32 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:33:32 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:33:32 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:33:32 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:33:32 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:33:32 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:33:32 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:33:32 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:33:32 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:33:32 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:33:32 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:33:32 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:33:32 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:33:32 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:33:32 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:33:32 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:33:32 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:33:32 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:33:32 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:33:32 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:33:32 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:33:32 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:33:32 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:33:32 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:33:32 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:33:32 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:33:32 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:33:32 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:33:32 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:33:33 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:33:33 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:33:33 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:33:33 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:33:33 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:33:33 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:33:33 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:33:33 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:33:33 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:33:33 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:33:33 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:33:33 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:33:33 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:33:33 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:33:33 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:33:33 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:33:33 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:33:33 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:33:33 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:33:33 | INFO     | splitter             | ======================================================================
+2026-08-04 18:33:33 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:33:33 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:33:33 | INFO     | splitter             | ======================================================================
+2026-08-04 18:37:22 | INFO     | splitter             | ===== RUN 20260804-183719-0dc347 | pid=22080 | started 2026-08-04 18:37:22 =====
+2026-08-04 18:37:22 | INFO     | splitter             | ======================================================================
+2026-08-04 18:37:22 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:37:22 | INFO     | splitter             | ======================================================================
+2026-08-04 18:37:22 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:37:22 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:37:22 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:37:22 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:37:22 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:37:22 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:37:22 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:37:22 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:37:22 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:37:22 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:37:22 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:37:22 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:37:22 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:37:22 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:37:22 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:37:22 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:37:22 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:37:22 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:37:22 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:37:22 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:37:22 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:37:22 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:37:23 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:37:23 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:37:23 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:37:23 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:37:23 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:37:23 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:37:23 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:37:23 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:37:23 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:37:23 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:37:23 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:37:23 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:37:23 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:37:23 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:37:23 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:37:23 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:37:23 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:37:23 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:37:23 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:37:23 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:37:23 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:37:23 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:37:23 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:37:23 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:37:23 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:37:23 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:37:23 | INFO     | splitter             | ======================================================================
+2026-08-04 18:37:23 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:37:23 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:37:23 | INFO     | splitter             | ======================================================================
+2026-08-04 18:40:35 | INFO     | splitter             | ===== RUN 20260804-184031-3b38c4 | pid=31168 | started 2026-08-04 18:40:35 =====
+2026-08-04 18:40:35 | INFO     | splitter             | ======================================================================
+2026-08-04 18:40:35 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 18:40:35 | INFO     | splitter             | ======================================================================
+2026-08-04 18:40:35 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 18:40:35 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 18:40:35 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 18:40:35 | INFO     | splitter             | Random seed    : 42
+2026-08-04 18:40:35 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:40:35 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 18:40:35 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 18:40:35 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 18:40:35 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 18:40:35 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:40:35 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 18:40:35 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 18:40:35 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 18:40:35 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 18:40:35 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:40:35 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 18:40:35 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 18:40:35 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 18:40:35 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 18:40:35 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 18:40:35 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:40:35 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 18:40:35 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 18:40:35 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 18:40:35 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 18:40:35 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 18:40:35 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 18:40:35 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:40:35 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 18:40:35 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 18:40:35 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 18:40:35 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 18:40:35 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:40:35 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 18:40:35 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 18:40:35 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 18:40:35 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 18:40:35 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:40:35 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 18:40:35 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 18:40:35 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 18:40:35 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 18:40:35 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 18:40:35 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 18:40:35 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 18:40:35 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 18:40:35 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 18:40:35 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 18:40:35 | INFO     | splitter             | ======================================================================
+2026-08-04 18:40:35 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 18:40:35 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 18:40:35 | INFO     | splitter             | ======================================================================
+2026-08-04 19:43:59 | INFO     | splitter             | ===== RUN 20260804-194356-ee2c50 | pid=28552 | started 2026-08-04 19:43:59 =====
+2026-08-04 19:43:59 | INFO     | splitter             | ======================================================================
+2026-08-04 19:43:59 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 19:43:59 | INFO     | splitter             | ======================================================================
+2026-08-04 19:43:59 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 19:43:59 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 19:43:59 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 19:43:59 | INFO     | splitter             | Random seed    : 42
+2026-08-04 19:43:59 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 19:43:59 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 19:43:59 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 19:43:59 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 19:43:59 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 19:43:59 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 19:43:59 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 19:43:59 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 19:43:59 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 19:43:59 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 19:43:59 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 19:43:59 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 19:43:59 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 19:43:59 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 19:43:59 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 19:43:59 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 19:43:59 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 19:43:59 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 19:43:59 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 19:43:59 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 19:43:59 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 19:43:59 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 19:43:59 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 19:43:59 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 19:43:59 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 19:43:59 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 19:43:59 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 19:43:59 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 19:43:59 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 19:43:59 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 19:43:59 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 19:43:59 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 19:43:59 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 19:43:59 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 19:43:59 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 19:43:59 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 19:43:59 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 19:43:59 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 19:43:59 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 19:43:59 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 19:43:59 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 19:43:59 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 19:43:59 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 19:43:59 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 19:43:59 | INFO     | splitter             | ======================================================================
+2026-08-04 19:43:59 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 19:43:59 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 19:43:59 | INFO     | splitter             | ======================================================================
+2026-08-04 20:43:40 | INFO     | splitter             | ===== RUN 20260804-204337-c95509 | pid=23936 | started 2026-08-04 20:43:40 =====
+2026-08-04 20:43:40 | INFO     | splitter             | ======================================================================
+2026-08-04 20:43:40 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 20:43:40 | INFO     | splitter             | ======================================================================
+2026-08-04 20:43:40 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 20:43:40 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 20:43:40 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 20:43:40 | INFO     | splitter             | Random seed    : 42
+2026-08-04 20:43:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:43:40 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 20:43:40 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 20:43:40 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 20:43:40 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 20:43:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:43:40 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 20:43:40 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 20:43:40 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 20:43:40 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 20:43:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:43:40 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 20:43:40 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 20:43:40 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 20:43:40 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 20:43:40 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 20:43:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:43:40 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 20:43:40 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 20:43:40 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 20:43:40 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 20:43:40 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 20:43:40 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 20:43:40 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:43:40 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 20:43:41 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 20:43:41 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 20:43:41 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 20:43:41 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:43:41 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 20:43:41 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 20:43:41 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 20:43:41 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 20:43:41 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:43:41 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 20:43:41 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 20:43:41 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 20:43:41 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 20:43:41 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 20:43:41 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 20:43:41 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 20:43:41 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:43:41 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 20:43:41 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 20:43:41 | INFO     | splitter             | ======================================================================
+2026-08-04 20:43:41 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 20:43:41 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 20:43:41 | INFO     | splitter             | ======================================================================
+2026-08-04 20:48:02 | INFO     | splitter             | ===== RUN 20260804-204759-229d57 | pid=20292 | started 2026-08-04 20:48:02 =====
+2026-08-04 20:48:02 | INFO     | splitter             | ======================================================================
+2026-08-04 20:48:02 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 20:48:02 | INFO     | splitter             | ======================================================================
+2026-08-04 20:48:02 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 20:48:02 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 20:48:02 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 20:48:02 | INFO     | splitter             | Random seed    : 42
+2026-08-04 20:48:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:48:02 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 20:48:02 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 20:48:02 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 20:48:02 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 20:48:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:48:02 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 20:48:02 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 20:48:02 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 20:48:02 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 20:48:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:48:02 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 20:48:02 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 20:48:02 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 20:48:02 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 20:48:02 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 20:48:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:48:02 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 20:48:02 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 20:48:02 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 20:48:02 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 20:48:02 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 20:48:02 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 20:48:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:48:02 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 20:48:02 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 20:48:02 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 20:48:02 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 20:48:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:48:02 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 20:48:02 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 20:48:02 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 20:48:02 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 20:48:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:48:02 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 20:48:02 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 20:48:02 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 20:48:02 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 20:48:02 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 20:48:02 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 20:48:02 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 20:48:02 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 20:48:02 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 20:48:03 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 20:48:03 | INFO     | splitter             | ======================================================================
+2026-08-04 20:48:03 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 20:48:03 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 20:48:03 | INFO     | splitter             | ======================================================================
+2026-08-04 21:08:44 | INFO     | splitter             | ===== RUN 20260804-210841-a57669 | pid=27220 | started 2026-08-04 21:08:44 =====
+2026-08-04 21:08:44 | INFO     | splitter             | ======================================================================
+2026-08-04 21:08:44 | INFO     | splitter             | DriftSentinel — Data Splitter
+2026-08-04 21:08:44 | INFO     | splitter             | ======================================================================
+2026-08-04 21:08:44 | INFO     | splitter             | Strategy       : patient-level entry-cohort split (NOT temporal)
+2026-08-04 21:08:44 | INFO     | splitter             | Ordering       : first encounter_id per patient (ascending)
+2026-08-04 21:08:44 | INFO     | splitter             | Ratios         : train=0.6 / val=0.2 / test=0.2
+2026-08-04 21:08:44 | INFO     | splitter             | Random seed    : 42
+2026-08-04 21:08:44 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 21:08:44 | INFO     | splitter             | Step 1: Patient ordering by first encounter_id
+2026-08-04 21:08:44 | INFO     | splitter             | Total unique patients : 71,518
+2026-08-04 21:08:44 | INFO     | splitter             | First patient enc_id  : 12,522
+2026-08-04 21:08:44 | INFO     | splitter             | Last patient enc_id   : 443,867,222
+2026-08-04 21:08:44 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 21:08:44 | INFO     | splitter             | Step 2: Computing patient-level split cutoffs
+2026-08-04 21:08:44 | INFO     | splitter             | Train patients : 42,910 (60.0%)
+2026-08-04 21:08:44 | INFO     | splitter             | Val patients   : 14,303   (20.0%)
+2026-08-04 21:08:44 | INFO     | splitter             | Test patients  : 14,305   (20.0%)
+2026-08-04 21:08:44 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 21:08:44 | INFO     | splitter             | Step 3: Patient leakage verification
+2026-08-04 21:08:44 | INFO     | splitter             | Train ∩ Val  : 0  (must be 0)
+2026-08-04 21:08:44 | INFO     | splitter             | Train ∩ Test : 0  (must be 0)
+2026-08-04 21:08:44 | INFO     | splitter             | Val   ∩ Test : 0  (must be 0)
+2026-08-04 21:08:44 | INFO     | splitter             | Patient leakage check — PASSED
+2026-08-04 21:08:44 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 21:08:44 | INFO     | splitter             | Step 4: Row assignment to splits
+2026-08-04 21:08:44 | INFO     | splitter             | Train rows : 63,492  (62.4%)
+2026-08-04 21:08:44 | INFO     | splitter             | Val rows   : 20,949   (20.6%)
+2026-08-04 21:08:44 | INFO     | splitter             | Test rows  : 17,325   (17.0%)
+2026-08-04 21:08:44 | INFO     | splitter             | Total      : 101,766 / 101,766 (all rows accounted: True)
+2026-08-04 21:08:44 | INFO     | splitter             | Row count integrity — PASSED
+2026-08-04 21:08:44 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 21:08:44 | INFO     | splitter             | Step 5: Preserving encounter_id order within splits
+2026-08-04 21:08:44 | INFO     | splitter             | Train enc_id range : 12,522 — 443,847,176
+2026-08-04 21:08:44 | INFO     | splitter             | Val   enc_id range : 162,291,804 — 443,857,166
+2026-08-04 21:08:44 | INFO     | splitter             | Test  enc_id range : 241,367,706 — 443,867,222
+2026-08-04 21:08:44 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 21:08:44 | INFO     | splitter             | Step 6: Target distribution across splits
+2026-08-04 21:08:44 | INFO     | splitter             |   train  : NO=51.0%  >30=37.0%  <30=12.0%
+2026-08-04 21:08:44 | INFO     | splitter             |   val    : NO=52.4%  >30=37.1%  <30=10.6%
+2026-08-04 21:08:44 | INFO     | splitter             |   test   : NO=66.4%  >30=24.8%  <30=8.8%
+2026-08-04 21:08:44 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 21:08:44 | INFO     | splitter             | Step 7: Distributional shift across splits (drift simulation check)
+2026-08-04 21:08:44 | INFO     | splitter             |   time_in_hospital          train_mean=4.528  val_mean=4.261 (Δ=0.267)  test_mean=4.074 (Δ=0.454)
+2026-08-04 21:08:44 | INFO     | splitter             |   num_lab_procedures        train_mean=42.860  val_mean=44.850 (Δ=1.990)  test_mean=41.837 (Δ=1.024)
+2026-08-04 21:08:44 | INFO     | splitter             |   num_medications           train_mean=15.649  val_mean=16.654 (Δ=1.005)  test_mean=16.623 (Δ=0.975)
+2026-08-04 21:08:44 | INFO     | splitter             |   number_inpatient          train_mean=0.723  val_mean=0.598 (Δ=0.125)  test_mean=0.359 (Δ=0.364)
+2026-08-04 21:08:44 | INFO     | splitter             |   number_emergency          train_mean=0.191  val_mean=0.247 (Δ=0.056)  test_mean=0.163 (Δ=0.028)
+2026-08-04 21:08:44 | INFO     | splitter             |   number_outpatient         train_mean=0.303  val_mean=0.562 (Δ=0.259)  test_mean=0.380 (Δ=0.077)
+2026-08-04 21:08:44 | INFO     | splitter             | --------------------------------------------------
+2026-08-04 21:08:44 | INFO     | splitter             | Step 8: Saving split index artifacts
+2026-08-04 21:08:45 | INFO     | splitter             | Split index saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\split_index.json
+2026-08-04 21:08:45 | INFO     | splitter             | ======================================================================
+2026-08-04 21:08:45 | INFO     | splitter             | Splitter completed successfully
+2026-08-04 21:08:45 | INFO     | splitter             | Artifacts saved to: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts
+2026-08-04 21:08:45 | INFO     | splitter             | ======================================================================

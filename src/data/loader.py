@@ -16,7 +16,15 @@ from src.monitoring.logger import get_logger
 
 logger = get_logger("loader")
 
-DATA_DIR = Path(r"C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital")
+# Tier 2C.6 reproducibility: this was a HARDCODED ABSOLUTE PATH to one
+# developer's machine, so `pipeline.py` did not reproduce anything from raw
+# data on a clean clone -- it read from and wrote to a directory that exists
+# nowhere else. On Linux CI the same literal resolves to a RELATIVE folder
+# whose name contains backslashes, so artifacts land somewhere harmless-
+# looking and the run still 'succeeds'. It worked on exactly one machine,
+# which is why nothing caught it. Now derived from this file's location.
+ROOT = Path(__file__).resolve().parents[2]
+DATA_DIR = ROOT / "data" / "raw" / "diabetes_hospital"
 
 SENTINEL_VALUE = "?"
 EXPECTED_ROWS  = 101_766

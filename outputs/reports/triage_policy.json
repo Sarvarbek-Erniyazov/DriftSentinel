@@ -1,0 +1,609 @@
+{
+  "phase": "2B.3",
+  "title": "Uncertainty-gated triage vs a matched-budget trivial baseline",
+  "plan_premise_no_longer_holds": {
+    "plan_said": "mean set size 1.679 at 90% coverage, abstains on ~68%",
+    "measured_now": "mean set size 1.004, both-label share 0.005",
+    "why": "that figure was measured under the MERGED target (46.1% prevalence); under the 30-day target (11.2%) the model is confidently negative for almost everyone"
+  },
+  "threshold": 0.12,
+  "calibration": {
+    "n": 10367,
+    "patient_recovery": "OK: verified against the label sequence (14,303 patients / 20,949 rows)",
+    "protocol": "patient-disjoint half of val (Tier 2A.4)"
+  },
+  "coverage_sweep": {
+    "0.1": {
+      "target_coverage": 0.9,
+      "quantile": 0.55172,
+      "review_rate": 0.0038,
+      "regions": {
+        "routine": {
+          "n": 17253,
+          "share": 0.9958,
+          "prevalence": 0.0868,
+          "error_rate": 0.0868
+        },
+        "intervention": {
+          "n": 6,
+          "share": 0.0003,
+          "prevalence": 0.6667,
+          "error_rate": 0.3333
+        },
+        "review": {
+          "n": 66,
+          "share": 0.0038,
+          "prevalence": 0.3788,
+          "error_rate": 0.6212
+        },
+        "automated_subset": {
+          "n": 17259,
+          "share": 0.9962,
+          "precision": 0.6667,
+          "recall": 0.0027,
+          "error_rate": 0.0869,
+          "f1": 0.0053,
+          "n_positive_decisions": 6,
+          "degenerate_no_positive_decisions": false,
+          "degenerate_negligible_recall": true,
+          "degenerate_reason": null
+        },
+        "at_risk_sent_to_review": {
+          "n": 25,
+          "share_of_all_positives": 0.0164
+        }
+      }
+    },
+    "0.05": {
+      "target_coverage": 0.95,
+      "quantile": 0.88425,
+      "review_rate": 0.2736,
+      "regions": {
+        "routine": {
+          "n": 12585,
+          "share": 0.7264,
+          "prevalence": 0.0682,
+          "error_rate": 0.0682
+        },
+        "intervention": {
+          "n": 0
+        },
+        "review": {
+          "n": 4740,
+          "share": 0.2736,
+          "prevalence": 0.1411,
+          "error_rate": 0.5289
+        },
+        "automated_subset": {
+          "n": 12585,
+          "share": 0.7264,
+          "precision": 0.0,
+          "recall": 0.0,
+          "error_rate": 0.0682,
+          "f1": 0.0,
+          "n_positive_decisions": 0,
+          "degenerate_no_positive_decisions": true,
+          "degenerate_negligible_recall": true,
+          "degenerate_reason": "the automated subset contains ZERO positive decisions: every possibly-at-risk patient was routed to review and the remainder auto-labelled negative. Low error here is an artifact of not deciding, not evidence of a better policy."
+        },
+        "at_risk_sent_to_review": {
+          "n": 669,
+          "share_of_all_positives": 0.4381
+        }
+      }
+    },
+    "0.02": {
+      "target_coverage": 0.98,
+      "quantile": 0.92704,
+      "review_rate": 0.6929,
+      "regions": {
+        "routine": {
+          "n": 5321,
+          "share": 0.3071,
+          "prevalence": 0.0487,
+          "error_rate": 0.0487
+        },
+        "intervention": {
+          "n": 0
+        },
+        "review": {
+          "n": 12004,
+          "share": 0.6929,
+          "prevalence": 0.1056,
+          "error_rate": 0.2587
+        },
+        "automated_subset": {
+          "n": 5321,
+          "share": 0.3071,
+          "precision": 0.0,
+          "recall": 0.0,
+          "error_rate": 0.0487,
+          "f1": 0.0,
+          "n_positive_decisions": 0,
+          "degenerate_no_positive_decisions": true,
+          "degenerate_negligible_recall": true,
+          "degenerate_reason": "the automated subset contains ZERO positive decisions: every possibly-at-risk patient was routed to review and the remainder auto-labelled negative. Low error here is an artifact of not deciding, not evidence of a better policy."
+        },
+        "at_risk_sent_to_review": {
+          "n": 1268,
+          "share_of_all_positives": 0.8304
+        }
+      }
+    },
+    "0.01": {
+      "target_coverage": 0.99,
+      "quantile": 0.94332,
+      "review_rate": 0.844,
+      "regions": {
+        "routine": {
+          "n": 2702,
+          "share": 0.156,
+          "prevalence": 0.0385,
+          "error_rate": 0.0385
+        },
+        "intervention": {
+          "n": 0
+        },
+        "review": {
+          "n": 14623,
+          "share": 0.844,
+          "prevalence": 0.0973,
+          "error_rate": 0.223
+        },
+        "automated_subset": {
+          "n": 2702,
+          "share": 0.156,
+          "precision": 0.0,
+          "recall": 0.0,
+          "error_rate": 0.0385,
+          "f1": 0.0,
+          "n_positive_decisions": 0,
+          "degenerate_no_positive_decisions": true,
+          "degenerate_negligible_recall": true,
+          "degenerate_reason": "the automated subset contains ZERO positive decisions: every possibly-at-risk patient was routed to review and the remainder auto-labelled negative. Low error here is an artifact of not deciding, not evidence of a better policy."
+        },
+        "at_risk_sent_to_review": {
+          "n": 1423,
+          "share_of_all_positives": 0.9319
+        }
+      }
+    },
+    "0.005": {
+      "target_coverage": 0.995,
+      "quantile": 0.94332,
+      "review_rate": 0.844,
+      "regions": {
+        "routine": {
+          "n": 2702,
+          "share": 0.156,
+          "prevalence": 0.0385,
+          "error_rate": 0.0385
+        },
+        "intervention": {
+          "n": 0
+        },
+        "review": {
+          "n": 14623,
+          "share": 0.844,
+          "prevalence": 0.0973,
+          "error_rate": 0.223
+        },
+        "automated_subset": {
+          "n": 2702,
+          "share": 0.156,
+          "precision": 0.0,
+          "recall": 0.0,
+          "error_rate": 0.0385,
+          "f1": 0.0,
+          "n_positive_decisions": 0,
+          "degenerate_no_positive_decisions": true,
+          "degenerate_negligible_recall": true,
+          "degenerate_reason": "the automated subset contains ZERO positive decisions: every possibly-at-risk patient was routed to review and the remainder auto-labelled negative. Low error here is an artifact of not deciding, not evidence of a better policy."
+        },
+        "at_risk_sent_to_review": {
+          "n": 1423,
+          "share_of_all_positives": 0.9319
+        }
+      }
+    },
+    "0.002": {
+      "target_coverage": 0.998,
+      "quantile": 0.9684,
+      "review_rate": 0.9952,
+      "regions": {
+        "routine": {
+          "n": 83,
+          "share": 0.0048,
+          "prevalence": 0.0482,
+          "error_rate": 0.0482
+        },
+        "intervention": {
+          "n": 0
+        },
+        "review": {
+          "n": 17242,
+          "share": 0.9952,
+          "prevalence": 0.0883,
+          "error_rate": 0.1949
+        },
+        "automated_subset": {
+          "n": 83,
+          "share": 0.0048,
+          "precision": 0.0,
+          "recall": 0.0,
+          "error_rate": 0.0482,
+          "f1": 0.0,
+          "n_positive_decisions": 0,
+          "degenerate_no_positive_decisions": true,
+          "degenerate_negligible_recall": true,
+          "degenerate_reason": "the automated subset contains ZERO positive decisions: every possibly-at-risk patient was routed to review and the remainder auto-labelled negative. Low error here is an artifact of not deciding, not evidence of a better policy."
+        },
+        "at_risk_sent_to_review": {
+          "n": 1523,
+          "share_of_all_positives": 0.9974
+        }
+      }
+    }
+  },
+  "matched_budget_baselines": {
+    "0.1": {
+      "routine": {
+        "n": 14477,
+        "share": 0.8356,
+        "prevalence": 0.0727,
+        "error_rate": 0.0727
+      },
+      "intervention": {
+        "n": 2782,
+        "share": 0.1606,
+        "prevalence": 0.1697,
+        "error_rate": 0.8303
+      },
+      "review": {
+        "n": 66,
+        "share": 0.0038,
+        "prevalence": 0.0455,
+        "error_rate": 0.0455
+      },
+      "automated_subset": {
+        "n": 17259,
+        "share": 0.9962,
+        "precision": 0.1697,
+        "recall": 0.3097,
+        "error_rate": 0.1948,
+        "f1": 0.2192,
+        "n_positive_decisions": 2782,
+        "degenerate_no_positive_decisions": false,
+        "degenerate_negligible_recall": false,
+        "degenerate_reason": null
+      },
+      "at_risk_sent_to_review": {
+        "n": 3,
+        "share_of_all_positives": 0.002
+      }
+    },
+    "0.05": {
+      "routine": {
+        "n": 10266,
+        "share": 0.5926,
+        "prevalence": 0.062,
+        "error_rate": 0.062
+      },
+      "intervention": {
+        "n": 2319,
+        "share": 0.1339,
+        "prevalence": 0.1811,
+        "error_rate": 0.8189
+      },
+      "review": {
+        "n": 4740,
+        "share": 0.2736,
+        "prevalence": 0.0994,
+        "error_rate": 0.1751
+      },
+      "automated_subset": {
+        "n": 12585,
+        "share": 0.7264,
+        "precision": 0.1811,
+        "recall": 0.3977,
+        "error_rate": 0.2014,
+        "f1": 0.2489,
+        "n_positive_decisions": 2319,
+        "degenerate_no_positive_decisions": false,
+        "degenerate_negligible_recall": false,
+        "degenerate_reason": null
+      },
+      "at_risk_sent_to_review": {
+        "n": 471,
+        "share_of_all_positives": 0.3084
+      }
+    },
+    "0.02": {
+      "routine": {
+        "n": 4290,
+        "share": 0.2476,
+        "prevalence": 0.0452,
+        "error_rate": 0.0452
+      },
+      "intervention": {
+        "n": 1031,
+        "share": 0.0595,
+        "prevalence": 0.2095,
+        "error_rate": 0.7905
+      },
+      "review": {
+        "n": 12004,
+        "share": 0.6929,
+        "prevalence": 0.0931,
+        "error_rate": 0.1963
+      },
+      "automated_subset": {
+        "n": 5321,
+        "share": 0.3071,
+        "precision": 0.2095,
+        "recall": 0.5268,
+        "error_rate": 0.1896,
+        "f1": 0.2998,
+        "n_positive_decisions": 1031,
+        "degenerate_no_positive_decisions": false,
+        "degenerate_negligible_recall": false,
+        "degenerate_reason": null
+      },
+      "at_risk_sent_to_review": {
+        "n": 1117,
+        "share_of_all_positives": 0.7315
+      }
+    },
+    "0.01": {
+      "routine": {
+        "n": 1776,
+        "share": 0.1025,
+        "prevalence": 0.0338,
+        "error_rate": 0.0338
+      },
+      "intervention": {
+        "n": 927,
+        "share": 0.0535,
+        "prevalence": 0.2179,
+        "error_rate": 0.7821
+      },
+      "review": {
+        "n": 14622,
+        "share": 0.844,
+        "prevalence": 0.0865,
+        "error_rate": 0.1764
+      },
+      "automated_subset": {
+        "n": 2703,
+        "share": 0.156,
+        "precision": 0.2179,
+        "recall": 0.771,
+        "error_rate": 0.2904,
+        "f1": 0.3398,
+        "n_positive_decisions": 927,
+        "degenerate_no_positive_decisions": false,
+        "degenerate_negligible_recall": false,
+        "degenerate_reason": null
+      },
+      "at_risk_sent_to_review": {
+        "n": 1265,
+        "share_of_all_positives": 0.8284
+      }
+    },
+    "0.005": {
+      "routine": {
+        "n": 1776,
+        "share": 0.1025,
+        "prevalence": 0.0338,
+        "error_rate": 0.0338
+      },
+      "intervention": {
+        "n": 927,
+        "share": 0.0535,
+        "prevalence": 0.2179,
+        "error_rate": 0.7821
+      },
+      "review": {
+        "n": 14622,
+        "share": 0.844,
+        "prevalence": 0.0865,
+        "error_rate": 0.1764
+      },
+      "automated_subset": {
+        "n": 2703,
+        "share": 0.156,
+        "precision": 0.2179,
+        "recall": 0.771,
+        "error_rate": 0.2904,
+        "f1": 0.3398,
+        "n_positive_decisions": 927,
+        "degenerate_no_positive_decisions": false,
+        "degenerate_negligible_recall": false,
+        "degenerate_reason": null
+      },
+      "at_risk_sent_to_review": {
+        "n": 1265,
+        "share_of_all_positives": 0.8284
+      }
+    },
+    "0.002": {
+      "routine": {
+        "n": 0
+      },
+      "intervention": {
+        "n": 83,
+        "share": 0.0048,
+        "prevalence": 0.3855,
+        "error_rate": 0.6145
+      },
+      "review": {
+        "n": 17242,
+        "share": 0.9952,
+        "prevalence": 0.0867,
+        "error_rate": 0.1922
+      },
+      "automated_subset": {
+        "n": 83,
+        "share": 0.0048,
+        "precision": 0.3855,
+        "recall": 1.0,
+        "error_rate": 0.6145,
+        "f1": 0.5565,
+        "n_positive_decisions": 83,
+        "degenerate_no_positive_decisions": false,
+        "degenerate_negligible_recall": false,
+        "degenerate_reason": null
+      },
+      "at_risk_sent_to_review": {
+        "n": 1495,
+        "share_of_all_positives": 0.979
+      }
+    }
+  },
+  "falsification_arm": {
+    "design": "10% of test rows have their labels replaced with pure noise; a working uncertainty gate must route these to review more often than clean rows",
+    "alpha_used": 0.01,
+    "conformal_gate": {
+      "review_rate_corrupted": 0.8401,
+      "review_rate_clean": 0.8445,
+      "lift": -0.0044
+    },
+    "distance_baseline": {
+      "review_rate_corrupted": 0.8326,
+      "review_rate_clean": 0.8453,
+      "lift": -0.0128
+    },
+    "gate_can_fire": false,
+    "note": "label corruption is invisible to any gate that sees only x and p(x) \u2014 neither policy observes the label. A near-zero lift for BOTH is therefore the expected and correct result, and it says something important: predictive uncertainty from this model cannot detect label noise, so 'route the uncertain cases' does not mean 'route the cases the model gets wrong'."
+  },
+  "verdict": {
+    "max_review_rate_reachable": 0.9952,
+    "degenerate_alphas_excluded": [
+      0.1,
+      0.05,
+      0.02,
+      0.01,
+      0.005,
+      0.002
+    ],
+    "conformal_beats_matched_budget_baseline": false,
+    "comparisons": [
+      {
+        "alpha": 0.1,
+        "review_rate": 0.0038,
+        "conformal_auto_f1": 0.0053,
+        "baseline_auto_f1": 0.2192,
+        "f1_conformal_minus_baseline": -0.2139,
+        "conformal_auto_error": 0.0869,
+        "baseline_auto_error": 0.1948,
+        "conformal_minus_baseline": -0.1079,
+        "error_rate_is_gameable_note": "error rate falls when a policy abstains from positive decisions; F1 is the primary comparison for that reason",
+        "conformal_review_error": 0.6212,
+        "baseline_review_error": 0.0455,
+        "conformal_degenerate": true,
+        "baseline_degenerate": false,
+        "conformal_positive_decisions": 6,
+        "baseline_positive_decisions": 2782,
+        "at_risk_sent_to_review": 0.0164
+      },
+      {
+        "alpha": 0.05,
+        "review_rate": 0.2736,
+        "conformal_auto_f1": 0.0,
+        "baseline_auto_f1": 0.2489,
+        "f1_conformal_minus_baseline": -0.2489,
+        "conformal_auto_error": 0.0682,
+        "baseline_auto_error": 0.2014,
+        "conformal_minus_baseline": -0.1332,
+        "error_rate_is_gameable_note": "error rate falls when a policy abstains from positive decisions; F1 is the primary comparison for that reason",
+        "conformal_review_error": 0.5289,
+        "baseline_review_error": 0.1751,
+        "conformal_degenerate": true,
+        "baseline_degenerate": false,
+        "conformal_positive_decisions": 0,
+        "baseline_positive_decisions": 2319,
+        "at_risk_sent_to_review": 0.4381
+      },
+      {
+        "alpha": 0.02,
+        "review_rate": 0.6929,
+        "conformal_auto_f1": 0.0,
+        "baseline_auto_f1": 0.2998,
+        "f1_conformal_minus_baseline": -0.2998,
+        "conformal_auto_error": 0.0487,
+        "baseline_auto_error": 0.1896,
+        "conformal_minus_baseline": -0.1409,
+        "error_rate_is_gameable_note": "error rate falls when a policy abstains from positive decisions; F1 is the primary comparison for that reason",
+        "conformal_review_error": 0.2587,
+        "baseline_review_error": 0.1963,
+        "conformal_degenerate": true,
+        "baseline_degenerate": false,
+        "conformal_positive_decisions": 0,
+        "baseline_positive_decisions": 1031,
+        "at_risk_sent_to_review": 0.8304
+      },
+      {
+        "alpha": 0.01,
+        "review_rate": 0.844,
+        "conformal_auto_f1": 0.0,
+        "baseline_auto_f1": 0.3398,
+        "f1_conformal_minus_baseline": -0.3398,
+        "conformal_auto_error": 0.0385,
+        "baseline_auto_error": 0.2904,
+        "conformal_minus_baseline": -0.2519,
+        "error_rate_is_gameable_note": "error rate falls when a policy abstains from positive decisions; F1 is the primary comparison for that reason",
+        "conformal_review_error": 0.223,
+        "baseline_review_error": 0.1764,
+        "conformal_degenerate": true,
+        "baseline_degenerate": false,
+        "conformal_positive_decisions": 0,
+        "baseline_positive_decisions": 927,
+        "at_risk_sent_to_review": 0.9319
+      },
+      {
+        "alpha": 0.005,
+        "review_rate": 0.844,
+        "conformal_auto_f1": 0.0,
+        "baseline_auto_f1": 0.3398,
+        "f1_conformal_minus_baseline": -0.3398,
+        "conformal_auto_error": 0.0385,
+        "baseline_auto_error": 0.2904,
+        "conformal_minus_baseline": -0.2519,
+        "error_rate_is_gameable_note": "error rate falls when a policy abstains from positive decisions; F1 is the primary comparison for that reason",
+        "conformal_review_error": 0.223,
+        "baseline_review_error": 0.1764,
+        "conformal_degenerate": true,
+        "baseline_degenerate": false,
+        "conformal_positive_decisions": 0,
+        "baseline_positive_decisions": 927,
+        "at_risk_sent_to_review": 0.9319
+      },
+      {
+        "alpha": 0.002,
+        "review_rate": 0.9952,
+        "conformal_auto_f1": 0.0,
+        "baseline_auto_f1": 0.5565,
+        "f1_conformal_minus_baseline": -0.5565,
+        "conformal_auto_error": 0.0482,
+        "baseline_auto_error": 0.6145,
+        "conformal_minus_baseline": -0.5663,
+        "error_rate_is_gameable_note": "error rate falls when a policy abstains from positive decisions; F1 is the primary comparison for that reason",
+        "conformal_review_error": 0.1949,
+        "baseline_review_error": 0.1922,
+        "conformal_degenerate": true,
+        "baseline_degenerate": false,
+        "conformal_positive_decisions": 0,
+        "baseline_positive_decisions": 83,
+        "at_risk_sent_to_review": 0.9974
+      }
+    ],
+    "finding": "Uncertainty does NOT deserve to gate the decision on this data. Under the 30-day target the model is confidently negative for almost everyone, so conformal sets are singletons and the ambiguity gate is nearly inert; pushing coverage high enough to produce a usable review rate does not beat a trivial |p - threshold| rule at matched budget. The falsification arm shows why this is a property of the problem rather than a broken gate: predictive uncertainty cannot see label noise, so 'uncertain' and 'wrong' are not the same set. The honest recommendation is Tier 1.3's budget-capped threshold, which achieves the same triage with one number and no conformal machinery.",
+    "consequence_for_audit_F12": "F12 said conformal prediction is decorative because nothing consumes it. The answer is not to bolt on a consumer: on this data and this target, nothing SHOULD consume it. Conformal is retained as a reported diagnostic with honest held-out coverage (Tier 2A.4) and as the vehicle for the ACI comparison (Tier 2B.1), not as a decision gate it does not earn."
+  },
+  "reproducibility": {
+    "seed": 42,
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

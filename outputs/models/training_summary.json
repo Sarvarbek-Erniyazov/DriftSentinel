@@ -2,8 +2,8 @@
   "lgbm": {
     "model_name": "lgbm_v1",
     "model_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\outputs\\models\\lgbm_v1.pkl",
-    "best_iteration": 173,
-    "train_time_s": 2.6,
+    "best_iteration": 126,
+    "train_time_s": 3.88,
     "params": {
       "objective": "binary",
       "metric": "auc",
@@ -18,27 +18,29 @@
       "reg_lambda": 0.1,
       "n_estimators": 500,
       "random_state": 42,
+      "deterministic": true,
+      "force_row_wise": true,
       "n_jobs": -1,
       "verbose": -1
     },
     "cv": {
-      "cv_auc_mean": 0.7186,
-      "cv_auc_std": 0.0041,
-      "cv_f1_mean": 0.6522,
-      "cv_f1_std": 0.0056,
+      "cv_auc_mean": 0.6572,
+      "cv_auc_std": 0.0086,
+      "cv_f1_mean": 0.0234,
+      "cv_f1_std": 0.0019,
       "cv_auc_folds": [
-        0.7149,
-        0.7179,
-        0.7136,
-        0.7238,
-        0.7227
+        0.6573,
+        0.6599,
+        0.6711,
+        0.6524,
+        0.6452
       ]
     },
     "val_metrics": {
-      "val_auc": 0.6865,
-      "val_f1": 0.6624,
-      "val_precision": 0.5642,
-      "val_recall": 0.8021
+      "val_auc": 0.6617,
+      "val_f1": 0.0134,
+      "val_precision": 0.5556,
+      "val_recall": 0.0068
     },
     "n_features": 53,
     "feature_cols": [
@@ -100,7 +102,7 @@
   "logreg": {
     "model_name": "logreg_v1",
     "model_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\outputs\\models\\logreg_v1.pkl",
-    "train_time_s": 3.56,
+    "train_time_s": 0.39,
     "params": {
       "C": 0.1,
       "max_iter": 1000,
@@ -109,23 +111,23 @@
       "solver": "lbfgs"
     },
     "cv": {
-      "cv_auc_mean": 0.6703,
-      "cv_auc_std": 0.0038,
-      "cv_f1_mean": 0.588,
-      "cv_f1_std": 0.0026,
+      "cv_auc_mean": 0.6395,
+      "cv_auc_std": 0.0097,
+      "cv_f1_mean": 0.0,
+      "cv_f1_std": 0.0,
       "cv_auc_folds": [
-        0.6704,
-        0.6691,
-        0.6643,
-        0.6719,
-        0.6758
+        0.6452,
+        0.6291,
+        0.6548,
+        0.6297,
+        0.6385
       ]
     },
     "val_metrics": {
-      "val_auc": 0.6451,
-      "val_f1": 0.6066,
-      "val_precision": 0.5687,
-      "val_recall": 0.6498
+      "val_auc": 0.6319,
+      "val_f1": 0.0,
+      "val_precision": 0.0,
+      "val_recall": 0.0
     },
     "n_features": 53,
     "feature_cols": [

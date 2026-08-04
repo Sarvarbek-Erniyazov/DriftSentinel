@@ -1,0 +1,78 @@
+2026-08-04 10:44:09 | INFO     | attacks              | ===== RUN 20260804-104409-74a3ef | pid=30220 | started 2026-08-04 10:44:09 =====
+2026-08-04 10:44:09 | INFO     | attacks              | ======================================================================
+2026-08-04 10:44:09 | INFO     | attacks              | DriftSentinel — Adversarial Attack Generator
+2026-08-04 10:44:09 | INFO     | attacks              | ======================================================================
+2026-08-04 10:44:09 | INFO     | attacks              |   Test samples      : 17,325
+2026-08-04 10:44:09 | INFO     | attacks              |   Pos rate          : 0.0881
+2026-08-04 10:44:09 | INFO     | attacks              |   Mean proba (orig) : 0.0961
+2026-08-04 10:44:09 | INFO     | attacks              |   Threshold         : 0.1533
+2026-08-04 10:44:09 | INFO     | attacks              | 
+======================================================================
+2026-08-04 10:44:09 | INFO     | attacks              | Running attacks on test split
+2026-08-04 10:44:09 | INFO     | attacks              | ======================================================================
+2026-08-04 10:44:09 | INFO     | attacks              | 
+  Attack           ASR   Flipped     ΔAUC      ΔF1   Δproba
+2026-08-04 10:44:09 | INFO     | attacks              |   ----------------------------------------------------------
+2026-08-04 10:44:09 | INFO     | attacks              |   Running FGSM...
+2026-08-04 10:44:09 | INFO     | attacks              |   FGSM          0.0071        19  -0.0003  +0.0010  -0.0004
+2026-08-04 10:44:09 | INFO     | attacks              |   Running PGD...
+2026-08-04 10:44:10 | INFO     | attacks              |   PGD           0.0093        25  +0.0005  +0.0008  -0.0003
+2026-08-04 10:44:10 | INFO     | attacks              |   Running RANDOM...
+2026-08-04 10:44:10 | INFO     | attacks              |   RANDOM        0.1302       350  -0.0441  -0.0280  +0.0337
+2026-08-04 10:44:10 | INFO     | attacks              |   Running MASK_k5...
+2026-08-04 10:44:10 | INFO     | attacks              |   MASK_k5       0.4156      1117  -0.0465  -0.0388  -0.0058
+2026-08-04 10:44:10 | INFO     | attacks              |   Running MASK_k10...
+2026-08-04 10:44:10 | INFO     | attacks              |   MASK_k10      0.4442      1194  -0.0482  -0.0433  -0.0028
+2026-08-04 10:44:10 | INFO     | attacks              |   Running BOUNDARY...
+2026-08-04 10:46:30 | INFO     | attacks              |   BOUNDARY      0.0413       111  -0.0006  -0.0004  -0.0006
+2026-08-04 10:46:30 | INFO     | attacks              | 
+======================================================================
+2026-08-04 10:46:30 | INFO     | attacks              | Attack Summary
+2026-08-04 10:46:30 | INFO     | attacks              | ======================================================================
+2026-08-04 10:46:30 | INFO     | attacks              |   Strongest attack  : MASK_k10 (ASR=0.4442)
+2026-08-04 10:46:30 | INFO     | attacks              |   Mean ASR          : 0.1746
+2026-08-04 10:46:30 | INFO     | attacks              |   Max AUC drop      : -0.0482
+2026-08-04 10:46:30 | INFO     | attacks              |   Attack report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\attack_report_test.json
+2026-08-04 10:46:30 | INFO     | attacks              |   Attack results CSV : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\attack_results_test.csv
+2026-08-04 10:46:30 | INFO     | attacks              | ======================================================================
+2026-08-04 10:46:30 | INFO     | attacks              | Next: robustness.py → defense.py
+2026-08-04 10:46:30 | INFO     | attacks              | ======================================================================
+2026-08-04 11:04:22 | INFO     | attacks              | ===== RUN 20260804-110421-31771f | pid=2176 | started 2026-08-04 11:04:22 =====
+2026-08-04 11:04:22 | INFO     | attacks              | ======================================================================
+2026-08-04 11:04:22 | INFO     | attacks              | DriftSentinel — Adversarial Attack Generator
+2026-08-04 11:04:22 | INFO     | attacks              | ======================================================================
+2026-08-04 11:04:22 | INFO     | attacks              |   Test samples      : 17,325
+2026-08-04 11:04:22 | INFO     | attacks              |   Pos rate          : 0.0881
+2026-08-04 11:04:22 | INFO     | attacks              |   Mean proba (orig) : 0.0961
+2026-08-04 11:04:22 | INFO     | attacks              |   Threshold         : 0.1533
+2026-08-04 11:04:22 | INFO     | attacks              | 
+======================================================================
+2026-08-04 11:04:22 | INFO     | attacks              | Running attacks on test split
+2026-08-04 11:04:22 | INFO     | attacks              | ======================================================================
+2026-08-04 11:04:22 | INFO     | attacks              | 
+  Attack           ASR   Flipped     ΔAUC      ΔF1   Δproba
+2026-08-04 11:04:22 | INFO     | attacks              |   ----------------------------------------------------------
+2026-08-04 11:04:22 | INFO     | attacks              |   Running FGSM...
+2026-08-04 11:04:22 | INFO     | attacks              |   FGSM          0.0074        20  -0.0005  +0.0010  -0.0004
+2026-08-04 11:04:22 | INFO     | attacks              |   Running PGD...
+2026-08-04 11:04:23 | INFO     | attacks              |   PGD           0.0086        23  -0.0000  +0.0002  -0.0003
+2026-08-04 11:04:23 | INFO     | attacks              |   Running RANDOM...
+2026-08-04 11:04:23 | INFO     | attacks              |   RANDOM        0.1302       350  -0.0441  -0.0280  +0.0337
+2026-08-04 11:04:23 | INFO     | attacks              |   Running MASK_k5...
+2026-08-04 11:04:23 | INFO     | attacks              |   MASK_k5       0.4156      1117  -0.0465  -0.0388  -0.0058
+2026-08-04 11:04:23 | INFO     | attacks              |   Running MASK_k10...
+2026-08-04 11:04:23 | INFO     | attacks              |   MASK_k10      0.4442      1194  -0.0482  -0.0433  -0.0028
+2026-08-04 11:04:23 | INFO     | attacks              |   Running BOUNDARY...
+2026-08-04 11:06:29 | INFO     | attacks              |   BOUNDARY      0.0413       111  -0.0006  -0.0004  -0.0006
+2026-08-04 11:06:29 | INFO     | attacks              | 
+======================================================================
+2026-08-04 11:06:29 | INFO     | attacks              | Attack Summary
+2026-08-04 11:06:29 | INFO     | attacks              | ======================================================================
+2026-08-04 11:06:29 | INFO     | attacks              |   Strongest attack  : MASK_k10 (ASR=0.4442)
+2026-08-04 11:06:29 | INFO     | attacks              |   Mean ASR          : 0.1745
+2026-08-04 11:06:29 | INFO     | attacks              |   Max AUC drop      : -0.0482
+2026-08-04 11:06:29 | INFO     | attacks              |   Attack report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\attack_report_test.json
+2026-08-04 11:06:29 | INFO     | attacks              |   Attack results CSV : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\attack_results_test.csv
+2026-08-04 11:06:29 | INFO     | attacks              | ======================================================================
+2026-08-04 11:06:29 | INFO     | attacks              | Next: robustness.py → defense.py
+2026-08-04 11:06:29 | INFO     | attacks              | ======================================================================

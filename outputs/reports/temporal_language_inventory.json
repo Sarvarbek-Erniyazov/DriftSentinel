@@ -1,0 +1,1153 @@
+{
+  "status": "INVENTORY_ONLY \u2014 no file was modified (Phase 0.5 applies it)",
+  "n_occurrences": 186,
+  "n_files": 17,
+  "per_pattern": {
+    "temporal": 116,
+    "over time": 6,
+    "drift began": 3,
+    "newer patients": 4,
+    "billing code": 10,
+    "demographics shift": 7,
+    "chronological": 34,
+    "time-based": 1,
+    "world keeps changing": 5
+  },
+  "per_file": {
+    "src/investigation/temporal_validity.py": 28,
+    "src/investigation/language_audit.py": 26,
+    "docs/PHASE_0_5_LANGUAGE_CHANGES.md": 21,
+    "docs/REMEDIATION_PLAN.md": 20,
+    "src/investigation/split_regimes.py": 20,
+    "configs/temporal_validity.yaml": 14,
+    "docs/AUDIT.md": 14,
+    "CLAUDE.md": 11,
+    "configs/split_regimes.yaml": 6,
+    "docs/01_eda_and_data_pipeline.md": 6,
+    "src/data/splitter.py": 6,
+    "docs/04_drift_detection.md": 4,
+    "configs/drift_config.yaml": 3,
+    "README.md": 2,
+    "docs/03_model_training.md": 2,
+    "src/pipelines/pipeline.py": 2,
+    "requirements.txt": 1
+  },
+  "occurrences": [
+    {
+      "file": "CLAUDE.md",
+      "line": 19,
+      "pattern": "temporal",
+      "text": "Evidence: `outputs/reports/temporal_validity.json`, `regime_random.json`,"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 24,
+      "pattern": "chronological",
+      "text": "| Is `encounter_id` ordering chronological? | **SUPPORTED.** Verified against three external anchors \u2014 troglitazone withdrawal (2000-03-21, all 3 uses in the lowest 0.12% of ranks, p=1.7e-09), ICD-9 V"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 25,
+      "pattern": "temporal",
+      "text": "| Is the **split** temporal? | **NO \u2014 entry-cohort split.** True even under verified chronology: sorting *patients* by *first* encounter puts an early entrant's later encounters in train |"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 29,
+      "pattern": "temporal",
+      "text": "**The original \"temporal split\" assumption was UNTESTED, not correct.** It"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 49,
+      "pattern": "billing code",
+      "text": "such as \"hospital billing codes changed\" or \"patient demographics shifted over"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 49,
+      "pattern": "demographics shift",
+      "text": "such as \"hospital billing codes changed\" or \"patient demographics shifted over"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 54,
+      "pattern": "temporal",
+      "text": "**Naming rule (Phase 0.5, surgical).** \"Temporal\" is earned ONLY where it refers"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 55,
+      "pattern": "temporal",
+      "text": "to `encounter_id` chronology \u2014 which Tier 0 verified \u2014 or to the `temporal`"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 60,
+      "pattern": "temporal",
+      "text": "**Two stories, both required.** Story A (the spine): initial temporal framing \u2192"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 62,
+      "pattern": "temporal",
+      "text": "Story B (additive): with chronology now evidenced, a genuine temporal-drift study"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 130,
+      "pattern": "temporal",
+      "text": "> initial temporal-drift framing \u2192 falsification testing \u2192 discovery of the"
+    },
+    {
+      "file": "README.md",
+      "line": 39,
+      "pattern": "billing code",
+      "text": "> attributed the shift to changing hospital billing codes and shifting patient"
+    },
+    {
+      "file": "README.md",
+      "line": 54,
+      "pattern": "temporal",
+      "text": "| **Split strategy** | Patient-level **entry-cohort** split \u2014 zero leakage, but *not* a temporal split (patients sorted by first `encounter_id`, so a 1999 entrant's 2008 encounters sit in train) |"
+    },
+    {
+      "file": "requirements.txt",
+      "line": 45,
+      "pattern": "temporal",
+      "text": "#    resolved it down to 2.4.6. `outputs/reports/temporal_validity.json` and"
+    },
+    {
+      "file": "configs/drift_config.yaml",
+      "line": 21,
+      "pattern": "temporal",
+      "text": "#     mean_ref < mean_prod it alarms; in the temporal regime mean_ref (0.185)"
+    },
+    {
+      "file": "configs/drift_config.yaml",
+      "line": 48,
+      "pattern": "temporal",
+      "text": "# temporal (-10.5% relative) both went undetected."
+    },
+    {
+      "file": "configs/drift_config.yaml",
+      "line": 59,
+      "pattern": "temporal",
+      "text": "#   temporal split                     : 1.00   <- was 0.00 (MISSED)"
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 4,
+      "pattern": "chronological",
+      "text": "# `encounter_id` ordering IS chronological (SUPPORTED) while the existing split"
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 10,
+      "pattern": "temporal",
+      "text": "n_seeds_deterministic: 20   # entry-cohort and temporal splits are deterministic;"
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 48,
+      "pattern": "temporal",
+      "text": "temporal:"
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 51,
+      "pattern": "temporal",
+      "text": "TRUE TEMPORAL SPLIT, newly defensible because Phase 0.1 verified"
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 52,
+      "pattern": "chronological",
+      "text": "chronological ordering against external clinical/regulatory anchors."
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 53,
+      "pattern": "chronological",
+      "text": "ENCOUNTERS are cut chronologically at the 60th and 80th percentiles of"
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 2,
+      "pattern": "temporal",
+      "text": "# Temporal validity of `encounter_id` ordering."
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 18,
+      "pattern": "chronological",
+      "text": "# so a chronological ordering places the step in the upper ranks."
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 76,
+      "pattern": "temporal",
+      "text": "encounters and perform NO temporal-trend analysis, so there is no"
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 93,
+      "pattern": "chronological",
+      "text": "under chronological ordering no V85 encounter may appear in the early"
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 143,
+      "pattern": "temporal",
+      "text": "- \"temporal\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 144,
+      "pattern": "over time",
+      "text": "- \"over time\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 145,
+      "pattern": "drift began",
+      "text": "- \"drift began\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 146,
+      "pattern": "newer patients",
+      "text": "- \"newer patients\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 147,
+      "pattern": "billing code",
+      "text": "- \"billing code\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 148,
+      "pattern": "demographics shift",
+      "text": "- \"demographics shift\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 149,
+      "pattern": "chronological",
+      "text": "- \"chronological\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 150,
+      "pattern": "time-based",
+      "text": "- \"time-based\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 151,
+      "pattern": "world keeps changing",
+      "text": "- \"world keeps changing\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 156,
+      "pattern": "temporal",
+      "text": "# \"temporal\" thousands of times, and each run inflated the next run's count"
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 144,
+      "pattern": "temporal",
+      "text": "ordering**, not a temporal split."
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 147,
+      "pattern": "temporal",
+      "text": "> chronological (`outputs/reports/temporal_validity.json`, verdict SUPPORTED)."
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 147,
+      "pattern": "chronological",
+      "text": "> chronological (`outputs/reports/temporal_validity.json`, verdict SUPPORTED)."
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 148,
+      "pattern": "temporal",
+      "text": "> That does **not** make this a temporal split: sorting *patients* by their"
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 151,
+      "pattern": "chronological",
+      "text": "> A genuine chronological split of *encounters* is implemented separately as the"
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 152,
+      "pattern": "temporal",
+      "text": "> `temporal` regime in `src/investigation/split_regimes.py`."
+    },
+    {
+      "file": "docs/03_model_training.md",
+      "line": 151,
+      "pattern": "temporal",
+      "text": "> finding \u2014 model performance under temporal drift\". Two corrections: this is an"
+    },
+    {
+      "file": "docs/03_model_training.md",
+      "line": 152,
+      "pattern": "temporal",
+      "text": "> entry-cohort contrast, not a temporal one; and Tier 0 showed the same pipeline"
+    },
+    {
+      "file": "docs/04_drift_detection.md",
+      "line": 17,
+      "pattern": "billing code",
+      "text": "> *causes* \u2014 shifting demographics, changing billing codes, falling disease"
+    },
+    {
+      "file": "docs/04_drift_detection.md",
+      "line": 23,
+      "pattern": "temporal",
+      "text": "> `outputs/reports/temporal_validity.json`."
+    },
+    {
+      "file": "docs/04_drift_detection.md",
+      "line": 122,
+      "pattern": "temporal",
+      "text": "![Target shift across entry-cohort windows](../outputs/figure/13_target_temporal_shift.png)"
+    },
+    {
+      "file": "docs/04_drift_detection.md",
+      "line": 124,
+      "pattern": "temporal",
+      "text": "says \"temporal\"; renaming a generated artifact is a pipeline change, not a"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 10,
+      "pattern": "temporal",
+      "text": "> | F1(a) `encounter_id` is not a verified timestamp; \"there is currently no answer\" | **REFUTED as framed.** It was never unverifiable \u2014 it was unverified. Three external anchors verify chronological"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 10,
+      "pattern": "chronological",
+      "text": "> | F1(a) `encounter_id` is not a verified timestamp; \"there is currently no answer\" | **REFUTED as framed.** It was never unverifiable \u2014 it was unverified. Three external anchors verify chronological"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 78,
+      "pattern": "temporal",
+      "text": "**The claim.** The README asserts a patient-level *temporal* split, and"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 80,
+      "pattern": "newer patients",
+      "text": "\"the world keeps changing,\" \"newer patients have different insurance"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 80,
+      "pattern": "world keeps changing",
+      "text": "\"the world keeps changing,\" \"newer patients have different insurance"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 88,
+      "pattern": "chronological",
+      "text": "`encounter_id_monotonic = False`. You are *assuming* it is chronologically"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 100,
+      "pattern": "temporal",
+      "text": "temporal split. You split on *first* encounter_id per patient, which sorts"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 129,
+      "pattern": "billing code",
+      "text": "- the clinical framing (\"hospital billing codes changed,\" \"readmission"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 141,
+      "pattern": "temporal",
+      "text": "> We initially framed the observed shift as temporal concept drift. On"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 607,
+      "pattern": "over time",
+      "text": "\"hospital billing codes change,\" \"patient demographics shift over time,\""
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 607,
+      "pattern": "billing code",
+      "text": "\"hospital billing codes change,\" \"patient demographics shift over time,\""
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 607,
+      "pattern": "demographics shift",
+      "text": "\"hospital billing codes change,\" \"patient demographics shift over time,\""
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 713,
+      "pattern": "temporal",
+      "text": "- **No true timestamps.** After F1, state plainly that temporal ordering is"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 758,
+      "pattern": "temporal",
+      "text": "1. *\"How do you know `encounter_id` is temporally ordered, and how did you"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 4,
+      "pattern": "chronological",
+      "text": "chronological ordering of `encounter_id`."
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 6,
+      "pattern": "temporal",
+      "text": "**The principle, applied uniformly:** \"temporal\" survives only where it refers to"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 29,
+      "pattern": "temporal",
+      "text": "`src/investigation/language_audit.py` and `src/investigation/temporal_validity.py`;"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 31,
+      "pattern": "temporal",
+      "text": "describe the split as temporal in its module docstring, its function docstring,"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 51,
+      "pattern": "temporal",
+      "text": "inventory self-referential \u2014 this report contains the word \"temporal\" many times,"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 62,
+      "pattern": "temporal",
+      "text": "| 1 | `CLAUDE.md:109` \"initial temporal-drift framing \u2192 falsification\u2026\" | **KEEP** | Describes the *arc*. \"Initial framing\" is historically accurate and is the thing being corrected |"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 63,
+      "pattern": "temporal",
+      "text": "| 2 | `README.md:46` \"under temporal shift\" | **REWRITE** \u2192 \"under entry-cohort shift\" | Describes the val\u2192test contrast on the entry-cohort split |"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 64,
+      "pattern": "temporal",
+      "text": "| 3 | `docs/03_model_training.md:148` \"under temporal drift\" | **REWRITE** \u2192 entry-cohort framing + no-drift baseline note | Same contrast; also needed the 2.15/8 baseline caveat |"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 65,
+      "pattern": "temporal",
+      "text": "| 4 | `docs/04_drift_detection.md:115` `![Target Temporal Shift](\u202613_target_temporal_shift.png)` | **REWRITE alt text; KEEP filename** | Renaming a *generated artifact* is a pipeline change, not a lan"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 67,
+      "pattern": "temporal",
+      "text": "| 7\u201315 | `docs/REMEDIATION_PLAN.md:25,29,33,37,51,57,120,297,539` | **KEEP** (banner) | Historical record. Several also refer to `temporal_validity.py`, which is the investigation and earns the term |"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 68,
+      "pattern": "over time",
+      "text": "| 16 | `src/drift/concept_drift.py:3` \"degradation over time windows\" | **REWRITE** \u2192 \"across sequential evaluation windows\" | The windows are index-based slices of a concatenated stream, not calendar"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 69,
+      "pattern": "temporal",
+      "text": "| 17 | `src/drift/concept_drift.py:155` \"Simulates temporal performance monitoring\" | **REWRITE** \u2192 \"sequential\", + explicit note that windows are index-based | Same reason; this is the function that "
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 70,
+      "pattern": "temporal",
+      "text": "| 18\u201319 | `src/models/evaluator.py:286,444` \"Across Temporal Windows\" (figure titles) | **REWRITE** \u2192 \"Across Sequential Windows\" | Axis is window index. A reader would otherwise read the x-axis as ca"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 71,
+      "pattern": "temporal",
+      "text": "| 20 | `src/uncertainty/threshold.py:356` \"threshold drift across temporal windows\" | **REWRITE** \u2192 \"sequential evaluation windows\" | Same |"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 72,
+      "pattern": "temporal",
+      "text": "| 21 | `src/pipelines/pipeline.py:205` \"expected temporal drift signals\" | **REWRITE** \u2192 \"expected entry-cohort shift signals\" | Refers to the split |"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 78,
+      "pattern": "temporal",
+      "text": "does not make this a temporal split), `src/data/splitter.py` (module docstring,"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 81,
+      "pattern": "temporal",
+      "text": "claims to be \"required for temporal split\" \u2014 the entry-cohort split does not"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 88,
+      "pattern": "world keeps changing",
+      "text": "`README.md` \"The Problem\" section (removed: \"the world keeps changing\", \"patient"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 89,
+      "pattern": "over time",
+      "text": "demographics shift over time\", \"hospital billing codes change\"; replaced with the"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 89,
+      "pattern": "billing code",
+      "text": "demographics shift over time\", \"hospital billing codes change\"; replaced with the"
+    },
+    {
+      "file": "docs/PHASE_0_5_LANGUAGE_CHANGES.md",
+      "line": 89,
+      "pattern": "demographics shift",
+      "text": "demographics shift over time\", \"hospital billing codes change\"; replaced with the"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 8,
+      "pattern": "temporal",
+      "text": ">   return NOT SUPPORTED and that every use of \"temporal\" would be unearned. It"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 9,
+      "pattern": "temporal",
+      "text": ">   returned **SUPPORTED**, so \"temporal\" is kept where it refers to"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 13,
+      "pattern": "temporal",
+      "text": ">   genuine chronological split of encounters now runs as regime `temporal`."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 13,
+      "pattern": "chronological",
+      "text": ">   genuine chronological split of encounters now runs as regime `temporal`."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 41,
+      "pattern": "temporal",
+      "text": "Create `src/investigation/temporal_validity.py`."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 45,
+      "pattern": "temporal",
+      "text": "temporal anchors** \u2014 clinical practice patterns whose timing is known"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 49,
+      "pattern": "chronological",
+      "text": "the 2000s. If ordering is chronological, `A1Cresult` non-missing rate"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 53,
+      "pattern": "chronological",
+      "text": "If ordering is chronological, the rosiglitazone rate should fall in the"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 67,
+      "pattern": "temporal",
+      "text": "**Acceptance:** `outputs/reports/temporal_validity.json` with a verdict of"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 68,
+      "pattern": "chronological",
+      "text": "SUPPORTED / NOT SUPPORTED / INCONCLUSIVE for chronological ordering, each"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 73,
+      "pattern": "temporal",
+      "text": "names, docs, README. Do not leave the word \"temporal\" anywhere it is not"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 136,
+      "pattern": "temporal",
+      "text": "Apply the Phase 0.1 verdict everywhere. Grep for `temporal`, `over time`,"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 136,
+      "pattern": "over time",
+      "text": "Apply the Phase 0.1 verdict everywhere. Grep for `temporal`, `over time`,"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 137,
+      "pattern": "drift began",
+      "text": "`drift began`, `newer patients`, `billing codes`, `demographics shift`."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 137,
+      "pattern": "newer patients",
+      "text": "`drift began`, `newer patients`, `billing codes`, `demographics shift`."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 137,
+      "pattern": "billing code",
+      "text": "`drift began`, `newer patients`, `billing codes`, `demographics shift`."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 137,
+      "pattern": "demographics shift",
+      "text": "`drift began`, `newer patients`, `billing codes`, `demographics shift`."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 313,
+      "pattern": "over time",
+      "text": "over time, interval/set size, and recovery speed after an induced shift."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 469,
+      "pattern": "temporal",
+      "text": "- Initial framing: patient-level \"temporal\" split, 8/8 signals, CRITICAL"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 555,
+      "pattern": "temporal",
+      "text": "Begin with **Phase 0.1**. Print your plan for the temporal validity"
+    },
+    {
+      "file": "src/data/splitter.py",
+      "line": 41,
+      "pattern": "temporal",
+      "text": "ordering is chronological (outputs/reports/temporal_validity.json, verdict"
+    },
+    {
+      "file": "src/data/splitter.py",
+      "line": 41,
+      "pattern": "chronological",
+      "text": "ordering is chronological (outputs/reports/temporal_validity.json, verdict"
+    },
+    {
+      "file": "src/data/splitter.py",
+      "line": 45,
+      "pattern": "temporal",
+      "text": "is NOT a temporal split. For a genuine chronological split of encounters see"
+    },
+    {
+      "file": "src/data/splitter.py",
+      "line": 45,
+      "pattern": "chronological",
+      "text": "is NOT a temporal split. For a genuine chronological split of encounters see"
+    },
+    {
+      "file": "src/data/splitter.py",
+      "line": 46,
+      "pattern": "temporal",
+      "text": "the `temporal` regime in src/investigation/split_regimes.py."
+    },
+    {
+      "file": "src/data/splitter.py",
+      "line": 108,
+      "pattern": "temporal",
+      "text": "logger.info(f\"Strategy       : patient-level entry-cohort split (NOT temporal)\")"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 5,
+      "pattern": "temporal",
+      "text": "Classifies every occurrence of temporal/mechanism language in the source,"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 11,
+      "pattern": "temporal",
+      "text": "every use of \"temporal\" would therefore be unearned. It returned SUPPORTED:"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 12,
+      "pattern": "chronological",
+      "text": "`encounter_id` ordering IS chronological, verified against troglitazone"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 21,
+      "pattern": "billing code",
+      "text": "Separately, unearned MECHANISM claims (\"billing codes changed\", \"patient"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 22,
+      "pattern": "demographics shift",
+      "text": "demographics shifted\", \"the world keeps changing\") are rewritten regardless"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 22,
+      "pattern": "world keeps changing",
+      "text": "demographics shifted\", \"the world keeps changing\") are rewritten regardless"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 47,
+      "pattern": "temporal",
+      "text": "CONFIG_PATH = ROOT / \"configs\" / \"temporal_validity.yaml\""
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 53,
+      "pattern": "temporal",
+      "text": "INVESTIGATION_PATHS = (\"src/investigation/\", \"configs/temporal_validity.yaml\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 56,
+      "pattern": "temporal",
+      "text": "# Occurrences describing the SPLIT as temporal \u2014 the claim Phase 0.1 refuted."
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 58,
+      "pattern": "temporal",
+      "text": "r\"(temporal\\s+split|patient-level\\s+temporal|temporal\\s+proxy|\""
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 59,
+      "pattern": "temporal",
+      "text": "r\"split.{0,40}temporal|temporal.{0,40}split|temporal\\s+structure|\""
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 60,
+      "pattern": "temporal",
+      "text": "r\"temporal\\s+order|chronological(ly)?\\s+order)\", re.I)"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 60,
+      "pattern": "chronological",
+      "text": "r\"temporal\\s+order|chronological(ly)?\\s+order)\", re.I)"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 68,
+      "pattern": "temporal",
+      "text": "\"temporal split\": \"entry-cohort split\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 69,
+      "pattern": "temporal",
+      "text": "\"patient-level temporal split\": \"patient-level entry-cohort split\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 70,
+      "pattern": "temporal",
+      "text": "\"temporal proxy\": \"entry-cohort ordering\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 71,
+      "pattern": "temporal",
+      "text": "\"temporal structure\": \"entry-cohort structure\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 72,
+      "pattern": "billing code",
+      "text": "\"billing code\": \"[REMOVE \u2014 mechanism claim without mechanism evidence]\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 73,
+      "pattern": "demographics shift",
+      "text": "\"demographics shift\": \"[REMOVE \u2014 mechanism claim without mechanism evidence]\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 74,
+      "pattern": "newer patients",
+      "text": "\"newer patients\": \"later-entering patients\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 75,
+      "pattern": "world keeps changing",
+      "text": "\"world keeps changing\": \"[REMOVE \u2014 mechanism claim without mechanism evidence]\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 76,
+      "pattern": "drift began",
+      "text": "\"drift began\": \"[REMOVE unless tied to a Phase 0.2-0.4 regime result]\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 82,
+      "pattern": "temporal",
+      "text": "\"REWRITE_SPLIT\": (\"describes the SPLIT as temporal; the split sorts patients \""
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 98,
+      "pattern": "temporal",
+      "text": "if \"encounter_id\" in low and \"temporal\" in low:"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 157,
+      "pattern": "temporal",
+      "text": "\"split_validity\": \"NOT_TEMPORAL_BY_CONSTRUCTION\"},"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 171,
+      "pattern": "temporal",
+      "text": "f\"split validity **NOT_TEMPORAL_BY_CONSTRUCTION**.\", \"\","
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 21,
+      "pattern": "temporal",
+      "text": "temporal      TRUE chronological split of ENCOUNTERS, newly defensible"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 21,
+      "pattern": "chronological",
+      "text": "temporal      TRUE chronological split of ENCOUNTERS, newly defensible"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 174,
+      "pattern": "temporal",
+      "text": "# the temporal regime's label behaviour is interpretable rather than magic."
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 232,
+      "pattern": "temporal",
+      "text": "def split_temporal(df: pd.DataFrame, conf: dict, seed: int) -> dict:"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 234,
+      "pattern": "temporal",
+      "text": "TRUE temporal split \u2014 chronological cut of ENCOUNTERS, leakage-controlled."
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 234,
+      "pattern": "chronological",
+      "text": "TRUE temporal split \u2014 chronological cut of ENCOUNTERS, leakage-controlled."
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 242,
+      "pattern": "chronological",
+      "text": "A chronological cut necessarily straddles patients, so patients appearing in"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 465,
+      "pattern": "temporal",
+      "text": "logger.info(\"PHASE 0.2 \u2014 split regimes (entry_cohort / random / temporal)\")"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 468,
+      "pattern": "temporal",
+      "text": "runs = {\"entry_cohort\": [], \"random\": [], \"temporal\": []}"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 470,
+      "pattern": "temporal",
+      "text": "\"temporal\": split_temporal}"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 473,
+      "pattern": "temporal",
+      "text": "\"temporal\": conf[\"n_seeds_deterministic\"]}"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 486,
+      "pattern": "temporal",
+      "text": "if regime == \"temporal\":"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 685,
+      "pattern": "temporal",
+      "text": "\"temporal\": r02[\"regimes\"][\"temporal\"][\"summary\"][\"firing_rates\"],"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 725,
+      "pattern": "temporal",
+      "text": "tmp = r02[\"regimes\"][\"temporal\"][\"summary\"]"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 732,
+      "pattern": "temporal",
+      "text": "\"temporal_signals_mean\": round(tmp[\"n_evidence_mean\"], 3),"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 737,
+      "pattern": "temporal",
+      "text": "\"temporal_auc_degradation\": round(tmp[\"auc_degradation\"][\"mean\"], 4),"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 755,
+      "pattern": "temporal",
+      "text": "for reg in (\"entry_cohort\", \"random\", \"temporal\"):"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 785,
+      "pattern": "temporal",
+      "text": "\"alarms; in the temporal regime mean_ref (0.185) exceeds \""
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 802,
+      "pattern": "temporal",
+      "text": "regs = [\"entry_cohort\", \"random\", \"temporal\"]"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 916,
+      "pattern": "temporal",
+      "text": "print(\"temporal split       :\", a[\"temporal_signals_mean\"], \"/8\")"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 2,
+      "pattern": "temporal",
+      "text": "DriftSentinel \u2014 Phase 0.1: Temporal validity of `encounter_id`"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 12,
+      "pattern": "temporal",
+      "text": "The repository claims a \"patient-level temporal split\" and attributes an"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 21,
+      "pattern": "chronological",
+      "text": "H1 (chronological)   : encounter_id rank is MONOTONICALLY associated with"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 30,
+      "pattern": "chronological",
+      "text": "1. ordering_verdict \u2014 is encounter_id chronological?"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 31,
+      "pattern": "temporal",
+      "text": "2. split_validity   \u2014 is the current split temporal?"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 32,
+      "pattern": "temporal",
+      "text": "(2) is NOT_TEMPORAL_BY_CONSTRUCTION regardless of (1): splitting on"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 38,
+      "pattern": "temporal",
+      "text": "outputs/reports/temporal_validity.json"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 39,
+      "pattern": "temporal",
+      "text": "outputs/reports/temporal_language_inventory.json   (Phase 0.5 input only)"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 41,
+      "pattern": "temporal",
+      "text": "outputs/log/temporal_validity.log"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 65,
+      "pattern": "temporal",
+      "text": "logger = get_logger(\"temporal_validity\")"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 68,
+      "pattern": "temporal",
+      "text": "CONFIG_PATH  = ROOT / \"configs\" / \"temporal_validity.yaml\""
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 324,
+      "pattern": "chronological",
+      "text": "evidence FOR chronological ordering; positives scattered mid-range is only"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 356,
+      "pattern": "chronological",
+      "text": "\"against chronological ordering\")"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 532,
+      "pattern": "chronological",
+      "text": "\"\"\"Supporting anchor: HbA1c measurement rate should rise if ordering is chronological.\"\"\""
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 594,
+      "pattern": "chronological",
+      "text": "If encounter_id ordering is chronological, that rank distance must be"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 684,
+      "pattern": "chronological",
+      "text": "position. If encounter_id ordering is chronological, those rank positions"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 694,
+      "pattern": "chronological",
+      "text": "chronological ordering should imply a monotonically INCREASING rate. A"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1070,
+      "pattern": "chronological",
+      "text": "label=\"expected region if ordering is chronological\")"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1300,
+      "pattern": "temporal",
+      "text": "Inventory every occurrence of unearned temporal language."
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1382,
+      "pattern": "temporal",
+      "text": "\"split_validity_verdict\": \"NOT_TEMPORAL_BY_CONSTRUCTION\","
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1385,
+      "pattern": "chronological",
+      "text": "\"patients by entry cohort. Even under perfect chronological ordering \""
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1398,
+      "pattern": "temporal",
+      "text": "def run_temporal_validity(config_path: Path = CONFIG_PATH) -> dict:"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1405,
+      "pattern": "temporal",
+      "text": "logger.info(\"DriftSentinel \u2014 Phase 0.1: Temporal validity of encounter_id\")"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1560,
+      "pattern": "temporal",
+      "text": "inv_path = REPORTS_DIR / \"temporal_language_inventory.json\""
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1570,
+      "pattern": "temporal",
+      "text": "\"title\": \"Temporal validity of encounter_id ordering\","
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1615,
+      "pattern": "chronological",
+      "text": "\"evidence against chronological ordering.\","
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1625,
+      "pattern": "temporal",
+      "text": "out_path = REPORTS_DIR / \"temporal_validity.json\""
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1636,
+      "pattern": "temporal",
+      "text": "rep = run_temporal_validity()"
+    },
+    {
+      "file": "src/pipelines/pipeline.py",
+      "line": 272,
+      "pattern": "temporal",
+      "text": "\"scenario. NOT temporal drift: see \""
+    },
+    {
+      "file": "src/pipelines/pipeline.py",
+      "line": 273,
+      "pattern": "temporal",
+      "text": "\"outputs/reports/temporal_validity.json\"),"
+    }
+  ]
+}

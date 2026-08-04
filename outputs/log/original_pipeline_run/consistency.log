@@ -1,0 +1,233 @@
+2026-05-11 20:55:24 | INFO     | consistency          | ======================================================================
+2026-05-11 20:55:24 | INFO     | consistency          | DriftSentinel — Feature Consistency Checker
+2026-05-11 20:55:24 | INFO     | consistency          | ======================================================================
+2026-05-11 20:55:24 | INFO     | consistency          | Train : (63492, 55)
+2026-05-11 20:55:24 | INFO     | consistency          | Val   : (20949, 55)
+2026-05-11 20:55:24 | INFO     | consistency          | Test  : (17325, 55)
+2026-05-11 20:55:24 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:24 | INFO     | consistency          | Check 1: Schema Consistency
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  schema_missing_cols                      [val] missing=none
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  schema_extra_cols                        [val] extra=none
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_race                               [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_gender                             [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_age                                [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_admission_type_id                  [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_discharge_disposition_id           [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_admission_source_id                [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_time_in_hospital                   [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_payer_code                         [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_medical_specialty                  [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_num_medications                    [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_number_outpatient                  [val] train=float64 val=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_diag_1                             [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_diag_2                             [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_diag_3                             [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_number_diagnoses                   [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_repaglinide                        [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_glimepiride                        [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_glipizide                          [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_glyburide                          [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_pioglitazone                       [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_rosiglitazone                      [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_weight_missing                     [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_max_glu_serum_missing              [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_A1Cresult_missing                  [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_total_clinical_contacts         [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_labs_per_day                    [val] train=float64 val=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_meds_per_day                    [val] train=float64 val=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_high_utilization                [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_n_active_binary_meds            [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_total_active_meds               [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_n_med_increases                 [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_n_med_decreases                 [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_any_med_changed                 [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_diagnoses_per_day               [val] train=float64 val=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_diag_med_ratio                  [val] train=float64 val=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_high_lab_load                   [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_no_procedures                   [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_lab_to_procedure_ratio          [val] train=float64 val=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_has_prior_inpatient             [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_high_prior_utilization          [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_multi_channel_utilizer          [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_insulin_prescribed              [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_insulin_changed                 [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_insulin_increased               [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_metformin_prescribed            [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_metformin_changed               [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_on_diabetes_med                 [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_med_regimen_changed             [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_glycemic_risk_score             [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_high_util_x_med_change          [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_comorbidity_x_lab_load          [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_glycemic_x_emergency            [val] train=int64 val=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_labs_per_day_x_comorbidity      [val] train=float64 val=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  schema_missing_cols                      [test] missing=none
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  schema_extra_cols                        [test] extra=none
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_race                               [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_gender                             [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_age                                [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_admission_type_id                  [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_discharge_disposition_id           [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_admission_source_id                [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_time_in_hospital                   [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_payer_code                         [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_medical_specialty                  [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_num_medications                    [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_number_outpatient                  [test] train=float64 test=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_diag_1                             [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_diag_2                             [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_diag_3                             [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_number_diagnoses                   [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_repaglinide                        [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_glimepiride                        [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_glipizide                          [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_glyburide                          [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_pioglitazone                       [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_rosiglitazone                      [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_weight_missing                     [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_max_glu_serum_missing              [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_A1Cresult_missing                  [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_total_clinical_contacts         [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_labs_per_day                    [test] train=float64 test=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_meds_per_day                    [test] train=float64 test=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_high_utilization                [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_n_active_binary_meds            [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_total_active_meds               [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_n_med_increases                 [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_n_med_decreases                 [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_any_med_changed                 [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_diagnoses_per_day               [test] train=float64 test=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_diag_med_ratio                  [test] train=float64 test=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_high_lab_load                   [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_no_procedures                   [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_lab_to_procedure_ratio          [test] train=float64 test=float64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_has_prior_inpatient             [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_high_prior_utilization          [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_multi_channel_utilizer          [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_insulin_prescribed              [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_insulin_changed                 [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_insulin_increased               [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_metformin_prescribed            [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_metformin_changed               [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_on_diabetes_med                 [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_med_regimen_changed             [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_glycemic_risk_score             [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_high_util_x_med_change          [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_comorbidity_x_lab_load          [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_glycemic_x_emergency            [test] train=int64 test=int64
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  dtype_FE_labs_per_day_x_comorbidity      [test] train=float64 test=float64
+2026-05-11 20:55:24 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:24 | INFO     | consistency          | Check 2: Shape Sanity
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  total_row_coverage                       [all] train=63,492 val=20,949 test=17,325 total=101,766
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  column_count_match                       [val] train=55 val=55
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  column_count_match                       [test] train=55 test=55
+2026-05-11 20:55:24 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:24 | INFO     | consistency          | Check 3: Null Rate Consistency
+2026-05-11 20:55:24 | INFO     | consistency          |   Null consistency: 53 features checked
+2026-05-11 20:55:24 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:24 | INFO     | consistency          | Check 4: Target Leakage (threshold=|r|>0.8)
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  target_leakage_all_features              [train] no |r| > 0.8 among 53 features
+2026-05-11 20:55:24 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:24 | INFO     | consistency          | Check 5: FE_ Feature Leakage (separate audit)
+2026-05-11 20:55:24 | INFO     | consistency          |   [PASS]  fe_feature_leakage                       [train] suspicious FE_ pairs=none
+2026-05-11 20:55:24 | INFO     | consistency          |   FE_ features audited: 29
+2026-05-11 20:55:24 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:24 | INFO     | consistency          | Check 6: PSI Distribution Shift (warn>0.1, critical>0.2)
+2026-05-11 20:55:24 | WARNING  | consistency          |   [WARN]  psi_admission_type_id                    [test] PSI=0.1904 (MODERATE)
+2026-05-11 20:55:24 | ERROR    | consistency          |   [FAIL]  psi_admission_source_id                  [val] PSI=0.2909 (CRITICAL)
+2026-05-11 20:55:24 | ERROR    | consistency          |   [FAIL]  psi_admission_source_id                  [test] PSI=0.2027 (CRITICAL)
+2026-05-11 20:55:24 | ERROR    | consistency          |   [FAIL]  psi_payer_code                           [val] PSI=0.9309 (CRITICAL)
+2026-05-11 20:55:24 | ERROR    | consistency          |   [FAIL]  psi_payer_code                           [test] PSI=0.8402 (CRITICAL)
+2026-05-11 20:55:24 | ERROR    | consistency          |   [FAIL]  psi_medical_specialty                    [val] PSI=0.3278 (CRITICAL)
+2026-05-11 20:55:24 | ERROR    | consistency          |   [FAIL]  psi_medical_specialty                    [test] PSI=0.4430 (CRITICAL)
+2026-05-11 20:55:24 | WARNING  | consistency          |   [WARN]  psi_number_diagnoses                     [val] PSI=0.1681 (MODERATE)
+2026-05-11 20:55:24 | ERROR    | consistency          |   [FAIL]  psi_number_diagnoses                     [test] PSI=0.2588 (CRITICAL)
+2026-05-11 20:55:24 | WARNING  | consistency          |   [WARN]  psi_FE_diagnoses_per_day                 [test] PSI=0.1342 (MODERATE)
+2026-05-11 20:55:25 | WARNING  | consistency          |   [WARN]  psi_FE_labs_per_day_x_comorbidity        [val] PSI=0.1530 (MODERATE)
+2026-05-11 20:55:25 | ERROR    | consistency          |   [FAIL]  psi_FE_labs_per_day_x_comorbidity        [test] PSI=0.2146 (CRITICAL)
+2026-05-11 20:55:25 | INFO     | consistency          |   Top 15 PSI scores (train vs max(val,test)):
+2026-05-11 20:55:25 | INFO     | consistency          |     payer_code                                    PSI=0.9309  [CRITICAL]
+2026-05-11 20:55:25 | INFO     | consistency          |     medical_specialty                             PSI=0.4430  [CRITICAL]
+2026-05-11 20:55:25 | INFO     | consistency          |     admission_source_id                           PSI=0.2909  [CRITICAL]
+2026-05-11 20:55:25 | INFO     | consistency          |     number_diagnoses                              PSI=0.2588  [CRITICAL]
+2026-05-11 20:55:25 | INFO     | consistency          |     FE_labs_per_day_x_comorbidity                 PSI=0.2146  [CRITICAL]
+2026-05-11 20:55:25 | INFO     | consistency          |     admission_type_id                             PSI=0.1904  [MODERATE]
+2026-05-11 20:55:25 | INFO     | consistency          |     FE_diagnoses_per_day                          PSI=0.1342  [MODERATE]
+2026-05-11 20:55:25 | INFO     | consistency          |     FE_meds_per_day                               PSI=0.0750  [STABLE]
+2026-05-11 20:55:25 | INFO     | consistency          |     discharge_disposition_id                      PSI=0.0643  [STABLE]
+2026-05-11 20:55:25 | INFO     | consistency          |     race                                          PSI=0.0513  [STABLE]
+2026-05-11 20:55:25 | INFO     | consistency          |     FE_lab_to_procedure_ratio                     PSI=0.0512  [STABLE]
+2026-05-11 20:55:25 | INFO     | consistency          |     number_outpatient                             PSI=0.0450  [STABLE]
+2026-05-11 20:55:25 | INFO     | consistency          |     FE_total_clinical_contacts                    PSI=0.0412  [STABLE]
+2026-05-11 20:55:25 | INFO     | consistency          |     FE_diag_med_ratio                             PSI=0.0331  [STABLE]
+2026-05-11 20:55:25 | INFO     | consistency          |     FE_labs_per_day                               PSI=0.0270  [STABLE]
+2026-05-11 20:55:25 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:25 | INFO     | consistency          | Check 7: Kolmogorov-Smirnov Test (alpha=0.01)
+2026-05-11 20:55:26 | INFO     | consistency          |   Features with KS drift (p < 0.01): 90
+2026-05-11 20:55:26 | INFO     | consistency          |     payer_code                               [val] KS=0.4288  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_payer_code                      [val] KS=0.4288 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     payer_code                               [test] KS=0.4180  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_payer_code                      [test] KS=0.4180 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     medical_specialty                        [test] KS=0.2720  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_medical_specialty               [test] KS=0.2720 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     FE_labs_per_day_x_comorbidity            [test] KS=0.2316  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_FE_labs_per_day_x_comorbidity   [test] KS=0.2316 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     number_diagnoses                         [test] KS=0.2288  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_number_diagnoses                [test] KS=0.2288 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     medical_specialty                        [val] KS=0.2169  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_medical_specialty               [val] KS=0.2169 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     FE_labs_per_day_x_comorbidity            [val] KS=0.1878  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_FE_labs_per_day_x_comorbidity   [val] KS=0.1878 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     number_diagnoses                         [val] KS=0.1794  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_number_diagnoses                [val] KS=0.1794 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     FE_diagnoses_per_day                     [test] KS=0.1545  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_FE_diagnoses_per_day            [test] KS=0.1545 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     FE_has_prior_inpatient                   [test] KS=0.1241  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_FE_has_prior_inpatient          [test] KS=0.1241 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     FE_diagnoses_per_day                     [val] KS=0.1146  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_FE_diagnoses_per_day            [val] KS=0.1146 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     FE_meds_per_day                          [test] KS=0.1074  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_FE_meds_per_day                 [test] KS=0.1074 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     admission_type_id                        [test] KS=0.1006  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_admission_type_id               [test] KS=0.1006 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     FE_insulin_changed                       [val] KS=0.0959  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_FE_insulin_changed              [val] KS=0.0959 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          |     diag_2                                   [test] KS=0.0940  p=0.000000
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  ks_drift_diag_2                          [test] KS=0.0940 p=0.000000 — distribution shifted
+2026-05-11 20:55:26 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:26 | INFO     | consistency          | Check 8: Encoding Consistency (value range bounds)
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  range_oob_admission_source_id            [test] train=[1,22] test=[1,25]
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  range_oob_number_outpatient              [val] train=[0.0,3.6109179126442243] val=[0.0,3.7612001156935624]
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  range_oob_FE_meds_per_day                [val] train=[0.125,41.0] val=[0.0833,37.0]
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  range_oob_FE_meds_per_day                [test] train=[0.125,41.0] test=[0.3333,42.0]
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  range_oob_FE_diagnoses_per_day           [val] train=[0.1429,12.0] val=[0.1429,13.0]
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  range_oob_FE_diagnoses_per_day           [test] train=[0.1429,12.0] test=[0.2308,16.0]
+2026-05-11 20:55:26 | WARNING  | consistency          |   [WARN]  range_oob_FE_lab_to_procedure_ratio      [test] train=[0.1429,111.0] test=[0.1429,126.0]
+2026-05-11 20:55:26 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:26 | INFO     | consistency          | Check 9: Target Distribution Stability
+2026-05-11 20:55:26 | INFO     | consistency          |   readmitted_multi [val]: cls0=0.524  cls1=0.106  cls2=0.371
+2026-05-11 20:55:26 | ERROR    | consistency          |   [FAIL]  target_dist_readmitted_multi_class0      [test] train=0.510 test=0.664 delta=0.153
+2026-05-11 20:55:26 | ERROR    | consistency          |   [FAIL]  target_dist_readmitted_multi_class2      [test] train=0.370 test=0.248 delta=0.122
+2026-05-11 20:55:26 | INFO     | consistency          |   readmitted_multi [test]: cls0=0.664  cls1=0.088  cls2=0.248
+2026-05-11 20:55:26 | INFO     | consistency          |   readmitted_binary [val]: cls0=0.524  cls1=0.476
+2026-05-11 20:55:26 | ERROR    | consistency          |   [FAIL]  target_dist_readmitted_binary_class0     [test] train=0.510 test=0.664 delta=0.153
+2026-05-11 20:55:26 | ERROR    | consistency          |   [FAIL]  target_dist_readmitted_binary_class1     [test] train=0.490 test=0.336 delta=0.153
+2026-05-11 20:55:26 | INFO     | consistency          |   readmitted_binary [test]: cls0=0.664  cls1=0.336
+2026-05-11 20:55:26 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:26 | INFO     | consistency          | Check 10: Cross-split Duplicate Row Detection
+2026-05-11 20:55:26 | INFO     | consistency          |   [PASS]  cross_split_duplicate_rows               [val] leaked_rows=0 (0.000%)
+2026-05-11 20:55:26 | INFO     | consistency          |   [PASS]  cross_split_duplicate_rows               [test] leaked_rows=0 (0.000%)
+2026-05-11 20:55:26 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:26 | INFO     | consistency          | Check 11: Feature Variance Parity (min_ratio=0.1)
+2026-05-11 20:55:26 | INFO     | consistency          | --------------------------------------------------
+2026-05-11 20:55:26 | INFO     | consistency          | Check 12: Constant Prediction Risk in Val/Test
+2026-05-11 20:55:26 | INFO     | consistency          | ======================================================================
+2026-05-11 20:55:26 | INFO     | consistency          | Consistency Check Summary
+2026-05-11 20:55:26 | INFO     | consistency          |   PASS  : 117
+2026-05-11 20:55:26 | INFO     | consistency          |   WARN  : 26
+2026-05-11 20:55:26 | INFO     | consistency          |   FAIL  : 12
+2026-05-11 20:55:26 | INFO     | consistency          |   PSI drift detected   : 7 features
+2026-05-11 20:55:26 | INFO     | consistency          |   KS  drift detected   : 90 feature-split pairs
+2026-05-11 20:55:26 | ERROR    | consistency          | CONSISTENCY FAILED — 12 critical issues. Do not proceed to model training.
+2026-05-11 20:55:26 | INFO     | consistency          | ======================================================================
+2026-05-11 20:55:26 | INFO     | consistency          | Consistency report saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\consistency_report.json

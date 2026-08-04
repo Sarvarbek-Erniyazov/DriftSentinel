@@ -22,6 +22,7 @@ import sys
 
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 from src.monitoring.logger import get_logger
+from src.monitoring.model_io import save_model
 
 logger = get_logger("trainer")
 
@@ -50,6 +51,11 @@ LGBM_PARAMS = {
     "reg_lambda"      : 0.1,
     "n_estimators"    : 500,
     "random_state"    : RANDOM_SEED,
+    # Tier 2A.1 determinism: without these LightGBM can produce
+    # thread-count-dependent results even with a fixed seed, which would make
+    # every downstream artifact carry an unpinned dependency.
+    "deterministic"   : True,
+    "force_row_wise"  : True,
     "n_jobs"          : -1,
     "verbose"         : -1,
 }
@@ -167,10 +173,20 @@ def train_lgbm(
         logger.info(f"    {row['feature']:<45} {row['importance']:.0f}")
 
     # Save
+    # Tier 2C.7: route through model_io.save_model so the artifact ships with
+    # a provenance sidecar (package versions, git commit, SHA-256). The
+    # traceability audit measured 0 of 4 models carrying provenance while the
+    # sidecar machinery existed, was unit-tested, and had ZERO callers -- a
+    # capability nothing calls protects nothing. serializer="pickle" keeps the
+    # on-disk FORMAT unchanged because eighteen modules read these with
+    # pickle.load; the format migration is TIER_1_7_SCOPE P1 and stays open.
     model_path = MODELS_DIR / "lgbm_v1.pkl"
-    with open(model_path, "wb") as f:
-        pickle.dump(model, f)
-    logger.info(f"  Saved: {model_path}")
+    save_model(model, model_path, serializer="pickle",
+               extra={"model_name": "lgbm_v1",
+                      "best_iteration": int(best_iter),
+                      "n_features": len(feat_cols),
+                      "train_rows": int(len(X_tr))})
+    logger.info(f"  Saved: {model_path} (+ provenance sidecar)")
 
     imp_path = MODELS_DIR / "lgbm_feature_importance.csv"
     importance.to_csv(imp_path, index=False)
@@ -258,14 +274,24 @@ def train_logreg(
         logger.info(f"    {row['feature']:<45} {row['coefficient']:.4f}")
 
     # Save model + scaler together
+    # Tier 2C.7: route through model_io.save_model so the artifact ships with
+    # a provenance sidecar (package versions, git commit, SHA-256). The
+    # traceability audit measured 0 of 4 models carrying provenance while the
+    # sidecar machinery existed, was unit-tested, and had ZERO callers -- a
+    # capability nothing calls protects nothing. serializer="pickle" keeps the
+    # on-disk FORMAT unchanged because eighteen modules read these with
+    # pickle.load; the format migration is TIER_1_7_SCOPE P1 and stays open.
     model_path = MODELS_DIR / "logreg_v1.pkl"
-    with open(model_path, "wb") as f:
-        pickle.dump({"model": model, "scaler": scaler}, f)
-    logger.info(f"  Saved: {model_path}")
+    save_model({"model": model, "scaler": scaler}, model_path,
+               serializer="pickle",
+               extra={"model_name": "logreg_v1",
+                      "n_features": len(feat_cols),
+                      "contains": ["model", "scaler"]})
+    logger.info(f"  Saved: {model_path} (+ provenance sidecar)")
 
     scaler_path = MODELS_DIR / "logreg_scaler.pkl"
-    with open(scaler_path, "wb") as f:
-        pickle.dump(scaler, f)
+    save_model(scaler, scaler_path, serializer="pickle",
+               extra={"model_name": "logreg_v1_scaler"})
 
     coef_path = MODELS_DIR / "logreg_coefficients.csv"
     coef_df.to_csv(coef_path, index=False)

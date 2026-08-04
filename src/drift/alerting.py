@@ -60,6 +60,22 @@ THRESHOLDS = {
 }
 
 
+def set_alerts_dir(path) -> None:
+    """
+    Redirect this module's alert output (Tier 1.7).
+
+    Explicit, supported API. The Tier 0 regime sweep previously reassigned the
+    module global directly — a monkey-patch that worked but was invisible to
+    anyone reading this module. A sweep of ~200 detector runs must not scatter
+    throwaway artifacts through outputs/log/, so redirection is legitimate; doing
+    it by attribute assignment from another file was not.
+    """
+    global ALERTS_DIR
+    from pathlib import Path as _P
+    ALERTS_DIR = _P(path)
+    ALERTS_DIR.mkdir(parents=True, exist_ok=True)
+
+
 # ══════════════════════════════════════════════════════════════════════════
 # Alert builder
 # ══════════════════════════════════════════════════════════════════════════
@@ -113,6 +129,19 @@ class Alert:
 # ══════════════════════════════════════════════════════════════════════════
 # Alert generators per drift type
 # ══════════════════════════════════════════════════════════════════════════
+
+def _seq_level(concept_report: dict) -> str:
+    """
+    Alert level for the sequential detectors (CUSUM / Page-Hinkley).
+
+    Returns LOW when the detector has been retired from the evidence count, so
+    it stays visible without influencing `system_status` (which counts only
+    CRITICAL and HIGH). Falls back to HIGH for reports produced before Tier 1.5
+    so old artifacts still render with their original semantics.
+    """
+    retired = set(concept_report.get("retired_signals", {}).get("signals", []))
+    return "LOW" if {"cusum_alarm", "ph_alarm"} & retired else "HIGH"
+
 
 def _concept_drift_alerts(concept_report: dict) -> list[Alert]:
     alerts = []
@@ -185,12 +214,24 @@ def _concept_drift_alerts(concept_report: dict) -> list[Alert]:
             )
         ))
 
-    # Evidence count alert
-    if n_ev >= THRESHOLDS["evidence_critical"]:
+    # Evidence count alert.
+    # Tier 1.5: thresholds are FRACTIONS of the voting-signal count, which is
+    # read from the report rather than hardcoded to 8. Two signals were retired
+    # from voting, and leaving absolute thresholds behind would have silently
+    # made every severity level harder to reach.
+    n_voting = int(concept_report.get("n_voting_signals", 8))
+    _frac = {"critical": THRESHOLDS["evidence_critical"] / 8,
+             "high":     THRESHOLDS["evidence_high"] / 8,
+             "medium":   THRESHOLDS["evidence_medium"] / 8}
+    ev_crit = int(np.ceil(_frac["critical"] * n_voting))
+    ev_high = int(np.ceil(_frac["high"] * n_voting))
+    ev_med  = int(np.ceil(_frac["medium"] * n_voting))
+
+    if n_ev >= ev_crit:
         ev_level = "CRITICAL"
-    elif n_ev >= THRESHOLDS["evidence_high"]:
+    elif n_ev >= ev_high:
         ev_level = "HIGH"
-    elif n_ev >= THRESHOLDS["evidence_medium"]:
+    elif n_ev >= ev_med:
         ev_level = "MEDIUM"
     else:
         ev_level = None
@@ -198,20 +239,29 @@ def _concept_drift_alerts(concept_report: dict) -> list[Alert]:
     if ev_level:
         evidence = concept_report.get("evidence", {})
         fired    = [k for k, v in evidence.items() if v]
+        # R5: these signals are NOT independent. auc_drop, f1_drop,
+        # brier_increase and auc_slope_negative are four views of one
+        # degradation; prediction_drift and label_drift are mechanically coupled.
+        # The word "independent" was the most quotable overclaim in the README.
+        families = {"performance": {"auc_drop", "f1_drop", "brier_increase",
+                                    "auc_slope_negative"},
+                    "distribution": {"prediction_drift", "label_drift"}}
+        fam_hit = sorted({f for f, sigs in families.items() if sigs & set(fired)})
         alerts.append(Alert(
             alert_id    = "CD-003",
             alert_type  = "CONCEPT_DRIFT",
             level       = ev_level,
-            title       = f"Concept Drift Evidence: {n_ev}/8 Signals Fired",
+            title       = f"Concept Drift Evidence: {n_ev}/{n_voting} Voting Signals Fired",
             description = (
-                f"Concept drift confirmed by {n_ev} independent signals: "
-                f"{', '.join(fired)}. "
-                f"CUSUM first alarm at "
-                f"{concept_report['cusum']['first_alarm_pct']}% of stream."
+                f"{n_ev} of {n_voting} voting signals fired, spanning "
+                f"{len(fam_hit)} correlated signal families ({', '.join(fam_hit) or 'none'}): "
+                f"{', '.join(fired)}. These signals are NOT independent. "
+                f"Sequential detectors (CUSUM, Page-Hinkley) are excluded from "
+                f"the count as structurally broken — see Tier 1.5."
             ),
             metric      = "n_evidence",
             value       = float(n_ev),
-            threshold   = float(THRESHOLDS["evidence_high"]),
+            threshold   = float(ev_high),
             action      = (
                 "Initiate drift investigation protocol. "
                 "Run feature_drift analysis to identify root cause features."
@@ -223,8 +273,16 @@ def _concept_drift_alerts(concept_report: dict) -> list[Alert]:
         alerts.append(Alert(
             alert_id    = "CD-004",
             alert_type  = "CONCEPT_DRIFT",
-            level       = "HIGH",
-            title       = "CUSUM Sequential Drift Alarm",
+            # Tier 1.5 (completion): demoted from HIGH to LOW. Retiring these
+            # signals from the EVIDENCE COUNT was not enough — this alert reads
+            # `cusum.drift_detected` directly, so a saturated detector that fires
+            # in 100% of runs in every regime was still producing a HIGH alert,
+            # and one HIGH alert alone sets system_status to MODERATE. Measured
+            # on the no-drift control: 38 HIGH alerts across 20 seeds, and
+            # MODERATE status on all 20. A retirement that leaves the signal
+            # driving the alert system is cosmetic.
+            level       = _seq_level(concept_report),
+            title       = "CUSUM Sequential Alarm [DIAGNOSTIC — not evidence]",
             description = (
                 f"CUSUM detected {concept_report['cusum']['n_alarms']} alarms. "
                 f"First alarm at index {concept_report['cusum']['first_alarm_idx']} "
@@ -247,8 +305,8 @@ def _concept_drift_alerts(concept_report: dict) -> list[Alert]:
         alerts.append(Alert(
             alert_id    = "CD-005",
             alert_type  = "CONCEPT_DRIFT",
-            level       = "HIGH",
-            title       = "Page-Hinkley Gradual Drift Alarm",
+            level       = _seq_level(concept_report),   # Tier 1.5: see CD-004
+            title       = "Page-Hinkley Sequential Alarm [DIAGNOSTIC — not evidence]",
             description = (
                 f"Page-Hinkley detected gradual drift. "
                 f"First alarm at {concept_report['page_hinkley']['first_alarm_pct']}% "
@@ -629,9 +687,11 @@ class AlertEngine:
         }
 
         # ── Save ───────────────────────────────────────────────────────────
+        # Tier 1.7: this fixed path would have destroyed the original
+        # entry-cohort alert artifacts during the Tier 0 sweep.
+        from src.monitoring.artifact_io import write_artifact
         alert_path = ALERTS_DIR / f"alert_report_{ref_name}_{prod_name}.json"
-        with open(alert_path, "w") as f:
-            json.dump(report, f, indent=2)
+        write_artifact(alert_path, report, overwrite=True, preserve=True)
         logger.info(f"Alert report saved: {alert_path}")
 
         # Summary CSV
@@ -650,7 +710,8 @@ class AlertEngine:
             })
         summary_df  = pd.DataFrame(summary_rows)
         csv_path    = ALERTS_DIR / f"alert_summary_{ref_name}_{prod_name}.csv"
-        summary_df.to_csv(csv_path, index=False)
+        from src.monitoring.artifact_io import write_dataframe
+        write_dataframe(csv_path, summary_df, overwrite=True, preserve=True)
         logger.info(f"Alert summary CSV : {csv_path}")
 
         return report

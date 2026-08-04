@@ -38,7 +38,15 @@ from src.monitoring.logger import get_logger
 
 logger = get_logger("selector")
 
-ARTIFACTS_DIR = Path(r"C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts")
+# Tier 2C.6 reproducibility: this was a HARDCODED ABSOLUTE PATH to one
+# developer's machine, so `pipeline.py` did not reproduce anything from raw
+# data on a clean clone -- it read from and wrote to a directory that exists
+# nowhere else. On Linux CI the same literal resolves to a RELATIVE folder
+# whose name contains backslashes, so artifacts land somewhere harmless-
+# looking and the run still 'succeeds'. It worked on exactly one machine,
+# which is why nothing caught it. Now derived from this file's location.
+ROOT = Path(__file__).resolve().parents[2]
+ARTIFACTS_DIR = ROOT / "outputs" / "artifacts"
 ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Constants ──────────────────────────────────────────────────────────────
@@ -193,7 +201,13 @@ class FeatureSelector:
         logger.info(f"DriftSentinel — Feature Selector  [transform on {split_name.upper()}]")
         logger.info("=" * 70)
 
-        present_targets = [c for c in TARGET_COLS if c in df.columns]
+        # Tier 2A.1 determinism: TARGET_COLS is a SET, and Python randomises
+        # string hashing per process (PYTHONHASHSEED), so iterating it gave a
+        # different COLUMN ORDER on every run. Values were identical, but the
+        # parquet bytes were not — which breaks byte-identical reproducibility
+        # and is dangerous for any consumer using POSITIONAL indexing (X[:, i]),
+        # as the adversarial modules do. sorted() pins the order.
+        present_targets = [c for c in sorted(TARGET_COLS) if c in df.columns]
         keep_cols       = [c for c in self.selected_features if c in df.columns]
         missing         = set(self.selected_features) - set(df.columns)
 
@@ -282,7 +296,16 @@ class FeatureSelector:
 
         return {
             "selected"     : selected,
-            "removed"      : list(to_drop),
+            # Tier 2C.4 determinism: `to_drop` is a SET, so `list(to_drop)`
+            # ordered these names by string hash — different on every process,
+            # which made pipeline_objects.pkl byte-different across runs while
+            # every value in it stayed identical. Found by the determinism CI
+            # check on its first run; same defect class as TARGET_COLS. Benign
+            # here only because `selected` above is built by filtering the
+            # ORDERED candidate list rather than by iterating the set — which is
+            # luck, not design, and is precisely the pattern this project has
+            # been removing. sorted() pins it.
+            "removed"      : sorted(to_drop),
             "drop_pairs"   : drop_log,
         }
 
@@ -417,6 +440,28 @@ class FeatureSelector:
         logger.info("-" * 50)
         logger.info(f"Stage 5: SHAP Importance (GBM, n_estimators={SHAP_N_ESTIMATORS})")
 
+        # Tier 2A.5 — EMPTY-CANDIDATE GUARD.
+        #
+        # This stage consumes Boruta's confirmed set. On the full training data
+        # Boruta confirms exactly ONE feature (42 -> 1, 41 rejected), so this
+        # stage has always been one feature away from receiving an empty frame.
+        # Inside a cross-validation fold it confirmed ZERO, and
+        # `GradientBoostingClassifier.fit` raised
+        # "ValueError: at least one array or dtype is required" — the shipped
+        # selector crashes outright when Boruta confirms nothing.
+        #
+        # This is a real robustness defect, not an artifact of the ablation: any
+        # smaller sample, any reseeding, or any target with weaker signal can hit
+        # it. Stages 5 and 6 are documented as no-ops on a near-empty candidate
+        # set (audit F9); they now degrade to genuine no-ops instead of raising.
+        #
+        # Behaviour on the full training set is UNCHANGED (1 candidate, not 0).
+        if not candidates:
+            logger.warning("  Stage 5 SKIPPED — Boruta confirmed 0 features, so "
+                           "there is nothing to rank. Contributing no votes.")
+            return {"selected": [], "removed": [], "shap_importance": {},
+                    "skipped_reason": "empty candidate set from stage 4"}
+
         X_cand = X[candidates].fillna(0)
 
         gbm = GradientBoostingClassifier(
@@ -472,6 +517,14 @@ class FeatureSelector:
                     f"(n_bootstrap={STABILITY_N_BOOTSTRAP}, "
                     f"frac={STABILITY_SAMPLE_FRAC}, "
                     f"threshold={STABILITY_THRESHOLD})")
+
+        # Same empty-candidate hazard as stage 5 — this stage consumes stage 5's
+        # output, which is now empty whenever Boruta confirms nothing.
+        if not candidates:
+            logger.warning("  Stage 6 SKIPPED — no candidates from stage 5. "
+                           "Contributing no votes.")
+            return {"selected": [], "removed": [], "stability_scores": {},
+                    "skipped_reason": "empty candidate set from stage 5"}
 
         X_cand   = X[candidates].fillna(0)
         n_feat   = len(candidates)

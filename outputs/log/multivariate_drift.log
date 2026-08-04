@@ -1,0 +1,23 @@
+2026-08-04 15:38:29 | INFO     | multivariate_drift   | ===== RUN 20260804-153829-5bb197 | pid=2012 | started 2026-08-04 15:38:29 =====
+2026-08-04 15:38:29 | INFO     | multivariate_drift   | ==============================================================================
+2026-08-04 15:38:29 | INFO     | multivariate_drift   | Tier 2B.2 — multivariate drift detection
+2026-08-04 15:38:29 | INFO     | multivariate_drift   | ==============================================================================
+2026-08-04 15:38:32 | INFO     | multivariate_drift   | --------------------------------------------------------------
+2026-08-04 15:38:32 | INFO     | multivariate_drift   | REGIME: random_NEGATIVE_CONTROL
+2026-08-04 15:40:29 | INFO     | multivariate_drift   |   classifier-2ST : AUC 0.5067 p=0.0952 -> fires=False
+2026-08-04 15:40:59 | INFO     | multivariate_drift   |   MMD            : mmd2 0.000183 p=0.1841 -> fires=False
+2026-08-04 15:40:59 | INFO     | multivariate_drift   |   BBSD (FDR)     : fires=False p_adj={'KS': 0.61308, 'MannWhitney': 0.61308}
+2026-08-04 15:40:59 | INFO     | multivariate_drift   | --------------------------------------------------------------
+2026-08-04 15:40:59 | INFO     | multivariate_drift   | REGIME: entry_cohort
+2026-08-04 15:41:41 | INFO     | multivariate_drift   |   classifier-2ST : AUC 0.6932 p=0.0476 -> fires=True
+2026-08-04 15:42:00 | INFO     | multivariate_drift   |   MMD            : mmd2 0.002422 p=0.0050 -> fires=True
+2026-08-04 15:42:00 | INFO     | multivariate_drift   |   BBSD (FDR)     : fires=True p_adj={'KS': 0.0, 'MannWhitney': 0.0}
+2026-08-04 15:42:00 | INFO     | multivariate_drift   | --------------------------------------------------------------
+2026-08-04 15:42:00 | INFO     | multivariate_drift   | REGIME: temporal
+2026-08-04 15:43:59 | INFO     | multivariate_drift   |   classifier-2ST : AUC 0.6792 p=0.0476 -> fires=True
+2026-08-04 15:44:30 | INFO     | multivariate_drift   |   MMD            : mmd2 0.002112 p=0.0050 -> fires=True
+2026-08-04 15:44:30 | INFO     | multivariate_drift   |   BBSD (FDR)     : fires=True p_adj={'KS': 0.0, 'MannWhitney': 0.0}
+2026-08-04 15:44:30 | INFO     | multivariate_drift   | --------------------------------------------------------------
+2026-08-04 15:44:30 | INFO     | multivariate_drift   | Negative control: CALIBRATED — every multivariate detector stayed silent where drift is impossible by construction
+2026-08-04 15:44:30 | INFO     | multivariate_drift   | Report: multivariate_drift.json
+2026-08-04 15:44:30 | INFO     | multivariate_drift   | ==============================================================================

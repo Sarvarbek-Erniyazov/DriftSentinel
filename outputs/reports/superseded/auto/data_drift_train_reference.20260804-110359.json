@@ -1,0 +1,124 @@
+{
+  "val": {
+    "reference": "train",
+    "production": "val",
+    "n_features": 53,
+    "n_drifted": 31,
+    "n_critical_psi": 3,
+    "n_moderate_psi": 2,
+    "n_stable_psi": 48,
+    "top_drifted": [
+      {
+        "feature": "payer_code",
+        "composite_score": 0.8001,
+        "psi_level": "CRITICAL"
+      },
+      {
+        "feature": "medical_specialty",
+        "composite_score": 0.5882,
+        "psi_level": "CRITICAL"
+      },
+      {
+        "feature": "admission_source_id",
+        "composite_score": 0.4018,
+        "psi_level": "CRITICAL"
+      },
+      {
+        "feature": "number_diagnoses",
+        "composite_score": 0.3771,
+        "psi_level": "MODERATE"
+      },
+      {
+        "feature": "FE_labs_per_day_x_comorbidity",
+        "composite_score": 0.3591,
+        "psi_level": "MODERATE"
+      },
+      {
+        "feature": "FE_diagnoses_per_day",
+        "composite_score": 0.217,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "admission_type_id",
+        "composite_score": 0.1914,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "discharge_disposition_id",
+        "composite_score": 0.1651,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "FE_meds_per_day",
+        "composite_score": 0.1623,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "number_outpatient",
+        "composite_score": 0.1582,
+        "psi_level": "STABLE"
+      }
+    ]
+  },
+  "test": {
+    "reference": "train",
+    "production": "test",
+    "n_features": 53,
+    "n_drifted": 31,
+    "n_critical_psi": 5,
+    "n_moderate_psi": 2,
+    "n_stable_psi": 46,
+    "top_drifted": [
+      {
+        "feature": "payer_code",
+        "composite_score": 0.7963,
+        "psi_level": "CRITICAL"
+      },
+      {
+        "feature": "medical_specialty",
+        "composite_score": 0.6996,
+        "psi_level": "CRITICAL"
+      },
+      {
+        "feature": "number_diagnoses",
+        "composite_score": 0.5096,
+        "psi_level": "CRITICAL"
+      },
+      {
+        "feature": "FE_labs_per_day_x_comorbidity",
+        "composite_score": 0.4442,
+        "psi_level": "CRITICAL"
+      },
+      {
+        "feature": "admission_type_id",
+        "composite_score": 0.3749,
+        "psi_level": "MODERATE"
+      },
+      {
+        "feature": "FE_diagnoses_per_day",
+        "composite_score": 0.3257,
+        "psi_level": "MODERATE"
+      },
+      {
+        "feature": "admission_source_id",
+        "composite_score": 0.2827,
+        "psi_level": "CRITICAL"
+      },
+      {
+        "feature": "FE_meds_per_day",
+        "composite_score": 0.2172,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "race",
+        "composite_score": 0.1869,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "discharge_disposition_id",
+        "composite_score": 0.1858,
+        "psi_level": "STABLE"
+      }
+    ]
+  }
+}

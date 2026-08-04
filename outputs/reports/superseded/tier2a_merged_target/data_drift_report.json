@@ -1,0 +1,63 @@
+{
+  "test": {
+    "reference": "val",
+    "production": "test",
+    "n_features": 53,
+    "n_drifted": 25,
+    "n_critical_psi": 0,
+    "n_moderate_psi": 0,
+    "n_stable_psi": 53,
+    "top_drifted": [
+      {
+        "feature": "FE_multi_channel_utilizer",
+        "composite_score": 0.1859,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "FE_total_clinical_contacts",
+        "composite_score": 0.1542,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "FE_lab_to_procedure_ratio",
+        "composite_score": 0.1476,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "medical_specialty",
+        "composite_score": 0.0936,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "payer_code",
+        "composite_score": 0.088,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "number_outpatient",
+        "composite_score": 0.0849,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "discharge_disposition_id",
+        "composite_score": 0.0848,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "FE_labs_per_day",
+        "composite_score": 0.0836,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "FE_diagnoses_per_day",
+        "composite_score": 0.0802,
+        "psi_level": "STABLE"
+      },
+      {
+        "feature": "diag_2",
+        "composite_score": 0.0794,
+        "psi_level": "STABLE"
+      }
+    ]
+  }
+}

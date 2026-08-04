@@ -1,0 +1,96 @@
+2026-08-04 11:23:40 | INFO     | fdr_correction       | ===== RUN 20260804-112340-6f0ebb | pid=1680 | started 2026-08-04 11:23:40 =====
+2026-08-04 11:23:40 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:23:40 | INFO     | fdr_correction       | Tier 2A.3 — Benjamini-Hochberg FDR across the full test family
+2026-08-04 11:23:40 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:23:42 | INFO     | fdr_correction       | Family size (counted, not estimated): 318 p-values
+2026-08-04 11:23:42 | INFO     | fdr_correction       |   train->test       105 tests  {'KS': np.int64(35), 'chi2': np.int64(35), 'MannWhitney': np.int64(35)}
+2026-08-04 11:23:42 | INFO     | fdr_correction       |   train->val        105 tests  {'KS': np.int64(35), 'chi2': np.int64(35), 'MannWhitney': np.int64(35)}
+2026-08-04 11:23:42 | INFO     | fdr_correction       |   val->test         108 tests  {'KS': np.int64(36), 'MannWhitney': np.int64(36), 'chi2': np.int64(35), 'two-proportion': np.int64(1)}
+2026-08-04 11:23:42 | INFO     | fdr_correction       | --------------------------------------------------------------
+2026-08-04 11:23:42 | INFO     | fdr_correction       | Significant UNCORRECTED (p < 0.01) : 257 / 318 (80.8%)
+2026-08-04 11:23:42 | INFO     | fdr_correction       | Significant after BH-FDR (q = 0.05)    : 268 / 318 (84.3%)
+2026-08-04 11:23:42 | INFO     | fdr_correction       | Lost to correction                    : -11
+2026-08-04 11:23:42 | INFO     | fdr_correction       | Expected false positives uncorrected  : ~3.2
+2026-08-04 11:23:42 | INFO     | fdr_correction       |   train->test      features flagged: 47/53 raw -> 48/53 after FDR
+2026-08-04 11:23:42 | INFO     | fdr_correction       |   train->val       features flagged: 49/53 raw -> 50/53 after FDR
+2026-08-04 11:23:42 | INFO     | fdr_correction       |   val->test        features flagged: 39/53 raw -> 43/53 after FDR
+2026-08-04 11:23:42 | INFO     | fdr_correction       | Reports: fdr_correction.json, fdr_corrected_tests.csv
+2026-08-04 11:23:42 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:24:19 | INFO     | fdr_correction       | ===== RUN 20260804-112418-b39c80 | pid=20284 | started 2026-08-04 11:24:19 =====
+2026-08-04 11:24:19 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:24:19 | INFO     | fdr_correction       | Tier 2A.3 — Benjamini-Hochberg FDR across the full test family
+2026-08-04 11:24:19 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:24:21 | INFO     | fdr_correction       | Family size (counted, not estimated): 318 p-values
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   train->test       105 tests  {'KS': np.int64(35), 'chi2': np.int64(35), 'MannWhitney': np.int64(35)}
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   train->val        105 tests  {'KS': np.int64(35), 'chi2': np.int64(35), 'MannWhitney': np.int64(35)}
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   val->test         108 tests  {'KS': np.int64(36), 'MannWhitney': np.int64(36), 'chi2': np.int64(35), 'two-proportion': np.int64(1)}
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   level 0.05: raw 269/318 -> BH 268/318 (lost 1)
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   level 0.01: raw 257/318 -> BH 256/318 (lost 1)
+2026-08-04 11:24:21 | INFO     | fdr_correction       | --------------------------------------------------------------
+2026-08-04 11:24:21 | INFO     | fdr_correction       | MATCHED-LEVEL comparison (the correct one):
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   level_0.05   raw  269 -> FDR  268  lost   1
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   level_0.01   raw  257 -> FDR  256  lost   1
+2026-08-04 11:24:21 | INFO     | fdr_correction       | Expected false positives at alpha=0.01 : ~3.2
+2026-08-04 11:24:21 | INFO     | fdr_correction       | --------------------------------------------------------------
+2026-08-04 11:24:21 | INFO     | fdr_correction       | EFFECT SIZE (the actual binding constraint)
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   feature-windows significant after FDR : 141/159
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   ... and PSI >= 0.10                   : 12
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   ... and PSI >= 0.20 (critical)        : 8
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   significant but PSI < 0.10 (trivial)  : 129
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   train->test      features flagged: 47/53 raw -> 48/53 after FDR
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   train->val       features flagged: 49/53 raw -> 50/53 after FDR
+2026-08-04 11:24:21 | INFO     | fdr_correction       |   val->test        features flagged: 39/53 raw -> 43/53 after FDR
+2026-08-04 11:24:21 | INFO     | fdr_correction       | Reports: fdr_correction.json, fdr_corrected_tests.csv
+2026-08-04 11:24:21 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:24:44 | INFO     | fdr_correction       | ===== RUN 20260804-112443-999cbb | pid=2648 | started 2026-08-04 11:24:44 =====
+2026-08-04 11:24:44 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:24:44 | INFO     | fdr_correction       | Tier 2A.3 — Benjamini-Hochberg FDR across the full test family
+2026-08-04 11:24:44 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:24:45 | INFO     | fdr_correction       | Family size (counted, not estimated): 318 p-values
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   train->test       105 tests  {'KS': np.int64(35), 'chi2': np.int64(35), 'MannWhitney': np.int64(35)}
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   train->val        105 tests  {'KS': np.int64(35), 'chi2': np.int64(35), 'MannWhitney': np.int64(35)}
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   val->test         108 tests  {'KS': np.int64(36), 'MannWhitney': np.int64(36), 'chi2': np.int64(35), 'two-proportion': np.int64(1)}
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   level 0.05: raw 269/318 -> BH 268/318 (lost 1)
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   level 0.01: raw 257/318 -> BH 256/318 (lost 1)
+2026-08-04 11:24:45 | INFO     | fdr_correction       | --------------------------------------------------------------
+2026-08-04 11:24:45 | INFO     | fdr_correction       | MATCHED-LEVEL comparison (the correct one):
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   level_0.05   raw  269 -> FDR  268  lost   1
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   level_0.01   raw  257 -> FDR  256  lost   1
+2026-08-04 11:24:45 | INFO     | fdr_correction       | Expected false positives at alpha=0.01 : ~3.2
+2026-08-04 11:24:45 | INFO     | fdr_correction       | --------------------------------------------------------------
+2026-08-04 11:24:45 | INFO     | fdr_correction       | EFFECT SIZE (the actual binding constraint)
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   feature-windows significant after FDR : 141/159
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   ... and PSI >= 0.10                   : 12
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   ... and PSI >= 0.20 (critical)        : 8
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   significant but PSI < 0.10 (trivial)  : 129
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   train->test      features flagged: 47/53 raw -> 48/53 after FDR
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   train->val       features flagged: 49/53 raw -> 50/53 after FDR
+2026-08-04 11:24:45 | INFO     | fdr_correction       |   val->test        features flagged: 39/53 raw -> 43/53 after FDR
+2026-08-04 11:24:45 | INFO     | fdr_correction       | Reports: fdr_correction.json, fdr_corrected_tests.csv
+2026-08-04 11:24:45 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:25:30 | INFO     | fdr_correction       | ===== RUN 20260804-112529-eef628 | pid=29504 | started 2026-08-04 11:25:30 =====
+2026-08-04 11:25:30 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:25:30 | INFO     | fdr_correction       | Tier 2A.3 — Benjamini-Hochberg FDR across the full test family
+2026-08-04 11:25:30 | INFO     | fdr_correction       | ==============================================================================
+2026-08-04 11:25:34 | INFO     | fdr_correction       | Family size (counted, not estimated): 318 p-values
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   train->test       105 tests  {'KS': np.int64(35), 'chi2': np.int64(35), 'MannWhitney': np.int64(35)}
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   train->val        105 tests  {'KS': np.int64(35), 'chi2': np.int64(35), 'MannWhitney': np.int64(35)}
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   val->test         108 tests  {'KS': np.int64(36), 'MannWhitney': np.int64(36), 'chi2': np.int64(35), 'two-proportion': np.int64(1)}
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   level 0.05: raw 269/318 -> BH 268/318 (lost 1)
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   level 0.01: raw 257/318 -> BH 256/318 (lost 1)
+2026-08-04 11:25:34 | INFO     | fdr_correction       | --------------------------------------------------------------
+2026-08-04 11:25:34 | INFO     | fdr_correction       | MATCHED-LEVEL comparison (the correct one):
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   level_0.05   raw  269 -> FDR  268  lost   1
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   level_0.01   raw  257 -> FDR  256  lost   1
+2026-08-04 11:25:34 | INFO     | fdr_correction       | Expected false positives at alpha=0.01 : ~3.2
+2026-08-04 11:25:34 | INFO     | fdr_correction       | --------------------------------------------------------------
+2026-08-04 11:25:34 | INFO     | fdr_correction       | EFFECT SIZE (the actual binding constraint)
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   feature-windows significant after FDR : 141/159
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   ... and PSI >= 0.10                   : 12
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   ... and PSI >= 0.20 (critical)        : 8
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   significant but PSI < 0.10 (trivial)  : 129
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   train->test      features flagged: 47/53 raw -> 48/53 after FDR
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   train->val       features flagged: 49/53 raw -> 50/53 after FDR
+2026-08-04 11:25:34 | INFO     | fdr_correction       |   val->test        features flagged: 39/53 raw -> 43/53 after FDR
+2026-08-04 11:25:34 | INFO     | fdr_correction       | Reports: fdr_correction.json, fdr_corrected_tests.csv
+2026-08-04 11:25:34 | INFO     | fdr_correction       | ==============================================================================

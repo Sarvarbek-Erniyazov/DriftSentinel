@@ -1,0 +1,65 @@
+# DriftSentinel — drift detection configuration
+#
+# Populated in Tier 1.4/1.5. This file was previously EMPTY while the constants
+# it was supposed to hold lived in module headers (CLAUDE.md: "No magic numbers
+# — everything in configs/*.yaml"). Only the constants changed in Tier 1.4/1.5
+# are moved here; the remainder still live in module headers and are tracked as
+# outstanding.
+
+concept_drift:
+
+  # ── Evidence signals ────────────────────────────────────────────────────
+  # Tier 1.5: the evidence count is 6, not 8. cusum_alarm and ph_alarm are
+  # RETAINED as diagnostics but do not vote, because Tier 0 showed they are
+  # structurally broken rather than merely mis-tuned:
+  #   * CUSUM fired in 100% of runs in EVERY regime including the no-drift
+  #     random control, at 101-207 alarms per run (minimum ever observed: 92).
+  #     With threshold 5.0 and delta 0.005 against a mean absolute error of
+  #     ~0.18 the statistic is saturated — a constant TRUE.
+  #   * Page-Hinkley's verdict is decided by whether the first MIN_WINDOW_SIZE
+  #     (=200) rows happen to have above- or below-average error. Where
+  #     mean_ref < mean_prod it alarms; in the temporal regime mean_ref (0.185)
+  #     exceeded mean_prod (0.173) and it never alarmed at all.
+  #   * Neither responded to ANY synthetic shift at ANY magnitude (Phase 0.3).
+  # Evidence: outputs/reports/regime_random.json -> sequential_detector_diagnosis
+  voting_signals:
+    - auc_drop
+    - f1_drop
+    - brier_increase
+    - auc_slope_negative
+    - prediction_drift
+    - label_drift
+  diagnostic_only_signals:      # reported, NOT counted as evidence
+    - cusum_alarm
+    - ph_alarm
+
+  # Severity as a FRACTION of voting signals, preserving the original 5/8 and
+  # 3/8 boundaries so the scale change does not silently re-tune severity.
+  severity_fractions:
+    critical: 0.625             # was 5 of 8
+    moderate: 0.375             # was 3 of 8
+
+  # ── label_drift rule (Tier 1.4) ─────────────────────────────────────────
+  # The old rule was a fixed ABSOLUTE change: |P_prod(Y) - P_ref(Y)| > 0.05.
+  # That was ~11% relative under the merged target's 46% base rate, but it is
+  # ~45% relative under the new <30 target's 11.2% base rate — so it stopped
+  # detecting real shifts entirely. Measured on the Tier 0 regimes under <30,
+  # the old rule fired on NONE of them: entry-cohort (-16.6% relative) and
+  # temporal (-10.5% relative) both went undetected.
+  #
+  # Replacement: a two-proportion test AND a minimum relative effect, so the
+  # rule is scale-free with respect to prevalence.
+  label_drift:
+    alpha: 0.01                 # two-proportion z-test
+    min_relative_change: 0.10   # |P_prod - P_ref| / P_ref
+    # Empirical operating characteristics on the stored Tier 0 regimes (<30):
+    #   random control (no drift possible) : 0.00   <- was 0.00
+    #   synthetic zero-magnitude shift     : 0.00   <- was 0.00
+    #   entry-cohort split                 : 1.00   <- was 0.00 (MISSED)
+    #   temporal split                     : 1.00   <- was 0.00 (MISSED)
+    #   synthetic label shift +0.02 (+18%) : 1.00   <- was 0.00 (MISSED)
+    #   synthetic label shift +0.05        : 1.00   <- was 0.60
+    #   synthetic label shift +0.10, +0.15 : 1.00   <- was 1.00
+    # Strictly better on both axes: same zero false-alarm rate, detects shifts
+    # the old rule missed entirely.
+    legacy_absolute_threshold: 0.05   # retained so the old verdict stays reportable

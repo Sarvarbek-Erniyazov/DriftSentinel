@@ -1,0 +1,92 @@
+{
+  "ref_name": "val",
+  "prod_name": "test",
+  "n_features": 53,
+  "n_high_risk": 16,
+  "n_medium_risk": 13,
+  "n_low_risk": 24,
+  "top_high_risk": [
+    {
+      "feature": "FE_multi_channel_utilizer",
+      "impact_score": 0.4556,
+      "risk_tier": "HIGH",
+      "drift_score": 0.1859,
+      "shap_ref": 0.232922,
+      "shap_delta_pct": -5.48
+    },
+    {
+      "feature": "FE_lab_to_procedure_ratio",
+      "impact_score": 0.4539,
+      "risk_tier": "HIGH",
+      "drift_score": 0.1476,
+      "shap_ref": 0.054155,
+      "shap_delta_pct": 9.37
+    },
+    {
+      "feature": "payer_code",
+      "impact_score": 0.4295,
+      "risk_tier": "HIGH",
+      "drift_score": 0.088,
+      "shap_ref": 0.069084,
+      "shap_delta_pct": 9.98
+    },
+    {
+      "feature": "number_diagnoses",
+      "impact_score": 0.4068,
+      "risk_tier": "HIGH",
+      "drift_score": 0.0733,
+      "shap_ref": 0.127907,
+      "shap_delta_pct": 5.94
+    },
+    {
+      "feature": "discharge_disposition_id",
+      "impact_score": 0.4048,
+      "risk_tier": "HIGH",
+      "drift_score": 0.0848,
+      "shap_ref": 0.155604,
+      "shap_delta_pct": -4.16
+    },
+    {
+      "feature": "diag_1",
+      "impact_score": 0.4008,
+      "risk_tier": "HIGH",
+      "drift_score": 0.0501,
+      "shap_ref": 0.052229,
+      "shap_delta_pct": 7.07
+    },
+    {
+      "feature": "FE_high_prior_utilization",
+      "impact_score": 0.3975,
+      "risk_tier": "HIGH",
+      "drift_score": 0.0,
+      "shap_ref": 0.123127,
+      "shap_delta_pct": -11.88
+    },
+    {
+      "feature": "medical_specialty",
+      "impact_score": 0.3953,
+      "risk_tier": "HIGH",
+      "drift_score": 0.0936,
+      "shap_ref": 0.122345,
+      "shap_delta_pct": -0.8
+    },
+    {
+      "feature": "age",
+      "impact_score": 0.3928,
+      "risk_tier": "HIGH",
+      "drift_score": 0.0476,
+      "shap_ref": 0.054431,
+      "shap_delta_pct": -5.34
+    },
+    {
+      "feature": "FE_total_active_meds",
+      "impact_score": 0.3816,
+      "risk_tier": "HIGH",
+      "drift_score": 0.0261,
+      "shap_ref": 0.048271,
+      "shap_delta_pct": 7.99
+    }
+  ],
+  "fe_mean_impact": 0.1818,
+  "raw_mean_impact": 0.2215
+}

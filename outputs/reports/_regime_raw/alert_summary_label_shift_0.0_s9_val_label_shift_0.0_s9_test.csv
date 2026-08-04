@@ -1,0 +1,4 @@
+alert_id,level,type,title,metric,value,threshold,action,timestamp
+DD-001,MEDIUM,DATA_DRIFT,Data Drift: 0/28 Features Drifted,drift_rate,0.0,0.25,Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.,2026-08-04T10:31:00.438039
+CD-004,LOW,CONCEPT_DRIFT,CUSUM Sequential Alarm [DIAGNOSTIC — not evidence],cusum_alarms,174.0,1.0,Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.,2026-08-04T10:31:00.438039
+CD-005,LOW,CONCEPT_DRIFT,Page-Hinkley Sequential Alarm [DIAGNOSTIC — not evidence],ph_statistic,45.7314,50.0,Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.,2026-08-04T10:31:00.438039

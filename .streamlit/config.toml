@@ -1,0 +1,44 @@
+# DriftSentinel — monitoring console theme
+#
+# Restrained observability palette. Deliberately NOT the Streamlit default:
+# this is read by ML researchers judging whether the artifact looks like an
+# instrument or a tutorial output.
+#
+# COLOUR DISCIPLINE: severity colours (STABLE / MODERATE / HIGH / CRITICAL)
+# carry meaning and are defined once in app.py as SEVERITY_COLORS. They must
+# never appear decoratively. The chrome below is deliberately desaturated so
+# that the only saturated colour on screen is a severity signal.
+
+[theme]
+base = "dark"
+
+primaryColor = "#4C8DF6"           # interactive accent only — never a severity
+backgroundColor = "#0E1117"        # near-black instrument panel
+secondaryBackgroundColor = "#171B24"  # raised surfaces: cards, sidebar, tables
+textColor = "#D8DEE9"              # off-white, lower glare than pure #FFF
+linkColor = "#7AA7F0"
+
+font = "sans-serif"                # prose
+codeFont = "monospace"             # metrics, IDs, signal names
+headingFont = "sans-serif"
+
+borderColor = "#2A3140"
+showWidgetBorder = true
+baseRadius = "0.25rem"             # squared-off, technical rather than playful
+codeBackgroundColor = "#11151D"
+
+[server]
+headless = true
+# Tier 3: `enableCORS = false` alongside `enableXsrfProtection = true` is an
+# INCOMPATIBLE pair — Streamlit silently overrides CORS back to true and logs a
+# warning on every start. It was doing exactly that. XSRF protection is the one
+# worth keeping on a public deployment, so CORS stays enabled and the
+# contradiction is removed rather than suppressed.
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+showErrorDetails = true

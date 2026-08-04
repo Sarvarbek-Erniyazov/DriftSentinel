@@ -45,3 +45,1155 @@
 2026-05-11 20:54:32 | INFO     | loader               | ======================================================================
 2026-05-11 20:54:32 | INFO     | loader               | Loader completed successfully
 2026-05-11 20:54:32 | INFO     | loader               | ======================================================================
+2026-08-04 10:37:25 | INFO     | loader               | ===== RUN 20260804-103724-348522 | pid=31316 | started 2026-08-04 10:37:25 =====
+2026-08-04 10:37:25 | INFO     | loader               | ======================================================================
+2026-08-04 10:37:25 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 10:37:25 | INFO     | loader               | ======================================================================
+2026-08-04 10:37:25 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 10:37:26 | INFO     | loader               | Loaded in 0.270s
+2026-08-04 10:37:26 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 10:37:26 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 10:37:26 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:37:26 | INFO     | loader               | Dtype summary
+2026-08-04 10:37:26 | INFO     | loader               |   object       : 37 columns
+2026-08-04 10:37:26 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 10:37:26 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:37:26 | INFO     | loader               | Schema check
+2026-08-04 10:37:26 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 10:37:26 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 10:37:26 | INFO     | loader               | Column count 50 — OK
+2026-08-04 10:37:26 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:37:26 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 10:37:26 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 10:37:26 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 10:37:26 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 10:37:26 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 10:37:26 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 10:37:26 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 10:37:26 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 10:37:26 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 10:37:26 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 10:37:26 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 10:37:26 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 10:37:26 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:37:26 | INFO     | loader               | Duplicate integrity
+2026-08-04 10:37:26 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 10:37:26 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 10:37:26 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 10:37:26 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 10:37:26 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:37:26 | INFO     | loader               | Target column: readmitted
+2026-08-04 10:37:26 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 10:37:26 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 10:37:26 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 10:37:26 | INFO     | loader               | Target column integrity — OK
+2026-08-04 10:37:26 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:37:26 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 10:37:26 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 10:37:26 | INFO     | loader               | ======================================================================
+2026-08-04 10:37:26 | INFO     | loader               | Loader completed successfully
+2026-08-04 10:37:26 | INFO     | loader               | ======================================================================
+2026-08-04 10:48:31 | INFO     | loader               | ===== RUN 20260804-104829-f5297c | pid=20016 | started 2026-08-04 10:48:31 =====
+2026-08-04 10:48:31 | INFO     | loader               | ======================================================================
+2026-08-04 10:48:31 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 10:48:31 | INFO     | loader               | ======================================================================
+2026-08-04 10:48:31 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 10:48:31 | INFO     | loader               | Loaded in 0.308s
+2026-08-04 10:48:31 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 10:48:32 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 10:48:32 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:48:32 | INFO     | loader               | Dtype summary
+2026-08-04 10:48:32 | INFO     | loader               |   object       : 37 columns
+2026-08-04 10:48:32 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 10:48:32 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:48:32 | INFO     | loader               | Schema check
+2026-08-04 10:48:32 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 10:48:32 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 10:48:32 | INFO     | loader               | Column count 50 — OK
+2026-08-04 10:48:32 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:48:32 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 10:48:32 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 10:48:32 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 10:48:32 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 10:48:32 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 10:48:32 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 10:48:32 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 10:48:32 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 10:48:32 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 10:48:32 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 10:48:32 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 10:48:32 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 10:48:32 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:48:32 | INFO     | loader               | Duplicate integrity
+2026-08-04 10:48:32 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 10:48:32 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 10:48:32 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 10:48:32 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 10:48:32 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:48:32 | INFO     | loader               | Target column: readmitted
+2026-08-04 10:48:32 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 10:48:32 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 10:48:32 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 10:48:32 | INFO     | loader               | Target column integrity — OK
+2026-08-04 10:48:32 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:48:32 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 10:48:32 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 10:48:32 | INFO     | loader               | ======================================================================
+2026-08-04 10:48:32 | INFO     | loader               | Loader completed successfully
+2026-08-04 10:48:32 | INFO     | loader               | ======================================================================
+2026-08-04 10:52:00 | INFO     | loader               | ===== RUN 20260804-105157-d432da | pid=31324 | started 2026-08-04 10:52:00 =====
+2026-08-04 10:52:00 | INFO     | loader               | ======================================================================
+2026-08-04 10:52:00 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 10:52:00 | INFO     | loader               | ======================================================================
+2026-08-04 10:52:00 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 10:52:00 | INFO     | loader               | Loaded in 0.478s
+2026-08-04 10:52:00 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 10:52:01 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 10:52:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:52:01 | INFO     | loader               | Dtype summary
+2026-08-04 10:52:01 | INFO     | loader               |   object       : 37 columns
+2026-08-04 10:52:01 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 10:52:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:52:01 | INFO     | loader               | Schema check
+2026-08-04 10:52:01 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 10:52:01 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 10:52:01 | INFO     | loader               | Column count 50 — OK
+2026-08-04 10:52:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:52:01 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 10:52:01 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 10:52:01 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 10:52:01 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 10:52:01 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 10:52:01 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 10:52:01 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 10:52:01 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 10:52:01 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 10:52:01 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 10:52:01 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 10:52:01 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 10:52:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:52:01 | INFO     | loader               | Duplicate integrity
+2026-08-04 10:52:01 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 10:52:01 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 10:52:01 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 10:52:01 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 10:52:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:52:01 | INFO     | loader               | Target column: readmitted
+2026-08-04 10:52:01 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 10:52:01 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 10:52:01 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 10:52:01 | INFO     | loader               | Target column integrity — OK
+2026-08-04 10:52:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:52:01 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 10:52:01 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 10:52:01 | INFO     | loader               | ======================================================================
+2026-08-04 10:52:01 | INFO     | loader               | Loader completed successfully
+2026-08-04 10:52:01 | INFO     | loader               | ======================================================================
+2026-08-04 10:54:02 | INFO     | loader               | ===== RUN 20260804-105400-8176e5 | pid=20152 | started 2026-08-04 10:54:02 =====
+2026-08-04 10:54:02 | INFO     | loader               | ======================================================================
+2026-08-04 10:54:02 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 10:54:02 | INFO     | loader               | ======================================================================
+2026-08-04 10:54:02 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 10:54:02 | INFO     | loader               | Loaded in 0.290s
+2026-08-04 10:54:02 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 10:54:02 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 10:54:02 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:54:02 | INFO     | loader               | Dtype summary
+2026-08-04 10:54:02 | INFO     | loader               |   object       : 37 columns
+2026-08-04 10:54:02 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 10:54:02 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:54:02 | INFO     | loader               | Schema check
+2026-08-04 10:54:02 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 10:54:02 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 10:54:02 | INFO     | loader               | Column count 50 — OK
+2026-08-04 10:54:02 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:54:02 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 10:54:03 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 10:54:03 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 10:54:03 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 10:54:03 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 10:54:03 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 10:54:03 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 10:54:03 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 10:54:03 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 10:54:03 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 10:54:03 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 10:54:03 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 10:54:03 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:54:03 | INFO     | loader               | Duplicate integrity
+2026-08-04 10:54:03 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 10:54:03 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 10:54:03 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 10:54:03 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 10:54:03 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:54:03 | INFO     | loader               | Target column: readmitted
+2026-08-04 10:54:03 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 10:54:03 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 10:54:03 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 10:54:03 | INFO     | loader               | Target column integrity — OK
+2026-08-04 10:54:03 | INFO     | loader               | --------------------------------------------------
+2026-08-04 10:54:03 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 10:54:03 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 10:54:03 | INFO     | loader               | ======================================================================
+2026-08-04 10:54:03 | INFO     | loader               | Loader completed successfully
+2026-08-04 10:54:03 | INFO     | loader               | ======================================================================
+2026-08-04 11:30:03 | INFO     | loader               | ===== RUN 20260804-113003-e838de | pid=16256 | started 2026-08-04 11:30:03 =====
+2026-08-04 11:30:03 | INFO     | loader               | ======================================================================
+2026-08-04 11:30:03 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 11:30:03 | INFO     | loader               | ======================================================================
+2026-08-04 11:30:03 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 11:30:03 | INFO     | loader               | Loaded in 0.252s
+2026-08-04 11:30:03 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 11:30:04 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 11:30:04 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | loader               | Dtype summary
+2026-08-04 11:30:04 | INFO     | loader               |   object       : 37 columns
+2026-08-04 11:30:04 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 11:30:04 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | loader               | Schema check
+2026-08-04 11:30:04 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 11:30:04 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 11:30:04 | INFO     | loader               | Column count 50 — OK
+2026-08-04 11:30:04 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 11:30:04 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 11:30:04 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 11:30:04 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 11:30:04 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 11:30:04 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 11:30:04 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 11:30:04 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 11:30:04 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 11:30:04 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 11:30:04 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 11:30:04 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 11:30:04 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | loader               | Duplicate integrity
+2026-08-04 11:30:04 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 11:30:04 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 11:30:04 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 11:30:04 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 11:30:04 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | loader               | Target column: readmitted
+2026-08-04 11:30:04 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 11:30:04 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 11:30:04 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 11:30:04 | INFO     | loader               | Target column integrity — OK
+2026-08-04 11:30:04 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:04 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 11:30:04 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 11:30:04 | INFO     | loader               | ======================================================================
+2026-08-04 11:30:04 | INFO     | loader               | Loader completed successfully
+2026-08-04 11:30:04 | INFO     | loader               | ======================================================================
+2026-08-04 11:30:51 | INFO     | loader               | ===== RUN 20260804-113051-66454f | pid=22816 | started 2026-08-04 11:30:51 =====
+2026-08-04 11:30:51 | INFO     | loader               | ======================================================================
+2026-08-04 11:30:51 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 11:30:51 | INFO     | loader               | ======================================================================
+2026-08-04 11:30:51 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 11:30:52 | INFO     | loader               | Loaded in 0.249s
+2026-08-04 11:30:52 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 11:30:52 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 11:30:52 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | loader               | Dtype summary
+2026-08-04 11:30:52 | INFO     | loader               |   object       : 37 columns
+2026-08-04 11:30:52 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 11:30:52 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | loader               | Schema check
+2026-08-04 11:30:52 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 11:30:52 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 11:30:52 | INFO     | loader               | Column count 50 — OK
+2026-08-04 11:30:52 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 11:30:52 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 11:30:52 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 11:30:52 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 11:30:52 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 11:30:52 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 11:30:52 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 11:30:52 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 11:30:52 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 11:30:52 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 11:30:52 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 11:30:52 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 11:30:52 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | loader               | Duplicate integrity
+2026-08-04 11:30:52 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 11:30:52 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 11:30:52 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 11:30:52 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 11:30:52 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | loader               | Target column: readmitted
+2026-08-04 11:30:52 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 11:30:52 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 11:30:52 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 11:30:52 | INFO     | loader               | Target column integrity — OK
+2026-08-04 11:30:52 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:30:52 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 11:30:52 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 11:30:52 | INFO     | loader               | ======================================================================
+2026-08-04 11:30:52 | INFO     | loader               | Loader completed successfully
+2026-08-04 11:30:52 | INFO     | loader               | ======================================================================
+2026-08-04 11:31:04 | INFO     | loader               | ===== RUN 20260804-113104-3e56fe | pid=28552 | started 2026-08-04 11:31:04 =====
+2026-08-04 11:31:04 | INFO     | loader               | ======================================================================
+2026-08-04 11:31:04 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 11:31:04 | INFO     | loader               | ======================================================================
+2026-08-04 11:31:04 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 11:31:04 | INFO     | loader               | Loaded in 0.245s
+2026-08-04 11:31:04 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 11:31:04 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 11:31:04 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:31:04 | INFO     | loader               | Dtype summary
+2026-08-04 11:31:04 | INFO     | loader               |   object       : 37 columns
+2026-08-04 11:31:04 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 11:31:04 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:31:04 | INFO     | loader               | Schema check
+2026-08-04 11:31:04 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 11:31:04 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 11:31:04 | INFO     | loader               | Column count 50 — OK
+2026-08-04 11:31:04 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:31:04 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 11:31:04 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 11:31:04 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 11:31:04 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 11:31:04 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 11:31:04 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 11:31:04 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 11:31:04 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 11:31:04 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 11:31:04 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 11:31:04 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 11:31:04 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 11:31:04 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:31:04 | INFO     | loader               | Duplicate integrity
+2026-08-04 11:31:05 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 11:31:05 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 11:31:05 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 11:31:05 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 11:31:05 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:31:05 | INFO     | loader               | Target column: readmitted
+2026-08-04 11:31:05 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 11:31:05 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 11:31:05 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 11:31:05 | INFO     | loader               | Target column integrity — OK
+2026-08-04 11:31:05 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:31:05 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 11:31:05 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 11:31:05 | INFO     | loader               | ======================================================================
+2026-08-04 11:31:05 | INFO     | loader               | Loader completed successfully
+2026-08-04 11:31:05 | INFO     | loader               | ======================================================================
+2026-08-04 11:38:56 | INFO     | loader               | ===== RUN 20260804-113856-c66aba | pid=18084 | started 2026-08-04 11:38:56 =====
+2026-08-04 11:38:56 | INFO     | loader               | ======================================================================
+2026-08-04 11:38:56 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 11:38:56 | INFO     | loader               | ======================================================================
+2026-08-04 11:38:56 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 11:38:56 | INFO     | loader               | Loaded in 0.238s
+2026-08-04 11:38:56 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 11:38:56 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 11:38:56 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:38:56 | INFO     | loader               | Dtype summary
+2026-08-04 11:38:56 | INFO     | loader               |   object       : 37 columns
+2026-08-04 11:38:56 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 11:38:56 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:38:56 | INFO     | loader               | Schema check
+2026-08-04 11:38:56 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 11:38:56 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 11:38:56 | INFO     | loader               | Column count 50 — OK
+2026-08-04 11:38:56 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:38:56 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 11:38:56 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 11:38:56 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 11:38:56 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 11:38:56 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 11:38:56 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 11:38:56 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 11:38:56 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 11:38:56 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 11:38:56 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 11:38:56 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 11:38:56 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 11:38:56 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:38:56 | INFO     | loader               | Duplicate integrity
+2026-08-04 11:38:56 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 11:38:56 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 11:38:56 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 11:38:56 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 11:38:56 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:38:56 | INFO     | loader               | Target column: readmitted
+2026-08-04 11:38:56 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 11:38:56 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 11:38:56 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 11:38:56 | INFO     | loader               | Target column integrity — OK
+2026-08-04 11:38:56 | INFO     | loader               | --------------------------------------------------
+2026-08-04 11:38:56 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 11:38:56 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 11:38:57 | INFO     | loader               | ======================================================================
+2026-08-04 11:38:57 | INFO     | loader               | Loader completed successfully
+2026-08-04 11:38:57 | INFO     | loader               | ======================================================================
+2026-08-04 18:17:39 | INFO     | loader               | ===== RUN 20260804-181736-383e94 | pid=31444 | started 2026-08-04 18:17:39 =====
+2026-08-04 18:17:39 | INFO     | loader               | ======================================================================
+2026-08-04 18:17:39 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:17:39 | INFO     | loader               | ======================================================================
+2026-08-04 18:17:39 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:17:39 | INFO     | loader               | Loaded in 0.329s
+2026-08-04 18:17:39 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:17:39 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:17:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:17:39 | INFO     | loader               | Dtype summary
+2026-08-04 18:17:39 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:17:39 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:17:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:17:39 | INFO     | loader               | Schema check
+2026-08-04 18:17:39 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:17:39 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:17:39 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:17:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:17:39 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:17:39 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:17:39 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:17:39 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:17:39 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:17:39 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:17:39 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:17:39 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:17:39 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:17:39 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:17:39 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:17:39 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:17:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:17:39 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:17:39 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:17:39 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:17:39 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:17:39 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:17:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:17:39 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:17:39 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:17:39 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:17:39 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:17:39 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:17:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:17:39 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:17:39 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:17:40 | INFO     | loader               | ======================================================================
+2026-08-04 18:17:40 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:17:40 | INFO     | loader               | ======================================================================
+2026-08-04 18:18:38 | INFO     | loader               | ===== RUN 20260804-181836-bd5cbd | pid=17396 | started 2026-08-04 18:18:38 =====
+2026-08-04 18:18:38 | INFO     | loader               | ======================================================================
+2026-08-04 18:18:38 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:18:38 | INFO     | loader               | ======================================================================
+2026-08-04 18:18:38 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:18:38 | INFO     | loader               | Loaded in 0.280s
+2026-08-04 18:18:38 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:18:38 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:18:38 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:18:38 | INFO     | loader               | Dtype summary
+2026-08-04 18:18:38 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:18:38 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:18:38 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:18:38 | INFO     | loader               | Schema check
+2026-08-04 18:18:38 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:18:38 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:18:38 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:18:38 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:18:38 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:18:38 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:18:38 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:18:38 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:18:38 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:18:38 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:18:38 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:18:38 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:18:38 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:18:38 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:18:38 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:18:38 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:18:38 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:18:38 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:18:38 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:18:38 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:18:38 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:18:38 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:18:38 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:18:38 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:18:38 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:18:38 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:18:38 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:18:38 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:18:38 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:18:38 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:18:38 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:18:39 | INFO     | loader               | ======================================================================
+2026-08-04 18:18:39 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:18:39 | INFO     | loader               | ======================================================================
+2026-08-04 18:20:37 | INFO     | loader               | ===== RUN 20260804-182035-7f2ed9 | pid=30584 | started 2026-08-04 18:20:37 =====
+2026-08-04 18:20:37 | INFO     | loader               | ======================================================================
+2026-08-04 18:20:37 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:20:37 | INFO     | loader               | ======================================================================
+2026-08-04 18:20:37 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:20:37 | INFO     | loader               | Loaded in 0.285s
+2026-08-04 18:20:37 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:20:37 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:20:37 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:20:37 | INFO     | loader               | Dtype summary
+2026-08-04 18:20:37 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:20:37 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:20:37 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:20:37 | INFO     | loader               | Schema check
+2026-08-04 18:20:37 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:20:37 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:20:37 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:20:37 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:20:37 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:20:37 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:20:37 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:20:37 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:20:37 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:20:37 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:20:37 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:20:37 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:20:37 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:20:37 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:20:37 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:20:37 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:20:37 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:20:37 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:20:38 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:20:38 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:20:38 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:20:38 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:20:38 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:20:38 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:20:38 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:20:38 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:20:38 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:20:38 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:20:38 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:20:38 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:20:38 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:20:38 | INFO     | loader               | ======================================================================
+2026-08-04 18:20:38 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:20:38 | INFO     | loader               | ======================================================================
+2026-08-04 18:21:37 | INFO     | loader               | ===== RUN 20260804-182135-1f3800 | pid=31680 | started 2026-08-04 18:21:37 =====
+2026-08-04 18:21:37 | INFO     | loader               | ======================================================================
+2026-08-04 18:21:37 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:21:37 | INFO     | loader               | ======================================================================
+2026-08-04 18:21:37 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:21:37 | INFO     | loader               | Loaded in 0.280s
+2026-08-04 18:21:37 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:21:37 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:21:37 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:21:37 | INFO     | loader               | Dtype summary
+2026-08-04 18:21:37 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:21:37 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:21:37 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:21:37 | INFO     | loader               | Schema check
+2026-08-04 18:21:37 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:21:37 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:21:37 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:21:37 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:21:37 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:21:37 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:21:37 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:21:37 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:21:37 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:21:37 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:21:37 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:21:37 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:21:37 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:21:37 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:21:37 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:21:37 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:21:37 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:21:37 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:21:37 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:21:37 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:21:37 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:21:37 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:21:37 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:21:37 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:21:37 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:21:37 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:21:37 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:21:37 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:21:37 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:21:37 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:21:37 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:21:37 | INFO     | loader               | ======================================================================
+2026-08-04 18:21:37 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:21:37 | INFO     | loader               | ======================================================================
+2026-08-04 18:23:49 | INFO     | loader               | ===== RUN 20260804-182347-f55045 | pid=26156 | started 2026-08-04 18:23:49 =====
+2026-08-04 18:23:49 | INFO     | loader               | ======================================================================
+2026-08-04 18:23:49 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:23:49 | INFO     | loader               | ======================================================================
+2026-08-04 18:23:49 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:23:49 | INFO     | loader               | Loaded in 0.274s
+2026-08-04 18:23:49 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:23:49 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:23:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:23:49 | INFO     | loader               | Dtype summary
+2026-08-04 18:23:49 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:23:49 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:23:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:23:49 | INFO     | loader               | Schema check
+2026-08-04 18:23:49 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:23:49 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:23:49 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:23:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:23:49 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:23:49 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:23:49 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:23:49 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:23:49 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:23:49 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:23:49 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:23:49 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:23:49 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:23:49 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:23:49 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:23:49 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:23:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:23:49 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:23:49 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:23:49 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:23:49 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:23:49 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:23:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:23:49 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:23:49 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:23:49 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:23:49 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:23:49 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:23:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:23:49 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:23:49 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:23:50 | INFO     | loader               | ======================================================================
+2026-08-04 18:23:50 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:23:50 | INFO     | loader               | ======================================================================
+2026-08-04 18:24:48 | INFO     | loader               | ===== RUN 20260804-182447-58fe82 | pid=23936 | started 2026-08-04 18:24:48 =====
+2026-08-04 18:24:48 | INFO     | loader               | ======================================================================
+2026-08-04 18:24:48 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:24:48 | INFO     | loader               | ======================================================================
+2026-08-04 18:24:48 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:24:49 | INFO     | loader               | Loaded in 0.280s
+2026-08-04 18:24:49 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:24:49 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:24:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:24:49 | INFO     | loader               | Dtype summary
+2026-08-04 18:24:49 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:24:49 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:24:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:24:49 | INFO     | loader               | Schema check
+2026-08-04 18:24:49 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:24:49 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:24:49 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:24:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:24:49 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:24:49 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:24:49 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:24:49 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:24:49 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:24:49 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:24:49 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:24:49 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:24:49 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:24:49 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:24:49 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:24:49 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:24:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:24:49 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:24:49 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:24:49 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:24:49 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:24:49 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:24:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:24:49 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:24:49 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:24:49 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:24:49 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:24:49 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:24:49 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:24:49 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:24:49 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:24:49 | INFO     | loader               | ======================================================================
+2026-08-04 18:24:49 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:24:49 | INFO     | loader               | ======================================================================
+2026-08-04 18:26:17 | INFO     | loader               | ===== RUN 20260804-182616-767803 | pid=22596 | started 2026-08-04 18:26:17 =====
+2026-08-04 18:26:17 | INFO     | loader               | ======================================================================
+2026-08-04 18:26:17 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:26:17 | INFO     | loader               | ======================================================================
+2026-08-04 18:26:17 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:26:18 | INFO     | loader               | Loaded in 0.273s
+2026-08-04 18:26:18 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:26:18 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:26:18 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:26:18 | INFO     | loader               | Dtype summary
+2026-08-04 18:26:18 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:26:18 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:26:18 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:26:18 | INFO     | loader               | Schema check
+2026-08-04 18:26:18 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:26:18 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:26:18 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:26:18 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:26:18 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:26:18 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:26:18 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:26:18 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:26:18 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:26:18 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:26:18 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:26:18 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:26:18 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:26:18 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:26:18 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:26:18 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:26:18 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:26:18 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:26:18 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:26:18 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:26:18 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:26:18 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:26:18 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:26:18 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:26:18 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:26:18 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:26:18 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:26:18 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:26:18 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:26:18 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:26:18 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:26:18 | INFO     | loader               | ======================================================================
+2026-08-04 18:26:18 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:26:18 | INFO     | loader               | ======================================================================
+2026-08-04 18:27:52 | INFO     | loader               | ===== RUN 20260804-182750-7cb05f | pid=31812 | started 2026-08-04 18:27:52 =====
+2026-08-04 18:27:52 | INFO     | loader               | ======================================================================
+2026-08-04 18:27:52 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:27:52 | INFO     | loader               | ======================================================================
+2026-08-04 18:27:52 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:27:52 | INFO     | loader               | Loaded in 0.318s
+2026-08-04 18:27:52 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:27:53 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:27:53 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | loader               | Dtype summary
+2026-08-04 18:27:53 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:27:53 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:27:53 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | loader               | Schema check
+2026-08-04 18:27:53 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:27:53 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:27:53 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:27:53 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:27:53 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:27:53 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:27:53 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:27:53 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:27:53 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:27:53 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:27:53 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:27:53 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:27:53 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:27:53 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:27:53 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:27:53 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:27:53 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:27:53 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:27:53 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:27:53 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:27:53 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:27:53 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:27:53 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:27:53 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:27:53 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:27:53 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:27:53 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:27:53 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:27:53 | INFO     | loader               | ======================================================================
+2026-08-04 18:27:53 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:27:53 | INFO     | loader               | ======================================================================
+2026-08-04 18:30:17 | INFO     | loader               | ===== RUN 20260804-183015-40a5e4 | pid=7752 | started 2026-08-04 18:30:17 =====
+2026-08-04 18:30:17 | INFO     | loader               | ======================================================================
+2026-08-04 18:30:17 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:30:17 | INFO     | loader               | ======================================================================
+2026-08-04 18:30:17 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:30:17 | INFO     | loader               | Loaded in 0.269s
+2026-08-04 18:30:17 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:30:17 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:30:17 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:30:17 | INFO     | loader               | Dtype summary
+2026-08-04 18:30:17 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:30:17 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:30:17 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:30:17 | INFO     | loader               | Schema check
+2026-08-04 18:30:17 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:30:17 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:30:17 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:30:17 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:30:17 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:30:17 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:30:17 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:30:17 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:30:17 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:30:17 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:30:17 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:30:17 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:30:17 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:30:17 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:30:17 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:30:17 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:30:17 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:30:17 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:30:17 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:30:17 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:30:17 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:30:17 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:30:17 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:30:17 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:30:17 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:30:17 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:30:17 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:30:17 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:30:17 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:30:17 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:30:17 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:30:17 | INFO     | loader               | ======================================================================
+2026-08-04 18:30:17 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:30:17 | INFO     | loader               | ======================================================================
+2026-08-04 18:33:31 | INFO     | loader               | ===== RUN 20260804-183329-4cf69f | pid=16904 | started 2026-08-04 18:33:31 =====
+2026-08-04 18:33:31 | INFO     | loader               | ======================================================================
+2026-08-04 18:33:31 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:33:31 | INFO     | loader               | ======================================================================
+2026-08-04 18:33:31 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:33:31 | INFO     | loader               | Loaded in 0.267s
+2026-08-04 18:33:31 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:33:31 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:33:31 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:33:31 | INFO     | loader               | Dtype summary
+2026-08-04 18:33:31 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:33:31 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:33:31 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:33:31 | INFO     | loader               | Schema check
+2026-08-04 18:33:31 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:33:31 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:33:31 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:33:31 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:33:31 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:33:31 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:33:31 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:33:31 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:33:31 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:33:31 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:33:31 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:33:31 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:33:31 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:33:31 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:33:31 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:33:31 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:33:31 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:33:31 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:33:31 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:33:31 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:33:31 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:33:31 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:33:31 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:33:31 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:33:31 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:33:31 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:33:31 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:33:31 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:33:31 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:33:31 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:33:31 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:33:32 | INFO     | loader               | ======================================================================
+2026-08-04 18:33:32 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:33:32 | INFO     | loader               | ======================================================================
+2026-08-04 18:37:21 | INFO     | loader               | ===== RUN 20260804-183719-0dc347 | pid=22080 | started 2026-08-04 18:37:21 =====
+2026-08-04 18:37:21 | INFO     | loader               | ======================================================================
+2026-08-04 18:37:21 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:37:21 | INFO     | loader               | ======================================================================
+2026-08-04 18:37:21 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:37:21 | INFO     | loader               | Loaded in 0.272s
+2026-08-04 18:37:21 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:37:21 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:37:21 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:37:21 | INFO     | loader               | Dtype summary
+2026-08-04 18:37:21 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:37:21 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:37:21 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:37:21 | INFO     | loader               | Schema check
+2026-08-04 18:37:21 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:37:21 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:37:21 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:37:21 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:37:21 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:37:21 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:37:21 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:37:21 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:37:21 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:37:21 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:37:21 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:37:21 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:37:21 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:37:21 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:37:21 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:37:21 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:37:21 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:37:21 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:37:21 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:37:21 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:37:21 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:37:21 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:37:21 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:37:21 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:37:21 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:37:21 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:37:21 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:37:21 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:37:21 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:37:21 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:37:21 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:37:22 | INFO     | loader               | ======================================================================
+2026-08-04 18:37:22 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:37:22 | INFO     | loader               | ======================================================================
+2026-08-04 18:40:33 | INFO     | loader               | ===== RUN 20260804-184031-3b38c4 | pid=31168 | started 2026-08-04 18:40:33 =====
+2026-08-04 18:40:33 | INFO     | loader               | ======================================================================
+2026-08-04 18:40:33 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 18:40:33 | INFO     | loader               | ======================================================================
+2026-08-04 18:40:33 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 18:40:33 | INFO     | loader               | Loaded in 0.270s
+2026-08-04 18:40:33 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 18:40:33 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 18:40:33 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:40:33 | INFO     | loader               | Dtype summary
+2026-08-04 18:40:33 | INFO     | loader               |   object       : 37 columns
+2026-08-04 18:40:33 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 18:40:33 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:40:33 | INFO     | loader               | Schema check
+2026-08-04 18:40:33 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 18:40:33 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 18:40:33 | INFO     | loader               | Column count 50 — OK
+2026-08-04 18:40:33 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:40:33 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 18:40:33 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 18:40:33 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 18:40:33 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 18:40:33 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 18:40:33 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 18:40:33 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 18:40:33 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 18:40:33 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 18:40:33 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 18:40:33 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 18:40:33 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 18:40:33 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:40:33 | INFO     | loader               | Duplicate integrity
+2026-08-04 18:40:33 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 18:40:33 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 18:40:33 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 18:40:33 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 18:40:33 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:40:33 | INFO     | loader               | Target column: readmitted
+2026-08-04 18:40:33 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 18:40:33 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 18:40:33 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 18:40:33 | INFO     | loader               | Target column integrity — OK
+2026-08-04 18:40:33 | INFO     | loader               | --------------------------------------------------
+2026-08-04 18:40:33 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 18:40:33 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 18:40:34 | INFO     | loader               | ======================================================================
+2026-08-04 18:40:34 | INFO     | loader               | Loader completed successfully
+2026-08-04 18:40:34 | INFO     | loader               | ======================================================================
+2026-08-04 19:43:58 | INFO     | loader               | ===== RUN 20260804-194356-ee2c50 | pid=28552 | started 2026-08-04 19:43:58 =====
+2026-08-04 19:43:58 | INFO     | loader               | ======================================================================
+2026-08-04 19:43:58 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 19:43:58 | INFO     | loader               | ======================================================================
+2026-08-04 19:43:58 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 19:43:58 | INFO     | loader               | Loaded in 0.276s
+2026-08-04 19:43:58 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 19:43:58 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 19:43:58 | INFO     | loader               | --------------------------------------------------
+2026-08-04 19:43:58 | INFO     | loader               | Dtype summary
+2026-08-04 19:43:58 | INFO     | loader               |   object       : 37 columns
+2026-08-04 19:43:58 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 19:43:58 | INFO     | loader               | --------------------------------------------------
+2026-08-04 19:43:58 | INFO     | loader               | Schema check
+2026-08-04 19:43:58 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 19:43:58 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 19:43:58 | INFO     | loader               | Column count 50 — OK
+2026-08-04 19:43:58 | INFO     | loader               | --------------------------------------------------
+2026-08-04 19:43:58 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 19:43:58 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 19:43:58 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 19:43:58 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 19:43:58 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 19:43:58 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 19:43:58 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 19:43:58 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 19:43:58 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 19:43:58 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 19:43:58 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 19:43:58 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 19:43:58 | INFO     | loader               | --------------------------------------------------
+2026-08-04 19:43:58 | INFO     | loader               | Duplicate integrity
+2026-08-04 19:43:58 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 19:43:58 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 19:43:58 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 19:43:58 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 19:43:58 | INFO     | loader               | --------------------------------------------------
+2026-08-04 19:43:58 | INFO     | loader               | Target column: readmitted
+2026-08-04 19:43:58 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 19:43:58 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 19:43:58 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 19:43:58 | INFO     | loader               | Target column integrity — OK
+2026-08-04 19:43:58 | INFO     | loader               | --------------------------------------------------
+2026-08-04 19:43:58 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 19:43:58 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 19:43:58 | INFO     | loader               | ======================================================================
+2026-08-04 19:43:58 | INFO     | loader               | Loader completed successfully
+2026-08-04 19:43:58 | INFO     | loader               | ======================================================================
+2026-08-04 20:43:38 | INFO     | loader               | ===== RUN 20260804-204337-c95509 | pid=23936 | started 2026-08-04 20:43:38 =====
+2026-08-04 20:43:38 | INFO     | loader               | ======================================================================
+2026-08-04 20:43:38 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 20:43:38 | INFO     | loader               | ======================================================================
+2026-08-04 20:43:38 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 20:43:39 | INFO     | loader               | Loaded in 0.288s
+2026-08-04 20:43:39 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 20:43:39 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 20:43:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:43:39 | INFO     | loader               | Dtype summary
+2026-08-04 20:43:39 | INFO     | loader               |   object       : 37 columns
+2026-08-04 20:43:39 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 20:43:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:43:39 | INFO     | loader               | Schema check
+2026-08-04 20:43:39 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 20:43:39 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 20:43:39 | INFO     | loader               | Column count 50 — OK
+2026-08-04 20:43:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:43:39 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 20:43:39 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 20:43:39 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 20:43:39 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 20:43:39 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 20:43:39 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 20:43:39 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 20:43:39 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 20:43:39 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 20:43:39 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 20:43:39 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 20:43:39 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 20:43:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:43:39 | INFO     | loader               | Duplicate integrity
+2026-08-04 20:43:39 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 20:43:39 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 20:43:39 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 20:43:39 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 20:43:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:43:39 | INFO     | loader               | Target column: readmitted
+2026-08-04 20:43:39 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 20:43:39 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 20:43:39 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 20:43:39 | INFO     | loader               | Target column integrity — OK
+2026-08-04 20:43:39 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:43:39 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 20:43:39 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 20:43:39 | INFO     | loader               | ======================================================================
+2026-08-04 20:43:39 | INFO     | loader               | Loader completed successfully
+2026-08-04 20:43:39 | INFO     | loader               | ======================================================================
+2026-08-04 20:48:00 | INFO     | loader               | ===== RUN 20260804-204759-229d57 | pid=20292 | started 2026-08-04 20:48:00 =====
+2026-08-04 20:48:00 | INFO     | loader               | ======================================================================
+2026-08-04 20:48:00 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 20:48:00 | INFO     | loader               | ======================================================================
+2026-08-04 20:48:00 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 20:48:01 | INFO     | loader               | Loaded in 0.273s
+2026-08-04 20:48:01 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 20:48:01 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 20:48:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:48:01 | INFO     | loader               | Dtype summary
+2026-08-04 20:48:01 | INFO     | loader               |   object       : 37 columns
+2026-08-04 20:48:01 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 20:48:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:48:01 | INFO     | loader               | Schema check
+2026-08-04 20:48:01 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 20:48:01 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 20:48:01 | INFO     | loader               | Column count 50 — OK
+2026-08-04 20:48:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:48:01 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 20:48:01 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 20:48:01 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 20:48:01 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 20:48:01 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 20:48:01 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 20:48:01 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 20:48:01 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 20:48:01 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 20:48:01 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 20:48:01 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 20:48:01 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 20:48:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:48:01 | INFO     | loader               | Duplicate integrity
+2026-08-04 20:48:01 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 20:48:01 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 20:48:01 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 20:48:01 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 20:48:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:48:01 | INFO     | loader               | Target column: readmitted
+2026-08-04 20:48:01 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 20:48:01 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 20:48:01 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 20:48:01 | INFO     | loader               | Target column integrity — OK
+2026-08-04 20:48:01 | INFO     | loader               | --------------------------------------------------
+2026-08-04 20:48:01 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 20:48:01 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 20:48:01 | INFO     | loader               | ======================================================================
+2026-08-04 20:48:01 | INFO     | loader               | Loader completed successfully
+2026-08-04 20:48:01 | INFO     | loader               | ======================================================================
+2026-08-04 21:08:42 | INFO     | loader               | ===== RUN 20260804-210841-a57669 | pid=27220 | started 2026-08-04 21:08:42 =====
+2026-08-04 21:08:42 | INFO     | loader               | ======================================================================
+2026-08-04 21:08:42 | INFO     | loader               | DriftSentinel — Data Loader
+2026-08-04 21:08:42 | INFO     | loader               | ======================================================================
+2026-08-04 21:08:42 | INFO     | loader               | Source : C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\diabetic_data.csv
+2026-08-04 21:08:43 | INFO     | loader               | Loaded in 0.278s
+2026-08-04 21:08:43 | INFO     | loader               | Shape         : 101,766 rows x 50 columns
+2026-08-04 21:08:43 | INFO     | loader               | Memory        : 189.56 MB
+2026-08-04 21:08:43 | INFO     | loader               | --------------------------------------------------
+2026-08-04 21:08:43 | INFO     | loader               | Dtype summary
+2026-08-04 21:08:43 | INFO     | loader               |   object       : 37 columns
+2026-08-04 21:08:43 | INFO     | loader               |   int64        : 13 columns
+2026-08-04 21:08:43 | INFO     | loader               | --------------------------------------------------
+2026-08-04 21:08:43 | INFO     | loader               | Schema check
+2026-08-04 21:08:43 | INFO     | loader               | All 29 required columns present — OK
+2026-08-04 21:08:43 | INFO     | loader               | Row count 101,766 — OK
+2026-08-04 21:08:43 | INFO     | loader               | Column count 50 — OK
+2026-08-04 21:08:43 | INFO     | loader               | --------------------------------------------------
+2026-08-04 21:08:43 | INFO     | loader               | Sentinel replacement audit (? -> NaN)
+2026-08-04 21:08:43 | INFO     | loader               | Columns with NaN : 9
+2026-08-04 21:08:43 | INFO     | loader               |   weight                         null=98,569  (96.86%)
+2026-08-04 21:08:43 | INFO     | loader               |   max_glu_serum                  null=96,420  (94.75%)
+2026-08-04 21:08:43 | INFO     | loader               |   A1Cresult                      null=84,748  (83.28%)
+2026-08-04 21:08:43 | INFO     | loader               |   medical_specialty              null=49,949  (49.08%)
+2026-08-04 21:08:43 | INFO     | loader               |   payer_code                     null=40,256  (39.56%)
+2026-08-04 21:08:43 | INFO     | loader               |   race                           null= 2,273  (2.23%)
+2026-08-04 21:08:43 | INFO     | loader               |   diag_3                         null= 1,423  (1.40%)
+2026-08-04 21:08:43 | INFO     | loader               |   diag_2                         null=   358  (0.35%)
+2026-08-04 21:08:43 | INFO     | loader               |   diag_1                         null=    21  (0.02%)
+2026-08-04 21:08:43 | INFO     | loader               | Total null cells : 374,017 / 5,088,300 (7.351%)
+2026-08-04 21:08:43 | INFO     | loader               | --------------------------------------------------
+2026-08-04 21:08:43 | INFO     | loader               | Duplicate integrity
+2026-08-04 21:08:43 | INFO     | loader               | Duplicate encounter_id : 0
+2026-08-04 21:08:43 | INFO     | loader               | Unique patient_nbr     : 71,518
+2026-08-04 21:08:43 | INFO     | loader               | Multi-visit rows       : 47,021 (46.2%)
+2026-08-04 21:08:43 | INFO     | loader               | encounter_id uniqueness — OK
+2026-08-04 21:08:43 | INFO     | loader               | --------------------------------------------------
+2026-08-04 21:08:43 | INFO     | loader               | Target column: readmitted
+2026-08-04 21:08:43 | INFO     | loader               |   NO    : 54,864  (53.91%)
+2026-08-04 21:08:43 | INFO     | loader               |   >30   : 35,545  (34.93%)
+2026-08-04 21:08:43 | INFO     | loader               |   <30   : 11,357  (11.16%)
+2026-08-04 21:08:43 | INFO     | loader               | Target column integrity — OK
+2026-08-04 21:08:43 | INFO     | loader               | --------------------------------------------------
+2026-08-04 21:08:43 | INFO     | loader               | Loading IDS mapping: C:\Users\sharg\Desktop\github\DriftSentinel\data\raw\diabetes_hospital\IDS_mapping.csv
+2026-08-04 21:08:43 | INFO     | loader               | IDS mapping shape: (68, 2)
+2026-08-04 21:08:43 | INFO     | loader               | ======================================================================
+2026-08-04 21:08:43 | INFO     | loader               | Loader completed successfully
+2026-08-04 21:08:43 | INFO     | loader               | ======================================================================

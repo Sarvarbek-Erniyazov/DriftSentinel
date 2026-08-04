@@ -1,0 +1,304 @@
+{
+  "phase": "2B.4",
+  "title": "Threat-modelled robustness: EHR data quality, not adversarial ML",
+  "threat_model": {
+    "adversary": "NONE. There is no credible adversary against a hospital readmission triage model: no payout, no authentication to bypass, no filter to evade.",
+    "real_threats": "routine EHR data-quality failures",
+    "why_the_shipped_framing_was_wrong": "'adversarial robustness' with no adversary is method-shopping, and the attacks used did not execute on this model class"
+  },
+  "gradient_validity_check": {
+    "h": 0.001,
+    "n_samples": 400,
+    "n_features": 53,
+    "n_gradient_entries": 21200,
+    "exactly_zero_fraction": 0.71656,
+    "interpretation": "a finite-difference gradient that is exactly zero for this fraction of (sample, feature) pairs means FGSM/PGD had no direction to step in. The shipped ASR of 0.2-0.3% is the null behaviour of a method that did not execute, not evidence of robustness."
+  },
+  "baseline": {
+    "auc": 0.641,
+    "f1": 0.21827,
+    "precision": 0.17113,
+    "recall": 0.30124,
+    "predicted_positive_rate": 0.15515
+  },
+  "scenarios": {
+    "missingness_utilisation": {
+      "description": "prior-utilisation fields arrive empty",
+      "columns": [
+        "number_outpatient",
+        "FE_has_prior_inpatient",
+        "FE_glycemic_x_emergency"
+      ],
+      "sweep": [
+        {
+          "rate": 0.05,
+          "auc": 0.6409,
+          "f1": 0.21912,
+          "precision": 0.17327,
+          "recall": 0.29797,
+          "predicted_positive_rate": 0.15157,
+          "delta_auc": -0.0001,
+          "delta_recall": -0.00327,
+          "delta_ppr": -0.00358
+        },
+        {
+          "rate": 0.1,
+          "auc": 0.63995,
+          "f1": 0.21722,
+          "precision": 0.17337,
+          "recall": 0.29077,
+          "predicted_positive_rate": 0.14782,
+          "delta_auc": -0.00105,
+          "delta_recall": -0.01047,
+          "delta_ppr": -0.00733
+        },
+        {
+          "rate": 0.25,
+          "auc": 0.63714,
+          "f1": 0.21031,
+          "precision": 0.17395,
+          "recall": 0.26588,
+          "predicted_positive_rate": 0.13472,
+          "delta_auc": -0.00386,
+          "delta_recall": -0.03536,
+          "delta_ppr": -0.02043
+        },
+        {
+          "rate": 0.5,
+          "auc": 0.63398,
+          "f1": 0.19162,
+          "precision": 0.1697,
+          "recall": 0.22004,
+          "predicted_positive_rate": 0.11429,
+          "delta_auc": -0.00702,
+          "delta_recall": -0.0812,
+          "delta_ppr": -0.04086
+        }
+      ],
+      "worst_delta_auc": -0.00702
+    },
+    "missingness_labs": {
+      "description": "lab-derived fields arrive empty",
+      "columns": [
+        "FE_labs_per_day",
+        "FE_high_lab_load",
+        "FE_lab_to_procedure_ratio"
+      ],
+      "sweep": [
+        {
+          "rate": 0.05,
+          "auc": 0.64044,
+          "f1": 0.21801,
+          "precision": 0.17081,
+          "recall": 0.30124,
+          "predicted_positive_rate": 0.15544,
+          "delta_auc": -0.00056,
+          "delta_recall": 0.0,
+          "delta_ppr": 0.00029
+        },
+        {
+          "rate": 0.1,
+          "auc": 0.63984,
+          "f1": 0.21724,
+          "precision": 0.16987,
+          "recall": 0.30124,
+          "predicted_positive_rate": 0.15631,
+          "delta_auc": -0.00116,
+          "delta_recall": 0.0,
+          "delta_ppr": 0.00116
+        },
+        {
+          "rate": 0.25,
+          "auc": 0.63902,
+          "f1": 0.21622,
+          "precision": 0.16781,
+          "recall": 0.30386,
+          "predicted_positive_rate": 0.1596,
+          "delta_auc": -0.00198,
+          "delta_recall": 0.00262,
+          "delta_ppr": 0.00445
+        },
+        {
+          "rate": 0.5,
+          "auc": 0.63825,
+          "f1": 0.2164,
+          "precision": 0.16667,
+          "recall": 0.30845,
+          "predicted_positive_rate": 0.16312,
+          "delta_auc": -0.00275,
+          "delta_recall": 0.00721,
+          "delta_ppr": 0.00797
+        }
+      ],
+      "worst_delta_auc": -0.00275
+    },
+    "unit_error_x10": {
+      "description": "a numeric field arrives in the wrong unit (x10)",
+      "columns": [
+        "time_in_hospital",
+        "num_medications",
+        "number_diagnoses"
+      ],
+      "sweep": [
+        {
+          "rate": 0.05,
+          "auc": 0.63943,
+          "f1": 0.21997,
+          "precision": 0.17175,
+          "recall": 0.30583,
+          "predicted_positive_rate": 0.15694,
+          "delta_auc": -0.00157,
+          "delta_recall": 0.00459,
+          "delta_ppr": 0.00179
+        },
+        {
+          "rate": 0.1,
+          "auc": 0.63788,
+          "f1": 0.22051,
+          "precision": 0.17158,
+          "recall": 0.30845,
+          "predicted_positive_rate": 0.15844,
+          "delta_auc": -0.00312,
+          "delta_recall": 0.00721,
+          "delta_ppr": 0.00329
+        },
+        {
+          "rate": 0.25,
+          "auc": 0.6351,
+          "f1": 0.21734,
+          "precision": 0.16702,
+          "recall": 0.31107,
+          "predicted_positive_rate": 0.16416,
+          "delta_auc": -0.0059,
+          "delta_recall": 0.00983,
+          "delta_ppr": 0.00901
+        },
+        {
+          "rate": 0.5,
+          "auc": 0.62969,
+          "f1": 0.21333,
+          "precision": 0.1606,
+          "recall": 0.31762,
+          "predicted_positive_rate": 0.17431,
+          "delta_auc": -0.01131,
+          "delta_recall": 0.01638,
+          "delta_ppr": 0.01916
+        }
+      ],
+      "worst_delta_auc": -0.01131
+    },
+    "coding_drift_categorical": {
+      "description": "an upstream categorical vocabulary is remapped",
+      "columns": [
+        "discharge_disposition_id",
+        "admission_source_id",
+        "payer_code",
+        "medical_specialty"
+      ],
+      "sweep": [
+        {
+          "rate": 0.05,
+          "auc": 0.63792,
+          "f1": 0.21402,
+          "precision": 0.16518,
+          "recall": 0.30386,
+          "predicted_positive_rate": 0.16214,
+          "delta_auc": -0.00308,
+          "delta_recall": 0.00262,
+          "delta_ppr": 0.00699
+        },
+        {
+          "rate": 0.1,
+          "auc": 0.63686,
+          "f1": 0.21226,
+          "precision": 0.1618,
+          "recall": 0.30845,
+          "predicted_positive_rate": 0.16802,
+          "delta_auc": -0.00414,
+          "delta_recall": 0.00721,
+          "delta_ppr": 0.01287
+        },
+        {
+          "rate": 0.25,
+          "auc": 0.63171,
+          "f1": 0.2094,
+          "precision": 0.15435,
+          "recall": 0.32547,
+          "predicted_positive_rate": 0.18586,
+          "delta_auc": -0.00929,
+          "delta_recall": 0.02423,
+          "delta_ppr": 0.03071
+        },
+        {
+          "rate": 0.5,
+          "auc": 0.61496,
+          "f1": 0.20016,
+          "precision": 0.14242,
+          "recall": 0.33661,
+          "predicted_positive_rate": 0.20831,
+          "delta_auc": -0.02604,
+          "delta_recall": 0.03537,
+          "delta_ppr": 0.05316
+        }
+      ],
+      "worst_delta_auc": -0.02604
+    },
+    "feature_outage_top": {
+      "description": "the highest-gain feature (discharge_disposition_id) stops arriving",
+      "columns": [
+        "discharge_disposition_id"
+      ],
+      "sweep": [
+        {
+          "rate": 1.0,
+          "auc": 0.604,
+          "f1": 0.17742,
+          "precision": 0.1631,
+          "recall": 0.1945,
+          "predicted_positive_rate": 0.10511,
+          "delta_auc": -0.037,
+          "delta_recall": -0.10674,
+          "delta_ppr": -0.05004
+        }
+      ],
+      "worst_delta_auc": -0.037
+    },
+    "DESTRUCTIVE_CONTROL_top_feature_noise": {
+      "description": "FALSIFICATION: the top feature is replaced with pure noise",
+      "columns": [
+        "discharge_disposition_id"
+      ],
+      "sweep": [
+        {
+          "rate": 1.0,
+          "auc": 0.59545,
+          "f1": 0.17915,
+          "precision": 0.13913,
+          "recall": 0.25147,
+          "predicted_positive_rate": 0.15931,
+          "delta_auc": -0.04555,
+          "delta_recall": -0.04977,
+          "delta_ppr": 0.00416
+        }
+      ],
+      "worst_delta_auc": -0.04555
+    }
+  },
+  "falsification": {
+    "destructive_control_delta_auc": -0.04555,
+    "harness_can_detect_damage": true,
+    "why_it_matters": "a null on the realistic scenarios is only interpretable if the harness can detect damage when damage is real"
+  },
+  "verdict": {
+    "worst_realistic_scenario": "feature_outage_top",
+    "worst_realistic_delta_auc": -0.037,
+    "finding": "Under realistic EHR data-quality failures the model degrades gracefully: the worst realistic scenario (feature_outage_top) costs 0.0370 AUC. The destructive control costs 0.0456, confirming the harness detects damage when it is real. The shipped 'adversarial robustness score' is withdrawn: it measured the null behaviour of gradient attacks that cannot execute on a piecewise-constant ensemble (71.7% of finite-difference gradients are exactly zero), and it had no threat model."
+  },
+  "supersedes": "outputs/log/robustness_report_lgbm_v1.json \u2014 the FGSM/PGD 'robustness score' is withdrawn, not merely supplemented",
+  "reproducibility": {
+    "seed": 42,
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

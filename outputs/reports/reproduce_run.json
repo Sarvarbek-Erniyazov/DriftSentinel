@@ -1,0 +1,80 @@
+{
+  "phase": "2C.6",
+  "title": "Core artifact chain rebuilt from raw data",
+  "scope_claim": "This rebuilds the CORE chain: data preparation, both models, calibration, conformal prediction and the registry. It does NOT run the analysis and investigation modules, which consume these artifacts and are listed in `analysis_modules_not_run_here`. The earlier claim that pipeline.py alone reproduced everything was false on both counts: pipeline.py is the data pipeline only, and seven modules held hardcoded absolute paths to one machine.",
+  "core_chain": [
+    {
+      "script": "src/pipelines/pipeline.py",
+      "returncode": 0,
+      "seconds": 133.8,
+      "stderr_tail": "",
+      "produces": "splits, label encoders, FE stats, fitted selector, *_fs.parquet, production windows"
+    },
+    {
+      "script": "src/models/trainer.py",
+      "returncode": 0,
+      "seconds": 67.06,
+      "stderr_tail": "",
+      "produces": "lgbm_v1.pkl, logreg_v1.pkl, logreg_scaler.pkl, training_summary.json"
+    },
+    {
+      "script": "src/models/evaluator.py",
+      "returncode": 0,
+      "seconds": 5.41,
+      "stderr_tail": "",
+      "produces": "evaluation_report.json and the operating-point figures"
+    },
+    {
+      "script": "src/uncertainty/calibration.py",
+      "returncode": 0,
+      "seconds": 2.13,
+      "stderr_tail": "",
+      "produces": "isotonic and temperature calibrators, calibration report"
+    },
+    {
+      "script": "src/uncertainty/quantifier.py",
+      "returncode": 0,
+      "seconds": 2.74,
+      "stderr_tail": "",
+      "produces": "conformal predictor and coverage report"
+    },
+    {
+      "script": "src/models/registry.py",
+      "returncode": 0,
+      "seconds": 37.81,
+      "stderr_tail": "",
+      "produces": "model_registry.json, registry_history.csv, lgbm_v2.pkl, model_comparison.json"
+    }
+  ],
+  "n_stages": 6,
+  "n_completed": 6,
+  "n_failed": 0,
+  "verdict": "PASS",
+  "total_seconds": 248.95,
+  "analysis_modules_not_run_here": {
+    "src/investigation/temporal_validity.py": "Tier 0.1 \u2014 split-validity anchors (slow)",
+    "src/investigation/split_regimes.py": "Tier 0.2-0.4 \u2014 regime matrix, 20 seeds x 4 regimes (very slow)",
+    "src/models/repeated_eval.py": "Tier 2A.2 \u2014 headline metrics with intervals (slow)",
+    "src/uncertainty/decontamination.py": "Tier 2A.4 \u2014 decontaminated threshold and conformal",
+    "src/drift/data_drift.py": "feature-level drift tests",
+    "src/drift/feature_drift.py": "SHAP-weighted drift impact",
+    "src/drift/concept_drift.py": "CUSUM / Page-Hinkley / sliding-window AUC",
+    "src/drift/multivariate_drift.py": "Tier 2B.2 \u2014 C2ST, MMD, BBSD",
+    "src/drift/fdr_correction.py": "Tier 2A.3 \u2014 Benjamini-Hochberg across the test family",
+    "src/drift/alerting.py": "alert engine",
+    "src/uncertainty/adaptive_conformal.py": "Tier 2B.1 \u2014 ACI vs static split conformal",
+    "src/uncertainty/threshold_policy.py": "Tier 1.3 \u2014 PPR, budgets, cost sweep, DCA",
+    "src/uncertainty/triage_policy.py": "Tier 2B.3 \u2014 uncertainty-gated triage",
+    "src/features/selection_ablation.py": "Tier 2A.5 \u2014 selection ablation with in-fold refit",
+    "src/adversarial/data_quality_robustness.py": "Tier 2B.4 \u2014 EHR data-quality robustness",
+    "src/adversarial/defense.py": "Tier 1.2 \u2014 defense evaluation",
+    "src/monitoring/fairness_audit.py": "Tier 2C.1 \u2014 subgroup performance",
+    "src/monitoring/tracking_audit.py": "Tier 2C.5 \u2014 traceability audit",
+    "src/monitoring/determinism.py": "Tier 2C.4 \u2014 byte-reproducibility (runs the chain twice)",
+    "src/monitoring/health_check.py": "system health check over all of the above"
+  },
+  "reproducibility": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0"
+  }
+}

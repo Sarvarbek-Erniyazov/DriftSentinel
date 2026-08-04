@@ -99,3 +99,371 @@
 2026-05-11 21:42:38 | INFO     | alerting             | ======================================================================
 2026-05-11 21:42:38 | INFO     | alerting             | Alert report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\alerts\alert_report_val_test.json
 2026-05-11 21:42:38 | INFO     | alerting             | Alert summary CSV : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\alerts\alert_summary_val_test.csv
+2026-08-04 10:43:41 | INFO     | alerting             | ===== RUN 20260804-104341-2aceee | pid=30204 | started 2026-08-04 10:43:41 =====
+2026-08-04 10:43:41 | INFO     | alerting             | ======================================================================
+2026-08-04 10:43:41 | INFO     | alerting             | DriftSentinel — Alert Engine Run
+2026-08-04 10:43:41 | INFO     | alerting             | ======================================================================
+2026-08-04 10:43:41 | INFO     | alerting             | Loaded concept drift report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\concept_drift_val_test.json
+2026-08-04 10:43:41 | INFO     | alerting             | Loaded data drift report  : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\data_drift_report.json
+2026-08-04 10:43:41 | INFO     | alerting             | Loaded feature drift report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\feature_drift_report_val_test.json
+2026-08-04 10:43:41 | INFO     | alerting             | ======================================================================
+2026-08-04 10:43:41 | INFO     | alerting             | DriftSentinel — Alert Engine
+2026-08-04 10:43:41 | INFO     | alerting             |   Model      : lgbm_v1
+2026-08-04 10:43:41 | INFO     | alerting             |   Reference  : val
+2026-08-04 10:43:41 | INFO     | alerting             |   Production : test
+2026-08-04 10:43:41 | INFO     | alerting             | ======================================================================
+2026-08-04 10:43:41 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 10:43:41 | INFO     | alerting             | Generating alerts from concept drift signals
+2026-08-04 10:43:41 | INFO     | alerting             |   Generated: 4 concept drift alerts
+2026-08-04 10:43:41 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 10:43:41 | INFO     | alerting             | Generating alerts from data drift signals
+2026-08-04 10:43:41 | INFO     | alerting             |   Generated: 1 data drift alerts
+2026-08-04 10:43:41 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 10:43:41 | INFO     | alerting             | Generating alerts from label shift signals
+2026-08-04 10:43:41 | INFO     | alerting             |   Generated: 0 label shift alerts
+2026-08-04 10:43:41 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 10:43:41 | INFO     | alerting             | Generating alerts from prediction shift signals
+2026-08-04 10:43:41 | INFO     | alerting             |   Generated: 0 prediction shift alerts
+2026-08-04 10:43:41 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 10:43:41 | INFO     | alerting             | Generating alerts from feature impact signals
+2026-08-04 10:43:41 | INFO     | alerting             |   Generated: 2 feature impact alerts
+2026-08-04 10:43:41 | INFO     | alerting             | ======================================================================
+2026-08-04 10:43:41 | INFO     | alerting             | ALERT SUMMARY
+2026-08-04 10:43:41 | INFO     | alerting             | ======================================================================
+2026-08-04 10:43:41 | INFO     | alerting             |   CRITICAL  : 1 alert(s)
+2026-08-04 10:43:41 | INFO     | alerting             |   HIGH      : 3 alert(s)
+2026-08-04 10:43:41 | INFO     | alerting             |   MEDIUM    : 1 alert(s)
+2026-08-04 10:43:41 | INFO     | alerting             |   LOW       : 2 alert(s)
+2026-08-04 10:43:41 | INFO     | alerting             | ----------------------------------------------------------------------
+2026-08-04 10:43:41 | INFO     | alerting             | ALL ALERTS:
+2026-08-04 10:43:41 | INFO     | alerting             | ----------------------------------------------------------------------
+2026-08-04 10:43:41 | INFO     | alerting             | 
+  [CRITICAL] DD-001 — Data Drift: 25/53 Features Drifted
+2026-08-04 10:43:41 | INFO     | alerting             |   Type       : DATA_DRIFT
+2026-08-04 10:43:41 | INFO     | alerting             |   Metric     : drift_rate = 0.4717 (threshold: 0.2500)
+2026-08-04 10:43:41 | INFO     | alerting             |   Description: 47.2% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: FE_multi_channel_utilizer, FE_total_clinical_contacts, FE_lab_to_procedure_ratio, medical_specialty, payer_code.
+2026-08-04 10:43:41 | INFO     | alerting             |   Action     : Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.
+2026-08-04 10:43:41 | INFO     | alerting             |   Features   : FE_multi_channel_utilizer, FE_total_clinical_contacts, FE_lab_to_procedure_ratio, medical_specialty, payer_code
+2026-08-04 10:43:41 | INFO     | alerting             | 
+  [HIGH] CD-003 — Concept Drift Evidence: 4/6 Voting Signals Fired
+2026-08-04 10:43:41 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 10:43:41 | INFO     | alerting             |   Metric     : n_evidence = 4.0000 (threshold: 3.0000)
+2026-08-04 10:43:41 | INFO     | alerting             |   Description: 4 of 6 voting signals fired, spanning 2 correlated signal families (distribution, performance): auc_drop, prediction_drift, label_drift, auc_slope_negative. These signals are NOT independent. Sequential detectors (CUSUM, Page-Hinkley) are excluded from the count as structurally broken — see Tier 1.5.
+2026-08-04 10:43:41 | INFO     | alerting             |   Action     : Initiate drift investigation protocol. Run feature_drift analysis to identify root cause features.
+2026-08-04 10:43:41 | INFO     | alerting             | 
+  [HIGH] FI-001 — High-Impact Feature Drift: FE_lab_to_procedure_ratio
+2026-08-04 10:43:41 | INFO     | alerting             |   Type       : FEATURE_IMPACT
+2026-08-04 10:43:41 | INFO     | alerting             |   Metric     : impact_score = 0.4418 (threshold: 0.3500)
+2026-08-04 10:43:41 | INFO     | alerting             |   Description: Feature 'FE_lab_to_procedure_ratio' has highest impact score (0.4418). Drift score: 0.1476. SHAP contribution: 0.050247 (reference). SHAP Δ: +6.4%.
+2026-08-04 10:43:41 | INFO     | alerting             |   Action     : Feature 'FE_lab_to_procedure_ratio' is both drifted and important. Retrain with recent data emphasizing this feature. Consider feature-specific monitoring dashboard.
+2026-08-04 10:43:41 | INFO     | alerting             |   Features   : FE_lab_to_procedure_ratio, FE_multi_channel_utilizer, FE_labs_per_day_x_comorbidity, medical_specialty, discharge_disposition_id
+2026-08-04 10:43:41 | INFO     | alerting             | 
+  [HIGH] FI-002 — 11 High-Risk Features Identified
+2026-08-04 10:43:41 | INFO     | alerting             |   Type       : FEATURE_IMPACT
+2026-08-04 10:43:41 | INFO     | alerting             |   Metric     : n_high_risk_features = 11.0000 (threshold: 5.0000)
+2026-08-04 10:43:41 | INFO     | alerting             |   Description: 11 features classified as HIGH risk (drift × importance score >= 0.35). FE_ features: 0.1724 mean impact. Raw features: 0.1803 mean impact.
+2026-08-04 10:43:41 | INFO     | alerting             |   Action     : Prioritize retraining pipeline. Focus data collection on high-risk drifted features.
+2026-08-04 10:43:41 | INFO     | alerting             |   Features   : FE_lab_to_procedure_ratio, FE_multi_channel_utilizer, FE_labs_per_day_x_comorbidity, medical_specialty, discharge_disposition_id
+2026-08-04 10:43:41 | INFO     | alerting             | 
+  [MEDIUM] CD-001 — Model AUC Degradation Detected
+2026-08-04 10:43:41 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 10:43:41 | INFO     | alerting             |   Metric     : auc_degradation = 0.0202 (threshold: 0.0300)
+2026-08-04 10:43:41 | INFO     | alerting             |   Description: Model AUC dropped from 0.6617 (reference) to 0.6415 (production). Degradation: 0.0202.
+2026-08-04 10:43:41 | INFO     | alerting             |   Action     : Trigger model retraining on recent data. Investigate feature drift in high-impact features.
+2026-08-04 10:43:41 | INFO     | alerting             | 
+  [LOW] CD-004 — CUSUM Sequential Alarm [DIAGNOSTIC — not evidence]
+2026-08-04 10:43:41 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 10:43:41 | INFO     | alerting             |   Metric     : cusum_alarms = 140.0000 (threshold: 1.0000)
+2026-08-04 10:43:41 | INFO     | alerting             |   Description: CUSUM detected 140 alarms. First alarm at index 428 (1.12% into stream). Mean error shift: 0.1747 → 0.1871.
+2026-08-04 10:43:41 | INFO     | alerting             |   Action     : Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.
+2026-08-04 10:43:41 | INFO     | alerting             | 
+  [LOW] CD-005 — Page-Hinkley Sequential Alarm [DIAGNOSTIC — not evidence]
+2026-08-04 10:43:41 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 10:43:41 | INFO     | alerting             |   Metric     : ph_statistic = 26.7235 (threshold: 50.0000)
+2026-08-04 10:43:41 | INFO     | alerting             |   Description: Page-Hinkley detected gradual drift. First alarm at 29.28% of stream. PH statistic: 26.7235.
+2026-08-04 10:43:41 | INFO     | alerting             |   Action     : Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.
+2026-08-04 10:43:41 | INFO     | alerting             | ======================================================================
+2026-08-04 10:43:41 | INFO     | alerting             | SYSTEM STATUS    : HIGH
+2026-08-04 10:43:41 | INFO     | alerting             | TOTAL ALERTS     : 7
+2026-08-04 10:43:41 | INFO     | alerting             | CRITICAL         : 1
+2026-08-04 10:43:41 | INFO     | alerting             | HIGH             : 3
+2026-08-04 10:43:41 | INFO     | alerting             | RECOMMENDATION   : Model performance significantly degraded. Schedule retraining within 24 hours. Increase monitoring frequency.
+2026-08-04 10:43:41 | INFO     | alerting             | ======================================================================
+2026-08-04 10:43:41 | INFO     | alerting             | Alert report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\alerts\alert_report_val_test.json
+2026-08-04 10:43:41 | INFO     | alerting             | Alert summary CSV : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\alerts\alert_summary_val_test.csv
+2026-08-04 11:04:10 | INFO     | alerting             | ===== RUN 20260804-110410-aff9e2 | pid=28652 | started 2026-08-04 11:04:10 =====
+2026-08-04 11:04:10 | INFO     | alerting             | ======================================================================
+2026-08-04 11:04:10 | INFO     | alerting             | DriftSentinel — Alert Engine Run
+2026-08-04 11:04:10 | INFO     | alerting             | ======================================================================
+2026-08-04 11:04:10 | INFO     | alerting             | Loaded concept drift report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\concept_drift_val_test.json
+2026-08-04 11:04:10 | INFO     | alerting             | Loaded data drift report  : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\data_drift_report.json
+2026-08-04 11:04:10 | INFO     | alerting             | Loaded feature drift report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\feature_drift_report_val_test.json
+2026-08-04 11:04:10 | INFO     | alerting             | ======================================================================
+2026-08-04 11:04:10 | INFO     | alerting             | DriftSentinel — Alert Engine
+2026-08-04 11:04:10 | INFO     | alerting             |   Model      : lgbm_v1
+2026-08-04 11:04:10 | INFO     | alerting             |   Reference  : val
+2026-08-04 11:04:10 | INFO     | alerting             |   Production : test
+2026-08-04 11:04:10 | INFO     | alerting             | ======================================================================
+2026-08-04 11:04:10 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 11:04:10 | INFO     | alerting             | Generating alerts from concept drift signals
+2026-08-04 11:04:10 | INFO     | alerting             |   Generated: 4 concept drift alerts
+2026-08-04 11:04:10 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 11:04:10 | INFO     | alerting             | Generating alerts from data drift signals
+2026-08-04 11:04:10 | INFO     | alerting             |   Generated: 1 data drift alerts
+2026-08-04 11:04:10 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 11:04:10 | INFO     | alerting             | Generating alerts from label shift signals
+2026-08-04 11:04:10 | INFO     | alerting             |   Generated: 0 label shift alerts
+2026-08-04 11:04:10 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 11:04:10 | INFO     | alerting             | Generating alerts from prediction shift signals
+2026-08-04 11:04:10 | INFO     | alerting             |   Generated: 0 prediction shift alerts
+2026-08-04 11:04:10 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 11:04:10 | INFO     | alerting             | Generating alerts from feature impact signals
+2026-08-04 11:04:10 | INFO     | alerting             |   Generated: 2 feature impact alerts
+2026-08-04 11:04:10 | INFO     | alerting             | ======================================================================
+2026-08-04 11:04:10 | INFO     | alerting             | ALERT SUMMARY
+2026-08-04 11:04:10 | INFO     | alerting             | ======================================================================
+2026-08-04 11:04:10 | INFO     | alerting             |   CRITICAL  : 1 alert(s)
+2026-08-04 11:04:10 | INFO     | alerting             |   HIGH      : 3 alert(s)
+2026-08-04 11:04:10 | INFO     | alerting             |   MEDIUM    : 1 alert(s)
+2026-08-04 11:04:10 | INFO     | alerting             |   LOW       : 2 alert(s)
+2026-08-04 11:04:10 | INFO     | alerting             | ----------------------------------------------------------------------
+2026-08-04 11:04:10 | INFO     | alerting             | ALL ALERTS:
+2026-08-04 11:04:10 | INFO     | alerting             | ----------------------------------------------------------------------
+2026-08-04 11:04:10 | INFO     | alerting             | 
+  [CRITICAL] DD-001 — Data Drift: 25/53 Features Drifted
+2026-08-04 11:04:10 | INFO     | alerting             |   Type       : DATA_DRIFT
+2026-08-04 11:04:10 | INFO     | alerting             |   Metric     : drift_rate = 0.4717 (threshold: 0.2500)
+2026-08-04 11:04:10 | INFO     | alerting             |   Description: 47.2% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: FE_multi_channel_utilizer, FE_total_clinical_contacts, FE_lab_to_procedure_ratio, medical_specialty, payer_code.
+2026-08-04 11:04:10 | INFO     | alerting             |   Action     : Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.
+2026-08-04 11:04:10 | INFO     | alerting             |   Features   : FE_multi_channel_utilizer, FE_total_clinical_contacts, FE_lab_to_procedure_ratio, medical_specialty, payer_code
+2026-08-04 11:04:10 | INFO     | alerting             | 
+  [HIGH] CD-003 — Concept Drift Evidence: 4/6 Voting Signals Fired
+2026-08-04 11:04:10 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 11:04:10 | INFO     | alerting             |   Metric     : n_evidence = 4.0000 (threshold: 3.0000)
+2026-08-04 11:04:10 | INFO     | alerting             |   Description: 4 of 6 voting signals fired, spanning 2 correlated signal families (distribution, performance): auc_drop, prediction_drift, label_drift, auc_slope_negative. These signals are NOT independent. Sequential detectors (CUSUM, Page-Hinkley) are excluded from the count as structurally broken — see Tier 1.5.
+2026-08-04 11:04:10 | INFO     | alerting             |   Action     : Initiate drift investigation protocol. Run feature_drift analysis to identify root cause features.
+2026-08-04 11:04:10 | INFO     | alerting             | 
+  [HIGH] FI-001 — High-Impact Feature Drift: FE_lab_to_procedure_ratio
+2026-08-04 11:04:10 | INFO     | alerting             |   Type       : FEATURE_IMPACT
+2026-08-04 11:04:10 | INFO     | alerting             |   Metric     : impact_score = 0.4418 (threshold: 0.3500)
+2026-08-04 11:04:10 | INFO     | alerting             |   Description: Feature 'FE_lab_to_procedure_ratio' has highest impact score (0.4418). Drift score: 0.1476. SHAP contribution: 0.050247 (reference). SHAP Δ: +6.4%.
+2026-08-04 11:04:10 | INFO     | alerting             |   Action     : Feature 'FE_lab_to_procedure_ratio' is both drifted and important. Retrain with recent data emphasizing this feature. Consider feature-specific monitoring dashboard.
+2026-08-04 11:04:10 | INFO     | alerting             |   Features   : FE_lab_to_procedure_ratio, FE_multi_channel_utilizer, FE_labs_per_day_x_comorbidity, medical_specialty, discharge_disposition_id
+2026-08-04 11:04:10 | INFO     | alerting             | 
+  [HIGH] FI-002 — 11 High-Risk Features Identified
+2026-08-04 11:04:10 | INFO     | alerting             |   Type       : FEATURE_IMPACT
+2026-08-04 11:04:10 | INFO     | alerting             |   Metric     : n_high_risk_features = 11.0000 (threshold: 5.0000)
+2026-08-04 11:04:10 | INFO     | alerting             |   Description: 11 features classified as HIGH risk (drift × importance score >= 0.35). FE_ features: 0.1724 mean impact. Raw features: 0.1803 mean impact.
+2026-08-04 11:04:10 | INFO     | alerting             |   Action     : Prioritize retraining pipeline. Focus data collection on high-risk drifted features.
+2026-08-04 11:04:10 | INFO     | alerting             |   Features   : FE_lab_to_procedure_ratio, FE_multi_channel_utilizer, FE_labs_per_day_x_comorbidity, medical_specialty, discharge_disposition_id
+2026-08-04 11:04:10 | INFO     | alerting             | 
+  [MEDIUM] CD-001 — Model AUC Degradation Detected
+2026-08-04 11:04:10 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 11:04:10 | INFO     | alerting             |   Metric     : auc_degradation = 0.0202 (threshold: 0.0300)
+2026-08-04 11:04:10 | INFO     | alerting             |   Description: Model AUC dropped from 0.6617 (reference) to 0.6415 (production). Degradation: 0.0202.
+2026-08-04 11:04:10 | INFO     | alerting             |   Action     : Trigger model retraining on recent data. Investigate feature drift in high-impact features.
+2026-08-04 11:04:10 | INFO     | alerting             | 
+  [LOW] CD-004 — CUSUM Sequential Alarm [DIAGNOSTIC — not evidence]
+2026-08-04 11:04:10 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 11:04:10 | INFO     | alerting             |   Metric     : cusum_alarms = 140.0000 (threshold: 1.0000)
+2026-08-04 11:04:10 | INFO     | alerting             |   Description: CUSUM detected 140 alarms. First alarm at index 428 (1.12% into stream). Mean error shift: 0.1747 → 0.1871.
+2026-08-04 11:04:10 | INFO     | alerting             |   Action     : Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.
+2026-08-04 11:04:10 | INFO     | alerting             | 
+  [LOW] CD-005 — Page-Hinkley Sequential Alarm [DIAGNOSTIC — not evidence]
+2026-08-04 11:04:10 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 11:04:10 | INFO     | alerting             |   Metric     : ph_statistic = 26.7235 (threshold: 50.0000)
+2026-08-04 11:04:10 | INFO     | alerting             |   Description: Page-Hinkley detected gradual drift. First alarm at 29.28% of stream. PH statistic: 26.7235.
+2026-08-04 11:04:10 | INFO     | alerting             |   Action     : Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.
+2026-08-04 11:04:10 | INFO     | alerting             | ======================================================================
+2026-08-04 11:04:10 | INFO     | alerting             | SYSTEM STATUS    : HIGH
+2026-08-04 11:04:10 | INFO     | alerting             | TOTAL ALERTS     : 7
+2026-08-04 11:04:10 | INFO     | alerting             | CRITICAL         : 1
+2026-08-04 11:04:10 | INFO     | alerting             | HIGH             : 3
+2026-08-04 11:04:10 | INFO     | alerting             | RECOMMENDATION   : Model performance significantly degraded. Schedule retraining within 24 hours. Increase monitoring frequency.
+2026-08-04 11:04:10 | INFO     | alerting             | ======================================================================
+2026-08-04 11:04:10 | INFO     | alerting             | Alert report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\alerts\alert_report_val_test.json
+2026-08-04 11:04:10 | INFO     | alerting             | Alert summary CSV : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\alerts\alert_summary_val_test.csv
+2026-08-04 16:57:38 | INFO     | alerting             | ===== RUN 20260804-165738-3587b9 | pid=24096 | started 2026-08-04 16:57:38 =====
+2026-08-04 16:57:38 | INFO     | alerting             | ======================================================================
+2026-08-04 16:57:38 | INFO     | alerting             | DriftSentinel — Alert Engine Run
+2026-08-04 16:57:38 | INFO     | alerting             | ======================================================================
+2026-08-04 16:57:38 | INFO     | alerting             | Loaded concept drift report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\concept_drift_val_test.json
+2026-08-04 16:57:38 | INFO     | alerting             | Loaded data drift report  : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\data_drift_report.json
+2026-08-04 16:57:38 | INFO     | alerting             | Loaded feature drift report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\feature_drift_report_val_test.json
+2026-08-04 16:57:38 | INFO     | alerting             | ======================================================================
+2026-08-04 16:57:38 | INFO     | alerting             | DriftSentinel — Alert Engine
+2026-08-04 16:57:38 | INFO     | alerting             |   Model      : lgbm_v1
+2026-08-04 16:57:38 | INFO     | alerting             |   Reference  : val
+2026-08-04 16:57:38 | INFO     | alerting             |   Production : test
+2026-08-04 16:57:38 | INFO     | alerting             | ======================================================================
+2026-08-04 16:57:38 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 16:57:38 | INFO     | alerting             | Generating alerts from concept drift signals
+2026-08-04 16:57:38 | INFO     | alerting             |   Generated: 4 concept drift alerts
+2026-08-04 16:57:38 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 16:57:38 | INFO     | alerting             | Generating alerts from data drift signals
+2026-08-04 16:57:38 | INFO     | alerting             |   Generated: 1 data drift alerts
+2026-08-04 16:57:38 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 16:57:38 | INFO     | alerting             | Generating alerts from label shift signals
+2026-08-04 16:57:38 | INFO     | alerting             |   Generated: 0 label shift alerts
+2026-08-04 16:57:38 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 16:57:38 | INFO     | alerting             | Generating alerts from prediction shift signals
+2026-08-04 16:57:38 | INFO     | alerting             |   Generated: 0 prediction shift alerts
+2026-08-04 16:57:38 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 16:57:38 | INFO     | alerting             | Generating alerts from feature impact signals
+2026-08-04 16:57:38 | INFO     | alerting             |   Generated: 2 feature impact alerts
+2026-08-04 16:57:38 | INFO     | alerting             | ======================================================================
+2026-08-04 16:57:38 | INFO     | alerting             | ALERT SUMMARY
+2026-08-04 16:57:38 | INFO     | alerting             | ======================================================================
+2026-08-04 16:57:38 | INFO     | alerting             |   CRITICAL  : 1 alert(s)
+2026-08-04 16:57:38 | INFO     | alerting             |   HIGH      : 3 alert(s)
+2026-08-04 16:57:38 | INFO     | alerting             |   MEDIUM    : 1 alert(s)
+2026-08-04 16:57:38 | INFO     | alerting             |   LOW       : 2 alert(s)
+2026-08-04 16:57:38 | INFO     | alerting             | ----------------------------------------------------------------------
+2026-08-04 16:57:38 | INFO     | alerting             | ALL ALERTS:
+2026-08-04 16:57:38 | INFO     | alerting             | ----------------------------------------------------------------------
+2026-08-04 16:57:38 | INFO     | alerting             | 
+  [CRITICAL] DD-001 — Data Drift: 25/53 Features Drifted
+2026-08-04 16:57:38 | INFO     | alerting             |   Type       : DATA_DRIFT
+2026-08-04 16:57:38 | INFO     | alerting             |   Metric     : drift_rate = 0.4717 (threshold: 0.2500)
+2026-08-04 16:57:38 | INFO     | alerting             |   Description: 47.2% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: FE_multi_channel_utilizer, FE_total_clinical_contacts, FE_lab_to_procedure_ratio, medical_specialty, payer_code.
+2026-08-04 16:57:38 | INFO     | alerting             |   Action     : Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.
+2026-08-04 16:57:38 | INFO     | alerting             |   Features   : FE_multi_channel_utilizer, FE_total_clinical_contacts, FE_lab_to_procedure_ratio, medical_specialty, payer_code
+2026-08-04 16:57:38 | INFO     | alerting             | 
+  [HIGH] CD-003 — Concept Drift Evidence: 4/6 Voting Signals Fired
+2026-08-04 16:57:38 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 16:57:38 | INFO     | alerting             |   Metric     : n_evidence = 4.0000 (threshold: 3.0000)
+2026-08-04 16:57:38 | INFO     | alerting             |   Description: 4 of 6 voting signals fired, spanning 2 correlated signal families (distribution, performance): auc_drop, prediction_drift, label_drift, auc_slope_negative. These signals are NOT independent. Sequential detectors (CUSUM, Page-Hinkley) are excluded from the count as structurally broken — see Tier 1.5.
+2026-08-04 16:57:38 | INFO     | alerting             |   Action     : Initiate drift investigation protocol. Run feature_drift analysis to identify root cause features.
+2026-08-04 16:57:38 | INFO     | alerting             | 
+  [HIGH] FI-001 — High-Impact Feature Drift: FE_lab_to_procedure_ratio
+2026-08-04 16:57:38 | INFO     | alerting             |   Type       : FEATURE_IMPACT
+2026-08-04 16:57:38 | INFO     | alerting             |   Metric     : impact_score = 0.4418 (threshold: 0.3500)
+2026-08-04 16:57:38 | INFO     | alerting             |   Description: Feature 'FE_lab_to_procedure_ratio' has highest impact score (0.4418). Drift score: 0.1476. SHAP contribution: 0.050247 (reference). SHAP Δ: +6.4%.
+2026-08-04 16:57:38 | INFO     | alerting             |   Action     : Feature 'FE_lab_to_procedure_ratio' is both drifted and important. Retrain with recent data emphasizing this feature. Consider feature-specific monitoring dashboard.
+2026-08-04 16:57:38 | INFO     | alerting             |   Features   : FE_lab_to_procedure_ratio, FE_multi_channel_utilizer, FE_labs_per_day_x_comorbidity, medical_specialty, discharge_disposition_id
+2026-08-04 16:57:38 | INFO     | alerting             | 
+  [HIGH] FI-002 — 11 High-Risk Features Identified
+2026-08-04 16:57:38 | INFO     | alerting             |   Type       : FEATURE_IMPACT
+2026-08-04 16:57:38 | INFO     | alerting             |   Metric     : n_high_risk_features = 11.0000 (threshold: 5.0000)
+2026-08-04 16:57:38 | INFO     | alerting             |   Description: 11 features classified as HIGH risk (drift × importance score >= 0.35). FE_ features: 0.1724 mean impact. Raw features: 0.1803 mean impact.
+2026-08-04 16:57:38 | INFO     | alerting             |   Action     : Prioritize retraining pipeline. Focus data collection on high-risk drifted features.
+2026-08-04 16:57:38 | INFO     | alerting             |   Features   : FE_lab_to_procedure_ratio, FE_multi_channel_utilizer, FE_labs_per_day_x_comorbidity, medical_specialty, discharge_disposition_id
+2026-08-04 16:57:38 | INFO     | alerting             | 
+  [MEDIUM] CD-001 — Model AUC Degradation Detected
+2026-08-04 16:57:38 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 16:57:38 | INFO     | alerting             |   Metric     : auc_degradation = 0.0202 (threshold: 0.0300)
+2026-08-04 16:57:38 | INFO     | alerting             |   Description: Model AUC dropped from 0.6617 (reference) to 0.6415 (production). Degradation: 0.0202.
+2026-08-04 16:57:38 | INFO     | alerting             |   Action     : Trigger model retraining on recent data. Investigate feature drift in high-impact features.
+2026-08-04 16:57:38 | INFO     | alerting             | 
+  [LOW] CD-004 — CUSUM Sequential Alarm [DIAGNOSTIC — not evidence]
+2026-08-04 16:57:38 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 16:57:38 | INFO     | alerting             |   Metric     : cusum_alarms = 140.0000 (threshold: 1.0000)
+2026-08-04 16:57:38 | INFO     | alerting             |   Description: CUSUM detected 140 alarms. First alarm at index 428 (1.12% into stream). Mean error shift: 0.1747 → 0.1871.
+2026-08-04 16:57:38 | INFO     | alerting             |   Action     : Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.
+2026-08-04 16:57:38 | INFO     | alerting             | 
+  [LOW] CD-005 — Page-Hinkley Sequential Alarm [DIAGNOSTIC — not evidence]
+2026-08-04 16:57:38 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 16:57:38 | INFO     | alerting             |   Metric     : ph_statistic = 26.7235 (threshold: 50.0000)
+2026-08-04 16:57:38 | INFO     | alerting             |   Description: Page-Hinkley detected gradual drift. First alarm at 29.28% of stream. PH statistic: 26.7235.
+2026-08-04 16:57:38 | INFO     | alerting             |   Action     : Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.
+2026-08-04 16:57:38 | INFO     | alerting             | ======================================================================
+2026-08-04 16:57:38 | INFO     | alerting             | SYSTEM STATUS    : HIGH
+2026-08-04 16:57:38 | INFO     | alerting             | TOTAL ALERTS     : 7
+2026-08-04 16:57:38 | INFO     | alerting             | CRITICAL         : 1
+2026-08-04 16:57:38 | INFO     | alerting             | HIGH             : 3
+2026-08-04 16:57:38 | INFO     | alerting             | RECOMMENDATION   : Model performance significantly degraded. Schedule retraining within 24 hours. Increase monitoring frequency.
+2026-08-04 16:57:38 | INFO     | alerting             | ======================================================================
+2026-08-04 16:57:38 | INFO     | alerting             | Alert report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\alerts\alert_report_val_test.json
+2026-08-04 16:57:38 | INFO     | alerting             | Alert summary CSV : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\alerts\alert_summary_val_test.csv
+2026-08-04 16:59:01 | INFO     | alerting             | ===== RUN 20260804-165901-0eb8fa | pid=6428 | started 2026-08-04 16:59:01 =====
+2026-08-04 16:59:01 | INFO     | alerting             | ======================================================================
+2026-08-04 16:59:01 | INFO     | alerting             | DriftSentinel — Alert Engine Run
+2026-08-04 16:59:01 | INFO     | alerting             | ======================================================================
+2026-08-04 16:59:01 | INFO     | alerting             | Loaded concept drift report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\concept_drift_val_test.json
+2026-08-04 16:59:01 | INFO     | alerting             | Loaded data drift report  : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\data_drift_report.json
+2026-08-04 16:59:01 | INFO     | alerting             | Loaded feature drift report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\feature_drift_report_val_test.json
+2026-08-04 16:59:01 | INFO     | alerting             | ======================================================================
+2026-08-04 16:59:01 | INFO     | alerting             | DriftSentinel — Alert Engine
+2026-08-04 16:59:01 | INFO     | alerting             |   Model      : lgbm_v1
+2026-08-04 16:59:01 | INFO     | alerting             |   Reference  : val
+2026-08-04 16:59:01 | INFO     | alerting             |   Production : test
+2026-08-04 16:59:01 | INFO     | alerting             | ======================================================================
+2026-08-04 16:59:01 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 16:59:01 | INFO     | alerting             | Generating alerts from concept drift signals
+2026-08-04 16:59:01 | INFO     | alerting             |   Generated: 4 concept drift alerts
+2026-08-04 16:59:01 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 16:59:01 | INFO     | alerting             | Generating alerts from data drift signals
+2026-08-04 16:59:01 | INFO     | alerting             |   Generated: 1 data drift alerts
+2026-08-04 16:59:01 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 16:59:01 | INFO     | alerting             | Generating alerts from label shift signals
+2026-08-04 16:59:01 | INFO     | alerting             |   Generated: 0 label shift alerts
+2026-08-04 16:59:01 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 16:59:01 | INFO     | alerting             | Generating alerts from prediction shift signals
+2026-08-04 16:59:01 | INFO     | alerting             |   Generated: 0 prediction shift alerts
+2026-08-04 16:59:01 | INFO     | alerting             | --------------------------------------------------
+2026-08-04 16:59:01 | INFO     | alerting             | Generating alerts from feature impact signals
+2026-08-04 16:59:01 | INFO     | alerting             |   Generated: 2 feature impact alerts
+2026-08-04 16:59:01 | INFO     | alerting             | ======================================================================
+2026-08-04 16:59:01 | INFO     | alerting             | ALERT SUMMARY
+2026-08-04 16:59:01 | INFO     | alerting             | ======================================================================
+2026-08-04 16:59:01 | INFO     | alerting             |   CRITICAL  : 1 alert(s)
+2026-08-04 16:59:01 | INFO     | alerting             |   HIGH      : 3 alert(s)
+2026-08-04 16:59:01 | INFO     | alerting             |   MEDIUM    : 1 alert(s)
+2026-08-04 16:59:01 | INFO     | alerting             |   LOW       : 2 alert(s)
+2026-08-04 16:59:01 | INFO     | alerting             | ----------------------------------------------------------------------
+2026-08-04 16:59:01 | INFO     | alerting             | ALL ALERTS:
+2026-08-04 16:59:01 | INFO     | alerting             | ----------------------------------------------------------------------
+2026-08-04 16:59:01 | INFO     | alerting             | 
+  [CRITICAL] DD-001 — Data Drift: 25/53 Features Drifted
+2026-08-04 16:59:01 | INFO     | alerting             |   Type       : DATA_DRIFT
+2026-08-04 16:59:01 | INFO     | alerting             |   Metric     : drift_rate = 0.4717 (threshold: 0.2500)
+2026-08-04 16:59:01 | INFO     | alerting             |   Description: 47.2% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: FE_multi_channel_utilizer, FE_total_clinical_contacts, FE_lab_to_procedure_ratio, medical_specialty, payer_code.
+2026-08-04 16:59:01 | INFO     | alerting             |   Action     : Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.
+2026-08-04 16:59:01 | INFO     | alerting             |   Features   : FE_multi_channel_utilizer, FE_total_clinical_contacts, FE_lab_to_procedure_ratio, medical_specialty, payer_code
+2026-08-04 16:59:01 | INFO     | alerting             | 
+  [HIGH] CD-003 — Concept Drift Evidence: 4/6 Voting Signals Fired
+2026-08-04 16:59:01 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 16:59:01 | INFO     | alerting             |   Metric     : n_evidence = 4.0000 (threshold: 3.0000)
+2026-08-04 16:59:01 | INFO     | alerting             |   Description: 4 of 6 voting signals fired, spanning 2 correlated signal families (distribution, performance): auc_drop, prediction_drift, label_drift, auc_slope_negative. These signals are NOT independent. Sequential detectors (CUSUM, Page-Hinkley) are excluded from the count as structurally broken — see Tier 1.5.
+2026-08-04 16:59:01 | INFO     | alerting             |   Action     : Initiate drift investigation protocol. Run feature_drift analysis to identify root cause features.
+2026-08-04 16:59:01 | INFO     | alerting             | 
+  [HIGH] FI-001 — High-Impact Feature Drift: FE_lab_to_procedure_ratio
+2026-08-04 16:59:01 | INFO     | alerting             |   Type       : FEATURE_IMPACT
+2026-08-04 16:59:01 | INFO     | alerting             |   Metric     : impact_score = 0.4418 (threshold: 0.3500)
+2026-08-04 16:59:01 | INFO     | alerting             |   Description: Feature 'FE_lab_to_procedure_ratio' has highest impact score (0.4418). Drift score: 0.1476. SHAP contribution: 0.050247 (reference). SHAP Δ: +6.4%.
+2026-08-04 16:59:01 | INFO     | alerting             |   Action     : Feature 'FE_lab_to_procedure_ratio' is both drifted and important. Retrain with recent data emphasizing this feature. Consider feature-specific monitoring dashboard.
+2026-08-04 16:59:01 | INFO     | alerting             |   Features   : FE_lab_to_procedure_ratio, FE_multi_channel_utilizer, FE_labs_per_day_x_comorbidity, medical_specialty, discharge_disposition_id
+2026-08-04 16:59:01 | INFO     | alerting             | 
+  [HIGH] FI-002 — 11 High-Risk Features Identified
+2026-08-04 16:59:01 | INFO     | alerting             |   Type       : FEATURE_IMPACT
+2026-08-04 16:59:01 | INFO     | alerting             |   Metric     : n_high_risk_features = 11.0000 (threshold: 5.0000)
+2026-08-04 16:59:01 | INFO     | alerting             |   Description: 11 features classified as HIGH risk (drift × importance score >= 0.35). FE_ features: 0.1724 mean impact. Raw features: 0.1803 mean impact.
+2026-08-04 16:59:01 | INFO     | alerting             |   Action     : Prioritize retraining pipeline. Focus data collection on high-risk drifted features.
+2026-08-04 16:59:01 | INFO     | alerting             |   Features   : FE_lab_to_procedure_ratio, FE_multi_channel_utilizer, FE_labs_per_day_x_comorbidity, medical_specialty, discharge_disposition_id
+2026-08-04 16:59:01 | INFO     | alerting             | 
+  [MEDIUM] CD-001 — Model AUC Degradation Detected
+2026-08-04 16:59:01 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 16:59:01 | INFO     | alerting             |   Metric     : auc_degradation = 0.0202 (threshold: 0.0300)
+2026-08-04 16:59:01 | INFO     | alerting             |   Description: Model AUC dropped from 0.6617 (reference) to 0.6415 (production). Degradation: 0.0202.
+2026-08-04 16:59:01 | INFO     | alerting             |   Action     : Trigger model retraining on recent data. Investigate feature drift in high-impact features.
+2026-08-04 16:59:01 | INFO     | alerting             | 
+  [LOW] CD-004 — CUSUM Sequential Alarm [DIAGNOSTIC — not evidence]
+2026-08-04 16:59:01 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 16:59:01 | INFO     | alerting             |   Metric     : cusum_alarms = 140.0000 (threshold: 1.0000)
+2026-08-04 16:59:01 | INFO     | alerting             |   Description: CUSUM detected 140 alarms. First alarm at index 428 (1.12% into stream). Mean error shift: 0.1747 → 0.1871.
+2026-08-04 16:59:01 | INFO     | alerting             |   Action     : Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.
+2026-08-04 16:59:01 | INFO     | alerting             | 
+  [LOW] CD-005 — Page-Hinkley Sequential Alarm [DIAGNOSTIC — not evidence]
+2026-08-04 16:59:01 | INFO     | alerting             |   Type       : CONCEPT_DRIFT
+2026-08-04 16:59:01 | INFO     | alerting             |   Metric     : ph_statistic = 26.7235 (threshold: 50.0000)
+2026-08-04 16:59:01 | INFO     | alerting             |   Description: Page-Hinkley detected gradual drift. First alarm at 29.28% of stream. PH statistic: 26.7235.
+2026-08-04 16:59:01 | INFO     | alerting             |   Action     : Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.
+2026-08-04 16:59:01 | INFO     | alerting             | ======================================================================
+2026-08-04 16:59:01 | INFO     | alerting             | SYSTEM STATUS    : HIGH
+2026-08-04 16:59:01 | INFO     | alerting             | TOTAL ALERTS     : 7
+2026-08-04 16:59:01 | INFO     | alerting             | CRITICAL         : 1
+2026-08-04 16:59:01 | INFO     | alerting             | HIGH             : 3
+2026-08-04 16:59:01 | INFO     | alerting             | RECOMMENDATION   : Model performance significantly degraded. Schedule retraining within 24 hours. Increase monitoring frequency.
+2026-08-04 16:59:01 | INFO     | alerting             | ======================================================================
+2026-08-04 16:59:01 | INFO     | alerting             | Alert report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\alerts\alert_report_val_test.json
+2026-08-04 16:59:01 | INFO     | alerting             | Alert summary CSV : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\alerts\alert_summary_val_test.csv

@@ -1,0 +1,165 @@
+{
+  "phase": "2C.5",
+  "title": "Traceability audit \u2014 the evidence behind declining MLflow",
+  "question": "does the artifact + superseded/ pattern already provide per-run traceability with preserved predecessors?",
+  "checks": {
+    "T2_reports_record_seed_and_versions": {
+      "requirement": "T2 \u2014 every report records seed and package versions",
+      "n_reports": 22,
+      "n_exempt_by_nature": 2,
+      "exempt": [
+        {
+          "artifact": "language_audit_plan.json",
+          "reason": "a text scan of source files; no seed, no numeric result"
+        },
+        {
+          "artifact": "temporal_language_inventory.json",
+          "reason": "an inventory of string occurrences; same"
+        }
+      ],
+      "n_checkable": 20,
+      "n_with_reproducibility_block": 19,
+      "missing": [
+        {
+          "artifact": "threshold_policy_lgbm_v1.json",
+          "reason": "no `reproducibility` block"
+        }
+      ],
+      "passes": false
+    },
+    "T3_predecessors_preserved": {
+      "requirement": "T3 \u2014 superseding an artifact preserves its predecessor",
+      "n_preserved_files": 96,
+      "by_directory": {
+        "superseded": 9,
+        "auto": 37,
+        "tier0_8signal": 8,
+        "tier2a_merged_target": 34,
+        "tier2c5_registry_hardcoded_params": 4,
+        "tier2c6_contaminated_threshold": 4
+      },
+      "n_artifacts_with_version_history": 10,
+      "deepest_histories": [
+        [
+          "pipeline_summary.json",
+          8
+        ],
+        [
+          "defense_report_lgbm_v1.json",
+          5
+        ],
+        [
+          "alert_report_val_test.json",
+          4
+        ],
+        [
+          "alert_summary_val_test.csv",
+          4
+        ],
+        [
+          "concept_drift_val_test.json",
+          4
+        ]
+      ],
+      "enforcement": "src/monitoring/artifact_io.py raises ArtifactOverwriteError on an unflagged overwrite and copies the prior version into superseded/auto/ when overwrite is explicit; both behaviours are unit-tested in tests/test_artifact_integrity.py",
+      "passes": true
+    },
+    "T4_model_lineage": {
+      "requirement": "T4 \u2014 model lineage: data, trigger, promotion evidence",
+      "models": {
+        "lgbm_v1": {
+          "present": [
+            "train_splits",
+            "trigger",
+            "status",
+            "params",
+            "metrics",
+            "registered_at",
+            "n_features",
+            "train_rows"
+          ],
+          "absent": [],
+          "metric_splits": [
+            "test",
+            "train",
+            "val"
+          ]
+        },
+        "lgbm_v2": {
+          "present": [
+            "train_splits",
+            "trigger",
+            "status",
+            "params",
+            "metrics",
+            "registered_at",
+            "n_features",
+            "train_rows"
+          ],
+          "absent": [],
+          "metric_splits": [
+            "test",
+            "train",
+            "val"
+          ]
+        }
+      },
+      "promotion_evidence": "outputs/registry/model_comparison.json",
+      "history_csv": true,
+      "missing": [],
+      "passes": true
+    },
+    "T5_model_binary_provenance": {
+      "requirement": "T5 \u2014 model binaries carry provenance and fail on skew",
+      "models": [
+        {
+          "model": "lgbm_v1.pkl",
+          "has_provenance_sidecar": true
+        },
+        {
+          "model": "lgbm_v2.pkl",
+          "has_provenance_sidecar": true
+        },
+        {
+          "model": "logreg_scaler.pkl",
+          "has_provenance_sidecar": true
+        },
+        {
+          "model": "logreg_v1.pkl",
+          "has_provenance_sidecar": true
+        }
+      ],
+      "n_models": 4,
+      "n_with_sidecar": 4,
+      "save_model_callers_in_src": [
+        "src/models/registry.py",
+        "src/models/trainer.py",
+        "src/monitoring/tracking_audit.py"
+      ],
+      "diagnosis": "the sidecar machinery exists and is tested, but nothing calls it: models are still written by a bare pickle.dump in trainer.py, so no shipped model records the versions it was fitted under",
+      "missing": [],
+      "passes": true
+    },
+    "T6_runs_are_byte_reproducible": {
+      "requirement": "T6 \u2014 a re-run is byte-comparable to the original",
+      "verdict": "PASS",
+      "n_artifacts_compared": 24,
+      "enforced_in_ci": true,
+      "workflow": ".github/workflows/ci.yml:determinism",
+      "missing": [],
+      "passes": true
+    }
+  },
+  "n_checks": 5,
+  "n_failed": 1,
+  "failed": [
+    "T2_reports_record_seed_and_versions"
+  ],
+  "answer": "SUBSTANTIALLY YES, WITH TWO NAMED GAPS",
+  "honesty_note": "This audit is reported with its failures because an all-green traceability audit written by the same person who built the traceability is not evidence. The gaps below are the useful part.",
+  "reproducibility": {
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

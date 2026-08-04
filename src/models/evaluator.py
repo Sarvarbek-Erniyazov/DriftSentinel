@@ -16,6 +16,8 @@ import pandas as pd
 import numpy as np
 import json
 import pickle
+import matplotlib
+matplotlib.use("Agg")   # headless: figures save to disk only, no GUI window
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
@@ -141,7 +143,7 @@ def _plot_roc_pr(
     plt.tight_layout()
     path = FIGURE_DIR / f"20_roc_pr_{model_name}.png"
     plt.savefig(path, bbox_inches='tight')
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
 
 
@@ -173,7 +175,7 @@ def _plot_calibration(results: dict, model_name: str):
     plt.tight_layout()
     path = FIGURE_DIR / f"21_calibration_{model_name}.png"
     plt.savefig(path, bbox_inches='tight')
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
 
 
@@ -205,7 +207,7 @@ def _plot_confusion_matrices(results: dict, model_name: str):
     plt.tight_layout()
     path = FIGURE_DIR / f"22_confusion_matrices_{model_name}.png"
     plt.savefig(path, bbox_inches='tight')
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
 
 
@@ -283,7 +285,7 @@ def _plot_degradation(degradation_report: dict, model_name: str):
     axes[0].set_xticks(x + width)
     axes[0].set_xticklabels([m.upper() for m in metrics])
     axes[0].set_ylabel('Score')
-    axes[0].set_title(f'Metrics Across Temporal Windows\n{model_name}',
+    axes[0].set_title(f'Metrics Across Sequential Windows\n{model_name}',
                       fontweight='bold')
     axes[0].legend()
     axes[0].set_ylim(0, 1)
@@ -317,7 +319,7 @@ def _plot_degradation(degradation_report: dict, model_name: str):
     plt.tight_layout()
     path = FIGURE_DIR / f"23_degradation_{model_name}.png"
     plt.savefig(path, bbox_inches='tight')
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
 
 
@@ -441,13 +443,13 @@ def _plot_model_comparison(lgbm_report: dict, lr_report: dict):
         # Highlight test (drift window)
         ax.axvspan(1.5, 2.5, alpha=0.08, color='red', label='drift window')
 
-    plt.suptitle('Model Comparison Across Temporal Windows\n'
+    plt.suptitle('Model Comparison Across Sequential Windows\n'
                  '(red zone = concept drift window)',
                  fontsize=12, fontweight='bold')
     plt.tight_layout()
     path = FIGURE_DIR / "24_model_comparison.png"
     plt.savefig(path, bbox_inches='tight')
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
 
 

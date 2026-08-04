@@ -1,0 +1,210 @@
+2026-08-04 10:43:03 | INFO     | calibration          | ===== RUN 20260804-104303-cd8f4c | pid=31488 | started 2026-08-04 10:43:03 =====
+2026-08-04 10:43:03 | INFO     | calibration          | ======================================================================
+2026-08-04 10:43:03 | INFO     | calibration          | DriftSentinel — Calibration Run
+2026-08-04 10:43:03 | INFO     | calibration          | ======================================================================
+2026-08-04 10:43:03 | INFO     | calibration          | ============================================================
+2026-08-04 10:43:03 | INFO     | calibration          | DriftSentinel — Model Calibrator [lgbm_v1]
+2026-08-04 10:43:03 | INFO     | calibration          | ============================================================
+2026-08-04 10:43:03 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 10:43:03 | INFO     | calibration          | Step 1: Pre-calibration metrics
+2026-08-04 10:43:03 | INFO     | calibration          |   Split          ECE     MCE    Brier    MeanP    MeanY      Gap
+2026-08-04 10:43:03 | INFO     | calibration          |   ----------------------------------------------------------
+2026-08-04 10:43:03 | INFO     | calibration          |   pre_val     0.0203  0.1132   0.0915   0.1250   0.1056  +0.0193
+2026-08-04 10:43:03 | INFO     | calibration          |   pre_test    0.0257  0.1353   0.0792   0.1138   0.0881  +0.0256
+2026-08-04 10:43:03 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 10:43:03 | INFO     | calibration          | Step 2: Isotonic regression calibration
+2026-08-04 10:43:03 | INFO     | calibration          |   ECE: 0.0257 → 0.0080 (-0.0177)
+2026-08-04 10:43:03 | INFO     | calibration          |   Brier: 0.0792 → 0.0785
+2026-08-04 10:43:03 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 10:43:03 | INFO     | calibration          | Step 3: Temperature scaling
+2026-08-04 10:43:03 | INFO     | calibration          |   Temperature T = 0.9120
+2026-08-04 10:43:03 | INFO     | calibration          |   T < 1 → sharper predictions
+2026-08-04 10:43:03 | INFO     | calibration          |   ECE: 0.0257 → 0.0105 (-0.0152)
+2026-08-04 10:43:03 | INFO     | calibration          |   Brier: 0.0792 → 0.0786
+2026-08-04 10:43:03 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 10:43:03 | INFO     | calibration          | Step 4: Best calibration method selection
+2026-08-04 10:43:03 | INFO     | calibration          |   Method               ECE
+2026-08-04 10:43:03 | INFO     | calibration          |   -------------------------
+2026-08-04 10:43:03 | INFO     | calibration          |   isotonic          0.0080 ← BEST
+2026-08-04 10:43:03 | INFO     | calibration          |   temperature       0.0105
+2026-08-04 10:43:03 | INFO     | calibration          |   uncalibrated      0.0257
+2026-08-04 10:43:03 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 10:43:03 | INFO     | calibration          | Step 5: Reliability diagrams
+2026-08-04 10:43:06 | INFO     | calibration          |   Saved: 25_reliability_lgbm_v1.png
+2026-08-04 10:43:06 | INFO     | calibration          | ============================================================
+2026-08-04 10:43:06 | INFO     | calibration          | Calibration complete
+2026-08-04 10:43:06 | INFO     | calibration          |   Best method  : isotonic
+2026-08-04 10:43:06 | INFO     | calibration          |   ECE (test)   : 0.0257 → 0.0080
+2026-08-04 10:43:06 | INFO     | calibration          |   ECE improvement: +0.0177
+2026-08-04 10:43:06 | INFO     | calibration          | ============================================================
+2026-08-04 10:43:06 | INFO     | calibration          |   Isotonic calibrator saved  : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\calibrator_isotonic_lgbm_v1.pkl
+2026-08-04 10:43:06 | INFO     | calibration          |   Temperature scaler saved   : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\calibrator_temperature_lgbm_v1.pkl
+2026-08-04 10:43:06 | INFO     | calibration          |   Calibration report saved   : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\calibration_report_lgbm_v1.json
+2026-08-04 11:03:27 | INFO     | calibration          | ===== RUN 20260804-110327-8079eb | pid=32412 | started 2026-08-04 11:03:27 =====
+2026-08-04 11:03:27 | INFO     | calibration          | ======================================================================
+2026-08-04 11:03:27 | INFO     | calibration          | DriftSentinel — Calibration Run
+2026-08-04 11:03:27 | INFO     | calibration          | ======================================================================
+2026-08-04 11:03:27 | INFO     | calibration          | ============================================================
+2026-08-04 11:03:27 | INFO     | calibration          | DriftSentinel — Model Calibrator [lgbm_v1]
+2026-08-04 11:03:27 | INFO     | calibration          | ============================================================
+2026-08-04 11:03:27 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 11:03:27 | INFO     | calibration          | Step 1: Pre-calibration metrics
+2026-08-04 11:03:27 | INFO     | calibration          |   Split          ECE     MCE    Brier    MeanP    MeanY      Gap
+2026-08-04 11:03:27 | INFO     | calibration          |   ----------------------------------------------------------
+2026-08-04 11:03:27 | INFO     | calibration          |   pre_val     0.0203  0.1132   0.0915   0.1250   0.1056  +0.0193
+2026-08-04 11:03:27 | INFO     | calibration          |   pre_test    0.0257  0.1353   0.0792   0.1138   0.0881  +0.0256
+2026-08-04 11:03:27 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 11:03:27 | INFO     | calibration          | Step 2: Isotonic regression calibration
+2026-08-04 11:03:27 | INFO     | calibration          |   ECE: 0.0257 → 0.0080 (-0.0177)
+2026-08-04 11:03:27 | INFO     | calibration          |   Brier: 0.0792 → 0.0785
+2026-08-04 11:03:27 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 11:03:27 | INFO     | calibration          | Step 3: Temperature scaling
+2026-08-04 11:03:27 | INFO     | calibration          |   Temperature T = 0.9120
+2026-08-04 11:03:27 | INFO     | calibration          |   T < 1 → sharper predictions
+2026-08-04 11:03:27 | INFO     | calibration          |   ECE: 0.0257 → 0.0105 (-0.0152)
+2026-08-04 11:03:27 | INFO     | calibration          |   Brier: 0.0792 → 0.0786
+2026-08-04 11:03:27 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 11:03:27 | INFO     | calibration          | Step 4: Best calibration method selection
+2026-08-04 11:03:27 | INFO     | calibration          |   Method               ECE
+2026-08-04 11:03:27 | INFO     | calibration          |   -------------------------
+2026-08-04 11:03:27 | INFO     | calibration          |   isotonic          0.0080 ← BEST
+2026-08-04 11:03:27 | INFO     | calibration          |   temperature       0.0105
+2026-08-04 11:03:27 | INFO     | calibration          |   uncalibrated      0.0257
+2026-08-04 11:03:27 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 11:03:27 | INFO     | calibration          | Step 5: Reliability diagrams
+2026-08-04 11:03:29 | INFO     | calibration          |   Saved: 25_reliability_lgbm_v1.png
+2026-08-04 11:03:29 | INFO     | calibration          | ============================================================
+2026-08-04 11:03:29 | INFO     | calibration          | Calibration complete
+2026-08-04 11:03:29 | INFO     | calibration          |   Best method  : isotonic
+2026-08-04 11:03:29 | INFO     | calibration          |   ECE (test)   : 0.0257 → 0.0080
+2026-08-04 11:03:29 | INFO     | calibration          |   ECE improvement: +0.0177
+2026-08-04 11:03:29 | INFO     | calibration          | ============================================================
+2026-08-04 11:03:29 | INFO     | calibration          |   Isotonic calibrator saved  : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\calibrator_isotonic_lgbm_v1.pkl
+2026-08-04 11:03:29 | INFO     | calibration          |   Temperature scaler saved   : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\calibrator_temperature_lgbm_v1.pkl
+2026-08-04 11:03:29 | INFO     | calibration          |   Calibration report saved   : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\calibration_report_lgbm_v1.json
+2026-08-04 11:08:17 | INFO     | calibration          | ===== RUN 20260804-110817-a0f7e7 | pid=26828 | started 2026-08-04 11:08:17 =====
+2026-08-04 11:08:17 | INFO     | calibration          | ======================================================================
+2026-08-04 11:08:17 | INFO     | calibration          | DriftSentinel — Calibration Run
+2026-08-04 11:08:17 | INFO     | calibration          | ======================================================================
+2026-08-04 11:08:17 | INFO     | calibration          | ============================================================
+2026-08-04 11:08:17 | INFO     | calibration          | DriftSentinel — Model Calibrator [lgbm_v1]
+2026-08-04 11:08:17 | INFO     | calibration          | ============================================================
+2026-08-04 11:08:17 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 11:08:17 | INFO     | calibration          | Step 1: Pre-calibration metrics
+2026-08-04 11:08:17 | INFO     | calibration          |   Split          ECE     MCE    Brier    MeanP    MeanY      Gap
+2026-08-04 11:08:17 | INFO     | calibration          |   ----------------------------------------------------------
+2026-08-04 11:08:17 | INFO     | calibration          |   pre_val     0.0203  0.1132   0.0915   0.1250   0.1056  +0.0193
+2026-08-04 11:08:17 | INFO     | calibration          |   pre_test    0.0257  0.1353   0.0792   0.1138   0.0881  +0.0256
+2026-08-04 11:08:17 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 11:08:17 | INFO     | calibration          | Step 2: Isotonic regression calibration
+2026-08-04 11:08:17 | INFO     | calibration          |   ECE: 0.0257 → 0.0080 (-0.0177)
+2026-08-04 11:08:17 | INFO     | calibration          |   Brier: 0.0792 → 0.0785
+2026-08-04 11:08:17 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 11:08:17 | INFO     | calibration          | Step 3: Temperature scaling
+2026-08-04 11:08:17 | INFO     | calibration          |   Temperature T = 0.9120
+2026-08-04 11:08:17 | INFO     | calibration          |   T < 1 → sharper predictions
+2026-08-04 11:08:17 | INFO     | calibration          |   ECE: 0.0257 → 0.0105 (-0.0152)
+2026-08-04 11:08:17 | INFO     | calibration          |   Brier: 0.0792 → 0.0786
+2026-08-04 11:08:17 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 11:08:17 | INFO     | calibration          | Step 4: Best calibration method selection
+2026-08-04 11:08:17 | INFO     | calibration          |   Method               ECE
+2026-08-04 11:08:17 | INFO     | calibration          |   -------------------------
+2026-08-04 11:08:17 | INFO     | calibration          |   isotonic          0.0080 ← BEST
+2026-08-04 11:08:17 | INFO     | calibration          |   temperature       0.0105
+2026-08-04 11:08:17 | INFO     | calibration          |   uncalibrated      0.0257
+2026-08-04 11:08:17 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 11:08:17 | INFO     | calibration          | Step 5: Reliability diagrams
+2026-08-04 11:08:17 | INFO     | calibration          |   Saved: 25_reliability_lgbm_v1.png
+2026-08-04 11:08:17 | INFO     | calibration          | ============================================================
+2026-08-04 11:08:17 | INFO     | calibration          | Calibration complete
+2026-08-04 11:08:17 | INFO     | calibration          |   Best method  : isotonic
+2026-08-04 11:08:17 | INFO     | calibration          |   ECE (test)   : 0.0257 → 0.0080
+2026-08-04 11:08:17 | INFO     | calibration          |   ECE improvement: +0.0177
+2026-08-04 11:08:17 | INFO     | calibration          | ============================================================
+2026-08-04 11:08:17 | INFO     | calibration          |   Isotonic calibrator saved  : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\calibrator_isotonic_lgbm_v1.pkl
+2026-08-04 11:08:17 | INFO     | calibration          |   Temperature scaler saved   : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\calibrator_temperature_lgbm_v1.pkl
+2026-08-04 11:08:17 | INFO     | calibration          |   Calibration report saved   : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\calibration_report_lgbm_v1.json
+2026-08-04 20:51:26 | INFO     | calibration          | ===== RUN 20260804-205126-375930 | pid=22276 | started 2026-08-04 20:51:26 =====
+2026-08-04 20:51:26 | INFO     | calibration          | ======================================================================
+2026-08-04 20:51:26 | INFO     | calibration          | DriftSentinel — Calibration Run
+2026-08-04 20:51:26 | INFO     | calibration          | ======================================================================
+2026-08-04 20:51:26 | INFO     | calibration          | ============================================================
+2026-08-04 20:51:26 | INFO     | calibration          | DriftSentinel — Model Calibrator [lgbm_v1]
+2026-08-04 20:51:26 | INFO     | calibration          | ============================================================
+2026-08-04 20:51:26 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 20:51:26 | INFO     | calibration          | Step 1: Pre-calibration metrics
+2026-08-04 20:51:26 | INFO     | calibration          |   Split          ECE     MCE    Brier    MeanP    MeanY      Gap
+2026-08-04 20:51:26 | INFO     | calibration          |   ----------------------------------------------------------
+2026-08-04 20:51:26 | INFO     | calibration          |   pre_val     0.0203  0.1132   0.0915   0.1250   0.1056  +0.0193
+2026-08-04 20:51:26 | INFO     | calibration          |   pre_test    0.0257  0.1353   0.0792   0.1138   0.0881  +0.0256
+2026-08-04 20:51:26 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 20:51:26 | INFO     | calibration          | Step 2: Isotonic regression calibration
+2026-08-04 20:51:26 | INFO     | calibration          |   ECE: 0.0257 → 0.0080 (-0.0177)
+2026-08-04 20:51:26 | INFO     | calibration          |   Brier: 0.0792 → 0.0785
+2026-08-04 20:51:26 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 20:51:26 | INFO     | calibration          | Step 3: Temperature scaling
+2026-08-04 20:51:26 | INFO     | calibration          |   Temperature T = 0.9120
+2026-08-04 20:51:26 | INFO     | calibration          |   T < 1 → sharper predictions
+2026-08-04 20:51:26 | INFO     | calibration          |   ECE: 0.0257 → 0.0105 (-0.0152)
+2026-08-04 20:51:26 | INFO     | calibration          |   Brier: 0.0792 → 0.0786
+2026-08-04 20:51:26 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 20:51:26 | INFO     | calibration          | Step 4: Best calibration method selection
+2026-08-04 20:51:26 | INFO     | calibration          |   Method               ECE
+2026-08-04 20:51:26 | INFO     | calibration          |   -------------------------
+2026-08-04 20:51:26 | INFO     | calibration          |   isotonic          0.0080 ← BEST
+2026-08-04 20:51:26 | INFO     | calibration          |   temperature       0.0105
+2026-08-04 20:51:26 | INFO     | calibration          |   uncalibrated      0.0257
+2026-08-04 20:51:26 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 20:51:26 | INFO     | calibration          | Step 5: Reliability diagrams
+2026-08-04 20:51:27 | INFO     | calibration          |   Saved: 25_reliability_lgbm_v1.png
+2026-08-04 20:51:27 | INFO     | calibration          | ============================================================
+2026-08-04 20:51:27 | INFO     | calibration          | Calibration complete
+2026-08-04 20:51:27 | INFO     | calibration          |   Best method  : isotonic
+2026-08-04 20:51:27 | INFO     | calibration          |   ECE (test)   : 0.0257 → 0.0080
+2026-08-04 20:51:27 | INFO     | calibration          |   ECE improvement: +0.0177
+2026-08-04 20:51:27 | INFO     | calibration          | ============================================================
+2026-08-04 20:51:27 | INFO     | calibration          |   Isotonic calibrator saved  : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\calibrator_isotonic_lgbm_v1.pkl
+2026-08-04 20:51:27 | INFO     | calibration          |   Temperature scaler saved   : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\calibrator_temperature_lgbm_v1.pkl
+2026-08-04 20:51:27 | INFO     | calibration          |   Calibration report saved   : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\calibration_report_lgbm_v1.json
+2026-08-04 21:12:08 | INFO     | calibration          | ===== RUN 20260804-211208-87a8ca | pid=30208 | started 2026-08-04 21:12:08 =====
+2026-08-04 21:12:08 | INFO     | calibration          | ======================================================================
+2026-08-04 21:12:08 | INFO     | calibration          | DriftSentinel — Calibration Run
+2026-08-04 21:12:08 | INFO     | calibration          | ======================================================================
+2026-08-04 21:12:08 | INFO     | calibration          | ============================================================
+2026-08-04 21:12:08 | INFO     | calibration          | DriftSentinel — Model Calibrator [lgbm_v1]
+2026-08-04 21:12:08 | INFO     | calibration          | ============================================================
+2026-08-04 21:12:08 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 21:12:08 | INFO     | calibration          | Step 1: Pre-calibration metrics
+2026-08-04 21:12:08 | INFO     | calibration          |   Split          ECE     MCE    Brier    MeanP    MeanY      Gap
+2026-08-04 21:12:08 | INFO     | calibration          |   ----------------------------------------------------------
+2026-08-04 21:12:08 | INFO     | calibration          |   pre_val     0.0203  0.1132   0.0915   0.1250   0.1056  +0.0193
+2026-08-04 21:12:08 | INFO     | calibration          |   pre_test    0.0257  0.1353   0.0792   0.1138   0.0881  +0.0256
+2026-08-04 21:12:08 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 21:12:08 | INFO     | calibration          | Step 2: Isotonic regression calibration
+2026-08-04 21:12:08 | INFO     | calibration          |   ECE: 0.0257 → 0.0080 (-0.0177)
+2026-08-04 21:12:08 | INFO     | calibration          |   Brier: 0.0792 → 0.0785
+2026-08-04 21:12:08 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 21:12:08 | INFO     | calibration          | Step 3: Temperature scaling
+2026-08-04 21:12:08 | INFO     | calibration          |   Temperature T = 0.9120
+2026-08-04 21:12:08 | INFO     | calibration          |   T < 1 → sharper predictions
+2026-08-04 21:12:08 | INFO     | calibration          |   ECE: 0.0257 → 0.0105 (-0.0152)
+2026-08-04 21:12:08 | INFO     | calibration          |   Brier: 0.0792 → 0.0786
+2026-08-04 21:12:08 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 21:12:08 | INFO     | calibration          | Step 4: Best calibration method selection
+2026-08-04 21:12:08 | INFO     | calibration          |   Method               ECE
+2026-08-04 21:12:08 | INFO     | calibration          |   -------------------------
+2026-08-04 21:12:08 | INFO     | calibration          |   isotonic          0.0080 ← BEST
+2026-08-04 21:12:08 | INFO     | calibration          |   temperature       0.0105
+2026-08-04 21:12:08 | INFO     | calibration          |   uncalibrated      0.0257
+2026-08-04 21:12:08 | INFO     | calibration          | --------------------------------------------------
+2026-08-04 21:12:08 | INFO     | calibration          | Step 5: Reliability diagrams
+2026-08-04 21:12:09 | INFO     | calibration          |   Saved: 25_reliability_lgbm_v1.png
+2026-08-04 21:12:09 | INFO     | calibration          | ============================================================
+2026-08-04 21:12:09 | INFO     | calibration          | Calibration complete
+2026-08-04 21:12:09 | INFO     | calibration          |   Best method  : isotonic
+2026-08-04 21:12:09 | INFO     | calibration          |   ECE (test)   : 0.0257 → 0.0080
+2026-08-04 21:12:09 | INFO     | calibration          |   ECE improvement: +0.0177
+2026-08-04 21:12:09 | INFO     | calibration          | ============================================================
+2026-08-04 21:12:09 | INFO     | calibration          |   Isotonic calibrator saved  : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\calibrator_isotonic_lgbm_v1.pkl
+2026-08-04 21:12:09 | INFO     | calibration          |   Temperature scaler saved   : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\calibrator_temperature_lgbm_v1.pkl
+2026-08-04 21:12:09 | INFO     | calibration          |   Calibration report saved   : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\calibration_report_lgbm_v1.json

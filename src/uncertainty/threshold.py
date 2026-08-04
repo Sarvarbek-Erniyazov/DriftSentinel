@@ -19,6 +19,8 @@ import pandas as pd
 import numpy as np
 import json
 import pickle
+import matplotlib
+matplotlib.use("Agg")   # headless: figures save to disk only, no GUI window
 import matplotlib.pyplot as plt
 from pathlib import Path
 from sklearn.metrics import (
@@ -88,34 +90,34 @@ def threshold_cost_sensitive(
 ) -> tuple[float, float]:
     """
     Cost-sensitive threshold optimization.
-    Minimizes expected cost = FN_rate × cost_fn + FP_rate × cost_fp.
 
-    For hospital readmission: FN >> FP
-    A missed readmission is much more costly than a false alarm.
+    Minimises the POPULATION-WEIGHTED expected cost per patient:
+
+        (FN * cost_fn + FP * cost_fp) / N
+
+    CORRECTED (Tier 1.3). The previous implementation normalised each error type
+    by its OWN class size — `FN/n_pos * cost_fn + FP/n_neg * cost_fp` — which
+    divides prevalence out and silently multiplies the requested FN:FP ratio by
+    the inverse odds of the positive class. At the merged target's 47.6%
+    prevalence that turned 5:1 into 5.5:1 (minor); at the new `<30` target's
+    11.16% prevalence it turns 5:1 into 39.8:1 (serious).
+
+    NOTE: this correction does NOT explain the 97% alert rate. That is what an
+    optimal 5:1 rule does on this probability distribution — see
+    `src/uncertainty/threshold_policy.py` for the analysis and for the alert
+    budget, cost-ratio sweep and decision-curve tooling that make the operating
+    point defensible.
     """
-    thresholds = np.linspace(0.01, 0.99, 200)
-    best_cost  = float("inf")
-    best_thr   = 0.5
+    from src.uncertainty.threshold_policy import threshold_cost_sensitive as _tcs
 
-    n_pos = y_true.sum()
-    n_neg = len(y_true) - n_pos
-
-    for thr in thresholds:
-        y_pred = (y_proba >= thr).astype(int)
-        cm     = confusion_matrix(y_true, y_pred, labels=[0, 1])
-        if cm.shape != (2, 2):
-            continue
-        tn, fp, fn, tp = cm.ravel()
-
-        fn_rate   = fn / (n_pos + 1e-8)
-        fp_rate   = fp / (n_neg + 1e-8)
-        total_cost = fn_rate * cost_fn + fp_rate * cost_fp
-
-        if total_cost < best_cost:
-            best_cost = total_cost
-            best_thr  = thr
-
-    return float(best_thr), float(best_cost)
+    res = _tcs(y_true, y_proba, cost_fn=cost_fn, cost_fp=cost_fp)
+    if res["degenerate"]:
+        logger.warning(
+            f"DEGENERATE operating point: threshold {res['threshold']:.4f} flags "
+            f"{res['predicted_positive_rate']:.1%} of patients. This is not a "
+            f"deployable recommendation — see threshold_policy.py for the "
+            f"budget-constrained alternatives.")
+    return float(res["threshold"]), float(res["expected_cost_per_patient"])
 
 
 def threshold_precision_target(
@@ -344,7 +346,7 @@ def _plot_threshold_analysis(
     plt.tight_layout()
     path = FIGURE_DIR / f"28_threshold_analysis_{model_name}.png"
     plt.savefig(path, bbox_inches="tight")
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
 
 
@@ -353,7 +355,7 @@ def _plot_threshold_drift(
     window_df_test: pd.DataFrame,
     model_name: str,
 ):
-    """Show threshold drift across temporal windows."""
+    """Show threshold drift across sequential evaluation windows."""
     fig, axes = plt.subplots(1, 3, figsize=(16, 5))
 
     # Combined windows
@@ -410,7 +412,7 @@ def _plot_threshold_drift(
     plt.tight_layout()
     path = FIGURE_DIR / f"29_threshold_drift_{model_name}.png"
     plt.savefig(path, bbox_inches="tight")
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
 
 

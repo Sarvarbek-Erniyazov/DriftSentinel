@@ -1,0 +1,111 @@
+name: CI
+
+# Runs on EVERY commit to any branch and on every pull request. The determinism
+# job is the reason for the second clause: a check that only runs on main cannot
+# stop a non-reproducible artifact from being merged.
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  MPLBACKEND: agg          # figures must render headlessly (asserted in tests)
+
+jobs:
+  lint:
+    name: lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff==0.14.0
+
+      # BLOCKING: rules that catch real defects (syntax, undefined names,
+      # invalid comparisons). Selection and justification live in ruff.toml.
+      - name: Lint (blocking correctness rules)
+        run: ruff check src tests
+
+      # REPORTING ONLY: the full default rule set, run with --isolated so the
+      # project config cannot narrow it. This project is NOT lint-clean and does
+      # not claim to be; the count is printed so that a green lint job cannot be
+      # read as "the code is clean". Every finding is hygiene, not correctness.
+      - name: Lint (full rule set, reported not enforced)
+        continue-on-error: true
+        run: ruff check --isolated --statistics src tests
+
+  test:
+    name: tests (pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements-dev.txt   # includes the console runtime via -r
+      # Deliberately NOT pinned: the suite must pass under whatever hash
+      # randomisation the runner picks, not only under a fixed one.
+      - run: pytest tests -q
+
+  determinism:
+    name: determinism (artifact hashes)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements-dev.txt   # includes the console runtime via -r
+
+      # Runs the pipeline AND the trainer twice in isolated sandboxes, under two
+      # DIFFERENT explicit PYTHONHASHSEED values, and compares artifact HASHES
+      # rather than metric values. The defect it exists to catch — TARGET_COLS set-iteration order —
+      # was value-identical and byte-different, so a metric comparison would have
+      # passed while the bug was live.
+      #
+      # Exits non-zero on FAIL and on UNKNOWN. UNKNOWN means the check could not
+      # have failed (its own falsification arm did not fire, or both runs saw the
+      # same hash randomisation), which must never be reported as green.
+      - name: Determinism check
+        run: python src/monitoring/determinism.py --stage trainer --seeds 0 12345
+
+      - name: Upload determinism report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: determinism-report
+          path: outputs/reports/determinism.json
+
+  console:
+    name: console (deploy runtime only)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # Installs ONLY the root requirements.txt — exactly what Streamlit
+      # Community Cloud installs. If app.py's import graph reaches for
+      # scikit-learn, lightgbm, shap or scipy, this job fails here instead of
+      # failing on the deploy target where the logs are harder to read.
+      - run: pip install -r requirements.txt
+      - run: pip install pytest==8.4.2          # the runner, not the research stack
+
+      - name: Console imports and renders on the slim runtime
+        run: pytest tests/test_console_runtime.py -q
+
+      - name: README numeric claims trace to generated artifacts
+        run: |
+          pip install -q pandas numpy
+          python src/monitoring/verify_readme_claims.py
+
+      - name: Console evidence matches the artifacts it claims to show
+        run: python -c "import json,sys; d=json.load(open('outputs/reports/demo_bundle_sync.json')); sys.exit(0 if d['verdict'] in ('IN_SYNC','SYNCED') else 1)"

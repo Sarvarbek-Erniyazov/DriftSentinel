@@ -1,6 +1,6 @@
 """
 DriftSentinel — Concept Drift Detector
-Monitors model performance degradation over time windows.
+Monitors model performance degradation across sequential evaluation windows.
 Concept drift = input distribution stable but P(Y|X) changed.
 
 Detection methods:
@@ -45,6 +45,34 @@ CUSUM_DRIFT_DELTA = 0.005
 PH_DELTA          = 0.005
 PH_LAMBDA         = 50.0
 MIN_WINDOW_SIZE   = 200
+
+# ── Config (Tier 1.4/1.5) ─────────────────────────────────────────────────
+import yaml
+
+CONFIG_PATH = ROOT / "configs" / "drift_config.yaml"
+with open(CONFIG_PATH, "r", encoding="utf-8") as _f:
+    _CFG = yaml.safe_load(_f)["concept_drift"]
+
+VOTING_SIGNALS     = list(_CFG["voting_signals"])
+DIAGNOSTIC_SIGNALS = list(_CFG["diagnostic_only_signals"])
+SEVERITY_FRACTIONS = _CFG["severity_fractions"]
+LABEL_DRIFT_CFG    = _CFG["label_drift"]
+
+
+def set_reports_dir(path) -> None:
+    """
+    Redirect this module's report output (Tier 1.7).
+
+    Explicit, supported API. The Tier 0 regime sweep previously reassigned the
+    module global directly — a monkey-patch that worked but was invisible to
+    anyone reading this module. A sweep of ~200 detector runs must not scatter
+    throwaway artifacts through outputs/log/, so redirection is legitimate; doing
+    it by attribute assignment from another file was not.
+    """
+    global REPORTS_DIR
+    from pathlib import Path as _P
+    REPORTS_DIR = _P(path)
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -152,7 +180,8 @@ def sliding_window_performance(
 ) -> pd.DataFrame:
     """
     Split data into n_windows and compute metrics per window.
-    Simulates temporal performance monitoring.
+    Simulates sequential performance monitoring. Windows are INDEX-based
+    slices of the concatenated stream, not calendar intervals.
     """
     n        = len(y_true)
     win_size = n // n_windows
@@ -210,6 +239,7 @@ class ConceptDriftDetector:
         prod_name:  str   = "test",
         threshold:  float = 0.5,
         n_windows:  int   = 10,
+        threshold_source: str = "unspecified — caller did not declare the source",
     ) -> dict:
         """
         Full concept drift detection pipeline.
@@ -349,17 +379,55 @@ class ConceptDriftDetector:
         logger.info("-" * 50)
         logger.info("Step 6: Label Distribution Shift (P(Y) change)")
 
+        # Tier 1.4: prevalence-scaled rule. A fixed ABSOLUTE threshold means a
+        # different thing at every base rate — 0.05 was ~11% relative under the
+        # merged target and ~45% relative under <30, where it stopped detecting
+        # real shifts. Replaced by significance AND a minimum relative effect.
+        p_ref_, p_prod_ = float(y_ref.mean()), float(y_prod.mean())
+        n_ref_, n_prod_ = len(y_ref), len(y_prod)
+        pooled = (p_ref_ * n_ref_ + p_prod_ * n_prod_) / (n_ref_ + n_prod_)
+        se = np.sqrt(pooled * (1 - pooled) * (1 / n_ref_ + 1 / n_prod_))
+        z_stat = float((p_prod_ - p_ref_) / se) if se > 0 else 0.0
+        from scipy.stats import norm as _norm
+        p_value = float(2 * _norm.sf(abs(z_stat)))
+        rel_change = float((p_prod_ - p_ref_) / p_ref_) if p_ref_ > 0 else 0.0
+
+        alpha = LABEL_DRIFT_CFG["alpha"]
+        min_rel = LABEL_DRIFT_CFG["min_relative_change"]
+        fires = bool(p_value < alpha and abs(rel_change) >= min_rel)
+
         label_shift = {
-            "ref_pos_rate"   : round(float(y_ref.mean()),  4),
-            "prod_pos_rate"  : round(float(y_prod.mean()), 4),
-            "delta_pos_rate" : round(float(y_prod.mean() - y_ref.mean()), 4),
-            "label_drift"    : abs(y_prod.mean() - y_ref.mean()) > 0.05,
+            "ref_pos_rate"   : round(p_ref_,  4),
+            "prod_pos_rate"  : round(p_prod_, 4),
+            "delta_pos_rate" : round(p_prod_ - p_ref_, 4),
+            "relative_change": round(rel_change, 4),
+            "z_stat"         : round(z_stat, 4),
+            "p_value"        : p_value,
+            "alpha"          : alpha,
+            "min_relative_change": min_rel,
+            "label_drift"    : fires,
+            "rule"           : (f"two-proportion test p < {alpha} AND "
+                                f"|relative change| >= {min_rel}"),
+            # Kept so the superseded verdict stays reportable and the change is
+            # auditable rather than asserted.
+            "legacy_absolute_rule": {
+                "threshold": LABEL_DRIFT_CFG["legacy_absolute_threshold"],
+                "would_fire": bool(abs(p_prod_ - p_ref_) >
+                                   LABEL_DRIFT_CFG["legacy_absolute_threshold"]),
+                "note": ("fixed absolute threshold; equivalent to "
+                         f"{LABEL_DRIFT_CFG['legacy_absolute_threshold'] / p_ref_:.0%} "
+                         "relative at this base rate"),
+            },
         }
 
         logger.info(f"  Ref  pos rate    : {label_shift['ref_pos_rate']}")
         logger.info(f"  Prod pos rate    : {label_shift['prod_pos_rate']}")
-        logger.info(f"  Delta pos rate   : {label_shift['delta_pos_rate']:+.4f}")
-        logger.info(f"  Label drift      : {label_shift['label_drift']}")
+        logger.info(f"  Delta pos rate   : {label_shift['delta_pos_rate']:+.4f} "
+                    f"({label_shift['relative_change']:+.1%} relative)")
+        logger.info(f"  Two-proportion   : z={z_stat:+.3f} p={p_value:.3e}")
+        logger.info(f"  Label drift      : {fires}  "
+                    f"(legacy absolute rule would say "
+                    f"{label_shift['legacy_absolute_rule']['would_fire']})")
 
         # ── Step 7: Concept drift verdict ─────────────────────────────────
         logger.info("-" * 50)
@@ -369,7 +437,7 @@ class ConceptDriftDetector:
         f1_degradation    = ref_metrics["f1"]  - prod_metrics["f1"]
         brier_degradation = prod_metrics["brier"] - ref_metrics["brier"]
 
-        evidence = {
+        all_signals = {
             "auc_drop"           : auc_degradation    > 0.02,
             "f1_drop"            : f1_degradation     > 0.05,
             "brier_increase"     : brier_degradation  > 0.01,
@@ -380,18 +448,35 @@ class ConceptDriftDetector:
             "auc_slope_negative" : auc_slope < -0.001,
         }
 
+        # Tier 1.5: the evidence count is over VOTING signals only. cusum_alarm
+        # and ph_alarm are retained and reported, but do not vote — they are
+        # structurally broken, not merely mis-tuned (see configs/drift_config.yaml
+        # and outputs/reports/regime_random.json -> sequential_detector_diagnosis).
+        # They are NOT silently dropped: a signal removed without evidence is
+        # just as unaccountable as a signal counted without evidence.
+        evidence   = {k: bool(v) for k, v in all_signals.items() if k in VOTING_SIGNALS}
+        diagnostics = {k: bool(v) for k, v in all_signals.items() if k in DIAGNOSTIC_SIGNALS}
+
+        n_voting   = len(evidence)
         n_evidence = sum(evidence.values())
+        crit_n = int(np.ceil(SEVERITY_FRACTIONS["critical"] * n_voting))
+        mod_n  = int(np.ceil(SEVERITY_FRACTIONS["moderate"] * n_voting))
         severity = (
-            "CRITICAL" if n_evidence >= 5 else
-            "MODERATE" if n_evidence >= 3 else
-            "MILD"     if n_evidence >= 1 else
+            "CRITICAL" if n_evidence >= crit_n else
+            "MODERATE" if n_evidence >= mod_n  else
+            "MILD"     if n_evidence >= 1      else
             "NONE"
         )
 
-        logger.info(f"  Evidence signals ({n_evidence}/8):")
+        logger.info(f"  Evidence signals ({n_evidence}/{n_voting} voting):")
         for signal, fired in evidence.items():
-            status = "✓ FIRED" if fired else "✗ not fired"
-            logger.info(f"    {signal:<30} {status}")
+            logger.info(f"    {signal:<30} {'✓ FIRED' if fired else '✗ not fired'}")
+        logger.info(f"  Diagnostics (NOT evidence — structurally broken, Tier 1.5):")
+        for signal, fired in diagnostics.items():
+            logger.info(f"    {signal:<30} {'fired' if fired else 'silent'}  "
+                        f"[excluded from the count]")
+        logger.info(f"  Severity boundaries: CRITICAL >= {crit_n}, MODERATE >= {mod_n} "
+                    f"(fractions {SEVERITY_FRACTIONS} of {n_voting} voting signals)")
 
         logger.info(f"\n  CONCEPT DRIFT VERDICT : {severity}")
         logger.info(f"  AUC degradation       : {auc_degradation:+.4f}")
@@ -415,6 +500,24 @@ class ConceptDriftDetector:
             "label_shift"    : label_shift,
             "evidence"       : {k: bool(v) for k, v in evidence.items()},
             "n_evidence"     : int(n_evidence),
+            "n_voting_signals": int(n_voting),
+            "diagnostics_not_evidence": diagnostics,
+            "retired_signals": {
+                "signals": DIAGNOSTIC_SIGNALS,
+                "reason": ("structurally broken, not mis-tuned: CUSUM is saturated "
+                           "(fires in 100% of runs in every regime including the "
+                           "no-drift control, 101-207 alarms/run) and Page-Hinkley's "
+                           "verdict is set by whether the first MIN_WINDOW_SIZE=200 "
+                           "rows happen to sit above or below the stream mean. "
+                           "Neither responded to any synthetic shift at any "
+                           "magnitude."),
+                "evidence": "outputs/reports/regime_random.json -> sequential_detector_diagnosis",
+                "status": "RETAINED in code and reported as diagnostics; NOT counted",
+            },
+            "severity_boundaries": {"critical_min": crit_n, "moderate_min": mod_n,
+                                    "fractions": SEVERITY_FRACTIONS},
+            "threshold_used": round(float(threshold), 5),
+            "threshold_source": threshold_source,
             "severity"       : severity,
             "windows"        : windows_df.to_dict("records"),
         }
@@ -436,12 +539,14 @@ class ConceptDriftDetector:
                 return [_make_serializable(i) for i in obj]
             return obj
 
-        with open(report_path, "w") as f:
-            json.dump(_make_serializable(self.report_), f, indent=2)
-            logger.info(f"\n  Concept drift report: {report_path}")
+        # Tier 1.7: preserve any existing artifact before replacing it.
+        from src.monitoring.artifact_io import write_artifact, write_dataframe
+        write_artifact(report_path, _make_serializable(self.report_),
+                       overwrite=True, preserve=True)
+        logger.info(f"  Concept drift report: {report_path}")
 
         windows_path = REPORTS_DIR / f"sliding_windows_{ref_name}_{prod_name}.csv"
-        windows_df.to_csv(windows_path, index=False)
+        write_dataframe(windows_path, windows_df, overwrite=True, preserve=True)
         logger.info(f"  Sliding windows CSV : {windows_path}")
 
         logger.info("=" * 70)
@@ -472,13 +577,50 @@ def run_concept_drift() -> dict:
         df_X = pd.DataFrame(X, columns=feat_cols)
         return lgbm_model.predict_proba(df_X)[:, 1]
 
-    eval_path = MODELS_DIR / "evaluation_report.json"
+    # ── Threshold source (Tier 2A.4 / audit F13) ──────────────────────────
+    #
+    # The operating threshold must NOT come from the reference window. The
+    # shipped code read it from evaluation_report.json, where it was chosen by
+    # F1-max ON VAL — and `val` is then used here as the drift REFERENCE. The
+    # reference window therefore carried a threshold fitted to itself while the
+    # production window did not, and part of the reported degradation was
+    # threshold optimism rather than drift.
+    #
+    # Tier 2A.4 measured the size of that artifact: with the threshold selected
+    # on val, F1 fell 0.2627 -> 0.2200 (drop +0.0427); with it selected on a
+    # held-out slice of TRAIN, F1 went 0.1908 -> 0.2122 (drop -0.0214). The
+    # optimism was +0.0641 — LARGER than the entire reported drop, so the
+    # "degradation" reversed sign once measured honestly.
+    #
+    # The threshold is now selected on a patient-disjoint slice of TRAIN, which
+    # neither the reference nor the production window has seen.
     threshold = 0.5
-    if eval_path.exists():
-        with open(eval_path) as f:
-            eval_report = json.load(f)
-        threshold = eval_report.get("lgbm", {}).get("threshold", 0.5)
-        logger.info(f"Using threshold from evaluation report: {threshold:.4f}")
+    threshold_source = "fallback 0.5"
+    try:
+        from src.models.repeated_eval import recover_patient_ids
+        from src.uncertainty.decontamination import (f1_max_threshold,
+                                                     patient_halves)
+        train = pd.read_parquet(TRAIN_DIR / "train_fs.parquet")
+        y_tr = train["readmitted_binary"].to_numpy()
+        g_tr, note = recover_patient_ids("train", y_tr)
+        if g_tr is None:
+            raise RuntimeError(note)
+        hold_m, _ = patient_halves(g_tr, seed=43)
+        p_tr = lgbm_predict(train[feat_cols].values)
+        threshold = f1_max_threshold(y_tr[hold_m], p_tr[hold_m])
+        threshold_source = ("F1-max on a patient-disjoint slice of TRAIN "
+                            "(decontaminated — audit F13)")
+        logger.info(f"Threshold {threshold:.4f} from {threshold_source}")
+    except Exception as e:
+        eval_path = MODELS_DIR / "evaluation_report.json"
+        if eval_path.exists():
+            with open(eval_path) as f:
+                threshold = json.load(f).get("lgbm", {}).get("threshold", 0.5)
+            threshold_source = (f"CONTAMINATED fallback: evaluation_report "
+                                f"(fitted on the reference window) — {type(e).__name__}")
+            logger.warning(f"Decontaminated threshold unavailable ({e}); "
+                           f"falling back to the CONTAMINATED value {threshold:.4f}. "
+                           f"The reported degradation will include threshold optimism.")
 
     detector = ConceptDriftDetector(model_name="lgbm_v1")
     report   = detector.detect(
@@ -490,10 +632,11 @@ def run_concept_drift() -> dict:
         prod_name = "test",
         threshold = threshold,
         n_windows = 10,
+        threshold_source = threshold_source,
     )
 
     print(f"\nConcept Drift Verdict : {report['severity']}")
-    print(f"Evidence signals      : {report['n_evidence']}/8")
+    print(f"Evidence signals      : {report['n_evidence']}/{report['n_voting_signals']} voting")
     print(f"AUC degradation       : {report['auc_degradation']:+.4f}")
     print(f"F1  degradation       : {report['f1_degradation']:+.4f}")
     print(f"CUSUM alarm           : {report['cusum']['drift_detected']}")

@@ -1,0 +1,158 @@
+# DriftSentinel — Phase 0.1 configuration
+# Temporal validity of `encounter_id` ordering.
+#
+# Every external anchor below carries its verification provenance. An anchor
+# whose date could not be verified from the literature is NOT used — see
+# `dropped_anchors` at the bottom for what was considered and rejected.
+
+seed: 42
+n_permutations: 10000
+n_bootstrap: 2000
+n_bins: 10                 # deciles of encounter_id rank
+alpha: 0.05
+fdr_q: 0.05
+
+# Changepoint search is restricted a priori to the upper tail of the rank
+# range: the rosiglitazone event (May 2007) falls ~1.6 of 10 collection-years
+# before the window closes, and the Health Facts panel grew over the decade,
+# so a chronological ordering places the step in the upper ranks.
+changepoint_search_lo: 0.75
+changepoint_search_hi: 0.98
+changepoint_n_candidates: 200
+
+anchors:
+
+  A1_troglitazone:
+    role: primary
+    kind: extinction              # positives must sit at LOW ranks
+    column: troglitazone
+    positive_when_not: "No"
+    event_date: "2000-03-21"
+    event: >
+      FDA requested withdrawal of Rezulin (troglitazone) from the US market on
+      21 March 2000 after review found it more hepatotoxic than rosiglitazone
+      and pioglitazone; the manufacturer agreed. Hard on/off event.
+    verification: PRIMARY_VERIFIED
+    sources:
+      - "https://www.medscape.com/viewarticle/411686"
+      - "https://www.ncbi.nlm.nih.gov/books/NBK548142/"
+
+  A2_tzd_share:
+    role: primary
+    kind: changepoint             # within-class share steps DOWN at high ranks
+    numerator_column: rosiglitazone
+    denominator_columns: [rosiglitazone, pioglitazone]
+    positive_when_not: "No"
+    event_date: "2007-05-21"
+    event: >
+      Nissen & Wolski meta-analysis published online at nejm.org 21 May 2007
+      (MI odds ratio 1.43, 95% CI 1.03-1.98, p=0.03). US rosiglitazone use fell
+      ~600,000 prescriptions/month between May and October 2007; observed vs
+      predicted utilisation for November 2007 was -40% (95% CI 39-42%), with a
+      further ~16.5% decline in 2008. Pioglitazone rose only modestly and
+      transiently, so the DIFFERENTIAL (within-TZD-class share) is the
+      discriminating statistic, not the rosiglitazone rate alone: the share
+      cancels panel-composition drift and the secular TZD-class decline.
+    verification: PRIMARY_VERIFIED
+    sources:
+      - "https://www.nejm.org/doi/full/10.1056/NEJMoa072761"
+      - "https://pmc.ncbi.nlm.nih.gov/articles/PMC3116669/"
+      - "https://onlinelibrary.wiley.com/doi/10.1111/j.1464-5491.2008.02462.x"
+
+  A3_a1c_rate:
+    role: supporting              # DEMOTED — see caveat
+    kind: monotone_increase
+    column: A1Cresult
+    negative_value: "None"        # "None" == not measured during the encounter
+    caveat: >
+      AMBULATORY != INPATIENT. The published rise in HbA1c testing over the
+      2000s is an AMBULATORY quality-measure phenomenon (Medicare beneficiaries
+      with diabetes: ~74% -> 84% over 2003-2012; A1c testing in hospitalised
+      patients WITHOUT diabetes: 5.2% -> 8.8% over 2007-2009). Neither window
+      matches 1999-2008 and neither population matches this variable, which
+      measures inpatient ordering behaviour during an admission and is driven
+      by hospital protocol and endocrinology staffing. Strack et al. (2014),
+      the canonical paper on this dataset, report HbA1c measured in 18.4% of
+      encounters and perform NO temporal-trend analysis, so there is no
+      within-dataset published trend to anchor against. This anchor is
+      therefore confirmatory only and cannot by itself change the verdict.
+    verification: DIRECTIONAL_ONLY
+    sources:
+      - "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111119"
+      - "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3176161/"
+      - "https://pmc.ncbi.nlm.nih.gov/articles/PMC3996476/"
+
+  A4_v85_bmi:
+    role: exploratory
+    kind: introduction            # positives must sit at HIGH ranks
+    diag_prefix: "V85"
+    event_date: "2005-10-01"
+    event: >
+      ICD-9-CM V85 (Body Mass Index) codes were introduced effective
+      1 October 2005 (FY2006). A code cannot be assigned before it exists, so
+      under chronological ordering no V85 encounter may appear in the early
+      rank range. This is a one-sided existence constraint, stronger per
+      observation than a trend test.
+    verification: SECONDARY_VERIFIED
+    verification_note: >
+      Effective date corroborated by secondary coding references and by the
+      NCHS addenda listing surfaced in search, but the primary NCHS addenda PDF
+      (ftp.cdc.gov .../ICD-9-CM Addenda for 1986-2006.pdf) could not be parsed
+      in this environment, so the date is NOT primary-verified. The anchor is
+      therefore reported as exploratory and excluded from the decision rule.
+    sources:
+      - "https://www.icd9data.com/2015/Volume1/V01-V91/V85-V85/V85/default.htm"
+      - "https://ftp.cdc.gov/pub/health_statistics/nchs/dataset_documentation/NHDS/ICD-9-CM%20Addenda%20for%201986-2006.pdf"
+
+# Reported but not weighted: n is too small to carry inference on its own.
+minor_extinction_columns: ["metformin-rosiglitazone", "metformin-pioglitazone"]
+
+# Constant columns — used as a NULL ANCHOR. Any pipeline reporting a
+# "significant trend" in a column with a single level is broken.
+null_anchor_columns: ["examide", "citoglipton"]
+
+dropped_anchors:
+  ub04_discharge_codes:
+    reason: >
+      discharge_disposition_id 27/28/29 and admission_source_id 25/26 are
+      plausibly late additions tied to the UB-04 form (which replaced UB-92 for
+      institutional claims in 2007), but per-code introduction dates could not
+      be verified from a primary source. Using them would assert an unverified
+      date, which is precisely the failure mode this remediation exists to
+      remove. Dropped by the pre-registered rule, not by result.
+  icd9_subcode_anchors:
+    reason: >
+      Higher-resolution ICD-9 anchors (e.g. the 585.1-585.6 chronic kidney
+      disease staging codes introduced 1 October 2005) are unusable because
+      this dataset TRUNCATES diagnosis codes to the 3-character category level
+      for everything except the 250.x diabetes family (20,848 of 303,496
+      non-missing diag entries carry a decimal, and all but one are 250.x).
+      585.1-585.6 all collapse to "585". Only category-level codes dated inside
+      the window survive, which is why A4 is V85 and nothing else.
+
+# --- Censoring / truncation leg -----------------------------------------
+censoring:
+  # Primary target is 30-day readmission (<30), per the agreed target switch.
+  primary_label: "lt30"
+  lookahead_strata: 5          # encounter-lookahead strata for the matched test
+  min_stratum_rows: 500
+
+# --- Phase 0.5 language inventory (produced, NOT applied, in Phase 0.1) ---
+language_inventory:
+  patterns:
+    - "temporal"
+    - "over time"
+    - "drift began"
+    - "newer patients"
+    - "billing code"
+    - "demographics shift"
+    - "chronological"
+    - "time-based"
+    - "world keeps changing"
+  scan_extensions: [".py", ".md", ".yaml", ".yml", ".txt"]
+  # `outputs` is skipped entirely: it holds GENERATED artifacts, which are
+  # rewritten by re-running the pipeline, not edited by hand. Scanning it also
+  # made the inventory self-referential — this report contains the word
+  # "temporal" thousands of times, and each run inflated the next run's count
+  # (95 -> 371 -> 14,433 observed). Phase 0.5 targets source, docs and config.
+  skip_dirs: [".git", "__pycache__", ".venv", "venv", "outputs", "data", "notebooks/.ipynb_checkpoints"]

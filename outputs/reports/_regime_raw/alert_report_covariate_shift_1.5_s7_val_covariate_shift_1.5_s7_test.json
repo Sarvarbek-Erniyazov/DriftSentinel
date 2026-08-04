@@ -1,0 +1,85 @@
+{
+  "timestamp": "2026-08-04T10:30:44.626192",
+  "model_name": "covariate_shift_1.5_s7",
+  "ref_name": "covariate_shift_1.5_s7_val",
+  "prod_name": "covariate_shift_1.5_s7_test",
+  "system_status": "CRITICAL",
+  "recommendation": "IMMEDIATE ACTION REQUIRED. Model is unreliable in production. Halt predictions or apply fallback model. Trigger emergency retraining pipeline.",
+  "alert_counts": {
+    "CRITICAL": 2,
+    "LOW": 2
+  },
+  "total_alerts": 4,
+  "alerts": [
+    {
+      "alert_id": "DD-001",
+      "alert_type": "DATA_DRIFT",
+      "level": "CRITICAL",
+      "title": "Data Drift: 23/28 Features Drifted",
+      "description": "82.1% of monitored features show distribution shift. 1 features with PSI > 0.20 (critical). Top drifted: number_diagnoses, num_medications, time_in_hospital, num_lab_procedures, diag_3.",
+      "metric": "drift_rate",
+      "value": 0.8214,
+      "threshold": 0.25,
+      "features": [
+        "number_diagnoses",
+        "num_medications",
+        "time_in_hospital",
+        "num_lab_procedures",
+        "diag_3"
+      ],
+      "action": "Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.",
+      "timestamp": "2026-08-04T10:30:44.626192"
+    },
+    {
+      "alert_id": "DD-002",
+      "alert_type": "DATA_DRIFT",
+      "level": "CRITICAL",
+      "title": "1 Features with Critical PSI (>0.20)",
+      "description": "Features with PSI > 0.20: number_diagnoses. These features require immediate investigation as their distributions have significantly shifted.",
+      "metric": "n_critical_psi",
+      "value": 1.0,
+      "threshold": 1.0,
+      "features": [
+        "number_diagnoses"
+      ],
+      "action": "Retrain preprocessing encoders on recent data. Verify data collection pipeline for these features.",
+      "timestamp": "2026-08-04T10:30:44.626192"
+    },
+    {
+      "alert_id": "CD-004",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "CUSUM Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "CUSUM detected 232 alarms. First alarm at index 288 (0.71% into stream). Mean error shift: 0.1631 \u2192 0.1920.",
+      "metric": "cusum_alarms",
+      "value": 232.0,
+      "threshold": 1.0,
+      "features": [],
+      "action": "Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.",
+      "timestamp": "2026-08-04T10:30:44.626192"
+    },
+    {
+      "alert_id": "CD-005",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "Page-Hinkley Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "Page-Hinkley detected gradual drift. First alarm at 7.1% of stream. PH statistic: 35.3744.",
+      "metric": "ph_statistic",
+      "value": 35.3744,
+      "threshold": 50.0,
+      "features": [],
+      "action": "Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.",
+      "timestamp": "2026-08-04T10:30:44.626192"
+    }
+  ],
+  "drift_summary": {
+    "concept_severity": "MILD",
+    "n_evidence": 1,
+    "auc_degradation": -0.0033,
+    "f1_degradation": 0.0138,
+    "n_data_drifted": 23,
+    "n_data_critical": 1,
+    "n_feature_high": null,
+    "label_shift_delta": -0.0065
+  }
+}

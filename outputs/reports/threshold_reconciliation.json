@@ -1,0 +1,649 @@
+{
+  "phase": "2C.6",
+  "title": "Reconciling the canonical metrics file to the decontaminated threshold",
+  "threshold_before": 0.15333940006539568,
+  "threshold_after": 0.17500000000000002,
+  "provenance_before": "val, by F1-max (evaluation_report.json) \u2014 contaminated",
+  "provenance_after": "held-out slice of train (patient-level)",
+  "measured_optimism": 0.0024,
+  "control": {
+    "rule": "AUC, Brier and prevalence do not depend on the threshold. If any moved, the two runs differ in more than the threshold and nothing else in this table can be attributed to it.",
+    "n_checked": 9,
+    "n_moved": 0,
+    "moved": [],
+    "verdict": "PASS"
+  },
+  "point_estimates": [
+    {
+      "split": "train",
+      "metric": "auc",
+      "threshold_free": true,
+      "before": 0.81249,
+      "after": 0.81249,
+      "delta": 0.0,
+      "before_ci95": [
+        0.80695,
+        0.81805
+      ],
+      "after_ci95": [
+        0.80695,
+        0.81805
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "train",
+      "metric": "brier",
+      "threshold_free": true,
+      "before": 0.0922,
+      "after": 0.0922,
+      "delta": 0.0,
+      "before_ci95": [
+        0.09013,
+        0.09422
+      ],
+      "after_ci95": [
+        0.09013,
+        0.09422
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "train",
+      "metric": "prevalence",
+      "threshold_free": true,
+      "before": 0.11997,
+      "after": 0.11997,
+      "delta": 0.0,
+      "before_ci95": [
+        0.11687,
+        0.12309
+      ],
+      "after_ci95": [
+        0.11687,
+        0.12309
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "train",
+      "metric": "precision",
+      "threshold_free": false,
+      "before": 0.33554,
+      "after": 0.4373,
+      "delta": 0.10176,
+      "before_ci95": [
+        0.32667,
+        0.34404
+      ],
+      "after_ci95": [
+        0.42549,
+        0.44818
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "train",
+      "metric": "recall",
+      "threshold_free": false,
+      "before": 0.59853,
+      "after": 0.4679,
+      "delta": -0.13063,
+      "before_ci95": [
+        0.58521,
+        0.61116
+      ],
+      "after_ci95": [
+        0.4547,
+        0.48158
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "train",
+      "metric": "f1",
+      "threshold_free": false,
+      "before": 0.43001,
+      "after": 0.45208,
+      "delta": 0.02207,
+      "before_ci95": [
+        0.42013,
+        0.43905
+      ],
+      "after_ci95": [
+        0.44067,
+        0.46279
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "train",
+      "metric": "predicted_positive_rate",
+      "threshold_free": false,
+      "before": 0.214,
+      "after": 0.12836,
+      "delta": -0.08564,
+      "before_ci95": [
+        0.20937,
+        0.21869
+      ],
+      "after_ci95": [
+        0.12438,
+        0.13268
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "train",
+      "metric": "ece",
+      "threshold_free": false,
+      "before": 0.04414,
+      "after": 0.04414,
+      "delta": 0.0,
+      "before_ci95": [
+        0.04157,
+        0.04651
+      ],
+      "after_ci95": [
+        0.04157,
+        0.04651
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "val",
+      "metric": "auc",
+      "threshold_free": true,
+      "before": 0.66459,
+      "after": 0.66459,
+      "delta": 0.0,
+      "before_ci95": [
+        0.6512,
+        0.67657
+      ],
+      "after_ci95": [
+        0.6512,
+        0.67657
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "val",
+      "metric": "brier",
+      "threshold_free": true,
+      "before": 0.0906,
+      "after": 0.0906,
+      "delta": 0.0,
+      "before_ci95": [
+        0.08726,
+        0.09405
+      ],
+      "after_ci95": [
+        0.08726,
+        0.09405
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "val",
+      "metric": "prevalence",
+      "threshold_free": true,
+      "before": 0.10564,
+      "after": 0.10564,
+      "delta": 0.0,
+      "before_ci95": [
+        0.10109,
+        0.11041
+      ],
+      "after_ci95": [
+        0.10109,
+        0.11041
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "val",
+      "metric": "precision",
+      "threshold_free": false,
+      "before": 0.1932,
+      "after": 0.21621,
+      "delta": 0.02301,
+      "before_ci95": [
+        0.1805,
+        0.20547
+      ],
+      "after_ci95": [
+        0.19882,
+        0.23407
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "val",
+      "metric": "recall",
+      "threshold_free": false,
+      "before": 0.40307,
+      "after": 0.26164,
+      "delta": -0.14143,
+      "before_ci95": [
+        0.37763,
+        0.42481
+      ],
+      "after_ci95": [
+        0.24039,
+        0.2819
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "val",
+      "metric": "f1",
+      "threshold_free": false,
+      "before": 0.2612,
+      "after": 0.23676,
+      "delta": -0.02444,
+      "before_ci95": [
+        0.24477,
+        0.27628
+      ],
+      "after_ci95": [
+        0.21876,
+        0.2546
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "val",
+      "metric": "predicted_positive_rate",
+      "threshold_free": false,
+      "before": 0.22039,
+      "after": 0.12783,
+      "delta": -0.09256,
+      "before_ci95": [
+        0.21332,
+        0.22751
+      ],
+      "after_ci95": [
+        0.12212,
+        0.13365
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "val",
+      "metric": "ece",
+      "threshold_free": false,
+      "before": 0.0,
+      "after": 0.0,
+      "delta": 0.0,
+      "before_ci95": [
+        0.00107,
+        0.00596
+      ],
+      "after_ci95": [
+        0.00107,
+        0.00596
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "test",
+      "metric": "auc",
+      "threshold_free": true,
+      "before": 0.641,
+      "after": 0.641,
+      "delta": 0.0,
+      "before_ci95": [
+        0.62546,
+        0.65558
+      ],
+      "after_ci95": [
+        0.62546,
+        0.65558
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "test",
+      "metric": "brier",
+      "threshold_free": true,
+      "before": 0.07851,
+      "after": 0.07851,
+      "delta": 0.0,
+      "before_ci95": [
+        0.07492,
+        0.08205
+      ],
+      "after_ci95": [
+        0.07492,
+        0.08205
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "test",
+      "metric": "prevalence",
+      "threshold_free": true,
+      "before": 0.08814,
+      "after": 0.08814,
+      "delta": 0.0,
+      "before_ci95": [
+        0.08337,
+        0.09282
+      ],
+      "after_ci95": [
+        0.08337,
+        0.09282
+      ],
+      "status": "UNCHANGED"
+    },
+    {
+      "split": "test",
+      "metric": "precision",
+      "threshold_free": false,
+      "before": 0.17113,
+      "after": 0.1971,
+      "delta": 0.02597,
+      "before_ci95": [
+        0.15628,
+        0.18592
+      ],
+      "after_ci95": [
+        0.17582,
+        0.21717
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "test",
+      "metric": "recall",
+      "threshold_free": false,
+      "before": 0.30124,
+      "after": 0.19581,
+      "delta": -0.10543,
+      "before_ci95": [
+        0.27627,
+        0.32605
+      ],
+      "after_ci95": [
+        0.17409,
+        0.21702
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "test",
+      "metric": "f1",
+      "threshold_free": false,
+      "before": 0.21827,
+      "after": 0.19645,
+      "delta": -0.02182,
+      "before_ci95": [
+        0.20032,
+        0.23571
+      ],
+      "after_ci95": [
+        0.17557,
+        0.21609
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "test",
+      "metric": "predicted_positive_rate",
+      "threshold_free": false,
+      "before": 0.15515,
+      "after": 0.08756,
+      "delta": -0.06759,
+      "before_ci95": [
+        0.14893,
+        0.16138
+      ],
+      "after_ci95": [
+        0.08265,
+        0.0923
+      ],
+      "status": "SHIFTED"
+    },
+    {
+      "split": "test",
+      "metric": "ece",
+      "threshold_free": false,
+      "before": 0.008,
+      "after": 0.008,
+      "delta": 0.0,
+      "before_ci95": [
+        0.00534,
+        0.01282
+      ],
+      "after_ci95": [
+        0.00534,
+        0.01282
+      ],
+      "status": "UNCHANGED"
+    }
+  ],
+  "val_to_test": [
+    {
+      "metric": "auc",
+      "val_to_test_delta_before": -0.02359,
+      "val_to_test_delta_after": -0.02359,
+      "direction_before": "degrades",
+      "direction_after": "degrades",
+      "status": "same direction"
+    },
+    {
+      "metric": "brier",
+      "val_to_test_delta_before": -0.01209,
+      "val_to_test_delta_after": -0.01209,
+      "direction_before": "degrades",
+      "direction_after": "degrades",
+      "status": "same direction"
+    },
+    {
+      "metric": "prevalence",
+      "val_to_test_delta_before": -0.0175,
+      "val_to_test_delta_after": -0.0175,
+      "direction_before": "degrades",
+      "direction_after": "degrades",
+      "status": "same direction"
+    },
+    {
+      "metric": "precision",
+      "val_to_test_delta_before": -0.02207,
+      "val_to_test_delta_after": -0.01911,
+      "direction_before": "degrades",
+      "direction_after": "degrades",
+      "status": "same direction"
+    },
+    {
+      "metric": "recall",
+      "val_to_test_delta_before": -0.10183,
+      "val_to_test_delta_after": -0.06583,
+      "direction_before": "degrades",
+      "direction_after": "degrades",
+      "status": "same direction"
+    },
+    {
+      "metric": "f1",
+      "val_to_test_delta_before": -0.04293,
+      "val_to_test_delta_after": -0.04031,
+      "direction_before": "degrades",
+      "direction_after": "degrades",
+      "status": "same direction"
+    },
+    {
+      "metric": "predicted_positive_rate",
+      "val_to_test_delta_before": -0.06524,
+      "val_to_test_delta_after": -0.04027,
+      "direction_before": "degrades",
+      "direction_after": "degrades",
+      "status": "same direction"
+    },
+    {
+      "metric": "ece",
+      "val_to_test_delta_before": 0.008,
+      "val_to_test_delta_after": 0.008,
+      "direction_before": "improves",
+      "direction_after": "improves",
+      "status": "same direction"
+    }
+  ],
+  "interval_widths": [
+    {
+      "split": "train",
+      "metric": "precision",
+      "ci_width_before": 0.01737,
+      "ci_width_after": 0.02269,
+      "width_change": 0.00532
+    },
+    {
+      "split": "train",
+      "metric": "recall",
+      "ci_width_before": 0.02595,
+      "ci_width_after": 0.02688,
+      "width_change": 0.00093
+    },
+    {
+      "split": "train",
+      "metric": "f1",
+      "ci_width_before": 0.01892,
+      "ci_width_after": 0.02212,
+      "width_change": 0.0032
+    },
+    {
+      "split": "train",
+      "metric": "predicted_positive_rate",
+      "ci_width_before": 0.00932,
+      "ci_width_after": 0.0083,
+      "width_change": -0.00102
+    },
+    {
+      "split": "train",
+      "metric": "ece",
+      "ci_width_before": 0.00494,
+      "ci_width_after": 0.00494,
+      "width_change": 0.0
+    },
+    {
+      "split": "val",
+      "metric": "precision",
+      "ci_width_before": 0.02497,
+      "ci_width_after": 0.03525,
+      "width_change": 0.01028
+    },
+    {
+      "split": "val",
+      "metric": "recall",
+      "ci_width_before": 0.04718,
+      "ci_width_after": 0.04151,
+      "width_change": -0.00567
+    },
+    {
+      "split": "val",
+      "metric": "f1",
+      "ci_width_before": 0.03151,
+      "ci_width_after": 0.03584,
+      "width_change": 0.00433
+    },
+    {
+      "split": "val",
+      "metric": "predicted_positive_rate",
+      "ci_width_before": 0.01419,
+      "ci_width_after": 0.01153,
+      "width_change": -0.00266
+    },
+    {
+      "split": "val",
+      "metric": "ece",
+      "ci_width_before": 0.00489,
+      "ci_width_after": 0.00489,
+      "width_change": 0.0
+    },
+    {
+      "split": "test",
+      "metric": "precision",
+      "ci_width_before": 0.02964,
+      "ci_width_after": 0.04135,
+      "width_change": 0.01171
+    },
+    {
+      "split": "test",
+      "metric": "recall",
+      "ci_width_before": 0.04978,
+      "ci_width_after": 0.04293,
+      "width_change": -0.00685
+    },
+    {
+      "split": "test",
+      "metric": "f1",
+      "ci_width_before": 0.03539,
+      "ci_width_after": 0.04052,
+      "width_change": 0.00513
+    },
+    {
+      "split": "test",
+      "metric": "predicted_positive_rate",
+      "ci_width_before": 0.01245,
+      "ci_width_after": 0.00965,
+      "width_change": -0.0028
+    },
+    {
+      "split": "test",
+      "metric": "ece",
+      "ci_width_before": 0.00748,
+      "ci_width_after": 0.00748,
+      "width_change": 0.0
+    }
+  ],
+  "fairness_claims": {
+    "available": true,
+    "threshold_before": 0.18000000000000002,
+    "threshold_after": 0.17500000000000002,
+    "supported_before": {
+      "race": [
+        "ece"
+      ],
+      "gender": [],
+      "age_band": [
+        "auc",
+        "recall",
+        "predicted_positive_rate"
+      ]
+    },
+    "supported_after": {
+      "race": [
+        "ece"
+      ],
+      "gender": [],
+      "age_band": [
+        "auc",
+        "predicted_positive_rate"
+      ]
+    },
+    "changes": [
+      {
+        "attribute": "age_band",
+        "metric": "recall",
+        "change": "WITHDRAWN",
+        "gap_before": 0.1796,
+        "gap_after": 0.1717,
+        "intervals_overlap_after": true,
+        "meaning": "this disparity was reported as supported and is no longer: at the corrected threshold the intervals overlap, so it cannot be distinguished from sampling noise. The gap did not vanish \u2014 the evidence for it did."
+      }
+    ],
+    "n_withdrawn": 1,
+    "n_new": 0
+  },
+  "n_values_moved": 12,
+  "n_claim_reversals": 0,
+  "n_fairness_claims_withdrawn": 1,
+  "reversals": [],
+  "interpretation": "12 threshold-dependent values moved and no val\u2192test direction reversed, so no degradation claim flips. BUT 1 SUBGROUP DISPARITY CLAIM(S) ARE WITHDRAWN: `age_band.recall`. At the corrected threshold those intervals overlap, so the disparity can no longer be distinguished from sampling noise. The gap did not vanish \u2014 the EVIDENCE for it did, and a claim that shipped as supported must now ship as not supported. A numbers-only diff would have missed this entirely, which is why the fairness audit is diffed at the level of what it CLAIMS rather than what it reports.",
+  "superseded_predecessor": "outputs/reports/superseded/tier2c6_contaminated_threshold/headline_metrics_ci.json",
+  "reproducibility": {
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

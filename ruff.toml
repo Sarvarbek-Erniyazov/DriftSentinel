@@ -1,0 +1,34 @@
+# DriftSentinel — lint configuration
+#
+# HONEST SCOPE. This project does not claim to be lint-clean, and the CI gate is
+# not tuned to make it look that way. Two separate things run:
+#
+#   1. a BLOCKING gate on rules that catch real defects — syntax errors,
+#      undefined names, broken comparisons, unreachable except clauses. These
+#      currently pass with zero findings, and a regression on any of them stops
+#      a merge.
+#
+#   2. a NON-BLOCKING style scan over the full default rule set, whose finding
+#      count is printed in CI. At the time this file was written that count was
+#      117, composed entirely of hygiene rules (unused imports, multi-statement
+#      lines, f-strings without placeholders, unused locals). None is a
+#      correctness defect. It is reported rather than silenced so that "the lint
+#      job is green" cannot be mistaken for "the code is clean".
+#
+# The alternative — selecting a rule subset that happens to pass and calling it
+# lint — is the anti-pattern this remediation exists to remove (CLAUDE.md: no
+# quality gate tuned to produce a desired output).
+
+line-length = 100
+target-version = "py312"
+
+[lint]
+# The blocking set. E9 = syntax/IO errors; F63 = invalid comparisons;
+# F7 = syntax-adjacent semantic errors; F82 = undefined names.
+select = ["E9", "F63", "F7", "F82", "F821", "F632", "F901"]
+
+# E402 is NOT in the blocking set and is worth naming: every module in src/ does
+# `sys.path.append(parents[2])` before importing `src.*`, so imports genuinely
+# cannot all sit at the top of the file. That is a layout constraint, not a
+# style lapse, and suppressing it silently would hide a real fact about how this
+# package is imported.

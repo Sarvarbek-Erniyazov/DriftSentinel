@@ -1,0 +1,59 @@
+{
+  "phase": "3.0",
+  "title": "The deployed console's numbers, checked against the evidence",
+  "bundle": "app/demo_data/evidence.json",
+  "bundle_bytes": 30394,
+  "verdict": "IN_SYNC",
+  "n_sections_mapped": 5,
+  "n_verbatim_copies": 2,
+  "n_projections": 3,
+  "in_sync": [
+    {
+      "section": "fairness",
+      "source": "fairness_audit.json",
+      "status": "IN_SYNC"
+    },
+    {
+      "section": "verdict",
+      "source": "temporal_validity.json",
+      "status": "IN_SYNC"
+    },
+    {
+      "section": "anchors",
+      "source": "temporal_validity.json",
+      "status": "PROJECTION",
+      "n_fields_matched": 16
+    },
+    {
+      "section": "multivariate",
+      "source": "multivariate_drift.json",
+      "status": "PROJECTION",
+      "n_fields_matched": 12
+    },
+    {
+      "section": "label_interval",
+      "source": "temporal_validity.json",
+      "status": "PROJECTION",
+      "n_fields_matched": 4
+    }
+  ],
+  "stale": [],
+  "missing_from_bundle": [],
+  "unmapped_sections": {
+    "ablation": "reshaped from selection_ablation.json",
+    "censoring": "reshaped from temporal_validity.json censoring",
+    "conformal": "assembled from decontamination.json and triage_policy.json",
+    "diagnosticity": "reshaped from regime_matrix.json",
+    "live": "assembled from the concept-drift and alert artifacts",
+    "power": "reshaped from regime_synthetic.json power curves",
+    "regimes": "reshaped from regime_matrix.json for the console's panel layout",
+    "robustness": "reshaped from data_quality_robustness.json",
+    "threshold_policy": "reshaped from threshold_policy_lgbm_v1.json",
+    "timeline": "flattened from temporal_validity.json timeline_coherence"
+  },
+  "undeclared_sections": [],
+  "coverage_note": "2 bundle sections are verbatim copies of a named artifact and are checked by equality; 3 are deliberately TRIMMED views and are checked field by field against the value each was projected from. The remaining 10 are reshaped for the console's layout and are listed by name rather than silently skipped \u2014 a sync tool that ignores what it cannot map reads as full coverage when it is partial.",
+  "reproducibility": {
+    "python": "3.12.10"
+  }
+}

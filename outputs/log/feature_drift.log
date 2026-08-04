@@ -78,3 +78,165 @@
 2026-05-11 21:33:32 | INFO     | feature_drift        |   LOW risk   : 24
 2026-05-11 21:33:32 | INFO     | feature_drift        |   Next: concept_drift.py → alerting.py
 2026-05-11 21:33:32 | INFO     | feature_drift        | ======================================================================
+2026-08-04 10:43:31 | INFO     | feature_drift        | ===== RUN 20260804-104331-0a9150 | pid=29972 | started 2026-08-04 10:43:31 =====
+2026-08-04 10:43:31 | INFO     | feature_drift        | ======================================================================
+2026-08-04 10:43:31 | INFO     | feature_drift        | DriftSentinel — Feature Drift Detection Run
+2026-08-04 10:43:31 | INFO     | feature_drift        | ======================================================================
+2026-08-04 10:43:32 | INFO     | feature_drift        | ======================================================================
+2026-08-04 10:43:32 | INFO     | feature_drift        | DriftSentinel — Feature Drift Analyzer
+2026-08-04 10:43:32 | INFO     | feature_drift        |   Reference  : val  (20,949 rows)
+2026-08-04 10:43:32 | INFO     | feature_drift        |   Production : test  (17,325 rows)
+2026-08-04 10:43:32 | INFO     | feature_drift        | ======================================================================
+2026-08-04 10:43:32 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 10:43:32 | INFO     | feature_drift        | Step 1: Computing data drift scores
+2026-08-04 10:43:32 | INFO     | feature_drift        |   Drifted features: 25/53
+2026-08-04 10:43:32 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 10:43:32 | INFO     | feature_drift        | Step 2: Computing SHAP distribution shift
+2026-08-04 10:43:38 | INFO     | feature_drift        |   Top SHAP shift (ref→prod):
+    discharge_disposition_id                 ref=0.2057  prod=0.1991  Δ=-0.0066  (-3.2%)
+    FE_has_prior_inpatient                   ref=0.1968  prod=0.1834  Δ=-0.0133  (-6.8%)
+    FE_high_prior_utilization                ref=0.1196  prod=0.1088  Δ=-0.0108  (-9.0%)
+    FE_multi_channel_utilizer                ref=0.0577  prod=0.0570  Δ=-0.0007  (-1.2%)
+    diag_1                                   ref=0.0570  prod=0.0592  Δ=+0.0022  (+3.8%)
+    FE_labs_per_day_x_comorbidity            ref=0.0568  prod=0.0625  Δ=+0.0057  (+10.0%)
+    medical_specialty                        ref=0.0524  prod=0.0509  Δ=-0.0015  (-2.9%)
+    FE_lab_to_procedure_ratio                ref=0.0502  prod=0.0534  Δ=+0.0032  (+6.4%)
+    FE_labs_per_day                          ref=0.0407  prod=0.0393  Δ=-0.0014  (-3.5%)
+    number_diagnoses                         ref=0.0402  prod=0.0424  Δ=+0.0022  (+5.4%)
+2026-08-04 10:43:38 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 10:43:38 | INFO     | feature_drift        | Step 3: Computing feature drift impact scores
+2026-08-04 10:43:38 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 10:43:38 | INFO     | feature_drift        | Step 4: Feature drift impact report
+2026-08-04 10:43:38 | INFO     | feature_drift        | Feature                                        Impact    Risk  Drift  SHAP_ref  SHAP_Δ%
+2026-08-04 10:43:38 | INFO     | feature_drift        | ----------------------------------------------------------------------
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_lab_to_procedure_ratio                    0.4418    HIGH    YES  0.050247     +6.4%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_multi_channel_utilizer                    0.4385    HIGH    YES  0.057731     -1.2%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_labs_per_day_x_comorbidity                0.4226    HIGH    YES  0.056805    +10.0%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   medical_specialty                            0.4038    HIGH    YES  0.052429     -2.9%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   discharge_disposition_id                     0.4011    HIGH    YES  0.205720     -3.2%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   diag_1                                       0.3878    HIGH    YES  0.056983     +3.8%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_high_prior_utilization                    0.3861    HIGH     NO  0.119617     -9.0%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_has_prior_inpatient                       0.3771    HIGH     NO  0.196776     -6.8%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_labs_per_day                              0.3365    HIGH    YES  0.040713     -3.5%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   number_diagnoses                             0.3361    HIGH    YES  0.040234     +5.4%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   payer_code                                   0.3108    HIGH    YES  0.037824     -1.6%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   age                                          0.2992  MEDIUM    YES  0.038946     -1.3%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_total_clinical_contacts                   0.2983  MEDIUM    YES  0.027036     +9.9%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_total_active_meds                         0.2745  MEDIUM     NO  0.036236     -2.3%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   num_medications                              0.2533  MEDIUM     NO  0.034017     -0.8%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   time_in_hospital                             0.2480  MEDIUM    YES  0.028072     +7.1%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   diag_2                                       0.2400  MEDIUM    YES  0.028587     +1.0%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_glycemic_risk_score                       0.2279  MEDIUM    YES  0.029217     -4.5%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_meds_per_day                              0.2192  MEDIUM    YES  0.027025     +1.9%
+2026-08-04 10:43:38 | INFO     | feature_drift        |   number_outpatient                            0.2140  MEDIUM    YES  0.014151    -19.2%
+2026-08-04 10:43:38 | INFO     | feature_drift        | ----------------------------------------------------------------------
+2026-08-04 10:43:38 | INFO     | feature_drift        |   HIGH risk features   : 11
+2026-08-04 10:43:38 | INFO     | feature_drift        |   MEDIUM risk features : 14
+2026-08-04 10:43:38 | INFO     | feature_drift        |   LOW risk features    : 28
+2026-08-04 10:43:38 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 10:43:38 | INFO     | feature_drift        | Step 5: SHAP rank stability analysis
+2026-08-04 10:43:38 | INFO     | feature_drift        |   Top rank shifts (ref→prod):
+2026-08-04 10:43:38 | INFO     | feature_drift        |     rosiglitazone                               ref_rank= 41  prod_rank= 45  shift=  +4 ↓
+2026-08-04 10:43:38 | INFO     | feature_drift        |     A1Cresult_missing                           ref_rank= 29  prod_rank= 32  shift=  +3 ↓
+2026-08-04 10:43:38 | INFO     | feature_drift        |     FE_med_regimen_changed                      ref_rank= 45  prod_rank= 42  shift=  -3 ↑
+2026-08-04 10:43:38 | INFO     | feature_drift        |     FE_glycemic_risk_score                      ref_rank= 15  prod_rank= 18  shift=  +3 ↓
+2026-08-04 10:43:38 | INFO     | feature_drift        |     FE_labs_per_day_x_comorbidity               ref_rank=  6  prod_rank=  4  shift=  -2 ↑
+2026-08-04 10:43:38 | INFO     | feature_drift        |     FE_no_procedures                            ref_rank= 37  prod_rank= 39  shift=  +2 ↓
+2026-08-04 10:43:38 | INFO     | feature_drift        |     time_in_hospital                            ref_rank= 17  prod_rank= 15  shift=  -2 ↑
+2026-08-04 10:43:38 | INFO     | feature_drift        |     FE_on_diabetes_med                          ref_rank= 32  prod_rank= 30  shift=  -2 ↑
+2026-08-04 10:43:38 | INFO     | feature_drift        |     weight_missing                              ref_rank= 43  prod_rank= 41  shift=  -2 ↑
+2026-08-04 10:43:38 | INFO     | feature_drift        |     FE_total_clinical_contacts                  ref_rank= 18  prod_rank= 16  shift=  -2 ↑
+2026-08-04 10:43:38 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 10:43:38 | INFO     | feature_drift        | Step 6: FE_ vs raw feature drift comparison
+2026-08-04 10:43:38 | INFO     | feature_drift        |   FE_ features  — mean impact=0.1724  high_risk=6
+2026-08-04 10:43:38 | INFO     | feature_drift        |   Raw features  — mean impact=0.1803  high_risk=5
+2026-08-04 10:43:38 | INFO     | feature_drift        |   Feature drift CSV: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\feature_drift_val_test.csv
+2026-08-04 10:43:38 | INFO     | feature_drift        |   Feature drift report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\feature_drift_report_val_test.json
+2026-08-04 10:43:38 | INFO     | feature_drift        | ======================================================================
+2026-08-04 10:43:38 | INFO     | feature_drift        | Feature Drift Analysis Complete
+2026-08-04 10:43:38 | INFO     | feature_drift        |   HIGH risk  : 11
+2026-08-04 10:43:38 | INFO     | feature_drift        |   MEDIUM risk: 14
+2026-08-04 10:43:38 | INFO     | feature_drift        |   LOW risk   : 28
+2026-08-04 10:43:38 | INFO     | feature_drift        |   Next: concept_drift.py → alerting.py
+2026-08-04 10:43:38 | INFO     | feature_drift        | ======================================================================
+2026-08-04 11:04:00 | INFO     | feature_drift        | ===== RUN 20260804-110359-ea4cc7 | pid=3220 | started 2026-08-04 11:04:00 =====
+2026-08-04 11:04:00 | INFO     | feature_drift        | ======================================================================
+2026-08-04 11:04:00 | INFO     | feature_drift        | DriftSentinel — Feature Drift Detection Run
+2026-08-04 11:04:00 | INFO     | feature_drift        | ======================================================================
+2026-08-04 11:04:00 | INFO     | feature_drift        | ======================================================================
+2026-08-04 11:04:00 | INFO     | feature_drift        | DriftSentinel — Feature Drift Analyzer
+2026-08-04 11:04:00 | INFO     | feature_drift        |   Reference  : val  (20,949 rows)
+2026-08-04 11:04:00 | INFO     | feature_drift        |   Production : test  (17,325 rows)
+2026-08-04 11:04:00 | INFO     | feature_drift        | ======================================================================
+2026-08-04 11:04:00 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 11:04:00 | INFO     | feature_drift        | Step 1: Computing data drift scores
+2026-08-04 11:04:01 | INFO     | feature_drift        |   Drifted features: 25/53
+2026-08-04 11:04:01 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 11:04:01 | INFO     | feature_drift        | Step 2: Computing SHAP distribution shift
+2026-08-04 11:04:07 | INFO     | feature_drift        |   Top SHAP shift (ref→prod):
+    discharge_disposition_id                 ref=0.2057  prod=0.1991  Δ=-0.0066  (-3.2%)
+    FE_has_prior_inpatient                   ref=0.1968  prod=0.1834  Δ=-0.0133  (-6.8%)
+    FE_high_prior_utilization                ref=0.1196  prod=0.1088  Δ=-0.0108  (-9.0%)
+    FE_multi_channel_utilizer                ref=0.0577  prod=0.0570  Δ=-0.0007  (-1.2%)
+    diag_1                                   ref=0.0570  prod=0.0592  Δ=+0.0022  (+3.8%)
+    FE_labs_per_day_x_comorbidity            ref=0.0568  prod=0.0625  Δ=+0.0057  (+10.0%)
+    medical_specialty                        ref=0.0524  prod=0.0509  Δ=-0.0015  (-2.9%)
+    FE_lab_to_procedure_ratio                ref=0.0502  prod=0.0534  Δ=+0.0032  (+6.4%)
+    FE_labs_per_day                          ref=0.0407  prod=0.0393  Δ=-0.0014  (-3.5%)
+    number_diagnoses                         ref=0.0402  prod=0.0424  Δ=+0.0022  (+5.4%)
+2026-08-04 11:04:07 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 11:04:07 | INFO     | feature_drift        | Step 3: Computing feature drift impact scores
+2026-08-04 11:04:07 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 11:04:07 | INFO     | feature_drift        | Step 4: Feature drift impact report
+2026-08-04 11:04:07 | INFO     | feature_drift        | Feature                                        Impact    Risk  Drift  SHAP_ref  SHAP_Δ%
+2026-08-04 11:04:07 | INFO     | feature_drift        | ----------------------------------------------------------------------
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_lab_to_procedure_ratio                    0.4418    HIGH    YES  0.050247     +6.4%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_multi_channel_utilizer                    0.4385    HIGH    YES  0.057731     -1.2%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_labs_per_day_x_comorbidity                0.4226    HIGH    YES  0.056805    +10.0%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   medical_specialty                            0.4038    HIGH    YES  0.052429     -2.9%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   discharge_disposition_id                     0.4011    HIGH    YES  0.205720     -3.2%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   diag_1                                       0.3878    HIGH    YES  0.056983     +3.8%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_high_prior_utilization                    0.3861    HIGH     NO  0.119617     -9.0%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_has_prior_inpatient                       0.3771    HIGH     NO  0.196776     -6.8%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_labs_per_day                              0.3365    HIGH    YES  0.040713     -3.5%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   number_diagnoses                             0.3361    HIGH    YES  0.040234     +5.4%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   payer_code                                   0.3108    HIGH    YES  0.037824     -1.6%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   age                                          0.2992  MEDIUM    YES  0.038946     -1.3%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_total_clinical_contacts                   0.2983  MEDIUM    YES  0.027036     +9.9%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_total_active_meds                         0.2745  MEDIUM     NO  0.036236     -2.3%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   num_medications                              0.2533  MEDIUM     NO  0.034017     -0.8%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   time_in_hospital                             0.2480  MEDIUM    YES  0.028072     +7.1%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   diag_2                                       0.2400  MEDIUM    YES  0.028587     +1.0%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_glycemic_risk_score                       0.2279  MEDIUM    YES  0.029217     -4.5%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_meds_per_day                              0.2192  MEDIUM    YES  0.027025     +1.9%
+2026-08-04 11:04:07 | INFO     | feature_drift        |   number_outpatient                            0.2140  MEDIUM    YES  0.014151    -19.2%
+2026-08-04 11:04:07 | INFO     | feature_drift        | ----------------------------------------------------------------------
+2026-08-04 11:04:07 | INFO     | feature_drift        |   HIGH risk features   : 11
+2026-08-04 11:04:07 | INFO     | feature_drift        |   MEDIUM risk features : 14
+2026-08-04 11:04:07 | INFO     | feature_drift        |   LOW risk features    : 28
+2026-08-04 11:04:07 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 11:04:07 | INFO     | feature_drift        | Step 5: SHAP rank stability analysis
+2026-08-04 11:04:07 | INFO     | feature_drift        |   Top rank shifts (ref→prod):
+2026-08-04 11:04:07 | INFO     | feature_drift        |     rosiglitazone                               ref_rank= 41  prod_rank= 45  shift=  +4 ↓
+2026-08-04 11:04:07 | INFO     | feature_drift        |     A1Cresult_missing                           ref_rank= 29  prod_rank= 32  shift=  +3 ↓
+2026-08-04 11:04:07 | INFO     | feature_drift        |     FE_med_regimen_changed                      ref_rank= 45  prod_rank= 42  shift=  -3 ↑
+2026-08-04 11:04:07 | INFO     | feature_drift        |     FE_glycemic_risk_score                      ref_rank= 15  prod_rank= 18  shift=  +3 ↓
+2026-08-04 11:04:07 | INFO     | feature_drift        |     FE_labs_per_day_x_comorbidity               ref_rank=  6  prod_rank=  4  shift=  -2 ↑
+2026-08-04 11:04:07 | INFO     | feature_drift        |     FE_no_procedures                            ref_rank= 37  prod_rank= 39  shift=  +2 ↓
+2026-08-04 11:04:07 | INFO     | feature_drift        |     time_in_hospital                            ref_rank= 17  prod_rank= 15  shift=  -2 ↑
+2026-08-04 11:04:07 | INFO     | feature_drift        |     FE_on_diabetes_med                          ref_rank= 32  prod_rank= 30  shift=  -2 ↑
+2026-08-04 11:04:07 | INFO     | feature_drift        |     weight_missing                              ref_rank= 43  prod_rank= 41  shift=  -2 ↑
+2026-08-04 11:04:07 | INFO     | feature_drift        |     FE_total_clinical_contacts                  ref_rank= 18  prod_rank= 16  shift=  -2 ↑
+2026-08-04 11:04:07 | INFO     | feature_drift        | --------------------------------------------------
+2026-08-04 11:04:07 | INFO     | feature_drift        | Step 6: FE_ vs raw feature drift comparison
+2026-08-04 11:04:07 | INFO     | feature_drift        |   FE_ features  — mean impact=0.1724  high_risk=6
+2026-08-04 11:04:07 | INFO     | feature_drift        |   Raw features  — mean impact=0.1803  high_risk=5
+2026-08-04 11:04:07 | INFO     | feature_drift        |   Feature drift CSV: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\feature_drift_val_test.csv
+2026-08-04 11:04:07 | INFO     | feature_drift        |   Feature drift report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\feature_drift_report_val_test.json
+2026-08-04 11:04:07 | INFO     | feature_drift        | ======================================================================
+2026-08-04 11:04:07 | INFO     | feature_drift        | Feature Drift Analysis Complete
+2026-08-04 11:04:07 | INFO     | feature_drift        |   HIGH risk  : 11
+2026-08-04 11:04:07 | INFO     | feature_drift        |   MEDIUM risk: 14
+2026-08-04 11:04:07 | INFO     | feature_drift        |   LOW risk   : 28
+2026-08-04 11:04:07 | INFO     | feature_drift        |   Next: concept_drift.py → alerting.py
+2026-08-04 11:04:07 | INFO     | feature_drift        | ======================================================================

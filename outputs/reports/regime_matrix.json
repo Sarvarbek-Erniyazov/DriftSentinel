@@ -1,0 +1,114 @@
+{
+  "phase": "0.4",
+  "matrix": [
+    {
+      "family": "distribution",
+      "signal": "label_drift",
+      "entry_cohort": 1.0,
+      "random_control": 0.0,
+      "temporal": 1.0,
+      "covariate_shift_max": 0.8,
+      "label_shift_max": 1.0,
+      "concept_shift_max": 0.0
+    },
+    {
+      "family": "distribution",
+      "signal": "prediction_drift",
+      "entry_cohort": 1.0,
+      "random_control": 0.05,
+      "temporal": 1.0,
+      "covariate_shift_max": 1.0,
+      "label_shift_max": 1.0,
+      "concept_shift_max": 0.0
+    },
+    {
+      "family": "performance",
+      "signal": "auc_drop",
+      "entry_cohort": 0.45,
+      "random_control": 0.05,
+      "temporal": 0.85,
+      "covariate_shift_max": 0.9,
+      "label_shift_max": 0.1,
+      "concept_shift_max": 0.8
+    },
+    {
+      "family": "performance",
+      "signal": "auc_slope_negative",
+      "entry_cohort": 0.8,
+      "random_control": 0.15,
+      "temporal": 1.0,
+      "covariate_shift_max": 0.9,
+      "label_shift_max": 0.2,
+      "concept_shift_max": 1.0
+    },
+    {
+      "family": "performance",
+      "signal": "brier_increase",
+      "entry_cohort": 0.0,
+      "random_control": 0.0,
+      "temporal": 0.0,
+      "covariate_shift_max": 0.6,
+      "label_shift_max": 1.0,
+      "concept_shift_max": 0.0
+    },
+    {
+      "family": "performance",
+      "signal": "f1_drop",
+      "entry_cohort": 0.05,
+      "random_control": 0.0,
+      "temporal": 0.0,
+      "covariate_shift_max": 0.9,
+      "label_shift_max": 0.0,
+      "concept_shift_max": 0.1
+    }
+  ],
+  "columns": [
+    "entry_cohort",
+    "random_control",
+    "temporal",
+    "covariate_shift_max",
+    "label_shift_max",
+    "concept_shift_max"
+  ],
+  "families": {
+    "performance": [
+      "auc_drop",
+      "f1_drop",
+      "brier_increase",
+      "auc_slope_negative"
+    ],
+    "distribution": [
+      "prediction_drift",
+      "label_drift"
+    ]
+  },
+  "what_was_the_original_drift": {
+    "entry_cohort_signals_mean": 3.3,
+    "random_control_signals_mean": 0.25,
+    "temporal_signals_mean": 3.85,
+    "signals_firing_above_the_no_drift_baseline": [
+      "auc_slope_negative",
+      "prediction_drift",
+      "label_drift"
+    ],
+    "signals_that_fire_even_with_no_drift": [],
+    "entry_cohort_auc_degradation": 0.0199,
+    "random_auc_degradation": 0.0002,
+    "temporal_auc_degradation": 0.023
+  },
+  "reproducibility": {
+    "seed": 42,
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.18.0",
+    "lightgbm": "4.7.0",
+    "matplotlib": "3.11.0",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "figures": {
+    "firing": "outputs/figure/40_regime_firing_rates.png",
+    "power": "outputs/figure/41_detection_power_curves.png",
+    "matrix": "outputs/figure/42_regime_signal_matrix.png"
+  }
+}

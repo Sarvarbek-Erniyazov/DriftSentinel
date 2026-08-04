@@ -145,7 +145,13 @@ LogReg slightly better on Precision (+0.040).
 
 ## Performance Degradation (Val → Test)
 
-This is the core DriftSentinel finding — model performance under temporal drift.
+Model performance across the **entry-cohort** windows (val → test).
+
+> **Phase 0.5 correction.** Previously described as "the core DriftSentinel
+> finding — model performance under temporal drift". Two corrections: this is an
+> entry-cohort contrast, not a temporal one; and Tier 0 showed the same pipeline
+> reports degradation on a **random split where drift cannot exist**, so this
+> table must be read against that baseline (`outputs/reports/regime_random.json`).
 
 | Metric | Train | Val (reference) | Test (drifted) | Val→Test Δ |
 |---|---|---|---|---|

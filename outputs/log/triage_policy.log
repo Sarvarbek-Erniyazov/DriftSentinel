@@ -1,0 +1,63 @@
+2026-08-04 16:49:22 | INFO     | triage_policy        | ===== RUN 20260804-164922-82c6df | pid=28092 | started 2026-08-04 16:49:22 =====
+2026-08-04 16:49:22 | INFO     | triage_policy        | ==============================================================================
+2026-08-04 16:49:22 | INFO     | triage_policy        | Tier 2B.3 — does uncertainty deserve to gate the decision?
+2026-08-04 16:49:22 | INFO     | triage_policy        | ==============================================================================
+2026-08-04 16:49:23 | INFO     | triage_policy        |   calibration 10,367 rows (patient-disjoint) | threshold 0.1200 selected on the calibration half
+2026-08-04 16:49:23 | INFO     | triage_policy        | --------------------------------------------------------------
+2026-08-04 16:49:23 | INFO     | triage_policy        |   alpha  coverage   review%  auto prec  auto rec  review err  auto err
+2026-08-04 16:49:23 | INFO     | triage_policy        |     0.1     0.900    0.0038     0.6667    0.0027      0.6212    0.0869
+2026-08-04 16:49:23 | INFO     | triage_policy        |    0.05     0.950    0.2736     0.0000    0.0000      0.5289    0.0682
+2026-08-04 16:49:23 | INFO     | triage_policy        |    0.02     0.980    0.6929     0.0000    0.0000      0.2587    0.0487
+2026-08-04 16:49:23 | INFO     | triage_policy        |    0.01     0.990    0.8440     0.0000    0.0000      0.2230    0.0385
+2026-08-04 16:49:23 | INFO     | triage_policy        |   0.005     0.995    0.8440     0.0000    0.0000      0.2230    0.0385
+2026-08-04 16:49:23 | INFO     | triage_policy        |   0.002     0.998    0.9952     0.0000    0.0000      0.1949    0.0482
+2026-08-04 16:49:23 | INFO     | triage_policy        | --------------------------------------------------------------
+2026-08-04 16:49:23 | INFO     | triage_policy        | FALSIFICATION ARM (10% label-corrupted subgroup)
+2026-08-04 16:49:23 | INFO     | triage_policy        |   conformal gate : corrupted 0.8401 vs clean 0.8445 (lift -0.0044)
+2026-08-04 16:49:23 | INFO     | triage_policy        |   distance base  : corrupted 0.8326 vs clean 0.8453 (lift -0.0128)
+2026-08-04 16:49:23 | INFO     | triage_policy        | --------------------------------------------------------------
+2026-08-04 16:49:23 | INFO     | triage_policy        | VERDICT: conformal beats baseline = True
+2026-08-04 16:49:23 | INFO     | triage_policy        | Report: triage_policy.json
+2026-08-04 16:49:23 | INFO     | triage_policy        | ==============================================================================
+2026-08-04 16:50:40 | INFO     | triage_policy        | ===== RUN 20260804-165040-7847e8 | pid=6356 | started 2026-08-04 16:50:40 =====
+2026-08-04 16:50:40 | INFO     | triage_policy        | ==============================================================================
+2026-08-04 16:50:40 | INFO     | triage_policy        | Tier 2B.3 — does uncertainty deserve to gate the decision?
+2026-08-04 16:50:40 | INFO     | triage_policy        | ==============================================================================
+2026-08-04 16:50:41 | INFO     | triage_policy        |   calibration 10,367 rows (patient-disjoint) | threshold 0.1200 selected on the calibration half
+2026-08-04 16:50:41 | INFO     | triage_policy        | --------------------------------------------------------------
+2026-08-04 16:50:41 | INFO     | triage_policy        |   alpha  coverage   review%  auto prec  auto rec  review err  auto err
+2026-08-04 16:50:41 | INFO     | triage_policy        |     0.1     0.900    0.0038     0.6667    0.0027      0.6212    0.0869
+2026-08-04 16:50:41 | INFO     | triage_policy        |    0.05     0.950    0.2736     0.0000    0.0000      0.5289    0.0682
+2026-08-04 16:50:41 | INFO     | triage_policy        |    0.02     0.980    0.6929     0.0000    0.0000      0.2587    0.0487
+2026-08-04 16:50:41 | INFO     | triage_policy        |    0.01     0.990    0.8440     0.0000    0.0000      0.2230    0.0385
+2026-08-04 16:50:41 | INFO     | triage_policy        |   0.005     0.995    0.8440     0.0000    0.0000      0.2230    0.0385
+2026-08-04 16:50:41 | INFO     | triage_policy        |   0.002     0.998    0.9952     0.0000    0.0000      0.1949    0.0482
+2026-08-04 16:50:41 | INFO     | triage_policy        | --------------------------------------------------------------
+2026-08-04 16:50:41 | INFO     | triage_policy        | FALSIFICATION ARM (10% label-corrupted subgroup)
+2026-08-04 16:50:41 | INFO     | triage_policy        |   conformal gate : corrupted 0.8401 vs clean 0.8445 (lift -0.0044)
+2026-08-04 16:50:41 | INFO     | triage_policy        |   distance base  : corrupted 0.8326 vs clean 0.8453 (lift -0.0128)
+2026-08-04 16:50:41 | INFO     | triage_policy        | --------------------------------------------------------------
+2026-08-04 16:50:41 | INFO     | triage_policy        | VERDICT: conformal beats baseline = True
+2026-08-04 16:50:41 | INFO     | triage_policy        | Report: triage_policy.json
+2026-08-04 16:50:41 | INFO     | triage_policy        | ==============================================================================
+2026-08-04 16:51:28 | INFO     | triage_policy        | ===== RUN 20260804-165127-b062b9 | pid=21892 | started 2026-08-04 16:51:28 =====
+2026-08-04 16:51:28 | INFO     | triage_policy        | ==============================================================================
+2026-08-04 16:51:28 | INFO     | triage_policy        | Tier 2B.3 — does uncertainty deserve to gate the decision?
+2026-08-04 16:51:28 | INFO     | triage_policy        | ==============================================================================
+2026-08-04 16:51:28 | INFO     | triage_policy        |   calibration 10,367 rows (patient-disjoint) | threshold 0.1200 selected on the calibration half
+2026-08-04 16:51:28 | INFO     | triage_policy        | --------------------------------------------------------------
+2026-08-04 16:51:28 | INFO     | triage_policy        |   alpha  coverage   review%  auto prec  auto rec  review err  auto err
+2026-08-04 16:51:28 | INFO     | triage_policy        |     0.1     0.900    0.0038     0.6667    0.0027      0.6212    0.0869
+2026-08-04 16:51:28 | INFO     | triage_policy        |    0.05     0.950    0.2736     0.0000    0.0000      0.5289    0.0682
+2026-08-04 16:51:28 | INFO     | triage_policy        |    0.02     0.980    0.6929     0.0000    0.0000      0.2587    0.0487
+2026-08-04 16:51:28 | INFO     | triage_policy        |    0.01     0.990    0.8440     0.0000    0.0000      0.2230    0.0385
+2026-08-04 16:51:28 | INFO     | triage_policy        |   0.005     0.995    0.8440     0.0000    0.0000      0.2230    0.0385
+2026-08-04 16:51:28 | INFO     | triage_policy        |   0.002     0.998    0.9952     0.0000    0.0000      0.1949    0.0482
+2026-08-04 16:51:28 | INFO     | triage_policy        | --------------------------------------------------------------
+2026-08-04 16:51:28 | INFO     | triage_policy        | FALSIFICATION ARM (10% label-corrupted subgroup)
+2026-08-04 16:51:28 | INFO     | triage_policy        |   conformal gate : corrupted 0.8401 vs clean 0.8445 (lift -0.0044)
+2026-08-04 16:51:28 | INFO     | triage_policy        |   distance base  : corrupted 0.8326 vs clean 0.8453 (lift -0.0128)
+2026-08-04 16:51:28 | INFO     | triage_policy        | --------------------------------------------------------------
+2026-08-04 16:51:28 | INFO     | triage_policy        | VERDICT: conformal beats baseline = False
+2026-08-04 16:51:28 | INFO     | triage_policy        | Report: triage_policy.json
+2026-08-04 16:51:28 | INFO     | triage_policy        | ==============================================================================

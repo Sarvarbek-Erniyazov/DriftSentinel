@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-08-04T10:30:11.224157",
+  "model_name": "concept_shift_0.35_s2",
+  "ref_name": "concept_shift_0.35_s2_val",
+  "prod_name": "concept_shift_0.35_s2_test",
+  "system_status": "STABLE",
+  "recommendation": "No significant drift. Continue normal monitoring.",
+  "alert_counts": {
+    "MEDIUM": 2,
+    "LOW": 2
+  },
+  "total_alerts": 4,
+  "alerts": [
+    {
+      "alert_id": "CD-001",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "MEDIUM",
+      "title": "Model AUC Degradation Detected",
+      "description": "Model AUC dropped from 0.6754 (reference) to 0.6572 (production). Degradation: 0.0182.",
+      "metric": "auc_degradation",
+      "value": 0.0182,
+      "threshold": 0.03,
+      "features": [],
+      "action": "Trigger model retraining on recent data. Investigate feature drift in high-impact features.",
+      "timestamp": "2026-08-04T10:30:11.224157"
+    },
+    {
+      "alert_id": "DD-001",
+      "alert_type": "DATA_DRIFT",
+      "level": "MEDIUM",
+      "title": "Data Drift: 0/28 Features Drifted",
+      "description": "0.0% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: .",
+      "metric": "drift_rate",
+      "value": 0.0,
+      "threshold": 0.25,
+      "features": [],
+      "action": "Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.",
+      "timestamp": "2026-08-04T10:30:11.224157"
+    },
+    {
+      "alert_id": "CD-004",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "CUSUM Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "CUSUM detected 273 alarms. First alarm at index 229 (0.56% into stream). Mean error shift: 0.1526 \u2192 0.1878.",
+      "metric": "cusum_alarms",
+      "value": 273.0,
+      "threshold": 1.0,
+      "features": [],
+      "action": "Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.",
+      "timestamp": "2026-08-04T10:30:11.224157"
+    },
+    {
+      "alert_id": "CD-005",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "Page-Hinkley Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "Page-Hinkley detected gradual drift. First alarm at 5.33% of stream. PH statistic: 35.0989.",
+      "metric": "ph_statistic",
+      "value": 35.0989,
+      "threshold": 50.0,
+      "features": [],
+      "action": "Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.",
+      "timestamp": "2026-08-04T10:30:11.224157"
+    }
+  ],
+  "drift_summary": {
+    "concept_severity": "MILD",
+    "n_evidence": 1,
+    "auc_degradation": 0.0182,
+    "f1_degradation": 0.0326,
+    "n_data_drifted": 0,
+    "n_data_critical": 0,
+    "n_feature_high": null,
+    "label_shift_delta": -0.0003
+  }
+}

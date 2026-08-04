@@ -67,6 +67,22 @@ ORDINAL_FEATURES = {
 }
 
 
+def set_reports_dir(path) -> None:
+    """
+    Redirect this module's report output (Tier 1.7).
+
+    Explicit, supported API. The Tier 0 regime sweep previously reassigned the
+    module global directly — a monkey-patch that worked but was invisible to
+    anyone reading this module. A sweep of ~200 detector runs must not scatter
+    throwaway artifacts through outputs/log/, so redirection is legitimate; doing
+    it by attribute assignment from another file was not.
+    """
+    global REPORTS_DIR
+    from pathlib import Path as _P
+    REPORTS_DIR = _P(path)
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+
+
 # ══════════════════════════════════════════════════════════════════════════
 # Statistical test implementations
 # ══════════════════════════════════════════════════════════════════════════
@@ -409,11 +425,12 @@ class DataDriftDetector:
         # Add full results as CSV
         for prod_name, drift_df in self.results_.items():
             csv_path = REPORTS_DIR / f"data_drift_{prod_name}.csv"
-            drift_df.to_csv(csv_path, index=False)
+            from src.monitoring.artifact_io import write_dataframe
+            write_dataframe(csv_path, drift_df, overwrite=True, preserve=True)
             logger.info(f"  Drift results CSV: {csv_path}")
 
-        with open(path, "w") as f:
-            json.dump(serializable, f, indent=2, default=str)
+        from src.monitoring.artifact_io import write_artifact
+        write_artifact(path, serializable, overwrite=True, preserve=True)
         logger.info(f"  Data drift report saved: {path}")
         return path
 

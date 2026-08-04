@@ -1,0 +1,198 @@
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | DriftSentinel — Feature Engineer  [fit_transform on TRAIN]
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | Input shape  : (63492, 42)
+2026-05-11 20:54:33 | INFO     | engineer             | Existing FE_ columns: 0
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group A: Utilization Intensity
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_total_clinical_contacts : time + procedures + labs
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_labs_per_day            : num_lab_procedures / time_in_hospital
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_meds_per_day            : num_medications / time_in_hospital
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_procedure_density       : num_procedures / (num_lab_procedures + 1)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_utilization threshold (Q75, train) = 62.00
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_utilization        : >= 62.00  n=16,716
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group B: Medication Complexity
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_active_ordinal_meds   : sum of 9 ordinal meds > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_active_binary_meds    : sum of 7 binary meds
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_total_active_meds       : ordinal_active + binary_active
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_med_changes           : meds with Up or Down dose
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_med_increases         : meds with Up dose only
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_med_decreases         : meds with Down dose only
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_any_med_changed         : binary flag, at least one dose change
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_polypharmacy            : total_active_meds >= 5 (clinical threshold)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_med_coverage_ratio      : total_active_meds / (num_medications + 1)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group C: Diagnosis Burden
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_comorbidity threshold (Q75, train) = 9.00
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_comorbidity        : number_diagnoses >= 9
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_diagnoses_per_day       : number_diagnoses / time_in_hospital
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_diag_med_ratio          : number_diagnoses / (num_medications + 1)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group D: Lab & Procedure Load
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_lab_load threshold (Q75, train) = 56.00
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_lab_load           : num_lab_procedures >= 56
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_no_procedures           : num_procedures == 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_lab_to_procedure_ratio  : num_lab_procedures / (num_procedures + 1)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group E: Prior Utilization
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_total_prior_contacts    : inpatient + outpatient + emergency
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_has_prior_emergency     : number_emergency > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_has_prior_inpatient     : number_inpatient > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_prior_utilization threshold (Q75, train) = 1.10
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_prior_utilization  : total_prior_contacts >= 1.10
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_multi_channel_utilizer  : count of channels with > 0 visits
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group F: Diabetes Management
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_insulin_prescribed      : insulin > 0 (Steady/Up/Down)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_insulin_changed         : insulin Up or Down
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_insulin_increased       : insulin Up only
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_metformin_prescribed    : metformin > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_metformin_changed       : metformin Up or Down
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_on_diabetes_med         : diabetesMed (pass-through alias)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_med_regimen_changed     : change (pass-through alias)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_glycemic_risk_score     : sum of 3 glycemic indicators
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group G: Interaction Features
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_inpatient_x_polypharmacy : prior_inpatient × polypharmacy
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_util_x_med_change  : high_utilization × any_med_changed
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_comorbidity_x_lab_load  : high_comorbidity × high_lab_load
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_glycemic_x_emergency    : glycemic_risk_score × has_prior_emergency
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_labs_per_day_x_comorbidity : labs_per_day × high_comorbidity
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Null audit on FE_ columns [train]
+2026-05-11 20:54:33 | INFO     | engineer             |   All 38 FE_ columns are null-free — OK
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Leakage guard: FE_ features vs target correlation
+2026-05-11 20:54:33 | INFO     | engineer             |   Leakage guard passed — no |r| > 0.80 among 38 FE_ features
+2026-05-11 20:54:33 | INFO     | engineer             |   fe_train_stats.json saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\fe_train_stats.json
+2026-05-11 20:54:33 | INFO     | engineer             |   fe_feature_names.json saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\fe_feature_names.json
+2026-05-11 20:54:33 | INFO     | engineer             |   feature_engineer.pkl saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\feature_engineer.pkl
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | fit_transform complete — shape: (63492, 80)
+2026-05-11 20:54:33 | INFO     | engineer             | FE_ features created: 38
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | DriftSentinel — Feature Engineer  [transform on VAL]
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | Input shape  : (20949, 42)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group A: Utilization Intensity
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_total_clinical_contacts : time + procedures + labs
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_labs_per_day            : num_lab_procedures / time_in_hospital
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_meds_per_day            : num_medications / time_in_hospital
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_procedure_density       : num_procedures / (num_lab_procedures + 1)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_utilization        : >= 62.00  n=6,392
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group B: Medication Complexity
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_active_ordinal_meds   : sum of 9 ordinal meds > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_active_binary_meds    : sum of 7 binary meds
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_total_active_meds       : ordinal_active + binary_active
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_med_changes           : meds with Up or Down dose
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_med_increases         : meds with Up dose only
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_med_decreases         : meds with Down dose only
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_any_med_changed         : binary flag, at least one dose change
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_polypharmacy            : total_active_meds >= 5 (clinical threshold)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_med_coverage_ratio      : total_active_meds / (num_medications + 1)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group C: Diagnosis Burden
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_comorbidity        : number_diagnoses >= 9
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_diagnoses_per_day       : number_diagnoses / time_in_hospital
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_diag_med_ratio          : number_diagnoses / (num_medications + 1)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group D: Lab & Procedure Load
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_lab_load           : num_lab_procedures >= 56
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_no_procedures           : num_procedures == 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_lab_to_procedure_ratio  : num_lab_procedures / (num_procedures + 1)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group E: Prior Utilization
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_total_prior_contacts    : inpatient + outpatient + emergency
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_has_prior_emergency     : number_emergency > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_has_prior_inpatient     : number_inpatient > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_prior_utilization  : total_prior_contacts >= 1.10
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_multi_channel_utilizer  : count of channels with > 0 visits
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group F: Diabetes Management
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_insulin_prescribed      : insulin > 0 (Steady/Up/Down)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_insulin_changed         : insulin Up or Down
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_insulin_increased       : insulin Up only
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_metformin_prescribed    : metformin > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_metformin_changed       : metformin Up or Down
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_on_diabetes_med         : diabetesMed (pass-through alias)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_med_regimen_changed     : change (pass-through alias)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_glycemic_risk_score     : sum of 3 glycemic indicators
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group G: Interaction Features
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_inpatient_x_polypharmacy : prior_inpatient × polypharmacy
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_util_x_med_change  : high_utilization × any_med_changed
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_comorbidity_x_lab_load  : high_comorbidity × high_lab_load
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_glycemic_x_emergency    : glycemic_risk_score × has_prior_emergency
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_labs_per_day_x_comorbidity : labs_per_day × high_comorbidity
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Null audit on FE_ columns [val]
+2026-05-11 20:54:33 | INFO     | engineer             |   All 38 FE_ columns are null-free — OK
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | transform complete [val] — shape: (20949, 80)
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | DriftSentinel — Feature Engineer  [transform on TEST]
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | Input shape  : (17325, 42)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group A: Utilization Intensity
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_total_clinical_contacts : time + procedures + labs
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_labs_per_day            : num_lab_procedures / time_in_hospital
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_meds_per_day            : num_medications / time_in_hospital
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_procedure_density       : num_procedures / (num_lab_procedures + 1)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_utilization        : >= 62.00  n=5,001
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group B: Medication Complexity
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_active_ordinal_meds   : sum of 9 ordinal meds > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_active_binary_meds    : sum of 7 binary meds
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_total_active_meds       : ordinal_active + binary_active
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_med_changes           : meds with Up or Down dose
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_med_increases         : meds with Up dose only
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_n_med_decreases         : meds with Down dose only
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_any_med_changed         : binary flag, at least one dose change
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_polypharmacy            : total_active_meds >= 5 (clinical threshold)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_med_coverage_ratio      : total_active_meds / (num_medications + 1)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group C: Diagnosis Burden
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_comorbidity        : number_diagnoses >= 9
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_diagnoses_per_day       : number_diagnoses / time_in_hospital
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_diag_med_ratio          : number_diagnoses / (num_medications + 1)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group D: Lab & Procedure Load
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_lab_load           : num_lab_procedures >= 56
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_no_procedures           : num_procedures == 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_lab_to_procedure_ratio  : num_lab_procedures / (num_procedures + 1)
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group E: Prior Utilization
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_total_prior_contacts    : inpatient + outpatient + emergency
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_has_prior_emergency     : number_emergency > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_has_prior_inpatient     : number_inpatient > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_prior_utilization  : total_prior_contacts >= 1.10
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_multi_channel_utilizer  : count of channels with > 0 visits
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group F: Diabetes Management
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_insulin_prescribed      : insulin > 0 (Steady/Up/Down)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_insulin_changed         : insulin Up or Down
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_insulin_increased       : insulin Up only
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_metformin_prescribed    : metformin > 0
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_metformin_changed       : metformin Up or Down
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_on_diabetes_med         : diabetesMed (pass-through alias)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_med_regimen_changed     : change (pass-through alias)
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_glycemic_risk_score     : sum of 3 glycemic indicators
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Group G: Interaction Features
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_inpatient_x_polypharmacy : prior_inpatient × polypharmacy
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_high_util_x_med_change  : high_utilization × any_med_changed
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_comorbidity_x_lab_load  : high_comorbidity × high_lab_load
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_glycemic_x_emergency    : glycemic_risk_score × has_prior_emergency
+2026-05-11 20:54:33 | INFO     | engineer             |   FE_labs_per_day_x_comorbidity : labs_per_day × high_comorbidity
+2026-05-11 20:54:33 | INFO     | engineer             | --------------------------------------------------
+2026-05-11 20:54:33 | INFO     | engineer             | Null audit on FE_ columns [test]
+2026-05-11 20:54:33 | INFO     | engineer             |   All 38 FE_ columns are null-free — OK
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================
+2026-05-11 20:54:33 | INFO     | engineer             | transform complete [test] — shape: (17325, 80)
+2026-05-11 20:54:33 | INFO     | engineer             | ======================================================================

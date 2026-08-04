@@ -1,0 +1,915 @@
+{
+  "phase": "2C.4a",
+  "title": "Fairness / subgroup performance with intervals",
+  "cohort": "test split (entry-cohort), 30-day readmission",
+  "operating_threshold": 0.17500000000000002,
+  "alignment": "OK: verified (14,305 patients / 17,325 rows)",
+  "minimum_evidence_rule": {
+    "min_n": 500,
+    "min_positives": 30,
+    "rationale": "AUC on very few positives is not a stable estimate; a claim about such a subgroup is not supportable"
+  },
+  "subgroups": {
+    "race": {
+      "attribute": "race",
+      "levels": {
+        "AfricanAmerican": {
+          "n": 2181,
+          "n_positive": 194,
+          "share_of_cohort": 0.1259,
+          "status": "OK",
+          "precision": {
+            "point": 0.1829,
+            "ci95": [
+              0.1274,
+              0.2333
+            ]
+          },
+          "recall": {
+            "point": 0.1649,
+            "ci95": [
+              0.1117,
+              0.2192
+            ]
+          },
+          "f1": {
+            "point": 0.1734,
+            "ci95": [
+              0.1189,
+              0.2235
+            ]
+          },
+          "predicted_positive_rate": {
+            "point": 0.0802,
+            "ci95": [
+              0.0679,
+              0.0945
+            ]
+          },
+          "prevalence": {
+            "point": 0.089,
+            "ci95": [
+              0.0762,
+              0.1017
+            ]
+          },
+          "ece": {
+            "point": 0.0125,
+            "ci95": [
+              0.0055,
+              0.0239
+            ]
+          },
+          "auc": {
+            "point": 0.6133,
+            "ci95": [
+              0.5734,
+              0.6538
+            ]
+          }
+        },
+        "Asian": {
+          "n": 209,
+          "n_positive": 19,
+          "share_of_cohort": 0.0121,
+          "status": "INSUFFICIENT_EVIDENCE",
+          "reason": "n=209 (min 500), positives=19 (min 30) \u2014 too small to support a claim",
+          "prevalence": 0.0909
+        },
+        "Caucasian": {
+          "n": 13394,
+          "n_positive": 1205,
+          "share_of_cohort": 0.7731,
+          "status": "OK",
+          "precision": {
+            "point": 0.205,
+            "ci95": [
+              0.182,
+              0.2286
+            ]
+          },
+          "recall": {
+            "point": 0.2033,
+            "ci95": [
+              0.1785,
+              0.2295
+            ]
+          },
+          "f1": {
+            "point": 0.2042,
+            "ci95": [
+              0.1814,
+              0.2267
+            ]
+          },
+          "predicted_positive_rate": {
+            "point": 0.0892,
+            "ci95": [
+              0.0833,
+              0.0947
+            ]
+          },
+          "prevalence": {
+            "point": 0.09,
+            "ci95": [
+              0.0846,
+              0.0957
+            ]
+          },
+          "ece": {
+            "point": 0.0071,
+            "ci95": [
+              0.0039,
+              0.0122
+            ]
+          },
+          "auc": {
+            "point": 0.6478,
+            "ci95": [
+              0.6305,
+              0.6647
+            ]
+          }
+        },
+        "Hispanic": {
+          "n": 496,
+          "n_positive": 32,
+          "share_of_cohort": 0.0286,
+          "status": "INSUFFICIENT_EVIDENCE",
+          "reason": "n=496 (min 500), positives=32 (min 30) \u2014 too small to support a claim",
+          "prevalence": 0.0645
+        },
+        "Missing": {
+          "n": 600,
+          "n_positive": 39,
+          "share_of_cohort": 0.0346,
+          "status": "OK",
+          "precision": {
+            "point": 0.1,
+            "ci95": [
+              0.0185,
+              0.1867
+            ]
+          },
+          "recall": {
+            "point": 0.1538,
+            "ci95": [
+              0.0312,
+              0.2896
+            ]
+          },
+          "f1": {
+            "point": 0.1212,
+            "ci95": [
+              0.0227,
+              0.2167
+            ]
+          },
+          "predicted_positive_rate": {
+            "point": 0.1,
+            "ci95": [
+              0.0764,
+              0.1277
+            ]
+          },
+          "prevalence": {
+            "point": 0.065,
+            "ci95": [
+              0.044,
+              0.087
+            ]
+          },
+          "ece": {
+            "point": 0.0343,
+            "ci95": [
+              0.0195,
+              0.0547
+            ]
+          },
+          "auc": {
+            "point": 0.5849,
+            "ci95": [
+              0.4976,
+              0.6695
+            ]
+          }
+        },
+        "Other": {
+          "n": 445,
+          "n_positive": 38,
+          "share_of_cohort": 0.0257,
+          "status": "INSUFFICIENT_EVIDENCE",
+          "reason": "n=445 (min 500), positives=38 (min 30) \u2014 too small to support a claim",
+          "prevalence": 0.0854
+        }
+      },
+      "disparities": {
+        "auc": {
+          "status": "OK",
+          "metric": "auc",
+          "highest": {
+            "level": "Caucasian",
+            "value": 0.6478,
+            "ci95": [
+              0.6305,
+              0.6647
+            ]
+          },
+          "lowest": {
+            "level": "Missing",
+            "value": 0.5849,
+            "ci95": [
+              0.4976,
+              0.6695
+            ]
+          },
+          "gap": 0.0629,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        },
+        "recall": {
+          "status": "OK",
+          "metric": "recall",
+          "highest": {
+            "level": "Caucasian",
+            "value": 0.2033,
+            "ci95": [
+              0.1785,
+              0.2295
+            ]
+          },
+          "lowest": {
+            "level": "Missing",
+            "value": 0.1538,
+            "ci95": [
+              0.0312,
+              0.2896
+            ]
+          },
+          "gap": 0.0495,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        },
+        "predicted_positive_rate": {
+          "status": "OK",
+          "metric": "predicted_positive_rate",
+          "highest": {
+            "level": "Missing",
+            "value": 0.1,
+            "ci95": [
+              0.0764,
+              0.1277
+            ]
+          },
+          "lowest": {
+            "level": "AfricanAmerican",
+            "value": 0.0802,
+            "ci95": [
+              0.0679,
+              0.0945
+            ]
+          },
+          "gap": 0.0198,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        },
+        "precision": {
+          "status": "OK",
+          "metric": "precision",
+          "highest": {
+            "level": "Caucasian",
+            "value": 0.205,
+            "ci95": [
+              0.182,
+              0.2286
+            ]
+          },
+          "lowest": {
+            "level": "Missing",
+            "value": 0.1,
+            "ci95": [
+              0.0185,
+              0.1867
+            ]
+          },
+          "gap": 0.105,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        },
+        "ece": {
+          "status": "OK",
+          "metric": "ece",
+          "highest": {
+            "level": "Missing",
+            "value": 0.0343,
+            "ci95": [
+              0.0195,
+              0.0547
+            ]
+          },
+          "lowest": {
+            "level": "Caucasian",
+            "value": 0.0071,
+            "ci95": [
+              0.0039,
+              0.0122
+            ]
+          },
+          "gap": 0.0272,
+          "intervals_overlap": false,
+          "claim_supported": true,
+          "interpretation": "the intervals do not overlap \u2014 this disparity is supported by the data and must be reported"
+        }
+      }
+    },
+    "gender": {
+      "attribute": "gender",
+      "levels": {
+        "Female": {
+          "n": 9044,
+          "n_positive": 798,
+          "share_of_cohort": 0.522,
+          "status": "OK",
+          "precision": {
+            "point": 0.1905,
+            "ci95": [
+              0.1639,
+              0.218
+            ]
+          },
+          "recall": {
+            "point": 0.1967,
+            "ci95": [
+              0.1677,
+              0.2272
+            ]
+          },
+          "f1": {
+            "point": 0.1936,
+            "ci95": [
+              0.1663,
+              0.2203
+            ]
+          },
+          "predicted_positive_rate": {
+            "point": 0.0911,
+            "ci95": [
+              0.0848,
+              0.098
+            ]
+          },
+          "prevalence": {
+            "point": 0.0882,
+            "ci95": [
+              0.0819,
+              0.0945
+            ]
+          },
+          "ece": {
+            "point": 0.0096,
+            "ci95": [
+              0.005,
+              0.016
+            ]
+          },
+          "auc": {
+            "point": 0.6454,
+            "ci95": [
+              0.6232,
+              0.6668
+            ]
+          }
+        },
+        "Male": {
+          "n": 8280,
+          "n_positive": 729,
+          "share_of_cohort": 0.4779,
+          "status": "OK",
+          "precision": {
+            "point": 0.2052,
+            "ci95": [
+              0.1753,
+              0.2333
+            ]
+          },
+          "recall": {
+            "point": 0.1948,
+            "ci95": [
+              0.1645,
+              0.2251
+            ]
+          },
+          "f1": {
+            "point": 0.1999,
+            "ci95": [
+              0.1708,
+              0.2266
+            ]
+          },
+          "predicted_positive_rate": {
+            "point": 0.0836,
+            "ci95": [
+              0.0769,
+              0.0903
+            ]
+          },
+          "prevalence": {
+            "point": 0.088,
+            "ci95": [
+              0.0819,
+              0.0946
+            ]
+          },
+          "ece": {
+            "point": 0.0071,
+            "ci95": [
+              0.0052,
+              0.0141
+            ]
+          },
+          "auc": {
+            "point": 0.6363,
+            "ci95": [
+              0.615,
+              0.6568
+            ]
+          }
+        },
+        "Unknown/Invalid": {
+          "n": 1,
+          "n_positive": 0,
+          "share_of_cohort": 0.0001,
+          "status": "INSUFFICIENT_EVIDENCE",
+          "reason": "n=1 (min 500), positives=0 (min 30) \u2014 too small to support a claim",
+          "prevalence": 0.0
+        }
+      },
+      "disparities": {
+        "auc": {
+          "status": "OK",
+          "metric": "auc",
+          "highest": {
+            "level": "Female",
+            "value": 0.6454,
+            "ci95": [
+              0.6232,
+              0.6668
+            ]
+          },
+          "lowest": {
+            "level": "Male",
+            "value": 0.6363,
+            "ci95": [
+              0.615,
+              0.6568
+            ]
+          },
+          "gap": 0.0091,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        },
+        "recall": {
+          "status": "OK",
+          "metric": "recall",
+          "highest": {
+            "level": "Female",
+            "value": 0.1967,
+            "ci95": [
+              0.1677,
+              0.2272
+            ]
+          },
+          "lowest": {
+            "level": "Male",
+            "value": 0.1948,
+            "ci95": [
+              0.1645,
+              0.2251
+            ]
+          },
+          "gap": 0.0019,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        },
+        "predicted_positive_rate": {
+          "status": "OK",
+          "metric": "predicted_positive_rate",
+          "highest": {
+            "level": "Female",
+            "value": 0.0911,
+            "ci95": [
+              0.0848,
+              0.098
+            ]
+          },
+          "lowest": {
+            "level": "Male",
+            "value": 0.0836,
+            "ci95": [
+              0.0769,
+              0.0903
+            ]
+          },
+          "gap": 0.0075,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        },
+        "precision": {
+          "status": "OK",
+          "metric": "precision",
+          "highest": {
+            "level": "Male",
+            "value": 0.2052,
+            "ci95": [
+              0.1753,
+              0.2333
+            ]
+          },
+          "lowest": {
+            "level": "Female",
+            "value": 0.1905,
+            "ci95": [
+              0.1639,
+              0.218
+            ]
+          },
+          "gap": 0.0147,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        },
+        "ece": {
+          "status": "OK",
+          "metric": "ece",
+          "highest": {
+            "level": "Female",
+            "value": 0.0096,
+            "ci95": [
+              0.005,
+              0.016
+            ]
+          },
+          "lowest": {
+            "level": "Male",
+            "value": 0.0071,
+            "ci95": [
+              0.0052,
+              0.0141
+            ]
+          },
+          "gap": 0.0025,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        }
+      }
+    },
+    "age_band": {
+      "attribute": "age_band",
+      "levels": {
+        "40-69": {
+          "n": 8557,
+          "n_positive": 702,
+          "share_of_cohort": 0.4939,
+          "status": "OK",
+          "precision": {
+            "point": 0.2012,
+            "ci95": [
+              0.1701,
+              0.2324
+            ]
+          },
+          "recall": {
+            "point": 0.1966,
+            "ci95": [
+              0.1664,
+              0.2264
+            ]
+          },
+          "f1": {
+            "point": 0.1988,
+            "ci95": [
+              0.1689,
+              0.2264
+            ]
+          },
+          "predicted_positive_rate": {
+            "point": 0.0802,
+            "ci95": [
+              0.074,
+              0.0867
+            ]
+          },
+          "prevalence": {
+            "point": 0.082,
+            "ci95": [
+              0.0755,
+              0.0883
+            ]
+          },
+          "ece": {
+            "point": 0.0081,
+            "ci95": [
+              0.0045,
+              0.0145
+            ]
+          },
+          "auc": {
+            "point": 0.6369,
+            "ci95": [
+              0.6144,
+              0.6598
+            ]
+          }
+        },
+        "70+": {
+          "n": 7837,
+          "n_positive": 754,
+          "share_of_cohort": 0.4524,
+          "status": "OK",
+          "precision": {
+            "point": 0.1894,
+            "ci95": [
+              0.1627,
+              0.2183
+            ]
+          },
+          "recall": {
+            "point": 0.1804,
+            "ci95": [
+              0.153,
+              0.2078
+            ]
+          },
+          "f1": {
+            "point": 0.1848,
+            "ci95": [
+              0.1588,
+              0.2113
+            ]
+          },
+          "predicted_positive_rate": {
+            "point": 0.0916,
+            "ci95": [
+              0.0849,
+              0.0987
+            ]
+          },
+          "prevalence": {
+            "point": 0.0962,
+            "ci95": [
+              0.0889,
+              0.1031
+            ]
+          },
+          "ece": {
+            "point": 0.0087,
+            "ci95": [
+              0.005,
+              0.0156
+            ]
+          },
+          "auc": {
+            "point": 0.6257,
+            "ci95": [
+              0.6064,
+              0.6462
+            ]
+          }
+        },
+        "<40": {
+          "n": 931,
+          "n_positive": 71,
+          "share_of_cohort": 0.0537,
+          "status": "OK",
+          "precision": {
+            "point": 0.2212,
+            "ci95": [
+              0.1304,
+              0.3016
+            ]
+          },
+          "recall": {
+            "point": 0.3521,
+            "ci95": [
+              0.2037,
+              0.4935
+            ]
+          },
+          "f1": {
+            "point": 0.2717,
+            "ci95": [
+              0.1611,
+              0.3689
+            ]
+          },
+          "predicted_positive_rate": {
+            "point": 0.1214,
+            "ci95": [
+              0.0935,
+              0.1513
+            ]
+          },
+          "prevalence": {
+            "point": 0.0763,
+            "ci95": [
+              0.0564,
+              0.0965
+            ]
+          },
+          "ece": {
+            "point": 0.0153,
+            "ci95": [
+              0.0091,
+              0.0343
+            ]
+          },
+          "auc": {
+            "point": 0.7461,
+            "ci95": [
+              0.681,
+              0.8074
+            ]
+          }
+        }
+      },
+      "disparities": {
+        "auc": {
+          "status": "OK",
+          "metric": "auc",
+          "highest": {
+            "level": "<40",
+            "value": 0.7461,
+            "ci95": [
+              0.681,
+              0.8074
+            ]
+          },
+          "lowest": {
+            "level": "70+",
+            "value": 0.6257,
+            "ci95": [
+              0.6064,
+              0.6462
+            ]
+          },
+          "gap": 0.1204,
+          "intervals_overlap": false,
+          "claim_supported": true,
+          "interpretation": "the intervals do not overlap \u2014 this disparity is supported by the data and must be reported"
+        },
+        "recall": {
+          "status": "OK",
+          "metric": "recall",
+          "highest": {
+            "level": "<40",
+            "value": 0.3521,
+            "ci95": [
+              0.2037,
+              0.4935
+            ]
+          },
+          "lowest": {
+            "level": "70+",
+            "value": 0.1804,
+            "ci95": [
+              0.153,
+              0.2078
+            ]
+          },
+          "gap": 0.1717,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        },
+        "predicted_positive_rate": {
+          "status": "OK",
+          "metric": "predicted_positive_rate",
+          "highest": {
+            "level": "<40",
+            "value": 0.1214,
+            "ci95": [
+              0.0935,
+              0.1513
+            ]
+          },
+          "lowest": {
+            "level": "40-69",
+            "value": 0.0802,
+            "ci95": [
+              0.074,
+              0.0867
+            ]
+          },
+          "gap": 0.0412,
+          "intervals_overlap": false,
+          "claim_supported": true,
+          "interpretation": "the intervals do not overlap \u2014 this disparity is supported by the data and must be reported"
+        },
+        "precision": {
+          "status": "OK",
+          "metric": "precision",
+          "highest": {
+            "level": "<40",
+            "value": 0.2212,
+            "ci95": [
+              0.1304,
+              0.3016
+            ]
+          },
+          "lowest": {
+            "level": "70+",
+            "value": 0.1894,
+            "ci95": [
+              0.1627,
+              0.2183
+            ]
+          },
+          "gap": 0.0318,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        },
+        "ece": {
+          "status": "OK",
+          "metric": "ece",
+          "highest": {
+            "level": "<40",
+            "value": 0.0153,
+            "ci95": [
+              0.0091,
+              0.0343
+            ]
+          },
+          "lowest": {
+            "level": "40-69",
+            "value": 0.0081,
+            "ci95": [
+              0.0045,
+              0.0145
+            ]
+          },
+          "gap": 0.0072,
+          "intervals_overlap": true,
+          "claim_supported": false,
+          "interpretation": "the intervals overlap, so this gap is not distinguishable from sampling noise"
+        }
+      }
+    }
+  },
+  "supported_disparities": {
+    "race": [
+      "ece"
+    ],
+    "gender": [],
+    "age_band": [
+      "auc",
+      "predicted_positive_rate"
+    ]
+  },
+  "insufficient_evidence_levels": {
+    "race": [
+      "Asian",
+      "Hispanic",
+      "Other"
+    ],
+    "gender": [
+      "Unknown/Invalid"
+    ],
+    "age_band": []
+  },
+  "payer_code_equity_question": {
+    "in_model": true,
+    "gain_importance_rank": 17,
+    "of_n_features": 53,
+    "top_5_features": [
+      "discharge_disposition_id",
+      "FE_has_prior_inpatient",
+      "FE_lab_to_procedure_ratio",
+      "FE_labs_per_day",
+      "FE_meds_per_day"
+    ],
+    "concern": "insurance status is a proxy for ACCESS TO CARE, not clinical severity. A model that leans on it may be encoding access disparities as if they were risk (Obermeyer et al., Science 2019)."
+  },
+  "falsification_arm": {
+    "design": "predictions for gender='Female' are shuffled, destroying the model's signal in that subgroup only",
+    "injected_auc_gap": 0.1313,
+    "injected_claim_supported": true,
+    "real_auc_gap": 0.0091,
+    "audit_can_detect_disparity": true
+  },
+  "reproducibility": {
+    "seed": 42,
+    "n_boot": 1000,
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

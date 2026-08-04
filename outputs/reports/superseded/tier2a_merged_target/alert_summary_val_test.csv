@@ -1,0 +1,10 @@
+alert_id,level,type,title,metric,value,threshold,action,timestamp
+CD-002,CRITICAL,CONCEPT_DRIFT,Model F1 Score Degradation,f1_degradation,0.1436,0.05,Review precision-recall tradeoff. Consider threshold recalibration before retraining.,2026-05-11T21:42:38.773497
+CD-003,CRITICAL,CONCEPT_DRIFT,Concept Drift Evidence: 8/8 Signals Fired,n_evidence,8.0,4.0,Initiate drift investigation protocol. Run feature_drift analysis to identify root cause features.,2026-05-11T21:42:38.773497
+DD-001,CRITICAL,DATA_DRIFT,Data Drift: 25/53 Features Drifted,drift_rate,0.4716981132075472,0.25,Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.,2026-05-11T21:42:38.774023
+LS-001,CRITICAL,LABEL_SHIFT,Target Label Distribution Shift Detected,label_shift_delta,0.14,0.05,Investigate clinical/operational changes in the data source. Label shift may require re-stratification of training data. Review class weights and decision threshold.,2026-05-11T21:42:38.774574
+CD-001,HIGH,CONCEPT_DRIFT,Model AUC Degradation Detected,auc_degradation,0.0305,0.03,Trigger model retraining on recent data. Investigate feature drift in high-impact features.,2026-05-11T21:42:38.773497
+CD-004,HIGH,CONCEPT_DRIFT,CUSUM Sequential Drift Alarm,cusum_alarms,109.0,1.0,Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.,2026-05-11T21:42:38.773497
+CD-005,HIGH,CONCEPT_DRIFT,Page-Hinkley Gradual Drift Alarm,ph_statistic,30.6233,50.0,Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.,2026-05-11T21:42:38.773497
+FI-001,HIGH,FEATURE_IMPACT,High-Impact Feature Drift: FE_multi_channel_utilizer,impact_score,0.4556,0.35,Feature 'FE_multi_channel_utilizer' is both drifted and important. Retrain with recent data emphasizing this feature. Consider feature-specific monitoring dashboard.,2026-05-11T21:42:38.775086
+FI-002,HIGH,FEATURE_IMPACT,16 High-Risk Features Identified,n_high_risk_features,16.0,5.0,Prioritize retraining pipeline. Focus data collection on high-risk drifted features.,2026-05-11T21:42:38.775086

@@ -1,0 +1,132 @@
+{
+  "timestamp": "2026-08-04T10:31:00.057988",
+  "model_name": "covariate_shift_2.0_s9",
+  "ref_name": "covariate_shift_2.0_s9_val",
+  "prod_name": "covariate_shift_2.0_s9_test",
+  "system_status": "CRITICAL",
+  "recommendation": "IMMEDIATE ACTION REQUIRED. Model is unreliable in production. Halt predictions or apply fallback model. Trigger emergency retraining pipeline.",
+  "alert_counts": {
+    "CRITICAL": 5,
+    "LOW": 2
+  },
+  "total_alerts": 7,
+  "alerts": [
+    {
+      "alert_id": "CD-001",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "CRITICAL",
+      "title": "Model AUC Degradation Detected",
+      "description": "Model AUC dropped from 0.6681 (reference) to 0.3867 (production). Degradation: 0.2814.",
+      "metric": "auc_degradation",
+      "value": 0.2814,
+      "threshold": 0.03,
+      "features": [],
+      "action": "Trigger model retraining on recent data. Investigate feature drift in high-impact features.",
+      "timestamp": "2026-08-04T10:31:00.057988"
+    },
+    {
+      "alert_id": "CD-002",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "CRITICAL",
+      "title": "Model F1 Score Degradation",
+      "description": "F1 dropped 0.1259 points. Precision: 0.1952 \u2192 0.1351 (-0.0601). Recall: 0.4768 \u2192 0.1714.",
+      "metric": "f1_degradation",
+      "value": 0.1259,
+      "threshold": 0.05,
+      "features": [],
+      "action": "Review precision-recall tradeoff. Consider threshold recalibration before retraining.",
+      "timestamp": "2026-08-04T10:31:00.057988"
+    },
+    {
+      "alert_id": "CD-003",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "CRITICAL",
+      "title": "Concept Drift Evidence: 6/6 Voting Signals Fired",
+      "description": "6 of 6 voting signals fired, spanning 2 correlated signal families (distribution, performance): auc_drop, f1_drop, brier_increase, prediction_drift, label_drift, auc_slope_negative. These signals are NOT independent. Sequential detectors (CUSUM, Page-Hinkley) are excluded from the count as structurally broken \u2014 see Tier 1.5.",
+      "metric": "n_evidence",
+      "value": 6.0,
+      "threshold": 3.0,
+      "features": [],
+      "action": "Initiate drift investigation protocol. Run feature_drift analysis to identify root cause features.",
+      "timestamp": "2026-08-04T10:31:00.057988"
+    },
+    {
+      "alert_id": "DD-001",
+      "alert_type": "DATA_DRIFT",
+      "level": "CRITICAL",
+      "title": "Data Drift: 25/28 Features Drifted",
+      "description": "89.3% of monitored features show distribution shift. 9 features with PSI > 0.20 (critical). Top drifted: number_diagnoses, payer_code, diag_1, num_medications, num_lab_procedures.",
+      "metric": "drift_rate",
+      "value": 0.8929,
+      "threshold": 0.25,
+      "features": [
+        "number_diagnoses",
+        "payer_code",
+        "diag_1",
+        "num_medications",
+        "num_lab_procedures"
+      ],
+      "action": "Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.",
+      "timestamp": "2026-08-04T10:31:00.057988"
+    },
+    {
+      "alert_id": "DD-002",
+      "alert_type": "DATA_DRIFT",
+      "level": "CRITICAL",
+      "title": "9 Features with Critical PSI (>0.20)",
+      "description": "Features with PSI > 0.20: number_diagnoses, payer_code, diag_1, num_medications, num_lab_procedures. These features require immediate investigation as their distributions have significantly shifted.",
+      "metric": "n_critical_psi",
+      "value": 9.0,
+      "threshold": 1.0,
+      "features": [
+        "number_diagnoses",
+        "payer_code",
+        "diag_1",
+        "num_medications",
+        "num_lab_procedures",
+        "diag_3",
+        "time_in_hospital",
+        "diag_2",
+        "discharge_disposition_id"
+      ],
+      "action": "Retrain preprocessing encoders on recent data. Verify data collection pipeline for these features.",
+      "timestamp": "2026-08-04T10:31:00.057988"
+    },
+    {
+      "alert_id": "CD-004",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "CUSUM Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "CUSUM detected 302 alarms. First alarm at index 249 (0.61% into stream). Mean error shift: 0.1677 \u2192 0.2058.",
+      "metric": "cusum_alarms",
+      "value": 302.0,
+      "threshold": 1.0,
+      "features": [],
+      "action": "Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.",
+      "timestamp": "2026-08-04T10:31:00.057988"
+    },
+    {
+      "alert_id": "CD-005",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "Page-Hinkley Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "Page-Hinkley detected gradual drift. First alarm at 6.51% of stream. PH statistic: 1.5424.",
+      "metric": "ph_statistic",
+      "value": 1.5424,
+      "threshold": 50.0,
+      "features": [],
+      "action": "Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.",
+      "timestamp": "2026-08-04T10:31:00.057988"
+    }
+  ],
+  "drift_summary": {
+    "concept_severity": "CRITICAL",
+    "n_evidence": 6,
+    "auc_degradation": 0.2814,
+    "f1_degradation": 0.1259,
+    "n_data_drifted": 25,
+    "n_data_critical": 9,
+    "n_feature_high": null,
+    "label_shift_delta": 0.0421
+  }
+}

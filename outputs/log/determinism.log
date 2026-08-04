@@ -1,0 +1,115 @@
+2026-08-04 18:17:35 | INFO     | determinism          | ===== RUN 20260804-181735-2dc1e1 | pid=11776 | started 2026-08-04 18:17:35 =====
+2026-08-04 18:17:35 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:17:35 | INFO     | determinism          | DriftSentinel — Tier 2C.4  determinism check
+2026-08-04 18:17:35 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:17:35 | INFO     | determinism          | Falsification arm: comparator detects a byte-only difference = True
+2026-08-04 18:17:35 | INFO     | determinism          | Sandbox: C:\Users\sharg\AppData\Local\Temp\ds_determinism_1xgw1bk6
+2026-08-04 18:17:35 | INFO     | determinism          |   run a: stage=pipeline PYTHONHASHSEED=0
+2026-08-04 18:18:36 | INFO     | determinism          |     probe hash 8007634863280269366  (60.2s)
+2026-08-04 18:18:36 | INFO     | determinism          |   run b: stage=pipeline PYTHONHASHSEED=12345
+2026-08-04 18:19:38 | INFO     | determinism          |     probe hash 3446595664789613639  (62.2s)
+2026-08-04 18:19:38 | INFO     | determinism          | --------------------------------------------------------------
+2026-08-04 18:19:38 | INFO     | determinism          | VERDICT: FAIL — 1 artifact(s) differ between runs
+2026-08-04 18:19:38 | ERROR    | determinism          |   OPAQUE_BYTE_DIFFERENCE   outputs/artifacts/pipeline_objects.pkl
+2026-08-04 18:19:38 | INFO     | determinism          | Report: determinism.json
+2026-08-04 18:19:38 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:20:35 | INFO     | determinism          | ===== RUN 20260804-182035-4005bf | pid=29228 | started 2026-08-04 18:20:35 =====
+2026-08-04 18:20:35 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:20:35 | INFO     | determinism          | DriftSentinel — Tier 2C.4  determinism check
+2026-08-04 18:20:35 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:20:35 | INFO     | determinism          | Falsification arm: comparator detects a byte-only difference = True
+2026-08-04 18:20:35 | INFO     | determinism          | Sandbox: C:\Users\sharg\AppData\Local\Temp\ds_determinism_g_0kf9b5
+2026-08-04 18:20:35 | INFO     | determinism          |   run a: stage=pipeline PYTHONHASHSEED=0
+2026-08-04 18:21:34 | INFO     | determinism          |     probe hash 8007634863280269366  (59.5s)
+2026-08-04 18:21:34 | INFO     | determinism          |   run b: stage=pipeline PYTHONHASHSEED=12345
+2026-08-04 18:22:42 | INFO     | determinism          |     probe hash 3446595664789613639  (67.8s)
+2026-08-04 18:22:42 | INFO     | determinism          | --------------------------------------------------------------
+2026-08-04 18:22:42 | INFO     | determinism          | VERDICT: FAIL — 1 artifact(s) differ between runs
+2026-08-04 18:22:42 | ERROR    | determinism          |   OPAQUE_BYTE_DIFFERENCE   outputs/artifacts/pipeline_objects.pkl
+2026-08-04 18:22:42 | INFO     | determinism          | Report: determinism.json
+2026-08-04 18:22:42 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:23:47 | INFO     | determinism          | ===== RUN 20260804-182347-edd34c | pid=27944 | started 2026-08-04 18:23:47 =====
+2026-08-04 18:23:47 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:23:47 | INFO     | determinism          | DriftSentinel — Tier 2C.4  determinism check
+2026-08-04 18:23:47 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:23:47 | INFO     | determinism          | Falsification arm: comparator detects a byte-only difference = True
+2026-08-04 18:23:47 | INFO     | determinism          | Sandbox: C:\Users\sharg\AppData\Local\Temp\ds_determinism_ybgs5cvd
+2026-08-04 18:23:47 | INFO     | determinism          |   run a: stage=pipeline PYTHONHASHSEED=0
+2026-08-04 18:24:46 | INFO     | determinism          |     probe hash 8007634863280269366  (59.5s)
+2026-08-04 18:24:46 | INFO     | determinism          |   run b: stage=pipeline PYTHONHASHSEED=12345
+2026-08-04 18:25:51 | INFO     | determinism          |     probe hash 3446595664789613639  (65.2s)
+2026-08-04 18:25:52 | INFO     | determinism          | --------------------------------------------------------------
+2026-08-04 18:25:52 | INFO     | determinism          | VERDICT: PASS — 6 artifacts byte-identical across two runs under different string-hash randomisation
+2026-08-04 18:25:52 | INFO     | determinism          | Report: determinism.json
+2026-08-04 18:25:52 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:26:15 | INFO     | determinism          | ===== RUN 20260804-182615-40d1ca | pid=17404 | started 2026-08-04 18:26:15 =====
+2026-08-04 18:26:15 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:26:15 | INFO     | determinism          | DriftSentinel — Tier 2C.4  determinism check
+2026-08-04 18:26:15 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:26:15 | INFO     | determinism          | Falsification arm: comparator detects a byte-only difference = True
+2026-08-04 18:26:15 | INFO     | determinism          | Sandbox: C:\Users\sharg\AppData\Local\Temp\ds_determinism_uupej4dw
+2026-08-04 18:26:15 | INFO     | determinism          |   run a: stage=trainer PYTHONHASHSEED=0
+2026-08-04 18:27:49 | INFO     | determinism          |     probe hash 8007634863280269366  (94.0s)
+2026-08-04 18:27:49 | INFO     | determinism          |   run b: stage=trainer PYTHONHASHSEED=12345
+2026-08-04 18:29:39 | INFO     | determinism          |     probe hash 3446595664789613639  (109.5s)
+2026-08-04 18:29:39 | INFO     | determinism          | --------------------------------------------------------------
+2026-08-04 18:29:39 | INFO     | determinism          | VERDICT: PASS — 6 artifacts byte-identical across two runs under different string-hash randomisation
+2026-08-04 18:29:39 | INFO     | determinism          | Report: determinism.json
+2026-08-04 18:29:39 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:30:14 | INFO     | determinism          | ===== RUN 20260804-183014-067d1d | pid=27360 | started 2026-08-04 18:30:14 =====
+2026-08-04 18:30:14 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:30:14 | INFO     | determinism          | DriftSentinel — Tier 2C.4  determinism check
+2026-08-04 18:30:14 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:30:14 | INFO     | determinism          | Falsification arm: comparator detects a byte-only difference = True
+2026-08-04 18:30:14 | INFO     | determinism          | Sandbox: C:\Users\sharg\AppData\Local\Temp\ds_determinism_cnybjw42
+2026-08-04 18:30:14 | INFO     | determinism          |   run a: stage=trainer PYTHONHASHSEED=0
+2026-08-04 18:33:28 | INFO     | determinism          |     probe hash 8007634863280269366  (193.9s)
+2026-08-04 18:33:29 | INFO     | determinism          |   run b: stage=trainer PYTHONHASHSEED=12345
+2026-08-04 18:36:42 | INFO     | determinism          |     probe hash 3446595664789613639  (189.6s)
+2026-08-04 18:36:42 | INFO     | determinism          | --------------------------------------------------------------
+2026-08-04 18:36:42 | INFO     | determinism          | VERDICT: FAIL — 1 artifact(s) differ between runs
+2026-08-04 18:36:42 | ERROR    | determinism          |   VALUE_DIFFERENCE         outputs/models/training_summary.json
+2026-08-04 18:36:42 | INFO     | determinism          | Report: determinism.json
+2026-08-04 18:36:42 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:37:19 | INFO     | determinism          | ===== RUN 20260804-183719-b90baf | pid=11380 | started 2026-08-04 18:37:19 =====
+2026-08-04 18:37:19 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:37:19 | INFO     | determinism          | DriftSentinel — Tier 2C.4  determinism check
+2026-08-04 18:37:19 | INFO     | determinism          | ==============================================================================
+2026-08-04 18:37:19 | INFO     | determinism          | Falsification arm: comparator detects a byte-only difference = True
+2026-08-04 18:37:19 | INFO     | determinism          | Sandbox: C:\Users\sharg\AppData\Local\Temp\ds_determinism_f0e3ra99
+2026-08-04 18:37:19 | INFO     | determinism          |   run a: stage=trainer PYTHONHASHSEED=0
+2026-08-04 18:40:31 | INFO     | determinism          |     probe hash 8007634863280269366  (191.8s)
+2026-08-04 18:40:31 | INFO     | determinism          |   run b: stage=trainer PYTHONHASHSEED=12345
+2026-08-04 18:43:42 | INFO     | determinism          |     probe hash 3446595664789613639  (191.3s)
+2026-08-04 18:43:43 | INFO     | determinism          | --------------------------------------------------------------
+2026-08-04 18:43:43 | INFO     | determinism          | VERDICT: PASS — 12 artifacts byte-identical across two runs under different string-hash randomisation
+2026-08-04 18:43:43 | INFO     | determinism          | Report: determinism.json
+2026-08-04 18:43:43 | INFO     | determinism          | ==============================================================================
+2026-08-04 19:45:15 | INFO     | determinism          | ===== RUN 20260804-194515-a960cd | pid=3312 | started 2026-08-04 19:45:15 =====
+2026-08-04 19:45:15 | INFO     | determinism          | ==============================================================================
+2026-08-04 19:45:15 | INFO     | determinism          | DriftSentinel — Tier 2C.4  determinism check
+2026-08-04 19:45:15 | INFO     | determinism          | ==============================================================================
+2026-08-04 19:45:15 | INFO     | determinism          | Falsification arm: comparator detects a byte-only difference = True
+2026-08-04 19:45:15 | INFO     | determinism          | Sandbox: C:\Users\sharg\AppData\Local\Temp\ds_determinism_4sap58pk
+2026-08-04 19:45:15 | INFO     | determinism          |   run a: stage=trainer PYTHONHASHSEED=0
+2026-08-04 19:46:40 | INFO     | determinism          |     probe hash 8007634863280269366  (84.3s)
+2026-08-04 19:46:40 | INFO     | determinism          |   run b: stage=trainer PYTHONHASHSEED=12345
+2026-08-04 19:48:52 | INFO     | determinism          |     probe hash 3446595664789613639  (132.4s)
+2026-08-04 19:48:53 | INFO     | determinism          | --------------------------------------------------------------
+2026-08-04 19:48:53 | INFO     | determinism          | VERDICT: PASS — 24 artifacts byte-identical across two runs under different string-hash randomisation
+2026-08-04 19:48:53 | INFO     | determinism          | Report: determinism.json
+2026-08-04 19:48:53 | INFO     | determinism          | ==============================================================================
+2026-08-04 21:16:44 | INFO     | determinism          | ===== RUN 20260804-211644-4681be | pid=14476 | started 2026-08-04 21:16:44 =====
+2026-08-04 21:16:44 | INFO     | determinism          | ==============================================================================
+2026-08-04 21:16:44 | INFO     | determinism          | DriftSentinel — Tier 2C.4  determinism check
+2026-08-04 21:16:44 | INFO     | determinism          | ==============================================================================
+2026-08-04 21:16:44 | INFO     | determinism          | Falsification arm: comparator detects a byte-only difference = True
+2026-08-04 21:16:44 | INFO     | determinism          | Sandbox: C:\Users\sharg\AppData\Local\Temp\ds_determinism_4vxcy_gc
+2026-08-04 21:16:44 | INFO     | determinism          |   run a: stage=trainer PYTHONHASHSEED=0
+2026-08-04 21:18:57 | INFO     | determinism          |     probe hash 8007634863280269366  (132.7s)
+2026-08-04 21:18:57 | INFO     | determinism          |   run b: stage=trainer PYTHONHASHSEED=12345
+2026-08-04 21:21:50 | INFO     | determinism          |     probe hash 3446595664789613639  (173.1s)
+2026-08-04 21:21:51 | INFO     | determinism          | --------------------------------------------------------------
+2026-08-04 21:21:51 | INFO     | determinism          | VERDICT: PASS — 24 artifacts byte-identical across two runs under different string-hash randomisation
+2026-08-04 21:21:51 | INFO     | determinism          | Report: determinism.json
+2026-08-04 21:21:51 | INFO     | determinism          | ==============================================================================

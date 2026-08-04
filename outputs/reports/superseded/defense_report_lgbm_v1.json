@@ -1,0 +1,40 @@
+{
+  "model_name": "lgbm_v1",
+  "threshold": 0.39580328665647607,
+  "n_samples": 1000,
+  "clean": {
+    "n_clean": 45,
+    "n_suspicious": 941,
+    "n_adversarial": 14,
+    "false_positive_rate": 0.014
+  },
+  "attacked": {
+    "n_clean": 0,
+    "n_suspicious": 987,
+    "n_adversarial": 13,
+    "detection_rate": 1.0
+  },
+  "detection_lift": 0.045,
+  "layer_performance": {
+    "L1_InputValidation": {
+      "clean_rate": 0.936,
+      "attack_rate": 1.0
+    },
+    "L2_AnomalyDetection": {
+      "clean_rate": 0.077,
+      "attack_rate": 0.098
+    },
+    "L3_Consistency": {
+      "clean_rate": 0.28,
+      "attack_rate": 0.121
+    },
+    "L4_Smoothing": {
+      "clean_rate": 0.0,
+      "attack_rate": 0.0
+    },
+    "L5_EnsembleAgreement": {
+      "clean_rate": 0.002,
+      "attack_rate": 0.018
+    }
+  }
+}

@@ -1,92 +1,92 @@
 {
   "lgbm": {
-    "threshold": 0.39580328665647607,
+    "threshold": 0.15333940006539568,
     "metrics_by_split": {
       "train": {
         "split": "train",
         "n_samples": 63492,
-        "pos_rate": 0.4897,
-        "pred_rate": 0.6671,
-        "mean_proba": 0.4901,
-        "auc": 0.7891,
-        "avg_prec": 0.7768,
-        "f1": 0.7292,
-        "precision": 0.6322,
-        "recall": 0.8613,
-        "brier": 0.1904,
-        "threshold": 0.39580328665647607
+        "pos_rate": 0.12,
+        "pred_rate": 0.2559,
+        "mean_proba": 0.1199,
+        "auc": 0.8137,
+        "avg_prec": 0.454,
+        "f1": 0.4165,
+        "precision": 0.3059,
+        "recall": 0.6525,
+        "brier": 0.0901,
+        "threshold": 0.15333940006539568
       },
       "val": {
         "split": "val",
         "n_samples": 20949,
-        "pos_rate": 0.4764,
-        "pred_rate": 0.8362,
-        "mean_proba": 0.5648,
-        "auc": 0.6865,
-        "avg_prec": 0.6503,
-        "f1": 0.6735,
-        "precision": 0.5286,
-        "recall": 0.9278,
-        "brier": 0.2301,
-        "threshold": 0.39580328665647607
+        "pos_rate": 0.1056,
+        "pred_rate": 0.2716,
+        "mean_proba": 0.125,
+        "auc": 0.6617,
+        "avg_prec": 0.1973,
+        "f1": 0.2627,
+        "precision": 0.1824,
+        "recall": 0.469,
+        "brier": 0.0915,
+        "threshold": 0.15333940006539568
       },
       "test": {
         "split": "test",
         "n_samples": 17325,
-        "pos_rate": 0.3364,
-        "pred_rate": 0.8281,
-        "mean_proba": 0.5418,
-        "auc": 0.656,
-        "avg_prec": 0.4842,
-        "f1": 0.5299,
-        "precision": 0.3726,
-        "recall": 0.9171,
-        "brier": 0.252,
-        "threshold": 0.39580328665647607
+        "pos_rate": 0.0881,
+        "pred_rate": 0.1958,
+        "mean_proba": 0.1138,
+        "auc": 0.6415,
+        "avg_prec": 0.1591,
+        "f1": 0.22,
+        "precision": 0.1595,
+        "recall": 0.3543,
+        "brier": 0.0792,
+        "threshold": 0.15333940006539568
       }
     },
     "degradation": {
       "degradation": {
         "auc": {
-          "train": 0.7891,
-          "val": 0.6865,
-          "test": 0.656,
-          "delta": -0.0305,
+          "train": 0.8137,
+          "val": 0.6617,
+          "test": 0.6415,
+          "delta": -0.0202,
           "direction": "\u2193"
         },
         "f1": {
-          "train": 0.7292,
-          "val": 0.6735,
-          "test": 0.5299,
-          "delta": -0.1436,
+          "train": 0.4165,
+          "val": 0.2627,
+          "test": 0.22,
+          "delta": -0.0427,
           "direction": "\u2193"
         },
         "precision": {
-          "train": 0.6322,
-          "val": 0.5286,
-          "test": 0.3726,
-          "delta": -0.156,
+          "train": 0.3059,
+          "val": 0.1824,
+          "test": 0.1595,
+          "delta": -0.0229,
           "direction": "\u2193"
         },
         "recall": {
-          "train": 0.8613,
-          "val": 0.9278,
-          "test": 0.9171,
-          "delta": -0.0107,
+          "train": 0.6525,
+          "val": 0.469,
+          "test": 0.3543,
+          "delta": -0.1147,
           "direction": "\u2193"
         },
         "brier": {
-          "train": 0.1904,
-          "val": 0.2301,
-          "test": 0.252,
-          "delta": 0.0219,
-          "direction": "\u2191"
+          "train": 0.0901,
+          "val": 0.0915,
+          "test": 0.0792,
+          "delta": -0.0123,
+          "direction": "\u2193"
         },
         "mean_proba": {
-          "train": 0.4901,
-          "val": 0.5648,
-          "test": 0.5418,
-          "delta": -0.023,
+          "train": 0.1199,
+          "val": 0.125,
+          "test": 0.1138,
+          "delta": -0.0112,
           "direction": "\u2193"
         }
       },
@@ -94,93 +94,93 @@
     }
   },
   "logreg": {
-    "threshold": 0.38703140830800403,
+    "threshold": 0.14571192176648867,
     "metrics_by_split": {
       "train": {
         "split": "train",
         "n_samples": 63492,
-        "pos_rate": 0.4897,
-        "pred_rate": 0.7638,
-        "mean_proba": 0.4947,
-        "auc": 0.6728,
-        "avg_prec": 0.6524,
-        "f1": 0.6685,
-        "precision": 0.5486,
-        "recall": 0.8555,
-        "brier": 0.2279,
-        "threshold": 0.38703140830800403
+        "pos_rate": 0.12,
+        "pred_rate": 0.2694,
+        "mean_proba": 0.1191,
+        "auc": 0.6446,
+        "avg_prec": 0.188,
+        "f1": 0.2743,
+        "precision": 0.1982,
+        "recall": 0.4451,
+        "brier": 0.1026,
+        "threshold": 0.14571192176648867
       },
       "val": {
         "split": "val",
         "n_samples": 20949,
-        "pos_rate": 0.4764,
-        "pred_rate": 0.8821,
-        "mean_proba": 0.5325,
-        "auc": 0.6451,
-        "avg_prec": 0.6129,
-        "f1": 0.6519,
-        "precision": 0.5019,
-        "recall": 0.9295,
-        "brier": 0.2364,
-        "threshold": 0.38703140830800403
+        "pos_rate": 0.1056,
+        "pred_rate": 0.2853,
+        "mean_proba": 0.1246,
+        "auc": 0.6319,
+        "avg_prec": 0.1602,
+        "f1": 0.2459,
+        "precision": 0.1685,
+        "recall": 0.455,
+        "brier": 0.0929,
+        "threshold": 0.14571192176648867
       },
       "test": {
         "split": "test",
         "n_samples": 17325,
-        "pos_rate": 0.3364,
-        "pred_rate": 0.8838,
-        "mean_proba": 0.5131,
-        "auc": 0.6286,
-        "avg_prec": 0.453,
-        "f1": 0.5154,
-        "precision": 0.3558,
-        "recall": 0.9348,
-        "brier": 0.2442,
-        "threshold": 0.38703140830800403
+        "pos_rate": 0.0881,
+        "pred_rate": 0.201,
+        "mean_proba": 0.1162,
+        "auc": 0.6133,
+        "avg_prec": 0.128,
+        "f1": 0.2,
+        "precision": 0.1439,
+        "recall": 0.3281,
+        "brier": 0.0803,
+        "threshold": 0.14571192176648867
       }
     },
     "degradation": {
       "degradation": {
         "auc": {
-          "train": 0.6728,
-          "val": 0.6451,
-          "test": 0.6286,
-          "delta": -0.0165,
+          "train": 0.6446,
+          "val": 0.6319,
+          "test": 0.6133,
+          "delta": -0.0186,
           "direction": "\u2193"
         },
         "f1": {
-          "train": 0.6685,
-          "val": 0.6519,
-          "test": 0.5154,
-          "delta": -0.1365,
+          "train": 0.2743,
+          "val": 0.2459,
+          "test": 0.2,
+          "delta": -0.0459,
           "direction": "\u2193"
         },
         "precision": {
-          "train": 0.5486,
-          "val": 0.5019,
-          "test": 0.3558,
-          "delta": -0.1461,
+          "train": 0.1982,
+          "val": 0.1685,
+          "test": 0.1439,
+          "delta": -0.0246,
           "direction": "\u2193"
         },
         "recall": {
-          "train": 0.8555,
-          "val": 0.9295,
-          "test": 0.9348,
-          "delta": 0.0053,
-          "direction": "\u2191"
+          "train": 0.4451,
+          "val": 0.455,
+          "test": 0.3281,
+          "delta": -0.1269,
+          "direction": "\u2193"
         },
         "brier": {
-          "train": 0.2279,
-          "val": 0.2364,
-          "test": 0.2442,
-          "delta": 0.0078,
-          "direction": "\u2191"
+          "train": 0.1026,
+          "val": 0.0929,
+          "test": 0.0803,
+          "delta": -0.0126,
+          "direction": "\u2193"
         },
         "mean_proba": {
-          "train": 0.4947,
-          "val": 0.5325,
-          "test": 0.5131,
-          "delta": -0.0194,
+          "train": 0.1191,
+          "val": 0.1246,
+          "test": 0.1162,
+          "delta": -0.0084,
           "direction": "\u2193"
         }
       },

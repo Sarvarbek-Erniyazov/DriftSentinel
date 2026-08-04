@@ -1,0 +1,8 @@
+alert_id,level,type,title,metric,value,threshold,action,timestamp
+CD-001,CRITICAL,CONCEPT_DRIFT,Model AUC Degradation Detected,auc_degradation,0.078,0.03,Trigger model retraining on recent data. Investigate feature drift in high-impact features.,2026-08-04T10:29:51.988347
+CD-003,CRITICAL,CONCEPT_DRIFT,Concept Drift Evidence: 5/6 Voting Signals Fired,n_evidence,5.0,3.0,Initiate drift investigation protocol. Run feature_drift analysis to identify root cause features.,2026-08-04T10:29:51.988347
+DD-001,CRITICAL,DATA_DRIFT,Data Drift: 23/28 Features Drifted,drift_rate,0.8214285714285714,0.25,Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.,2026-08-04T10:29:51.988347
+DD-002,CRITICAL,DATA_DRIFT,1 Features with Critical PSI (>0.20),n_critical_psi,1.0,1.0,Retrain preprocessing encoders on recent data. Verify data collection pipeline for these features.,2026-08-04T10:29:51.988347
+CD-002,HIGH,CONCEPT_DRIFT,Model F1 Score Degradation,f1_degradation,0.0662,0.05,Review precision-recall tradeoff. Consider threshold recalibration before retraining.,2026-08-04T10:29:51.988347
+CD-004,LOW,CONCEPT_DRIFT,CUSUM Sequential Alarm [DIAGNOSTIC — not evidence],cusum_alarms,185.0,1.0,Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.,2026-08-04T10:29:51.988347
+CD-005,LOW,CONCEPT_DRIFT,Page-Hinkley Sequential Alarm [DIAGNOSTIC — not evidence],ph_statistic,23.291,50.0,Gradual concept drift confirmed. Schedule periodic model retraining every N production batches.,2026-08-04T10:29:51.988347

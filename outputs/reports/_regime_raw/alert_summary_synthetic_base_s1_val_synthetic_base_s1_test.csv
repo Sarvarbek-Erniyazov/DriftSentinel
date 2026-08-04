@@ -1,0 +1,3 @@
+alert_id,level,type,title,metric,value,threshold,action,timestamp
+DD-001,MEDIUM,DATA_DRIFT,Data Drift: 4/28 Features Drifted,drift_rate,0.14285714285714285,0.25,Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.,2026-08-04T10:29:57.536157
+CD-004,LOW,CONCEPT_DRIFT,CUSUM Sequential Alarm [DIAGNOSTIC — not evidence],cusum_alarms,172.0,1.0,Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.,2026-08-04T10:29:57.536157

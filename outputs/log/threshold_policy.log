@@ -1,0 +1,41 @@
+2026-08-04 09:40:23 | INFO     | threshold_policy     | ======================================================================
+2026-08-04 09:40:23 | INFO     | threshold_policy     | DriftSentinel - Operating-point policy (Tier 1.3)
+2026-08-04 09:40:23 | INFO     | threshold_policy     | ======================================================================
+2026-08-04 09:40:23 | INFO     | threshold_policy     |   shipped (rate form)      thr=0.1282 PPR=0.9700 degenerate=True
+2026-08-04 09:40:23 | INFO     | threshold_policy     |   corrected (population)   thr=0.1627 PPR=0.9537 degenerate=True
+2026-08-04 09:40:23 | INFO     | threshold_policy     |   Alert-budget constrained operating points (val):
+2026-08-04 09:40:23 | INFO     | threshold_policy     |     PPR<=10%: thr=0.6938 precision=0.7681 recall=0.1191 F1=0.2063 missed=8791
+2026-08-04 09:40:23 | INFO     | threshold_policy     |     PPR<=20%: thr=0.6338 precision=0.7165 recall=0.2704 F1=0.3927 missed=7281
+2026-08-04 09:40:23 | INFO     | threshold_policy     |     PPR<=30%: thr=0.5763 precision=0.6794 recall=0.3860 F1=0.4923 missed=6128
+2026-08-04 09:40:23 | INFO     | threshold_policy     |   Cost-ratio sweep: feasible [1] | degenerate [2, 3, 5, 10, 20, 50, 100]
+2026-08-04 09:40:23 | INFO     | threshold_policy     |   DCA: model beats both defaults over [0.02, 0.8]
+2026-08-04 09:40:24 | INFO     | threshold_policy     |   Report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\reports\threshold_policy_lgbm_v1.json
+2026-08-04 09:40:24 | INFO     | threshold_policy     | ======================================================================
+2026-08-04 10:44:07 | INFO     | threshold_policy     | ===== RUN 20260804-104407-62d7b1 | pid=25444 | started 2026-08-04 10:44:07 =====
+2026-08-04 10:44:07 | INFO     | threshold_policy     | ======================================================================
+2026-08-04 10:44:07 | INFO     | threshold_policy     | DriftSentinel - Operating-point policy (Tier 1.3)
+2026-08-04 10:44:07 | INFO     | threshold_policy     | ======================================================================
+2026-08-04 10:44:07 | INFO     | threshold_policy     |   shipped (rate form)      thr=0.0100 PPR=0.9939 degenerate=True
+2026-08-04 10:44:07 | INFO     | threshold_policy     |   corrected (population)   thr=0.1676 PPR=0.1354 degenerate=False
+2026-08-04 10:44:07 | INFO     | threshold_policy     |   Alert-budget constrained operating points (val):
+2026-08-04 10:44:07 | INFO     | threshold_policy     |     PPR<=10%: thr=0.1811 precision=0.2630 recall=0.1396 F1=0.1824 missed=1904
+2026-08-04 10:44:07 | INFO     | threshold_policy     |     PPR<=20%: thr=0.1686 precision=0.2136 recall=0.2738 F1=0.2400 missed=1607
+2026-08-04 10:44:07 | INFO     | threshold_policy     |     PPR<=30%: thr=0.1686 precision=0.2136 recall=0.2738 F1=0.2400 missed=1607
+2026-08-04 10:44:07 | INFO     | threshold_policy     |   Cost-ratio sweep: feasible [1, 2, 3, 5, 10] | degenerate [20, 50, 100]
+2026-08-04 10:44:07 | INFO     | threshold_policy     |   DCA: model beats both defaults over [0.02, 0.8]
+2026-08-04 10:44:07 | INFO     | threshold_policy     |   Report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\reports\threshold_policy_lgbm_v1.json
+2026-08-04 10:44:07 | INFO     | threshold_policy     | ======================================================================
+2026-08-04 11:04:19 | INFO     | threshold_policy     | ===== RUN 20260804-110419-13f536 | pid=31400 | started 2026-08-04 11:04:19 =====
+2026-08-04 11:04:19 | INFO     | threshold_policy     | ======================================================================
+2026-08-04 11:04:19 | INFO     | threshold_policy     | DriftSentinel - Operating-point policy (Tier 1.3)
+2026-08-04 11:04:19 | INFO     | threshold_policy     | ======================================================================
+2026-08-04 11:04:19 | INFO     | threshold_policy     |   shipped (rate form)      thr=0.0100 PPR=0.9939 degenerate=True
+2026-08-04 11:04:19 | INFO     | threshold_policy     |   corrected (population)   thr=0.1676 PPR=0.1354 degenerate=False
+2026-08-04 11:04:19 | INFO     | threshold_policy     |   Alert-budget constrained operating points (val):
+2026-08-04 11:04:19 | INFO     | threshold_policy     |     PPR<=10%: thr=0.1811 precision=0.2630 recall=0.1396 F1=0.1824 missed=1904
+2026-08-04 11:04:19 | INFO     | threshold_policy     |     PPR<=20%: thr=0.1686 precision=0.2136 recall=0.2738 F1=0.2400 missed=1607
+2026-08-04 11:04:19 | INFO     | threshold_policy     |     PPR<=30%: thr=0.1686 precision=0.2136 recall=0.2738 F1=0.2400 missed=1607
+2026-08-04 11:04:19 | INFO     | threshold_policy     |   Cost-ratio sweep: feasible [1, 2, 3, 5, 10] | degenerate [20, 50, 100]
+2026-08-04 11:04:19 | INFO     | threshold_policy     |   DCA: model beats both defaults over [0.02, 0.8]
+2026-08-04 11:04:20 | INFO     | threshold_policy     |   Report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\reports\threshold_policy_lgbm_v1.json
+2026-08-04 11:04:20 | INFO     | threshold_policy     | ======================================================================

@@ -50,3 +50,162 @@ Step 5: Generating robustness dashboard
 2026-05-12 16:10:53 | INFO     | robustness           |   Tier          : ROBUST
 2026-05-12 16:10:53 | INFO     | robustness           |   Next: defense.py
 2026-05-12 16:10:53 | INFO     | robustness           | ======================================================================
+2026-08-04 10:46:33 | INFO     | robustness           | ===== RUN 20260804-104632-ea6381 | pid=344 | started 2026-08-04 10:46:33 =====
+2026-08-04 10:46:33 | INFO     | robustness           | ======================================================================
+2026-08-04 10:46:33 | INFO     | robustness           | DriftSentinel — Robustness Evaluator
+2026-08-04 10:46:33 | INFO     | robustness           | ======================================================================
+2026-08-04 10:46:33 | INFO     | robustness           | 
+Step 1: Loading attack results
+2026-08-04 10:46:33 | INFO     | robustness           |   Loaded 6 attack results
+2026-08-04 10:46:33 | INFO     | robustness           | 
+Step 2: Computing robustness score
+2026-08-04 10:46:33 | INFO     | robustness           |   ASR robustness    : 0.8254
+2026-08-04 10:46:33 | INFO     | robustness           |   AUC robustness    : 0.7663
+2026-08-04 10:46:33 | INFO     | robustness           |   Proba robustness  : 0.9273
+2026-08-04 10:46:33 | INFO     | robustness           |   Overall score     : 0.8222
+2026-08-04 10:46:33 | INFO     | robustness           |   Tier              : ROBUST
+2026-08-04 10:46:33 | INFO     | robustness           | 
+Step 3: Epsilon sensitivity analysis
+2026-08-04 10:46:33 | INFO     | robustness           |   ε=0.01  ASR=0.0679  ΔAUC=-0.0405  ΔF1=-0.0255
+2026-08-04 10:46:33 | INFO     | robustness           |   ε=0.05  ASR=0.0951  ΔAUC=-0.0386  ΔF1=-0.0191
+2026-08-04 10:46:33 | INFO     | robustness           |   ε=0.10  ASR=0.1359  ΔAUC=-0.0537  ΔF1=-0.0255
+2026-08-04 10:46:33 | INFO     | robustness           |   ε=0.20  ASR=0.1793  ΔAUC=-0.0742  ΔF1=-0.0301
+2026-08-04 10:46:33 | INFO     | robustness           |   ε=0.30  ASR=0.2554  ΔAUC=-0.0855  ΔF1=-0.0402
+2026-08-04 10:46:33 | INFO     | robustness           |   ε=0.50  ASR=0.3560  ΔAUC=-0.0995  ΔF1=-0.0560
+2026-08-04 10:46:33 | INFO     | robustness           | 
+Step 4: Feature sensitivity analysis
+2026-08-04 10:46:33 | INFO     | robustness           | 
+  Top 15 sensitive features:
+2026-08-04 10:46:33 | INFO     | robustness           |   Feature                                        FlipRate   Δproba   Δerror
+2026-08-04 10:46:33 | INFO     | robustness           |   -------------------------------------------------------------------------
+2026-08-04 10:46:33 | INFO     | robustness           |   discharge_disposition_id                         0.3233  +0.0301  +0.0279
+2026-08-04 10:46:33 | INFO     | robustness           |   FE_has_prior_inpatient                           0.0907  +0.0202  +0.0180
+2026-08-04 10:46:33 | INFO     | robustness           |   FE_high_prior_utilization                        0.0580  +0.0134  +0.0121
+2026-08-04 10:46:33 | INFO     | robustness           |   FE_labs_per_day                                  0.0400  -0.0052  -0.0036
+2026-08-04 10:46:33 | INFO     | robustness           |   FE_labs_per_day_x_comorbidity                    0.0390  +0.0055  +0.0057
+2026-08-04 10:46:33 | INFO     | robustness           |   age                                              0.0353  +0.0029  +0.0024
+2026-08-04 10:46:33 | INFO     | robustness           |   FE_lab_to_procedure_ratio                        0.0350  +0.0027  +0.0025
+2026-08-04 10:46:33 | INFO     | robustness           |   FE_total_clinical_contacts                       0.0317  -0.0011  -0.0007
+2026-08-04 10:46:33 | INFO     | robustness           |   diag_3                                           0.0303  +0.0014  +0.0013
+2026-08-04 10:46:33 | INFO     | robustness           |   FE_meds_per_day                                  0.0293  -0.0013  -0.0008
+2026-08-04 10:46:33 | INFO     | robustness           |   admission_source_id                              0.0250  -0.0046  -0.0033
+2026-08-04 10:46:33 | INFO     | robustness           |   diag_1                                           0.0243  -0.0032  -0.0021
+2026-08-04 10:46:33 | INFO     | robustness           |   diag_2                                           0.0243  +0.0004  +0.0004
+2026-08-04 10:46:33 | INFO     | robustness           |   FE_diag_med_ratio                                0.0240  +0.0002  +0.0004
+2026-08-04 10:46:33 | INFO     | robustness           |   FE_glycemic_x_emergency                          0.0227  +0.0027  +0.0034
+2026-08-04 10:46:33 | INFO     | robustness           | 
+Step 5: Generating robustness dashboard
+2026-08-04 10:47:30 | INFO     | robustness           |   Saved: 30_robustness_dashboard_lgbm_v1.png
+2026-08-04 10:47:30 | INFO     | robustness           |   Robustness report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\robustness_report_lgbm_v1.json
+2026-08-04 10:47:30 | INFO     | robustness           | ======================================================================
+2026-08-04 10:47:30 | INFO     | robustness           | Robustness Evaluation Complete
+2026-08-04 10:47:30 | INFO     | robustness           |   Overall score : 0.8222
+2026-08-04 10:47:30 | INFO     | robustness           |   Tier          : ROBUST
+2026-08-04 10:47:30 | INFO     | robustness           |   Next: defense.py
+2026-08-04 10:47:30 | INFO     | robustness           | ======================================================================
+2026-08-04 11:06:31 | INFO     | robustness           | ===== RUN 20260804-110630-c045f6 | pid=32016 | started 2026-08-04 11:06:31 =====
+2026-08-04 11:06:31 | INFO     | robustness           | ======================================================================
+2026-08-04 11:06:31 | INFO     | robustness           | DriftSentinel — Robustness Evaluator
+2026-08-04 11:06:31 | INFO     | robustness           | ======================================================================
+2026-08-04 11:06:31 | INFO     | robustness           | 
+Step 1: Loading attack results
+2026-08-04 11:06:31 | INFO     | robustness           |   Loaded 6 attack results
+2026-08-04 11:06:31 | INFO     | robustness           | 
+Step 2: Computing robustness score
+2026-08-04 11:06:31 | INFO     | robustness           |   ASR robustness    : 0.8254
+2026-08-04 11:06:31 | INFO     | robustness           |   AUC robustness    : 0.7668
+2026-08-04 11:06:31 | INFO     | robustness           |   Proba robustness  : 0.9273
+2026-08-04 11:06:31 | INFO     | robustness           |   Overall score     : 0.8224
+2026-08-04 11:06:31 | INFO     | robustness           |   Tier              : ROBUST
+2026-08-04 11:06:31 | INFO     | robustness           | 
+Step 3: Epsilon sensitivity analysis
+2026-08-04 11:06:31 | INFO     | robustness           |   ε=0.01  ASR=0.0679  ΔAUC=-0.0405  ΔF1=-0.0255
+2026-08-04 11:06:31 | INFO     | robustness           |   ε=0.05  ASR=0.0951  ΔAUC=-0.0386  ΔF1=-0.0191
+2026-08-04 11:06:31 | INFO     | robustness           |   ε=0.10  ASR=0.1359  ΔAUC=-0.0537  ΔF1=-0.0255
+2026-08-04 11:06:31 | INFO     | robustness           |   ε=0.20  ASR=0.1793  ΔAUC=-0.0742  ΔF1=-0.0301
+2026-08-04 11:06:31 | INFO     | robustness           |   ε=0.30  ASR=0.2554  ΔAUC=-0.0855  ΔF1=-0.0402
+2026-08-04 11:06:31 | INFO     | robustness           |   ε=0.50  ASR=0.3560  ΔAUC=-0.0995  ΔF1=-0.0560
+2026-08-04 11:06:31 | INFO     | robustness           | 
+Step 4: Feature sensitivity analysis
+2026-08-04 11:06:32 | INFO     | robustness           | 
+  Top 15 sensitive features:
+2026-08-04 11:06:32 | INFO     | robustness           |   Feature                                        FlipRate   Δproba   Δerror
+2026-08-04 11:06:32 | INFO     | robustness           |   -------------------------------------------------------------------------
+2026-08-04 11:06:32 | INFO     | robustness           |   discharge_disposition_id                         0.3233  +0.0301  +0.0279
+2026-08-04 11:06:32 | INFO     | robustness           |   FE_has_prior_inpatient                           0.0907  +0.0202  +0.0180
+2026-08-04 11:06:32 | INFO     | robustness           |   FE_high_prior_utilization                        0.0580  +0.0134  +0.0121
+2026-08-04 11:06:32 | INFO     | robustness           |   FE_labs_per_day                                  0.0400  -0.0052  -0.0036
+2026-08-04 11:06:32 | INFO     | robustness           |   FE_labs_per_day_x_comorbidity                    0.0390  +0.0055  +0.0057
+2026-08-04 11:06:32 | INFO     | robustness           |   age                                              0.0353  +0.0029  +0.0024
+2026-08-04 11:06:32 | INFO     | robustness           |   FE_lab_to_procedure_ratio                        0.0350  +0.0027  +0.0025
+2026-08-04 11:06:32 | INFO     | robustness           |   FE_total_clinical_contacts                       0.0317  -0.0011  -0.0007
+2026-08-04 11:06:32 | INFO     | robustness           |   diag_3                                           0.0303  +0.0014  +0.0013
+2026-08-04 11:06:32 | INFO     | robustness           |   FE_meds_per_day                                  0.0293  -0.0013  -0.0008
+2026-08-04 11:06:32 | INFO     | robustness           |   admission_source_id                              0.0250  -0.0046  -0.0033
+2026-08-04 11:06:32 | INFO     | robustness           |   diag_1                                           0.0243  -0.0032  -0.0021
+2026-08-04 11:06:32 | INFO     | robustness           |   diag_2                                           0.0243  +0.0004  +0.0004
+2026-08-04 11:06:32 | INFO     | robustness           |   FE_diag_med_ratio                                0.0240  +0.0002  +0.0004
+2026-08-04 11:06:32 | INFO     | robustness           |   FE_glycemic_x_emergency                          0.0227  +0.0027  +0.0034
+2026-08-04 11:06:32 | INFO     | robustness           | 
+Step 5: Generating robustness dashboard
+2026-08-04 11:06:38 | INFO     | robustness           |   Saved: 30_robustness_dashboard_lgbm_v1.png
+2026-08-04 11:06:38 | INFO     | robustness           |   Robustness report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\robustness_report_lgbm_v1.json
+2026-08-04 11:06:38 | INFO     | robustness           | ======================================================================
+2026-08-04 11:06:38 | INFO     | robustness           | Robustness Evaluation Complete
+2026-08-04 11:06:38 | INFO     | robustness           |   Overall score : 0.8224
+2026-08-04 11:06:38 | INFO     | robustness           |   Tier          : ROBUST
+2026-08-04 11:06:38 | INFO     | robustness           |   Next: defense.py
+2026-08-04 11:06:38 | INFO     | robustness           | ======================================================================
+2026-08-04 11:08:27 | INFO     | robustness           | ===== RUN 20260804-110826-642520 | pid=22756 | started 2026-08-04 11:08:27 =====
+2026-08-04 11:08:27 | INFO     | robustness           | ======================================================================
+2026-08-04 11:08:27 | INFO     | robustness           | DriftSentinel — Robustness Evaluator
+2026-08-04 11:08:27 | INFO     | robustness           | ======================================================================
+2026-08-04 11:08:27 | INFO     | robustness           | 
+Step 1: Loading attack results
+2026-08-04 11:08:27 | INFO     | robustness           |   Loaded 6 attack results
+2026-08-04 11:08:27 | INFO     | robustness           | 
+Step 2: Computing robustness score
+2026-08-04 11:08:27 | INFO     | robustness           |   ASR robustness    : 0.8254
+2026-08-04 11:08:27 | INFO     | robustness           |   AUC robustness    : 0.7668
+2026-08-04 11:08:27 | INFO     | robustness           |   Proba robustness  : 0.9273
+2026-08-04 11:08:27 | INFO     | robustness           |   Overall score     : 0.8224
+2026-08-04 11:08:27 | INFO     | robustness           |   Tier              : ROBUST
+2026-08-04 11:08:27 | INFO     | robustness           | 
+Step 3: Epsilon sensitivity analysis
+2026-08-04 11:08:27 | INFO     | robustness           |   ε=0.01  ASR=0.0679  ΔAUC=-0.0405  ΔF1=-0.0255
+2026-08-04 11:08:27 | INFO     | robustness           |   ε=0.05  ASR=0.0951  ΔAUC=-0.0386  ΔF1=-0.0191
+2026-08-04 11:08:27 | INFO     | robustness           |   ε=0.10  ASR=0.1359  ΔAUC=-0.0537  ΔF1=-0.0255
+2026-08-04 11:08:27 | INFO     | robustness           |   ε=0.20  ASR=0.1793  ΔAUC=-0.0742  ΔF1=-0.0301
+2026-08-04 11:08:27 | INFO     | robustness           |   ε=0.30  ASR=0.2554  ΔAUC=-0.0855  ΔF1=-0.0402
+2026-08-04 11:08:27 | INFO     | robustness           |   ε=0.50  ASR=0.3560  ΔAUC=-0.0995  ΔF1=-0.0560
+2026-08-04 11:08:27 | INFO     | robustness           | 
+Step 4: Feature sensitivity analysis
+2026-08-04 11:08:27 | INFO     | robustness           | 
+  Top 15 sensitive features:
+2026-08-04 11:08:27 | INFO     | robustness           |   Feature                                        FlipRate   Δproba   Δerror
+2026-08-04 11:08:27 | INFO     | robustness           |   -------------------------------------------------------------------------
+2026-08-04 11:08:27 | INFO     | robustness           |   discharge_disposition_id                         0.3233  +0.0301  +0.0279
+2026-08-04 11:08:27 | INFO     | robustness           |   FE_has_prior_inpatient                           0.0907  +0.0202  +0.0180
+2026-08-04 11:08:27 | INFO     | robustness           |   FE_high_prior_utilization                        0.0580  +0.0134  +0.0121
+2026-08-04 11:08:27 | INFO     | robustness           |   FE_labs_per_day                                  0.0400  -0.0052  -0.0036
+2026-08-04 11:08:27 | INFO     | robustness           |   FE_labs_per_day_x_comorbidity                    0.0390  +0.0055  +0.0057
+2026-08-04 11:08:27 | INFO     | robustness           |   age                                              0.0353  +0.0029  +0.0024
+2026-08-04 11:08:27 | INFO     | robustness           |   FE_lab_to_procedure_ratio                        0.0350  +0.0027  +0.0025
+2026-08-04 11:08:27 | INFO     | robustness           |   FE_total_clinical_contacts                       0.0317  -0.0011  -0.0007
+2026-08-04 11:08:27 | INFO     | robustness           |   diag_3                                           0.0303  +0.0014  +0.0013
+2026-08-04 11:08:27 | INFO     | robustness           |   FE_meds_per_day                                  0.0293  -0.0013  -0.0008
+2026-08-04 11:08:27 | INFO     | robustness           |   admission_source_id                              0.0250  -0.0046  -0.0033
+2026-08-04 11:08:27 | INFO     | robustness           |   diag_1                                           0.0243  -0.0032  -0.0021
+2026-08-04 11:08:27 | INFO     | robustness           |   diag_2                                           0.0243  +0.0004  +0.0004
+2026-08-04 11:08:27 | INFO     | robustness           |   FE_diag_med_ratio                                0.0240  +0.0002  +0.0004
+2026-08-04 11:08:27 | INFO     | robustness           |   FE_glycemic_x_emergency                          0.0227  +0.0027  +0.0034
+2026-08-04 11:08:27 | INFO     | robustness           | 
+Step 5: Generating robustness dashboard
+2026-08-04 11:08:28 | INFO     | robustness           |   Saved: 30_robustness_dashboard_lgbm_v1.png
+2026-08-04 11:08:28 | INFO     | robustness           |   Robustness report: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\robustness_report_lgbm_v1.json
+2026-08-04 11:08:28 | INFO     | robustness           | ======================================================================
+2026-08-04 11:08:28 | INFO     | robustness           | Robustness Evaluation Complete
+2026-08-04 11:08:28 | INFO     | robustness           |   Overall score : 0.8224
+2026-08-04 11:08:28 | INFO     | robustness           |   Tier          : ROBUST
+2026-08-04 11:08:28 | INFO     | robustness           |   Next: defense.py
+2026-08-04 11:08:28 | INFO     | robustness           | ======================================================================

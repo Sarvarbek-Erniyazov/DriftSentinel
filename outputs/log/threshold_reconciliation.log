@@ -1,0 +1,45 @@
+2026-08-04 19:52:33 | INFO     | threshold_reconciliation | ===== RUN 20260804-195233-deb0e3 | pid=32036 | started 2026-08-04 19:52:33 =====
+2026-08-04 19:52:33 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 19:52:33 | INFO     | threshold_reconciliation | DriftSentinel — Tier 2C.6  threshold reconciliation
+2026-08-04 19:52:33 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 19:52:33 | INFO     | threshold_reconciliation |   control          : PASS (0/9 moved)
+2026-08-04 19:52:33 | INFO     | threshold_reconciliation |   values moved     : 12
+2026-08-04 19:52:33 | INFO     | threshold_reconciliation |   claim reversals  : 0
+2026-08-04 19:52:33 | INFO     | threshold_reconciliation | Report: threshold_reconciliation.json  |  docs/10_threshold_reconciliation.md
+2026-08-04 19:52:33 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 19:59:11 | INFO     | threshold_reconciliation | ===== RUN 20260804-195911-e9c0fe | pid=20572 | started 2026-08-04 19:59:11 =====
+2026-08-04 19:59:11 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 19:59:11 | INFO     | threshold_reconciliation | DriftSentinel — Tier 2C.6  threshold reconciliation
+2026-08-04 19:59:11 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 19:59:11 | INFO     | threshold_reconciliation |   control          : PASS (0/9 moved)
+2026-08-04 19:59:11 | INFO     | threshold_reconciliation |   values moved     : 12
+2026-08-04 19:59:11 | INFO     | threshold_reconciliation |   claim reversals  : 0
+2026-08-04 19:59:11 | INFO     | threshold_reconciliation | Report: threshold_reconciliation.json  |  docs/10_threshold_reconciliation.md
+2026-08-04 19:59:11 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 20:00:31 | INFO     | threshold_reconciliation | ===== RUN 20260804-200031-ee8e55 | pid=18836 | started 2026-08-04 20:00:31 =====
+2026-08-04 20:00:31 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 20:00:31 | INFO     | threshold_reconciliation | DriftSentinel — Tier 2C.6  threshold reconciliation
+2026-08-04 20:00:31 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 20:00:31 | INFO     | threshold_reconciliation |   control          : PASS (0/9 moved)
+2026-08-04 20:00:31 | INFO     | threshold_reconciliation |   values moved     : 12
+2026-08-04 20:00:31 | INFO     | threshold_reconciliation |   claim reversals  : 0
+2026-08-04 20:00:31 | INFO     | threshold_reconciliation | Report: threshold_reconciliation.json  |  docs/10_threshold_reconciliation.md
+2026-08-04 20:00:31 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 20:01:08 | INFO     | threshold_reconciliation | ===== RUN 20260804-200108-8f4e85 | pid=22948 | started 2026-08-04 20:01:08 =====
+2026-08-04 20:01:08 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 20:01:08 | INFO     | threshold_reconciliation | DriftSentinel — Tier 2C.6  threshold reconciliation
+2026-08-04 20:01:08 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 20:01:08 | INFO     | threshold_reconciliation |   control          : PASS (0/9 moved)
+2026-08-04 20:01:08 | INFO     | threshold_reconciliation |   values moved     : 12
+2026-08-04 20:01:08 | INFO     | threshold_reconciliation |   claim reversals  : 0
+2026-08-04 20:01:08 | INFO     | threshold_reconciliation | Report: threshold_reconciliation.json  |  docs/10_threshold_reconciliation.md
+2026-08-04 20:01:08 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 20:02:37 | INFO     | threshold_reconciliation | ===== RUN 20260804-200237-c8a426 | pid=26532 | started 2026-08-04 20:02:37 =====
+2026-08-04 20:02:37 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 20:02:37 | INFO     | threshold_reconciliation | DriftSentinel — Tier 2C.6  threshold reconciliation
+2026-08-04 20:02:37 | INFO     | threshold_reconciliation | ==============================================================================
+2026-08-04 20:02:37 | INFO     | threshold_reconciliation |   control          : PASS (0/9 moved)
+2026-08-04 20:02:37 | INFO     | threshold_reconciliation |   values moved     : 12
+2026-08-04 20:02:37 | INFO     | threshold_reconciliation |   claim reversals  : 0
+2026-08-04 20:02:37 | INFO     | threshold_reconciliation | Report: threshold_reconciliation.json  |  docs/10_threshold_reconciliation.md
+2026-08-04 20:02:37 | INFO     | threshold_reconciliation | ==============================================================================

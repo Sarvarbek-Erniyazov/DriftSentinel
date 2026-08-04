@@ -1,0 +1,52 @@
+2026-08-04 21:13:26 | INFO     | verify_readme_claims | ===== RUN 20260804-211326-c5f4e9 | pid=25884 | started 2026-08-04 21:13:26 =====
+2026-08-04 21:13:26 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:13:26 | INFO     | verify_readme_claims | DriftSentinel — README numeric-claim traceability
+2026-08-04 21:13:26 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:13:27 | INFO     | verify_readme_claims |   corpus: 46 generated artifacts
+2026-08-04 21:13:27 | INFO     | verify_readme_claims |   numbers: 270  traced 226  exempt 24  untraced 20
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.6255       line 50: | **Model** | LightGBM, 53 features, 126 trees, isotonic-calibrated · test AUC **0.6410** [0.6255, 0.6556] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.6556       line 50: | **Model** | LightGBM, 53 features, 126 trees, isotonic-calibrated · test AUC **0.6410** [0.6255, 0.6556] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 17.9         line 95: gap **17.9 days** for `<30` against **173.5** for `>30`.
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 46.2         line 180: (2,000 draws, resampling *patients*), because 46.2% of patients contribute more
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.8125       line 203: | AUC | 0.8125 | 0.6646 | **0.6410** | [0.6255, 0.6556] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.6646       line 203: | AUC | 0.8125 | 0.6646 | **0.6410** | [0.6255, 0.6556] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.1741       line 205: | Recall | 0.4679 | 0.2616 | **0.1958** | [0.1741, 0.2170] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.4521       line 206: | F1 | 0.4521 | 0.2368 | **0.1965** | [0.1756, 0.2161] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.1756       line 206: | F1 | 0.4521 | 0.2368 | **0.1965** | [0.1756, 0.2161] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.1284       line 209: | Predicted-positive rate | 0.1284 | 0.1278 | **0.0876** | [0.0827, 0.0923] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.0827       line 209: | Predicted-positive rate | 0.1284 | 0.1278 | **0.0876** | [0.0827, 0.0923] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.0834       line 210: | Prevalence | 0.1200 | 0.1056 | **0.0881** | [0.0834, 0.0928] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.6843       line 245: | Simple in-fold target-aware selector | 0.6801 [0.6759, 0.6843] | **+0.0048** [+0.0040, +0.0057] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.6753       line 246: | Stages 1–2 only | 0.6753 [0.6713, 0.6791] | 0.0000 [0, 0] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.6713       line 246: | Stages 1–2 only | 0.6753 [0.6713, 0.6791] | 0.0000 [0, 0] |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.5067       line 363: | **Random (negative control)** | 0.5067 | 0.095 | 0.000183 | 0.184 | no | **silent** |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.6932       line 364: | Entry-cohort | **0.6932** | 0.048 | 0.002422 | 0.005 | yes | ✓ |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.002422     line 364: | Entry-cohort | **0.6932** | 0.048 | 0.002422 | 0.005 | yes | ✓ |
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 0.8954       line 450: method that did not execute — not evidence of robustness. The score of 0.8954 is
+2026-08-04 21:13:27 | ERROR    | verify_readme_claims |     UNTRACED 93.6         line 488: - **L1's 93.6% clean-trigger rate was structural, not a tuning error.** 20 of 53
+2026-08-04 21:13:27 | INFO     | verify_readme_claims | VERDICT: UNTRACED CLAIMS  |  Report: readme_traceability.json
+2026-08-04 21:13:27 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:14:01 | INFO     | verify_readme_claims | ===== RUN 20260804-211401-791815 | pid=29900 | started 2026-08-04 21:14:01 =====
+2026-08-04 21:14:01 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:14:01 | INFO     | verify_readme_claims | DriftSentinel — README numeric-claim traceability
+2026-08-04 21:14:01 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:14:01 | INFO     | verify_readme_claims |   corpus: 47 generated artifacts, 19,412 numeric values
+2026-08-04 21:14:01 | INFO     | verify_readme_claims |   numbers: 270  traced 246  exempt 24  untraced 0
+2026-08-04 21:14:01 | INFO     | verify_readme_claims | VERDICT: PASS  |  Report: readme_traceability.json
+2026-08-04 21:14:01 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:14:54 | INFO     | verify_readme_claims | ===== RUN 20260804-211454-b7aec4 | pid=5584 | started 2026-08-04 21:14:54 =====
+2026-08-04 21:14:54 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:14:54 | INFO     | verify_readme_claims | DriftSentinel — README numeric-claim traceability
+2026-08-04 21:14:54 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:14:54 | INFO     | verify_readme_claims |   corpus: 47 generated artifacts, 19,266 numeric values
+2026-08-04 21:14:54 | INFO     | verify_readme_claims |   numbers: 270  traced 246  exempt 24  untraced 0
+2026-08-04 21:14:54 | INFO     | verify_readme_claims | VERDICT: PASS  |  Report: readme_traceability.json
+2026-08-04 21:14:54 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:16:52 | INFO     | verify_readme_claims | ===== RUN 20260804-211652-959752 | pid=28800 | started 2026-08-04 21:16:52 =====
+2026-08-04 21:16:52 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:16:52 | INFO     | verify_readme_claims | DriftSentinel — README numeric-claim traceability
+2026-08-04 21:16:52 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:16:52 | INFO     | verify_readme_claims |   corpus: 47 generated artifacts, 19,266 numeric values
+2026-08-04 21:16:52 | INFO     | verify_readme_claims |   numbers: 270  traced 246  exempt 24  untraced 0
+2026-08-04 21:16:52 | INFO     | verify_readme_claims | VERDICT: PASS  |  Report: readme_traceability.json
+2026-08-04 21:16:52 | INFO     | verify_readme_claims | ==============================================================================

@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-08-04T10:30:04.075979",
+  "model_name": "concept_shift_0.5_s1",
+  "ref_name": "concept_shift_0.5_s1_val",
+  "prod_name": "concept_shift_0.5_s1_test",
+  "system_status": "STABLE",
+  "recommendation": "No significant drift. Continue normal monitoring.",
+  "alert_counts": {
+    "MEDIUM": 3,
+    "LOW": 1
+  },
+  "total_alerts": 4,
+  "alerts": [
+    {
+      "alert_id": "CD-001",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "MEDIUM",
+      "title": "Model AUC Degradation Detected",
+      "description": "Model AUC dropped from 0.6787 (reference) to 0.6540 (production). Degradation: 0.0247.",
+      "metric": "auc_degradation",
+      "value": 0.0247,
+      "threshold": 0.03,
+      "features": [],
+      "action": "Trigger model retraining on recent data. Investigate feature drift in high-impact features.",
+      "timestamp": "2026-08-04T10:30:04.075979"
+    },
+    {
+      "alert_id": "CD-003",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "MEDIUM",
+      "title": "Concept Drift Evidence: 2/6 Voting Signals Fired",
+      "description": "2 of 6 voting signals fired, spanning 1 correlated signal families (performance): auc_drop, auc_slope_negative. These signals are NOT independent. Sequential detectors (CUSUM, Page-Hinkley) are excluded from the count as structurally broken \u2014 see Tier 1.5.",
+      "metric": "n_evidence",
+      "value": 2.0,
+      "threshold": 3.0,
+      "features": [],
+      "action": "Initiate drift investigation protocol. Run feature_drift analysis to identify root cause features.",
+      "timestamp": "2026-08-04T10:30:04.075979"
+    },
+    {
+      "alert_id": "DD-001",
+      "alert_type": "DATA_DRIFT",
+      "level": "MEDIUM",
+      "title": "Data Drift: 4/28 Features Drifted",
+      "description": "14.3% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: admission_source_id, number_inpatient, admission_type_id, race.",
+      "metric": "drift_rate",
+      "value": 0.1429,
+      "threshold": 0.25,
+      "features": [
+        "admission_source_id",
+        "number_inpatient",
+        "admission_type_id",
+        "race"
+      ],
+      "action": "Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.",
+      "timestamp": "2026-08-04T10:30:04.075979"
+    },
+    {
+      "alert_id": "CD-004",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "CUSUM Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "CUSUM detected 165 alarms. First alarm at index 476 (1.17% into stream). Mean error shift: 0.2015 \u2192 0.1891.",
+      "metric": "cusum_alarms",
+      "value": 165.0,
+      "threshold": 1.0,
+      "features": [],
+      "action": "Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.",
+      "timestamp": "2026-08-04T10:30:04.075979"
+    }
+  ],
+  "drift_summary": {
+    "concept_severity": "MILD",
+    "n_evidence": 2,
+    "auc_degradation": 0.0247,
+    "f1_degradation": 0.0281,
+    "n_data_drifted": 4,
+    "n_data_critical": 0,
+    "n_feature_high": null,
+    "label_shift_delta": -0.0087
+  }
+}

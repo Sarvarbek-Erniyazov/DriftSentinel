@@ -201,8 +201,8 @@ def run_pipeline() -> dict:
     }
 
     if not consistency_report["ready"]:
-        logger.warning("STAGE 7 — consistency warnings detected (expected drift in temporal split)")
-        logger.warning(f"  FAIL={consistency_report['failed']} items are expected temporal drift signals")
+        logger.warning("STAGE 7 — consistency warnings detected (expected shift in entry-cohort split)")
+        logger.warning(f"  FAIL={consistency_report['failed']} items are expected entry-cohort shift signals")
         logger.warning(f"  PSI drifted={len(consistency_report.get('drifted_psi',[]))} — drift simulation confirmed")
         logger.warning("  Pipeline proceeds — drift detection modules will address these signals")
     else:
@@ -262,18 +262,41 @@ def run_pipeline() -> dict:
     total_time = time.perf_counter() - pipeline_start
     summary["total_time_s"] = round(total_time, 2)
     
-    # Update pipeline_ready status and drift signals
-    summary["pipeline_ready"] = True
+    # ── Pipeline readiness gate (Phase 1.0 — audit F2) ────────────────────
+    # This was `summary["pipeline_ready"] = True`, written unconditionally over
+    # a check reporting 12 FAILs. It is now an EVALUATED expression that names
+    # every failure and separates distribution-shift observations (this
+    # project's subject matter) from integrity violations (which still block).
+    from src.features.consistency import evaluate_gate
+
+    gate = evaluate_gate(consistency_report, drift_expected=True)
+    summary["pipeline_ready"] = gate["ready"]
+    summary["readiness_gate"] = gate
+
+    logger.info("-" * 50)
+    logger.info("Pipeline readiness gate")
+    logger.info(f"  Rule                : {gate['rule']}")
+    logger.info(f"  Expected failures   : {gate['n_expected_failures']} "
+                f"{[e['check'] for e in gate['expected_failures']]}")
+    logger.info(f"  Unexpected failures : {gate['n_unexpected_failures']} "
+                f"{[u['check'] for u in gate['unexpected_failures']]}")
+    logger.info(f"  Decision            : ready={gate['ready']}")
+    logger.info(f"  Reason              : {gate['reason']}")
+    if not gate["ready"]:
+        logger.error("PIPELINE NOT READY — unexpected failures present")
+
     summary["drift_signals_detected"] = {
         "psi_critical"     : len(consistency_report.get("drifted_psi", [])),
         "ks_drifted_pairs" : len(consistency_report.get("ks_drifted",  [])),
         "consistency_fails": consistency_report["failed"],
-        "note"             : "Expected temporal drift — DriftSentinel target scenario",
+        "note"             : ("Expected entry-cohort shift — DriftSentinel target "
+                              "scenario. NOT temporal drift: see "
+                              "outputs/reports/temporal_validity.json"),
     }
 
+    from src.monitoring.artifact_io import write_artifact
     summary_path = LOG_DIR / "pipeline_summary.json"
-    with open(summary_path, "w") as f:
-        json.dump(summary, f, indent=2)
+    write_artifact(summary_path, summary, overwrite=True, preserve=True)
 
     logger.info("\n" + "=" * 70)
     logger.info("DriftSentinel — Training Pipeline COMPLETE")

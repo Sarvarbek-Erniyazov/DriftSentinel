@@ -1,0 +1,106 @@
+2026-08-04 20:43:36 | INFO     | reproduce            | ===== RUN 20260804-204336-d9a223 | pid=30852 | started 2026-08-04 20:43:36 =====
+2026-08-04 20:43:36 | INFO     | reproduce            | ==============================================================================
+2026-08-04 20:43:36 | INFO     | reproduce            | DriftSentinel — rebuild the core artifact chain from raw data
+2026-08-04 20:43:36 | INFO     | reproduce            | ==============================================================================
+2026-08-04 20:43:36 | INFO     | reproduce            | Raw input: data/raw/diabetes_hospital/diabetic_data.csv
+2026-08-04 20:43:36 | INFO     | reproduce            | > src/pipelines/pipeline.py
+2026-08-04 20:43:36 | INFO     | reproduce            |     produces: splits, label encoders, FE stats, fitted selector, *_fs.parquet, production windows
+2026-08-04 20:45:48 | INFO     | reproduce            |   OK    src/pipelines/pipeline.py  (131.94s)
+2026-08-04 20:45:48 | INFO     | reproduce            | > src/models/trainer.py
+2026-08-04 20:45:48 | INFO     | reproduce            |     produces: lgbm_v1.pkl, logreg_v1.pkl, logreg_scaler.pkl, training_summary.json
+2026-08-04 20:46:57 | INFO     | reproduce            |   OK    src/models/trainer.py  (68.51s)
+2026-08-04 20:46:57 | INFO     | reproduce            | > src/models/evaluator.py
+2026-08-04 20:46:57 | INFO     | reproduce            |     produces: evaluation_report.json and the operating-point figures
+2026-08-04 20:47:02 | INFO     | reproduce            |   FAIL  src/models/evaluator.py  (5.55s)
+2026-08-04 20:47:02 | ERROR    | reproduce            |             | ------------------------------------------------------------
+2026-08-04 20:47:01 | INFO     | evaluator            | AUC degradation  : -0.0186
+2026-08-04 20:47:01 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 20:47:01 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+C:\Users\sharg\Desktop\github\DriftSentinel\src\models\evaluator.py:303: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator. Otherwise, ticks may be mislabeled.
+  axes[1].set_xticklabels([m.upper() for m in metrics])
+2026-08-04 20:47:02 | INFO     | evaluator            |   Saved: 23_degradation_logreg_v1.png
+2026-08-04 20:47:02 | INFO     | evaluator            |   Saved: 24_model_comparison.png
+2026-08-04 20:47:02 | INFO     | evaluator            | Evaluation report saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\evaluation_report.json
+2026-08-04 20:47:02 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:47:02 | INFO     | evaluator            | Evaluation Summary
+2026-08-04 20:47:02 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:47:02 | INFO     | evaluator            | LGBM:
+2026-08-04 20:47:02 | INFO     | evaluator            |   Val  AUC : 0.6617
+2026-08-04 20:47:02 | INFO     | evaluator            |   Test AUC : 0.6415
+2026-08-04 20:47:02 | INFO     | evaluator            |   AUC \u0394    : -0.0202
+2026-08-04 20:47:02 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 20:47:02 | INFO     | evaluator            | LogReg:
+2026-08-04 20:47:02 | INFO     | evaluator            |   Val  AUC : 0.6319
+2026-08-04 20:47:02 | INFO     | evaluator            |   Test AUC : 0.6133
+2026-08-04 20:47:02 | INFO     | evaluator            |   AUC \u0394    : -0.0186
+2026-08-04 20:47:02 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 20:47:02 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:47:02 | INFO     | evaluator            | Next: src/drift/ — drift detection pipeline
+2026-08-04 20:47:02 | INFO     | evaluator            | ======================================================================
+Traceback (most recent call last):
+  File "C:\Users\sharg\Desktop\github\DriftSentinel\src\models\evaluator.py", line 526, in <module>
+    print(f"\nLGBM  : Val={report['lgbm']['metrics_by_split']['val']['auc']} "
+  File "C:\Users\sharg\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u0394' in position 33: character maps to <undefined>
+
+2026-08-04 20:47:02 | ERROR    | reproduce            | Stopping: a later stage consumes this one's output, so continuing would produce artifacts built on a failure.
+2026-08-04 20:47:02 | INFO     | reproduce            | --------------------------------------------------------------
+2026-08-04 20:47:02 | INFO     | reproduce            | FAIL — 2/6 stages in 206.0s
+2026-08-04 20:47:02 | INFO     | reproduce            | Report: reproduce_run.json
+2026-08-04 20:47:02 | INFO     | reproduce            | ==============================================================================
+2026-08-04 20:47:58 | INFO     | reproduce            | ===== RUN 20260804-204758-3fd90b | pid=14556 | started 2026-08-04 20:47:58 =====
+2026-08-04 20:47:58 | INFO     | reproduce            | ==============================================================================
+2026-08-04 20:47:58 | INFO     | reproduce            | DriftSentinel — rebuild the core artifact chain from raw data
+2026-08-04 20:47:58 | INFO     | reproduce            | ==============================================================================
+2026-08-04 20:47:58 | INFO     | reproduce            | Raw input: data/raw/diabetes_hospital/diabetic_data.csv
+2026-08-04 20:47:58 | INFO     | reproduce            | > src/pipelines/pipeline.py
+2026-08-04 20:47:58 | INFO     | reproduce            |     produces: splits, label encoders, FE stats, fitted selector, *_fs.parquet, production windows
+2026-08-04 20:50:11 | INFO     | reproduce            |   OK    src/pipelines/pipeline.py  (132.55s)
+2026-08-04 20:50:11 | INFO     | reproduce            | > src/models/trainer.py
+2026-08-04 20:50:11 | INFO     | reproduce            |     produces: lgbm_v1.pkl, logreg_v1.pkl, logreg_scaler.pkl, training_summary.json
+2026-08-04 20:51:19 | INFO     | reproduce            |   OK    src/models/trainer.py  (68.01s)
+2026-08-04 20:51:19 | INFO     | reproduce            | > src/models/evaluator.py
+2026-08-04 20:51:19 | INFO     | reproduce            |     produces: evaluation_report.json and the operating-point figures
+2026-08-04 20:51:25 | INFO     | reproduce            |   OK    src/models/evaluator.py  (5.65s)
+2026-08-04 20:51:25 | INFO     | reproduce            | > src/uncertainty/calibration.py
+2026-08-04 20:51:25 | INFO     | reproduce            |     produces: isotonic and temperature calibrators, calibration report
+2026-08-04 20:51:27 | INFO     | reproduce            |   OK    src/uncertainty/calibration.py  (2.18s)
+2026-08-04 20:51:27 | INFO     | reproduce            | > src/uncertainty/quantifier.py
+2026-08-04 20:51:27 | INFO     | reproduce            |     produces: conformal predictor and coverage report
+2026-08-04 20:51:30 | INFO     | reproduce            |   OK    src/uncertainty/quantifier.py  (2.77s)
+2026-08-04 20:51:30 | INFO     | reproduce            | > src/models/registry.py
+2026-08-04 20:51:30 | INFO     | reproduce            |     produces: model_registry.json, registry_history.csv, lgbm_v2.pkl, model_comparison.json
+2026-08-04 20:52:07 | INFO     | reproduce            |   OK    src/models/registry.py  (37.29s)
+2026-08-04 20:52:07 | INFO     | reproduce            | --------------------------------------------------------------
+2026-08-04 20:52:07 | INFO     | reproduce            | PASS — 6/6 stages in 248.45s
+2026-08-04 20:52:07 | INFO     | reproduce            | Report: reproduce_run.json
+2026-08-04 20:52:07 | INFO     | reproduce            | ==============================================================================
+2026-08-04 21:08:40 | INFO     | reproduce            | ===== RUN 20260804-210840-43d781 | pid=7564 | started 2026-08-04 21:08:40 =====
+2026-08-04 21:08:40 | INFO     | reproduce            | ==============================================================================
+2026-08-04 21:08:40 | INFO     | reproduce            | DriftSentinel — rebuild the core artifact chain from raw data
+2026-08-04 21:08:40 | INFO     | reproduce            | ==============================================================================
+2026-08-04 21:08:40 | INFO     | reproduce            | Raw input: data/raw/diabetes_hospital/diabetic_data.csv
+2026-08-04 21:08:40 | INFO     | reproduce            | > src/pipelines/pipeline.py
+2026-08-04 21:08:40 | INFO     | reproduce            |     produces: splits, label encoders, FE stats, fitted selector, *_fs.parquet, production windows
+2026-08-04 21:10:54 | INFO     | reproduce            |   OK    src/pipelines/pipeline.py  (133.8s)
+2026-08-04 21:10:54 | INFO     | reproduce            | > src/models/trainer.py
+2026-08-04 21:10:54 | INFO     | reproduce            |     produces: lgbm_v1.pkl, logreg_v1.pkl, logreg_scaler.pkl, training_summary.json
+2026-08-04 21:12:01 | INFO     | reproduce            |   OK    src/models/trainer.py  (67.06s)
+2026-08-04 21:12:01 | INFO     | reproduce            | > src/models/evaluator.py
+2026-08-04 21:12:01 | INFO     | reproduce            |     produces: evaluation_report.json and the operating-point figures
+2026-08-04 21:12:07 | INFO     | reproduce            |   OK    src/models/evaluator.py  (5.41s)
+2026-08-04 21:12:07 | INFO     | reproduce            | > src/uncertainty/calibration.py
+2026-08-04 21:12:07 | INFO     | reproduce            |     produces: isotonic and temperature calibrators, calibration report
+2026-08-04 21:12:09 | INFO     | reproduce            |   OK    src/uncertainty/calibration.py  (2.13s)
+2026-08-04 21:12:09 | INFO     | reproduce            | > src/uncertainty/quantifier.py
+2026-08-04 21:12:09 | INFO     | reproduce            |     produces: conformal predictor and coverage report
+2026-08-04 21:12:11 | INFO     | reproduce            |   OK    src/uncertainty/quantifier.py  (2.74s)
+2026-08-04 21:12:11 | INFO     | reproduce            | > src/models/registry.py
+2026-08-04 21:12:11 | INFO     | reproduce            |     produces: model_registry.json, registry_history.csv, lgbm_v2.pkl, model_comparison.json
+2026-08-04 21:12:49 | INFO     | reproduce            |   OK    src/models/registry.py  (37.81s)
+2026-08-04 21:12:49 | INFO     | reproduce            | --------------------------------------------------------------
+2026-08-04 21:12:49 | INFO     | reproduce            | PASS — 6/6 stages in 248.95s
+2026-08-04 21:12:49 | INFO     | reproduce            | Report: reproduce_run.json
+2026-08-04 21:12:49 | INFO     | reproduce            | ==============================================================================

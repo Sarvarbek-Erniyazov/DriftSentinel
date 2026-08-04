@@ -81,3 +81,479 @@ History saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\regi
 2026-05-12 10:01:22 | INFO     | registry             |   lgbm_v1         status=superseded   val_auc=0.6865  test_auc=0.656  drift=CRITICAL
 2026-05-12 10:01:22 | INFO     | registry             |   lgbm_v2         status=active       val_auc=0.7987  test_auc=0.6648  drift=unknown
 2026-05-12 10:01:22 | INFO     | registry             | ============================================================
+2026-08-04 10:43:14 | INFO     | registry             | ===== RUN 20260804-104313-86dcdd | pid=27144 | started 2026-08-04 10:43:14 =====
+2026-08-04 10:43:14 | INFO     | registry             | ======================================================================
+2026-08-04 10:43:14 | INFO     | registry             | DriftSentinel — Model Registry Run
+2026-08-04 10:43:14 | INFO     | registry             | ======================================================================
+2026-08-04 10:43:14 | INFO     | registry             | Step 1: Registering lgbm_v1 (initial deployment)
+2026-08-04 10:43:14 | INFO     | registry             | ============================================================
+2026-08-04 10:43:14 | INFO     | registry             | Registering model: lgbm_v1
+2026-08-04 10:43:14 | INFO     | registry             | ============================================================
+2026-08-04 10:43:14 | INFO     | registry             |   Integrity      : fitted on ['train']; held-out metrics present for ['val', 'test']
+2026-08-04 10:43:14 | INFO     | registry             |   Trigger        : manual
+2026-08-04 10:43:14 | INFO     | registry             |   Train AUC      : 0.8137  (in-sample)
+2026-08-04 10:43:14 | INFO     | registry             |   Val   AUC      : 0.6617
+2026-08-04 10:43:14 | INFO     | registry             |   N features     : 53
+2026-08-04 10:43:14 | INFO     | registry             |   Train rows     : 63492
+2026-08-04 10:43:14 | INFO     | registry             |   Status         : registered
+2026-08-04 10:43:14 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 10:43:14 | INFO     | registry             | Updated lgbm_v1: test AUC=0.6415 drift_status=CRITICAL
+2026-08-04 10:43:14 | INFO     | registry             | Promoted: lgbm_v1 → active production model
+2026-08-04 10:43:14 | INFO     | registry             | 
+Step 2: Drift alert triggered — retraining lgbm_v2
+2026-08-04 10:43:14 | INFO     | registry             |   Strategy: retrain on train + val combined (more recent data)
+2026-08-04 10:43:14 | INFO     | registry             |   lgbm_v2 train rows: 84,441  (train=63,492 + val=20,949)
+2026-08-04 10:43:16 | INFO     | registry             |   lgbm_v2 train AUC : 0.8707
+2026-08-04 10:43:16 | INFO     | registry             |   lgbm_v2 test  AUC : 0.6467
+2026-08-04 10:43:16 | INFO     | registry             |   lgbm_v2 saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\lgbm_v2.pkl
+2026-08-04 10:43:16 | INFO     | registry             | ============================================================
+2026-08-04 10:43:16 | INFO     | registry             | Registering model: lgbm_v2
+2026-08-04 10:43:16 | INFO     | registry             | ============================================================
+2026-08-04 10:43:16 | INFO     | registry             |   Integrity      : fitted on ['train', 'val']; held-out metrics present for ['test']
+2026-08-04 10:43:16 | INFO     | registry             |   Trigger        : drift_alert
+2026-08-04 10:43:16 | INFO     | registry             |   Train AUC      : 0.8707  (in-sample)
+2026-08-04 10:43:16 | INFO     | registry             |   Val   AUC      : UNAVAILABLE — fitted on val
+2026-08-04 10:43:16 | INFO     | registry             |   N features     : 53
+2026-08-04 10:43:16 | INFO     | registry             |   Train rows     : 84441
+2026-08-04 10:43:16 | INFO     | registry             |   Status         : registered
+2026-08-04 10:43:16 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 10:43:16 | INFO     | registry             | 
+Step 3: Comparing lgbm_v1 vs lgbm_v2 (test split only)
+2026-08-04 10:43:27 | INFO     | registry             | ============================================================
+2026-08-04 10:43:27 | INFO     | registry             | Model Comparison: lgbm_v1  vs  lgbm_v2
+2026-08-04 10:43:27 | INFO     | registry             | ============================================================
+2026-08-04 10:43:27 | WARNING  | registry             |   EXCLUDED split 'train': in-sample for both models — not a valid comparison
+2026-08-04 10:43:27 | WARNING  | registry             |   EXCLUDED split 'val': fitted on by lgbm_v2 — not a valid comparison
+2026-08-04 10:43:27 | INFO     | registry             | Metric          Split         lgbm_v1      lgbm_v2      Delta   Winner
+2026-08-04 10:43:27 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 10:43:27 | INFO     | registry             |   auc           test           0.6415       0.6467   +0.0052↑  lgbm_v2
+2026-08-04 10:43:27 | INFO     | registry             |   f1            test           0.2200       0.2251   +0.0051↑  lgbm_v2
+2026-08-04 10:43:27 | INFO     | registry             |   precision     test           0.1595       0.1729   +0.0134↑  lgbm_v2
+2026-08-04 10:43:27 | INFO     | registry             |   recall        test           0.3543       0.3222   -0.0321↓  lgbm_v1
+2026-08-04 10:43:27 | INFO     | registry             |   brier         test           0.0792       0.0786   -0.0006↓  lgbm_v2
+2026-08-04 10:43:27 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 10:43:27 | INFO     | registry             |   Comparable splits     : ['test']
+2026-08-04 10:43:27 | INFO     | registry             |   Test AUC              : 0.6415 -> 0.6467 (+0.0052)
+2026-08-04 10:43:27 | INFO     | registry             |   DeLong                : z=-1.370 p=0.1705 CI95 delta -0.0126..+0.0022
+2026-08-04 10:43:27 | INFO     | registry             |   Paired bootstrap      : delta +0.0052 CI95 -0.0025..+0.0125 (row resampling)
+2026-08-04 10:43:27 | INFO     | registry             |   VERDICT               : NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 10:43:27 | INFO     | registry             |   → The difference is within noise. Retraining did not demonstrably improve the model on held-out data.
+2026-08-04 10:43:27 | INFO     | registry             | 
+Step 4: Verdict = NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 10:43:27 | WARNING  | registry             | lgbm_v2 is not significantly different from lgbm_v1 on the only comparable split. NOT promoting: a promotion needs evidence, and 'the number went up' is not evidence.
+2026-08-04 10:43:27 | INFO     | registry             | 
+Step 5: Registry History
+2026-08-04 10:43:27 | INFO     | registry             | 
+model_name     status     trigger              registered_at  train_auc  val_auc  test_auc  train_f1  val_f1  test_f1 drift_status  n_features  train_rows                                                                                                                                                                                                                                                                                                                                                                                          notes
+   lgbm_v1     active      manual 2026-08-04T10:43:14.399037     0.8137   0.6617    0.6415    0.4165  0.2627   0.2200     CRITICAL          53       63492                                                                                                                                                                                                                                           Initial model. Trained on the train split = the EARLIEST-ENTERING 60% of patients by first encounter_id (entry cohort). Early stopping at 173 trees.
+   lgbm_v2 registered drift_alert 2026-08-04T10:43:16.059321     0.8707      NaN    0.6467    0.4798     NaN   0.2251      unknown          53       84441 Retrained after drift alert on train+val combined. NO held-out validation estimate exists for this model. UNCONTROLLED CONFOUND: v1 used early stopping (173 trees); v2 uses a fixed 300 with no early stopping, because val had been consumed. The two models differ in training data AND capacity AND stopping rule, so the test-set difference is not attributable to the extra data alone.
+2026-08-04 10:43:27 | INFO     | registry             | Comparison + significance saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_comparison.json
+2026-08-04 10:43:27 | INFO     | registry             | 
+History saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\registry_history.csv
+2026-08-04 10:43:27 | INFO     | registry             | ============================================================
+2026-08-04 10:43:27 | INFO     | registry             | Model Registry Summary
+2026-08-04 10:43:27 | INFO     | registry             | ============================================================
+2026-08-04 10:43:27 | INFO     | registry             |   Active model : lgbm_v1
+2026-08-04 10:43:27 | INFO     | registry             |   Total models : 2
+2026-08-04 10:43:27 | INFO     | registry             | ------------------------------------------------------------
+2026-08-04 10:43:27 | INFO     | registry             |   lgbm_v1         status=active       val_auc=0.6617  test_auc=0.6415  drift=CRITICAL
+2026-08-04 10:43:27 | INFO     | registry             |   lgbm_v2         status=registered   val_auc=N/A  test_auc=0.6467  drift=unknown
+2026-08-04 10:43:27 | INFO     | registry             | ============================================================
+2026-08-04 11:03:37 | INFO     | registry             | ===== RUN 20260804-110336-dfa0e6 | pid=25352 | started 2026-08-04 11:03:37 =====
+2026-08-04 11:03:37 | INFO     | registry             | ======================================================================
+2026-08-04 11:03:37 | INFO     | registry             | DriftSentinel — Model Registry Run
+2026-08-04 11:03:37 | INFO     | registry             | ======================================================================
+2026-08-04 11:03:37 | INFO     | registry             | Step 1: Registering lgbm_v1 (initial deployment)
+2026-08-04 11:03:37 | INFO     | registry             | ============================================================
+2026-08-04 11:03:37 | INFO     | registry             | Registering model: lgbm_v1
+2026-08-04 11:03:37 | INFO     | registry             | ============================================================
+2026-08-04 11:03:37 | INFO     | registry             |   Integrity      : fitted on ['train']; held-out metrics present for ['val', 'test']
+2026-08-04 11:03:37 | INFO     | registry             |   Trigger        : manual
+2026-08-04 11:03:37 | INFO     | registry             |   Train AUC      : 0.8137  (in-sample)
+2026-08-04 11:03:37 | INFO     | registry             |   Val   AUC      : 0.6617
+2026-08-04 11:03:37 | INFO     | registry             |   N features     : 53
+2026-08-04 11:03:37 | INFO     | registry             |   Train rows     : 63492
+2026-08-04 11:03:37 | INFO     | registry             |   Status         : registered
+2026-08-04 11:03:37 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 11:03:37 | INFO     | registry             | Updated lgbm_v1: test AUC=0.6415 drift_status=CRITICAL
+2026-08-04 11:03:37 | INFO     | registry             | Promoted: lgbm_v1 → active production model
+2026-08-04 11:03:37 | INFO     | registry             | 
+Step 2: Drift alert triggered — retraining lgbm_v2
+2026-08-04 11:03:37 | INFO     | registry             |   Strategy: retrain on train + val combined (more recent data)
+2026-08-04 11:03:37 | INFO     | registry             |   lgbm_v2 train rows: 84,441  (train=63,492 + val=20,949)
+2026-08-04 11:03:39 | INFO     | registry             |   lgbm_v2 train AUC : 0.8707
+2026-08-04 11:03:39 | INFO     | registry             |   lgbm_v2 test  AUC : 0.6467
+2026-08-04 11:03:39 | INFO     | registry             |   lgbm_v2 saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\lgbm_v2.pkl
+2026-08-04 11:03:39 | INFO     | registry             | ============================================================
+2026-08-04 11:03:39 | INFO     | registry             | Registering model: lgbm_v2
+2026-08-04 11:03:39 | INFO     | registry             | ============================================================
+2026-08-04 11:03:39 | INFO     | registry             |   Integrity      : fitted on ['train', 'val']; held-out metrics present for ['test']
+2026-08-04 11:03:39 | INFO     | registry             |   Trigger        : drift_alert
+2026-08-04 11:03:39 | INFO     | registry             |   Train AUC      : 0.8707  (in-sample)
+2026-08-04 11:03:39 | INFO     | registry             |   Val   AUC      : UNAVAILABLE — fitted on val
+2026-08-04 11:03:39 | INFO     | registry             |   N features     : 53
+2026-08-04 11:03:39 | INFO     | registry             |   Train rows     : 84441
+2026-08-04 11:03:39 | INFO     | registry             |   Status         : registered
+2026-08-04 11:03:39 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 11:03:39 | INFO     | registry             | 
+Step 3: Comparing lgbm_v1 vs lgbm_v2 (test split only)
+2026-08-04 11:03:56 | INFO     | registry             | ============================================================
+2026-08-04 11:03:56 | INFO     | registry             | Model Comparison: lgbm_v1  vs  lgbm_v2
+2026-08-04 11:03:56 | INFO     | registry             | ============================================================
+2026-08-04 11:03:56 | WARNING  | registry             |   EXCLUDED split 'train': in-sample for both models — not a valid comparison
+2026-08-04 11:03:56 | WARNING  | registry             |   EXCLUDED split 'val': fitted on by lgbm_v2 — not a valid comparison
+2026-08-04 11:03:56 | INFO     | registry             | Metric          Split         lgbm_v1      lgbm_v2      Delta   Winner
+2026-08-04 11:03:56 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 11:03:56 | INFO     | registry             |   auc           test           0.6415       0.6467   +0.0052↑  lgbm_v2
+2026-08-04 11:03:56 | INFO     | registry             |   f1            test           0.2200       0.2251   +0.0051↑  lgbm_v2
+2026-08-04 11:03:56 | INFO     | registry             |   precision     test           0.1595       0.1729   +0.0134↑  lgbm_v2
+2026-08-04 11:03:56 | INFO     | registry             |   recall        test           0.3543       0.3222   -0.0321↓  lgbm_v1
+2026-08-04 11:03:56 | INFO     | registry             |   brier         test           0.0792       0.0786   -0.0006↓  lgbm_v2
+2026-08-04 11:03:56 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 11:03:56 | INFO     | registry             |   Comparable splits     : ['test']
+2026-08-04 11:03:56 | INFO     | registry             |   Test AUC              : 0.6415 -> 0.6467 (+0.0052)
+2026-08-04 11:03:56 | INFO     | registry             |   DeLong                : z=-1.370 p=0.1705 CI95 delta -0.0126..+0.0022
+2026-08-04 11:03:56 | INFO     | registry             |   Paired bootstrap      : delta +0.0051 CI95 -0.0019..+0.0124 (patient (cluster) resampling)
+2026-08-04 11:03:56 | INFO     | registry             |   VERDICT               : NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 11:03:56 | INFO     | registry             |   → The difference is within noise. Retraining did not demonstrably improve the model on held-out data.
+2026-08-04 11:03:56 | INFO     | registry             | 
+Step 4: Verdict = NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 11:03:56 | WARNING  | registry             | lgbm_v2 is not significantly different from lgbm_v1 on the only comparable split. NOT promoting: a promotion needs evidence, and 'the number went up' is not evidence.
+2026-08-04 11:03:56 | INFO     | registry             | 
+Step 5: Registry History
+2026-08-04 11:03:56 | INFO     | registry             | 
+model_name     status     trigger              registered_at  train_auc  val_auc  test_auc  train_f1  val_f1  test_f1 drift_status  n_features  train_rows                                                                                                                                                                                                                                                                                                                                                                                          notes
+   lgbm_v1     active      manual 2026-08-04T11:03:37.352140     0.8137   0.6617    0.6415    0.4165  0.2627   0.2200     CRITICAL          53       63492                                                                                                                                                                                                                                           Initial model. Trained on the train split = the EARLIEST-ENTERING 60% of patients by first encounter_id (entry cohort). Early stopping at 173 trees.
+   lgbm_v2 registered drift_alert 2026-08-04T11:03:39.061361     0.8707      NaN    0.6467    0.4798     NaN   0.2251      unknown          53       84441 Retrained after drift alert on train+val combined. NO held-out validation estimate exists for this model. UNCONTROLLED CONFOUND: v1 used early stopping (173 trees); v2 uses a fixed 300 with no early stopping, because val had been consumed. The two models differ in training data AND capacity AND stopping rule, so the test-set difference is not attributable to the extra data alone.
+2026-08-04 11:03:56 | INFO     | registry             | Comparison + significance saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_comparison.json
+2026-08-04 11:03:56 | INFO     | registry             | 
+History saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\registry_history.csv
+2026-08-04 11:03:56 | INFO     | registry             | ============================================================
+2026-08-04 11:03:56 | INFO     | registry             | Model Registry Summary
+2026-08-04 11:03:56 | INFO     | registry             | ============================================================
+2026-08-04 11:03:56 | INFO     | registry             |   Active model : lgbm_v1
+2026-08-04 11:03:56 | INFO     | registry             |   Total models : 2
+2026-08-04 11:03:56 | INFO     | registry             | ------------------------------------------------------------
+2026-08-04 11:03:56 | INFO     | registry             |   lgbm_v1         status=active       val_auc=0.6617  test_auc=0.6415  drift=CRITICAL
+2026-08-04 11:03:56 | INFO     | registry             |   lgbm_v2         status=registered   val_auc=N/A  test_auc=0.6467  drift=unknown
+2026-08-04 11:03:56 | INFO     | registry             | ============================================================
+2026-08-04 18:32:55 | INFO     | registry             | ===== RUN 20260804-183254-bd3788 | pid=22248 | started 2026-08-04 18:32:55 =====
+2026-08-04 18:32:55 | INFO     | registry             | ======================================================================
+2026-08-04 18:32:55 | INFO     | registry             | DriftSentinel — Model Registry Run
+2026-08-04 18:32:55 | INFO     | registry             | ======================================================================
+2026-08-04 18:32:55 | INFO     | registry             | Registry loaded: 2 models
+2026-08-04 18:32:55 | INFO     | registry             | Step 1: Registering lgbm_v1 (initial deployment)
+2026-08-04 18:32:55 | INFO     | registry             | ============================================================
+2026-08-04 18:32:55 | INFO     | registry             | Registering model: lgbm_v1
+2026-08-04 18:32:55 | INFO     | registry             | ============================================================
+2026-08-04 18:32:55 | INFO     | registry             |   Integrity      : fitted on ['train']; held-out metrics present for ['val', 'test']
+2026-08-04 18:32:55 | INFO     | registry             |   Trigger        : manual
+2026-08-04 18:32:55 | INFO     | registry             |   Train AUC      : 0.8137  (in-sample)
+2026-08-04 18:32:55 | INFO     | registry             |   Val   AUC      : 0.6617
+2026-08-04 18:32:55 | INFO     | registry             |   N features     : 53
+2026-08-04 18:32:55 | INFO     | registry             |   Train rows     : 63492
+2026-08-04 18:32:55 | INFO     | registry             |   Status         : registered
+2026-08-04 18:32:55 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 18:32:55 | INFO     | registry             | Updated lgbm_v1: test AUC=0.6415 drift_status=CRITICAL
+2026-08-04 18:32:55 | INFO     | registry             | Promoted: lgbm_v1 → active production model
+2026-08-04 18:32:55 | INFO     | registry             | Previous: lgbm_v1 → superseded
+2026-08-04 18:32:55 | INFO     | registry             | 
+Step 2: Drift alert triggered — retraining lgbm_v2
+2026-08-04 18:32:55 | INFO     | registry             |   Strategy: retrain on train + val combined (more recent data)
+2026-08-04 18:32:55 | INFO     | registry             |   lgbm_v2 train rows: 84,441  (train=63,492 + val=20,949)
+2026-08-04 18:33:12 | INFO     | registry             |   lgbm_v2 train AUC : 0.8707
+2026-08-04 18:33:12 | INFO     | registry             |   lgbm_v2 test  AUC : 0.6467
+2026-08-04 18:33:12 | INFO     | registry             |   lgbm_v2 saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\lgbm_v2.pkl
+2026-08-04 18:33:12 | INFO     | registry             | ============================================================
+2026-08-04 18:33:12 | INFO     | registry             | Registering model: lgbm_v2
+2026-08-04 18:33:12 | INFO     | registry             | ============================================================
+2026-08-04 18:33:12 | INFO     | registry             |   Integrity      : fitted on ['train', 'val']; held-out metrics present for ['test']
+2026-08-04 18:33:12 | INFO     | registry             |   Trigger        : drift_alert
+2026-08-04 18:33:12 | INFO     | registry             |   Train AUC      : 0.8707  (in-sample)
+2026-08-04 18:33:12 | INFO     | registry             |   Val   AUC      : UNAVAILABLE — fitted on val
+2026-08-04 18:33:12 | INFO     | registry             |   N features     : 53
+2026-08-04 18:33:12 | INFO     | registry             |   Train rows     : 84441
+2026-08-04 18:33:12 | INFO     | registry             |   Status         : registered
+2026-08-04 18:33:12 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 18:33:12 | INFO     | registry             | 
+Step 3: Comparing lgbm_v1 vs lgbm_v2 (test split only)
+2026-08-04 18:33:45 | INFO     | registry             | ============================================================
+2026-08-04 18:33:45 | INFO     | registry             | Model Comparison: lgbm_v1  vs  lgbm_v2
+2026-08-04 18:33:45 | INFO     | registry             | ============================================================
+2026-08-04 18:33:45 | WARNING  | registry             |   EXCLUDED split 'train': in-sample for both models — not a valid comparison
+2026-08-04 18:33:45 | WARNING  | registry             |   EXCLUDED split 'val': fitted on by lgbm_v2 — not a valid comparison
+2026-08-04 18:33:45 | INFO     | registry             | Metric          Split         lgbm_v1      lgbm_v2      Delta   Winner
+2026-08-04 18:33:45 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 18:33:45 | INFO     | registry             |   auc           test           0.6415       0.6467   +0.0052↑  lgbm_v2
+2026-08-04 18:33:45 | INFO     | registry             |   f1            test           0.2200       0.2251   +0.0051↑  lgbm_v2
+2026-08-04 18:33:45 | INFO     | registry             |   precision     test           0.1595       0.1729   +0.0134↑  lgbm_v2
+2026-08-04 18:33:45 | INFO     | registry             |   recall        test           0.3543       0.3222   -0.0321↓  lgbm_v1
+2026-08-04 18:33:45 | INFO     | registry             |   brier         test           0.0792       0.0786   -0.0006↓  lgbm_v2
+2026-08-04 18:33:45 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 18:33:45 | INFO     | registry             |   Comparable splits     : ['test']
+2026-08-04 18:33:45 | INFO     | registry             |   Test AUC              : 0.6415 -> 0.6467 (+0.0052)
+2026-08-04 18:33:45 | INFO     | registry             |   DeLong                : z=-1.370 p=0.1705 CI95 delta -0.0126..+0.0022
+2026-08-04 18:33:45 | INFO     | registry             |   Paired bootstrap      : delta +0.0051 CI95 -0.0019..+0.0124 (patient (cluster) resampling)
+2026-08-04 18:33:45 | INFO     | registry             |   VERDICT               : NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 18:33:45 | INFO     | registry             |   → The difference is within noise. Retraining did not demonstrably improve the model on held-out data.
+2026-08-04 18:33:45 | INFO     | registry             | 
+Step 4: Verdict = NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 18:33:45 | WARNING  | registry             | lgbm_v2 is not significantly different from lgbm_v1 on the only comparable split. NOT promoting: a promotion needs evidence, and 'the number went up' is not evidence.
+2026-08-04 18:33:45 | INFO     | registry             | 
+Step 5: Registry History
+2026-08-04 18:33:45 | INFO     | registry             | 
+model_name     status     trigger              registered_at  train_auc  val_auc  test_auc  train_f1  val_f1  test_f1 drift_status  n_features  train_rows                                                                                                                                                                                                                                                                                                                                                                                          notes
+   lgbm_v1     active      manual 2026-08-04T18:32:55.093451     0.8137   0.6617    0.6415    0.4165  0.2627   0.2200     CRITICAL          53       63492                                                                                                                                                                                                                                           Initial model. Trained on the train split = the EARLIEST-ENTERING 60% of patients by first encounter_id (entry cohort). Early stopping at 126 trees.
+   lgbm_v2 registered drift_alert 2026-08-04T18:33:12.987797     0.8707      NaN    0.6467    0.4798     NaN   0.2251      unknown          53       84441 Retrained after drift alert on train+val combined. NO held-out validation estimate exists for this model. UNCONTROLLED CONFOUND: v1 used early stopping (173 trees); v2 uses a fixed 300 with no early stopping, because val had been consumed. The two models differ in training data AND capacity AND stopping rule, so the test-set difference is not attributable to the extra data alone.
+2026-08-04 18:33:45 | INFO     | registry             | Comparison + significance saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_comparison.json
+2026-08-04 18:33:45 | INFO     | registry             | 
+History saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\registry_history.csv
+2026-08-04 18:33:45 | INFO     | registry             | ============================================================
+2026-08-04 18:33:45 | INFO     | registry             | Model Registry Summary
+2026-08-04 18:33:45 | INFO     | registry             | ============================================================
+2026-08-04 18:33:45 | INFO     | registry             |   Active model : lgbm_v1
+2026-08-04 18:33:45 | INFO     | registry             |   Total models : 2
+2026-08-04 18:33:45 | INFO     | registry             | ------------------------------------------------------------
+2026-08-04 18:33:45 | INFO     | registry             |   lgbm_v1         status=active       val_auc=0.6617  test_auc=0.6415  drift=CRITICAL
+2026-08-04 18:33:45 | INFO     | registry             |   lgbm_v2         status=registered   val_auc=N/A  test_auc=0.6467  drift=unknown
+2026-08-04 18:33:45 | INFO     | registry             | ============================================================
+2026-08-04 18:34:21 | INFO     | registry             | ===== RUN 20260804-183419-80bb1f | pid=25652 | started 2026-08-04 18:34:21 =====
+2026-08-04 18:34:21 | INFO     | registry             | ======================================================================
+2026-08-04 18:34:21 | INFO     | registry             | DriftSentinel — Model Registry Run
+2026-08-04 18:34:21 | INFO     | registry             | ======================================================================
+2026-08-04 18:34:21 | INFO     | registry             | Registry loaded: 2 models
+2026-08-04 18:34:21 | INFO     | registry             | Step 1: Registering lgbm_v1 (initial deployment)
+2026-08-04 18:34:21 | INFO     | registry             | ============================================================
+2026-08-04 18:34:21 | INFO     | registry             | Registering model: lgbm_v1
+2026-08-04 18:34:21 | INFO     | registry             | ============================================================
+2026-08-04 18:34:21 | INFO     | registry             |   Integrity      : fitted on ['train']; held-out metrics present for ['val', 'test']
+2026-08-04 18:34:21 | INFO     | registry             |   Trigger        : manual
+2026-08-04 18:34:21 | INFO     | registry             |   Train AUC      : 0.8137  (in-sample)
+2026-08-04 18:34:21 | INFO     | registry             |   Val   AUC      : 0.6617
+2026-08-04 18:34:21 | INFO     | registry             |   N features     : 53
+2026-08-04 18:34:21 | INFO     | registry             |   Train rows     : 63492
+2026-08-04 18:34:21 | INFO     | registry             |   Status         : registered
+2026-08-04 18:34:21 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 18:34:21 | INFO     | registry             | Updated lgbm_v1: test AUC=0.6415 drift_status=CRITICAL
+2026-08-04 18:34:21 | INFO     | registry             | Promoted: lgbm_v1 → active production model
+2026-08-04 18:34:21 | INFO     | registry             | Previous: lgbm_v1 → superseded
+2026-08-04 18:34:21 | INFO     | registry             | 
+Step 2: Drift alert triggered — retraining lgbm_v2
+2026-08-04 18:34:21 | INFO     | registry             |   Strategy: retrain on train + val combined (more recent data)
+2026-08-04 18:34:21 | INFO     | registry             |   lgbm_v2 train rows: 84,441  (train=63,492 + val=20,949)
+2026-08-04 18:35:02 | INFO     | registry             |   lgbm_v2 train AUC : 0.8707
+2026-08-04 18:35:02 | INFO     | registry             |   lgbm_v2 test  AUC : 0.6467
+2026-08-04 18:35:02 | INFO     | registry             |   lgbm_v2 saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\lgbm_v2.pkl
+2026-08-04 18:35:02 | INFO     | registry             | ============================================================
+2026-08-04 18:35:02 | INFO     | registry             | Registering model: lgbm_v2
+2026-08-04 18:35:02 | INFO     | registry             | ============================================================
+2026-08-04 18:35:02 | INFO     | registry             |   Integrity      : fitted on ['train', 'val']; held-out metrics present for ['test']
+2026-08-04 18:35:02 | INFO     | registry             |   Trigger        : drift_alert
+2026-08-04 18:35:02 | INFO     | registry             |   Train AUC      : 0.8707  (in-sample)
+2026-08-04 18:35:02 | INFO     | registry             |   Val   AUC      : UNAVAILABLE — fitted on val
+2026-08-04 18:35:02 | INFO     | registry             |   N features     : 53
+2026-08-04 18:35:02 | INFO     | registry             |   Train rows     : 84441
+2026-08-04 18:35:02 | INFO     | registry             |   Status         : registered
+2026-08-04 18:35:02 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 18:35:02 | INFO     | registry             | 
+Step 3: Comparing lgbm_v1 vs lgbm_v2 (test split only)
+2026-08-04 18:35:46 | INFO     | registry             | ============================================================
+2026-08-04 18:35:46 | INFO     | registry             | Model Comparison: lgbm_v1  vs  lgbm_v2
+2026-08-04 18:35:46 | INFO     | registry             | ============================================================
+2026-08-04 18:35:46 | WARNING  | registry             |   EXCLUDED split 'train': in-sample for both models — not a valid comparison
+2026-08-04 18:35:46 | WARNING  | registry             |   EXCLUDED split 'val': fitted on by lgbm_v2 — not a valid comparison
+2026-08-04 18:35:46 | INFO     | registry             | Metric          Split         lgbm_v1      lgbm_v2      Delta   Winner
+2026-08-04 18:35:46 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 18:35:46 | INFO     | registry             |   auc           test           0.6415       0.6467   +0.0052↑  lgbm_v2
+2026-08-04 18:35:46 | INFO     | registry             |   f1            test           0.2200       0.2251   +0.0051↑  lgbm_v2
+2026-08-04 18:35:46 | INFO     | registry             |   precision     test           0.1595       0.1729   +0.0134↑  lgbm_v2
+2026-08-04 18:35:46 | INFO     | registry             |   recall        test           0.3543       0.3222   -0.0321↓  lgbm_v1
+2026-08-04 18:35:46 | INFO     | registry             |   brier         test           0.0792       0.0786   -0.0006↓  lgbm_v2
+2026-08-04 18:35:46 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 18:35:46 | INFO     | registry             |   Comparable splits     : ['test']
+2026-08-04 18:35:46 | INFO     | registry             |   Test AUC              : 0.6415 -> 0.6467 (+0.0052)
+2026-08-04 18:35:46 | INFO     | registry             |   DeLong                : z=-1.370 p=0.1705 CI95 delta -0.0126..+0.0022
+2026-08-04 18:35:46 | INFO     | registry             |   Paired bootstrap      : delta +0.0051 CI95 -0.0019..+0.0124 (patient (cluster) resampling)
+2026-08-04 18:35:46 | INFO     | registry             |   VERDICT               : NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 18:35:46 | INFO     | registry             |   → The difference is within noise. Retraining did not demonstrably improve the model on held-out data.
+2026-08-04 18:35:46 | INFO     | registry             | 
+Step 4: Verdict = NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 18:35:46 | WARNING  | registry             | lgbm_v2 is not significantly different from lgbm_v1 on the only comparable split. NOT promoting: a promotion needs evidence, and 'the number went up' is not evidence.
+2026-08-04 18:35:46 | INFO     | registry             | 
+Step 5: Registry History
+2026-08-04 18:35:46 | INFO     | registry             | 
+model_name     status     trigger              registered_at  train_auc  val_auc  test_auc  train_f1  val_f1  test_f1 drift_status  n_features  train_rows                                                                                                                                                                                                                                                                                                                                                                                          notes
+   lgbm_v1     active      manual 2026-08-04T18:34:21.022134     0.8137   0.6617    0.6415    0.4165  0.2627   0.2200     CRITICAL          53       63492                                                                                                                                                                                                                                           Initial model. Trained on the train split = the EARLIEST-ENTERING 60% of patients by first encounter_id (entry cohort). Early stopping at 126 trees.
+   lgbm_v2 registered drift_alert 2026-08-04T18:35:02.159722     0.8707      NaN    0.6467    0.4798     NaN   0.2251      unknown          53       84441 Retrained after drift alert on train+val combined. NO held-out validation estimate exists for this model. UNCONTROLLED CONFOUND: v1 used early stopping (126 trees); v2 uses a fixed 300 with no early stopping, because val had been consumed. The two models differ in training data AND capacity AND stopping rule, so the test-set difference is not attributable to the extra data alone.
+2026-08-04 18:35:46 | INFO     | registry             | Comparison + significance saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_comparison.json
+2026-08-04 18:35:46 | INFO     | registry             | 
+History saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\registry_history.csv
+2026-08-04 18:35:46 | INFO     | registry             | ============================================================
+2026-08-04 18:35:46 | INFO     | registry             | Model Registry Summary
+2026-08-04 18:35:46 | INFO     | registry             | ============================================================
+2026-08-04 18:35:46 | INFO     | registry             |   Active model : lgbm_v1
+2026-08-04 18:35:46 | INFO     | registry             |   Total models : 2
+2026-08-04 18:35:46 | INFO     | registry             | ------------------------------------------------------------
+2026-08-04 18:35:46 | INFO     | registry             |   lgbm_v1         status=active       val_auc=0.6617  test_auc=0.6415  drift=CRITICAL
+2026-08-04 18:35:46 | INFO     | registry             |   lgbm_v2         status=registered   val_auc=N/A  test_auc=0.6467  drift=unknown
+2026-08-04 18:35:46 | INFO     | registry             | ============================================================
+2026-08-04 20:51:31 | INFO     | registry             | ===== RUN 20260804-205130-40ee29 | pid=27460 | started 2026-08-04 20:51:31 =====
+2026-08-04 20:51:31 | INFO     | registry             | ======================================================================
+2026-08-04 20:51:31 | INFO     | registry             | DriftSentinel — Model Registry Run
+2026-08-04 20:51:31 | INFO     | registry             | ======================================================================
+2026-08-04 20:51:31 | INFO     | registry             | Registry loaded: 2 models
+2026-08-04 20:51:31 | INFO     | registry             | Step 1: Registering lgbm_v1 (initial deployment)
+2026-08-04 20:51:31 | INFO     | registry             | ============================================================
+2026-08-04 20:51:31 | INFO     | registry             | Registering model: lgbm_v1
+2026-08-04 20:51:31 | INFO     | registry             | ============================================================
+2026-08-04 20:51:31 | INFO     | registry             |   Integrity      : fitted on ['train']; held-out metrics present for ['val', 'test']
+2026-08-04 20:51:31 | INFO     | registry             |   Trigger        : manual
+2026-08-04 20:51:31 | INFO     | registry             |   Train AUC      : 0.8137  (in-sample)
+2026-08-04 20:51:31 | INFO     | registry             |   Val   AUC      : 0.6617
+2026-08-04 20:51:31 | INFO     | registry             |   N features     : 53
+2026-08-04 20:51:31 | INFO     | registry             |   Train rows     : 63492
+2026-08-04 20:51:31 | INFO     | registry             |   Status         : registered
+2026-08-04 20:51:31 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 20:51:31 | INFO     | registry             | Updated lgbm_v1: test AUC=0.6415 drift_status=CRITICAL
+2026-08-04 20:51:31 | INFO     | registry             | Promoted: lgbm_v1 → active production model
+2026-08-04 20:51:31 | INFO     | registry             | Previous: lgbm_v1 → superseded
+2026-08-04 20:51:31 | INFO     | registry             | 
+Step 2: Drift alert triggered — retraining lgbm_v2
+2026-08-04 20:51:31 | INFO     | registry             |   Strategy: retrain on train + val combined (more recent data)
+2026-08-04 20:51:31 | INFO     | registry             |   lgbm_v2 train rows: 84,441  (train=63,492 + val=20,949)
+2026-08-04 20:51:32 | INFO     | registry             |   lgbm_v2 train AUC : 0.8707
+2026-08-04 20:51:32 | INFO     | registry             |   lgbm_v2 test  AUC : 0.6467
+2026-08-04 20:51:32 | INFO     | registry             |   lgbm_v2 saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\lgbm_v2.pkl
+2026-08-04 20:51:32 | INFO     | registry             | ============================================================
+2026-08-04 20:51:32 | INFO     | registry             | Registering model: lgbm_v2
+2026-08-04 20:51:32 | INFO     | registry             | ============================================================
+2026-08-04 20:51:32 | INFO     | registry             |   Integrity      : fitted on ['train', 'val']; held-out metrics present for ['test']
+2026-08-04 20:51:32 | INFO     | registry             |   Trigger        : drift_alert
+2026-08-04 20:51:32 | INFO     | registry             |   Train AUC      : 0.8707  (in-sample)
+2026-08-04 20:51:32 | INFO     | registry             |   Val   AUC      : UNAVAILABLE — fitted on val
+2026-08-04 20:51:32 | INFO     | registry             |   N features     : 53
+2026-08-04 20:51:32 | INFO     | registry             |   Train rows     : 84441
+2026-08-04 20:51:32 | INFO     | registry             |   Status         : registered
+2026-08-04 20:51:32 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 20:51:32 | INFO     | registry             | 
+Step 3: Comparing lgbm_v1 vs lgbm_v2 (test split only)
+2026-08-04 20:52:07 | INFO     | registry             | ============================================================
+2026-08-04 20:52:07 | INFO     | registry             | Model Comparison: lgbm_v1  vs  lgbm_v2
+2026-08-04 20:52:07 | INFO     | registry             | ============================================================
+2026-08-04 20:52:07 | WARNING  | registry             |   EXCLUDED split 'train': in-sample for both models — not a valid comparison
+2026-08-04 20:52:07 | WARNING  | registry             |   EXCLUDED split 'val': fitted on by lgbm_v2 — not a valid comparison
+2026-08-04 20:52:07 | INFO     | registry             | Metric          Split         lgbm_v1      lgbm_v2      Delta   Winner
+2026-08-04 20:52:07 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 20:52:07 | INFO     | registry             |   auc           test           0.6415       0.6467   +0.0052↑  lgbm_v2
+2026-08-04 20:52:07 | INFO     | registry             |   f1            test           0.2200       0.2251   +0.0051↑  lgbm_v2
+2026-08-04 20:52:07 | INFO     | registry             |   precision     test           0.1595       0.1729   +0.0134↑  lgbm_v2
+2026-08-04 20:52:07 | INFO     | registry             |   recall        test           0.3543       0.3222   -0.0321↓  lgbm_v1
+2026-08-04 20:52:07 | INFO     | registry             |   brier         test           0.0792       0.0786   -0.0006↓  lgbm_v2
+2026-08-04 20:52:07 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 20:52:07 | INFO     | registry             |   Comparable splits     : ['test']
+2026-08-04 20:52:07 | INFO     | registry             |   Test AUC              : 0.6415 -> 0.6467 (+0.0052)
+2026-08-04 20:52:07 | INFO     | registry             |   DeLong                : z=-1.370 p=0.1705 CI95 delta -0.0126..+0.0022
+2026-08-04 20:52:07 | INFO     | registry             |   Paired bootstrap      : delta +0.0051 CI95 -0.0019..+0.0124 (patient (cluster) resampling)
+2026-08-04 20:52:07 | INFO     | registry             |   VERDICT               : NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 20:52:07 | INFO     | registry             |   → The difference is within noise. Retraining did not demonstrably improve the model on held-out data.
+2026-08-04 20:52:07 | INFO     | registry             | 
+Step 4: Verdict = NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 20:52:07 | WARNING  | registry             | lgbm_v2 is not significantly different from lgbm_v1 on the only comparable split. NOT promoting: a promotion needs evidence, and 'the number went up' is not evidence.
+2026-08-04 20:52:07 | INFO     | registry             | 
+Step 5: Registry History
+2026-08-04 20:52:07 | INFO     | registry             | 
+model_name     status     trigger              registered_at  train_auc  val_auc  test_auc  train_f1  val_f1  test_f1 drift_status  n_features  train_rows                                                                                                                                                                                                                                                                                                                                                                                          notes
+   lgbm_v1     active      manual 2026-08-04T20:51:31.161512     0.8137   0.6617    0.6415    0.4165  0.2627   0.2200     CRITICAL          53       63492                                                                                                                                                                                                                                           Initial model. Trained on the train split = the EARLIEST-ENTERING 60% of patients by first encounter_id (entry cohort). Early stopping at 126 trees.
+   lgbm_v2 registered drift_alert 2026-08-04T20:51:32.783376     0.8707      NaN    0.6467    0.4798     NaN   0.2251      unknown          53       84441 Retrained after drift alert on train+val combined. NO held-out validation estimate exists for this model. UNCONTROLLED CONFOUND: v1 used early stopping (126 trees); v2 uses a fixed 300 with no early stopping, because val had been consumed. The two models differ in training data AND capacity AND stopping rule, so the test-set difference is not attributable to the extra data alone.
+2026-08-04 20:52:07 | INFO     | registry             | Comparison + significance saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_comparison.json
+2026-08-04 20:52:07 | INFO     | registry             | 
+History saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\registry_history.csv
+2026-08-04 20:52:07 | INFO     | registry             | ============================================================
+2026-08-04 20:52:07 | INFO     | registry             | Model Registry Summary
+2026-08-04 20:52:07 | INFO     | registry             | ============================================================
+2026-08-04 20:52:07 | INFO     | registry             |   Active model : lgbm_v1
+2026-08-04 20:52:07 | INFO     | registry             |   Total models : 2
+2026-08-04 20:52:07 | INFO     | registry             | ------------------------------------------------------------
+2026-08-04 20:52:07 | INFO     | registry             |   lgbm_v1         status=active       val_auc=0.6617  test_auc=0.6415  drift=CRITICAL
+2026-08-04 20:52:07 | INFO     | registry             |   lgbm_v2         status=registered   val_auc=N/A  test_auc=0.6467  drift=unknown
+2026-08-04 20:52:07 | INFO     | registry             | ============================================================
+2026-08-04 21:12:13 | INFO     | registry             | ===== RUN 20260804-211212-9cf93a | pid=29716 | started 2026-08-04 21:12:13 =====
+2026-08-04 21:12:13 | INFO     | registry             | ======================================================================
+2026-08-04 21:12:13 | INFO     | registry             | DriftSentinel — Model Registry Run
+2026-08-04 21:12:13 | INFO     | registry             | ======================================================================
+2026-08-04 21:12:13 | INFO     | registry             | Registry loaded: 2 models
+2026-08-04 21:12:13 | INFO     | registry             | Step 1: Registering lgbm_v1 (initial deployment)
+2026-08-04 21:12:13 | INFO     | registry             | ============================================================
+2026-08-04 21:12:13 | INFO     | registry             | Registering model: lgbm_v1
+2026-08-04 21:12:13 | INFO     | registry             | ============================================================
+2026-08-04 21:12:13 | INFO     | registry             |   Integrity      : fitted on ['train']; held-out metrics present for ['val', 'test']
+2026-08-04 21:12:13 | INFO     | registry             |   Trigger        : manual
+2026-08-04 21:12:13 | INFO     | registry             |   Train AUC      : 0.8137  (in-sample)
+2026-08-04 21:12:13 | INFO     | registry             |   Val   AUC      : 0.6617
+2026-08-04 21:12:13 | INFO     | registry             |   N features     : 53
+2026-08-04 21:12:13 | INFO     | registry             |   Train rows     : 63492
+2026-08-04 21:12:13 | INFO     | registry             |   Status         : registered
+2026-08-04 21:12:13 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 21:12:13 | INFO     | registry             | Updated lgbm_v1: test AUC=0.6415 drift_status=CRITICAL
+2026-08-04 21:12:13 | INFO     | registry             | Promoted: lgbm_v1 → active production model
+2026-08-04 21:12:13 | INFO     | registry             | Previous: lgbm_v1 → superseded
+2026-08-04 21:12:13 | INFO     | registry             | 
+Step 2: Drift alert triggered — retraining lgbm_v2
+2026-08-04 21:12:13 | INFO     | registry             |   Strategy: retrain on train + val combined (more recent data)
+2026-08-04 21:12:13 | INFO     | registry             |   lgbm_v2 train rows: 84,441  (train=63,492 + val=20,949)
+2026-08-04 21:12:14 | INFO     | registry             |   lgbm_v2 train AUC : 0.8707
+2026-08-04 21:12:14 | INFO     | registry             |   lgbm_v2 test  AUC : 0.6467
+2026-08-04 21:12:14 | INFO     | registry             |   lgbm_v2 saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\lgbm_v2.pkl (+ provenance sidecar)
+2026-08-04 21:12:14 | INFO     | registry             | ============================================================
+2026-08-04 21:12:14 | INFO     | registry             | Registering model: lgbm_v2
+2026-08-04 21:12:14 | INFO     | registry             | ============================================================
+2026-08-04 21:12:14 | INFO     | registry             |   Integrity      : fitted on ['train', 'val']; held-out metrics present for ['test']
+2026-08-04 21:12:14 | INFO     | registry             |   Trigger        : drift_alert
+2026-08-04 21:12:14 | INFO     | registry             |   Train AUC      : 0.8707  (in-sample)
+2026-08-04 21:12:14 | INFO     | registry             |   Val   AUC      : UNAVAILABLE — fitted on val
+2026-08-04 21:12:14 | INFO     | registry             |   N features     : 53
+2026-08-04 21:12:14 | INFO     | registry             |   Train rows     : 84441
+2026-08-04 21:12:14 | INFO     | registry             |   Status         : registered
+2026-08-04 21:12:14 | INFO     | registry             |   Saved to       : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_registry.json
+2026-08-04 21:12:14 | INFO     | registry             | 
+Step 3: Comparing lgbm_v1 vs lgbm_v2 (test split only)
+2026-08-04 21:12:49 | INFO     | registry             | ============================================================
+2026-08-04 21:12:49 | INFO     | registry             | Model Comparison: lgbm_v1  vs  lgbm_v2
+2026-08-04 21:12:49 | INFO     | registry             | ============================================================
+2026-08-04 21:12:49 | WARNING  | registry             |   EXCLUDED split 'train': in-sample for both models — not a valid comparison
+2026-08-04 21:12:49 | WARNING  | registry             |   EXCLUDED split 'val': fitted on by lgbm_v2 — not a valid comparison
+2026-08-04 21:12:49 | INFO     | registry             | Metric          Split         lgbm_v1      lgbm_v2      Delta   Winner
+2026-08-04 21:12:49 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 21:12:49 | INFO     | registry             |   auc           test           0.6415       0.6467   +0.0052↑  lgbm_v2
+2026-08-04 21:12:49 | INFO     | registry             |   f1            test           0.2200       0.2251   +0.0051↑  lgbm_v2
+2026-08-04 21:12:49 | INFO     | registry             |   precision     test           0.1595       0.1729   +0.0134↑  lgbm_v2
+2026-08-04 21:12:49 | INFO     | registry             |   recall        test           0.3543       0.3222   -0.0321↓  lgbm_v1
+2026-08-04 21:12:49 | INFO     | registry             |   brier         test           0.0792       0.0786   -0.0006↓  lgbm_v2
+2026-08-04 21:12:49 | INFO     | registry             | -----------------------------------------------------------------
+2026-08-04 21:12:49 | INFO     | registry             |   Comparable splits     : ['test']
+2026-08-04 21:12:49 | INFO     | registry             |   Test AUC              : 0.6415 -> 0.6467 (+0.0052)
+2026-08-04 21:12:49 | INFO     | registry             |   DeLong                : z=-1.370 p=0.1705 CI95 delta -0.0126..+0.0022
+2026-08-04 21:12:49 | INFO     | registry             |   Paired bootstrap      : delta +0.0051 CI95 -0.0019..+0.0124 (patient (cluster) resampling)
+2026-08-04 21:12:49 | INFO     | registry             |   VERDICT               : NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 21:12:49 | INFO     | registry             |   → The difference is within noise. Retraining did not demonstrably improve the model on held-out data.
+2026-08-04 21:12:49 | INFO     | registry             | 
+Step 4: Verdict = NO_SIGNIFICANT_DIFFERENCE
+2026-08-04 21:12:49 | WARNING  | registry             | lgbm_v2 is not significantly different from lgbm_v1 on the only comparable split. NOT promoting: a promotion needs evidence, and 'the number went up' is not evidence.
+2026-08-04 21:12:49 | INFO     | registry             | 
+Step 5: Registry History
+2026-08-04 21:12:49 | INFO     | registry             | 
+model_name     status     trigger              registered_at  train_auc  val_auc  test_auc  train_f1  val_f1  test_f1 drift_status  n_features  train_rows                                                                                                                                                                                                                                                                                                                                                                                          notes
+   lgbm_v1     active      manual 2026-08-04T21:12:13.124473     0.8137   0.6617    0.6415    0.4165  0.2627   0.2200     CRITICAL          53       63492                                                                                                                                                                                                                                           Initial model. Trained on the train split = the EARLIEST-ENTERING 60% of patients by first encounter_id (entry cohort). Early stopping at 126 trees.
+   lgbm_v2 registered drift_alert 2026-08-04T21:12:14.738011     0.8707      NaN    0.6467    0.4798     NaN   0.2251      unknown          53       84441 Retrained after drift alert on train+val combined. NO held-out validation estimate exists for this model. UNCONTROLLED CONFOUND: v1 used early stopping (126 trees); v2 uses a fixed 300 with no early stopping, because val had been consumed. The two models differ in training data AND capacity AND stopping rule, so the test-set difference is not attributable to the extra data alone.
+2026-08-04 21:12:49 | INFO     | registry             | Comparison + significance saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\model_comparison.json
+2026-08-04 21:12:49 | INFO     | registry             | 
+History saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\registry\registry_history.csv
+2026-08-04 21:12:49 | INFO     | registry             | ============================================================
+2026-08-04 21:12:49 | INFO     | registry             | Model Registry Summary
+2026-08-04 21:12:49 | INFO     | registry             | ============================================================
+2026-08-04 21:12:49 | INFO     | registry             |   Active model : lgbm_v1
+2026-08-04 21:12:49 | INFO     | registry             |   Total models : 2
+2026-08-04 21:12:49 | INFO     | registry             | ------------------------------------------------------------
+2026-08-04 21:12:49 | INFO     | registry             |   lgbm_v1         status=active       val_auc=0.6617  test_auc=0.6415  drift=CRITICAL
+2026-08-04 21:12:49 | INFO     | registry             |   lgbm_v2         status=registered   val_auc=N/A  test_auc=0.6467  drift=unknown
+2026-08-04 21:12:49 | INFO     | registry             | ============================================================

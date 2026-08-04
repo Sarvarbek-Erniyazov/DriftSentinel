@@ -1,0 +1,162 @@
+2026-08-04 10:28:46 | INFO     | split_regimes        | ===== RUN 20260804-102846-6dd89f | pid=20700 | started 2026-08-04 10:28:46 =====
+2026-08-04 10:28:46 | INFO     | split_regimes        | ==============================================================================
+2026-08-04 10:28:46 | INFO     | split_regimes        | DriftSentinel — Phases 0.2 / 0.3 / 0.4
+2026-08-04 10:28:46 | INFO     | split_regimes        | target = lt30   detectors imported from src/drift/ as shipped
+2026-08-04 10:28:46 | INFO     | split_regimes        | ==============================================================================
+2026-08-04 10:28:47 | INFO     | split_regimes        | Rows 101,766 | patients 71,518 | prevalence(<30) 0.1116 | prevalence(merged) 0.4609
+2026-08-04 10:28:47 | INFO     | split_regimes        | ==============================================================================
+2026-08-04 10:28:47 | INFO     | split_regimes        | PHASE 0.2 — split regimes (entry_cohort / random / temporal)
+2026-08-04 10:28:47 | INFO     | split_regimes        | ==============================================================================
+2026-08-04 10:28:47 | INFO     | split_regimes        | --------------------------------------------------------------
+2026-08-04 10:28:47 | INFO     | split_regimes        | REGIME: entry_cohort   (20 seeds)
+2026-08-04 10:28:48 | INFO     | split_regimes        |   n_train=63,492 n_val=20,949 n_test=17,325 | prev 0.1200/0.1056/0.0881 | thr=0.180
+2026-08-04 10:28:48 | INFO     | split_regimes        |   seed  0: 3/8 signals, MODERATE alert=HIGH     AUC 0.6631->0.6447 (+0.0184) psi_crit=0
+2026-08-04 10:28:49 | INFO     | split_regimes        |   seed  1: 3/8 signals, MODERATE alert=HIGH     AUC 0.6616->0.6437 (+0.0179) psi_crit=0
+2026-08-04 10:28:50 | INFO     | split_regimes        |   seed  2: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6648->0.6479 (+0.0169) psi_crit=0
+2026-08-04 10:28:51 | INFO     | split_regimes        |   seed  3: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6659->0.6427 (+0.0232) psi_crit=0
+2026-08-04 10:28:52 | INFO     | split_regimes        |   seed  4: 3/8 signals, MODERATE alert=HIGH     AUC 0.6664->0.6477 (+0.0187) psi_crit=0
+2026-08-04 10:28:53 | INFO     | split_regimes        |   seed  5: 3/8 signals, MODERATE alert=HIGH     AUC 0.6661->0.6475 (+0.0186) psi_crit=0
+2026-08-04 10:28:54 | INFO     | split_regimes        |   seed  6: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6679->0.6455 (+0.0224) psi_crit=0
+2026-08-04 10:28:55 | INFO     | split_regimes        |   seed  7: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6672->0.6454 (+0.0218) psi_crit=0
+2026-08-04 10:28:56 | INFO     | split_regimes        |   seed  8: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6687->0.6462 (+0.0225) psi_crit=0
+2026-08-04 10:28:57 | INFO     | split_regimes        |   seed  9: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6685->0.6453 (+0.0232) psi_crit=0
+2026-08-04 10:28:58 | INFO     | split_regimes        |   seed 10: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6643->0.6433 (+0.0210) psi_crit=0
+2026-08-04 10:29:00 | INFO     | split_regimes        |   seed 11: 2/8 signals, MILD     alert=HIGH     AUC 0.6628->0.6442 (+0.0186) psi_crit=0
+2026-08-04 10:29:01 | INFO     | split_regimes        |   seed 12: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6647->0.6441 (+0.0206) psi_crit=0
+2026-08-04 10:29:02 | INFO     | split_regimes        |   seed 13: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6667->0.6446 (+0.0221) psi_crit=0
+2026-08-04 10:29:03 | INFO     | split_regimes        |   seed 14: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6650->0.6440 (+0.0210) psi_crit=0
+2026-08-04 10:29:04 | INFO     | split_regimes        |   seed 15: 2/8 signals, MILD     alert=HIGH     AUC 0.6636->0.6464 (+0.0172) psi_crit=0
+2026-08-04 10:29:05 | INFO     | split_regimes        |   seed 16: 3/8 signals, MODERATE alert=HIGH     AUC 0.6655->0.6464 (+0.0191) psi_crit=0
+2026-08-04 10:29:06 | INFO     | split_regimes        |   seed 17: 3/8 signals, MODERATE alert=HIGH     AUC 0.6658->0.6461 (+0.0197) psi_crit=0
+2026-08-04 10:29:07 | INFO     | split_regimes        |   seed 18: 2/8 signals, MILD     alert=HIGH     AUC 0.6633->0.6446 (+0.0187) psi_crit=0
+2026-08-04 10:29:08 | INFO     | split_regimes        |   seed 19: 2/8 signals, MILD     alert=HIGH     AUC 0.6638->0.6474 (+0.0164) psi_crit=0
+2026-08-04 10:29:08 | INFO     | split_regimes        | --------------------------------------------------------------
+2026-08-04 10:29:08 | INFO     | split_regimes        | REGIME: random   (20 seeds)
+2026-08-04 10:29:09 | INFO     | split_regimes        |   n_train=61,301 n_val=20,248 n_test=20,217 | prev 0.1122/0.1099/0.1115 | thr=0.140
+2026-08-04 10:29:09 | INFO     | split_regimes        |   seed  0: 2/8 signals, MILD     alert=STABLE   AUC 0.6891->0.6631 (+0.0260) psi_crit=0
+2026-08-04 10:29:10 | INFO     | split_regimes        |   seed  1: 0/8 signals, NONE     alert=STABLE   AUC 0.6787->0.6786 (+0.0001) psi_crit=0
+2026-08-04 10:29:11 | INFO     | split_regimes        |   seed  2: 0/8 signals, NONE     alert=STABLE   AUC 0.6754->0.6751 (+0.0003) psi_crit=0
+2026-08-04 10:29:12 | INFO     | split_regimes        |   seed  3: 0/8 signals, NONE     alert=STABLE   AUC 0.6735->0.6744 (-0.0009) psi_crit=0
+2026-08-04 10:29:13 | INFO     | split_regimes        |   seed  4: 0/8 signals, NONE     alert=STABLE   AUC 0.6778->0.6803 (-0.0025) psi_crit=0
+2026-08-04 10:29:14 | INFO     | split_regimes        |   seed  5: 1/8 signals, MILD     alert=STABLE   AUC 0.6869->0.6678 (+0.0191) psi_crit=0
+2026-08-04 10:29:15 | INFO     | split_regimes        |   seed  6: 0/8 signals, NONE     alert=STABLE   AUC 0.6760->0.6734 (+0.0026) psi_crit=0
+2026-08-04 10:29:16 | INFO     | split_regimes        |   seed  7: 0/8 signals, NONE     alert=STABLE   AUC 0.6745->0.6857 (-0.0112) psi_crit=0
+2026-08-04 10:29:17 | INFO     | split_regimes        |   seed  8: 0/8 signals, NONE     alert=STABLE   AUC 0.6716->0.6772 (-0.0056) psi_crit=0
+2026-08-04 10:29:18 | INFO     | split_regimes        |   seed  9: 0/8 signals, NONE     alert=STABLE   AUC 0.6681->0.6785 (-0.0104) psi_crit=0
+2026-08-04 10:29:19 | INFO     | split_regimes        |   seed 10: 0/8 signals, NONE     alert=STABLE   AUC 0.6804->0.6869 (-0.0065) psi_crit=0
+2026-08-04 10:29:20 | INFO     | split_regimes        |   seed 11: 0/8 signals, NONE     alert=STABLE   AUC 0.6828->0.6711 (+0.0117) psi_crit=0
+2026-08-04 10:29:21 | INFO     | split_regimes        |   seed 12: 1/8 signals, MILD     alert=STABLE   AUC 0.6746->0.6731 (+0.0015) psi_crit=0
+2026-08-04 10:29:22 | INFO     | split_regimes        |   seed 13: 0/8 signals, NONE     alert=STABLE   AUC 0.6726->0.6674 (+0.0052) psi_crit=0
+2026-08-04 10:29:23 | INFO     | split_regimes        |   seed 14: 0/8 signals, NONE     alert=STABLE   AUC 0.6730->0.6706 (+0.0024) psi_crit=0
+2026-08-04 10:29:24 | INFO     | split_regimes        |   seed 15: 0/8 signals, NONE     alert=STABLE   AUC 0.6819->0.6773 (+0.0046) psi_crit=0
+2026-08-04 10:29:25 | INFO     | split_regimes        |   seed 16: 0/8 signals, NONE     alert=STABLE   AUC 0.6721->0.6852 (-0.0131) psi_crit=0
+2026-08-04 10:29:26 | INFO     | split_regimes        |   seed 17: 0/8 signals, NONE     alert=STABLE   AUC 0.6659->0.6853 (-0.0194) psi_crit=0
+2026-08-04 10:29:27 | INFO     | split_regimes        |   seed 18: 1/8 signals, MILD     alert=STABLE   AUC 0.6711->0.6763 (-0.0052) psi_crit=0
+2026-08-04 10:29:28 | INFO     | split_regimes        |   seed 19: 0/8 signals, NONE     alert=STABLE   AUC 0.6759->0.6700 (+0.0059) psi_crit=0
+2026-08-04 10:29:28 | INFO     | split_regimes        | --------------------------------------------------------------
+2026-08-04 10:29:28 | INFO     | split_regimes        | REGIME: temporal   (20 seeds)
+2026-08-04 10:29:29 | INFO     | split_regimes        |   n_train=61,059 n_val=15,780 n_test=15,158 | prev 0.1143/0.0965/0.0864 | thr=0.150
+2026-08-04 10:29:29 | INFO     | split_regimes        |   leakage control dropped 4,573 val and 5,196 test rows
+2026-08-04 10:29:29 | INFO     | split_regimes        |   seed  0: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6623->0.6409 (+0.0214) psi_crit=0
+2026-08-04 10:29:30 | INFO     | split_regimes        |   seed  1: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6634->0.6344 (+0.0290) psi_crit=0
+2026-08-04 10:29:31 | INFO     | split_regimes        |   seed  2: 3/8 signals, MODERATE alert=HIGH     AUC 0.6607->0.6417 (+0.0190) psi_crit=0
+2026-08-04 10:29:32 | INFO     | split_regimes        |   seed  3: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6614->0.6386 (+0.0228) psi_crit=0
+2026-08-04 10:29:33 | INFO     | split_regimes        |   seed  4: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6650->0.6378 (+0.0272) psi_crit=0
+2026-08-04 10:29:34 | INFO     | split_regimes        |   seed  5: 3/8 signals, MODERATE alert=HIGH     AUC 0.6609->0.6412 (+0.0197) psi_crit=0
+2026-08-04 10:29:35 | INFO     | split_regimes        |   seed  6: 3/8 signals, MODERATE alert=HIGH     AUC 0.6608->0.6419 (+0.0189) psi_crit=0
+2026-08-04 10:29:37 | INFO     | split_regimes        |   seed  7: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6632->0.6415 (+0.0217) psi_crit=0
+2026-08-04 10:29:38 | INFO     | split_regimes        |   seed  8: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6638->0.6415 (+0.0223) psi_crit=0
+2026-08-04 10:29:39 | INFO     | split_regimes        |   seed  9: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6601->0.6366 (+0.0235) psi_crit=0
+2026-08-04 10:29:40 | INFO     | split_regimes        |   seed 10: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6634->0.6377 (+0.0257) psi_crit=0
+2026-08-04 10:29:40 | INFO     | split_regimes        |   seed 11: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6601->0.6377 (+0.0224) psi_crit=0
+2026-08-04 10:29:41 | INFO     | split_regimes        |   seed 12: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6649->0.6399 (+0.0250) psi_crit=0
+2026-08-04 10:29:43 | INFO     | split_regimes        |   seed 13: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6613->0.6399 (+0.0214) psi_crit=0
+2026-08-04 10:29:43 | INFO     | split_regimes        |   seed 14: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6598->0.6357 (+0.0241) psi_crit=0
+2026-08-04 10:29:45 | INFO     | split_regimes        |   seed 15: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6607->0.6403 (+0.0204) psi_crit=0
+2026-08-04 10:29:46 | INFO     | split_regimes        |   seed 16: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6627->0.6367 (+0.0260) psi_crit=0
+2026-08-04 10:29:47 | INFO     | split_regimes        |   seed 17: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6588->0.6380 (+0.0208) psi_crit=0
+2026-08-04 10:29:48 | INFO     | split_regimes        |   seed 18: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6622->0.6382 (+0.0240) psi_crit=0
+2026-08-04 10:29:49 | INFO     | split_regimes        |   seed 19: 4/8 signals, CRITICAL alert=HIGH     AUC 0.6641->0.6401 (+0.0240) psi_crit=0
+2026-08-04 10:29:49 | INFO     | split_regimes        | --------------------------------------------------------------
+2026-08-04 10:29:49 | INFO     | split_regimes        | FIRING RATES BY REGIME
+2026-08-04 10:29:49 | INFO     | split_regimes        |   signal                    entry_cohort         random       temporal
+2026-08-04 10:29:49 | INFO     | split_regimes        |   auc_drop                          0.45           0.05           0.85
+2026-08-04 10:29:49 | INFO     | split_regimes        |   f1_drop                           0.05           0.00           0.00
+2026-08-04 10:29:49 | INFO     | split_regimes        |   brier_increase                    0.00           0.00           0.00
+2026-08-04 10:29:49 | INFO     | split_regimes        |   auc_slope_negative                0.80           0.15           1.00
+2026-08-04 10:29:49 | INFO     | split_regimes        |   prediction_drift                  1.00           0.05           1.00
+2026-08-04 10:29:49 | INFO     | split_regimes        |   label_drift                       1.00           0.00           1.00
+2026-08-04 10:29:49 | INFO     | split_regimes        |   n_evidence mean                   3.30           0.25           3.85
+2026-08-04 10:29:49 | INFO     | split_regimes        | --------------------------------------------------------------
+2026-08-04 10:29:49 | INFO     | split_regimes        | MIS-CALIBRATED under the negative control (fires in >20% of no-drift seeds): none
+2026-08-04 10:29:49 | INFO     | split_regimes        | Report written: regime_random.json
+2026-08-04 10:29:49 | INFO     | split_regimes        | ==============================================================================
+2026-08-04 10:29:49 | INFO     | split_regimes        | PHASE 0.3 — synthetic positive controls
+2026-08-04 10:29:49 | INFO     | split_regimes        | ==============================================================================
+2026-08-04 10:29:56 | INFO     | split_regimes        |   seed  0 complete (15 shift points)
+2026-08-04 10:30:04 | INFO     | split_regimes        |   seed  1 complete (15 shift points)
+2026-08-04 10:30:11 | INFO     | split_regimes        |   seed  2 complete (15 shift points)
+2026-08-04 10:30:19 | INFO     | split_regimes        |   seed  3 complete (15 shift points)
+2026-08-04 10:30:26 | INFO     | split_regimes        |   seed  4 complete (15 shift points)
+2026-08-04 10:30:34 | INFO     | split_regimes        |   seed  5 complete (15 shift points)
+2026-08-04 10:30:41 | INFO     | split_regimes        |   seed  6 complete (15 shift points)
+2026-08-04 10:30:49 | INFO     | split_regimes        |   seed  7 complete (15 shift points)
+2026-08-04 10:30:56 | INFO     | split_regimes        |   seed  8 complete (15 shift points)
+2026-08-04 10:31:04 | INFO     | split_regimes        |   seed  9 complete (15 shift points)
+2026-08-04 10:31:04 | INFO     | split_regimes        | --------------------------------------------------------------
+2026-08-04 10:31:04 | INFO     | split_regimes        | POWER CURVE — covariate_shift   magnitudes [0.0, 0.5, 1.0, 1.5, 2.0]
+2026-08-04 10:31:04 | INFO     | split_regimes        |   auc_drop                   0.20    0.40    0.60    0.90    0.90
+2026-08-04 10:31:04 | INFO     | split_regimes        |   f1_drop                    0.00    0.00    0.00    0.30    0.90
+2026-08-04 10:31:04 | INFO     | split_regimes        |   brier_increase             0.00    0.00    0.10    0.70    0.60
+2026-08-04 10:31:04 | INFO     | split_regimes        |   auc_slope_negative         0.20    0.50    0.80    0.90    0.90
+2026-08-04 10:31:04 | INFO     | split_regimes        |   prediction_drift           0.20    1.00    1.00    1.00    1.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   label_drift                0.00    0.10    0.40    0.60    0.80
+2026-08-04 10:31:04 | INFO     | split_regimes        | --------------------------------------------------------------
+2026-08-04 10:31:04 | INFO     | split_regimes        | POWER CURVE — label_shift   magnitudes [0.0, 0.02, 0.05, 0.1, 0.15]
+2026-08-04 10:31:04 | INFO     | split_regimes        |   auc_drop                   0.10    0.10    0.10    0.20    0.10
+2026-08-04 10:31:04 | INFO     | split_regimes        |   f1_drop                    0.00    0.00    0.00    0.00    0.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   brier_increase             0.00    0.90    1.00    1.00    1.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   auc_slope_negative         0.10    0.20    0.30    0.20    0.20
+2026-08-04 10:31:04 | INFO     | split_regimes        |   prediction_drift           0.30    0.10    0.40    1.00    1.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   label_drift                0.00    0.90    1.00    1.00    1.00
+2026-08-04 10:31:04 | INFO     | split_regimes        | --------------------------------------------------------------
+2026-08-04 10:31:04 | INFO     | split_regimes        | POWER CURVE — concept_shift   magnitudes [0.0, 0.1, 0.2, 0.35, 0.5]
+2026-08-04 10:31:04 | INFO     | split_regimes        |   auc_drop                   0.10    0.20    0.20    0.20    0.80
+2026-08-04 10:31:04 | INFO     | split_regimes        |   f1_drop                    0.00    0.00    0.00    0.00    0.10
+2026-08-04 10:31:04 | INFO     | split_regimes        |   brier_increase             0.00    0.00    0.00    0.00    0.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   auc_slope_negative         0.20    0.30    0.70    0.80    1.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   prediction_drift           0.00    0.00    0.00    0.00    0.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   label_drift                0.00    0.00    0.00    0.00    0.00
+2026-08-04 10:31:04 | INFO     | split_regimes        | --------------------------------------------------------------
+2026-08-04 10:31:04 | INFO     | split_regimes        | DIAGNOSTICITY (which signal identifies which mechanism)
+2026-08-04 10:31:04 | INFO     | split_regimes        |   auc_drop               responds to: ['covariate_shift', 'concept_shift']  -> PARTIAL
+2026-08-04 10:31:04 | INFO     | split_regimes        |   f1_drop                responds to: ['covariate_shift']  -> DIAGNOSTIC
+2026-08-04 10:31:04 | INFO     | split_regimes        |   brier_increase         responds to: ['covariate_shift', 'label_shift']  -> PARTIAL
+2026-08-04 10:31:04 | INFO     | split_regimes        |   auc_slope_negative     responds to: ['covariate_shift', 'concept_shift']  -> PARTIAL
+2026-08-04 10:31:04 | INFO     | split_regimes        |   prediction_drift       responds to: ['covariate_shift', 'label_shift']  -> PARTIAL
+2026-08-04 10:31:04 | INFO     | split_regimes        |   label_drift            responds to: ['covariate_shift', 'label_shift']  -> PARTIAL
+2026-08-04 10:31:04 | INFO     | split_regimes        | Report written: regime_synthetic.json
+2026-08-04 10:31:04 | INFO     | split_regimes        | ==============================================================================
+2026-08-04 10:31:04 | INFO     | split_regimes        | PHASE 0.4 — regime x signal matrix
+2026-08-04 10:31:04 | INFO     | split_regimes        | ==============================================================================
+2026-08-04 10:31:04 | INFO     | split_regimes        |   family       signal                         entry_cohort       random_control             temporal  covariate_shift_max      label_shift_max    concept_shift_max
+2026-08-04 10:31:04 | INFO     | split_regimes        |   distribution label_drift                            1.00                 0.00                 1.00                 0.80                 1.00                 0.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   distribution prediction_drift                       1.00                 0.05                 1.00                 1.00                 1.00                 0.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   performance  auc_drop                               0.45                 0.05                 0.85                 0.90                 0.10                 0.80
+2026-08-04 10:31:04 | INFO     | split_regimes        |   performance  auc_slope_negative                     0.80                 0.15                 1.00                 0.90                 0.20                 1.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   performance  brier_increase                         0.00                 0.00                 0.00                 0.60                 1.00                 0.00
+2026-08-04 10:31:04 | INFO     | split_regimes        |   performance  f1_drop                                0.05                 0.00                 0.00                 0.90                 0.00                 0.10
+2026-08-04 10:31:04 | INFO     | split_regimes        | --------------------------------------------------------------
+2026-08-04 10:31:04 | INFO     | split_regimes        |   entry_cohort_signals_mean: 3.3
+2026-08-04 10:31:04 | INFO     | split_regimes        |   random_control_signals_mean: 0.25
+2026-08-04 10:31:04 | INFO     | split_regimes        |   temporal_signals_mean: 3.85
+2026-08-04 10:31:04 | INFO     | split_regimes        |   signals_firing_above_the_no_drift_baseline: ['auc_slope_negative', 'prediction_drift', 'label_drift']
+2026-08-04 10:31:04 | INFO     | split_regimes        |   signals_that_fire_even_with_no_drift: []
+2026-08-04 10:31:04 | INFO     | split_regimes        |   entry_cohort_auc_degradation: 0.0199
+2026-08-04 10:31:04 | INFO     | split_regimes        |   random_auc_degradation: 0.0002
+2026-08-04 10:31:04 | INFO     | split_regimes        |   temporal_auc_degradation: 0.023
+2026-08-04 10:31:04 | INFO     | split_regimes        | Reports written: regime_matrix.csv / regime_matrix.json
+2026-08-04 10:31:04 | INFO     | split_regimes        | Figures: 40_regime_firing_rates.png, 41_detection_power_curves.png, 42_regime_signal_matrix.png
+2026-08-04 10:31:04 | INFO     | split_regimes        | ==============================================================================
+2026-08-04 10:31:04 | INFO     | split_regimes        | Phases 0.2 / 0.3 / 0.4 complete
+2026-08-04 10:31:04 | INFO     | split_regimes        | ==============================================================================

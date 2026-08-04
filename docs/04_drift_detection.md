@@ -6,14 +6,21 @@
 
 ## What is Drift?
 
-A deployed model learns patterns from historical data. When the real world
-changes — patient demographics shift, billing codes change, disease
-prevalence drops — the model's learned patterns no longer hold.
-**Performance degrades silently, without any error or warning.**
+A deployed model learns patterns from one data window. When the production
+window differs from it, the learned patterns may no longer hold, and
+**performance can degrade without any error or warning.**
 
-In this project, newer patients (test window) have different insurance
-patterns, fewer diagnoses, and a 14pp lower readmission rate than the
-training population. The model was never told. DriftSentinel found out.
+In this project the test window differs from the training population in its
+insurance-code mix, its diagnosis counts, and its observed readmission rate.
+
+> **Mechanism claims removed (Phase 0.5).** This section previously asserted
+> *causes* — shifting demographics, changing billing codes, falling disease
+> prevalence. None were ever evidenced. Tier 0 tested the mechanism and found
+> that the label difference tracks **observation-window truncation**: the share
+> of rows that are a patient's final observed encounter rises from 0.683 (val)
+> to 0.826 (test), and `readmitted` is essentially an in-extract successor
+> indicator (only 0.89% of `NO` rows have any later encounter). See
+> `outputs/reports/temporal_validity.json`.
 
 ---
 
@@ -53,7 +60,7 @@ Four modules run in sequence, each adding independent evidence:
 |---|---|---|
 | payer_code | 0.84 | Insurance type mix changed completely |
 | medical_specialty | 0.44 | Treating specialty distribution shifted |
-| number_diagnoses | 0.26 | Newer patients have fewer diagnoses |
+| number_diagnoses | 0.26 | Later-entering patients have fewer recorded diagnoses (consistent with left-truncation of recorded history — see Tier 0) |
 | FE_labs_per_day_x_comorbidity | 0.21 | Lab intensity × comorbidity interaction drifted |
 | admission_source_id | 0.20 | Admission pathways changed |
 
@@ -112,7 +119,11 @@ Val:  0.675 → 0.665 → 0.661 → 0.695 → 0.696 → 0.686 → 0.688 → 0.70
 Test: 0.659 → 0.673 → 0.626 → 0.657 → 0.646 → 0.638 → 0.659 → 0.676 → 0.709 → 0.647
 ```
 
-![Target Temporal Shift](../outputs/figure/13_target_temporal_shift.png)
+![Target shift across entry-cohort windows](../outputs/figure/13_target_temporal_shift.png)
+<!-- Phase 0.5: alt text corrected to entry-cohort framing. The FILENAME still
+     says "temporal"; renaming a generated artifact is a pipeline change, not a
+     language change, so it is deferred to Tier 1 rather than done silently. -->
+
 ![Performance Degradation](../outputs/figure/23_degradation_lgbm_v1.png)
 
 ---

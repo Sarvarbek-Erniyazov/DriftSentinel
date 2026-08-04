@@ -1,0 +1,56 @@
+{
+  "timestamp": "2026-08-04T10:30:00.355857",
+  "model_name": "label_shift_0.0_s1",
+  "ref_name": "label_shift_0.0_s1_val",
+  "prod_name": "label_shift_0.0_s1_test",
+  "system_status": "STABLE",
+  "recommendation": "No significant drift. Continue normal monitoring.",
+  "alert_counts": {
+    "MEDIUM": 1,
+    "LOW": 1
+  },
+  "total_alerts": 2,
+  "alerts": [
+    {
+      "alert_id": "DD-001",
+      "alert_type": "DATA_DRIFT",
+      "level": "MEDIUM",
+      "title": "Data Drift: 4/28 Features Drifted",
+      "description": "14.3% of monitored features show distribution shift. 0 features with PSI > 0.20 (critical). Top drifted: admission_source_id, number_inpatient, admission_type_id, race.",
+      "metric": "drift_rate",
+      "value": 0.1429,
+      "threshold": 0.25,
+      "features": [
+        "admission_source_id",
+        "number_inpatient",
+        "admission_type_id",
+        "race"
+      ],
+      "action": "Investigate data pipeline for source distribution changes. Check for data quality issues in production ingestion.",
+      "timestamp": "2026-08-04T10:30:00.355857"
+    },
+    {
+      "alert_id": "CD-004",
+      "alert_type": "CONCEPT_DRIFT",
+      "level": "LOW",
+      "title": "CUSUM Sequential Alarm [DIAGNOSTIC \u2014 not evidence]",
+      "description": "CUSUM detected 162 alarms. First alarm at index 476 (1.17% into stream). Mean error shift: 0.2015 \u2192 0.1881.",
+      "metric": "cusum_alarms",
+      "value": 162.0,
+      "threshold": 1.0,
+      "features": [],
+      "action": "Deploy monitoring on incoming predictions. CUSUM suggests sustained error increase from early in stream.",
+      "timestamp": "2026-08-04T10:30:00.355857"
+    }
+  ],
+  "drift_summary": {
+    "concept_severity": "MILD",
+    "n_evidence": 1,
+    "auc_degradation": 0.004,
+    "f1_degradation": 0.011,
+    "n_data_drifted": 4,
+    "n_data_critical": 0,
+    "n_feature_high": null,
+    "label_shift_delta": -0.0087
+  }
+}

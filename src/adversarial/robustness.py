@@ -18,6 +18,8 @@ import pandas as pd
 import numpy as np
 import json
 import pickle
+import matplotlib
+matplotlib.use("Agg")   # headless: figures save to disk only, no GUI window
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from pathlib import Path
@@ -355,7 +357,7 @@ def _plot_robustness_dashboard(
     )
     path = FIGURE_DIR / f"30_robustness_dashboard_{model_name}.png"
     plt.savefig(path, bbox_inches="tight")
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
 
 

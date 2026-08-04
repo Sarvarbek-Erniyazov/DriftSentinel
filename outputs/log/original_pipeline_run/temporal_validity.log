@@ -1,0 +1,74 @@
+2026-08-03 23:51:39 | INFO     | temporal_validity    | ==============================================================================
+2026-08-03 23:51:39 | INFO     | temporal_validity    | DriftSentinel — Phase 0.1: Temporal validity of encounter_id
+2026-08-03 23:51:39 | INFO     | temporal_validity    | ==============================================================================
+2026-08-03 23:51:39 | INFO     | temporal_validity    | Seed 42 | 10,000 permutations | 2,000 cluster-bootstrap draws | 10 bins
+2026-08-03 23:51:40 | INFO     | temporal_validity    | Raw load        : 101,766 rows x 50 cols  (diabetic_data.csv)
+2026-08-03 23:51:40 | INFO     | temporal_validity    | Patients        : 71,518
+2026-08-03 23:51:40 | INFO     | temporal_validity    | encounter_id    : 12,522 — 443,867,222
+2026-08-03 23:51:40 | INFO     | temporal_validity    | ------------------------------------------------------------
+2026-08-03 23:51:40 | INFO     | temporal_validity    | EXTERNAL ANCHORS
+2026-08-03 23:51:40 | INFO     | temporal_validity    |   A1 troglitazone   n=3 rows / 3 patients  p=1.681e-09  -> PASS
+2026-08-03 23:51:45 | INFO     | temporal_validity    |   A2 TZD share      split=0.792  0.511 -> 0.243  delta=+0.268 CI[0.24625120559183558, 0.289860820589457]  p=0.0001  -> PASS
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   A3 A1c rate       slope=+0.02014 CI[0.011010192238799793, 0.02896586659438835]  p=0.0001  -> PASS [supporting]
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   A4 V85 BMI        n=265 rows / 254 patients  min_rank=0.5353  p=2.871e-85  -> PASS [exploratory]
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   minor metformin-rosiglitazone    n=2  p=8.801e-01
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   minor metformin-pioglitazone     n=1  p=9.694e-01
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   null anchor examide        n_levels=1  testable=False
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   null anchor citoglipton    n_levels=1  testable=False
+2026-08-03 23:52:04 | INFO     | temporal_validity    | ------------------------------------------------------------
+2026-08-03 23:52:04 | INFO     | temporal_validity    | BH-FDR at q=0.05
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   A1_troglitazone      p_raw=1.6809e-09  p_adj=3.3618e-09  reject=True
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   A2_tzd_share         p_raw=9.9990e-05  p_adj=9.9990e-05  reject=True
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   A3_a1c_rate          p_raw=9.9990e-05  p_adj=9.9990e-05  reject=True
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   A4_v85_bmi           p_raw=2.8707e-85  p_adj=1.1483e-84  reject=True
+2026-08-03 23:52:04 | INFO     | temporal_validity    | ------------------------------------------------------------
+2026-08-03 23:52:04 | INFO     | temporal_validity    | ANCHOR TIMELINE COHERENCE
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   2000-03-21  A1_troglitazone    -> rank 0.0012   [upper (drug withdrawn -> last use at or before this date)]
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   2005-10-01  A4_v85_bmi         -> rank 0.5353   [lower (code introduced -> first use at or after this date)]
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   2007-05-21  A2_tzd_share       -> rank 0.7918   [point (prescribing changepoint)]
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   rank order matches date order : True (p=0.1667, corroborating)
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   1999-01-01 -> 2000-03-21  1.22y  0.0012 of encounters  (0.0010/yr)
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   2000-03-21 -> 2005-10-01  5.53y  0.5341 of encounters  (0.0966/yr)
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   2005-10-01 -> 2007-05-21  1.63y  0.2565 of encounters  (0.1569/yr)
+2026-08-03 23:52:04 | INFO     | temporal_validity    |   implied rate monotonically increasing : True
+2026-08-03 23:52:04 | INFO     | temporal_validity    | ------------------------------------------------------------
+2026-08-03 23:52:04 | INFO     | temporal_validity    | INTERNAL LABEL-INTERVAL COHERENCE (no external literature)
+2026-08-03 23:52:15 | INFO     | temporal_validity    |   median rank gap to next encounter: <30 = 0.00591  >30 = 0.05927  (ratio 10.04x)
+2026-08-03 23:52:15 | INFO     | temporal_validity    |   Mann-Whitney one-sided p = 0.000e+00; median diff CI[-0.0548, -0.05209]
+2026-08-03 23:52:15 | INFO     | temporal_validity    |   implied days for '<30': median 17.9d, share <= 30d = 0.761  (n=8,133)
+2026-08-03 23:52:15 | INFO     | temporal_validity    |   implied days for '>30': median 173.5d, share <= 30d = 0.028  (n=21,625)
+2026-08-03 23:52:15 | INFO     | temporal_validity    | ------------------------------------------------------------
+2026-08-03 23:52:15 | INFO     | temporal_validity    | BLOCK-STRUCTURE DIAGNOSTICS
+2026-08-03 23:52:15 | INFO     | temporal_validity    |   median gap 1590 | max gap 447,198 | gaps>1000x median: 0
+2026-08-03 23:52:15 | INFO     | temporal_validity    |   spearman(patient_nbr, first encounter_id) = +0.5117
+2026-08-03 23:52:15 | INFO     | temporal_validity    | ------------------------------------------------------------
+2026-08-03 23:52:15 | INFO     | temporal_validity    | CENSORING / TRUNCATION LEG
+2026-08-03 23:52:58 | INFO     | temporal_validity    |   n_enc                    slope=-0.21055 CI[-0.23398,-0.18762] rho=-0.057 decline=True
+2026-08-03 23:52:58 | INFO     | temporal_validity    |   span_rank                slope=-0.013784 CI[-0.015513,-0.012118] rho=-0.054 decline=True
+2026-08-03 23:52:58 | INFO     | temporal_validity    |   rate_lt30                slope=-0.034087 CI[-0.039188,-0.029001] rho=-0.042 decline=True
+2026-08-03 23:52:58 | INFO     | temporal_validity    |   rate_merged              slope=-0.08636 CI[-0.096945,-0.076444] rho=-0.060 decline=True
+2026-08-03 23:52:58 | INFO     | temporal_validity    |   rate_gt30                slope=-0.052274 CI[-0.062136,-0.042814] rho=-0.047 decline=True
+2026-08-03 23:52:58 | INFO     | temporal_validity    |   first_number_inpatient   slope=-0.099063 CI[-0.11391,-0.084565] rho=-0.039 decline=True
+2026-08-03 23:52:58 | INFO     | temporal_validity    |   span_encounter_id_units_UNINTERPRETABLE slope=+6.2452e+06 CI[+5.4945e+06,+6.9968e+06] rho=-0.039 decline=False
+2026-08-03 23:52:58 | INFO     | temporal_validity    |   horizon contrast (>30 − <30 relative slope) = +0.0057 CI[-0.0734,+0.0853] -> UNINFORMATIVE_PREMISE_INVALIDATED
+2026-08-03 23:52:58 | INFO     | temporal_validity    |   last-encounter share slope = +0.05652; <30 slope all=-0.00981 non-last=+0.03114
+2026-08-03 23:52:58 | INFO     | temporal_validity    |   label observability: <30 with in-dataset successor = 0.716, >30 = 0.608, NO = 0.009
+2026-08-03 23:52:58 | INFO     | temporal_validity    | ------------------------------------------------------------
+2026-08-03 23:52:58 | INFO     | temporal_validity    | ORDERING VERDICT : SUPPORTED
+2026-08-03 23:52:58 | INFO     | temporal_validity    | SPLIT VALIDITY   : NOT_TEMPORAL_BY_CONSTRUCTION
+2026-08-03 23:52:58 | INFO     | temporal_validity    | ------------------------------------------------------------
+2026-08-03 23:52:58 | INFO     | temporal_validity    | FIGURES
+2026-08-03 23:52:59 | INFO     | temporal_validity    |   A1         -> 32_anchor_A1_troglitazone.png
+2026-08-03 23:52:59 | INFO     | temporal_validity    |   A2         -> 33_anchor_A2_tzd_share.png
+2026-08-03 23:52:59 | INFO     | temporal_validity    |   A3         -> 34_anchor_A3_a1c_rate.png
+2026-08-03 23:52:59 | INFO     | temporal_validity    |   A4         -> 35_anchor_A4_v85_bmi.png
+2026-08-03 23:52:59 | INFO     | temporal_validity    |   censoring  -> 36_censoring_entry_cohort.png
+2026-08-03 23:52:59 | INFO     | temporal_validity    |   horizon    -> 37_horizon_contrast_last_encounter.png
+2026-08-03 23:52:59 | INFO     | temporal_validity    |   blocks     -> 38_block_structure.png
+2026-08-03 23:52:59 | INFO     | temporal_validity    |   timeline   -> 39_anchor_timeline_coherence.png
+2026-08-03 23:52:59 | INFO     | temporal_validity    | ------------------------------------------------------------
+2026-08-03 23:52:59 | INFO     | temporal_validity    | Phase 0.5 inventory: 98 occurrences in 13 files -> temporal_language_inventory.json  (NOT applied)
+2026-08-03 23:52:59 | INFO     | temporal_validity    | Report written  : C:\Users\sharg\Desktop\github\DriftSentinel\outputs\reports\temporal_validity.json
+2026-08-03 23:52:59 | INFO     | temporal_validity    | ==============================================================================
+2026-08-03 23:52:59 | INFO     | temporal_validity    | Phase 0.1 complete
+2026-08-03 23:52:59 | INFO     | temporal_validity    | ==============================================================================

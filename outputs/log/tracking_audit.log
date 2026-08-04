@@ -1,0 +1,86 @@
+2026-08-04 18:26:55 | INFO     | tracking_audit       | ===== RUN 20260804-182655-e57b63 | pid=30804 | started 2026-08-04 18:26:55 =====
+2026-08-04 18:26:55 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 18:26:55 | INFO     | tracking_audit       | DriftSentinel — Tier 2C.5  traceability audit
+2026-08-04 18:26:55 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 18:26:58 | INFO     | tracking_audit       |   FAIL  T2_reports_record_seed_and_versions
+2026-08-04 18:26:58 | INFO     | tracking_audit       |           - threshold_policy_lgbm_v1.json: no `reproducibility` block
+2026-08-04 18:26:58 | INFO     | tracking_audit       |   PASS  T3_predecessors_preserved
+2026-08-04 18:26:58 | INFO     | tracking_audit       |   PASS  T4_model_lineage
+2026-08-04 18:26:58 | INFO     | tracking_audit       |   FAIL  T5_model_binary_provenance
+2026-08-04 18:26:58 | INFO     | tracking_audit       |           - lgbm_v1.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 18:26:58 | INFO     | tracking_audit       |           - lgbm_v2.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 18:26:58 | INFO     | tracking_audit       |           - logreg_scaler.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 18:26:58 | INFO     | tracking_audit       |           - logreg_v1.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 18:26:58 | INFO     | tracking_audit       |   PASS  T6_runs_are_byte_reproducible
+2026-08-04 18:26:58 | INFO     | tracking_audit       | --------------------------------------------------------------
+2026-08-04 18:26:58 | INFO     | tracking_audit       | 3/5 checks pass — SUBSTANTIALLY YES, WITH TWO NAMED GAPS
+2026-08-04 18:26:58 | INFO     | tracking_audit       | Report: tracking_traceability_audit.json
+2026-08-04 18:26:58 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 18:44:10 | INFO     | tracking_audit       | ===== RUN 20260804-184410-31e727 | pid=3592 | started 2026-08-04 18:44:10 =====
+2026-08-04 18:44:10 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 18:44:10 | INFO     | tracking_audit       | DriftSentinel — Tier 2C.5  traceability audit
+2026-08-04 18:44:10 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 18:44:11 | INFO     | tracking_audit       |   FAIL  T2_reports_record_seed_and_versions
+2026-08-04 18:44:11 | INFO     | tracking_audit       |           - threshold_policy_lgbm_v1.json: no `reproducibility` block
+2026-08-04 18:44:11 | INFO     | tracking_audit       |   PASS  T3_predecessors_preserved
+2026-08-04 18:44:11 | INFO     | tracking_audit       |   PASS  T4_model_lineage
+2026-08-04 18:44:11 | INFO     | tracking_audit       |   FAIL  T5_model_binary_provenance
+2026-08-04 18:44:11 | INFO     | tracking_audit       |           - lgbm_v1.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 18:44:11 | INFO     | tracking_audit       |           - lgbm_v2.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 18:44:11 | INFO     | tracking_audit       |           - logreg_scaler.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 18:44:11 | INFO     | tracking_audit       |           - logreg_v1.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 18:44:11 | INFO     | tracking_audit       |   PASS  T6_runs_are_byte_reproducible
+2026-08-04 18:44:11 | INFO     | tracking_audit       | --------------------------------------------------------------
+2026-08-04 18:44:11 | INFO     | tracking_audit       | 3/5 checks pass — SUBSTANTIALLY YES, WITH TWO NAMED GAPS
+2026-08-04 18:44:11 | INFO     | tracking_audit       | Report: tracking_traceability_audit.json
+2026-08-04 18:44:11 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 20:05:35 | INFO     | tracking_audit       | ===== RUN 20260804-200535-d4aecd | pid=3912 | started 2026-08-04 20:05:35 =====
+2026-08-04 20:05:35 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 20:05:35 | INFO     | tracking_audit       | DriftSentinel — Tier 2C.5  traceability audit
+2026-08-04 20:05:35 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 20:05:36 | INFO     | tracking_audit       |   FAIL  T2_reports_record_seed_and_versions
+2026-08-04 20:05:36 | INFO     | tracking_audit       |           - threshold_policy_lgbm_v1.json: no `reproducibility` block
+2026-08-04 20:05:36 | INFO     | tracking_audit       |   PASS  T3_predecessors_preserved
+2026-08-04 20:05:36 | INFO     | tracking_audit       |   PASS  T4_model_lineage
+2026-08-04 20:05:36 | INFO     | tracking_audit       |   FAIL  T5_model_binary_provenance
+2026-08-04 20:05:36 | INFO     | tracking_audit       |           - lgbm_v1.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 20:05:36 | INFO     | tracking_audit       |           - lgbm_v2.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 20:05:36 | INFO     | tracking_audit       |           - logreg_scaler.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 20:05:36 | INFO     | tracking_audit       |           - logreg_v1.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 20:05:36 | INFO     | tracking_audit       |   PASS  T6_runs_are_byte_reproducible
+2026-08-04 20:05:36 | INFO     | tracking_audit       | --------------------------------------------------------------
+2026-08-04 20:05:36 | INFO     | tracking_audit       | 3/5 checks pass — SUBSTANTIALLY YES, WITH TWO NAMED GAPS
+2026-08-04 20:05:36 | INFO     | tracking_audit       | Report: tracking_traceability_audit.json
+2026-08-04 20:05:36 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 20:52:44 | INFO     | tracking_audit       | ===== RUN 20260804-205244-f986d4 | pid=7984 | started 2026-08-04 20:52:44 =====
+2026-08-04 20:52:44 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 20:52:44 | INFO     | tracking_audit       | DriftSentinel — Tier 2C.5  traceability audit
+2026-08-04 20:52:44 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 20:52:45 | INFO     | tracking_audit       |   FAIL  T2_reports_record_seed_and_versions
+2026-08-04 20:52:45 | INFO     | tracking_audit       |           - threshold_policy_lgbm_v1.json: no `reproducibility` block
+2026-08-04 20:52:45 | INFO     | tracking_audit       |   PASS  T3_predecessors_preserved
+2026-08-04 20:52:45 | INFO     | tracking_audit       |   PASS  T4_model_lineage
+2026-08-04 20:52:45 | INFO     | tracking_audit       |   FAIL  T5_model_binary_provenance
+2026-08-04 20:52:45 | INFO     | tracking_audit       |           - lgbm_v1.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 20:52:45 | INFO     | tracking_audit       |           - lgbm_v2.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 20:52:45 | INFO     | tracking_audit       |           - logreg_scaler.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 20:52:45 | INFO     | tracking_audit       |           - logreg_v1.pkl: no provenance sidecar — versions and content hash unrecorded
+2026-08-04 20:52:45 | INFO     | tracking_audit       |   PASS  T6_runs_are_byte_reproducible
+2026-08-04 20:52:45 | INFO     | tracking_audit       | --------------------------------------------------------------
+2026-08-04 20:52:45 | INFO     | tracking_audit       | 3/5 checks pass — SUBSTANTIALLY YES, WITH TWO NAMED GAPS
+2026-08-04 20:52:45 | INFO     | tracking_audit       | Report: tracking_traceability_audit.json
+2026-08-04 20:52:45 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 21:13:25 | INFO     | tracking_audit       | ===== RUN 20260804-211325-93dc95 | pid=5244 | started 2026-08-04 21:13:25 =====
+2026-08-04 21:13:25 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 21:13:25 | INFO     | tracking_audit       | DriftSentinel — Tier 2C.5  traceability audit
+2026-08-04 21:13:25 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 21:13:26 | INFO     | tracking_audit       |   FAIL  T2_reports_record_seed_and_versions
+2026-08-04 21:13:26 | INFO     | tracking_audit       |           - threshold_policy_lgbm_v1.json: no `reproducibility` block
+2026-08-04 21:13:26 | INFO     | tracking_audit       |   PASS  T3_predecessors_preserved
+2026-08-04 21:13:26 | INFO     | tracking_audit       |   PASS  T4_model_lineage
+2026-08-04 21:13:26 | INFO     | tracking_audit       |   PASS  T5_model_binary_provenance
+2026-08-04 21:13:26 | INFO     | tracking_audit       |   PASS  T6_runs_are_byte_reproducible
+2026-08-04 21:13:26 | INFO     | tracking_audit       | --------------------------------------------------------------
+2026-08-04 21:13:26 | INFO     | tracking_audit       | 4/5 checks pass — SUBSTANTIALLY YES, WITH TWO NAMED GAPS
+2026-08-04 21:13:26 | INFO     | tracking_audit       | Report: tracking_traceability_audit.json
+2026-08-04 21:13:26 | INFO     | tracking_audit       | ==============================================================================

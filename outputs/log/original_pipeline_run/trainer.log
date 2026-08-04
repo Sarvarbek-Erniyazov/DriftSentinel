@@ -1,0 +1,86 @@
+2026-05-11 21:21:46 | INFO     | trainer              | ======================================================================
+2026-05-11 21:21:46 | INFO     | trainer              | DriftSentinel — Model Trainer
+2026-05-11 21:21:46 | INFO     | trainer              | ======================================================================
+2026-05-11 21:21:46 | INFO     | trainer              | Loading splits from C:\Users\sharg\Desktop\github\DriftSentinel\data\train
+2026-05-11 21:21:46 | INFO     | trainer              | Train: (63492, 55)  Val: (20949, 55)  Test: (17325, 55)
+2026-05-11 21:21:46 | INFO     | trainer              | Features      : 53
+2026-05-11 21:21:46 | INFO     | trainer              | Target        : readmitted_binary
+2026-05-11 21:21:46 | INFO     | trainer              | Train pos rate: 0.4897
+2026-05-11 21:21:46 | INFO     | trainer              | Val   pos rate: 0.4764
+2026-05-11 21:21:46 | INFO     | trainer              | Test  pos rate: 0.3364
+2026-05-11 21:21:46 | INFO     | trainer              | ============================================================
+2026-05-11 21:21:46 | INFO     | trainer              | Training LightGBM
+2026-05-11 21:21:46 | INFO     | trainer              | ============================================================
+2026-05-11 21:21:47 | INFO     | trainer              |   Train: (63492, 53)  pos_rate=0.490
+2026-05-11 21:21:47 | INFO     | trainer              |   Val  : (20949, 53)  pos_rate=0.476
+2026-05-11 21:21:47 | INFO     | trainer              |   Params: {'objective': 'binary', 'metric': 'auc', 'learning_rate': 0.05, 'num_leaves': 63, 'max_depth': -1, 'min_child_samples': 50, 'feature_fraction': 0.8, 'bagging_fraction': 0.8, 'bagging_freq': 5, 'reg_alpha': 0.1, 'reg_lambda': 0.1, 'n_estimators': 500, 'random_state': 42, 'n_jobs': -1, 'verbose': -1}
+2026-05-11 21:21:47 | INFO     | trainer              | Cross-validation: LightGBM (5-fold stratified)
+2026-05-11 21:22:06 | INFO     | trainer              |   AUC: 0.7186 ± 0.0041
+2026-05-11 21:22:06 | INFO     | trainer              |   F1 : 0.6522 ± 0.0056
+2026-05-11 21:22:09 | INFO     | trainer              |   Best iteration    : 173
+2026-05-11 21:22:09 | INFO     | trainer              |   Training time     : 2.60s
+2026-05-11 21:22:09 | INFO     | trainer              |   Val AUC       : 0.6865
+2026-05-11 21:22:09 | INFO     | trainer              |   Val F1        : 0.6624
+2026-05-11 21:22:09 | INFO     | trainer              |   Val Precision : 0.5642
+2026-05-11 21:22:09 | INFO     | trainer              |   Val Recall    : 0.8021
+2026-05-11 21:22:09 | INFO     | trainer              |   Top 10 features (gain):
+2026-05-11 21:22:09 | INFO     | trainer              |     FE_lab_to_procedure_ratio                     812
+2026-05-11 21:22:09 | INFO     | trainer              |     FE_total_clinical_contacts                    723
+2026-05-11 21:22:09 | INFO     | trainer              |     FE_labs_per_day                               700
+2026-05-11 21:22:09 | INFO     | trainer              |     FE_diag_med_ratio                             682
+2026-05-11 21:22:09 | INFO     | trainer              |     FE_meds_per_day                               655
+2026-05-11 21:22:09 | INFO     | trainer              |     discharge_disposition_id                      606
+2026-05-11 21:22:09 | INFO     | trainer              |     medical_specialty                             586
+2026-05-11 21:22:09 | INFO     | trainer              |     admission_source_id                           495
+2026-05-11 21:22:09 | INFO     | trainer              |     num_medications                               476
+2026-05-11 21:22:09 | INFO     | trainer              |     payer_code                                    424
+2026-05-11 21:22:09 | INFO     | trainer              |   Saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\lgbm_v1.pkl
+2026-05-11 21:22:09 | INFO     | trainer              |   Saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\lgbm_feature_importance.csv
+2026-05-11 21:22:09 | INFO     | trainer              | ============================================================
+2026-05-11 21:22:09 | INFO     | trainer              | Training Logistic Regression (baseline)
+2026-05-11 21:22:09 | INFO     | trainer              | ============================================================
+2026-05-11 21:22:09 | INFO     | trainer              |   Train: (63492, 53)  pos_rate=0.490
+2026-05-11 21:22:09 | INFO     | trainer              |   Scaler fitted on train — mean range: [-0.000, 0.000]
+2026-05-11 21:22:09 | INFO     | trainer              |   Params: {'C': 0.1, 'max_iter': 1000, 'random_state': 42, 'n_jobs': -1, 'solver': 'lbfgs'}
+2026-05-11 21:22:09 | INFO     | trainer              | Cross-validation: LogisticRegression (5-fold stratified)
+2026-05-11 21:22:12 | INFO     | trainer              |   AUC: 0.6703 ± 0.0038
+2026-05-11 21:22:12 | INFO     | trainer              |   F1 : 0.5880 ± 0.0026
+2026-05-11 21:22:16 | INFO     | trainer              |   Training time: 3.56s
+2026-05-11 21:22:16 | INFO     | trainer              |   Val AUC       : 0.6451
+2026-05-11 21:22:16 | INFO     | trainer              |   Val F1        : 0.6066
+2026-05-11 21:22:16 | INFO     | trainer              |   Val Precision : 0.5687
+2026-05-11 21:22:16 | INFO     | trainer              |   Val Recall    : 0.6498
+2026-05-11 21:22:17 | INFO     | trainer              |   Top 10 features (|coefficient|):
+2026-05-11 21:22:17 | INFO     | trainer              |     number_diagnoses                              0.3035
+2026-05-11 21:22:17 | INFO     | trainer              |     FE_multi_channel_utilizer                     0.2684
+2026-05-11 21:22:17 | INFO     | trainer              |     FE_high_prior_utilization                     0.1712
+2026-05-11 21:22:17 | INFO     | trainer              |     FE_diag_med_ratio                             0.1121
+2026-05-11 21:22:17 | INFO     | trainer              |     FE_has_prior_inpatient                        0.1118
+2026-05-11 21:22:17 | INFO     | trainer              |     max_glu_serum_missing                         0.1061
+2026-05-11 21:22:17 | INFO     | trainer              |     FE_on_diabetes_med                            0.1025
+2026-05-11 21:22:17 | INFO     | trainer              |     discharge_disposition_id                      0.0947
+2026-05-11 21:22:17 | INFO     | trainer              |     FE_insulin_changed                            0.0937
+2026-05-11 21:22:17 | INFO     | trainer              |     num_medications                               0.0918
+2026-05-11 21:22:17 | INFO     | trainer              |   Saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\logreg_v1.pkl
+2026-05-11 21:22:17 | INFO     | trainer              |   Saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\logreg_coefficients.csv
+2026-05-11 21:22:17 | INFO     | trainer              | ============================================================
+2026-05-11 21:22:17 | INFO     | trainer              | Model Comparison (Val Split)
+2026-05-11 21:22:17 | INFO     | trainer              | ============================================================
+2026-05-11 21:22:17 | INFO     | trainer              | Model                     AUC       F1     Prec   Recall
+2026-05-11 21:22:17 | INFO     | trainer              | ------------------------------------------------------------
+2026-05-11 21:22:17 | INFO     | trainer              | lgbm_v1                0.6865   0.6624   0.5642   0.8021
+2026-05-11 21:22:17 | INFO     | trainer              | logreg_v1              0.6451   0.6066   0.5687   0.6498
+2026-05-11 21:22:17 | INFO     | trainer              | ============================================================
+2026-05-11 21:22:17 | INFO     | trainer              | Saving reference predictions (drift monitoring baseline)
+2026-05-11 21:22:17 | INFO     | trainer              | ============================================================
+2026-05-11 21:22:17 | INFO     | trainer              |   val_reference_predictions.parquet saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\val_reference_predictions.parquet
+2026-05-11 21:22:17 | INFO     | trainer              |   LGBM   mean proba on val: 0.5648
+2026-05-11 21:22:17 | INFO     | trainer              |   LogReg mean proba on val: 0.5325
+2026-05-11 21:22:17 | INFO     | trainer              |   training_summary.json saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\training_summary.json
+2026-05-11 21:22:17 | INFO     | trainer              | ======================================================================
+2026-05-11 21:22:17 | INFO     | trainer              | Trainer complete
+2026-05-11 21:22:17 | INFO     | trainer              |   LGBM   val AUC : 0.6865
+2026-05-11 21:22:17 | INFO     | trainer              |   LogReg val AUC : 0.6451
+2026-05-11 21:22:17 | INFO     | trainer              |   Primary model  : lgbm_v1
+2026-05-11 21:22:17 | INFO     | trainer              |   Next: evaluator.py -> drift detection pipeline
+2026-05-11 21:22:17 | INFO     | trainer              | ======================================================================

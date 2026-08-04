@@ -1,0 +1,42 @@
+2026-08-04 11:30:03 | INFO     | selection_ablation   | ===== RUN 20260804-113003-e838de | pid=16256 | started 2026-08-04 11:30:03 =====
+2026-08-04 11:30:03 | INFO     | selection_ablation   | ==============================================================================
+2026-08-04 11:30:03 | INFO     | selection_ablation   | Tier 2A.5 — selection ablation (selection fitted INSIDE folds)
+2026-08-04 11:30:03 | INFO     | selection_ablation   | ==============================================================================
+2026-08-04 11:30:05 | INFO     | selection_ablation   | Pre-selection frame: 63,492 rows x 78 features | 42,910 patient groups | prevalence 0.1200
+2026-08-04 11:31:04 | INFO     | selection_ablation   | ===== RUN 20260804-113104-3e56fe | pid=28552 | started 2026-08-04 11:31:04 =====
+2026-08-04 11:31:04 | INFO     | selection_ablation   | ==============================================================================
+2026-08-04 11:31:04 | INFO     | selection_ablation   | Tier 2A.5 — selection ablation (selection fitted INSIDE folds)
+2026-08-04 11:31:04 | INFO     | selection_ablation   | ==============================================================================
+2026-08-04 11:31:05 | INFO     | selection_ablation   | Pre-selection frame: 63,492 rows x 78 features | 42,910 patient groups | prevalence 0.1200
+2026-08-04 11:31:59 | INFO     | selection_ablation   |   rep 0 fold 0: a=0.6828 | b=0.6797 | c=0.6797 | d=0.6840
+2026-08-04 11:32:48 | INFO     | selection_ablation   |   rep 0 fold 1: a=0.6837 | b=0.6774 | c=0.6774 | d=0.6841
+2026-08-04 11:33:40 | INFO     | selection_ablation   |   rep 0 fold 2: a=0.6740 | b=0.6714 | c=0.6714 | d=0.6737
+2026-08-04 11:34:36 | INFO     | selection_ablation   |   rep 0 fold 3: a=0.6925 | b=0.6865 | c=0.6865 | d=0.6919
+2026-08-04 11:35:34 | INFO     | selection_ablation   |   rep 0 fold 4: a=0.6670 | b=0.6636 | c=0.6636 | d=0.6678
+2026-08-04 11:38:56 | INFO     | selection_ablation   | ===== RUN 20260804-113856-c66aba | pid=18084 | started 2026-08-04 11:38:56 =====
+2026-08-04 11:38:56 | INFO     | selection_ablation   | ==============================================================================
+2026-08-04 11:38:56 | INFO     | selection_ablation   | Tier 2A.5 — selection ablation (selection fitted INSIDE folds)
+2026-08-04 11:38:56 | INFO     | selection_ablation   | ==============================================================================
+2026-08-04 11:38:57 | INFO     | selection_ablation   | Pre-selection frame: 63,492 rows x 78 features | 42,910 patient groups | prevalence 0.1200
+2026-08-04 11:40:53 | INFO     | selection_ablation   |   rep 0 fold 0: a=0.6828 | b=0.6797 | c=0.6797 | d=0.6840
+2026-08-04 11:42:33 | INFO     | selection_ablation   |   rep 0 fold 1: a=0.6837 | b=0.6774 | c=0.6774 | d=0.6841
+2026-08-04 11:44:08 | INFO     | selection_ablation   |   rep 0 fold 2: a=0.6740 | b=0.6714 | c=0.6714 | d=0.6737
+2026-08-04 11:45:48 | INFO     | selection_ablation   |   rep 0 fold 3: a=0.6925 | b=0.6865 | c=0.6865 | d=0.6919
+2026-08-04 11:47:33 | INFO     | selection_ablation   |   rep 0 fold 4: a=0.6670 | b=0.6636 | c=0.6636 | d=0.6678
+2026-08-04 11:49:13 | INFO     | selection_ablation   |   rep 1 fold 0: a=0.6733 | b=0.6692 | c=0.6692 | d=0.6744
+2026-08-04 11:50:31 | INFO     | selection_ablation   |   rep 1 fold 1: a=0.6855 | b=0.6756 | c=0.6756 | d=0.6829
+2026-08-04 11:52:13 | INFO     | selection_ablation   |   rep 1 fold 2: a=0.6757 | b=0.6703 | c=0.6703 | d=0.6751
+2026-08-04 11:53:27 | INFO     | selection_ablation   |   rep 1 fold 3: a=0.6859 | b=0.6781 | c=0.6781 | d=0.6828
+2026-08-04 11:55:12 | INFO     | selection_ablation   |   rep 1 fold 4: a=0.6857 | b=0.6807 | c=0.6807 | d=0.6840
+2026-08-04 11:55:13 | INFO     | selection_ablation   | --------------------------------------------------------------
+2026-08-04 11:55:13 | INFO     | selection_ablation   | arm                         n_feat   AUC mean      std                  CI95
+2026-08-04 11:55:13 | INFO     | selection_ablation   | a_all_features                78.0    0.68061  0.00774   [0.67586, 0.68511]
+2026-08-04 11:55:13 | INFO     | selection_ablation   | b_stages_1_2_only             53.0    0.67525  0.00667   [0.67128, 0.67906]
+2026-08-04 11:55:13 | INFO     | selection_ablation   | c_full_7_stage_shipped        53.0    0.67525  0.00667   [0.67128, 0.67906]
+2026-08-04 11:55:13 | INFO     | selection_ablation   | d_target_aware_in_fold        53.0    0.68007  0.00707   [0.67592, 0.68427]
+2026-08-04 11:55:13 | INFO     | selection_ablation   | --------------------------------------------------------------
+2026-08-04 11:55:13 | INFO     | selection_ablation   |   a_all_features_minus_shipped             +0.00536 [+0.00414, +0.00678] differs=True
+2026-08-04 11:55:13 | INFO     | selection_ablation   |   b_stages_1_2_only_minus_shipped          +0.00000 [+0.00000, +0.00000] differs=False
+2026-08-04 11:55:13 | INFO     | selection_ablation   |   d_target_aware_in_fold_minus_shipped     +0.00482 [+0.00397, +0.00571] differs=True
+2026-08-04 11:55:13 | INFO     | selection_ablation   | Reports: selection_ablation.json, selection_ablation_folds.csv
+2026-08-04 11:55:13 | INFO     | selection_ablation   | ==============================================================================

@@ -1,0 +1,1567 @@
+{
+  "phase": "0.5 (PLAN ONLY \u2014 NOT APPLIED)",
+  "policy": "surgical",
+  "policy_rationale": "The remediation plan assumed Phase 0.1 would return NOT SUPPORTED and that\n    every use of \"temporal\" would therefore be unearned. It returned SUPPORTED:\n    `encounter_id` ordering IS chronological, verified against troglitazone\n    withdrawal (2000-03-21), ICD-9 V85 introduction (2005-10-01) and the\n    rosiglitazone safety changepoint (2007-05-21).\n\n    So the word is now EARNED where it describes encounter ordering, and still\n    WRONG where it describes the split \u2014 which sorts patients by entry cohort,\n    not encounters by time. A blanket rename would delete a true statement; a\n    blanket keep would preserve a false one.\n\n    Separately, unearned MECHANISM claims (\"billing codes changed\", \"patient\n    demographics shifted\", \"the world keeps changing\") are rewritten regardless\n    of the ordering verdict: Phase 0.1 evidenced chronology, not causes.",
+  "phase_0_1_verdict": {
+    "ordering": "SUPPORTED",
+    "split_validity": "NOT_TEMPORAL_BY_CONSTRUCTION"
+  },
+  "totals": {
+    "occurrences": 134,
+    "files": 15,
+    "by_action": {
+      "REWRITE_SPLIT": 15,
+      "REWRITE_MECHANISM": 7,
+      "MANUAL_REVIEW": 21,
+      "KEEP": 91
+    }
+  },
+  "by_file": {
+    "CLAUDE.md": {
+      "REWRITE_SPLIT": 1,
+      "REWRITE_MECHANISM": 1,
+      "MANUAL_REVIEW": 1
+    },
+    "README.md": {
+      "REWRITE_MECHANISM": 1,
+      "REWRITE_SPLIT": 1
+    },
+    "configs/split_regimes.yaml": {
+      "KEEP": 6
+    },
+    "configs/temporal_validity.yaml": {
+      "KEEP": 14
+    },
+    "docs/01_eda_and_data_pipeline.md": {
+      "REWRITE_SPLIT": 3,
+      "MANUAL_REVIEW": 2
+    },
+    "docs/03_model_training.md": {
+      "MANUAL_REVIEW": 2
+    },
+    "docs/04_drift_detection.md": {
+      "REWRITE_MECHANISM": 1,
+      "MANUAL_REVIEW": 3
+    },
+    "docs/AUDIT.md": {
+      "REWRITE_SPLIT": 3,
+      "REWRITE_MECHANISM": 3,
+      "MANUAL_REVIEW": 2,
+      "KEEP": 1
+    },
+    "docs/REMEDIATION_PLAN.md": {
+      "MANUAL_REVIEW": 9,
+      "REWRITE_SPLIT": 2,
+      "REWRITE_MECHANISM": 1
+    },
+    "src/data/splitter.py": {
+      "REWRITE_SPLIT": 4
+    },
+    "src/data/validator.py": {
+      "REWRITE_SPLIT": 1
+    },
+    "src/investigation/language_audit.py": {
+      "KEEP": 24
+    },
+    "src/investigation/split_regimes.py": {
+      "KEEP": 18
+    },
+    "src/investigation/temporal_validity.py": {
+      "KEEP": 28
+    },
+    "src/pipelines/pipeline.py": {
+      "MANUAL_REVIEW": 2
+    }
+  },
+  "occurrences": [
+    {
+      "file": "CLAUDE.md",
+      "line": 18,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": "entry-cohort split",
+      "text": "The project currently claims a **patient-level temporal split** and"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 38,
+      "patterns": [
+        "billing code",
+        "demographics shift"
+      ],
+      "action": "REWRITE_MECHANISM",
+      "reason": "asserts a CAUSE for the observed shift; Phase 0.1 evidenced chronology, not mechanism",
+      "suggested_replacement": "[REMOVE \u2014 mechanism claim without mechanism evidence]",
+      "text": "\"hospital billing codes changed\" or \"patient demographics shifted over"
+    },
+    {
+      "file": "CLAUDE.md",
+      "line": 109,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "> initial temporal-drift framing \u2192 falsification testing \u2192 discovery of the"
+    },
+    {
+      "file": "README.md",
+      "line": 39,
+      "patterns": [
+        "billing code"
+      ],
+      "action": "REWRITE_MECHANISM",
+      "reason": "asserts a CAUSE for the observed shift; Phase 0.1 evidenced chronology, not mechanism",
+      "suggested_replacement": "[REMOVE \u2014 mechanism claim without mechanism evidence]",
+      "text": "> attributed the shift to changing hospital billing codes and shifting patient"
+    },
+    {
+      "file": "README.md",
+      "line": 54,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": "entry-cohort split",
+      "text": "| **Split strategy** | Patient-level **entry-cohort** split \u2014 zero leakage, but *not* a temporal split (patients sorted by first `encounter_id`, so a 1999 entrant's 2008 encounters sit in train) |"
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 4,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "# `encounter_id` ordering IS chronological (SUPPORTED) while the existing split"
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 10,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "n_seeds_deterministic: 20   # entry-cohort and temporal splits are deterministic;"
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 48,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "temporal:"
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 51,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "TRUE TEMPORAL SPLIT, newly defensible because Phase 0.1 verified"
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 52,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "chronological ordering against external clinical/regulatory anchors."
+    },
+    {
+      "file": "configs/split_regimes.yaml",
+      "line": 53,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "ENCOUNTERS are cut chronologically at the 60th and 80th percentiles of"
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 2,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "# Temporal validity of `encounter_id` ordering."
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 18,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "# so a chronological ordering places the step in the upper ranks."
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 76,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "encounters and perform NO temporal-trend analysis, so there is no"
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 93,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "under chronological ordering no V85 encounter may appear in the early"
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 143,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "- \"temporal\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 144,
+      "patterns": [
+        "over time"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "- \"over time\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 145,
+      "patterns": [
+        "drift began"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "- \"drift began\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 146,
+      "patterns": [
+        "newer patients"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "- \"newer patients\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 147,
+      "patterns": [
+        "billing code"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "- \"billing code\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 148,
+      "patterns": [
+        "demographics shift"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "- \"demographics shift\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 149,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "- \"chronological\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 150,
+      "patterns": [
+        "time-based"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "- \"time-based\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 151,
+      "patterns": [
+        "world keeps changing"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "- \"world keeps changing\""
+    },
+    {
+      "file": "configs/temporal_validity.yaml",
+      "line": 156,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "# \"temporal\" thousands of times, and each run inflated the next run's count"
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 144,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": "entry-cohort split",
+      "text": "ordering**, not a temporal split."
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 147,
+      "patterns": [
+        "temporal",
+        "chronological"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "> chronological (`outputs/reports/temporal_validity.json`, verdict SUPPORTED)."
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 148,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": "entry-cohort split",
+      "text": "> That does **not** make this a temporal split: sorting *patients* by their"
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 151,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "> A genuine chronological split of *encounters* is implemented separately as the"
+    },
+    {
+      "file": "docs/01_eda_and_data_pipeline.md",
+      "line": 152,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": null,
+      "text": "> `temporal` regime in `src/investigation/split_regimes.py`."
+    },
+    {
+      "file": "docs/03_model_training.md",
+      "line": 151,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "> finding \u2014 model performance under temporal drift\". Two corrections: this is an"
+    },
+    {
+      "file": "docs/03_model_training.md",
+      "line": 152,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "> entry-cohort contrast, not a temporal one; and Tier 0 showed the same pipeline"
+    },
+    {
+      "file": "docs/04_drift_detection.md",
+      "line": 17,
+      "patterns": [
+        "billing code"
+      ],
+      "action": "REWRITE_MECHANISM",
+      "reason": "asserts a CAUSE for the observed shift; Phase 0.1 evidenced chronology, not mechanism",
+      "suggested_replacement": "[REMOVE \u2014 mechanism claim without mechanism evidence]",
+      "text": "> *causes* \u2014 shifting demographics, changing billing codes, falling disease"
+    },
+    {
+      "file": "docs/04_drift_detection.md",
+      "line": 23,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "> `outputs/reports/temporal_validity.json`."
+    },
+    {
+      "file": "docs/04_drift_detection.md",
+      "line": 122,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "![Target shift across entry-cohort windows](../outputs/figure/13_target_temporal_shift.png)"
+    },
+    {
+      "file": "docs/04_drift_detection.md",
+      "line": 124,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "says \"temporal\"; renaming a generated artifact is a pipeline change, not a"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 61,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": null,
+      "text": "**The claim.** The README asserts a patient-level *temporal* split, and"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 63,
+      "patterns": [
+        "newer patients",
+        "world keeps changing"
+      ],
+      "action": "REWRITE_MECHANISM",
+      "reason": "asserts a CAUSE for the observed shift; Phase 0.1 evidenced chronology, not mechanism",
+      "suggested_replacement": "later-entering patients",
+      "text": "\"the world keeps changing,\" \"newer patients have different insurance"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 71,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "`encounter_id_monotonic = False`. You are *assuming* it is chronologically"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 83,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": "entry-cohort split",
+      "text": "temporal split. You split on *first* encounter_id per patient, which sorts"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 112,
+      "patterns": [
+        "billing code"
+      ],
+      "action": "REWRITE_MECHANISM",
+      "reason": "asserts a CAUSE for the observed shift; Phase 0.1 evidenced chronology, not mechanism",
+      "suggested_replacement": "[REMOVE \u2014 mechanism claim without mechanism evidence]",
+      "text": "- the clinical framing (\"hospital billing codes changed,\" \"readmission"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 124,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "> We initially framed the observed shift as temporal concept drift. On"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 590,
+      "patterns": [
+        "over time",
+        "billing code",
+        "demographics shift"
+      ],
+      "action": "REWRITE_MECHANISM",
+      "reason": "asserts a CAUSE for the observed shift; Phase 0.1 evidenced chronology, not mechanism",
+      "suggested_replacement": "[REMOVE \u2014 mechanism claim without mechanism evidence]",
+      "text": "\"hospital billing codes change,\" \"patient demographics shift over time,\""
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 696,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": null,
+      "text": "- **No true timestamps.** After F1, state plainly that temporal ordering is"
+    },
+    {
+      "file": "docs/AUDIT.md",
+      "line": 741,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "1. *\"How do you know `encounter_id` is temporally ordered, and how did you"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 25,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "Create `src/investigation/temporal_validity.py`."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 29,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "temporal anchors** \u2014 clinical practice patterns whose timing is known"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 33,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "the 2000s. If ordering is chronological, `A1Cresult` non-missing rate"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 37,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "If ordering is chronological, the rosiglitazone rate should fall in the"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 51,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "**Acceptance:** `outputs/reports/temporal_validity.json` with a verdict of"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 52,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": null,
+      "text": "SUPPORTED / NOT SUPPORTED / INCONCLUSIVE for chronological ordering, each"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 57,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "names, docs, README. Do not leave the word \"temporal\" anywhere it is not"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 120,
+      "patterns": [
+        "temporal",
+        "over time"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "Apply the Phase 0.1 verdict everywhere. Grep for `temporal`, `over time`,"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 121,
+      "patterns": [
+        "drift began",
+        "newer patients",
+        "billing code",
+        "demographics shift"
+      ],
+      "action": "REWRITE_MECHANISM",
+      "reason": "asserts a CAUSE for the observed shift; Phase 0.1 evidenced chronology, not mechanism",
+      "suggested_replacement": "[REMOVE \u2014 mechanism claim without mechanism evidence]",
+      "text": "`drift began`, `newer patients`, `billing codes`, `demographics shift`."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 297,
+      "patterns": [
+        "over time"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "over time, interval/set size, and recovery speed after an induced shift."
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 453,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": null,
+      "text": "- Initial framing: patient-level \"temporal\" split, 8/8 signals, CRITICAL"
+    },
+    {
+      "file": "docs/REMEDIATION_PLAN.md",
+      "line": 539,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "Begin with **Phase 0.1**. Print your plan for the temporal validity"
+    },
+    {
+      "file": "src/data/splitter.py",
+      "line": 9,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": "entry-cohort ordering",
+      "text": "- Order patients by their FIRST encounter_id (temporal proxy)"
+    },
+    {
+      "file": "src/data/splitter.py",
+      "line": 39,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": "entry-cohort structure",
+      "text": "This preserves temporal structure without requiring explicit timestamps."
+    },
+    {
+      "file": "src/data/splitter.py",
+      "line": 85,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": "entry-cohort split",
+      "text": "Patient-level temporal split of raw DataFrame."
+    },
+    {
+      "file": "src/data/splitter.py",
+      "line": 101,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": "entry-cohort split",
+      "text": "logger.info(f\"Strategy       : patient-level temporal split\")"
+    },
+    {
+      "file": "src/data/validator.py",
+      "line": 282,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "REWRITE_SPLIT",
+      "reason": "describes the SPLIT as temporal; the split sorts patients by entry cohort, so this is the claim Phase 0.1 refuted",
+      "suggested_replacement": "entry-cohort split",
+      "text": "f\"monotonic_increasing={is_monotonic} (required for temporal split)\")"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 5,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "Classifies every occurrence of temporal/mechanism language in the source,"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 11,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "every use of \"temporal\" would therefore be unearned. It returned SUPPORTED:"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 12,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "`encounter_id` ordering IS chronological, verified against troglitazone"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 21,
+      "patterns": [
+        "billing code"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "Separately, unearned MECHANISM claims (\"billing codes changed\", \"patient"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 22,
+      "patterns": [
+        "demographics shift",
+        "world keeps changing"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "demographics shifted\", \"the world keeps changing\") are rewritten regardless"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 47,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "CONFIG_PATH = ROOT / \"configs\" / \"temporal_validity.yaml\""
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 53,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "INVESTIGATION_PATHS = (\"src/investigation/\", \"configs/temporal_validity.yaml\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 56,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "# Occurrences describing the SPLIT as temporal \u2014 the claim Phase 0.1 refuted."
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 58,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "r\"(temporal\\s+split|patient-level\\s+temporal|temporal\\s+proxy|\""
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 59,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "r\"split.{0,40}temporal|temporal.{0,40}split|temporal\\s+structure|\""
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 60,
+      "patterns": [
+        "temporal",
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "r\"temporal\\s+order|chronological(ly)?\\s+order)\", re.I)"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 68,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"temporal split\": \"entry-cohort split\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 69,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"patient-level temporal split\": \"patient-level entry-cohort split\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 70,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"temporal proxy\": \"entry-cohort ordering\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 71,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"temporal structure\": \"entry-cohort structure\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 72,
+      "patterns": [
+        "billing code"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"billing code\": \"[REMOVE \u2014 mechanism claim without mechanism evidence]\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 73,
+      "patterns": [
+        "demographics shift"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"demographics shift\": \"[REMOVE \u2014 mechanism claim without mechanism evidence]\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 74,
+      "patterns": [
+        "newer patients"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"newer patients\": \"later-entering patients\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 75,
+      "patterns": [
+        "world keeps changing"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"world keeps changing\": \"[REMOVE \u2014 mechanism claim without mechanism evidence]\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 76,
+      "patterns": [
+        "drift began"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"drift began\": \"[REMOVE unless tied to a Phase 0.2-0.4 regime result]\","
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 82,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"REWRITE_SPLIT\": (\"describes the SPLIT as temporal; the split sorts patients \""
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 98,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "if \"encounter_id\" in low and \"temporal\" in low:"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 157,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"split_validity\": \"NOT_TEMPORAL_BY_CONSTRUCTION\"},"
+    },
+    {
+      "file": "src/investigation/language_audit.py",
+      "line": 171,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "f\"split validity **NOT_TEMPORAL_BY_CONSTRUCTION**.\", \"\","
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 21,
+      "patterns": [
+        "temporal",
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "temporal      TRUE chronological split of ENCOUNTERS, newly defensible"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 169,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "# the temporal regime's label behaviour is interpretable rather than magic."
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 227,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "def split_temporal(df: pd.DataFrame, conf: dict, seed: int) -> dict:"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 229,
+      "patterns": [
+        "temporal",
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "TRUE temporal split \u2014 chronological cut of ENCOUNTERS, leakage-controlled."
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 237,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "A chronological cut necessarily straddles patients, so patients appearing in"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 454,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "logger.info(\"PHASE 0.2 \u2014 split regimes (entry_cohort / random / temporal)\")"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 457,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "runs = {\"entry_cohort\": [], \"random\": [], \"temporal\": []}"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 459,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"temporal\": split_temporal}"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 462,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"temporal\": conf[\"n_seeds_deterministic\"]}"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 475,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "if regime == \"temporal\":"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 669,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"temporal\": r02[\"regimes\"][\"temporal\"][\"summary\"][\"firing_rates\"],"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 709,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "tmp = r02[\"regimes\"][\"temporal\"][\"summary\"]"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 716,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"temporal_signals_mean\": round(tmp[\"n_evidence_mean\"], 3),"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 721,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"temporal_auc_degradation\": round(tmp[\"auc_degradation\"][\"mean\"], 4),"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 739,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "for reg in (\"entry_cohort\", \"random\", \"temporal\"):"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 769,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"alarms; in the temporal regime mean_ref (0.185) exceeds \""
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 786,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "regs = [\"entry_cohort\", \"random\", \"temporal\"]"
+    },
+    {
+      "file": "src/investigation/split_regimes.py",
+      "line": 900,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "print(\"temporal split       :\", a[\"temporal_signals_mean\"], \"/8\")"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 2,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "DriftSentinel \u2014 Phase 0.1: Temporal validity of `encounter_id`"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 12,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "The repository claims a \"patient-level temporal split\" and attributes an"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 21,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "H1 (chronological)   : encounter_id rank is MONOTONICALLY associated with"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 30,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "1. ordering_verdict \u2014 is encounter_id chronological?"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 31,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "2. split_validity   \u2014 is the current split temporal?"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 32,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "(2) is NOT_TEMPORAL_BY_CONSTRUCTION regardless of (1): splitting on"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 38,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "outputs/reports/temporal_validity.json"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 39,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "outputs/reports/temporal_language_inventory.json   (Phase 0.5 input only)"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 41,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "outputs/log/temporal_validity.log"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 65,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "logger = get_logger(\"temporal_validity\")"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 68,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "CONFIG_PATH  = ROOT / \"configs\" / \"temporal_validity.yaml\""
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 324,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "evidence FOR chronological ordering; positives scattered mid-range is only"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 356,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"against chronological ordering\")"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 532,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"\"\"Supporting anchor: HbA1c measurement rate should rise if ordering is chronological.\"\"\""
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 594,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "If encounter_id ordering is chronological, that rank distance must be"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 684,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "position. If encounter_id ordering is chronological, those rank positions"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 694,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "chronological ordering should imply a monotonically INCREASING rate. A"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1070,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "label=\"expected region if ordering is chronological\")"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1300,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "Inventory every occurrence of unearned temporal language."
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1382,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"split_validity_verdict\": \"NOT_TEMPORAL_BY_CONSTRUCTION\","
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1385,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"patients by entry cohort. Even under perfect chronological ordering \""
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1398,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "def run_temporal_validity(config_path: Path = CONFIG_PATH) -> dict:"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1405,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "logger.info(\"DriftSentinel \u2014 Phase 0.1: Temporal validity of encounter_id\")"
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1560,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "inv_path = REPORTS_DIR / \"temporal_language_inventory.json\""
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1570,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"title\": \"Temporal validity of encounter_id ordering\","
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1615,
+      "patterns": [
+        "chronological"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "\"evidence against chronological ordering.\","
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1625,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "out_path = REPORTS_DIR / \"temporal_validity.json\""
+    },
+    {
+      "file": "src/investigation/temporal_validity.py",
+      "line": 1636,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "KEEP",
+      "reason": "refers to encounter_id chronology, which Phase 0.1 evidenced, or is part of the investigation itself",
+      "suggested_replacement": null,
+      "text": "rep = run_temporal_validity()"
+    },
+    {
+      "file": "src/pipelines/pipeline.py",
+      "line": 272,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "\"scenario. NOT temporal drift: see \""
+    },
+    {
+      "file": "src/pipelines/pipeline.py",
+      "line": 273,
+      "patterns": [
+        "temporal"
+      ],
+      "action": "MANUAL_REVIEW",
+      "reason": "ambiguous from the line alone \u2014 decide in context",
+      "suggested_replacement": null,
+      "text": "\"outputs/reports/temporal_validity.json\"),"
+    }
+  ],
+  "files_modified": [],
+  "status": "AWAITING APPROVAL \u2014 no file has been changed"
+}

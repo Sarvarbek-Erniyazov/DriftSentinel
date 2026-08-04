@@ -71,3 +71,447 @@
 2026-05-11 21:27:20 | INFO     | evaluator            | ======================================================================
 2026-05-11 21:27:20 | INFO     | evaluator            | Next: src/drift/ — drift detection pipeline
 2026-05-11 21:27:20 | INFO     | evaluator            | ======================================================================
+2026-08-04 10:42:06 | INFO     | evaluator            | ===== RUN 20260804-104206-6143c1 | pid=11852 | started 2026-08-04 10:42:06 =====
+2026-08-04 10:42:06 | INFO     | evaluator            | ======================================================================
+2026-08-04 10:42:06 | INFO     | evaluator            | DriftSentinel — Model Evaluator
+2026-08-04 10:42:06 | INFO     | evaluator            | ======================================================================
+2026-08-04 10:42:06 | INFO     | evaluator            | ============================================================
+2026-08-04 10:42:06 | INFO     | evaluator            | Evaluating: lgbm_v1
+2026-08-04 10:42:06 | INFO     | evaluator            | ============================================================
+2026-08-04 10:42:06 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1533  F1=0.2627
+2026-08-04 10:42:06 | INFO     | evaluator            |   train  AUC=0.8137  F1=0.4165  Prec=0.3059  Recall=0.6525  Brier=0.0901  mean_p=0.1199
+2026-08-04 10:42:06 | INFO     | evaluator            |   val    AUC=0.6617  F1=0.2627  Prec=0.1824  Recall=0.4690  Brier=0.0915  mean_p=0.1250
+2026-08-04 10:42:06 | INFO     | evaluator            |   test   AUC=0.6415  F1=0.2200  Prec=0.1595  Recall=0.3543  Brier=0.0792  mean_p=0.1138
+2026-08-04 10:42:38 | INFO     | evaluator            |   Saved: 20_roc_pr_lgbm_v1.png
+2026-08-04 10:42:41 | INFO     | evaluator            |   Saved: 21_calibration_lgbm_v1.png
+2026-08-04 10:42:44 | INFO     | evaluator            |   Saved: 22_confusion_matrices_lgbm_v1.png
+2026-08-04 10:42:44 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 10:42:44 | INFO     | evaluator            | Performance Degradation Report — lgbm_v1
+2026-08-04 10:42:44 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 10:42:44 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 10:42:44 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 10:42:44 | INFO     | evaluator            | auc               0.8137   0.6617   0.6415    -0.0202 ↓
+2026-08-04 10:42:44 | INFO     | evaluator            | f1                0.4165   0.2627   0.2200    -0.0427 ↓
+2026-08-04 10:42:44 | INFO     | evaluator            | precision         0.3059   0.1824   0.1595    -0.0229 ↓
+2026-08-04 10:42:44 | INFO     | evaluator            | recall            0.6525   0.4690   0.3543    -0.1147 ↓
+2026-08-04 10:42:44 | INFO     | evaluator            | brier             0.0901   0.0915   0.0792    -0.0123 ↓
+2026-08-04 10:42:44 | INFO     | evaluator            | mean_proba        0.1199   0.1250   0.1138    -0.0112 ↓
+2026-08-04 10:42:44 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 10:42:44 | INFO     | evaluator            | AUC degradation  : -0.0202
+2026-08-04 10:42:44 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 10:42:44 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 10:42:52 | INFO     | evaluator            |   Saved: 23_degradation_lgbm_v1.png
+2026-08-04 10:42:52 | INFO     | evaluator            | ============================================================
+2026-08-04 10:42:52 | INFO     | evaluator            | Evaluating: logreg_v1
+2026-08-04 10:42:52 | INFO     | evaluator            | ============================================================
+2026-08-04 10:42:52 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1457  F1=0.2459
+2026-08-04 10:42:52 | INFO     | evaluator            |   train  AUC=0.6446  F1=0.2743  Prec=0.1982  Recall=0.4451  Brier=0.1026  mean_p=0.1191
+2026-08-04 10:42:52 | INFO     | evaluator            |   val    AUC=0.6319  F1=0.2459  Prec=0.1685  Recall=0.4550  Brier=0.0929  mean_p=0.1246
+2026-08-04 10:42:52 | INFO     | evaluator            |   test   AUC=0.6133  F1=0.2000  Prec=0.1439  Recall=0.3281  Brier=0.0803  mean_p=0.1162
+2026-08-04 10:42:54 | INFO     | evaluator            |   Saved: 20_roc_pr_logreg_v1.png
+2026-08-04 10:42:56 | INFO     | evaluator            |   Saved: 21_calibration_logreg_v1.png
+2026-08-04 10:42:58 | INFO     | evaluator            |   Saved: 22_confusion_matrices_logreg_v1.png
+2026-08-04 10:42:58 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 10:42:58 | INFO     | evaluator            | Performance Degradation Report — logreg_v1
+2026-08-04 10:42:58 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 10:42:58 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 10:42:58 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 10:42:58 | INFO     | evaluator            | auc               0.6446   0.6319   0.6133    -0.0186 ↓
+2026-08-04 10:42:58 | INFO     | evaluator            | f1                0.2743   0.2459   0.2000    -0.0459 ↓
+2026-08-04 10:42:58 | INFO     | evaluator            | precision         0.1982   0.1685   0.1439    -0.0246 ↓
+2026-08-04 10:42:58 | INFO     | evaluator            | recall            0.4451   0.4550   0.3281    -0.1269 ↓
+2026-08-04 10:42:58 | INFO     | evaluator            | brier             0.1026   0.0929   0.0803    -0.0126 ↓
+2026-08-04 10:42:58 | INFO     | evaluator            | mean_proba        0.1191   0.1246   0.1162    -0.0084 ↓
+2026-08-04 10:42:58 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 10:42:58 | INFO     | evaluator            | AUC degradation  : -0.0186
+2026-08-04 10:42:58 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 10:42:58 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 10:42:59 | INFO     | evaluator            |   Saved: 23_degradation_logreg_v1.png
+2026-08-04 10:43:01 | INFO     | evaluator            |   Saved: 24_model_comparison.png
+2026-08-04 10:43:01 | INFO     | evaluator            | Evaluation report saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\evaluation_report.json
+2026-08-04 10:43:01 | INFO     | evaluator            | ======================================================================
+2026-08-04 10:43:01 | INFO     | evaluator            | Evaluation Summary
+2026-08-04 10:43:01 | INFO     | evaluator            | ======================================================================
+2026-08-04 10:43:01 | INFO     | evaluator            | LGBM:
+2026-08-04 10:43:01 | INFO     | evaluator            |   Val  AUC : 0.6617
+2026-08-04 10:43:01 | INFO     | evaluator            |   Test AUC : 0.6415
+2026-08-04 10:43:01 | INFO     | evaluator            |   AUC Δ    : -0.0202
+2026-08-04 10:43:01 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 10:43:01 | INFO     | evaluator            | LogReg:
+2026-08-04 10:43:01 | INFO     | evaluator            |   Val  AUC : 0.6319
+2026-08-04 10:43:01 | INFO     | evaluator            |   Test AUC : 0.6133
+2026-08-04 10:43:01 | INFO     | evaluator            |   AUC Δ    : -0.0186
+2026-08-04 10:43:01 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 10:43:01 | INFO     | evaluator            | ======================================================================
+2026-08-04 10:43:01 | INFO     | evaluator            | Next: src/drift/ — drift detection pipeline
+2026-08-04 10:43:01 | INFO     | evaluator            | ======================================================================
+2026-08-04 10:57:45 | INFO     | evaluator            | ===== RUN 20260804-105745-26e405 | pid=14036 | started 2026-08-04 10:57:45 =====
+2026-08-04 10:57:45 | INFO     | evaluator            | ======================================================================
+2026-08-04 10:57:45 | INFO     | evaluator            | DriftSentinel — Model Evaluator
+2026-08-04 10:57:45 | INFO     | evaluator            | ======================================================================
+2026-08-04 10:57:45 | INFO     | evaluator            | ============================================================
+2026-08-04 10:57:45 | INFO     | evaluator            | Evaluating: lgbm_v1
+2026-08-04 10:57:45 | INFO     | evaluator            | ============================================================
+2026-08-04 10:57:45 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1533  F1=0.2627
+2026-08-04 10:57:45 | INFO     | evaluator            |   train  AUC=0.8137  F1=0.4165  Prec=0.3059  Recall=0.6525  Brier=0.0901  mean_p=0.1199
+2026-08-04 10:57:45 | INFO     | evaluator            |   val    AUC=0.6617  F1=0.2627  Prec=0.1824  Recall=0.4690  Brier=0.0915  mean_p=0.1250
+2026-08-04 10:57:45 | INFO     | evaluator            |   test   AUC=0.6415  F1=0.2200  Prec=0.1595  Recall=0.3543  Brier=0.0792  mean_p=0.1138
+2026-08-04 11:03:03 | INFO     | evaluator            |   Saved: 20_roc_pr_lgbm_v1.png
+2026-08-04 11:03:14 | INFO     | evaluator            |   Saved: 21_calibration_lgbm_v1.png
+2026-08-04 11:03:17 | INFO     | evaluator            |   Saved: 22_confusion_matrices_lgbm_v1.png
+2026-08-04 11:03:17 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:03:17 | INFO     | evaluator            | Performance Degradation Report — lgbm_v1
+2026-08-04 11:03:17 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:03:17 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 11:03:17 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:03:17 | INFO     | evaluator            | auc               0.8137   0.6617   0.6415    -0.0202 ↓
+2026-08-04 11:03:17 | INFO     | evaluator            | f1                0.4165   0.2627   0.2200    -0.0427 ↓
+2026-08-04 11:03:17 | INFO     | evaluator            | precision         0.3059   0.1824   0.1595    -0.0229 ↓
+2026-08-04 11:03:17 | INFO     | evaluator            | recall            0.6525   0.4690   0.3543    -0.1147 ↓
+2026-08-04 11:03:17 | INFO     | evaluator            | brier             0.0901   0.0915   0.0792    -0.0123 ↓
+2026-08-04 11:03:17 | INFO     | evaluator            | mean_proba        0.1199   0.1250   0.1138    -0.0112 ↓
+2026-08-04 11:03:17 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:03:17 | INFO     | evaluator            | AUC degradation  : -0.0202
+2026-08-04 11:03:17 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 11:03:17 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 11:03:18 | INFO     | evaluator            |   Saved: 23_degradation_lgbm_v1.png
+2026-08-04 11:03:18 | INFO     | evaluator            | ============================================================
+2026-08-04 11:03:18 | INFO     | evaluator            | Evaluating: logreg_v1
+2026-08-04 11:03:18 | INFO     | evaluator            | ============================================================
+2026-08-04 11:03:18 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1457  F1=0.2459
+2026-08-04 11:03:19 | INFO     | evaluator            |   train  AUC=0.6446  F1=0.2743  Prec=0.1982  Recall=0.4451  Brier=0.1026  mean_p=0.1191
+2026-08-04 11:03:19 | INFO     | evaluator            |   val    AUC=0.6319  F1=0.2459  Prec=0.1685  Recall=0.4550  Brier=0.0929  mean_p=0.1246
+2026-08-04 11:03:19 | INFO     | evaluator            |   test   AUC=0.6133  F1=0.2000  Prec=0.1439  Recall=0.3281  Brier=0.0803  mean_p=0.1162
+2026-08-04 11:03:20 | INFO     | evaluator            |   Saved: 20_roc_pr_logreg_v1.png
+2026-08-04 11:03:21 | INFO     | evaluator            |   Saved: 21_calibration_logreg_v1.png
+2026-08-04 11:03:23 | INFO     | evaluator            |   Saved: 22_confusion_matrices_logreg_v1.png
+2026-08-04 11:03:23 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:03:23 | INFO     | evaluator            | Performance Degradation Report — logreg_v1
+2026-08-04 11:03:23 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:03:23 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 11:03:23 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:03:23 | INFO     | evaluator            | auc               0.6446   0.6319   0.6133    -0.0186 ↓
+2026-08-04 11:03:23 | INFO     | evaluator            | f1                0.2743   0.2459   0.2000    -0.0459 ↓
+2026-08-04 11:03:23 | INFO     | evaluator            | precision         0.1982   0.1685   0.1439    -0.0246 ↓
+2026-08-04 11:03:23 | INFO     | evaluator            | recall            0.4451   0.4550   0.3281    -0.1269 ↓
+2026-08-04 11:03:23 | INFO     | evaluator            | brier             0.1026   0.0929   0.0803    -0.0126 ↓
+2026-08-04 11:03:23 | INFO     | evaluator            | mean_proba        0.1191   0.1246   0.1162    -0.0084 ↓
+2026-08-04 11:03:23 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:03:23 | INFO     | evaluator            | AUC degradation  : -0.0186
+2026-08-04 11:03:23 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 11:03:23 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 11:03:24 | INFO     | evaluator            |   Saved: 23_degradation_logreg_v1.png
+2026-08-04 11:03:25 | INFO     | evaluator            |   Saved: 24_model_comparison.png
+2026-08-04 11:03:25 | INFO     | evaluator            | Evaluation report saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\evaluation_report.json
+2026-08-04 11:03:25 | INFO     | evaluator            | ======================================================================
+2026-08-04 11:03:25 | INFO     | evaluator            | Evaluation Summary
+2026-08-04 11:03:25 | INFO     | evaluator            | ======================================================================
+2026-08-04 11:03:25 | INFO     | evaluator            | LGBM:
+2026-08-04 11:03:25 | INFO     | evaluator            |   Val  AUC : 0.6617
+2026-08-04 11:03:25 | INFO     | evaluator            |   Test AUC : 0.6415
+2026-08-04 11:03:25 | INFO     | evaluator            |   AUC Δ    : -0.0202
+2026-08-04 11:03:25 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 11:03:25 | INFO     | evaluator            | LogReg:
+2026-08-04 11:03:25 | INFO     | evaluator            |   Val  AUC : 0.6319
+2026-08-04 11:03:25 | INFO     | evaluator            |   Test AUC : 0.6133
+2026-08-04 11:03:25 | INFO     | evaluator            |   AUC Δ    : -0.0186
+2026-08-04 11:03:25 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 11:03:25 | INFO     | evaluator            | ======================================================================
+2026-08-04 11:03:25 | INFO     | evaluator            | Next: src/drift/ — drift detection pipeline
+2026-08-04 11:03:25 | INFO     | evaluator            | ======================================================================
+2026-08-04 11:08:12 | INFO     | evaluator            | ===== RUN 20260804-110812-ea811a | pid=24784 | started 2026-08-04 11:08:12 =====
+2026-08-04 11:08:12 | INFO     | evaluator            | ======================================================================
+2026-08-04 11:08:12 | INFO     | evaluator            | DriftSentinel — Model Evaluator
+2026-08-04 11:08:12 | INFO     | evaluator            | ======================================================================
+2026-08-04 11:08:12 | INFO     | evaluator            | ============================================================
+2026-08-04 11:08:12 | INFO     | evaluator            | Evaluating: lgbm_v1
+2026-08-04 11:08:12 | INFO     | evaluator            | ============================================================
+2026-08-04 11:08:12 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1533  F1=0.2627
+2026-08-04 11:08:12 | INFO     | evaluator            |   train  AUC=0.8137  F1=0.4165  Prec=0.3059  Recall=0.6525  Brier=0.0901  mean_p=0.1199
+2026-08-04 11:08:12 | INFO     | evaluator            |   val    AUC=0.6617  F1=0.2627  Prec=0.1824  Recall=0.4690  Brier=0.0915  mean_p=0.1250
+2026-08-04 11:08:12 | INFO     | evaluator            |   test   AUC=0.6415  F1=0.2200  Prec=0.1595  Recall=0.3543  Brier=0.0792  mean_p=0.1138
+2026-08-04 11:08:12 | INFO     | evaluator            |   Saved: 20_roc_pr_lgbm_v1.png
+2026-08-04 11:08:12 | INFO     | evaluator            |   Saved: 21_calibration_lgbm_v1.png
+2026-08-04 11:08:13 | INFO     | evaluator            |   Saved: 22_confusion_matrices_lgbm_v1.png
+2026-08-04 11:08:13 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:08:13 | INFO     | evaluator            | Performance Degradation Report — lgbm_v1
+2026-08-04 11:08:13 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:08:13 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 11:08:13 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:08:13 | INFO     | evaluator            | auc               0.8137   0.6617   0.6415    -0.0202 ↓
+2026-08-04 11:08:13 | INFO     | evaluator            | f1                0.4165   0.2627   0.2200    -0.0427 ↓
+2026-08-04 11:08:13 | INFO     | evaluator            | precision         0.3059   0.1824   0.1595    -0.0229 ↓
+2026-08-04 11:08:13 | INFO     | evaluator            | recall            0.6525   0.4690   0.3543    -0.1147 ↓
+2026-08-04 11:08:13 | INFO     | evaluator            | brier             0.0901   0.0915   0.0792    -0.0123 ↓
+2026-08-04 11:08:13 | INFO     | evaluator            | mean_proba        0.1199   0.1250   0.1138    -0.0112 ↓
+2026-08-04 11:08:13 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:08:13 | INFO     | evaluator            | AUC degradation  : -0.0202
+2026-08-04 11:08:13 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 11:08:13 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 11:08:13 | INFO     | evaluator            |   Saved: 23_degradation_lgbm_v1.png
+2026-08-04 11:08:13 | INFO     | evaluator            | ============================================================
+2026-08-04 11:08:13 | INFO     | evaluator            | Evaluating: logreg_v1
+2026-08-04 11:08:13 | INFO     | evaluator            | ============================================================
+2026-08-04 11:08:13 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1457  F1=0.2459
+2026-08-04 11:08:13 | INFO     | evaluator            |   train  AUC=0.6446  F1=0.2743  Prec=0.1982  Recall=0.4451  Brier=0.1026  mean_p=0.1191
+2026-08-04 11:08:13 | INFO     | evaluator            |   val    AUC=0.6319  F1=0.2459  Prec=0.1685  Recall=0.4550  Brier=0.0929  mean_p=0.1246
+2026-08-04 11:08:13 | INFO     | evaluator            |   test   AUC=0.6133  F1=0.2000  Prec=0.1439  Recall=0.3281  Brier=0.0803  mean_p=0.1162
+2026-08-04 11:08:13 | INFO     | evaluator            |   Saved: 20_roc_pr_logreg_v1.png
+2026-08-04 11:08:13 | INFO     | evaluator            |   Saved: 21_calibration_logreg_v1.png
+2026-08-04 11:08:14 | INFO     | evaluator            |   Saved: 22_confusion_matrices_logreg_v1.png
+2026-08-04 11:08:14 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:08:14 | INFO     | evaluator            | Performance Degradation Report — logreg_v1
+2026-08-04 11:08:14 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:08:14 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 11:08:14 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:08:14 | INFO     | evaluator            | auc               0.6446   0.6319   0.6133    -0.0186 ↓
+2026-08-04 11:08:14 | INFO     | evaluator            | f1                0.2743   0.2459   0.2000    -0.0459 ↓
+2026-08-04 11:08:14 | INFO     | evaluator            | precision         0.1982   0.1685   0.1439    -0.0246 ↓
+2026-08-04 11:08:14 | INFO     | evaluator            | recall            0.4451   0.4550   0.3281    -0.1269 ↓
+2026-08-04 11:08:14 | INFO     | evaluator            | brier             0.1026   0.0929   0.0803    -0.0126 ↓
+2026-08-04 11:08:14 | INFO     | evaluator            | mean_proba        0.1191   0.1246   0.1162    -0.0084 ↓
+2026-08-04 11:08:14 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 11:08:14 | INFO     | evaluator            | AUC degradation  : -0.0186
+2026-08-04 11:08:14 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 11:08:14 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 11:08:15 | INFO     | evaluator            |   Saved: 23_degradation_logreg_v1.png
+2026-08-04 11:08:15 | INFO     | evaluator            |   Saved: 24_model_comparison.png
+2026-08-04 11:08:15 | INFO     | evaluator            | Evaluation report saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\evaluation_report.json
+2026-08-04 11:08:15 | INFO     | evaluator            | ======================================================================
+2026-08-04 11:08:15 | INFO     | evaluator            | Evaluation Summary
+2026-08-04 11:08:15 | INFO     | evaluator            | ======================================================================
+2026-08-04 11:08:15 | INFO     | evaluator            | LGBM:
+2026-08-04 11:08:15 | INFO     | evaluator            |   Val  AUC : 0.6617
+2026-08-04 11:08:15 | INFO     | evaluator            |   Test AUC : 0.6415
+2026-08-04 11:08:15 | INFO     | evaluator            |   AUC Δ    : -0.0202
+2026-08-04 11:08:15 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 11:08:15 | INFO     | evaluator            | LogReg:
+2026-08-04 11:08:15 | INFO     | evaluator            |   Val  AUC : 0.6319
+2026-08-04 11:08:15 | INFO     | evaluator            |   Test AUC : 0.6133
+2026-08-04 11:08:15 | INFO     | evaluator            |   AUC Δ    : -0.0186
+2026-08-04 11:08:15 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 11:08:15 | INFO     | evaluator            | ======================================================================
+2026-08-04 11:08:15 | INFO     | evaluator            | Next: src/drift/ — drift detection pipeline
+2026-08-04 11:08:15 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:46:58 | INFO     | evaluator            | ===== RUN 20260804-204658-7688c6 | pid=29576 | started 2026-08-04 20:46:58 =====
+2026-08-04 20:46:58 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:46:58 | INFO     | evaluator            | DriftSentinel — Model Evaluator
+2026-08-04 20:46:58 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:46:58 | INFO     | evaluator            | ============================================================
+2026-08-04 20:46:58 | INFO     | evaluator            | Evaluating: lgbm_v1
+2026-08-04 20:46:58 | INFO     | evaluator            | ============================================================
+2026-08-04 20:46:59 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1533  F1=0.2627
+2026-08-04 20:46:59 | INFO     | evaluator            |   train  AUC=0.8137  F1=0.4165  Prec=0.3059  Recall=0.6525  Brier=0.0901  mean_p=0.1199
+2026-08-04 20:46:59 | INFO     | evaluator            |   val    AUC=0.6617  F1=0.2627  Prec=0.1824  Recall=0.4690  Brier=0.0915  mean_p=0.1250
+2026-08-04 20:46:59 | INFO     | evaluator            |   test   AUC=0.6415  F1=0.2200  Prec=0.1595  Recall=0.3543  Brier=0.0792  mean_p=0.1138
+2026-08-04 20:46:59 | INFO     | evaluator            |   Saved: 20_roc_pr_lgbm_v1.png
+2026-08-04 20:46:59 | INFO     | evaluator            |   Saved: 21_calibration_lgbm_v1.png
+2026-08-04 20:46:59 | INFO     | evaluator            |   Saved: 22_confusion_matrices_lgbm_v1.png
+2026-08-04 20:46:59 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:46:59 | INFO     | evaluator            | Performance Degradation Report — lgbm_v1
+2026-08-04 20:46:59 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:46:59 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 20:46:59 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:46:59 | INFO     | evaluator            | auc               0.8137   0.6617   0.6415    -0.0202 ↓
+2026-08-04 20:46:59 | INFO     | evaluator            | f1                0.4165   0.2627   0.2200    -0.0427 ↓
+2026-08-04 20:46:59 | INFO     | evaluator            | precision         0.3059   0.1824   0.1595    -0.0229 ↓
+2026-08-04 20:46:59 | INFO     | evaluator            | recall            0.6525   0.4690   0.3543    -0.1147 ↓
+2026-08-04 20:46:59 | INFO     | evaluator            | brier             0.0901   0.0915   0.0792    -0.0123 ↓
+2026-08-04 20:46:59 | INFO     | evaluator            | mean_proba        0.1199   0.1250   0.1138    -0.0112 ↓
+2026-08-04 20:46:59 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:46:59 | INFO     | evaluator            | AUC degradation  : -0.0202
+2026-08-04 20:46:59 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 20:46:59 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 20:47:00 | INFO     | evaluator            |   Saved: 23_degradation_lgbm_v1.png
+2026-08-04 20:47:00 | INFO     | evaluator            | ============================================================
+2026-08-04 20:47:00 | INFO     | evaluator            | Evaluating: logreg_v1
+2026-08-04 20:47:00 | INFO     | evaluator            | ============================================================
+2026-08-04 20:47:00 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1457  F1=0.2459
+2026-08-04 20:47:00 | INFO     | evaluator            |   train  AUC=0.6446  F1=0.2743  Prec=0.1982  Recall=0.4451  Brier=0.1026  mean_p=0.1191
+2026-08-04 20:47:00 | INFO     | evaluator            |   val    AUC=0.6319  F1=0.2459  Prec=0.1685  Recall=0.4550  Brier=0.0929  mean_p=0.1246
+2026-08-04 20:47:00 | INFO     | evaluator            |   test   AUC=0.6133  F1=0.2000  Prec=0.1439  Recall=0.3281  Brier=0.0803  mean_p=0.1162
+2026-08-04 20:47:00 | INFO     | evaluator            |   Saved: 20_roc_pr_logreg_v1.png
+2026-08-04 20:47:00 | INFO     | evaluator            |   Saved: 21_calibration_logreg_v1.png
+2026-08-04 20:47:01 | INFO     | evaluator            |   Saved: 22_confusion_matrices_logreg_v1.png
+2026-08-04 20:47:01 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:47:01 | INFO     | evaluator            | Performance Degradation Report — logreg_v1
+2026-08-04 20:47:01 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:47:01 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 20:47:01 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:47:01 | INFO     | evaluator            | auc               0.6446   0.6319   0.6133    -0.0186 ↓
+2026-08-04 20:47:01 | INFO     | evaluator            | f1                0.2743   0.2459   0.2000    -0.0459 ↓
+2026-08-04 20:47:01 | INFO     | evaluator            | precision         0.1982   0.1685   0.1439    -0.0246 ↓
+2026-08-04 20:47:01 | INFO     | evaluator            | recall            0.4451   0.4550   0.3281    -0.1269 ↓
+2026-08-04 20:47:01 | INFO     | evaluator            | brier             0.1026   0.0929   0.0803    -0.0126 ↓
+2026-08-04 20:47:01 | INFO     | evaluator            | mean_proba        0.1191   0.1246   0.1162    -0.0084 ↓
+2026-08-04 20:47:01 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:47:01 | INFO     | evaluator            | AUC degradation  : -0.0186
+2026-08-04 20:47:01 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 20:47:01 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 20:47:02 | INFO     | evaluator            |   Saved: 23_degradation_logreg_v1.png
+2026-08-04 20:47:02 | INFO     | evaluator            |   Saved: 24_model_comparison.png
+2026-08-04 20:47:02 | INFO     | evaluator            | Evaluation report saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\evaluation_report.json
+2026-08-04 20:47:02 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:47:02 | INFO     | evaluator            | Evaluation Summary
+2026-08-04 20:47:02 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:47:02 | INFO     | evaluator            | LGBM:
+2026-08-04 20:47:02 | INFO     | evaluator            |   Val  AUC : 0.6617
+2026-08-04 20:47:02 | INFO     | evaluator            |   Test AUC : 0.6415
+2026-08-04 20:47:02 | INFO     | evaluator            |   AUC Δ    : -0.0202
+2026-08-04 20:47:02 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 20:47:02 | INFO     | evaluator            | LogReg:
+2026-08-04 20:47:02 | INFO     | evaluator            |   Val  AUC : 0.6319
+2026-08-04 20:47:02 | INFO     | evaluator            |   Test AUC : 0.6133
+2026-08-04 20:47:02 | INFO     | evaluator            |   AUC Δ    : -0.0186
+2026-08-04 20:47:02 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 20:47:02 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:47:02 | INFO     | evaluator            | Next: src/drift/ — drift detection pipeline
+2026-08-04 20:47:02 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:51:21 | INFO     | evaluator            | ===== RUN 20260804-205121-1709fc | pid=20616 | started 2026-08-04 20:51:21 =====
+2026-08-04 20:51:21 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:51:21 | INFO     | evaluator            | DriftSentinel — Model Evaluator
+2026-08-04 20:51:21 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:51:21 | INFO     | evaluator            | ============================================================
+2026-08-04 20:51:21 | INFO     | evaluator            | Evaluating: lgbm_v1
+2026-08-04 20:51:21 | INFO     | evaluator            | ============================================================
+2026-08-04 20:51:21 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1533  F1=0.2627
+2026-08-04 20:51:21 | INFO     | evaluator            |   train  AUC=0.8137  F1=0.4165  Prec=0.3059  Recall=0.6525  Brier=0.0901  mean_p=0.1199
+2026-08-04 20:51:21 | INFO     | evaluator            |   val    AUC=0.6617  F1=0.2627  Prec=0.1824  Recall=0.4690  Brier=0.0915  mean_p=0.1250
+2026-08-04 20:51:21 | INFO     | evaluator            |   test   AUC=0.6415  F1=0.2200  Prec=0.1595  Recall=0.3543  Brier=0.0792  mean_p=0.1138
+2026-08-04 20:51:21 | INFO     | evaluator            |   Saved: 20_roc_pr_lgbm_v1.png
+2026-08-04 20:51:21 | INFO     | evaluator            |   Saved: 21_calibration_lgbm_v1.png
+2026-08-04 20:51:22 | INFO     | evaluator            |   Saved: 22_confusion_matrices_lgbm_v1.png
+2026-08-04 20:51:22 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:51:22 | INFO     | evaluator            | Performance Degradation Report — lgbm_v1
+2026-08-04 20:51:22 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:51:22 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 20:51:22 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:51:22 | INFO     | evaluator            | auc               0.8137   0.6617   0.6415    -0.0202 ↓
+2026-08-04 20:51:22 | INFO     | evaluator            | f1                0.4165   0.2627   0.2200    -0.0427 ↓
+2026-08-04 20:51:22 | INFO     | evaluator            | precision         0.3059   0.1824   0.1595    -0.0229 ↓
+2026-08-04 20:51:22 | INFO     | evaluator            | recall            0.6525   0.4690   0.3543    -0.1147 ↓
+2026-08-04 20:51:22 | INFO     | evaluator            | brier             0.0901   0.0915   0.0792    -0.0123 ↓
+2026-08-04 20:51:22 | INFO     | evaluator            | mean_proba        0.1199   0.1250   0.1138    -0.0112 ↓
+2026-08-04 20:51:22 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:51:22 | INFO     | evaluator            | AUC degradation  : -0.0202
+2026-08-04 20:51:22 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 20:51:22 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 20:51:22 | INFO     | evaluator            |   Saved: 23_degradation_lgbm_v1.png
+2026-08-04 20:51:22 | INFO     | evaluator            | ============================================================
+2026-08-04 20:51:22 | INFO     | evaluator            | Evaluating: logreg_v1
+2026-08-04 20:51:22 | INFO     | evaluator            | ============================================================
+2026-08-04 20:51:22 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1457  F1=0.2459
+2026-08-04 20:51:22 | INFO     | evaluator            |   train  AUC=0.6446  F1=0.2743  Prec=0.1982  Recall=0.4451  Brier=0.1026  mean_p=0.1191
+2026-08-04 20:51:22 | INFO     | evaluator            |   val    AUC=0.6319  F1=0.2459  Prec=0.1685  Recall=0.4550  Brier=0.0929  mean_p=0.1246
+2026-08-04 20:51:22 | INFO     | evaluator            |   test   AUC=0.6133  F1=0.2000  Prec=0.1439  Recall=0.3281  Brier=0.0803  mean_p=0.1162
+2026-08-04 20:51:22 | INFO     | evaluator            |   Saved: 20_roc_pr_logreg_v1.png
+2026-08-04 20:51:23 | INFO     | evaluator            |   Saved: 21_calibration_logreg_v1.png
+2026-08-04 20:51:23 | INFO     | evaluator            |   Saved: 22_confusion_matrices_logreg_v1.png
+2026-08-04 20:51:23 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:51:23 | INFO     | evaluator            | Performance Degradation Report — logreg_v1
+2026-08-04 20:51:23 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:51:23 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 20:51:23 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:51:23 | INFO     | evaluator            | auc               0.6446   0.6319   0.6133    -0.0186 ↓
+2026-08-04 20:51:23 | INFO     | evaluator            | f1                0.2743   0.2459   0.2000    -0.0459 ↓
+2026-08-04 20:51:23 | INFO     | evaluator            | precision         0.1982   0.1685   0.1439    -0.0246 ↓
+2026-08-04 20:51:23 | INFO     | evaluator            | recall            0.4451   0.4550   0.3281    -0.1269 ↓
+2026-08-04 20:51:23 | INFO     | evaluator            | brier             0.1026   0.0929   0.0803    -0.0126 ↓
+2026-08-04 20:51:23 | INFO     | evaluator            | mean_proba        0.1191   0.1246   0.1162    -0.0084 ↓
+2026-08-04 20:51:23 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 20:51:23 | INFO     | evaluator            | AUC degradation  : -0.0186
+2026-08-04 20:51:23 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 20:51:23 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 20:51:24 | INFO     | evaluator            |   Saved: 23_degradation_logreg_v1.png
+2026-08-04 20:51:24 | INFO     | evaluator            |   Saved: 24_model_comparison.png
+2026-08-04 20:51:24 | INFO     | evaluator            | Evaluation report saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\evaluation_report.json
+2026-08-04 20:51:24 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:51:24 | INFO     | evaluator            | Evaluation Summary
+2026-08-04 20:51:24 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:51:24 | INFO     | evaluator            | LGBM:
+2026-08-04 20:51:24 | INFO     | evaluator            |   Val  AUC : 0.6617
+2026-08-04 20:51:24 | INFO     | evaluator            |   Test AUC : 0.6415
+2026-08-04 20:51:24 | INFO     | evaluator            |   AUC Δ    : -0.0202
+2026-08-04 20:51:24 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 20:51:24 | INFO     | evaluator            | LogReg:
+2026-08-04 20:51:24 | INFO     | evaluator            |   Val  AUC : 0.6319
+2026-08-04 20:51:24 | INFO     | evaluator            |   Test AUC : 0.6133
+2026-08-04 20:51:24 | INFO     | evaluator            |   AUC Δ    : -0.0186
+2026-08-04 20:51:24 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 20:51:24 | INFO     | evaluator            | ======================================================================
+2026-08-04 20:51:24 | INFO     | evaluator            | Next: src/drift/ — drift detection pipeline
+2026-08-04 20:51:24 | INFO     | evaluator            | ======================================================================
+2026-08-04 21:12:03 | INFO     | evaluator            | ===== RUN 20260804-211203-192091 | pid=24628 | started 2026-08-04 21:12:03 =====
+2026-08-04 21:12:03 | INFO     | evaluator            | ======================================================================
+2026-08-04 21:12:03 | INFO     | evaluator            | DriftSentinel — Model Evaluator
+2026-08-04 21:12:03 | INFO     | evaluator            | ======================================================================
+2026-08-04 21:12:03 | INFO     | evaluator            | ============================================================
+2026-08-04 21:12:03 | INFO     | evaluator            | Evaluating: lgbm_v1
+2026-08-04 21:12:03 | INFO     | evaluator            | ============================================================
+2026-08-04 21:12:03 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1533  F1=0.2627
+2026-08-04 21:12:03 | INFO     | evaluator            |   train  AUC=0.8137  F1=0.4165  Prec=0.3059  Recall=0.6525  Brier=0.0901  mean_p=0.1199
+2026-08-04 21:12:03 | INFO     | evaluator            |   val    AUC=0.6617  F1=0.2627  Prec=0.1824  Recall=0.4690  Brier=0.0915  mean_p=0.1250
+2026-08-04 21:12:03 | INFO     | evaluator            |   test   AUC=0.6415  F1=0.2200  Prec=0.1595  Recall=0.3543  Brier=0.0792  mean_p=0.1138
+2026-08-04 21:12:03 | INFO     | evaluator            |   Saved: 20_roc_pr_lgbm_v1.png
+2026-08-04 21:12:03 | INFO     | evaluator            |   Saved: 21_calibration_lgbm_v1.png
+2026-08-04 21:12:04 | INFO     | evaluator            |   Saved: 22_confusion_matrices_lgbm_v1.png
+2026-08-04 21:12:04 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 21:12:04 | INFO     | evaluator            | Performance Degradation Report — lgbm_v1
+2026-08-04 21:12:04 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 21:12:04 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 21:12:04 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 21:12:04 | INFO     | evaluator            | auc               0.8137   0.6617   0.6415    -0.0202 ↓
+2026-08-04 21:12:04 | INFO     | evaluator            | f1                0.4165   0.2627   0.2200    -0.0427 ↓
+2026-08-04 21:12:04 | INFO     | evaluator            | precision         0.3059   0.1824   0.1595    -0.0229 ↓
+2026-08-04 21:12:04 | INFO     | evaluator            | recall            0.6525   0.4690   0.3543    -0.1147 ↓
+2026-08-04 21:12:04 | INFO     | evaluator            | brier             0.0901   0.0915   0.0792    -0.0123 ↓
+2026-08-04 21:12:04 | INFO     | evaluator            | mean_proba        0.1199   0.1250   0.1138    -0.0112 ↓
+2026-08-04 21:12:04 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 21:12:04 | INFO     | evaluator            | AUC degradation  : -0.0202
+2026-08-04 21:12:04 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 21:12:04 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 21:12:04 | INFO     | evaluator            |   Saved: 23_degradation_lgbm_v1.png
+2026-08-04 21:12:04 | INFO     | evaluator            | ============================================================
+2026-08-04 21:12:04 | INFO     | evaluator            | Evaluating: logreg_v1
+2026-08-04 21:12:04 | INFO     | evaluator            | ============================================================
+2026-08-04 21:12:04 | INFO     | evaluator            |   Optimal threshold (F1 max on val): 0.1457  F1=0.2459
+2026-08-04 21:12:04 | INFO     | evaluator            |   train  AUC=0.6446  F1=0.2743  Prec=0.1982  Recall=0.4451  Brier=0.1026  mean_p=0.1191
+2026-08-04 21:12:04 | INFO     | evaluator            |   val    AUC=0.6319  F1=0.2459  Prec=0.1685  Recall=0.4550  Brier=0.0929  mean_p=0.1246
+2026-08-04 21:12:04 | INFO     | evaluator            |   test   AUC=0.6133  F1=0.2000  Prec=0.1439  Recall=0.3281  Brier=0.0803  mean_p=0.1162
+2026-08-04 21:12:04 | INFO     | evaluator            |   Saved: 20_roc_pr_logreg_v1.png
+2026-08-04 21:12:05 | INFO     | evaluator            |   Saved: 21_calibration_logreg_v1.png
+2026-08-04 21:12:05 | INFO     | evaluator            |   Saved: 22_confusion_matrices_logreg_v1.png
+2026-08-04 21:12:05 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 21:12:05 | INFO     | evaluator            | Performance Degradation Report — logreg_v1
+2026-08-04 21:12:05 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 21:12:05 | INFO     | evaluator            | Metric             Train      Val     Test   Val→Test Δ
+2026-08-04 21:12:05 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 21:12:05 | INFO     | evaluator            | auc               0.6446   0.6319   0.6133    -0.0186 ↓
+2026-08-04 21:12:05 | INFO     | evaluator            | f1                0.2743   0.2459   0.2000    -0.0459 ↓
+2026-08-04 21:12:05 | INFO     | evaluator            | precision         0.1982   0.1685   0.1439    -0.0246 ↓
+2026-08-04 21:12:05 | INFO     | evaluator            | recall            0.4451   0.4550   0.3281    -0.1269 ↓
+2026-08-04 21:12:05 | INFO     | evaluator            | brier             0.1026   0.0929   0.0803    -0.0126 ↓
+2026-08-04 21:12:05 | INFO     | evaluator            | mean_proba        0.1191   0.1246   0.1162    -0.0084 ↓
+2026-08-04 21:12:05 | INFO     | evaluator            | ------------------------------------------------------------
+2026-08-04 21:12:05 | INFO     | evaluator            | AUC degradation  : -0.0186
+2026-08-04 21:12:05 | INFO     | evaluator            | Drift severity   : MILD
+2026-08-04 21:12:05 | INFO     | evaluator            | DriftSentinel    : This degradation is what we detect and alert on
+2026-08-04 21:12:06 | INFO     | evaluator            |   Saved: 23_degradation_logreg_v1.png
+2026-08-04 21:12:06 | INFO     | evaluator            |   Saved: 24_model_comparison.png
+2026-08-04 21:12:06 | INFO     | evaluator            | Evaluation report saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\models\evaluation_report.json
+2026-08-04 21:12:06 | INFO     | evaluator            | ======================================================================
+2026-08-04 21:12:06 | INFO     | evaluator            | Evaluation Summary
+2026-08-04 21:12:06 | INFO     | evaluator            | ======================================================================
+2026-08-04 21:12:06 | INFO     | evaluator            | LGBM:
+2026-08-04 21:12:06 | INFO     | evaluator            |   Val  AUC : 0.6617
+2026-08-04 21:12:06 | INFO     | evaluator            |   Test AUC : 0.6415
+2026-08-04 21:12:06 | INFO     | evaluator            |   AUC Δ    : -0.0202
+2026-08-04 21:12:06 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 21:12:06 | INFO     | evaluator            | LogReg:
+2026-08-04 21:12:06 | INFO     | evaluator            |   Val  AUC : 0.6319
+2026-08-04 21:12:06 | INFO     | evaluator            |   Test AUC : 0.6133
+2026-08-04 21:12:06 | INFO     | evaluator            |   AUC Δ    : -0.0186
+2026-08-04 21:12:06 | INFO     | evaluator            |   Severity : MILD
+2026-08-04 21:12:06 | INFO     | evaluator            | ======================================================================
+2026-08-04 21:12:06 | INFO     | evaluator            | Next: src/drift/ — drift detection pipeline
+2026-08-04 21:12:06 | INFO     | evaluator            | ======================================================================

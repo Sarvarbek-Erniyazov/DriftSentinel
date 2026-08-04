@@ -1,0 +1,132 @@
+{
+  "phase": "2C.4",
+  "title": "Determinism verified by artifact hash, not by metric equality",
+  "stage": "trainer",
+  "scripts": [
+    "src/pipelines/pipeline.py",
+    "src/models/trainer.py"
+  ],
+  "verdict": "PASS",
+  "reason": "24 artifacts byte-identical across two runs under different string-hash randomisation",
+  "n_artifacts_compared": 24,
+  "coverage": {
+    "artifacts_produced_by_this_stage": [
+      "data/production/production_test.parquet",
+      "data/production/production_val.parquet",
+      "data/train/test_fs.parquet",
+      "data/train/train_fs.parquet",
+      "data/train/val_fs.parquet",
+      "outputs/artifacts/age_ordinal_map.json",
+      "outputs/artifacts/fe_feature_names.json",
+      "outputs/artifacts/fe_train_stats.json",
+      "outputs/artifacts/feature_engineer.pkl",
+      "outputs/artifacts/feature_scores.csv",
+      "outputs/artifacts/feature_selector.pkl",
+      "outputs/artifacts/impute_modes.json",
+      "outputs/artifacts/label_encoders.pkl",
+      "outputs/artifacts/pipeline_objects.pkl",
+      "outputs/artifacts/preprocessor_config.json",
+      "outputs/artifacts/selected_features.json",
+      "outputs/artifacts/selector_stage_results.json",
+      "outputs/artifacts/split_index.json",
+      "outputs/models/lgbm_feature_importance.csv",
+      "outputs/models/lgbm_v1.pkl",
+      "outputs/models/logreg_coefficients.csv",
+      "outputs/models/logreg_scaler.pkl",
+      "outputs/models/logreg_v1.pkl",
+      "outputs/models/val_reference_predictions.parquet"
+    ],
+    "artifacts_present_in_repo_but_not_produced_by_this_stage": [
+      "outputs/artifacts/calibrator_isotonic_lgbm_v1.pkl",
+      "outputs/artifacts/calibrator_temperature_lgbm_v1.pkl",
+      "outputs/artifacts/conformal_predictor_lgbm_v1.pkl",
+      "outputs/models/evaluation_report.json",
+      "outputs/models/lgbm_v2.pkl"
+    ],
+    "note": "the second list is NOT checked for determinism by this run. Those files exist in the repository because the modules that write them were run standalone; `pipelines/pipeline.py` does not write them, so a clean clone running only the pipeline would not have them at all. Reported here because a coverage gap that is not stated is indistinguishable from coverage."
+  },
+  "differences": [],
+  "seeds_requested": [
+    "0",
+    "12345"
+  ],
+  "seeds_differ": true,
+  "hash_randomisation_differs_between_runs": true,
+  "probe": {
+    "strings": [
+      "readmitted_binary",
+      "readmitted_multi",
+      "readmitted"
+    ],
+    "hash_run_a": 8007634863280269366,
+    "hash_run_b": 3446595664789613639,
+    "why": "PYTHONHASHSEED is observed through its effect, not read back from the environment: setting it to 0 disables randomisation, so the env var alone does not establish that the two runs differ"
+  },
+  "runs": [
+    {
+      "hashseed": "0",
+      "probe_hash": 8007634863280269366,
+      "stages": [
+        {
+          "script": "src/pipelines/pipeline.py",
+          "returncode": 0,
+          "seconds": 103.86,
+          "stderr_tail": ""
+        },
+        {
+          "script": "src/models/trainer.py",
+          "returncode": 0,
+          "seconds": 28.85,
+          "stderr_tail": ""
+        }
+      ]
+    },
+    {
+      "hashseed": "12345",
+      "probe_hash": 3446595664789613639,
+      "stages": [
+        {
+          "script": "src/pipelines/pipeline.py",
+          "returncode": 0,
+          "seconds": 105.75,
+          "stderr_tail": ""
+        },
+        {
+          "script": "src/models/trainer.py",
+          "returncode": 0,
+          "seconds": 67.31,
+          "stderr_tail": ""
+        }
+      ]
+    }
+  ],
+  "falsification_arm": {
+    "design": "the same values written with two different column orders \u2014 value-identical, byte-different, which is what the TARGET_COLS hash-randomisation defect produced",
+    "bytes_differ_as_constructed": true,
+    "classifications_returned": [
+      "BYTE_DIFFERENCE_ONLY"
+    ],
+    "harness_can_detect_byte_only_difference": true,
+    "why_it_matters": "a determinism check that has never been shown to fail cannot distinguish 'reproducible' from 'not looking'. If this arm fails the verdict is UNKNOWN, never PASS."
+  },
+  "compared_globs": [
+    "data/train/*.parquet",
+    "data/production/*.parquet",
+    "outputs/artifacts/*",
+    "outputs/models/*"
+  ],
+  "excluded": {
+    "outputs/log/*.log": "structured logs carry wall-clock timestamps on every line",
+    "outputs/log/pipeline_summary.json": "records per-stage wall-clock timings",
+    "outputs/models/training_summary.json": "records `train_time_s` wall-clock timing alongside its params and CV results. Excluded on the same grounds as pipeline_summary.json rather than by stripping the timing key \u2014 normalising a field away to make a check pass is how a check stops being one. The substantive artifacts it summarises (lgbm_v1.pkl, logreg_v1.pkl, logreg_scaler.pkl) ARE compared and must be byte-identical.",
+    "outputs/models/*.meta.json": "provenance sidecars record `created_at` and the git commit, so they are wall-clock-dependent by design -- the same grounds as pipeline_summary.json. The MODEL BINARIES they describe ARE compared and must be byte-identical, and each sidecar carries that binary's SHA-256, so a sidecar drifting from its artifact would surface as a difference in the artifact itself rather than being hidden here.",
+    "outputs/artifacts/*.tmp": "scratch files, not artifacts"
+  },
+  "defect_class_targeted": "value-identical, byte-different \u2014 `TARGET_COLS` is a set and Python randomises string hashing per process, so output column order changed on every run. Identical values, identical metrics, different bytes. Dangerous because the adversarial modules index positionally.",
+  "reproducibility": {
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  }
+}

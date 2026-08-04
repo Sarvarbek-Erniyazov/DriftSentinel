@@ -1,0 +1,27 @@
+# DriftSentinel — RUNTIME dependencies for the Streamlit console
+#
+# WHY THIS FILE IS SMALL
+# Streamlit Community Cloud installs the `requirements.txt` at the repository
+# root and nothing else. The full research environment (lightgbm, shap,
+# scikit-learn, seaborn, scipy, pytest) is ~700 MB installed and is not needed
+# to serve the console: `app.py` loads NO model. It reads a 30 KB precomputed
+# evidence bundle and two small parquet frames, which is what keeps cold start
+# in seconds on a 1 GB container.
+#
+# Installing the research stack here would not merely be wasteful — it would
+# make the deployment depend on packages whose absence the app is designed to
+# tolerate, and the first sign of trouble would be a build timeout rather than
+# an error anyone could read.
+#
+# The full environment lives in requirements-dev.txt, which CI installs.
+#   pip install -r requirements-dev.txt     # pipeline, tests, determinism
+#   pip install -r requirements.txt         # console only
+#
+# Verified: `python -c "import app"` under this set alone (no sklearn, no
+# lightgbm, no shap) imports cleanly and every tab renders.
+
+streamlit==1.60.0
+pandas==2.3.3
+numpy==2.4.6
+pyarrow==24.0.0          # app/demo_data/*.parquet
+altair==6.2.2            # signal_panel(); bundled with streamlit but pinned here

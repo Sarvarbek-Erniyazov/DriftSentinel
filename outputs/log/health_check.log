@@ -78,3 +78,408 @@
 2026-05-12 16:26:05 | INFO     | health_check         |   ⚠ System DEGRADED — functional but review warnings
 2026-05-12 16:26:05 | INFO     | health_check         | ======================================================================
 2026-05-12 16:26:05 | INFO     | health_check         |   Health report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\health_check.json
+2026-08-04 10:17:04 | INFO     | health_check         | ===== RUN 20260804-101703-6a8063 | pid=19476 | started 2026-08-04 10:17:04 =====
+2026-08-04 10:17:04 | INFO     | health_check         | ======================================================================
+2026-08-04 10:17:04 | INFO     | health_check         | DriftSentinel — System Health Check
+2026-08-04 10:17:04 | INFO     | health_check         |   Timestamp: 2026-08-04T10:17:04.441669
+2026-08-04 10:17:04 | INFO     | health_check         | ======================================================================
+2026-08-04 10:17:04 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:17:04 | INFO     | health_check         | Category: DATA
+2026-08-04 10:17:04 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] data_file_train_fs.parquet                    exists (1.3 MB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] data_file_val_fs.parquet                      exists (0.5 MB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] data_file_test_fs.parquet                     exists (0.4 MB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] data_file_production_val.parquet              exists (0.5 MB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] data_file_production_test.parquet             exists (0.4 MB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] data_feature_count                            53 features (expected 53)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] data_null_free                                nulls=0
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] data_target_readmitted_binary                 present
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] data_target_readmitted_multi                  present
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] data_train_shape                              train=(63492, 55)
+2026-08-04 10:17:04 | INFO     | health_check         |   → DATA: PASS=10 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:17:04 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:17:04 | INFO     | health_check         | Category: MODELS
+2026-08-04 10:17:04 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] model_file_lgbm_v1.pkl                        exists (1.1 MB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] model_file_lgbm_v2.pkl                        exists (2.0 MB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] model_file_logreg_v1.pkl                      exists (0.0 MB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] model_prediction_range                        probabilities in [0,1]: True
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] model_prediction_no_nan                       no NaN in predictions
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] model_prediction_sanity                       mean proba=0.4258 (in [0.2, 0.8])
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] registry_active_model                         active=lgbm_v2
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] registry_model_count                          2 model(s) registered
+2026-08-04 10:17:04 | INFO     | health_check         |   → MODELS: PASS=8 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:17:04 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:17:04 | INFO     | health_check         | Category: DRIFT
+2026-08-04 10:17:04 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] drift_report_concept_drift                    exists | last modified: 2026-08-04 10:16
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] drift_report_data_drift                       exists | last modified: 2026-05-11 21:29
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] drift_report_feature_drift                    exists | last modified: 2026-05-11 21:33
+2026-08-04 10:17:04 | INFO     | health_check         |   [⚠] alert_system_status                           system_status=CRITICAL | CRITICAL=4 HIGH=5 total=9
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] alert_auc_degradation                         AUC degradation=+0.0305
+2026-08-04 10:17:04 | INFO     | health_check         |   → DRIFT: PASS=4 WARN=1 FAIL=0 [WARN]
+2026-08-04 10:17:04 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:17:04 | INFO     | health_check         | Category: UNCERTAINTY
+2026-08-04 10:17:04 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] artifact_isotonic_calibrator                  exists (2.2 KB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] artifact_temperature_scaler                   exists (0.1 KB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] artifact_conformal_predictor                  exists (1474.1 KB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] artifact_feature_selector                     exists (16.0 KB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] artifact_label_encoders                       exists (2.9 KB)
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] calibration_ece_improvement                   ECE improvement=+0.0881 best_method=isotonic
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] conformal_coverage_90                         empirical_coverage=0.9139 (target=0.90) satisfied=True
+2026-08-04 10:17:04 | INFO     | health_check         |   → UNCERTAINTY: PASS=7 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:17:04 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:17:04 | INFO     | health_check         | Category: ADVERSARIAL
+2026-08-04 10:17:04 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] adversarial_robustness_score                  score=0.8954 tier=ROBUST
+2026-08-04 10:17:04 | INFO     | health_check         |   [⚠] adversarial_defense_schema                    defense report present but schema not recognised (keys: ['attacked', 'clean', 'detection_lift', 'layer_performance', 'model_name', 'n_samples']...) — refusing to report a default value
+2026-08-04 10:17:04 | INFO     | health_check         |   → ADVERSARIAL: PASS=1 WARN=1 FAIL=0 [WARN]
+2026-08-04 10:17:04 | INFO     | health_check         | 
+======================================================================
+2026-08-04 10:17:04 | INFO     | health_check         | HEALTH CHECK SUMMARY
+2026-08-04 10:17:04 | INFO     | health_check         | ======================================================================
+2026-08-04 10:17:04 | INFO     | health_check         |   System Health : DEGRADED
+2026-08-04 10:17:04 | INFO     | health_check         |   Total checks  : 32
+2026-08-04 10:17:04 | INFO     | health_check         |   PASS          : 30
+2026-08-04 10:17:04 | INFO     | health_check         |   WARN          : 2
+2026-08-04 10:17:04 | INFO     | health_check         |   FAIL          : 0
+2026-08-04 10:17:04 | INFO     | health_check         | ----------------------------------------------------------------------
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] DATA                 PASS
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] MODELS               PASS
+2026-08-04 10:17:04 | INFO     | health_check         |   [⚠] DRIFT                WARN
+2026-08-04 10:17:04 | INFO     | health_check         |   [✓] UNCERTAINTY          PASS
+2026-08-04 10:17:04 | INFO     | health_check         |   [⚠] ADVERSARIAL          WARN
+2026-08-04 10:17:04 | INFO     | health_check         | ======================================================================
+2026-08-04 10:17:04 | INFO     | health_check         |   ⚠ System DEGRADED — functional but review warnings
+2026-08-04 10:17:04 | INFO     | health_check         | ======================================================================
+2026-08-04 10:17:04 | INFO     | health_check         |   Health report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\health_check.json
+2026-08-04 10:17:43 | INFO     | health_check         | ===== RUN 20260804-101742-2313b0 | pid=3384 | started 2026-08-04 10:17:43 =====
+2026-08-04 10:17:43 | INFO     | health_check         | ======================================================================
+2026-08-04 10:17:43 | INFO     | health_check         | DriftSentinel — System Health Check
+2026-08-04 10:17:43 | INFO     | health_check         |   Timestamp: 2026-08-04T10:17:43.360381
+2026-08-04 10:17:43 | INFO     | health_check         | ======================================================================
+2026-08-04 10:17:43 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:17:43 | INFO     | health_check         | Category: DATA
+2026-08-04 10:17:43 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] data_file_train_fs.parquet                    exists (1.3 MB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] data_file_val_fs.parquet                      exists (0.5 MB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] data_file_test_fs.parquet                     exists (0.4 MB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] data_file_production_val.parquet              exists (0.5 MB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] data_file_production_test.parquet             exists (0.4 MB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] data_feature_count                            53 features (expected 53)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] data_null_free                                nulls=0
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] data_target_readmitted_binary                 present
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] data_target_readmitted_multi                  present
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] data_train_shape                              train=(63492, 55)
+2026-08-04 10:17:43 | INFO     | health_check         |   → DATA: PASS=10 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:17:43 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:17:43 | INFO     | health_check         | Category: MODELS
+2026-08-04 10:17:43 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] model_file_lgbm_v1.pkl                        exists (1.1 MB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] model_file_lgbm_v2.pkl                        exists (2.0 MB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] model_file_logreg_v1.pkl                      exists (0.0 MB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] model_prediction_range                        probabilities in [0,1]: True
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] model_prediction_no_nan                       no NaN in predictions
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] model_prediction_sanity                       mean proba=0.4258 (in [0.2, 0.8])
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] registry_active_model                         active=lgbm_v2
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] registry_model_count                          2 model(s) registered
+2026-08-04 10:17:43 | INFO     | health_check         |   → MODELS: PASS=8 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:17:43 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:17:43 | INFO     | health_check         | Category: DRIFT
+2026-08-04 10:17:43 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] drift_report_concept_drift                    exists | last modified: 2026-08-04 10:16
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] drift_report_data_drift                       exists | last modified: 2026-05-11 21:29
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] drift_report_feature_drift                    exists | last modified: 2026-05-11 21:33
+2026-08-04 10:17:43 | INFO     | health_check         |   [⚠] alert_system_status                           system_status=CRITICAL | CRITICAL=4 HIGH=5 total=9
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] alert_auc_degradation                         AUC degradation=+0.0305
+2026-08-04 10:17:43 | INFO     | health_check         |   → DRIFT: PASS=4 WARN=1 FAIL=0 [WARN]
+2026-08-04 10:17:43 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:17:43 | INFO     | health_check         | Category: UNCERTAINTY
+2026-08-04 10:17:43 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] artifact_isotonic_calibrator                  exists (2.2 KB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] artifact_temperature_scaler                   exists (0.1 KB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] artifact_conformal_predictor                  exists (1474.1 KB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] artifact_feature_selector                     exists (16.0 KB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] artifact_label_encoders                       exists (2.9 KB)
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] calibration_ece_improvement                   ECE improvement=+0.0881 best_method=isotonic
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] conformal_coverage_90                         empirical_coverage=0.9139 (target=0.90) satisfied=True
+2026-08-04 10:17:43 | INFO     | health_check         |   → UNCERTAINTY: PASS=7 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:17:43 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:17:43 | INFO     | health_check         | Category: ADVERSARIAL
+2026-08-04 10:17:43 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] adversarial_robustness_score                  score=0.8954 tier=ROBUST
+2026-08-04 10:17:43 | INFO     | health_check         |   [⚠] adversarial_detection_at_matched_fpr          TPR@FPR=5%=0.064 ROC_AUC=0.565 clean_flagged_any=0.077 (bare detection rates are not reported — see Tier 1.2)
+2026-08-04 10:17:43 | INFO     | health_check         |   → ADVERSARIAL: PASS=1 WARN=1 FAIL=0 [WARN]
+2026-08-04 10:17:43 | INFO     | health_check         | 
+======================================================================
+2026-08-04 10:17:43 | INFO     | health_check         | HEALTH CHECK SUMMARY
+2026-08-04 10:17:43 | INFO     | health_check         | ======================================================================
+2026-08-04 10:17:43 | INFO     | health_check         |   System Health : DEGRADED
+2026-08-04 10:17:43 | INFO     | health_check         |   Total checks  : 32
+2026-08-04 10:17:43 | INFO     | health_check         |   PASS          : 30
+2026-08-04 10:17:43 | INFO     | health_check         |   WARN          : 2
+2026-08-04 10:17:43 | INFO     | health_check         |   FAIL          : 0
+2026-08-04 10:17:43 | INFO     | health_check         | ----------------------------------------------------------------------
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] DATA                 PASS
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] MODELS               PASS
+2026-08-04 10:17:43 | INFO     | health_check         |   [⚠] DRIFT                WARN
+2026-08-04 10:17:43 | INFO     | health_check         |   [✓] UNCERTAINTY          PASS
+2026-08-04 10:17:43 | INFO     | health_check         |   [⚠] ADVERSARIAL          WARN
+2026-08-04 10:17:43 | INFO     | health_check         | ======================================================================
+2026-08-04 10:17:43 | INFO     | health_check         |   ⚠ System DEGRADED — functional but review warnings
+2026-08-04 10:17:43 | INFO     | health_check         | ======================================================================
+2026-08-04 10:17:43 | INFO     | health_check         |   Health report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\health_check.json
+2026-08-04 10:31:27 | INFO     | health_check         | ===== RUN 20260804-103126-611977 | pid=12528 | started 2026-08-04 10:31:27 =====
+2026-08-04 10:31:27 | INFO     | health_check         | ======================================================================
+2026-08-04 10:31:27 | INFO     | health_check         | DriftSentinel — System Health Check
+2026-08-04 10:31:27 | INFO     | health_check         |   Timestamp: 2026-08-04T10:31:27.878203
+2026-08-04 10:31:27 | INFO     | health_check         | ======================================================================
+2026-08-04 10:31:27 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:31:27 | INFO     | health_check         | Category: DATA
+2026-08-04 10:31:27 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] data_file_train_fs.parquet                    exists (1.3 MB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] data_file_val_fs.parquet                      exists (0.5 MB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] data_file_test_fs.parquet                     exists (0.4 MB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] data_file_production_val.parquet              exists (0.5 MB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] data_file_production_test.parquet             exists (0.4 MB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] data_feature_count                            53 features (expected 53)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] data_null_free                                nulls=0
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] data_target_readmitted_binary                 present
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] data_target_readmitted_multi                  present
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] data_train_shape                              train=(63492, 55)
+2026-08-04 10:31:27 | INFO     | health_check         |   → DATA: PASS=10 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:31:27 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:31:27 | INFO     | health_check         | Category: MODELS
+2026-08-04 10:31:27 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] model_file_lgbm_v1.pkl                        exists (1.1 MB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] model_file_lgbm_v2.pkl                        exists (2.0 MB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] model_file_logreg_v1.pkl                      exists (0.0 MB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] model_prediction_range                        probabilities in [0,1]: True
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] model_prediction_no_nan                       no NaN in predictions
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] model_prediction_sanity                       mean proba=0.4258 (in [0.2, 0.8])
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] registry_active_model                         active=lgbm_v2
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] registry_model_count                          2 model(s) registered
+2026-08-04 10:31:27 | INFO     | health_check         |   → MODELS: PASS=8 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:31:27 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:31:27 | INFO     | health_check         | Category: DRIFT
+2026-08-04 10:31:27 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] drift_report_concept_drift                    exists | last modified: 2026-08-04 10:16
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] drift_report_data_drift                       exists | last modified: 2026-05-11 21:29
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] drift_report_feature_drift                    exists | last modified: 2026-05-11 21:33
+2026-08-04 10:31:27 | INFO     | health_check         |   [✗] alert_system_status                           system_status=CRITICAL | CRITICAL=4 HIGH=5 total=9 | EXPECTED: the deployed reference/production windows are an entry-cohort split, which Tier 0 shows produces real shift (3.30/6 signals vs 0.25/6 on the no-drift control). Reported at face value, not downgraded.
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] alert_auc_degradation                         AUC degradation=+0.0305
+2026-08-04 10:31:27 | INFO     | health_check         |   → DRIFT: PASS=4 WARN=0 FAIL=1 [FAIL]
+2026-08-04 10:31:27 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:31:27 | INFO     | health_check         | Category: UNCERTAINTY
+2026-08-04 10:31:27 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] artifact_isotonic_calibrator                  exists (2.2 KB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] artifact_temperature_scaler                   exists (0.1 KB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] artifact_conformal_predictor                  exists (1474.1 KB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] artifact_feature_selector                     exists (16.0 KB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] artifact_label_encoders                       exists (2.9 KB)
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] calibration_ece_improvement                   ECE improvement=+0.0881 best_method=isotonic
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] conformal_coverage_90                         empirical_coverage=0.9139 (target=0.90) satisfied=True
+2026-08-04 10:31:27 | INFO     | health_check         |   → UNCERTAINTY: PASS=7 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:31:27 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:31:27 | INFO     | health_check         | Category: ADVERSARIAL
+2026-08-04 10:31:27 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] adversarial_robustness_score                  score=0.8954 tier=ROBUST
+2026-08-04 10:31:27 | INFO     | health_check         |   [⚠] adversarial_detection_at_matched_fpr          TPR@FPR=5%=0.064 ROC_AUC=0.565 clean_flagged_any=0.077 (bare detection rates are not reported — see Tier 1.2)
+2026-08-04 10:31:27 | INFO     | health_check         |   → ADVERSARIAL: PASS=1 WARN=1 FAIL=0 [WARN]
+2026-08-04 10:31:27 | INFO     | health_check         | 
+======================================================================
+2026-08-04 10:31:27 | INFO     | health_check         | HEALTH CHECK SUMMARY
+2026-08-04 10:31:27 | INFO     | health_check         | ======================================================================
+2026-08-04 10:31:27 | INFO     | health_check         |   System Health : CRITICAL
+2026-08-04 10:31:27 | INFO     | health_check         |   Total checks  : 32
+2026-08-04 10:31:27 | INFO     | health_check         |   PASS          : 30
+2026-08-04 10:31:27 | INFO     | health_check         |   WARN          : 1
+2026-08-04 10:31:27 | INFO     | health_check         |   FAIL          : 1
+2026-08-04 10:31:27 | INFO     | health_check         | ----------------------------------------------------------------------
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] DATA                 PASS
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] MODELS               PASS
+2026-08-04 10:31:27 | INFO     | health_check         |   [✗] DRIFT                FAIL
+2026-08-04 10:31:27 | INFO     | health_check         |   [✓] UNCERTAINTY          PASS
+2026-08-04 10:31:27 | INFO     | health_check         |   [⚠] ADVERSARIAL          WARN
+2026-08-04 10:31:27 | INFO     | health_check         | ======================================================================
+2026-08-04 10:31:27 | INFO     | health_check         |   ✗ System CRITICAL — intervention required
+2026-08-04 10:31:27 | INFO     | health_check         | ======================================================================
+2026-08-04 10:31:27 | INFO     | health_check         |   Health report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\health_check.json
+2026-08-04 10:47:35 | INFO     | health_check         | ===== RUN 20260804-104733-c3c8dc | pid=30600 | started 2026-08-04 10:47:35 =====
+2026-08-04 10:47:35 | INFO     | health_check         | ======================================================================
+2026-08-04 10:47:35 | INFO     | health_check         | DriftSentinel — System Health Check
+2026-08-04 10:47:35 | INFO     | health_check         |   Timestamp: 2026-08-04T10:47:35.050469
+2026-08-04 10:47:35 | INFO     | health_check         | ======================================================================
+2026-08-04 10:47:35 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:47:35 | INFO     | health_check         | Category: DATA
+2026-08-04 10:47:35 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] data_file_train_fs.parquet                    exists (1.3 MB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] data_file_val_fs.parquet                      exists (0.5 MB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] data_file_test_fs.parquet                     exists (0.4 MB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] data_file_production_val.parquet              exists (0.5 MB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] data_file_production_test.parquet             exists (0.4 MB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] data_feature_count                            53 features (expected 53)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] data_null_free                                nulls=0
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] data_target_readmitted_binary                 present
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] data_target_readmitted_multi                  present
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] data_train_shape                              train=(63492, 55)
+2026-08-04 10:47:35 | INFO     | health_check         |   → DATA: PASS=10 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:47:35 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:47:35 | INFO     | health_check         | Category: MODELS
+2026-08-04 10:47:35 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] model_file_lgbm_v1.pkl                        exists (0.8 MB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] model_file_lgbm_v2.pkl                        exists (2.0 MB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] model_file_logreg_v1.pkl                      exists (0.0 MB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] model_prediction_range                        probabilities in [0,1]: True
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] model_prediction_no_nan                       no NaN in predictions
+2026-08-04 10:47:35 | INFO     | health_check         |   [⚠] model_prediction_sanity                       mean proba=0.0822 (outside [0.2, 0.8])
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] registry_active_model                         active=lgbm_v1
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] registry_model_count                          2 model(s) registered
+2026-08-04 10:47:35 | INFO     | health_check         |   → MODELS: PASS=7 WARN=1 FAIL=0 [WARN]
+2026-08-04 10:47:35 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:47:35 | INFO     | health_check         | Category: DRIFT
+2026-08-04 10:47:35 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] drift_report_concept_drift                    exists | last modified: 2026-08-04 10:43
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] drift_report_data_drift                       exists | last modified: 2026-08-04 10:43
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] drift_report_feature_drift                    exists | last modified: 2026-08-04 10:43
+2026-08-04 10:47:35 | INFO     | health_check         |   [⚠] alert_system_status                           system_status=HIGH | CRITICAL=1 HIGH=3 total=7 | EXPECTED: the deployed reference/production windows are an entry-cohort split, which Tier 0 shows produces real shift (3.30/6 signals vs 0.25/6 on the no-drift control). Reported at face value, not downgraded.
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] alert_auc_degradation                         AUC degradation=+0.0202
+2026-08-04 10:47:35 | INFO     | health_check         |   → DRIFT: PASS=4 WARN=1 FAIL=0 [WARN]
+2026-08-04 10:47:35 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:47:35 | INFO     | health_check         | Category: UNCERTAINTY
+2026-08-04 10:47:35 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] artifact_isotonic_calibrator                  exists (1.7 KB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] artifact_temperature_scaler                   exists (0.1 KB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] artifact_conformal_predictor                  exists (1474.1 KB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] artifact_feature_selector                     exists (8.9 KB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] artifact_label_encoders                       exists (2.5 KB)
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] calibration_ece_improvement                   ECE improvement=+0.0177 best_method=isotonic
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] conformal_coverage_90                         empirical_coverage=0.9168 (target=0.90) satisfied=True
+2026-08-04 10:47:35 | INFO     | health_check         |   → UNCERTAINTY: PASS=7 WARN=0 FAIL=0 [PASS]
+2026-08-04 10:47:35 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 10:47:35 | INFO     | health_check         | Category: ADVERSARIAL
+2026-08-04 10:47:35 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] adversarial_robustness_score                  score=0.8222 tier=ROBUST
+2026-08-04 10:47:35 | INFO     | health_check         |   [⚠] adversarial_detection_at_matched_fpr          TPR@FPR=5%=0.064 ROC_AUC=0.565 clean_flagged_any=0.077 (bare detection rates are not reported — see Tier 1.2)
+2026-08-04 10:47:35 | INFO     | health_check         |   → ADVERSARIAL: PASS=1 WARN=1 FAIL=0 [WARN]
+2026-08-04 10:47:35 | INFO     | health_check         | 
+======================================================================
+2026-08-04 10:47:35 | INFO     | health_check         | HEALTH CHECK SUMMARY
+2026-08-04 10:47:35 | INFO     | health_check         | ======================================================================
+2026-08-04 10:47:35 | INFO     | health_check         |   System Health : DEGRADED
+2026-08-04 10:47:35 | INFO     | health_check         |   Total checks  : 32
+2026-08-04 10:47:35 | INFO     | health_check         |   PASS          : 29
+2026-08-04 10:47:35 | INFO     | health_check         |   WARN          : 3
+2026-08-04 10:47:35 | INFO     | health_check         |   FAIL          : 0
+2026-08-04 10:47:35 | INFO     | health_check         | ----------------------------------------------------------------------
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] DATA                 PASS
+2026-08-04 10:47:35 | INFO     | health_check         |   [⚠] MODELS               WARN
+2026-08-04 10:47:35 | INFO     | health_check         |   [⚠] DRIFT                WARN
+2026-08-04 10:47:35 | INFO     | health_check         |   [✓] UNCERTAINTY          PASS
+2026-08-04 10:47:35 | INFO     | health_check         |   [⚠] ADVERSARIAL          WARN
+2026-08-04 10:47:35 | INFO     | health_check         | ======================================================================
+2026-08-04 10:47:35 | INFO     | health_check         |   ⚠ System DEGRADED — functional but review warnings
+2026-08-04 10:47:35 | INFO     | health_check         | ======================================================================
+2026-08-04 10:47:35 | INFO     | health_check         |   Health report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\health_check.json
+2026-08-04 11:06:43 | INFO     | health_check         | ===== RUN 20260804-110642-332b5f | pid=26288 | started 2026-08-04 11:06:43 =====
+2026-08-04 11:06:43 | INFO     | health_check         | ======================================================================
+2026-08-04 11:06:43 | INFO     | health_check         | DriftSentinel — System Health Check
+2026-08-04 11:06:43 | INFO     | health_check         |   Timestamp: 2026-08-04T11:06:43.839901
+2026-08-04 11:06:43 | INFO     | health_check         | ======================================================================
+2026-08-04 11:06:43 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 11:06:43 | INFO     | health_check         | Category: DATA
+2026-08-04 11:06:43 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] data_file_train_fs.parquet                    exists (1.3 MB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] data_file_val_fs.parquet                      exists (0.5 MB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] data_file_test_fs.parquet                     exists (0.4 MB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] data_file_production_val.parquet              exists (0.5 MB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] data_file_production_test.parquet             exists (0.4 MB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] data_feature_count                            53 features (expected 53)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] data_null_free                                nulls=0
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] data_target_readmitted_binary                 present
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] data_target_readmitted_multi                  present
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] data_train_shape                              train=(63492, 55)
+2026-08-04 11:06:43 | INFO     | health_check         |   → DATA: PASS=10 WARN=0 FAIL=0 [PASS]
+2026-08-04 11:06:43 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 11:06:43 | INFO     | health_check         | Category: MODELS
+2026-08-04 11:06:43 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] model_file_lgbm_v1.pkl                        exists (0.8 MB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] model_file_lgbm_v2.pkl                        exists (2.0 MB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] model_file_logreg_v1.pkl                      exists (0.0 MB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] model_prediction_range                        probabilities in [0,1]: True
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] model_prediction_no_nan                       no NaN in predictions
+2026-08-04 11:06:43 | INFO     | health_check         |   [⚠] model_prediction_sanity                       mean proba=0.0822 (outside [0.2, 0.8])
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] registry_active_model                         active=lgbm_v1
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] registry_model_count                          2 model(s) registered
+2026-08-04 11:06:43 | INFO     | health_check         |   → MODELS: PASS=7 WARN=1 FAIL=0 [WARN]
+2026-08-04 11:06:43 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 11:06:43 | INFO     | health_check         | Category: DRIFT
+2026-08-04 11:06:43 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] drift_report_concept_drift                    exists | last modified: 2026-08-04 11:04
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] drift_report_data_drift                       exists | last modified: 2026-08-04 11:03
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] drift_report_feature_drift                    exists | last modified: 2026-08-04 11:04
+2026-08-04 11:06:43 | INFO     | health_check         |   [⚠] alert_system_status                           system_status=HIGH | CRITICAL=1 HIGH=3 total=7 | EXPECTED: the deployed reference/production windows are an entry-cohort split, which Tier 0 shows produces real shift (3.30/6 signals vs 0.25/6 on the no-drift control). Reported at face value, not downgraded.
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] alert_auc_degradation                         AUC degradation=+0.0202
+2026-08-04 11:06:43 | INFO     | health_check         |   → DRIFT: PASS=4 WARN=1 FAIL=0 [WARN]
+2026-08-04 11:06:43 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 11:06:43 | INFO     | health_check         | Category: UNCERTAINTY
+2026-08-04 11:06:43 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] artifact_isotonic_calibrator                  exists (1.7 KB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] artifact_temperature_scaler                   exists (0.1 KB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] artifact_conformal_predictor                  exists (1474.1 KB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] artifact_feature_selector                     exists (8.9 KB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] artifact_label_encoders                       exists (2.5 KB)
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] calibration_ece_improvement                   ECE improvement=+0.0177 best_method=isotonic
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] conformal_coverage_90                         empirical_coverage=0.9168 (target=0.90) satisfied=True
+2026-08-04 11:06:43 | INFO     | health_check         |   → UNCERTAINTY: PASS=7 WARN=0 FAIL=0 [PASS]
+2026-08-04 11:06:43 | INFO     | health_check         | 
+──────────────────────────────────────────────────
+2026-08-04 11:06:43 | INFO     | health_check         | Category: ADVERSARIAL
+2026-08-04 11:06:43 | INFO     | health_check         | ──────────────────────────────────────────────────
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] adversarial_robustness_score                  score=0.8224 tier=ROBUST
+2026-08-04 11:06:43 | INFO     | health_check         |   [⚠] adversarial_detection_at_matched_fpr          TPR@FPR=5%=0.064 ROC_AUC=0.565 clean_flagged_any=0.077 (bare detection rates are not reported — see Tier 1.2)
+2026-08-04 11:06:43 | INFO     | health_check         |   → ADVERSARIAL: PASS=1 WARN=1 FAIL=0 [WARN]
+2026-08-04 11:06:43 | INFO     | health_check         | 
+======================================================================
+2026-08-04 11:06:43 | INFO     | health_check         | HEALTH CHECK SUMMARY
+2026-08-04 11:06:43 | INFO     | health_check         | ======================================================================
+2026-08-04 11:06:43 | INFO     | health_check         |   System Health : DEGRADED
+2026-08-04 11:06:43 | INFO     | health_check         |   Total checks  : 32
+2026-08-04 11:06:43 | INFO     | health_check         |   PASS          : 29
+2026-08-04 11:06:43 | INFO     | health_check         |   WARN          : 3
+2026-08-04 11:06:43 | INFO     | health_check         |   FAIL          : 0
+2026-08-04 11:06:43 | INFO     | health_check         | ----------------------------------------------------------------------
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] DATA                 PASS
+2026-08-04 11:06:43 | INFO     | health_check         |   [⚠] MODELS               WARN
+2026-08-04 11:06:43 | INFO     | health_check         |   [⚠] DRIFT                WARN
+2026-08-04 11:06:43 | INFO     | health_check         |   [✓] UNCERTAINTY          PASS
+2026-08-04 11:06:43 | INFO     | health_check         |   [⚠] ADVERSARIAL          WARN
+2026-08-04 11:06:43 | INFO     | health_check         | ======================================================================
+2026-08-04 11:06:43 | INFO     | health_check         |   ⚠ System DEGRADED — functional but review warnings
+2026-08-04 11:06:43 | INFO     | health_check         | ======================================================================
+2026-08-04 11:06:43 | INFO     | health_check         |   Health report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\health_check.json

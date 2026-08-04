@@ -1,0 +1,27 @@
+# DriftSentinel — Tier 1.7 (P2)
+# Previously absent, so `git status` was dominated by bytecode caches and it was
+# easy to commit stale generated artifacts.
+
+# ── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ── Environments ───────────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Scratch ────────────────────────────────────────────────────────────────
+*.tmp
+.DS_Store
+
+# NOTE: outputs/ is deliberately NOT ignored. Reports, figures and logs are
+# the evidence trail this project's contribution rests on (CLAUDE.md: "Never
+# delete evidence of the original framing"). Rotated log backups are noise,
+# so only those are excluded:
+outputs/log/*.log.1
+outputs/log/*.log.2
+outputs/log/*.log.3

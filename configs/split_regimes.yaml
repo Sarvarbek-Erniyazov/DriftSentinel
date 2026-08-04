@@ -1,0 +1,121 @@
+# DriftSentinel — Phases 0.2 / 0.3 / 0.4 configuration
+#
+# Ground-truth benchmark for the drift detectors. Phase 0.1 established that
+# `encounter_id` ordering IS chronological (SUPPORTED) while the existing split
+# is still an ENTRY-COHORT split, so this study runs four real regimes plus
+# three synthetic controls.
+
+seed: 42
+n_seeds_random: 20          # Phase 0.2 requires >= 20
+n_seeds_deterministic: 20   # entry-cohort and temporal splits are deterministic;
+                            # seeds vary the MODEL only, isolating model-induced
+                            # firing variance from split-induced variance
+n_seeds_synthetic: 10       # Phase 0.3 sweeps: 3 shift types x 5 magnitudes x 10 seeds
+                            # (documented reduction — the model is trained once per
+                            # seed and reused across magnitudes)
+
+split_ratios: {train: 0.60, val: 0.20, test: 0.20}
+threshold_holdout_frac: 0.20   # slice of TRAIN reserved for threshold selection
+
+# Primary target per the agreed switch. `merged` is kept only as a secondary
+# label for the Phase 0.4 contrast.
+target: lt30
+
+model:
+  n_estimators: 200          # fixed for every regime: no early stopping anywhere,
+  learning_rate: 0.05        # so regimes differ ONLY in their data, never in
+  num_leaves: 31             # capacity or stopping rule (audit F3 confound)
+  min_child_samples: 50
+  subsample: 0.9
+  subsample_freq: 1
+  colsample_bytree: 0.9
+  n_jobs: -1
+  verbose: -1
+
+regimes:
+  entry_cohort:
+    kind: deterministic
+    description: >
+      The repository's existing split: patients ordered by their FIRST
+      encounter_id, 60/20/20. Sorts patients by entry cohort, not encounters by
+      time. This is the setup every current headline number came from.
+  random:
+    kind: seeded
+    description: >
+      NEGATIVE CONTROL. Patients assigned to train/val/test uniformly at random,
+      same proportions, same patient-level grouping. No drift exists by
+      construction, so any signal that fires here is mis-calibrated.
+  temporal:
+    kind: deterministic
+    description: >
+      TRUE TEMPORAL SPLIT, newly defensible because Phase 0.1 verified
+      chronological ordering against external clinical/regulatory anchors.
+      ENCOUNTERS are cut chronologically at the 60th and 80th percentiles of
+      encounter_id. Patients appearing in an earlier split are removed from the
+      later split, so the evaluation is leakage-free and reads as "train on
+      everything up to time T, evaluate on patients first seen after T".
+
+synthetic:
+  base_regime: random          # positive controls are built on the negative control
+  covariate_shift:
+    driver: number_diagnoses   # importance-resample test rows on this covariate
+    alphas: [0.0, 0.5, 1.0, 1.5, 2.0]
+    note: >
+      Resamples REAL test rows with weight proportional to exp(alpha * z), so
+      P(X) changes while P(Y|X) is preserved EXACTLY — no feature values are
+      edited and no label mechanism is touched.
+  label_shift:
+    deltas: [0.0, 0.02, 0.05, 0.10, 0.15]
+    note: >
+      Resamples positives and negatives at different rates to move P(Y) by the
+      given amount while preserving P(X|Y) exactly.
+  concept_shift:
+    subgroup_column: number_inpatient
+    subgroup_rule: "> 0"
+    flip_fractions: [0.0, 0.10, 0.20, 0.35, 0.50]
+    note: >
+      Flips the label mechanism inside a fixed subgroup, swapping equal counts
+      of 0->1 and 1->0 so P(X) is preserved exactly and marginal P(Y) is held
+      approximately constant — isolating P(Y|X) change from label shift.
+
+# Signal families (CLAUDE.md R5 — these are NOT independent signals).
+# Tier 1.5: the `sequential` family was REMOVED from the voting set. CUSUM and
+# Page-Hinkley are still measured and reported under
+# `diagnostic_firing_rates_NOT_EVIDENCE`, because the evidence that condemned
+# them came from this very regime study and must stay reproducible here.
+signal_families:
+  performance:  [auc_drop, f1_drop, brier_increase, auc_slope_negative]
+  distribution: [prediction_drift, label_drift]
+
+miscalibration_threshold: 0.20   # a signal firing in >20% of no-drift seeds is
+                                 # mis-calibrated and must be reported as such
+
+features:
+  numeric:
+    - time_in_hospital
+    - num_lab_procedures
+    - num_procedures
+    - num_medications
+    - number_outpatient
+    - number_emergency
+    - number_inpatient
+    - number_diagnoses
+  categorical:
+    - race
+    - gender
+    - age
+    - admission_type_id
+    - discharge_disposition_id
+    - admission_source_id
+    - payer_code
+    - medical_specialty
+    - change
+    - diabetesMed
+    - insulin
+    - metformin
+  diag_columns: [diag_1, diag_2, diag_3]     # mapped to ICD-9 chapters
+  missing_indicator_columns: [weight, payer_code, medical_specialty]
+  none_indicator_columns: [A1Cresult, max_glu_serum]
+  medical_specialty_top_k: 15   # rare specialties collapsed to "Other" so the
+                                # chi-square test in data_drift.py stays tractable
+                                # (its implementation is O(unique x n))

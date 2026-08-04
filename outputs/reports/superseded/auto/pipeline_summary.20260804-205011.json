@@ -1,0 +1,272 @@
+{
+  "stage1_load": {
+    "shape": [
+      101766,
+      50
+    ],
+    "memory_mb": 189.56,
+    "load_time_s": 0.288,
+    "null_cols": 9
+  },
+  "stage2_validate": {
+    "passed": 81,
+    "warned": 2,
+    "failed": 0,
+    "ready": true
+  },
+  "stage3_split": {
+    "n_train_rows": 63492,
+    "n_val_rows": 20949,
+    "n_test_rows": 17325,
+    "n_train_patients": 42910,
+    "n_val_patients": 14303,
+    "n_test_patients": 14305,
+    "leakage_free": true
+  },
+  "stage4_preprocess": {
+    "train_shape": [
+      63492,
+      42
+    ],
+    "val_shape": [
+      20949,
+      42
+    ],
+    "test_shape": [
+      17325,
+      42
+    ],
+    "artifacts": [
+      "label_encoders.pkl",
+      "impute_modes.json",
+      "age_ordinal_map.json",
+      "preprocessor_config.json"
+    ]
+  },
+  "stage5_engineer": {
+    "train_shape": [
+      63492,
+      80
+    ],
+    "val_shape": [
+      20949,
+      80
+    ],
+    "test_shape": [
+      17325,
+      80
+    ],
+    "fe_cols_count": 38,
+    "fe_cols": [
+      "FE_total_clinical_contacts",
+      "FE_labs_per_day",
+      "FE_meds_per_day",
+      "FE_procedure_density",
+      "FE_high_utilization",
+      "FE_n_active_ordinal_meds",
+      "FE_n_active_binary_meds",
+      "FE_total_active_meds",
+      "FE_n_med_changes",
+      "FE_n_med_increases",
+      "FE_n_med_decreases",
+      "FE_any_med_changed",
+      "FE_polypharmacy",
+      "FE_med_coverage_ratio",
+      "FE_high_comorbidity",
+      "FE_diagnoses_per_day",
+      "FE_diag_med_ratio",
+      "FE_high_lab_load",
+      "FE_no_procedures",
+      "FE_lab_to_procedure_ratio",
+      "FE_total_prior_contacts",
+      "FE_has_prior_emergency",
+      "FE_has_prior_inpatient",
+      "FE_high_prior_utilization",
+      "FE_multi_channel_utilizer",
+      "FE_insulin_prescribed",
+      "FE_insulin_changed",
+      "FE_insulin_increased",
+      "FE_metformin_prescribed",
+      "FE_metformin_changed",
+      "FE_on_diabetes_med",
+      "FE_med_regimen_changed",
+      "FE_glycemic_risk_score",
+      "FE_inpatient_x_polypharmacy",
+      "FE_high_util_x_med_change",
+      "FE_comorbidity_x_lab_load",
+      "FE_glycemic_x_emergency",
+      "FE_labs_per_day_x_comorbidity"
+    ]
+  },
+  "stage6_select": {
+    "train_shape": [
+      63492,
+      55
+    ],
+    "val_shape": [
+      20949,
+      55
+    ],
+    "test_shape": [
+      17325,
+      55
+    ],
+    "n_selected": 53,
+    "selected_features": [
+      "race",
+      "gender",
+      "age",
+      "admission_type_id",
+      "discharge_disposition_id",
+      "admission_source_id",
+      "time_in_hospital",
+      "payer_code",
+      "medical_specialty",
+      "num_medications",
+      "number_outpatient",
+      "diag_1",
+      "diag_2",
+      "diag_3",
+      "number_diagnoses",
+      "repaglinide",
+      "glimepiride",
+      "glipizide",
+      "glyburide",
+      "pioglitazone",
+      "rosiglitazone",
+      "weight_missing",
+      "max_glu_serum_missing",
+      "A1Cresult_missing",
+      "FE_total_clinical_contacts",
+      "FE_labs_per_day",
+      "FE_meds_per_day",
+      "FE_high_utilization",
+      "FE_n_active_binary_meds",
+      "FE_total_active_meds",
+      "FE_n_med_increases",
+      "FE_n_med_decreases",
+      "FE_any_med_changed",
+      "FE_diagnoses_per_day",
+      "FE_diag_med_ratio",
+      "FE_high_lab_load",
+      "FE_no_procedures",
+      "FE_lab_to_procedure_ratio",
+      "FE_has_prior_inpatient",
+      "FE_high_prior_utilization",
+      "FE_multi_channel_utilizer",
+      "FE_insulin_prescribed",
+      "FE_insulin_changed",
+      "FE_insulin_increased",
+      "FE_metformin_prescribed",
+      "FE_metformin_changed",
+      "FE_on_diabetes_med",
+      "FE_med_regimen_changed",
+      "FE_glycemic_risk_score",
+      "FE_high_util_x_med_change",
+      "FE_comorbidity_x_lab_load",
+      "FE_glycemic_x_emergency",
+      "FE_labs_per_day_x_comorbidity"
+    ]
+  },
+  "stage7_consistency": {
+    "passed": 117,
+    "warned": 26,
+    "failed": 10,
+    "ready": false,
+    "psi_drifted": 7,
+    "ks_drifted": 90
+  },
+  "stage8_save": {
+    "train_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\data\\train\\train_fs.parquet",
+    "val_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\data\\train\\val_fs.parquet",
+    "test_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\data\\train\\test_fs.parquet",
+    "prod_val_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\data\\production\\production_val.parquet",
+    "prod_test_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\data\\production\\production_test.parquet",
+    "pipeline_pkl": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\outputs\\artifacts\\pipeline_objects.pkl"
+  },
+  "total_time_s": 129.4,
+  "pipeline_ready": true,
+  "readiness_gate": {
+    "ready": true,
+    "reason": "10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.",
+    "drift_expected": true,
+    "n_expected_failures": 10,
+    "n_unexpected_failures": 0,
+    "expected_failures": [
+      {
+        "check": "psi_admission_source_id",
+        "split": "val",
+        "detail": "PSI=0.2909 (CRITICAL)"
+      },
+      {
+        "check": "psi_admission_source_id",
+        "split": "test",
+        "detail": "PSI=0.2027 (CRITICAL)"
+      },
+      {
+        "check": "psi_payer_code",
+        "split": "val",
+        "detail": "PSI=0.9309 (CRITICAL)"
+      },
+      {
+        "check": "psi_payer_code",
+        "split": "test",
+        "detail": "PSI=0.8402 (CRITICAL)"
+      },
+      {
+        "check": "psi_medical_specialty",
+        "split": "val",
+        "detail": "PSI=0.3278 (CRITICAL)"
+      },
+      {
+        "check": "psi_medical_specialty",
+        "split": "test",
+        "detail": "PSI=0.4430 (CRITICAL)"
+      },
+      {
+        "check": "psi_number_diagnoses",
+        "split": "test",
+        "detail": "PSI=0.2588 (CRITICAL)"
+      },
+      {
+        "check": "psi_FE_labs_per_day_x_comorbidity",
+        "split": "test",
+        "detail": "PSI=0.2146 (CRITICAL)"
+      },
+      {
+        "check": "target_dist_readmitted_multi_class0",
+        "split": "test",
+        "detail": "train=0.510 test=0.664 delta=0.153"
+      },
+      {
+        "check": "target_dist_readmitted_multi_class2",
+        "split": "test",
+        "detail": "train=0.370 test=0.248 delta=0.122"
+      }
+    ],
+    "unexpected_failures": [],
+    "rule": "ready = (no unexpected failures) and (drift_expected or no expected failures)",
+    "expected_categories": [
+      "psi_",
+      "target_dist_"
+    ],
+    "integrity_categories": [
+      "schema_",
+      "column_",
+      "dtype_",
+      "total_row_coverage",
+      "leakage_",
+      "target_leakage",
+      "fe_",
+      "null_spike",
+      "constant_",
+      "duplicate_"
+    ]
+  },
+  "drift_signals_detected": {
+    "psi_critical": 7,
+    "ks_drifted_pairs": 90,
+    "consistency_fails": 10,
+    "note": "Expected entry-cohort shift \u2014 DriftSentinel target scenario. NOT temporal drift: see outputs/reports/temporal_validity.json"
+  }
+}

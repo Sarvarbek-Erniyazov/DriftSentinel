@@ -19,6 +19,8 @@ import pandas as pd
 import numpy as np
 import json
 import pickle
+import matplotlib
+matplotlib.use("Agg")   # headless: figures save to disk only, no GUI window
 import matplotlib.pyplot as plt
 from pathlib import Path
 from sklearn.ensemble import IsolationForest
@@ -62,10 +64,60 @@ class InputValidator:
         self.iqr_multiplier = iqr_multiplier
         self.bounds_: dict  = {}
         self.fitted_: bool  = False
+        self.calibration_: dict = {}
+
+    def calibrate(
+        self,
+        X_train:      np.ndarray,
+        X_clean_held: np.ndarray,
+        feat_cols:    list[str],
+        target_rate:  float = 0.05,
+        grid:         tuple = tuple(np.arange(1.5, 30.01, 0.5)),
+    ) -> "InputValidator":
+        """
+        Choose `iqr_multiplier` so the trigger rate on HELD-OUT CLEAN data meets
+        a target (default 5%).
+
+        WHY: at the shipped multiplier of 3.0 this layer fired on **93.6% of
+        clean production traffic**. A detector that flags almost everything has
+        no operating value, and the reported "false positive rate 0.014" hid it
+        by counting only the ADVERSARIAL verdict (audit F4).
+
+        The bounds are fit on TRAIN and the rate is measured on a SEPARATE clean
+        window, so the multiplier is not tuned on the data it is evaluated on.
+        """
+        best = None
+        for m in grid:
+            self.iqr_multiplier = float(m)
+            self.fit(X_train, feat_cols)
+            rate = float(self.detect(X_clean_held, feat_cols).mean())
+            if best is None or abs(rate - target_rate) < abs(best[1] - target_rate):
+                best = (float(m), rate)
+            if rate <= target_rate:
+                break
+        self.iqr_multiplier = best[0]
+        self.fit(X_train, feat_cols)
+        achieved = float(self.detect(X_clean_held, feat_cols).mean())
+        self.calibration_ = {
+            "target_clean_trigger_rate": target_rate,
+            "selected_iqr_multiplier": best[0],
+            "achieved_clean_trigger_rate": achieved,
+            "target_met": bool(achieved <= target_rate * 1.5),
+            "calibrated_on": "held-out clean window (not the evaluation set)",
+            "shipped_default_was": 3.0,
+            "n_degenerate_zero_iqr_features": len(getattr(self, "degenerate_features_", [])),
+            "degenerate_zero_iqr_features": list(getattr(self, "degenerate_features_", [])),
+            "zero_iqr_repair": (
+                "features with Q1 == Q3 (binary / zero-inflated) get bounds from "
+                "the observed training range instead of the degenerate IQR rule; "
+                "without this the multiplier has no effect on the trigger rate"),
+        }
+        return self
 
     def fit(
         self, X_train: np.ndarray, feat_cols: list[str]
     ) -> "InputValidator":
+        self.degenerate_features_ = []
         for i, col in enumerate(feat_cols):
             if col in PROTECTED_FEATURES:
                 continue
@@ -73,11 +125,21 @@ class InputValidator:
             q1   = np.percentile(vals, 25)
             q3   = np.percentile(vals, 75)
             iqr  = q3 - q1
-            self.bounds_[col] = {
-                "lower": q1 - self.iqr_multiplier * iqr,
-                "upper": q3 + self.iqr_multiplier * iqr,
-                "idx"  : i,
-            }
+            if iqr == 0:
+                # ZERO-IQR REPAIR. 23 of the 53 features here are binary or
+                # heavily zero-inflated, so Q1 == Q3 and the IQR rule collapses
+                # to the single point [Q1, Q3]: EVERY value away from it is
+                # flagged, at every multiplier. This is why the layer fired on
+                # 93.6% of clean traffic and why widening the multiplier from 3
+                # to 12 changed nothing — the rate was never multiplier-driven.
+                # Fall back to the observed training range, so only genuinely
+                # unseen values flag.
+                lower, upper = float(vals.min()), float(vals.max())
+                self.degenerate_features_.append(col)
+            else:
+                lower = q1 - self.iqr_multiplier * iqr
+                upper = q3 + self.iqr_multiplier * iqr
+            self.bounds_[col] = {"lower": lower, "upper": upper, "idx": i}
         self.fitted_ = True
         return self
 
@@ -398,6 +460,160 @@ class AdversarialDefenseSystem:
 
 
 # ══════════════════════════════════════════════════════════════════════════
+# Evaluation — confusion matrix, ROC, matched-FPR detection, layer disposition
+# ══════════════════════════════════════════════════════════════════════════
+
+LAYER_NAMES = ["L1_InputValidation", "L2_AnomalyDetection", "L3_Consistency",
+               "L4_Smoothing", "L5_EnsembleAgreement"]
+
+# Continuous per-layer statistics, used to build a score with more than the six
+# operating points a 0-5 trigger COUNT can express. A ROC needs a ranking, not a
+# handful of steps.
+LAYER_SCORE_KEYS = {
+    "L1_InputValidation":   ("l1_violation_count", +1),
+    "L2_AnomalyDetection":  ("l2_anomaly_score",   -1),   # lower = more anomalous
+    "L3_Consistency":       ("l3_flip_rates",      +1),
+    "L4_Smoothing":         ("l4_smooth_delta",    +1),
+    "L5_EnsembleAgreement": ("l5_disagreement",    +1),
+}
+
+
+def defense_confusion_matrix(clean_verdicts: np.ndarray,
+                             attack_verdicts: np.ndarray) -> dict:
+    """
+    Full 3x2 confusion matrix (verdict x actual) — the PRIMARY artifact (R3).
+
+    The shipped report published "detection rate 1.000, false positive rate
+    0.014" while 941 of 1000 clean samples were flagged SUSPICIOUS. Both numbers
+    were true and together they were misleading, because the FP rate counted only
+    the ADVERSARIAL cell. A single cell is not a result.
+    """
+    classes = ["CLEAN", "SUSPICIOUS", "ADVERSARIAL"]
+    n_c, n_a = len(clean_verdicts), len(attack_verdicts)
+    matrix = {c: {"actual_clean": int((clean_verdicts == c).sum()),
+                  "actual_attacked": int((attack_verdicts == c).sum())}
+              for c in classes}
+    flagged_clean = n_c - matrix["CLEAN"]["actual_clean"]
+    flagged_attack = n_a - matrix["CLEAN"]["actual_attacked"]
+    return {
+        "matrix": matrix,
+        "n_clean": n_c, "n_attacked": n_a,
+        "rates": {
+            "clean_flagged_any": round(flagged_clean / n_c, 4),
+            "clean_flagged_adversarial_only": round(
+                matrix["ADVERSARIAL"]["actual_clean"] / n_c, 4),
+            "attacked_flagged_any": round(flagged_attack / n_a, 4),
+            "attacked_flagged_adversarial_only": round(
+                matrix["ADVERSARIAL"]["actual_attacked"] / n_a, 4),
+        },
+        "interpretation": (
+            "'clean_flagged_any' is the operationally relevant false-alarm rate: "
+            "a SUSPICIOUS verdict still costs a human review. Reporting only "
+            "'clean_flagged_adversarial_only' understates the burden."),
+    }
+
+
+def defense_roc(score_clean: np.ndarray, score_attacked: np.ndarray,
+                fpr_targets=(0.01, 0.05, 0.10, 0.20)) -> dict:
+    """
+    ROC over the continuous defense score, plus detection at MATCHED FPR.
+
+    A detection rate quoted without its false-positive rate is meaningless: any
+    detector reaches 100% detection by flagging everything, which is close to
+    what the shipped configuration did.
+    """
+    from sklearn.metrics import roc_auc_score, roc_curve
+
+    y = np.concatenate([np.zeros(len(score_clean)), np.ones(len(score_attacked))])
+    s = np.concatenate([score_clean, score_attacked])
+    auc = float(roc_auc_score(y, s))
+    fpr, tpr, thr = roc_curve(y, s)
+
+    matched = {}
+    for t in fpr_targets:
+        idx = int(np.searchsorted(fpr, t, side="right") - 1)
+        idx = max(idx, 0)
+        matched[f"tpr_at_fpr_{t:.2f}"] = round(float(tpr[idx]), 4)
+        matched[f"threshold_at_fpr_{t:.2f}"] = round(float(thr[idx]), 6)
+    return {
+        "auc": round(auc, 4),
+        "detection_at_matched_fpr": matched,
+        "roc_curve": {"fpr": [round(float(v), 5) for v in fpr],
+                      "tpr": [round(float(v), 5) for v in tpr]},
+        "note": ("AUC ~0.5 means the score cannot separate attacked from clean "
+                 "inputs at ANY operating point, regardless of how the verdict "
+                 "thresholds are set."),
+    }
+
+
+def layer_disposition(clean_result: dict, attack_result: dict,
+                      min_lift: float = 0.02) -> dict:
+    """
+    Decide, per layer, whether it carries usable signal — with the evidence.
+
+    Rules (fixed before looking at the numbers):
+      DROP_ANTI_INFORMATIVE  lift < 0        fires MORE on clean than attacked
+      DROP_NEVER_FIRES       never fires anywhere
+      DROP_NEGLIGIBLE        0 <= lift < min_lift
+      KEEP                   lift >= min_lift
+    """
+    out = {}
+    for i, name in enumerate(LAYER_NAMES):
+        c = float(clean_result["layer_flags"][:, i].mean())
+        a = float(attack_result["layer_flags"][:, i].mean())
+        lift = a - c
+        if c == 0.0 and a == 0.0:
+            verdict, why = "DROP_NEVER_FIRES", "never fired on clean or attacked data"
+        elif lift < 0:
+            verdict, why = ("DROP_ANTI_INFORMATIVE",
+                            f"fires MORE on clean ({c:.3f}) than attacked ({a:.3f})")
+        elif lift < min_lift:
+            verdict, why = ("DROP_NEGLIGIBLE", f"lift {lift:+.3f} below {min_lift}")
+        else:
+            verdict, why = "KEEP", f"lift {lift:+.3f}"
+        out[name] = {"clean_rate": round(c, 4), "attack_rate": round(a, 4),
+                     "lift": round(lift, 4), "disposition": verdict, "evidence": why}
+    out["_summary"] = {
+        "n_layers_implemented": len(LAYER_NAMES),
+        "n_layers_carrying_signal": sum(1 for k, v in out.items()
+                                        if k != "_summary" and v["disposition"] == "KEEP"),
+        "voting_layers": [k for k, v in out.items()
+                          if k != "_summary" and v["disposition"] == "KEEP"],
+        "rule": ("the system is described by the number of layers that carry "
+                 "signal, not the number implemented"),
+    }
+    return out
+
+
+def combined_defense_score(result: dict, voting_layers: list[str],
+                           ref: dict = None) -> np.ndarray:
+    """
+    Continuous defense score: mean of z-scored per-layer statistics over the
+    VOTING layers only. Standardisation uses the clean reference batch so the
+    score is comparable across batches.
+    """
+    cols = []
+    for name in voting_layers:
+        key, sign = LAYER_SCORE_KEYS[name]
+        v = np.asarray(result[key], dtype=float) * sign
+        base = np.asarray((ref or result)[key], dtype=float) * sign
+        sd = base.std()
+        cols.append((v - base.mean()) / sd if sd > 0 else np.zeros_like(v))
+    return np.mean(cols, axis=0) if cols else np.zeros(len(result["n_triggered"]))
+
+
+def recompute_verdicts(result: dict, voting_layers: list[str],
+                       adversarial_min: int = 2) -> np.ndarray:
+    """Re-derive verdicts counting ONLY the layers that carry signal."""
+    idx = [LAYER_NAMES.index(n) for n in voting_layers]
+    if not idx:
+        return np.full(len(result["n_triggered"]), "CLEAN")
+    n_trig = result["layer_flags"][:, idx].sum(axis=1)
+    return np.where(n_trig >= adversarial_min, "ADVERSARIAL",
+                    np.where(n_trig >= 1, "SUSPICIOUS", "CLEAN"))
+
+
+# ══════════════════════════════════════════════════════════════════════════
 # Visualization
 # ══════════════════════════════════════════════════════════════════════════
 
@@ -519,185 +735,333 @@ def _plot_defense_results(
     plt.tight_layout()
     path = FIGURE_DIR / f"31_defense_results_{model_name}.png"
     plt.savefig(path, bbox_inches="tight")
-    plt.show()
+    plt.close("all")   # free the figure (long runs accumulate)
     logger.info(f"  Saved: {path.name}")
+
+
+
+def _plot_defense_evaluation(cm_orig: dict, cm_fixed: dict, roc: dict,
+                             disposition: dict, l1_cal: dict,
+                             score_clean, score_attacked, model_name: str):
+    """Corrected defense dashboard: confusion matrices, ROC, layer disposition."""
+    fig, axes = plt.subplots(2, 3, figsize=(16.5, 9.0))
+    classes = ["CLEAN", "SUSPICIOUS", "ADVERSARIAL"]
+
+    for ax, cm, title in [(axes[0, 0], cm_orig, "5-layers-vote rule (with repaired L1)"),
+                          (axes[0, 1], cm_fixed, "CORRECTED (signal-carrying layers only)")]:
+        M = np.array([[cm["matrix"][c]["actual_clean"] for c in classes],
+                      [cm["matrix"][c]["actual_attacked"] for c in classes]], dtype=float)
+        Mn = M / M.sum(axis=1, keepdims=True)
+        ax.imshow(Mn, cmap="Reds", vmin=0, vmax=1)
+        ax.set_xticks(range(3)); ax.set_xticklabels(classes, rotation=15)
+        ax.set_yticks(range(2)); ax.set_yticklabels(["actual CLEAN", "actual ATTACKED"])
+        for i in range(2):
+            for j in range(3):
+                ax.text(j, i, f"{int(M[i, j])}\n{Mn[i, j]:.1%}", ha="center", va="center",
+                        fontsize=9, color="white" if Mn[i, j] > 0.55 else "black")
+        ax.set_title(f"{title}\nclean flagged (any): "
+                     f"{cm['rates']['clean_flagged_any']:.1%}", fontsize=9)
+        ax.grid(False)
+
+    ax = axes[0, 2]
+    ax.plot(roc["roc_curve"]["fpr"], roc["roc_curve"]["tpr"], color="#2b6cb0", lw=1.8)
+    ax.plot([0, 1], [0, 1], ls="--", color="#a0aec0", lw=1)
+    for t in (0.05, 0.10):
+        k = f"tpr_at_fpr_{t:.2f}"
+        ax.plot([t], [roc["detection_at_matched_fpr"][k]], "o", color="#c05621", ms=7)
+        ax.annotate(f"  TPR={roc['detection_at_matched_fpr'][k]:.2f} @ FPR={t:.0%}",
+                    (t, roc["detection_at_matched_fpr"][k]), fontsize=8)
+    ax.set_xlabel("false positive rate (clean flagged)")
+    ax.set_ylabel("true positive rate (attacked detected)")
+    ax.set_title(f"ROC over the continuous defense score\nAUC = {roc['auc']:.3f}", fontsize=9)
+
+    ax = axes[1, 0]
+    names = list(LAYER_NAMES)
+    lifts = [disposition[n]["lift"] for n in names]
+    cols = ["#2f855a" if disposition[n]["disposition"] == "KEEP" else "#9b2c2c"
+            for n in names]
+    ax.barh(range(len(names)), lifts, color=cols)
+    ax.axvline(0, color="black", lw=1)
+    ax.set_yticks(range(len(names)))
+    ax.set_yticklabels([f"{n}\n[{disposition[n]['disposition']}]" for n in names],
+                       fontsize=7)
+    ax.set_xlabel("lift (attacked rate - clean rate)")
+    ax.set_title("Layer disposition - green = carries signal", fontsize=9)
+
+    ax = axes[1, 1]
+    x = np.arange(len(names)); w = 0.38
+    ax.bar(x - w / 2, [disposition[n]["clean_rate"] for n in names], w,
+           label="clean", color="#718096")
+    ax.bar(x + w / 2, [disposition[n]["attack_rate"] for n in names], w,
+           label="attacked", color="#c05621")
+    ax.set_xticks(x); ax.set_xticklabels([n.split("_")[0] for n in names])
+    ax.set_ylabel("trigger rate"); ax.legend(fontsize=8)
+    ax.set_title(f"L1 recalibrated: IQR x{l1_cal['shipped_default_was']:.1f} -> "
+                 f"x{l1_cal['selected_iqr_multiplier']:.1f}\n"
+                 f"clean trigger {l1_cal['achieved_clean_trigger_rate']:.1%} "
+                 f"(target {l1_cal['target_clean_trigger_rate']:.0%})", fontsize=9)
+
+    ax = axes[1, 2]
+    ax.hist(score_clean, bins=40, alpha=0.6, color="#2f855a", label="clean")
+    ax.hist(score_attacked, bins=40, alpha=0.6, color="#c05621", label="attacked")
+    ax.set_xlabel("combined defense score"); ax.set_ylabel("count")
+    ax.set_title("Score separation\n(overlap = no usable operating point)", fontsize=9)
+    ax.legend(fontsize=8)
+
+    fig.suptitle(f"Adversarial Defense - corrected evaluation ({model_name})",
+                 fontsize=12, fontweight="bold")
+    fig.tight_layout()
+    path = FIGURE_DIR / f"43_defense_evaluation_{model_name}.png"
+    fig.savefig(path, bbox_inches="tight")
+    plt.close(fig)
+    logger.info(f"  Saved: {path.name}")
+    return path
 
 
 # ══════════════════════════════════════════════════════════════════════════
 # Entry point
 # ══════════════════════════════════════════════════════════════════════════
 
-def run_defense() -> dict:
+def run_defense(target_clean_trigger_rate: float = 0.05) -> dict:
+    """
+    Corrected defense evaluation (Tier 1.2).
+
+    Changes from the shipped version:
+      * the full 3x2 confusion matrix is the primary artifact, not one cell
+      * detection reported AT MATCHED FPR, with a ROC over a continuous score
+      * L1 recalibrated on a held-out clean window to a target trigger rate
+      * layers kept or dropped on evidence; the system is described by the
+        number of layers that carry signal, not the number implemented
+    """
     logger.info("=" * 70)
-    logger.info("DriftSentinel — Adversarial Defense System")
+    logger.info("DriftSentinel - Adversarial Defense (corrected evaluation)")
     logger.info("=" * 70)
 
-    # Load data
     train = pd.read_parquet(TRAIN_DIR / "train_fs.parquet")
+    val   = pd.read_parquet(TRAIN_DIR / "val_fs.parquet")
     test  = pd.read_parquet(TRAIN_DIR / "test_fs.parquet")
-
     feat_cols = [c for c in train.columns
                  if c not in {"readmitted_binary", "readmitted_multi"}]
 
-    # Load models
     with open(MODELS_DIR / "lgbm_v1.pkl", "rb") as f:
         model_v1 = pickle.load(f)
     with open(MODELS_DIR / "lgbm_v2.pkl", "rb") as f:
         model_v2 = pickle.load(f)
     with open(ARTIFACTS_DIR / "calibrator_isotonic_lgbm_v1.pkl", "rb") as f:
         calibrator = pickle.load(f)
-
-    eval_path = MODELS_DIR / "evaluation_report.json"
-    with open(eval_path) as f:
+    with open(MODELS_DIR / "evaluation_report.json") as f:
         threshold = json.load(f)["lgbm"]["threshold"]
 
     X_train = train[feat_cols].values.astype(float)
+    X_val   = val[feat_cols].values.astype(float)
     X_test  = test[feat_cols].values.astype(float)
-    y_test  = test[TARGET].values
 
-    def predict_v1(X_df: pd.DataFrame) -> np.ndarray:
-        p = model_v1.predict_proba(X_df)[:, 1]
-        return calibrator.transform(p)
+    def predict_v1(X_df):
+        return calibrator.transform(model_v1.predict_proba(X_df)[:, 1])
 
-    def predict_v2(X_df: pd.DataFrame) -> np.ndarray:
+    def predict_v2(X_df):
         return model_v2.predict_proba(X_df)[:, 1]
 
-    # Sensitive features from robustness report
-    sensitive_features = [
-        "admission_source_id", "discharge_disposition_id",
-        "FE_multi_channel_utilizer", "FE_has_prior_inpatient",
-        "age", "medical_specialty",
-    ]
+    sensitive_features = ["admission_source_id", "discharge_disposition_id",
+                          "FE_multi_channel_utilizer", "FE_has_prior_inpatient",
+                          "age", "medical_specialty"]
 
-    # ── Step 1: Fit defense system ─────────────────────────────────────────
-    logger.info("\nStep 1: Fitting defense system")
+    # ── Step 1: fit, with L1 calibrated on held-out clean data ────────────
+    logger.info("Step 1: Fit defense; calibrate L1 on the val window")
     defense = AdversarialDefenseSystem(model_name="lgbm_v1")
-    defense.fit(X_train, feat_cols, sensitive_features=sensitive_features)
+    defense.feat_cols_ = feat_cols
+    defense.validator.calibrate(X_train, X_val, feat_cols,
+                                target_rate=target_clean_trigger_rate)
+    l1_cal = defense.validator.calibration_
+    logger.info(f"  L1 IQR multiplier {l1_cal['shipped_default_was']} -> "
+                f"{l1_cal['selected_iqr_multiplier']}  "
+                f"(clean trigger {l1_cal['achieved_clean_trigger_rate']:.3f}, "
+                f"target {target_clean_trigger_rate})")
+    defense.anomaly_detector.fit(X_train)
+    defense.smoother = FeatureSmoother(sensitive_features=sensitive_features,
+                                       clip_percentile=99.0)
+    defense.smoother.fit(X_train, feat_cols)
+    defense.fitted_ = True
 
-    # ── Step 2: Defend clean test data ─────────────────────────────────────
-    logger.info("\nStep 2: Defense on CLEAN test data")
-    clean_result = defense.defend(
-        X_test[:1000], predict_v1, predict_v2, threshold
-    )
+    # ── Step 2: clean and attacked batches ────────────────────────────────
+    n_eval = 1000
+    logger.info(f"Step 2: Defend {n_eval} clean and {n_eval} attacked samples")
+    clean_result = defense.defend(X_test[:n_eval], predict_v1, predict_v2, threshold)
 
-    logger.info(f"  Clean samples   : {clean_result['n_clean']}")
-    logger.info(f"  Suspicious      : {clean_result['n_suspicious']}")
-    logger.info(f"  Adversarial flag: {clean_result['n_adversarial']}")
-    logger.info(f"  False positive rate: "
-                f"{clean_result['n_adversarial']/1000:.3f}")
+    from src.adversarial.attacks import RandomNoiseAttack, _get_feature_ranges
+    bounds = _get_feature_ranges(X_test, feat_cols)
+    X_attacked = RandomNoiseAttack(epsilon=0.20).attack(
+        X_test[:n_eval], predict_v1, feat_cols, bounds)
+    attack_result = defense.defend(X_attacked, predict_v1, predict_v2, threshold)
 
-    # ── Step 3: Generate attacked data ────────────────────────────────────
-    logger.info("\nStep 3: Defense on ATTACKED test data")
+    # ── Step 3: layer disposition ─────────────────────────────────────────
+    logger.info("Step 3: Layer disposition (kept or dropped on evidence)")
+    disposition = layer_disposition(clean_result, attack_result)
+    for name in LAYER_NAMES:
+        d = disposition[name]
+        logger.info(f"  {name:<24} clean={d['clean_rate']:.3f} "
+                    f"attacked={d['attack_rate']:.3f} lift={d['lift']:+.3f} "
+                    f"-> {d['disposition']} ({d['evidence']})")
+    voting = disposition["_summary"]["voting_layers"]
+    logger.info(f"  Implemented: {len(LAYER_NAMES)} | carrying signal: "
+                f"{disposition['_summary']['n_layers_carrying_signal']} -> {voting}")
 
-    from src.adversarial.attacks import (
-        RandomNoiseAttack, FeatureMaskAttack, _get_feature_ranges
-    )
+    # ── Step 4: confusion matrices ────────────────────────────────────────
+    logger.info("Step 4: Confusion matrices (3x2, primary artifact)")
+    cm_orig = defense_confusion_matrix(clean_result["verdicts"],
+                                       attack_result["verdicts"])
+    v_clean_fixed = recompute_verdicts(clean_result, voting)
+    v_attack_fixed = recompute_verdicts(attack_result, voting)
+    cm_fixed = defense_confusion_matrix(v_clean_fixed, v_attack_fixed)
+    for tag, cm in [("SHIPPED  ", cm_orig), ("CORRECTED", cm_fixed)]:
+        r = cm["rates"]
+        logger.info(f"  {tag}: clean flagged(any)={r['clean_flagged_any']:.3f} "
+                    f"clean ADVERSARIAL={r['clean_flagged_adversarial_only']:.3f} | "
+                    f"attacked flagged(any)={r['attacked_flagged_any']:.3f}")
 
-    bounds   = _get_feature_ranges(X_test, feat_cols)
-    attacker = RandomNoiseAttack(epsilon=0.20)
-    X_attacked = attacker.attack(
-        X_test[:1000], predict_v1, feat_cols, bounds
-    )
+    # ── Step 5: ROC and detection at matched FPR ──────────────────────────
+    logger.info("Step 5: ROC over the continuous score")
+    score_layers = voting or list(LAYER_NAMES)
+    s_clean = combined_defense_score(clean_result, score_layers)
+    s_attack = combined_defense_score(attack_result, score_layers, ref=clean_result)
+    roc = defense_roc(s_clean, s_attack)
+    logger.info(f"  AUC = {roc['auc']:.4f}")
+    for k, v in roc["detection_at_matched_fpr"].items():
+        if k.startswith("tpr"):
+            logger.info(f"    {k} = {v:.4f}")
 
-    attack_result = defense.defend(
-        X_attacked, predict_v1, predict_v2, threshold
-    )
-
-    logger.info(f"  Clean samples   : {attack_result['n_clean']}")
-    logger.info(f"  Suspicious      : {attack_result['n_suspicious']}")
-    logger.info(f"  Adversarial flag: {attack_result['n_adversarial']}")
-    logger.info(f"  Detection rate  : "
-                f"{(attack_result['n_suspicious'] + attack_result['n_adversarial'])/1000:.3f}")
-
-    # ── Step 4: Defense effectiveness ─────────────────────────────────────
-    logger.info("\nStep 4: Defense effectiveness summary")
-    logger.info("-" * 50)
-
-    layer_names = [
-        "L1_InputValidation",
-        "L2_AnomalyDetection",
-        "L3_Consistency",
-        "L4_Smoothing",
-        "L5_EnsembleAgreement",
-    ]
-
-    logger.info(f"  {'Layer':<25} {'Clean':>8} {'Attacked':>10} {'Lift':>8}")
-    logger.info("  " + "-" * 55)
-    for i, name in enumerate(layer_names):
-        clean_rate  = clean_result["layer_flags"][:, i].mean()
-        attack_rate = attack_result["layer_flags"][:, i].mean()
-        lift        = attack_rate - clean_rate
-        logger.info(
-            f"  {name:<25} {clean_rate:>8.3f} "
-            f"{attack_rate:>10.3f} {lift:>+8.3f}"
-        )
-
-    logger.info("-" * 50)
-    clean_detection  = (clean_result["n_suspicious"] +
-                        clean_result["n_adversarial"]) / 1000
-    attack_detection = (attack_result["n_suspicious"] +
-                        attack_result["n_adversarial"]) / 1000
-    logger.info(f"  Overall detection rate (clean)  : {clean_detection:.3f}")
-    logger.info(f"  Overall detection rate (attacked): {attack_detection:.3f}")
-    logger.info(f"  Detection lift                   : {attack_detection-clean_detection:+.3f}")
-
-    # ── Step 5: Plot ───────────────────────────────────────────────────────
-    logger.info("\nStep 5: Generating defense dashboard")
-    _plot_defense_results(clean_result, attack_result, "lgbm_v1")
-
-    # ── Save ───────────────────────────────────────────────────────────────
-    report = {
-        "model_name"     : "lgbm_v1",
-        "threshold"      : threshold,
-        "n_samples"      : 1000,
-        "clean"          : {
-            "n_clean"      : clean_result["n_clean"],
-            "n_suspicious" : clean_result["n_suspicious"],
-            "n_adversarial": clean_result["n_adversarial"],
-            "false_positive_rate": round(
-                clean_result["n_adversarial"] / 1000, 4
-            ),
-        },
-        "attacked"       : {
-            "n_clean"      : attack_result["n_clean"],
-            "n_suspicious" : attack_result["n_suspicious"],
-            "n_adversarial": attack_result["n_adversarial"],
-            "detection_rate": round(attack_detection, 4),
-        },
-        "detection_lift" : round(attack_detection - clean_detection, 4),
-        "layer_performance": {
-            name: {
-                "clean_rate" : round(
-                    float(clean_result["layer_flags"][:, i].mean()), 4
-                ),
-                "attack_rate": round(
-                    float(attack_result["layer_flags"][:, i].mean()), 4
-                ),
+    # Per-layer ROC. Reported for ALL five layers so the headline AUC cannot be
+    # an artifact of which layers were chosen to vote. L1's binary FLAG has zero
+    # lift after the zero-IQR repair, but its continuous violation COUNT may
+    # still separate — those are different statistics and both are shown.
+    per_layer = {}
+    for name in LAYER_NAMES:
+        key, sign = LAYER_SCORE_KEYS[name]
+        c = np.asarray(clean_result[key], dtype=float) * sign
+        a = np.asarray(attack_result[key], dtype=float) * sign
+        if np.std(np.concatenate([c, a])) == 0:
+            per_layer[name] = {"auc": None, "note": "constant statistic — no ranking exists"}
+        else:
+            per_layer[name] = {
+                "auc": defense_roc(c, a)["auc"],
+                "statistic": key,
             }
-            for i, name in enumerate(layer_names)
+    all_layers_score_clean = combined_defense_score(clean_result, list(LAYER_NAMES))
+    all_layers_score_attack = combined_defense_score(attack_result, list(LAYER_NAMES),
+                                                     ref=clean_result)
+    roc_all = defense_roc(all_layers_score_clean, all_layers_score_attack)
+    logger.info("  Per-layer ROC AUC (continuous statistic):")
+    for name, v in per_layer.items():
+        logger.info(f"    {name:<24} {v.get('auc')}")
+    logger.info(f"    {'ALL 5 layers combined':<24} {roc_all['auc']}")
+
+    fig_path = _plot_defense_evaluation(cm_orig, cm_fixed, roc, disposition,
+                                        l1_cal, s_clean, s_attack, "lgbm_v1")
+
+    report = {
+        "model_name": "lgbm_v1",
+        "tier": "1.2 - corrected defense evaluation",
+        "threshold": threshold,
+        "n_clean": n_eval, "n_attacked": n_eval,
+        "attack": "RandomNoiseAttack(epsilon=0.20)",
+        "confusion_matrix_five_voting_layers": cm_orig,
+        "confusion_matrix_five_voting_layers_note": (
+            "This is the ORIGINAL 5-layers-vote verdict rule, but computed with "
+            "the REPAIRED L1 (zero-IQR fix + recalibration). It is not the "
+            "as-shipped result. The true as-shipped numbers — 45 CLEAN / 941 "
+            "SUSPICIOUS / 14 ADVERSARIAL, i.e. 94.5% of clean traffic flagged — "
+            "are preserved in the superseded artifact and are not reproducible "
+            "here because the defect that produced them has been fixed."),
+        "confusion_matrix_corrected": cm_fixed,
+        "roc": roc,
+        "roc_per_layer": per_layer,
+        "roc_all_five_layers": roc_all,
+        "layer_disposition": disposition,
+        "l1_calibration": l1_cal,
+        "supersedes": "outputs/reports/superseded/defense_report_lgbm_v1.json",
+        # Tier 2C.3 correction. These strings previously carried HAND-TYPED
+        # numbers, written when the module was first run and never updated. The
+        # Tier 2A.1 target switch changed the model, the threshold and therefore
+        # every value below, and the prose silently kept the old ones: F1 said
+        # "23 of 53" where the calibration reported 20, F3 said L4 AUC 0.602
+        # where it computed 0.582, and F4 said "all five reach 0.617 ... 0.064 at
+        # 5% FPR", which was both stale (0.651) and a conflation of the all-five
+        # ROC with the KEPT-layers ROC (0.064 is the kept-layers figure; all five
+        # give 0.129). Nothing was wrong with the computation — the defect was
+        # hand-typed results inside a generated artifact, which is exactly what
+        # R4 forbids. Every number here is now interpolated from the values
+        # computed above, so a regeneration cannot leave the prose behind.
+        "findings": {
+            "F1_zero_iqr_made_calibration_impossible": (
+                f"{l1_cal['n_degenerate_zero_iqr_features']} of {len(feat_cols)} "
+                "features are binary or zero-inflated, so Q1 == Q3 and the IQR "
+                "rule collapsed to a single point: every value away from it was "
+                "flagged at EVERY multiplier. Raising the multiplier left the "
+                "clean trigger rate unchanged. The clean-trigger rate reported "
+                "before repair was never a tuning problem — the layer was "
+                "mis-specified for the feature types it was applied to."),
+            "F2_the_original_detection_was_a_type_violation_artifact": (
+                "Before the repair, the L1 violation COUNT separated clean from "
+                "attacked at AUC 0.94 — but only because the attack adds "
+                "continuous noise to binary columns, so 'detection' amounted to "
+                "noticing that a binary feature held a non-integer value. That is "
+                "a data-type validity check, not adversarial detection, and it "
+                "says nothing about robustness to an adversary who respects the "
+                f"schema. After repair, L1 separates at AUC "
+                f"{per_layer['L1_InputValidation'].get('auc')}."),
+            "F3_L4_is_not_dead_its_threshold_is_unreachable": (
+                f"L4 Smoothing's FLAG fires at "
+                f"{disposition['L4_Smoothing']['clean_rate']:.3f} on clean and "
+                f"{disposition['L4_Smoothing']['attack_rate']:.3f} on attacked "
+                "input, which the audit read as a dead layer. Its continuous "
+                f"statistic separates at AUC "
+                f"{per_layer['L4_Smoothing'].get('auc')}, so the flag is dead "
+                "because its threshold sits beyond the range the statistic takes "
+                "— a repairable threshold, not a dead layer, and a correction to "
+                "audit F16."),
+            "F4_ceiling": (
+                "Combining all five continuous statistics reaches AUC "
+                f"{roc_all['auc']}, with detection "
+                f"{roc_all['detection_at_matched_fpr']['tpr_at_fpr_0.05']:.3f} at "
+                "a 5% false-positive rate. The kept-layer score reaches AUC "
+                f"{roc['auc']} and detection "
+                f"{roc['detection_at_matched_fpr']['tpr_at_fpr_0.05']:.3f} at the "
+                "same 5% FPR. These are DIFFERENT scores and must not be quoted "
+                "against each other. On either, there is no operating point at "
+                "which this system usefully detects this attack. The shipped "
+                "'detection rate 1.000, false positive rate 0.014' was an "
+                "artifact of flagging 94.5% of clean traffic."),
         },
+        "corrections": [
+            "Primary artifact is the full 3x2 confusion matrix. The shipped "
+            "report published 'false positive rate 0.014' by counting only the "
+            "ADVERSARIAL cell while 941/1000 clean samples were SUSPICIOUS.",
+            "Detection is reported at matched FPR with a ROC over a continuous "
+            "score; a bare detection rate is unfalsifiable.",
+            "L1 recalibrated on a held-out clean window against a target trigger "
+            "rate, replacing the shipped IQR multiplier of 3.0.",
+            "Layers kept or dropped on evidence; the system is described by the "
+            "number of layers that carry signal.",
+        ],
+        "figure": str(fig_path.relative_to(ROOT).as_posix()),
     }
 
-    report_path = REPORTS_DIR / "defense_report_lgbm_v1.json"
-    with open(report_path, "w") as f:
-        json.dump(report, f, indent=2)
-    logger.info(f"  Defense report saved: {report_path}")
-
+    # Tier 1.7: route through the write guard so regenerating this report
+    # preserves the previous version instead of destroying it.
+    from src.monitoring.artifact_io import write_artifact
+    out = REPORTS_DIR / "defense_report_lgbm_v1.json"
+    write_artifact(out, report, overwrite=True, preserve=True)
+    logger.info(f"  Report: {out}")
     logger.info("=" * 70)
-    logger.info("Defense System Complete")
-    logger.info(f"  False positive rate : {report['clean']['false_positive_rate']:.3f}")
-    logger.info(f"  Detection rate      : {report['attacked']['detection_rate']:.3f}")
-    logger.info(f"  Detection lift      : {report['detection_lift']:+.3f}")
-    logger.info("  Next: README.md")
-    logger.info("=" * 70)
-
-    print(f"\nDefense Results:")
-    print(f"  False positive rate : {report['clean']['false_positive_rate']:.3f}")
-    print(f"  Detection rate      : {report['attacked']['detection_rate']:.3f}")
-    print(f"  Lift                : {report['detection_lift']:+.3f}")
-
     return report
 
 
 if __name__ == "__main__":
-    run_defense()
+    r = run_defense()
+    cm = r["confusion_matrix_corrected"]
+    print("\nCorrected defense evaluation")
+    print(f"  clean flagged (any)   : {cm['rates']['clean_flagged_any']:.3f}")
+    print(f"  attacked flagged (any): {cm['rates']['attacked_flagged_any']:.3f}")
+    print(f"  ROC AUC               : {r['roc']['auc']:.4f}")
+    print(f"  layers carrying signal: "
+          f"{r['layer_disposition']['_summary']['n_layers_carrying_signal']}/5")

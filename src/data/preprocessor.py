@@ -31,7 +31,15 @@ from src.monitoring.logger import get_logger
 
 logger = get_logger("preprocessor")
 
-ARTIFACTS_DIR = Path(r"C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts")
+# Tier 2C.6 reproducibility: this was a HARDCODED ABSOLUTE PATH to one
+# developer's machine, so `pipeline.py` did not reproduce anything from raw
+# data on a clean clone -- it read from and wrote to a directory that exists
+# nowhere else. On Linux CI the same literal resolves to a RELATIVE folder
+# whose name contains backslashes, so artifacts land somewhere harmless-
+# looking and the run still 'succeeds'. It worked on exactly one machine,
+# which is why nothing caught it. Now derived from this file's location.
+ROOT = Path(__file__).resolve().parents[2]
+ARTIFACTS_DIR = ROOT / "outputs" / "artifacts"
 ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Columns to drop immediately ────────────────────────────────────────────
@@ -119,7 +127,47 @@ def _icd9_chapter(code: str) -> str:
 
 
 # ── Target encoding ────────────────────────────────────────────────────────
-TARGET_BINARY_MAP = {"NO": 0, "<30": 1, ">30": 1}
+# ── Target definition (Tier 2A.1) ─────────────────────────────────────────
+#
+# PRIMARY TARGET: 30-day readmission.
+#
+#     {"NO": 0, "<30": 1, ">30": 0}      prevalence 11.16%
+#
+# This was previously the MERGED target `{"NO":0, "<30":1, ">30":1}` at 46.1%
+# prevalence, which is not the clinical task. 30-day readmission is the
+# CMS-penalised outcome, the endpoint in Strack et al. (2014), and the endpoint
+# in essentially every published model on this dataset. ">30" includes a patient
+# readmitted two years later, which carries no operational readmission-risk
+# signal (audit F7).
+#
+# Consequences accepted deliberately: AUC will fall (published 30-day models on
+# this dataset sit at roughly 0.63-0.70), and the positive class becomes 4x
+# rarer. A defensible result on the real clinical task beats an unremarkable
+# result on an easier one nobody studies.
+#
+# NOTE: the README previously described the target as "readmission within 30
+# days" while the code computed the merged version — the label and the
+# computation disagreed. They now agree.
+#
+# The merged target is retained as a documented SECONDARY analysis below.
+TARGET_BINARY_MAP = {"NO": 0, "<30": 1, ">30": 0}
+
+# Secondary/legacy view. Deliberately NOT materialised as its own column:
+# `readmitted_multi` (0=NO, 1=<30, 2=>30) already carries the full information,
+# so the merged target is exactly `readmitted_multi > 0`.
+#
+# Adding a `readmitted_merged` column would have required updating 20 separate
+# target-exclusion sets across 15 modules, and missing ONE would have leaked a
+# variant of the old target in as a FEATURE predicting the new one — producing a
+# spectacular and entirely fake AUC. Derivation costs nothing and has no leakage
+# surface.
+TARGET_MERGED_MAP = {"NO": 0, "<30": 1, ">30": 1}   # reference only
+
+
+def merged_target_from_multi(multi_series):
+    """Secondary (superseded) merged target, derived without a new column."""
+    return (multi_series > 0).astype(int)
+
 TARGET_MULTI_MAP  = {"NO": 0, "<30": 1, ">30": 2}
 
 # ── Categorical cols for LabelEncoder ─────────────────────────────────────

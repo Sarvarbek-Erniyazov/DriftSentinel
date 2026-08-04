@@ -4,8 +4,8 @@
       101766,
       50
     ],
-    "memory_mb": 48.51,
-    "load_time_s": 0.402,
+    "memory_mb": 189.56,
+    "load_time_s": 0.278,
     "null_cols": 9
   },
   "stage2_validate": {
@@ -171,7 +171,7 @@
   "stage7_consistency": {
     "passed": 117,
     "warned": 26,
-    "failed": 12,
+    "failed": 10,
     "ready": false,
     "psi_drifted": 7,
     "ks_drifted": 90
@@ -184,12 +184,89 @@
     "prod_test_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\data\\production\\production_test.parquet",
     "pipeline_pkl": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\outputs\\artifacts\\pipeline_objects.pkl"
   },
-  "total_time_s": 54.49,
+  "total_time_s": 131.26,
   "pipeline_ready": true,
+  "readiness_gate": {
+    "ready": true,
+    "reason": "10 drift-related failure(s) permitted because drift_expected=True; 0 unexpected failures. Distribution shift between splits is this project's subject matter, not a pipeline defect.",
+    "drift_expected": true,
+    "n_expected_failures": 10,
+    "n_unexpected_failures": 0,
+    "expected_failures": [
+      {
+        "check": "psi_admission_source_id",
+        "split": "val",
+        "detail": "PSI=0.2909 (CRITICAL)"
+      },
+      {
+        "check": "psi_admission_source_id",
+        "split": "test",
+        "detail": "PSI=0.2027 (CRITICAL)"
+      },
+      {
+        "check": "psi_payer_code",
+        "split": "val",
+        "detail": "PSI=0.9309 (CRITICAL)"
+      },
+      {
+        "check": "psi_payer_code",
+        "split": "test",
+        "detail": "PSI=0.8402 (CRITICAL)"
+      },
+      {
+        "check": "psi_medical_specialty",
+        "split": "val",
+        "detail": "PSI=0.3278 (CRITICAL)"
+      },
+      {
+        "check": "psi_medical_specialty",
+        "split": "test",
+        "detail": "PSI=0.4430 (CRITICAL)"
+      },
+      {
+        "check": "psi_number_diagnoses",
+        "split": "test",
+        "detail": "PSI=0.2588 (CRITICAL)"
+      },
+      {
+        "check": "psi_FE_labs_per_day_x_comorbidity",
+        "split": "test",
+        "detail": "PSI=0.2146 (CRITICAL)"
+      },
+      {
+        "check": "target_dist_readmitted_multi_class0",
+        "split": "test",
+        "detail": "train=0.510 test=0.664 delta=0.153"
+      },
+      {
+        "check": "target_dist_readmitted_multi_class2",
+        "split": "test",
+        "detail": "train=0.370 test=0.248 delta=0.122"
+      }
+    ],
+    "unexpected_failures": [],
+    "rule": "ready = (no unexpected failures) and (drift_expected or no expected failures)",
+    "expected_categories": [
+      "psi_",
+      "target_dist_"
+    ],
+    "integrity_categories": [
+      "schema_",
+      "column_",
+      "dtype_",
+      "total_row_coverage",
+      "leakage_",
+      "target_leakage",
+      "fe_",
+      "null_spike",
+      "constant_",
+      "duplicate_"
+    ]
+  },
   "drift_signals_detected": {
     "psi_critical": 7,
     "ks_drifted_pairs": 90,
-    "consistency_fails": 12,
-    "note": "Expected temporal drift \u2014 DriftSentinel target scenario"
+    "consistency_fails": 10,
+    "note": "Expected entry-cohort shift \u2014 DriftSentinel target scenario. NOT temporal drift: see outputs/reports/temporal_validity.json"
   }
 }

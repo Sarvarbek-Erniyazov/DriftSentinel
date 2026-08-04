@@ -1,0 +1,488 @@
+{
+  "phase": "2A.2",
+  "title": "Repeated evaluation with confidence intervals",
+  "target": "readmitted_binary = 30-day readmission (<30)",
+  "operating_threshold": 0.15333940006539568,
+  "rule": "CLAUDE.md R1 \u2014 no single-number claims",
+  "variance_components": {
+    "1_estimation_patient_clustered_bootstrap": {
+      "n_boot": 2000,
+      "description": "precision of each metric on the DEPLOYED split; the correct interval for the entry-cohort split",
+      "patient_id_recovery": {
+        "train": "OK: verified against the label sequence (42,910 patients / 63,492 rows)",
+        "val": "OK: verified against the label sequence (14,303 patients / 20,949 rows)",
+        "test": "OK: verified against the label sequence (14,305 patients / 17,325 rows)"
+      },
+      "by_split": {
+        "train": {
+          "metrics": {
+            "auc": {
+              "point": 0.81249,
+              "mean": 0.81243,
+              "std": 0.00279,
+              "ci95": [
+                0.80695,
+                0.81805
+              ],
+              "n_boot_effective": 2000
+            },
+            "precision": {
+              "point": 0.33554,
+              "mean": 0.33537,
+              "std": 0.00447,
+              "ci95": [
+                0.32667,
+                0.34404
+              ],
+              "n_boot_effective": 2000
+            },
+            "recall": {
+              "point": 0.59853,
+              "mean": 0.59837,
+              "std": 0.00657,
+              "ci95": [
+                0.58521,
+                0.61116
+              ],
+              "n_boot_effective": 2000
+            },
+            "f1": {
+              "point": 0.43001,
+              "mean": 0.42982,
+              "std": 0.00488,
+              "ci95": [
+                0.42013,
+                0.43905
+              ],
+              "n_boot_effective": 2000
+            },
+            "brier": {
+              "point": 0.0922,
+              "mean": 0.09218,
+              "std": 0.00104,
+              "ci95": [
+                0.09013,
+                0.09422
+              ],
+              "n_boot_effective": 2000
+            },
+            "ece": {
+              "point": 0.04414,
+              "mean": 0.04411,
+              "std": 0.00128,
+              "ci95": [
+                0.04157,
+                0.04651
+              ],
+              "n_boot_effective": 2000
+            },
+            "predicted_positive_rate": {
+              "point": 0.214,
+              "mean": 0.21399,
+              "std": 0.00241,
+              "ci95": [
+                0.20937,
+                0.21869
+              ],
+              "n_boot_effective": 2000
+            },
+            "prevalence": {
+              "point": 0.11997,
+              "mean": 0.11994,
+              "std": 0.00159,
+              "ci95": [
+                0.11687,
+                0.12309
+              ],
+              "n_boot_effective": 2000
+            }
+          },
+          "resampling_unit": "patient (cluster)",
+          "cluster_robust": true,
+          "caveat": null
+        },
+        "val": {
+          "metrics": {
+            "auc": {
+              "point": 0.66459,
+              "mean": 0.66446,
+              "std": 0.00635,
+              "ci95": [
+                0.6512,
+                0.67657
+              ],
+              "n_boot_effective": 2000
+            },
+            "precision": {
+              "point": 0.1932,
+              "mean": 0.19311,
+              "std": 0.0065,
+              "ci95": [
+                0.1805,
+                0.20547
+              ],
+              "n_boot_effective": 2000
+            },
+            "recall": {
+              "point": 0.40307,
+              "mean": 0.40276,
+              "std": 0.01174,
+              "ci95": [
+                0.37763,
+                0.42481
+              ],
+              "n_boot_effective": 2000
+            },
+            "f1": {
+              "point": 0.2612,
+              "mean": 0.26103,
+              "std": 0.00801,
+              "ci95": [
+                0.24477,
+                0.27628
+              ],
+              "n_boot_effective": 2000
+            },
+            "brier": {
+              "point": 0.0906,
+              "mean": 0.09059,
+              "std": 0.00176,
+              "ci95": [
+                0.08726,
+                0.09405
+              ],
+              "n_boot_effective": 2000
+            },
+            "ece": {
+              "point": 0.0,
+              "mean": 0.00316,
+              "std": 0.00129,
+              "ci95": [
+                0.00107,
+                0.00596
+              ],
+              "n_boot_effective": 2000
+            },
+            "predicted_positive_rate": {
+              "point": 0.22039,
+              "mean": 0.22031,
+              "std": 0.00361,
+              "ci95": [
+                0.21332,
+                0.22751
+              ],
+              "n_boot_effective": 2000
+            },
+            "prevalence": {
+              "point": 0.10564,
+              "mean": 0.10563,
+              "std": 0.00241,
+              "ci95": [
+                0.10109,
+                0.11041
+              ],
+              "n_boot_effective": 2000
+            }
+          },
+          "resampling_unit": "patient (cluster)",
+          "cluster_robust": true,
+          "caveat": null
+        },
+        "test": {
+          "metrics": {
+            "auc": {
+              "point": 0.641,
+              "mean": 0.641,
+              "std": 0.00765,
+              "ci95": [
+                0.62546,
+                0.65558
+              ],
+              "n_boot_effective": 2000
+            },
+            "precision": {
+              "point": 0.17113,
+              "mean": 0.17096,
+              "std": 0.00769,
+              "ci95": [
+                0.15628,
+                0.18592
+              ],
+              "n_boot_effective": 2000
+            },
+            "recall": {
+              "point": 0.30124,
+              "mean": 0.30122,
+              "std": 0.0126,
+              "ci95": [
+                0.27627,
+                0.32605
+              ],
+              "n_boot_effective": 2000
+            },
+            "f1": {
+              "point": 0.21827,
+              "mean": 0.21809,
+              "std": 0.00914,
+              "ci95": [
+                0.20032,
+                0.23571
+              ],
+              "n_boot_effective": 2000
+            },
+            "brier": {
+              "point": 0.07851,
+              "mean": 0.07846,
+              "std": 0.00181,
+              "ci95": [
+                0.07492,
+                0.08205
+              ],
+              "n_boot_effective": 2000
+            },
+            "ece": {
+              "point": 0.008,
+              "mean": 0.00878,
+              "std": 0.00188,
+              "ci95": [
+                0.00534,
+                0.01282
+              ],
+              "n_boot_effective": 2000
+            },
+            "predicted_positive_rate": {
+              "point": 0.15515,
+              "mean": 0.15517,
+              "std": 0.00319,
+              "ci95": [
+                0.14893,
+                0.16138
+              ],
+              "n_boot_effective": 2000
+            },
+            "prevalence": {
+              "point": 0.08814,
+              "mean": 0.08807,
+              "std": 0.00236,
+              "ci95": [
+                0.08337,
+                0.09282
+              ],
+              "n_boot_effective": 2000
+            }
+          },
+          "resampling_unit": "patient (cluster)",
+          "cluster_robust": true,
+          "caveat": null
+        }
+      }
+    },
+    "2_model_seed_variance": {
+      "n_seeds": 20,
+      "description": "learner stochasticity, same split",
+      "by_split": {
+        "val": {
+          "auc": {
+            "mean": 0.64771,
+            "std": 0.00237,
+            "min": 0.64304,
+            "max": 0.65212,
+            "n_seeds": 20
+          },
+          "precision": {
+            "mean": 0.17537,
+            "std": 0.00348,
+            "min": 0.16722,
+            "max": 0.18107,
+            "n_seeds": 20
+          },
+          "recall": {
+            "mean": 0.42097,
+            "std": 0.00842,
+            "min": 0.4085,
+            "max": 0.43922,
+            "n_seeds": 20
+          },
+          "f1": {
+            "mean": 0.24758,
+            "std": 0.00476,
+            "min": 0.2373,
+            "max": 0.25643,
+            "n_seeds": 20
+          },
+          "brier": {
+            "mean": 0.09264,
+            "std": 0.00019,
+            "min": 0.09229,
+            "max": 0.09292,
+            "n_seeds": 20
+          },
+          "ece": {
+            "mean": 0.02015,
+            "std": 0.00126,
+            "min": 0.01824,
+            "max": 0.02296,
+            "n_seeds": 20
+          }
+        },
+        "test": {
+          "auc": {
+            "mean": 0.63453,
+            "std": 0.00261,
+            "min": 0.62962,
+            "max": 0.6391,
+            "n_seeds": 20
+          },
+          "precision": {
+            "mean": 0.15192,
+            "std": 0.00253,
+            "min": 0.14706,
+            "max": 0.15734,
+            "n_seeds": 20
+          },
+          "recall": {
+            "mean": 0.34214,
+            "std": 0.00468,
+            "min": 0.33202,
+            "max": 0.34971,
+            "n_seeds": 20
+          },
+          "f1": {
+            "mean": 0.2104,
+            "std": 0.00307,
+            "min": 0.20541,
+            "max": 0.21703,
+            "n_seeds": 20
+          },
+          "brier": {
+            "mean": 0.08,
+            "std": 0.00018,
+            "min": 0.07966,
+            "max": 0.0803,
+            "n_seeds": 20
+          },
+          "ece": {
+            "mean": 0.02174,
+            "std": 0.00106,
+            "min": 0.01985,
+            "max": 0.02331,
+            "n_seeds": 20
+          }
+        }
+      }
+    },
+    "3_split_variance_reference_only": {
+      "n_seeds": 20,
+      "description": "random patient splits \u2014 a DIFFERENT REGIME (Tier 0: 0.25/6 signals vs 3.30/6 entry-cohort). NOT an error bar on the deployed number.",
+      "by_split": {
+        "val": {
+          "auc": {
+            "mean": 0.67875,
+            "std": 0.00587,
+            "n_seeds": 20
+          },
+          "precision": {
+            "mean": 0.24415,
+            "std": 0.0108,
+            "n_seeds": 20
+          },
+          "recall": {
+            "mean": 0.32026,
+            "std": 0.03081,
+            "n_seeds": 20
+          },
+          "f1": {
+            "mean": 0.27614,
+            "std": 0.01091,
+            "n_seeds": 20
+          },
+          "brier": {
+            "mean": 0.09404,
+            "std": 0.00215,
+            "n_seeds": 20
+          },
+          "ece": {
+            "mean": 0.00442,
+            "std": 0.00143,
+            "n_seeds": 20
+          },
+          "prevalence": {
+            "mean": 0.11148,
+            "std": 0.00312,
+            "n_seeds": 20
+          }
+        },
+        "test": {
+          "auc": {
+            "mean": 0.67855,
+            "std": 0.0067,
+            "n_seeds": 20
+          },
+          "precision": {
+            "mean": 0.24498,
+            "std": 0.01242,
+            "n_seeds": 20
+          },
+          "recall": {
+            "mean": 0.31666,
+            "std": 0.02596,
+            "n_seeds": 20
+          },
+          "f1": {
+            "mean": 0.2754,
+            "std": 0.00879,
+            "n_seeds": 20
+          },
+          "brier": {
+            "mean": 0.09495,
+            "std": 0.0013,
+            "n_seeds": 20
+          },
+          "ece": {
+            "mean": 0.00406,
+            "std": 0.00124,
+            "n_seeds": 20
+          },
+          "prevalence": {
+            "mean": 0.1128,
+            "std": 0.00206,
+            "n_seeds": 20
+          }
+        }
+      }
+    }
+  },
+  "linked_artifacts_with_own_intervals": {
+    "model_comparison_delong_bootstrap": {
+      "path": "outputs/registry/model_comparison.json",
+      "exists": true,
+      "note": "v1 vs v2 on the only comparable split, DeLong + paired patient-clustered bootstrap"
+    },
+    "threshold_policy": {
+      "path": "outputs/reports/threshold_policy_lgbm_v1.json",
+      "exists": true,
+      "note": "operating points incl. PPR, budget-constrained points, cost-ratio sweep, DCA"
+    },
+    "regime_signal_firing_rates": {
+      "path": "outputs/reports/regime_random.json",
+      "exists": true,
+      "note": "drift-signal firing rates over 20 seeds per regime (Tier 0)"
+    }
+  },
+  "explicitly_single_run": {
+    "conformal_coverage": "reported single-run pending Tier 2A.4: the shipped coverage is measured on the SAME data used to calibrate the predictor, so it is guaranteed by construction and an interval around it would not make it evidence (R3). Decontaminated and given an interval in 2A.4.",
+    "feature_selection": "single-run: the selector is deterministic given seed 42 and its output did not change under a 4x prevalence shift. Variance is characterised by the Tier 2A.5 ablation instead of a CI.",
+    "entry_cohort_split_itself": "the entry-cohort split is DETERMINISTIC \u2014 it is the object of study, not a draw. Its uncertainty is estimation variance (component 1), not split variance."
+  },
+  "contamination_flags": {
+    "val_ece_is_in_sample": "ECE on `val` is ~0 BY CONSTRUCTION: the isotonic calibrator was FIT on val, so measuring calibration error on val measures the fit, not generalisation (R3). The val ECE reported here is IN-SAMPLE and is not evidence of calibration quality. Decontaminated in Tier 2A.4; the test-split ECE is the honest number.",
+    "model_seed_variance_uses_a_different_configuration": "The seed-variance refits use LGBM_PARAMS as shipped (n_estimators=500, no early stopping), whereas the DEPLOYED lgbm_v1 stopped early at 173 trees. The seed-variance means are therefore NOT directly comparable to the point estimates \u2014 they quantify learner stochasticity within that configuration, not the deployed model's spread."
+  },
+  "canonical_source_rule": "R4 \u2014 this file is the canonical source for every number in the README. A number not present here does not ship.",
+  "reproducibility": {
+    "seed": 42,
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

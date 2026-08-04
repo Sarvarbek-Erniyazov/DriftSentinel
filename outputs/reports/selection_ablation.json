@@ -1,0 +1,121 @@
+{
+  "phase": "2A.5",
+  "title": "Selection ablation with selection fitted inside folds",
+  "protocol": {
+    "cv": "StratifiedGroupKFold(5) x 2 repeats",
+    "grouping": "patient (patients contribute multiple encounters)",
+    "selection_fitted": "INSIDE each fold, on the fold's training part only",
+    "n_features_available": 78
+  },
+  "leakage_path_confirmed": {
+    "finding": "pipeline.py fits the selector ONCE on the full training set (selector.fit(train_fe)), and trainer.py then runs cross_val_score over those already-selected features. Every fold's held-out part contributed to selecting the features it is scored on.",
+    "consequence": "the reported CV score is optimistic",
+    "fix_applied_here": "selection refitted inside each fold"
+  },
+  "arms": {
+    "a_all_features": {
+      "n_folds": 10,
+      "n_features_mean": 78.0,
+      "auc_mean": 0.68061,
+      "auc_std": 0.00774,
+      "auc_ci95": [
+        0.67586,
+        0.68511
+      ],
+      "avg_precision_mean": 0.23852
+    },
+    "b_stages_1_2_only": {
+      "n_folds": 10,
+      "n_features_mean": 53.0,
+      "auc_mean": 0.67525,
+      "auc_std": 0.00667,
+      "auc_ci95": [
+        0.67128,
+        0.67906
+      ],
+      "avg_precision_mean": 0.222
+    },
+    "c_full_7_stage_shipped": {
+      "n_folds": 10,
+      "n_features_mean": 53.0,
+      "auc_mean": 0.67525,
+      "auc_std": 0.00667,
+      "auc_ci95": [
+        0.67128,
+        0.67906
+      ],
+      "avg_precision_mean": 0.222
+    },
+    "d_target_aware_in_fold": {
+      "n_folds": 10,
+      "n_features_mean": 53.0,
+      "auc_mean": 0.68007,
+      "auc_std": 0.00707,
+      "auc_ci95": [
+        0.67592,
+        0.68427
+      ],
+      "avg_precision_mean": 0.23805
+    }
+  },
+  "contrasts_vs_shipped": {
+    "a_all_features_minus_shipped": {
+      "delta_auc_mean": 0.00536,
+      "ci95": [
+        0.00414,
+        0.00678
+      ],
+      "differs_from_shipped": true
+    },
+    "b_stages_1_2_only_minus_shipped": {
+      "delta_auc_mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "differs_from_shipped": false
+    },
+    "d_target_aware_in_fold_minus_shipped": {
+      "delta_auc_mean": 0.00482,
+      "ci95": [
+        0.00397,
+        0.00571
+      ],
+      "differs_from_shipped": true
+    }
+  },
+  "selection_stability": {
+    "a_all_features": {
+      "jaccard_across_folds": 1.0,
+      "always_selected": 78,
+      "ever_selected": 78
+    },
+    "b_stages_1_2_only": {
+      "jaccard_across_folds": 1.0,
+      "always_selected": 53,
+      "ever_selected": 53
+    },
+    "c_full_7_stage_shipped": {
+      "jaccard_across_folds": 1.0,
+      "always_selected": 53,
+      "ever_selected": 53
+    },
+    "d_target_aware_in_fold": {
+      "jaccard_across_folds": 0.8,
+      "always_selected": 48,
+      "ever_selected": 60
+    }
+  },
+  "target_blindness_evidence": "A 4x prevalence change (46.1% -> 11.2%) left the 53 selected features IDENTICAL. Combined with the per-stage counts (Boruta 42->1, SHAP 1->1, Stability 1->1), the consensus is carried by target-independent stages 1-2.",
+  "verdict": {
+    "stages_1_2_equivalent_to_full_pipeline": true,
+    "target_aware_beats_shipped": true,
+    "required_readme_statement": "The seven-stage claim must be WITHDRAWN. Stages 1-2 (variance + correlation, both target-independent) reproduce the full pipeline's performance within noise, and stages 4-6 contribute a single feature between them. The pipeline is a two-stage filter with five decorative stages."
+  },
+  "reproducibility": {
+    "seed": 42,
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3"
+  }
+}

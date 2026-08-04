@@ -64,3 +64,204 @@
 2026-05-12 15:55:59 | INFO     | threshold            |   vs fixed 0.50         : F1 +0.0442  Recall +0.5420
 2026-05-12 15:55:59 | INFO     | threshold            |   Next: adversarial/ → README
 2026-05-12 15:55:59 | INFO     | threshold            | ======================================================================
+2026-08-04 10:43:42 | INFO     | threshold            | ===== RUN 20260804-104342-6b3981 | pid=28452 | started 2026-08-04 10:43:42 =====
+2026-08-04 10:43:42 | INFO     | threshold            | ======================================================================
+2026-08-04 10:43:42 | INFO     | threshold            | DriftSentinel — Adaptive Threshold Optimizer
+2026-08-04 10:43:42 | INFO     | threshold            | ======================================================================
+2026-08-04 10:43:42 | INFO     | threshold            |   Val  pos rate: 0.1056
+2026-08-04 10:43:42 | INFO     | threshold            |   Test pos rate: 0.0881
+2026-08-04 10:43:42 | INFO     | threshold            | 
+==================================================
+2026-08-04 10:43:42 | INFO     | threshold            | Step 1: Optimal thresholds on VAL (calibration set)
+2026-08-04 10:43:42 | INFO     | threshold            | ==================================================
+2026-08-04 10:43:42 | INFO     | threshold            |   Method           Threshold    Score
+2026-08-04 10:43:42 | INFO     | threshold            |   ------------------------------------
+2026-08-04 10:43:42 | INFO     | threshold            |   f1_max              0.1333   0.2627
+2026-08-04 10:43:42 | INFO     | threshold            |   youden              0.1111   0.2394
+2026-08-04 10:43:42 | INFO     | threshold            |   cost_sensitive      0.1676   0.4900
+2026-08-04 10:43:42 | INFO     | threshold            |   prec50              0.3000   0.0307
+2026-08-04 10:43:42 | INFO     | threshold            |   fixed_0.5           0.5000
+2026-08-04 10:43:42 | INFO     | threshold            | 
+==================================================
+2026-08-04 10:43:42 | INFO     | threshold            | Step 2: Apply val thresholds to TEST (drift window)
+2026-08-04 10:43:42 | INFO     | threshold            | ==================================================
+2026-08-04 10:43:42 | INFO     | threshold            | 
+  Name               Thr      F1    Prec   Recall   FN_rate    Cost
+2026-08-04 10:43:42 | INFO     | threshold            |   -----------------------------------------------------------------
+2026-08-04 10:43:42 | INFO     | threshold            |   f1_max          0.1333  0.2200  0.1595   0.3543    0.6457  3.4090
+2026-08-04 10:43:42 | INFO     | threshold            |   youden          0.1111  0.2126  0.1387   0.4545    0.5455  3.0003
+2026-08-04 10:43:42 | INFO     | threshold            |   cost            0.1676  0.2017  0.1972   0.2063    0.7937  4.0497
+2026-08-04 10:43:42 | INFO     | threshold            |   prec50          0.3000  0.0398  0.4000   0.0210    0.9790  4.8983
+2026-08-04 10:43:42 | INFO     | threshold            |   fixed_05        0.5000  0.0339  0.4091   0.0177    0.9823  4.9141
+2026-08-04 10:43:42 | INFO     | threshold            | 
+==================================================
+2026-08-04 10:43:42 | INFO     | threshold            | Step 3: Oracle thresholds on TEST (what we could achieve)
+2026-08-04 10:43:42 | INFO     | threshold            | ==================================================
+2026-08-04 10:43:42 | INFO     | threshold            |   Method            Val_thr   Test_thr    Shift
+2026-08-04 10:43:42 | INFO     | threshold            |   --------------------------------------------
+2026-08-04 10:43:42 | INFO     | threshold            |   f1_max             0.1333     0.1333  +0.0000
+2026-08-04 10:43:42 | INFO     | threshold            |   youden             0.1111     0.0951  -0.0161
+2026-08-04 10:43:42 | INFO     | threshold            |   cost               0.1676     0.1824  +0.0148
+2026-08-04 10:43:42 | INFO     | threshold            | 
+==================================================
+2026-08-04 10:43:42 | INFO     | threshold            | Step 4: Window-based threshold analysis
+2026-08-04 10:43:42 | INFO     | threshold            | ==================================================
+2026-08-04 10:43:42 | INFO     | threshold            |   Val  threshold range: [0.1232, 0.1698]  mean=0.1400
+2026-08-04 10:43:42 | INFO     | threshold            |   Test threshold range: [0.0951, 0.1663]  mean=0.1439
+2026-08-04 10:43:42 | INFO     | threshold            |   Threshold shift val→test: +0.0039
+2026-08-04 10:43:42 | INFO     | threshold            | 
+==================================================
+2026-08-04 10:43:42 | INFO     | threshold            | Step 5: Recommended threshold for drifted production
+2026-08-04 10:43:42 | INFO     | threshold            | ==================================================
+2026-08-04 10:43:42 | INFO     | threshold            |   Fixed 0.50     : F1=0.0339  Recall=0.0177
+2026-08-04 10:43:42 | INFO     | threshold            |   Cost-sensitive : F1=0.2017  Recall=0.2063  thr=0.1676
+2026-08-04 10:43:42 | INFO     | threshold            |   F1 improvement : +0.1678
+2026-08-04 10:43:42 | INFO     | threshold            |   Recall gain    : +0.1886
+2026-08-04 10:43:42 | INFO     | threshold            |   → Cost-sensitive threshold captures 288 more true readmissions
+2026-08-04 10:43:42 | INFO     | threshold            | 
+==================================================
+2026-08-04 10:43:42 | INFO     | threshold            | Step 6: Generating plots
+2026-08-04 10:43:42 | INFO     | threshold            | ==================================================
+2026-08-04 10:44:01 | INFO     | threshold            |   Saved: 28_threshold_analysis_lgbm_v1.png
+2026-08-04 10:44:05 | INFO     | threshold            |   Saved: 29_threshold_drift_lgbm_v1.png
+2026-08-04 10:44:05 | INFO     | threshold            |   Threshold report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\threshold_report_lgbm_v1.json
+2026-08-04 10:44:05 | INFO     | threshold            | ======================================================================
+2026-08-04 10:44:05 | INFO     | threshold            | Threshold Optimization Complete
+2026-08-04 10:44:05 | INFO     | threshold            |   Recommended threshold : 0.1676 (cost-sensitive)
+2026-08-04 10:44:05 | INFO     | threshold            |   vs fixed 0.50         : F1 +0.1678  Recall +0.1886
+2026-08-04 10:44:05 | INFO     | threshold            |   Next: adversarial/ → README
+2026-08-04 10:44:05 | INFO     | threshold            | ======================================================================
+2026-08-04 11:04:11 | INFO     | threshold            | ===== RUN 20260804-110411-a5cf26 | pid=6056 | started 2026-08-04 11:04:11 =====
+2026-08-04 11:04:11 | INFO     | threshold            | ======================================================================
+2026-08-04 11:04:11 | INFO     | threshold            | DriftSentinel — Adaptive Threshold Optimizer
+2026-08-04 11:04:11 | INFO     | threshold            | ======================================================================
+2026-08-04 11:04:11 | INFO     | threshold            |   Val  pos rate: 0.1056
+2026-08-04 11:04:11 | INFO     | threshold            |   Test pos rate: 0.0881
+2026-08-04 11:04:11 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:04:11 | INFO     | threshold            | Step 1: Optimal thresholds on VAL (calibration set)
+2026-08-04 11:04:11 | INFO     | threshold            | ==================================================
+2026-08-04 11:04:11 | INFO     | threshold            |   Method           Threshold    Score
+2026-08-04 11:04:11 | INFO     | threshold            |   ------------------------------------
+2026-08-04 11:04:11 | INFO     | threshold            |   f1_max              0.1333   0.2627
+2026-08-04 11:04:11 | INFO     | threshold            |   youden              0.1111   0.2394
+2026-08-04 11:04:11 | INFO     | threshold            |   cost_sensitive      0.1676   0.4900
+2026-08-04 11:04:11 | INFO     | threshold            |   prec50              0.3000   0.0307
+2026-08-04 11:04:11 | INFO     | threshold            |   fixed_0.5           0.5000
+2026-08-04 11:04:11 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:04:11 | INFO     | threshold            | Step 2: Apply val thresholds to TEST (drift window)
+2026-08-04 11:04:11 | INFO     | threshold            | ==================================================
+2026-08-04 11:04:12 | INFO     | threshold            | 
+  Name               Thr      F1    Prec   Recall   FN_rate    Cost
+2026-08-04 11:04:12 | INFO     | threshold            |   -----------------------------------------------------------------
+2026-08-04 11:04:12 | INFO     | threshold            |   f1_max          0.1333  0.2200  0.1595   0.3543    0.6457  3.4090
+2026-08-04 11:04:12 | INFO     | threshold            |   youden          0.1111  0.2126  0.1387   0.4545    0.5455  3.0003
+2026-08-04 11:04:12 | INFO     | threshold            |   cost            0.1676  0.2017  0.1972   0.2063    0.7937  4.0497
+2026-08-04 11:04:12 | INFO     | threshold            |   prec50          0.3000  0.0398  0.4000   0.0210    0.9790  4.8983
+2026-08-04 11:04:12 | INFO     | threshold            |   fixed_05        0.5000  0.0339  0.4091   0.0177    0.9823  4.9141
+2026-08-04 11:04:12 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:04:12 | INFO     | threshold            | Step 3: Oracle thresholds on TEST (what we could achieve)
+2026-08-04 11:04:12 | INFO     | threshold            | ==================================================
+2026-08-04 11:04:12 | INFO     | threshold            |   Method            Val_thr   Test_thr    Shift
+2026-08-04 11:04:12 | INFO     | threshold            |   --------------------------------------------
+2026-08-04 11:04:12 | INFO     | threshold            |   f1_max             0.1333     0.1333  +0.0000
+2026-08-04 11:04:12 | INFO     | threshold            |   youden             0.1111     0.0951  -0.0161
+2026-08-04 11:04:12 | INFO     | threshold            |   cost               0.1676     0.1824  +0.0148
+2026-08-04 11:04:12 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:04:12 | INFO     | threshold            | Step 4: Window-based threshold analysis
+2026-08-04 11:04:12 | INFO     | threshold            | ==================================================
+2026-08-04 11:04:12 | INFO     | threshold            |   Val  threshold range: [0.1232, 0.1698]  mean=0.1400
+2026-08-04 11:04:12 | INFO     | threshold            |   Test threshold range: [0.0951, 0.1663]  mean=0.1439
+2026-08-04 11:04:12 | INFO     | threshold            |   Threshold shift val→test: +0.0039
+2026-08-04 11:04:12 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:04:12 | INFO     | threshold            | Step 5: Recommended threshold for drifted production
+2026-08-04 11:04:12 | INFO     | threshold            | ==================================================
+2026-08-04 11:04:12 | INFO     | threshold            |   Fixed 0.50     : F1=0.0339  Recall=0.0177
+2026-08-04 11:04:12 | INFO     | threshold            |   Cost-sensitive : F1=0.2017  Recall=0.2063  thr=0.1676
+2026-08-04 11:04:12 | INFO     | threshold            |   F1 improvement : +0.1678
+2026-08-04 11:04:12 | INFO     | threshold            |   Recall gain    : +0.1886
+2026-08-04 11:04:12 | INFO     | threshold            |   → Cost-sensitive threshold captures 288 more true readmissions
+2026-08-04 11:04:12 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:04:12 | INFO     | threshold            | Step 6: Generating plots
+2026-08-04 11:04:12 | INFO     | threshold            | ==================================================
+2026-08-04 11:04:15 | INFO     | threshold            |   Saved: 28_threshold_analysis_lgbm_v1.png
+2026-08-04 11:04:17 | INFO     | threshold            |   Saved: 29_threshold_drift_lgbm_v1.png
+2026-08-04 11:04:17 | INFO     | threshold            |   Threshold report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\threshold_report_lgbm_v1.json
+2026-08-04 11:04:17 | INFO     | threshold            | ======================================================================
+2026-08-04 11:04:17 | INFO     | threshold            | Threshold Optimization Complete
+2026-08-04 11:04:17 | INFO     | threshold            |   Recommended threshold : 0.1676 (cost-sensitive)
+2026-08-04 11:04:17 | INFO     | threshold            |   vs fixed 0.50         : F1 +0.1678  Recall +0.1886
+2026-08-04 11:04:17 | INFO     | threshold            |   Next: adversarial/ → README
+2026-08-04 11:04:17 | INFO     | threshold            | ======================================================================
+2026-08-04 11:08:22 | INFO     | threshold            | ===== RUN 20260804-110822-dbc824 | pid=26608 | started 2026-08-04 11:08:22 =====
+2026-08-04 11:08:22 | INFO     | threshold            | ======================================================================
+2026-08-04 11:08:22 | INFO     | threshold            | DriftSentinel — Adaptive Threshold Optimizer
+2026-08-04 11:08:22 | INFO     | threshold            | ======================================================================
+2026-08-04 11:08:22 | INFO     | threshold            |   Val  pos rate: 0.1056
+2026-08-04 11:08:22 | INFO     | threshold            |   Test pos rate: 0.0881
+2026-08-04 11:08:22 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:08:22 | INFO     | threshold            | Step 1: Optimal thresholds on VAL (calibration set)
+2026-08-04 11:08:22 | INFO     | threshold            | ==================================================
+2026-08-04 11:08:22 | INFO     | threshold            |   Method           Threshold    Score
+2026-08-04 11:08:22 | INFO     | threshold            |   ------------------------------------
+2026-08-04 11:08:22 | INFO     | threshold            |   f1_max              0.1333   0.2627
+2026-08-04 11:08:22 | INFO     | threshold            |   youden              0.1111   0.2394
+2026-08-04 11:08:22 | INFO     | threshold            |   cost_sensitive      0.1676   0.4900
+2026-08-04 11:08:22 | INFO     | threshold            |   prec50              0.3000   0.0307
+2026-08-04 11:08:22 | INFO     | threshold            |   fixed_0.5           0.5000
+2026-08-04 11:08:22 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:08:22 | INFO     | threshold            | Step 2: Apply val thresholds to TEST (drift window)
+2026-08-04 11:08:22 | INFO     | threshold            | ==================================================
+2026-08-04 11:08:22 | INFO     | threshold            | 
+  Name               Thr      F1    Prec   Recall   FN_rate    Cost
+2026-08-04 11:08:22 | INFO     | threshold            |   -----------------------------------------------------------------
+2026-08-04 11:08:22 | INFO     | threshold            |   f1_max          0.1333  0.2200  0.1595   0.3543    0.6457  3.4090
+2026-08-04 11:08:22 | INFO     | threshold            |   youden          0.1111  0.2126  0.1387   0.4545    0.5455  3.0003
+2026-08-04 11:08:22 | INFO     | threshold            |   cost            0.1676  0.2017  0.1972   0.2063    0.7937  4.0497
+2026-08-04 11:08:22 | INFO     | threshold            |   prec50          0.3000  0.0398  0.4000   0.0210    0.9790  4.8983
+2026-08-04 11:08:22 | INFO     | threshold            |   fixed_05        0.5000  0.0339  0.4091   0.0177    0.9823  4.9141
+2026-08-04 11:08:22 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:08:22 | INFO     | threshold            | Step 3: Oracle thresholds on TEST (what we could achieve)
+2026-08-04 11:08:22 | INFO     | threshold            | ==================================================
+2026-08-04 11:08:22 | INFO     | threshold            |   Method            Val_thr   Test_thr    Shift
+2026-08-04 11:08:22 | INFO     | threshold            |   --------------------------------------------
+2026-08-04 11:08:22 | INFO     | threshold            |   f1_max             0.1333     0.1333  +0.0000
+2026-08-04 11:08:22 | INFO     | threshold            |   youden             0.1111     0.0951  -0.0161
+2026-08-04 11:08:22 | INFO     | threshold            |   cost               0.1676     0.1824  +0.0148
+2026-08-04 11:08:22 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:08:22 | INFO     | threshold            | Step 4: Window-based threshold analysis
+2026-08-04 11:08:22 | INFO     | threshold            | ==================================================
+2026-08-04 11:08:22 | INFO     | threshold            |   Val  threshold range: [0.1232, 0.1698]  mean=0.1400
+2026-08-04 11:08:22 | INFO     | threshold            |   Test threshold range: [0.0951, 0.1663]  mean=0.1439
+2026-08-04 11:08:22 | INFO     | threshold            |   Threshold shift val→test: +0.0039
+2026-08-04 11:08:22 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:08:22 | INFO     | threshold            | Step 5: Recommended threshold for drifted production
+2026-08-04 11:08:22 | INFO     | threshold            | ==================================================
+2026-08-04 11:08:22 | INFO     | threshold            |   Fixed 0.50     : F1=0.0339  Recall=0.0177
+2026-08-04 11:08:22 | INFO     | threshold            |   Cost-sensitive : F1=0.2017  Recall=0.2063  thr=0.1676
+2026-08-04 11:08:22 | INFO     | threshold            |   F1 improvement : +0.1678
+2026-08-04 11:08:22 | INFO     | threshold            |   Recall gain    : +0.1886
+2026-08-04 11:08:22 | INFO     | threshold            |   → Cost-sensitive threshold captures 288 more true readmissions
+2026-08-04 11:08:22 | INFO     | threshold            | 
+==================================================
+2026-08-04 11:08:22 | INFO     | threshold            | Step 6: Generating plots
+2026-08-04 11:08:22 | INFO     | threshold            | ==================================================
+2026-08-04 11:08:25 | INFO     | threshold            |   Saved: 28_threshold_analysis_lgbm_v1.png
+2026-08-04 11:08:25 | INFO     | threshold            |   Saved: 29_threshold_drift_lgbm_v1.png
+2026-08-04 11:08:25 | INFO     | threshold            |   Threshold report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\threshold_report_lgbm_v1.json
+2026-08-04 11:08:25 | INFO     | threshold            | ======================================================================
+2026-08-04 11:08:25 | INFO     | threshold            | Threshold Optimization Complete
+2026-08-04 11:08:25 | INFO     | threshold            |   Recommended threshold : 0.1676 (cost-sensitive)
+2026-08-04 11:08:25 | INFO     | threshold            |   vs fixed 0.50         : F1 +0.1678  Recall +0.1886
+2026-08-04 11:08:25 | INFO     | threshold            |   Next: adversarial/ → README
+2026-08-04 11:08:25 | INFO     | threshold            | ======================================================================

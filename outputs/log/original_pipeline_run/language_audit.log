@@ -1,0 +1,6 @@
+2026-08-04 09:01:33 | INFO     | language_audit       | Language audit plan: 134 occurrences in 15 files
+2026-08-04 09:01:33 | INFO     | language_audit       |   KEEP                 91
+2026-08-04 09:01:33 | INFO     | language_audit       |   MANUAL_REVIEW        21
+2026-08-04 09:01:33 | INFO     | language_audit       |   REWRITE_MECHANISM    7
+2026-08-04 09:01:33 | INFO     | language_audit       |   REWRITE_SPLIT        15
+2026-08-04 09:01:33 | INFO     | language_audit       | NO FILE MODIFIED — plan awaiting approval

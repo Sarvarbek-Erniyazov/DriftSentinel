@@ -1,0 +1,582 @@
+{
+  "model_name": "lgbm_v1",
+  "tier": "1.3 - operating-point policy",
+  "target_note": "computed on the MERGED target still stored in the feature parquets; re-run after the Tier 2A.1 switch to <30",
+  "shipped_recommendation_rate_form": {
+    "threshold": 0.01,
+    "predicted_positive_rate": 0.9939,
+    "precision": 0.1063,
+    "recall": 1.0,
+    "f1": 0.1922,
+    "specificity": 0.0068,
+    "tp": 2213,
+    "fp": 18608,
+    "fn": 0,
+    "tn": 128,
+    "expected_cost_per_patient": 0.88825,
+    "missed_positives": 0,
+    "alerts_per_1000_patients": 994,
+    "degenerate": true,
+    "degenerate_reason": "flags 99.4% of all patients (> 60%); provides no triage information and would be disabled for alert fatigue",
+    "objective": "rate-form (legacy, defective)",
+    "cost_ratio_requested": 5.0,
+    "prevalence": 0.1056,
+    "effective_cost_ratio": 42.332,
+    "theoretical_optimal_threshold_if_calibrated": 0.1667
+  },
+  "corrected_recommendation_population_form": {
+    "threshold": 0.16758793969849248,
+    "predicted_positive_rate": 0.1354,
+    "precision": 0.2136,
+    "recall": 0.2738,
+    "f1": 0.24,
+    "specificity": 0.8809,
+    "tp": 606,
+    "fp": 2231,
+    "fn": 1607,
+    "tn": 16505,
+    "expected_cost_per_patient": 0.49005,
+    "missed_positives": 1607,
+    "alerts_per_1000_patients": 135,
+    "degenerate": false,
+    "degenerate_reason": null,
+    "objective": "population-weighted expected cost",
+    "cost_ratio_requested": 5.0,
+    "prevalence": 0.1056,
+    "effective_cost_ratio": 5.0,
+    "theoretical_optimal_threshold_if_calibrated": 0.1667
+  },
+  "budget_constrained": {
+    "budget_0.10": {
+      "threshold": 0.18109022556390977,
+      "predicted_positive_rate": 0.0561,
+      "precision": 0.263,
+      "recall": 0.1396,
+      "f1": 0.1824,
+      "specificity": 0.9538,
+      "tp": 309,
+      "fp": 866,
+      "fn": 1904,
+      "tn": 17870,
+      "expected_cost_per_patient": 0.49578,
+      "missed_positives": 1904,
+      "alerts_per_1000_patients": 56,
+      "degenerate": false,
+      "degenerate_reason": null,
+      "budget": 0.1,
+      "feasible": true,
+      "constraint": "predicted_positive_rate <= 0.1"
+    },
+    "budget_0.20": {
+      "threshold": 0.16858395989974936,
+      "predicted_positive_rate": 0.1354,
+      "precision": 0.2136,
+      "recall": 0.2738,
+      "f1": 0.24,
+      "specificity": 0.8809,
+      "tp": 606,
+      "fp": 2231,
+      "fn": 1607,
+      "tn": 16505,
+      "expected_cost_per_patient": 0.49005,
+      "missed_positives": 1607,
+      "alerts_per_1000_patients": 135,
+      "degenerate": false,
+      "degenerate_reason": null,
+      "budget": 0.2,
+      "feasible": true,
+      "constraint": "predicted_positive_rate <= 0.2"
+    },
+    "budget_0.30": {
+      "threshold": 0.16858395989974936,
+      "predicted_positive_rate": 0.1354,
+      "precision": 0.2136,
+      "recall": 0.2738,
+      "f1": 0.24,
+      "specificity": 0.8809,
+      "tp": 606,
+      "fp": 2231,
+      "fn": 1607,
+      "tn": 16505,
+      "expected_cost_per_patient": 0.49005,
+      "missed_positives": 1607,
+      "alerts_per_1000_patients": 135,
+      "degenerate": false,
+      "degenerate_reason": null,
+      "budget": 0.3,
+      "feasible": true,
+      "constraint": "predicted_positive_rate <= 0.3"
+    }
+  },
+  "cost_ratio_sweep": {
+    "sweep": [
+      {
+        "cost_ratio": 1,
+        "threshold": 0.46798994974874375,
+        "predicted_positive_rate": 0.0049,
+        "precision": 0.5686,
+        "recall": 0.0262,
+        "f1": 0.0501,
+        "degenerate": false
+      },
+      {
+        "cost_ratio": 2,
+        "threshold": 0.3005527638190955,
+        "predicted_positive_rate": 0.0056,
+        "precision": 0.5556,
+        "recall": 0.0294,
+        "f1": 0.0558,
+        "degenerate": false
+      },
+      {
+        "cost_ratio": 3,
+        "threshold": 0.23653266331658293,
+        "predicted_positive_rate": 0.0099,
+        "precision": 0.4327,
+        "recall": 0.0407,
+        "f1": 0.0743,
+        "degenerate": false
+      },
+      {
+        "cost_ratio": 5,
+        "threshold": 0.16758793969849248,
+        "predicted_positive_rate": 0.1354,
+        "precision": 0.2136,
+        "recall": 0.2738,
+        "f1": 0.24,
+        "degenerate": false
+      },
+      {
+        "cost_ratio": 10,
+        "threshold": 0.08879396984924623,
+        "predicted_positive_rate": 0.5148,
+        "precision": 0.1472,
+        "recall": 0.7171,
+        "f1": 0.2442,
+        "degenerate": false
+      },
+      {
+        "cost_ratio": 20,
+        "threshold": 0.04939698492462312,
+        "predicted_positive_rate": 0.8435,
+        "precision": 0.1182,
+        "recall": 0.944,
+        "f1": 0.2101,
+        "degenerate": true
+      },
+      {
+        "cost_ratio": 50,
+        "threshold": 0.01,
+        "predicted_positive_rate": 0.9939,
+        "precision": 0.1063,
+        "recall": 1.0,
+        "f1": 0.1922,
+        "degenerate": true
+      },
+      {
+        "cost_ratio": 100,
+        "threshold": 0.01,
+        "predicted_positive_rate": 0.9939,
+        "precision": 0.1063,
+        "recall": 1.0,
+        "f1": 0.1922,
+        "degenerate": true
+      }
+    ],
+    "feasible_ratios": [
+      1,
+      2,
+      3,
+      5,
+      10
+    ],
+    "degenerate_ratios": [
+      20,
+      50,
+      100
+    ],
+    "max_feasible_ratio": 10,
+    "interpretation": "ratios above max_feasible_ratio produce degenerate rules on this probability distribution: the 'optimal' threshold falls below most predicted probabilities, so nearly everyone is flagged"
+  },
+  "decision_curve_analysis": {
+    "reference": "Vickers & Elkin (2006), Decision Curve Analysis",
+    "prevalence": 0.1056,
+    "curve": [
+      {
+        "threshold_probability": 0.02,
+        "net_benefit_model": 0.08751,
+        "net_benefit_treat_all": 0.087385,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.9939
+      },
+      {
+        "threshold_probability": 0.04,
+        "net_benefit_model": 0.069009,
+        "net_benefit_treat_all": 0.068372,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.9573
+      },
+      {
+        "threshold_probability": 0.06,
+        "net_benefit_model": 0.052621,
+        "net_benefit_treat_all": 0.048551,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.7644
+      },
+      {
+        "threshold_probability": 0.08,
+        "net_benefit_model": 0.038398,
+        "net_benefit_treat_all": 0.027867,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.6187
+      },
+      {
+        "threshold_probability": 0.1,
+        "net_benefit_model": 0.027517,
+        "net_benefit_treat_all": 0.006264,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.4163
+      },
+      {
+        "threshold_probability": 0.12,
+        "net_benefit_model": 0.019671,
+        "net_benefit_treat_all": -0.016321,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.3593
+      },
+      {
+        "threshold_probability": 0.14,
+        "net_benefit_model": 0.01369,
+        "net_benefit_treat_all": -0.039956,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.2279
+      },
+      {
+        "threshold_probability": 0.16,
+        "net_benefit_model": 0.008929,
+        "net_benefit_treat_all": -0.064717,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.1918
+      },
+      {
+        "threshold_probability": 0.18,
+        "net_benefit_model": 0.005683,
+        "net_benefit_treat_all": -0.090686,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.064
+      },
+      {
+        "threshold_probability": 0.2,
+        "net_benefit_model": 0.004415,
+        "net_benefit_treat_all": -0.117953,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0561
+      },
+      {
+        "threshold_probability": 0.22,
+        "net_benefit_model": 0.003279,
+        "net_benefit_treat_all": -0.146619,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0483
+      },
+      {
+        "threshold_probability": 0.24,
+        "net_benefit_model": 0.002517,
+        "net_benefit_treat_all": -0.176793,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0099
+      },
+      {
+        "threshold_probability": 0.26,
+        "net_benefit_model": 0.002317,
+        "net_benefit_treat_all": -0.208598,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0099
+      },
+      {
+        "threshold_probability": 0.28,
+        "net_benefit_model": 0.002151,
+        "net_benefit_treat_all": -0.24217,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0061
+      },
+      {
+        "threshold_probability": 0.3,
+        "net_benefit_model": 0.002039,
+        "net_benefit_treat_all": -0.277661,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0061
+      },
+      {
+        "threshold_probability": 0.32,
+        "net_benefit_model": 0.001935,
+        "net_benefit_treat_all": -0.315239,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0056
+      },
+      {
+        "threshold_probability": 0.34,
+        "net_benefit_model": 0.001824,
+        "net_benefit_treat_all": -0.355095,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0056
+      },
+      {
+        "threshold_probability": 0.36,
+        "net_benefit_model": 0.001707,
+        "net_benefit_treat_all": -0.397441,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0056
+      },
+      {
+        "threshold_probability": 0.38,
+        "net_benefit_model": 0.001581,
+        "net_benefit_treat_all": -0.44252,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0056
+      },
+      {
+        "threshold_probability": 0.4,
+        "net_benefit_model": 0.001448,
+        "net_benefit_treat_all": -0.490604,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0056
+      },
+      {
+        "threshold_probability": 0.42,
+        "net_benefit_model": 0.001305,
+        "net_benefit_treat_all": -0.542004,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0056
+      },
+      {
+        "threshold_probability": 0.44,
+        "net_benefit_model": 0.001152,
+        "net_benefit_treat_all": -0.597076,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0056
+      },
+      {
+        "threshold_probability": 0.46,
+        "net_benefit_model": 0.000988,
+        "net_benefit_treat_all": -0.656227,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0056
+      },
+      {
+        "threshold_probability": 0.48,
+        "net_benefit_model": 0.00083,
+        "net_benefit_treat_all": -0.719928,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0049
+      },
+      {
+        "threshold_probability": 0.5,
+        "net_benefit_model": 0.000668,
+        "net_benefit_treat_all": -0.788725,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0049
+      },
+      {
+        "threshold_probability": 0.52,
+        "net_benefit_model": 0.000517,
+        "net_benefit_treat_all": -0.863255,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0031
+      },
+      {
+        "threshold_probability": 0.54,
+        "net_benefit_model": 0.000432,
+        "net_benefit_treat_all": -0.944266,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0022
+      },
+      {
+        "threshold_probability": 0.56,
+        "net_benefit_model": 0.000352,
+        "net_benefit_treat_all": -1.032642,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0022
+      },
+      {
+        "threshold_probability": 0.58,
+        "net_benefit_model": 0.000264,
+        "net_benefit_treat_all": -1.129435,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0022
+      },
+      {
+        "threshold_probability": 0.6,
+        "net_benefit_model": 0.000191,
+        "net_benefit_treat_all": -1.235906,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0004
+      },
+      {
+        "threshold_probability": 0.62,
+        "net_benefit_model": 0.000178,
+        "net_benefit_treat_all": -1.353586,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0004
+      },
+      {
+        "threshold_probability": 0.64,
+        "net_benefit_model": 0.000164,
+        "net_benefit_treat_all": -1.48434,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0004
+      },
+      {
+        "threshold_probability": 0.66,
+        "net_benefit_model": 0.000149,
+        "net_benefit_treat_all": -1.630478,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0004
+      },
+      {
+        "threshold_probability": 0.68,
+        "net_benefit_model": 0.000137,
+        "net_benefit_treat_all": -1.794883,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0003
+      },
+      {
+        "threshold_probability": 0.7,
+        "net_benefit_model": 0.000127,
+        "net_benefit_treat_all": -1.981208,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0003
+      },
+      {
+        "threshold_probability": 0.72,
+        "net_benefit_model": 0.000116,
+        "net_benefit_treat_all": -2.194152,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0003
+      },
+      {
+        "threshold_probability": 0.74,
+        "net_benefit_model": 0.000103,
+        "net_benefit_treat_all": -2.439856,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0003
+      },
+      {
+        "threshold_probability": 0.76,
+        "net_benefit_model": 8.8e-05,
+        "net_benefit_treat_all": -2.72651,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0003
+      },
+      {
+        "threshold_probability": 0.78,
+        "net_benefit_model": 6.9e-05,
+        "net_benefit_treat_all": -3.065284,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0003
+      },
+      {
+        "threshold_probability": 0.8,
+        "net_benefit_model": 4.8e-05,
+        "net_benefit_treat_all": -3.471812,
+        "net_benefit_treat_none": 0.0,
+        "model_beats_defaults": true,
+        "predicted_positive_rate": 0.0003
+      }
+    ],
+    "useful_threshold_range": [
+      0.02,
+      0.8
+    ],
+    "interpretation": "the model adds value only where its net benefit exceeds BOTH treat-all and treat-none; outside that range a default strategy is at least as good and the model should not drive the decision"
+  },
+  "test_split_check": {
+    "corrected": {
+      "threshold": 0.18236180904522614,
+      "predicted_positive_rate": 0.0387,
+      "precision": 0.2399,
+      "recall": 0.1054,
+      "f1": 0.1465,
+      "specificity": 0.9677,
+      "tp": 161,
+      "fp": 510,
+      "fn": 1366,
+      "tn": 15288,
+      "expected_cost_per_patient": 0.42367,
+      "missed_positives": 1366,
+      "alerts_per_1000_patients": 39,
+      "degenerate": false,
+      "degenerate_reason": null,
+      "objective": "population-weighted expected cost",
+      "cost_ratio_requested": 5.0,
+      "prevalence": 0.0881,
+      "effective_cost_ratio": 5.0,
+      "theoretical_optimal_threshold_if_calibrated": 0.1667
+    },
+    "budget_0.20": {
+      "threshold": 0.18359147869674186,
+      "predicted_positive_rate": 0.0387,
+      "precision": 0.2403,
+      "recall": 0.1054,
+      "f1": 0.1466,
+      "specificity": 0.9678,
+      "tp": 161,
+      "fp": 509,
+      "fn": 1366,
+      "tn": 15289,
+      "expected_cost_per_patient": 0.42361,
+      "missed_positives": 1366,
+      "alerts_per_1000_patients": 39,
+      "degenerate": false,
+      "degenerate_reason": null,
+      "budget": 0.2,
+      "feasible": true,
+      "constraint": "predicted_positive_rate <= 0.2"
+    }
+  },
+  "findings": {
+    "not_structural": "Tested the hypothesis that the 97% alert rate had a structural cause like the Layer-1 IQR collapse. It does not. The per-class rate normalisation IS a defect and is fixed, but at 47.6% prevalence it only inflates 5:1 to 5.5:1 and moves the threshold 0.1282 -> 0.1627 (PPR 0.970 -> 0.954).",
+    "actual_cause": "The asserted 5:1 cost ratio does all the work. For a calibrated model the optimum is c_fp/(c_fp+c_fn) = 0.167, and 95.4% of predicted probabilities exceed it because the model's outputs concentrate near the 47.6% base rate (p5=0.20, p25=0.36). The threshold is CORRECT for 5:1; the alert volume is what an optimal 5:1 rule does on this distribution.",
+    "rate_form_becomes_serious_under_the_new_target": "At the <30 prevalence of 11.16% the same rate-form defect inflates 5:1 into an effective 39.8:1. Fixed before the target switch rather than after."
+  },
+  "figure": "outputs/figure/44_threshold_policy_lgbm_v1.png"
+}

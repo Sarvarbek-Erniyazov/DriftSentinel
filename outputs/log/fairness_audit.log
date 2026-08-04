@@ -1,0 +1,98 @@
+2026-08-04 17:15:53 | INFO     | fairness_audit       | ===== RUN 20260804-171553-942c94 | pid=9428 | started 2026-08-04 17:15:53 =====
+2026-08-04 17:15:53 | INFO     | fairness_audit       | ==============================================================================
+2026-08-04 17:15:53 | INFO     | fairness_audit       | Tier 2C.4a — fairness / subgroup analysis
+2026-08-04 17:15:53 | INFO     | fairness_audit       | ==============================================================================
+2026-08-04 17:15:53 | INFO     | fairness_audit       |   demographic alignment: OK: verified (14,305 patients / 17,325 rows)
+2026-08-04 17:15:53 | INFO     | fairness_audit       |   operating threshold 0.18000000000000002 (decontaminated, Tier 2A.4)
+2026-08-04 17:16:17 | INFO     | fairness_audit       | --------------------------------------------------------------
+2026-08-04 17:16:17 | INFO     | fairness_audit       | ATTRIBUTE: race
+2026-08-04 17:16:17 | INFO     | fairness_audit       |   level                     n    prev      AUC   recall      PPR  status
+2026-08-04 17:16:17 | INFO     | fairness_audit       |   AfricanAmerican        2181  0.0890   0.6133   0.0825   0.0399  OK
+2026-08-04 17:16:17 | INFO     | fairness_audit       |   Asian                   209  0.0909        —        —        —  INSUFFICIENT_EVIDENCE
+2026-08-04 17:16:17 | INFO     | fairness_audit       |   Caucasian             13394  0.0900   0.6478   0.1212   0.0458  OK
+2026-08-04 17:16:17 | INFO     | fairness_audit       |   Hispanic                496  0.0645        —        —        —  INSUFFICIENT_EVIDENCE
+2026-08-04 17:16:17 | INFO     | fairness_audit       |   Missing                 600  0.0650   0.5849   0.1026   0.0450  OK
+2026-08-04 17:16:17 | INFO     | fairness_audit       |   Other                   445  0.0854        —        —        —  INSUFFICIENT_EVIDENCE
+2026-08-04 17:16:17 | INFO     | fairness_audit       |     gap[auc] +0.0629 (Missing -> Caucasian) supported=False
+2026-08-04 17:16:17 | INFO     | fairness_audit       |     gap[recall] +0.0387 (AfricanAmerican -> Caucasian) supported=False
+2026-08-04 17:16:17 | INFO     | fairness_audit       |     gap[predicted_positive_rate] +0.0059 (AfricanAmerican -> Caucasian) supported=False
+2026-08-04 17:16:17 | INFO     | fairness_audit       |     gap[precision] +0.0897 (Missing -> Caucasian) supported=False
+2026-08-04 17:16:17 | INFO     | fairness_audit       |     gap[ece] +0.0272 (Caucasian -> Missing) supported=True
+2026-08-04 17:16:46 | INFO     | fairness_audit       | --------------------------------------------------------------
+2026-08-04 17:16:46 | INFO     | fairness_audit       | ATTRIBUTE: gender
+2026-08-04 17:16:46 | INFO     | fairness_audit       |   level                     n    prev      AUC   recall      PPR  status
+2026-08-04 17:16:46 | INFO     | fairness_audit       |   Female                 9044  0.0882   0.6454   0.1153   0.0471  OK
+2026-08-04 17:16:46 | INFO     | fairness_audit       |   Male                   8280  0.0880   0.6363   0.1152   0.0418  OK
+2026-08-04 17:16:46 | INFO     | fairness_audit       |   Unknown/Invalid           1  0.0000        —        —        —  INSUFFICIENT_EVIDENCE
+2026-08-04 17:16:46 | INFO     | fairness_audit       |     gap[auc] +0.0091 (Male -> Female) supported=False
+2026-08-04 17:16:46 | INFO     | fairness_audit       |     gap[recall] +0.0001 (Male -> Female) supported=False
+2026-08-04 17:16:46 | INFO     | fairness_audit       |     gap[predicted_positive_rate] +0.0053 (Male -> Female) supported=False
+2026-08-04 17:16:46 | INFO     | fairness_audit       |     gap[precision] +0.0268 (Female -> Male) supported=False
+2026-08-04 17:16:46 | INFO     | fairness_audit       |     gap[ece] +0.0025 (Male -> Female) supported=False
+2026-08-04 17:17:26 | INFO     | fairness_audit       | --------------------------------------------------------------
+2026-08-04 17:17:26 | INFO     | fairness_audit       | ATTRIBUTE: age_band
+2026-08-04 17:17:26 | INFO     | fairness_audit       |   level                     n    prev      AUC   recall      PPR  status
+2026-08-04 17:17:26 | INFO     | fairness_audit       |   40-69                  8557  0.0820   0.6369   0.1125   0.0409  OK
+2026-08-04 17:17:26 | INFO     | fairness_audit       |   70+                    7837  0.0962   0.6257   0.1021   0.0426  OK
+2026-08-04 17:17:26 | INFO     | fairness_audit       |   <40                     931  0.0763   0.7461   0.2817   0.0956  OK
+2026-08-04 17:17:26 | INFO     | fairness_audit       |     gap[auc] +0.1204 (70+ -> <40) supported=True
+2026-08-04 17:17:26 | INFO     | fairness_audit       |     gap[recall] +0.1796 (70+ -> <40) supported=True
+2026-08-04 17:17:26 | INFO     | fairness_audit       |     gap[predicted_positive_rate] +0.0547 (40-69 -> <40) supported=True
+2026-08-04 17:17:26 | INFO     | fairness_audit       |     gap[precision] +0.0058 (<40 -> 70+) supported=False
+2026-08-04 17:17:26 | INFO     | fairness_audit       |     gap[ece] +0.0072 (40-69 -> <40) supported=False
+2026-08-04 17:17:26 | INFO     | fairness_audit       | --------------------------------------------------------------
+2026-08-04 17:17:26 | INFO     | fairness_audit       | payer_code gain-importance rank: 17/53 | top5 ['discharge_disposition_id', 'FE_has_prior_inpatient', 'FE_lab_to_procedure_ratio', 'FE_labs_per_day', 'FE_meds_per_day']
+2026-08-04 17:17:53 | INFO     | fairness_audit       | FALSIFICATION: injected AUC gap 0.1313 detected=True | real gap 0.0091
+2026-08-04 17:17:53 | INFO     | fairness_audit       | --------------------------------------------------------------
+2026-08-04 17:17:53 | INFO     | fairness_audit       | supported disparities: {'race': ['ece'], 'gender': [], 'age_band': ['auc', 'recall', 'predicted_positive_rate']}
+2026-08-04 17:17:53 | INFO     | fairness_audit       | Report: fairness_audit.json
+2026-08-04 17:17:53 | INFO     | fairness_audit       | ==============================================================================
+2026-08-04 19:58:06 | INFO     | fairness_audit       | ===== RUN 20260804-195806-df9fa2 | pid=1248 | started 2026-08-04 19:58:06 =====
+2026-08-04 19:58:06 | INFO     | fairness_audit       | ==============================================================================
+2026-08-04 19:58:06 | INFO     | fairness_audit       | Tier 2C.4a — fairness / subgroup analysis
+2026-08-04 19:58:06 | INFO     | fairness_audit       | ==============================================================================
+2026-08-04 19:58:06 | INFO     | fairness_audit       |   demographic alignment: OK: verified (14,305 patients / 17,325 rows)
+2026-08-04 19:58:06 | INFO     | fairness_audit       |   operating threshold 0.17500000000000002 (decontaminated, Tier 2A.4)
+2026-08-04 19:58:21 | INFO     | fairness_audit       | --------------------------------------------------------------
+2026-08-04 19:58:21 | INFO     | fairness_audit       | ATTRIBUTE: race
+2026-08-04 19:58:21 | INFO     | fairness_audit       |   level                     n    prev      AUC   recall      PPR  status
+2026-08-04 19:58:21 | INFO     | fairness_audit       |   AfricanAmerican        2181  0.0890   0.6133   0.1649   0.0802  OK
+2026-08-04 19:58:21 | INFO     | fairness_audit       |   Asian                   209  0.0909        —        —        —  INSUFFICIENT_EVIDENCE
+2026-08-04 19:58:21 | INFO     | fairness_audit       |   Caucasian             13394  0.0900   0.6478   0.2033   0.0892  OK
+2026-08-04 19:58:21 | INFO     | fairness_audit       |   Hispanic                496  0.0645        —        —        —  INSUFFICIENT_EVIDENCE
+2026-08-04 19:58:21 | INFO     | fairness_audit       |   Missing                 600  0.0650   0.5849   0.1538   0.1000  OK
+2026-08-04 19:58:21 | INFO     | fairness_audit       |   Other                   445  0.0854        —        —        —  INSUFFICIENT_EVIDENCE
+2026-08-04 19:58:21 | INFO     | fairness_audit       |     gap[auc] +0.0629 (Missing -> Caucasian) supported=False
+2026-08-04 19:58:21 | INFO     | fairness_audit       |     gap[recall] +0.0495 (Missing -> Caucasian) supported=False
+2026-08-04 19:58:21 | INFO     | fairness_audit       |     gap[predicted_positive_rate] +0.0198 (AfricanAmerican -> Missing) supported=False
+2026-08-04 19:58:21 | INFO     | fairness_audit       |     gap[precision] +0.1050 (Missing -> Caucasian) supported=False
+2026-08-04 19:58:21 | INFO     | fairness_audit       |     gap[ece] +0.0272 (Caucasian -> Missing) supported=True
+2026-08-04 19:58:34 | INFO     | fairness_audit       | --------------------------------------------------------------
+2026-08-04 19:58:34 | INFO     | fairness_audit       | ATTRIBUTE: gender
+2026-08-04 19:58:34 | INFO     | fairness_audit       |   level                     n    prev      AUC   recall      PPR  status
+2026-08-04 19:58:34 | INFO     | fairness_audit       |   Female                 9044  0.0882   0.6454   0.1967   0.0911  OK
+2026-08-04 19:58:34 | INFO     | fairness_audit       |   Male                   8280  0.0880   0.6363   0.1948   0.0836  OK
+2026-08-04 19:58:34 | INFO     | fairness_audit       |   Unknown/Invalid           1  0.0000        —        —        —  INSUFFICIENT_EVIDENCE
+2026-08-04 19:58:34 | INFO     | fairness_audit       |     gap[auc] +0.0091 (Male -> Female) supported=False
+2026-08-04 19:58:34 | INFO     | fairness_audit       |     gap[recall] +0.0019 (Male -> Female) supported=False
+2026-08-04 19:58:34 | INFO     | fairness_audit       |     gap[predicted_positive_rate] +0.0075 (Male -> Female) supported=False
+2026-08-04 19:58:34 | INFO     | fairness_audit       |     gap[precision] +0.0147 (Female -> Male) supported=False
+2026-08-04 19:58:34 | INFO     | fairness_audit       |     gap[ece] +0.0025 (Male -> Female) supported=False
+2026-08-04 19:58:57 | INFO     | fairness_audit       | --------------------------------------------------------------
+2026-08-04 19:58:57 | INFO     | fairness_audit       | ATTRIBUTE: age_band
+2026-08-04 19:58:57 | INFO     | fairness_audit       |   level                     n    prev      AUC   recall      PPR  status
+2026-08-04 19:58:57 | INFO     | fairness_audit       |   40-69                  8557  0.0820   0.6369   0.1966   0.0802  OK
+2026-08-04 19:58:57 | INFO     | fairness_audit       |   70+                    7837  0.0962   0.6257   0.1804   0.0916  OK
+2026-08-04 19:58:57 | INFO     | fairness_audit       |   <40                     931  0.0763   0.7461   0.3521   0.1214  OK
+2026-08-04 19:58:57 | INFO     | fairness_audit       |     gap[auc] +0.1204 (70+ -> <40) supported=True
+2026-08-04 19:58:57 | INFO     | fairness_audit       |     gap[recall] +0.1717 (70+ -> <40) supported=False
+2026-08-04 19:58:57 | INFO     | fairness_audit       |     gap[predicted_positive_rate] +0.0412 (40-69 -> <40) supported=True
+2026-08-04 19:58:57 | INFO     | fairness_audit       |     gap[precision] +0.0318 (70+ -> <40) supported=False
+2026-08-04 19:58:57 | INFO     | fairness_audit       |     gap[ece] +0.0072 (40-69 -> <40) supported=False
+2026-08-04 19:58:57 | INFO     | fairness_audit       | --------------------------------------------------------------
+2026-08-04 19:58:57 | INFO     | fairness_audit       | payer_code gain-importance rank: 17/53 | top5 ['discharge_disposition_id', 'FE_has_prior_inpatient', 'FE_lab_to_procedure_ratio', 'FE_labs_per_day', 'FE_meds_per_day']
+2026-08-04 19:59:10 | INFO     | fairness_audit       | FALSIFICATION: injected AUC gap 0.1313 detected=True | real gap 0.0091
+2026-08-04 19:59:10 | INFO     | fairness_audit       | --------------------------------------------------------------
+2026-08-04 19:59:10 | INFO     | fairness_audit       | supported disparities: {'race': ['ece'], 'gender': [], 'age_band': ['auc', 'predicted_positive_rate']}
+2026-08-04 19:59:10 | INFO     | fairness_audit       | Report: fairness_audit.json
+2026-08-04 19:59:10 | INFO     | fairness_audit       | ==============================================================================

@@ -1,0 +1,1207 @@
+{
+  "phase": "0.1",
+  "title": "Temporal validity of encounter_id ordering",
+  "verdict": {
+    "ordering_verdict": "SUPPORTED",
+    "primary_anchors": [
+      "A1_troglitazone",
+      "A2_tzd_share"
+    ],
+    "primary_passed": [
+      "A1_troglitazone",
+      "A2_tzd_share"
+    ],
+    "primary_contradictory": [],
+    "supporting_outcome": {
+      "A3_a1c_rate": "PASS"
+    },
+    "exploratory_outcome": {
+      "A4_v85_bmi": "PASS"
+    },
+    "batch_structure_indicator": false,
+    "decision_rule": "Pre-registered decision rule (fixed in the plan before any result was seen).\n\n      SUPPORTED     >=2 of the PRIMARY anchors {A1, A2} pass after FDR, and no\n                    primary anchor is significant in the contradictory direction\n      NOT_SUPPORTED no primary anchor passes AND (a primary is contradictory OR\n                    block structure positively indicates batch ordering)\n      INCONCLUSIVE  anything else, including \"all null with an MDE larger than\n                    the effect the literature predicts\"",
+    "split_validity_verdict": "NOT_TEMPORAL_BY_CONSTRUCTION",
+    "split_validity_reason": "The split orders PATIENTS by their first encounter_id, which sorts patients by entry cohort. Even under perfect chronological ordering of encounter_id, a patient who entered early and kept visiting is wholly in train, late encounters included \u2014 which is why the split ranges overlap almost completely. Ordering validity and split validity are separate questions and this verdict does not depend on the anchor result."
+  },
+  "dataset": {
+    "rows": 101766,
+    "patients": 71518,
+    "encounter_id_min": 12522,
+    "encounter_id_max": 443867222,
+    "primary_target": "readmitted == '<30' (30-day readmission)",
+    "primary_target_prevalence": 0.11159915885462728,
+    "merged_target_prevalence_superseded": 0.4608808442898414
+  },
+  "anchors": {
+    "A1_troglitazone": {
+      "name": "A1_troglitazone",
+      "role": "primary",
+      "kind": "extinction",
+      "verification": "PRIMARY_VERIFIED",
+      "n_positive_rows": 3,
+      "n_positive_patients": 3,
+      "outcome": "PASS",
+      "p_raw": 1.6809236877118316e-09,
+      "detail": {
+        "event_date": "2000-03-21",
+        "positive_rank_fractions": [
+          0.000599,
+          0.000619,
+          0.001189
+        ],
+        "patient_min_rank_fractions": [
+          0.000599,
+          0.000619,
+          0.001189
+        ],
+        "statistic_max_patient_rank": 0.0011890022207810074,
+        "exact_p_one_sided_early": 1.6809236877118316e-09,
+        "interpretation": "all positives fall in the lowest 0.12% of encounter_id ranks"
+      },
+      "note": "one-sided; a non-significant result here is NOT evidence against chronological ordering"
+    },
+    "A2_tzd_share": {
+      "name": "A2_tzd_share",
+      "role": "primary",
+      "kind": "changepoint",
+      "verification": "PRIMARY_VERIFIED",
+      "n_positive_rows": 6365,
+      "n_positive_patients": 5184,
+      "outcome": "PASS",
+      "p_raw": 9.999000099990002e-05,
+      "detail": {
+        "event_date": "2007-05-21",
+        "n_tzd_rows_used": 13603,
+        "n_dual_tzd_rows_excluded": 45,
+        "n_rosiglitazone_rows": 6365,
+        "n_pioglitazone_rows": 7328,
+        "rows_per_patient_tzd": 1.241,
+        "changepoint": {
+          "search_window_rank_fraction": [
+            0.75,
+            0.98
+          ],
+          "estimated_split_rank_fraction": 0.7917673879291709,
+          "estimated_split_index": 11255,
+          "max_z": 23.64977412607972,
+          "p_permutation": 9.999000099990002e-05,
+          "minimum_detectable_z": 2.5324634916085196,
+          "share_before": 0.5107952021323856,
+          "share_after": 0.24318568994889267,
+          "delta_share": 0.26760951218349294,
+          "delta_share_ci95_cluster_bootstrap": [
+            0.24625120559183558,
+            0.289860820589457
+          ],
+          "direction_predicted": "step DOWN in rosiglitazone share at high ranks"
+        },
+        "monotone_trend_secondary": {
+          "observed_slope": -0.34938300916836035,
+          "p_permutation": 9.999000099990002e-05,
+          "n_permutations": 10000,
+          "direction_tested": "decrease",
+          "minimum_detectable_slope": -0.026012779404013926,
+          "null_slope_sd": 0.01609470313347513,
+          "slope_ci95_cluster_bootstrap": [
+            -0.38604294421787155,
+            -0.31294931741184484
+          ]
+        }
+      },
+      "note": ""
+    },
+    "A3_a1c_rate": {
+      "name": "A3_a1c_rate",
+      "role": "supporting",
+      "kind": "monotone_increase",
+      "verification": "DIRECTIONAL_ONLY",
+      "n_positive_rows": 17018,
+      "n_positive_patients": 15388,
+      "outcome": "PASS",
+      "p_raw": 9.999000099990002e-05,
+      "detail": {
+        "observed_slope": 0.020143802922180327,
+        "p_permutation": 9.999000099990002e-05,
+        "n_permutations": 10000,
+        "direction_tested": "increase",
+        "minimum_detectable_slope": 0.00672836932200045,
+        "null_slope_sd": 0.00405370941334599,
+        "overall_rate": 0.16722677515083623,
+        "slope_ci95_cluster_bootstrap": [
+          0.011010192238799793,
+          0.02896586659438835
+        ],
+        "spearman_rho": 0.015582407471138756,
+        "caveat": "AMBULATORY != INPATIENT. The published rise in HbA1c testing over the 2000s is an AMBULATORY quality-measure phenomenon (Medicare beneficiaries with diabetes: ~74% -> 84% over 2003-2012; A1c testing in hospitalised patients WITHOUT diabetes: 5.2% -> 8.8% over 2007-2009). Neither window matches 1999-2008 and neither population matches this variable, which measures inpatient ordering behaviour during an admission and is driven by hospital protocol and endocrinology staffing. Strack et al. (2014), the canonical paper on this dataset, report HbA1c measured in 18.4% of encounters and perform NO temporal-trend analysis, so there is no within-dataset published trend to anchor against. This anchor is therefore confirmatory only and cannot by itself change the verdict.",
+        "role_note": "DEMOTED to supporting: the published trend is ambulatory, this variable is inpatient ordering behaviour; a flat result here is uninformative, a decline would be evidence against H1"
+      },
+      "note": ""
+    },
+    "A4_v85_bmi": {
+      "name": "A4_v85_bmi",
+      "role": "exploratory",
+      "kind": "introduction",
+      "verification": "SECONDARY_VERIFIED",
+      "n_positive_rows": 265,
+      "n_positive_patients": 254,
+      "outcome": "PASS",
+      "p_raw": 2.870688952107143e-85,
+      "detail": {
+        "event_date": "2005-10-01",
+        "statistic_min_patient_rank": 0.5353163138965863,
+        "exact_p_one_sided_late": 2.870688952107143e-85,
+        "rank_quantiles_of_positives": {
+          "p00": 0.5353,
+          "p01": 0.556,
+          "p05": 0.6313,
+          "p25": 0.8834,
+          "p50": 0.9159,
+          "p75": 0.9578,
+          "p95": 0.9921,
+          "p100": 0.9997
+        },
+        "n_positive_in_first_decile": 0,
+        "n_positive_in_first_half": 0,
+        "verification_note": "Effective date corroborated by secondary coding references and by the NCHS addenda listing surfaced in search, but the primary NCHS addenda PDF (ftp.cdc.gov .../ICD-9-CM Addenda for 1986-2006.pdf) could not be parsed in this environment, so the date is NOT primary-verified. The anchor is therefore reported as exploratory and excluded from the decision rule.\n"
+      },
+      "note": ""
+    }
+  },
+  "minor_extinction_anchors": {
+    "metformin-rosiglitazone": {
+      "name": "metformin-rosiglitazone",
+      "role": "minor",
+      "kind": "extinction",
+      "verification": "PRIMARY_VERIFIED",
+      "n_positive_rows": 2,
+      "n_positive_patients": 2,
+      "outcome": "UNDERPOWERED",
+      "p_raw": 0.8801111722946277,
+      "detail": {
+        "event_date": "2000-03-21",
+        "positive_rank_fractions": [
+          0.850628,
+          0.938142
+        ],
+        "patient_min_rank_fractions": [
+          0.850628,
+          0.938142
+        ],
+        "statistic_max_patient_rank": 0.938142405125484,
+        "exact_p_one_sided_early": 0.8801111722946277,
+        "interpretation": "all positives fall in the lowest 93.81% of encounter_id ranks"
+      },
+      "note": "reported, not weighted \u2014 n too small to carry inference"
+    },
+    "metformin-pioglitazone": {
+      "name": "metformin-pioglitazone",
+      "role": "minor",
+      "kind": "extinction",
+      "verification": "PRIMARY_VERIFIED",
+      "n_positive_rows": 1,
+      "n_positive_patients": 1,
+      "outcome": "UNDERPOWERED",
+      "p_raw": 0.9693807361987304,
+      "detail": {
+        "event_date": "2000-03-21",
+        "positive_rank_fractions": [
+          0.969381
+        ],
+        "patient_min_rank_fractions": [
+          0.969381
+        ],
+        "statistic_max_patient_rank": 0.9693807361987304,
+        "exact_p_one_sided_early": 0.9693807361987304,
+        "interpretation": "all positives fall in the lowest 96.94% of encounter_id ranks"
+      },
+      "note": "reported, not weighted \u2014 n too small to carry inference"
+    }
+  },
+  "null_anchors": {
+    "examide": {
+      "levels": {
+        "No": 101766
+      },
+      "n_levels": 1,
+      "testable": false
+    },
+    "citoglipton": {
+      "levels": {
+        "No": 101766
+      },
+      "n_levels": 1,
+      "testable": false
+    }
+  },
+  "multiple_testing": {
+    "method": "Benjamini-Hochberg",
+    "q": 0.05,
+    "results": {
+      "A1_troglitazone": {
+        "p_raw": 1.6809236877118316e-09,
+        "p_adj": 3.3618473754236632e-09,
+        "reject": true
+      },
+      "A2_tzd_share": {
+        "p_raw": 9.999000099990002e-05,
+        "p_adj": 9.999000099990002e-05,
+        "reject": true
+      },
+      "A3_a1c_rate": {
+        "p_raw": 9.999000099990002e-05,
+        "p_adj": 9.999000099990002e-05,
+        "reject": true
+      },
+      "A4_v85_bmi": {
+        "p_raw": 2.870688952107143e-85,
+        "p_adj": 1.1482755808428572e-84,
+        "reject": true
+      }
+    }
+  },
+  "timeline_coherence": {
+    "anchor_points_sorted_by_date": [
+      {
+        "anchor": "A1_troglitazone",
+        "date": "2000-03-21",
+        "rank": 0.0011890022207810074,
+        "bound": "upper (drug withdrawn -> last use at or before this date)"
+      },
+      {
+        "anchor": "A4_v85_bmi",
+        "date": "2005-10-01",
+        "rank": 0.5353163138965863,
+        "bound": "lower (code introduced -> first use at or after this date)"
+      },
+      {
+        "anchor": "A2_tzd_share",
+        "date": "2007-05-21",
+        "rank": 0.7917673879291709,
+        "bound": "point (prescribing changepoint)"
+      }
+    ],
+    "rank_order_matches_date_order": true,
+    "exact_p_random_ordering_one_sided": 0.16666666666666666,
+    "implied_accumulation_segments": [
+      {
+        "from": "1999-01-01",
+        "to": "2000-03-21",
+        "years": 1.218,
+        "encounter_fraction": 0.00119,
+        "fraction_per_year": 0.00098
+      },
+      {
+        "from": "2000-03-21",
+        "to": "2005-10-01",
+        "years": 5.53,
+        "encounter_fraction": 0.53413,
+        "fraction_per_year": 0.09658
+      },
+      {
+        "from": "2005-10-01",
+        "to": "2007-05-21",
+        "years": 1.634,
+        "encounter_fraction": 0.25645,
+        "fraction_per_year": 0.1569
+      }
+    ],
+    "implied_rate_monotonically_increasing": true,
+    "expected_under_H1": "increasing \u2014 the Health Facts panel grew across 1999-2008, so later calendar years should carry more encounters",
+    "role": "CORROBORATING \u2014 1/k! is weak on its own; reported as joint consistency"
+  },
+  "label_interval_coherence": {
+    "design": "within-patient rank distance to the next encounter, compared between labels whose time semantics are known exactly",
+    "median_gap_rank_lt30": 0.005905705245366821,
+    "median_gap_rank_gt30": 0.059273234675628395,
+    "ratio_gt30_over_lt30": 10.036605657237937,
+    "mannwhitney_u": 14619167.5,
+    "p_one_sided_lt30_shorter": 0.0,
+    "median_difference_ci95_cluster_bootstrap": [
+      -0.054802684590138116,
+      -0.052089843366153736
+    ],
+    "implied_calendar_check": {
+      "<30": {
+        "n": 8133,
+        "median_gap_rank": 0.005905705245366821,
+        "median_implied_days": 17.865621886736335,
+        "share_implied_le_30_days": 0.7613426779786057,
+        "implied_days_quartiles": [
+          9.790635297724293,
+          17.865621886736335,
+          29.28397968945501
+        ]
+      },
+      ">30": {
+        "n": 21625,
+        "median_gap_rank": 0.059273234675628395,
+        "median_implied_days": 173.5092727412066,
+        "share_implied_le_30_days": 0.027514450867052023,
+        "implied_days_quartiles": [
+          79.11877253661078,
+          173.5092727412066,
+          371.92140702038523
+        ]
+      }
+    },
+    "expected_under_H1": "<30 gaps far shorter than >30 gaps, and <30 gaps predominantly converting to <= 30 implied days",
+    "caveat": "the rank->date map is piecewise linear through three anchor points (two of which are one-sided bounds), and 28.4% of '<30' rows have no in-extract successor at all, so the successor observed for those rows is not the readmission that generated the label; exact agreement is not expected and the direction and order of magnitude are the claim"
+  },
+  "block_structure": {
+    "encounter_id_gaps": {
+      "median_gap": 1590.0,
+      "mean_gap": 4361.56537119835,
+      "p99_gap": 27346.320000000007,
+      "max_gap": 447198.0,
+      "n_gaps_gt_1000x_median": 0,
+      "largest_gap_positions_rank_fraction": [
+        0.92001,
+        0.98739,
+        0.8897,
+        0.96342,
+        0.94947,
+        0.99015,
+        0.89132,
+        0.98808,
+        0.99408,
+        0.987
+      ],
+      "largest_gap_sizes": [
+        447198.0,
+        443880.0,
+        439152.0,
+        439074.0,
+        438576.0,
+        437892.0,
+        437394.0,
+        435552.0,
+        434514.0,
+        433998.0
+      ]
+    },
+    "adjacent_bin_js_divergence": {
+      "medical_specialty": [
+        0.01279,
+        0.01989,
+        0.04783,
+        0.07231,
+        0.01329,
+        0.007,
+        0.01552,
+        0.0046,
+        0.00573
+      ],
+      "payer_code": [
+        0.0,
+        0.1978,
+        0.13201,
+        0.01997,
+        0.00227,
+        0.03283,
+        0.01118,
+        0.00685,
+        0.00378
+      ],
+      "admission_source_id": [
+        0.01358,
+        0.04356,
+        0.01316,
+        0.08662,
+        0.01364,
+        0.00905,
+        0.00866,
+        0.00316,
+        0.0033
+      ],
+      "discharge_disposition_id": [
+        0.09374,
+        0.17704,
+        0.02332,
+        0.00872,
+        0.00103,
+        0.00401,
+        0.00265,
+        0.00185,
+        0.00107
+      ]
+    },
+    "patient_nbr_vs_first_encounter_id": {
+      "spearman_rho": 0.5117491065314504,
+      "p_value": 0.0,
+      "note": "both are Health Facts surrogate keys; a strong positive rho shows consistent key-assignment order, which is necessary but NOT sufficient for calendar chronology"
+    }
+  },
+  "censoring": {
+    "entry_rank_regressions": {
+      "n_enc": {
+        "slope_per_unit_entry_rank": -0.21055028599073158,
+        "slope_ci95": [
+          -0.23397713379945764,
+          -0.18761585235739658
+        ],
+        "relative_slope_pct_of_mean": -14.796823451334573,
+        "spearman_rho": -0.057259295585677585,
+        "spearman_p": 5.199613419340051e-53,
+        "mean": 1.4229424760200229,
+        "decile_means": [
+          1.5894280520206965,
+          1.3884228187919463,
+          1.2248322147651007,
+          1.354026845637584,
+          1.6414988814317673,
+          1.679765067822682,
+          1.4855984340044743,
+          1.4436521252796422,
+          1.2919463087248322,
+          1.1303131991051454
+        ],
+        "declines_with_entry_rank": true
+      },
+      "span_rank": {
+        "slope_per_unit_entry_rank": -0.013783625874799517,
+        "slope_ci95": [
+          -0.015513340148974845,
+          -0.012118216485953391
+        ],
+        "relative_slope_pct_of_mean": -44.291703321606285,
+        "spearman_rho": -0.05399727203148358,
+        "spearman_p": 2.481535573441212e-47,
+        "mean": 0.031120107923407896,
+        "decile_means": [
+          0.03564429465528296,
+          0.02405107732565928,
+          0.013537783756752835,
+          0.02568357982591198,
+          0.060929602624804784,
+          0.06151869108863715,
+          0.03976531583114678,
+          0.030700623411140906,
+          0.01489633920665741,
+          0.004478654445710234
+        ],
+        "declines_with_entry_rank": true
+      },
+      "rate_lt30": {
+        "slope_per_unit_entry_rank": -0.03408652893228139,
+        "slope_ci95": [
+          -0.03918780790502496,
+          -0.029000833859961064
+        ],
+        "relative_slope_pct_of_mean": -47.926305910878796,
+        "spearman_rho": -0.04216302090191432,
+        "spearman_p": 1.639759970778436e-29,
+        "mean": 0.07112279631079199,
+        "decile_means": [
+          0.07901485297706866,
+          0.08002742348379932,
+          0.07955100804303823,
+          0.0790947574604928,
+          0.0876967702346155,
+          0.070489672251669,
+          0.06547481897425146,
+          0.062238788302250596,
+          0.053299443379141366,
+          0.05434144295302013
+        ],
+        "declines_with_entry_rank": true
+      },
+      "rate_merged": {
+        "slope_per_unit_entry_rank": -0.08636021288744486,
+        "slope_ci95": [
+          -0.0969449241692652,
+          -0.076444087038679
+        ],
+        "relative_slope_pct_of_mean": -26.033763129532314,
+        "spearman_rho": -0.05993295268992744,
+        "spearman_p": 6.511006858061996e-58,
+        "mean": 0.33172389430508076,
+        "decile_means": [
+          0.3703265971718088,
+          0.3283977014471981,
+          0.30535031825929476,
+          0.31601894369302086,
+          0.4169586991138563,
+          0.39068413775972155,
+          0.3425758917474521,
+          0.3352457642096904,
+          0.2740011119100884,
+          0.23769341909023117
+        ],
+        "declines_with_entry_rank": true
+      },
+      "rate_gt30": {
+        "slope_per_unit_entry_rank": -0.052273683955163686,
+        "slope_ci95": [
+          -0.06213634832530071,
+          -0.0428139946887658
+        ],
+        "relative_slope_pct_of_mean": -20.058888606950266,
+        "spearman_rho": -0.047144943260120364,
+        "spearman_p": 1.752349163060911e-36,
+        "mean": 0.26060109799428877,
+        "decile_means": [
+          0.2913117441947402,
+          0.24837027796339878,
+          0.22579931021625654,
+          0.23692418623252806,
+          0.32926192887924083,
+          0.32019446550805264,
+          0.2771010727732007,
+          0.2730069759074398,
+          0.22070166853094705,
+          0.18335197613721102
+        ],
+        "declines_with_entry_rank": true
+      },
+      "first_number_inpatient": {
+        "slope_per_unit_entry_rank": -0.09906321468785273,
+        "slope_ci95": [
+          -0.11390719321411225,
+          -0.08456526026918065
+        ],
+        "relative_slope_pct_of_mean": -55.7068956443297,
+        "spearman_rho": -0.03856234817984259,
+        "spearman_p": 5.945398846747896e-25,
+        "mean": 0.1778293576442294,
+        "decile_means": [
+          0.17270311844497274,
+          0.20693512304250558,
+          0.23685682326621924,
+          0.25153803131991054,
+          0.21742170022371365,
+          0.1397007411550832,
+          0.13324944071588368,
+          0.14079977628635346,
+          0.10304809843400448,
+          0.17603467561521252
+        ],
+        "declines_with_entry_rank": true
+      },
+      "span_encounter_id_units_UNINTERPRETABLE": {
+        "slope_per_unit_entry_rank": 6245175.162823381,
+        "slope_ci95": [
+          5494484.4721014155,
+          6996757.882525208
+        ],
+        "relative_slope_pct_of_mean": 48.41297986067004,
+        "spearman_rho": -0.03917225764596299,
+        "spearman_p": 1.0717715399982354e-25,
+        "mean": 12899795.015296848,
+        "decile_means": [
+          11146124.390714586,
+          6695069.098434005,
+          3806308.3151565995,
+          7500391.864093959,
+          19931164.104026847,
+          22920456.303733744,
+          19430764.284675617,
+          18807320.43344519,
+          12827462.07746085,
+          5934045.180369128
+        ],
+        "declines_with_entry_rank": false
+      }
+    },
+    "censoring_signature_met": true,
+    "horizon_contrast": {
+      "lt30": {
+        "base_rate": 0.11159915885462728,
+        "slope_per_unit_encounter_rank": -0.00981137645564869,
+        "slope_ci95_cluster_bootstrap": [
+          -0.017487021043634067,
+          -0.002064478575940664
+        ],
+        "relative_slope_pct_of_base": -8.791622227573697,
+        "decile_rates": [
+          {
+            "bin": 1,
+            "bin_mid": 0.05,
+            "n": 10176,
+            "k": 1111,
+            "rate": 0.10917845911949685,
+            "lo": 0.10326586898794154,
+            "hi": 0.11538602044813769
+          },
+          {
+            "bin": 2,
+            "bin_mid": 0.15000000000000002,
+            "n": 10177,
+            "k": 1222,
+            "rate": 0.120074678195932,
+            "lo": 0.11390229018103523,
+            "hi": 0.1265337853591244
+          },
+          {
+            "bin": 3,
+            "bin_mid": 0.25,
+            "n": 10176,
+            "k": 1198,
+            "rate": 0.11772798742138364,
+            "lo": 0.11160983040622514,
+            "hi": 0.12413466290691247
+          },
+          {
+            "bin": 4,
+            "bin_mid": 0.35000000000000003,
+            "n": 10177,
+            "k": 1096,
+            "rate": 0.10769381939667878,
+            "lo": 0.1018183667256137,
+            "hi": 0.11386533470826381
+          },
+          {
+            "bin": 5,
+            "bin_mid": 0.45,
+            "n": 10176,
+            "k": 1215,
+            "rate": 0.11939858490566038,
+            "lo": 0.11324152954726846,
+            "hi": 0.12584289785678862
+          },
+          {
+            "bin": 6,
+            "bin_mid": 0.55,
+            "n": 10177,
+            "k": 1138,
+            "rate": 0.11182077232976319,
+            "lo": 0.10584374163148563,
+            "hi": 0.11809075117115257
+          },
+          {
+            "bin": 7,
+            "bin_mid": 0.6500000000000001,
+            "n": 10177,
+            "k": 1102,
+            "rate": 0.10828338410140513,
+            "lo": 0.10239325369766902,
+            "hi": 0.11446913221746002
+          },
+          {
+            "bin": 8,
+            "bin_mid": 0.75,
+            "n": 10176,
+            "k": 1108,
+            "rate": 0.10888364779874214,
+            "lo": 0.10297834806885484,
+            "hi": 0.11508414123353275
+          },
+          {
+            "bin": 9,
+            "bin_mid": 0.8500000000000001,
+            "n": 10177,
+            "k": 1088,
+            "rate": 0.10690773312371032,
+            "lo": 0.10105193886599174,
+            "hi": 0.11306018325955039
+          },
+          {
+            "bin": 10,
+            "bin_mid": 0.95,
+            "n": 10177,
+            "k": 1079,
+            "rate": 0.10602338606662082,
+            "lo": 0.10018982899953292,
+            "hi": 0.11215426640413192
+          }
+        ]
+      },
+      "gt30": {
+        "base_rate": 0.3492816854352141,
+        "slope_per_unit_encounter_rank": -0.028324935234189774,
+        "slope_ci95_cluster_bootstrap": [
+          -0.03912659664594099,
+          -0.018202596009244763
+        ],
+        "relative_slope_pct_of_base": -8.109481949761026,
+        "decile_rates": [
+          {
+            "bin": 1,
+            "bin_mid": 0.05,
+            "n": 10176,
+            "k": 3908,
+            "rate": 0.38404088050314467,
+            "lo": 0.37463631387830265,
+            "hi": 0.3935329668696415
+          },
+          {
+            "bin": 2,
+            "bin_mid": 0.15000000000000002,
+            "n": 10177,
+            "k": 3340,
+            "rate": 0.32819101896433134,
+            "lo": 0.31913444979593764,
+            "hi": 0.3373772476260122
+          },
+          {
+            "bin": 3,
+            "bin_mid": 0.25,
+            "n": 10176,
+            "k": 2794,
+            "rate": 0.2745676100628931,
+            "lo": 0.26598247272643516,
+            "hi": 0.2833228917106697
+          },
+          {
+            "bin": 4,
+            "bin_mid": 0.35000000000000003,
+            "n": 10177,
+            "k": 3401,
+            "rate": 0.3341849267957158,
+            "lo": 0.32508434904593037,
+            "hi": 0.3434106406020766
+          },
+          {
+            "bin": 5,
+            "bin_mid": 0.45,
+            "n": 10176,
+            "k": 4251,
+            "rate": 0.41774764150943394,
+            "lo": 0.40819791008096146,
+            "hi": 0.42735945261906333
+          },
+          {
+            "bin": 6,
+            "bin_mid": 0.55,
+            "n": 10177,
+            "k": 4072,
+            "rate": 0.4001179129409453,
+            "lo": 0.39063872233436436,
+            "hi": 0.4096724818002721
+          },
+          {
+            "bin": 7,
+            "bin_mid": 0.6500000000000001,
+            "n": 10177,
+            "k": 3991,
+            "rate": 0.3921587894271396,
+            "lo": 0.38271542218872157,
+            "hi": 0.4016835414490192
+          },
+          {
+            "bin": 8,
+            "bin_mid": 0.75,
+            "n": 10176,
+            "k": 3898,
+            "rate": 0.3830581761006289,
+            "lo": 0.3736585503779862,
+            "hi": 0.3925460632576524
+          },
+          {
+            "bin": 9,
+            "bin_mid": 0.8500000000000001,
+            "n": 10177,
+            "k": 3202,
+            "rate": 0.31463103075562543,
+            "lo": 0.30568027628754263,
+            "hi": 0.32372167806562197
+          },
+          {
+            "bin": 10,
+            "bin_mid": 0.95,
+            "n": 10177,
+            "k": 2688,
+            "rate": 0.264124987717402,
+            "lo": 0.255649640903155,
+            "hi": 0.27277834288946184
+          }
+        ]
+      },
+      "merged": {
+        "base_rate": 0.4608808442898414,
+        "slope_per_unit_encounter_rank": -0.03813631168983846,
+        "slope_ci95_cluster_bootstrap": [
+          -0.05022408301993285,
+          -0.025927342400367398
+        ],
+        "relative_slope_pct_of_base": -8.274657574150572,
+        "decile_rates": [
+          {
+            "bin": 1,
+            "bin_mid": 0.05,
+            "n": 10176,
+            "k": 5019,
+            "rate": 0.49321933962264153,
+            "lo": 0.48350974264335606,
+            "hi": 0.5029340542817358
+          },
+          {
+            "bin": 2,
+            "bin_mid": 0.15000000000000002,
+            "n": 10177,
+            "k": 4562,
+            "rate": 0.4482656971602633,
+            "lo": 0.4386247571070697,
+            "hi": 0.4579456796631084
+          },
+          {
+            "bin": 3,
+            "bin_mid": 0.25,
+            "n": 10176,
+            "k": 3992,
+            "rate": 0.3922955974842767,
+            "lo": 0.3828511303860167,
+            "hi": 0.4018213541052941
+          },
+          {
+            "bin": 4,
+            "bin_mid": 0.35000000000000003,
+            "n": 10177,
+            "k": 4497,
+            "rate": 0.4418787461923946,
+            "lo": 0.43225392373893473,
+            "hi": 0.4515474311510184
+          },
+          {
+            "bin": 5,
+            "bin_mid": 0.45,
+            "n": 10176,
+            "k": 5466,
+            "rate": 0.5371462264150944,
+            "lo": 0.5274459916320515,
+            "hi": 0.5468184252130986
+          },
+          {
+            "bin": 6,
+            "bin_mid": 0.55,
+            "n": 10177,
+            "k": 5210,
+            "rate": 0.5119386852707085,
+            "lo": 0.5022243767846943,
+            "hi": 0.5216439839606493
+          },
+          {
+            "bin": 7,
+            "bin_mid": 0.6500000000000001,
+            "n": 10177,
+            "k": 5093,
+            "rate": 0.5004421735285448,
+            "lo": 0.4907294388307776,
+            "hi": 0.5101545745301612
+          },
+          {
+            "bin": 8,
+            "bin_mid": 0.75,
+            "n": 10176,
+            "k": 5006,
+            "rate": 0.4919418238993711,
+            "lo": 0.4822330771797609,
+            "hi": 0.5016566524993337
+          },
+          {
+            "bin": 9,
+            "bin_mid": 0.8500000000000001,
+            "n": 10177,
+            "k": 4290,
+            "rate": 0.42153876387933575,
+            "lo": 0.41197608259352414,
+            "hi": 0.4311606576932513
+          },
+          {
+            "bin": 10,
+            "bin_mid": 0.95,
+            "n": 10177,
+            "k": 3767,
+            "rate": 0.3701483737840228,
+            "lo": 0.36081792506988236,
+            "hi": 0.379576817934468
+          }
+        ]
+      },
+      "contrast_gt30_minus_lt30_relative_slope": {
+        "point": 0.0057042783340076125,
+        "ci95": [
+          -0.07343701683560741,
+          0.08525404078632404
+        ],
+        "censoring_predicts": "strongly negative (>30 falls much faster in relative terms)",
+        "secular_trend_predicts": "approximately zero",
+        "premise_valid": false,
+        "raw_verdict_if_premise_held": "TREND-CONSISTENT",
+        "verdict": "UNINFORMATIVE_PREMISE_INVALIDATED",
+        "why": "this test assumed censoring acts through the calendar horizon (30 days vs years). The label-observability audit shows the label is an in-extract successor indicator, so BOTH labels are censored by the same successor-observability mechanism and the horizon length is not the operative variable. The null result is therefore NOT evidence of a secular trend \u2014 the test's premise failed. The last-encounter analysis below is the correct discriminator for this label."
+      }
+    },
+    "last_encounter_effect": {
+      "share_is_last_overall": 0.7027690977340173,
+      "share_is_last_slope_per_unit_rank": 0.05652327876808382,
+      "share_is_last_slope_ci95": [
+        0.04461847257084734,
+        0.06875064034210787
+      ],
+      "share_is_last_decile": [
+        {
+          "bin": 1,
+          "bin_mid": 0.05,
+          "n": 10176,
+          "k": 6698,
+          "rate": 0.6582154088050315,
+          "lo": 0.6489415596865233,
+          "hi": 0.6673698453946717
+        },
+        {
+          "bin": 2,
+          "bin_mid": 0.15000000000000002,
+          "n": 10177,
+          "k": 7120,
+          "rate": 0.6996167829419279,
+          "lo": 0.6906361776562673,
+          "hi": 0.7084467429541467
+        },
+        {
+          "bin": 3,
+          "bin_mid": 0.25,
+          "n": 10176,
+          "k": 8001,
+          "rate": 0.7862617924528302,
+          "lo": 0.7781894177358736,
+          "hi": 0.7941181120787358
+        },
+        {
+          "bin": 4,
+          "bin_mid": 0.35000000000000003,
+          "n": 10177,
+          "k": 7588,
+          "rate": 0.7456028299105827,
+          "lo": 0.7370495738595817,
+          "hi": 0.7539707362884516
+        },
+        {
+          "bin": 5,
+          "bin_mid": 0.45,
+          "n": 10176,
+          "k": 6473,
+          "rate": 0.6361045597484277,
+          "lo": 0.6267067907150562,
+          "hi": 0.6453996043392639
+        },
+        {
+          "bin": 6,
+          "bin_mid": 0.55,
+          "n": 10177,
+          "k": 6478,
+          "rate": 0.6365333595362092,
+          "lo": 0.6271382522193244,
+          "hi": 0.6458254288971759
+        },
+        {
+          "bin": 7,
+          "bin_mid": 0.6500000000000001,
+          "n": 10177,
+          "k": 6529,
+          "rate": 0.6415446595263831,
+          "lo": 0.632175831670773,
+          "hi": 0.6508066675363654
+        },
+        {
+          "bin": 8,
+          "bin_mid": 0.75,
+          "n": 10176,
+          "k": 6620,
+          "rate": 0.6505503144654088,
+          "lo": 0.6412310374302479,
+          "hi": 0.6597559641749636
+        },
+        {
+          "bin": 9,
+          "bin_mid": 0.8500000000000001,
+          "n": 10177,
+          "k": 7292,
+          "rate": 0.7165176378107497,
+          "lo": 0.7076808682160561,
+          "hi": 0.7251910075235684
+        },
+        {
+          "bin": 10,
+          "bin_mid": 0.95,
+          "n": 10177,
+          "k": 8719,
+          "rate": 0.8567357767514985,
+          "lo": 0.8497943908458816,
+          "hi": 0.8634079440180651
+        }
+      ],
+      "lt30_rate_on_last_encounters": 0.04507956039039123,
+      "lt30_rate_on_non_last_encounters": 0.2688772811425549,
+      "lt30_slope_all_rows": -0.00981137645564869,
+      "lt30_slope_non_last_rows_only": 0.031137650501945367,
+      "lt30_slope_non_last_ci95": [
+        0.010540830587537523,
+        0.050689084726682127
+      ],
+      "interpretation_key": "if the <30 gradient largely disappears once final-observed encounters are removed, the gradient is an observability artifact"
+    },
+    "matched_lookahead_stratified": {
+      "design_note": "patient-level matched-lookahead is DEGENERATE (entry position determines remaining lookahead exactly under a single collection window); this stratifies on the ENCOUNTER's own lookahead instead, within which entry rank still varies",
+      "unconditional_lt30_slope_on_entry_rank": -0.03489302963930435,
+      "unconditional_ci95": [
+        -0.0420913792898435,
+        -0.027306135485085994
+      ],
+      "strata": [
+        {
+          "stratum": 1,
+          "lookahead_range": [
+            0.0,
+            0.1999980347070731
+          ],
+          "n_rows": 20353,
+          "n_patients": 16010,
+          "entry_rank_iqr": [
+            0.8173187169663582,
+            0.9340166112027741
+          ],
+          "lt30_rate": 0.10647079054684813,
+          "lt30_slope_on_entry_rank": -0.24040952245301292,
+          "slope_ci95": [
+            -0.2846040585526367,
+            -0.19835949153444435
+          ],
+          "significant": true
+        },
+        {
+          "stratum": 2,
+          "lookahead_range": [
+            0.1999980347070731,
+            0.3999960694141462
+          ],
+          "n_rows": 20353,
+          "n_patients": 15645,
+          "entry_rank_iqr": [
+            0.6479347856483683,
+            0.7582286976705165
+          ],
+          "lt30_rate": 0.10858350120375375,
+          "lt30_slope_on_entry_rank": -0.19041140966136763,
+          "slope_ci95": [
+            -0.23985621730852405,
+            -0.14103810541907458
+          ],
+          "significant": true
+        },
+        {
+          "stratum": 3,
+          "lookahead_range": [
+            0.3999960694141462,
+            0.5999941041212195
+          ],
+          "n_rows": 20354,
+          "n_patients": 16042,
+          "entry_rank_iqr": [
+            0.4679521239408261,
+            0.5783718784082329
+          ],
+          "lt30_rate": 0.1156038125184239,
+          "lt30_slope_on_entry_rank": -0.24123062231011153,
+          "slope_ci95": [
+            -0.3084699287300635,
+            -0.17252924424079705
+          ],
+          "significant": true
+        },
+        {
+          "stratum": 4,
+          "lookahead_range": [
+            0.5999941041212195,
+            0.7999921388282923
+          ],
+          "n_rows": 20352,
+          "n_patients": 16989,
+          "entry_rank_iqr": [
+            0.25014332056265554,
+            0.36844221035263847
+          ],
+          "lt30_rate": 0.11271619496855347,
+          "lt30_slope_on_entry_rank": -0.17116412736492215,
+          "slope_ci95": [
+            -0.23802885904677912,
+            -0.10509690422159709
+          ],
+          "significant": true
+        },
+        {
+          "stratum": 5,
+          "lookahead_range": [
+            0.7999921388282923,
+            0.9999901735353655
+          ],
+          "n_rows": 20354,
+          "n_patients": 15501,
+          "entry_rank_iqr": [
+            0.046900780223160604,
+            0.15365013003719344
+          ],
+          "lt30_rate": 0.11462120467721332,
+          "lt30_slope_on_entry_rank": -0.04554119622969671,
+          "slope_ci95": [
+            -0.12246505357169146,
+            0.034298125004855164
+          ],
+          "significant": false
+        }
+      ],
+      "n_strata_with_significant_gradient": 4
+    },
+    "label_observability": {
+      "by_label": {
+        "<30": {
+          "n_rows": 11357,
+          "share_with_in_dataset_successor": 0.7161222153737783
+        },
+        ">30": {
+          "n_rows": 35545,
+          "share_with_in_dataset_successor": 0.6083837389224926
+        },
+        "NO": {
+          "n_rows": 54864,
+          "share_with_in_dataset_successor": 0.008931175269757946
+        }
+      },
+      "overall_share_with_successor": 0.29723090226598275,
+      "label_is_successor_derived": true,
+      "finding": "only 0.9% of 'NO' rows have any later encounter in the extract, versus 71.6% of '<30' and 60.8% of '>30' \u2014 the label is essentially an in-extract successor indicator",
+      "consequence": "the operative censoring mechanism is successor observability, not calendar horizon; the horizon-contrast test's premise therefore does not hold and its result is reported as UNINFORMATIVE rather than as evidence"
+    }
+  },
+  "figures": {
+    "A1": "outputs/figure/32_anchor_A1_troglitazone.png",
+    "A2": "outputs/figure/33_anchor_A2_tzd_share.png",
+    "A3": "outputs/figure/34_anchor_A3_a1c_rate.png",
+    "A4": "outputs/figure/35_anchor_A4_v85_bmi.png",
+    "censoring": "outputs/figure/36_censoring_entry_cohort.png",
+    "horizon": "outputs/figure/37_horizon_contrast_last_encounter.png",
+    "blocks": "outputs/figure/38_block_structure.png",
+    "timeline": "outputs/figure/39_anchor_timeline_coherence.png"
+  },
+  "phase_0_5_inventory": {
+    "path": "outputs/reports/temporal_language_inventory.json",
+    "n_occurrences": 186,
+    "n_files": 17,
+    "applied": false
+  },
+  "dropped_anchors": {
+    "ub04_discharge_codes": {
+      "reason": "discharge_disposition_id 27/28/29 and admission_source_id 25/26 are plausibly late additions tied to the UB-04 form (which replaced UB-92 for institutional claims in 2007), but per-code introduction dates could not be verified from a primary source. Using them would assert an unverified date, which is precisely the failure mode this remediation exists to remove. Dropped by the pre-registered rule, not by result.\n"
+    },
+    "icd9_subcode_anchors": {
+      "reason": "Higher-resolution ICD-9 anchors (e.g. the 585.1-585.6 chronic kidney disease staging codes introduced 1 October 2005) are unusable because this dataset TRUNCATES diagnosis codes to the 3-character category level for everything except the 250.x diabetes family (20,848 of 303,496 non-missing diag entries carry a decimal, and all but one are 250.x). 585.1-585.6 all collapse to \"585\". Only category-level codes dated inside the window survive, which is why A4 is V85 and nothing else.\n"
+    }
+  },
+  "reproducibility": {
+    "seed": 42,
+    "n_permutations": 10000,
+    "n_bootstrap": 2000,
+    "python": "3.12.10",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scipy": "1.18.0",
+    "matplotlib": "3.11.0",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "caveats": [
+    "Health Facts onboarded client hospitals across 1999-2008 and the UCI release DROPS the hospital identifier, so rank-position trends conflate calendar time with panel composition and cannot be stratified. A2's within-class share design is the mitigation; the block-structure diagnostics are the detection attempt.",
+    "Permutation p-values are row-level and therefore anti-conservative under within-patient clustering; cluster-bootstrap CIs are reported alongside and no conclusion is drawn unless both agree.",
+    "A1/A4 are one-sided existence tests. A non-significant A1 is not evidence against chronological ordering.",
+    "A4's effective date is SECONDARY_VERIFIED only (the primary NCHS addenda PDF was not machine-readable here), so A4 is excluded from the decision rule.",
+    "The changepoint location in A2 is a point estimate; the reported CI is for the step size at that fixed location and does not include changepoint-selection uncertainty."
+  ]
+}
