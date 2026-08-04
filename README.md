@@ -11,6 +11,7 @@
 [![Determinism](https://img.shields.io/badge/determinism-24_artifacts_byte--identical-3FB950)](outputs/reports/determinism.json)
 [![Tests](https://img.shields.io/badge/tests-93_passing-3FB950)](tests/)
 [![Dataset](https://img.shields.io/badge/Dataset-UCI_Diabetes_130--US-yellow)](https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008)
+[![Live console](https://img.shields.io/badge/live_console-streamlit-4C8DF6?logo=streamlit&logoColor=white)][live-console]
 
 </div>
 
@@ -618,9 +619,18 @@ recalibration.**
 
 ## 9. Live demo
 
+**→ [Open the monitoring console][live-console]**
+
 A Streamlit console whose central design rule is that **no drift verdict can be
 rendered without the no-drift baseline beside it** — the contrast is the
-component, not a caption.
+component, not a caption. `signal_panel()` cannot draw a firing rate without also
+drawing the random-control floor beside it.
+
+Switch the window selector to **`random control (no drift possible)`** to see the
+point of the whole repository: the same detector suite, on data where drift is
+impossible by construction, reports **0 of 6 signals fired** against a no-drift
+floor of **0.25 ± 0.55** and a status of `STABLE` — against **4 of 6** on the
+deployed entry-cohort window.
 
 ```bash
 pip install -r requirements.txt      # console runtime only
@@ -734,6 +744,13 @@ python src/pipelines/reproduce.py        # rebuild the core chain from raw data
 pytest tests -q                          # 93 tests
 python src/monitoring/determinism.py --stage trainer   # byte-level determinism
 ```
+
+<!-- ─────────────────────────────────────────────────────────────────────────
+     The live deployment URL is defined ONCE, here. The badge in the header and
+     the link in section 9 both reference it as [live-console]. If the app moves
+     to a different subdomain, this is the only line that changes.
+     ───────────────────────────────────────────────────────────────────────── -->
+[live-console]: https://driftsentinel-wd3drnvwbcboqmfcvtanwg.streamlit.app/
 
 ## 12. References
 

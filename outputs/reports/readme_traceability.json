@@ -4,153 +4,153 @@
   "why_not_a_generator": "The README is authored prose, not generated output, so 'regenerates identically' is not a property it has. The plan's acceptance criterion is traceability, which is checkable in the direction that matters: the README is checked AGAINST the artifacts, which is what a reviewer does by hand. A generator would only guarantee the README matches whatever the generator was told.",
   "n_artifacts_searched": 47,
   "n_artifact_values": 19254,
-  "n_numbers_found": 270,
-  "n_traced": 246,
+  "n_numbers_found": 271,
+  "n_traced": 247,
   "n_exempt": 24,
   "n_untraced": 0,
   "untraced": [],
   "exempt": [
     {
       "value": "130",
-      "line": 47,
+      "line": 48,
       "context": "| **Dataset** | UCI Diabetes 130-US Hospitals (1999\u20132008) \u00b7 101,766 encounters \u00b7 71,518 patients |",
       "reason": "hospitals in the dataset name"
     },
     {
       "value": "1999",
-      "line": 47,
+      "line": 48,
       "context": "| **Dataset** | UCI Diabetes 130-US Hospitals (1999\u20132008) \u00b7 101,766 encounters \u00b7 71,518 patients |",
       "reason": "dataset collection window start, from the source"
     },
     {
       "value": "2008",
-      "line": 47,
+      "line": 48,
       "context": "| **Dataset** | UCI Diabetes 130-US Hospitals (1999\u20132008) \u00b7 101,766 encounters \u00b7 71,518 patients |",
       "reason": "dataset collection window end, from the source"
     },
     {
       "value": "2021",
-      "line": 54,
+      "line": 55,
       "context": "| **Uncertainty** | Split conformal + **Adaptive Conformal Inference** (Gibbs & Cand\u00e8s 2021), decontaminated c",
       "reason": "Gibbs & Candes / Gebru year"
     },
     {
       "value": "2005",
-      "line": 90,
+      "line": 91,
       "context": "| ICD-9 V85 (BMI) introduction | 2005-10-01 | **zero** occurrences before rank 0.535, p = 2.9e-85 |",
       "reason": "Vovk et al. year"
     },
     {
       "value": "0.05",
-      "line": 133,
+      "line": 134,
       "context": "| distribution | `prediction_drift` | 1.00 | **0.05** | 1.00 | 1.00 | 1.00 | 0.00 |",
       "reason": "conventional significance level"
     },
     {
       "value": "0.64",
-      "line": 193,
+      "line": 194,
       "context": "target than advertised. AUC falls ~0.69 \u2192 ~0.64 on the switch, which is expected:",
       "reason": "Liu et al. published AUC (external)"
     },
     {
       "value": "2019",
-      "line": 344,
+      "line": 345,
       "context": "**`payer_code`, and the Obermeyer frame.** Obermeyer et al. (*Science* 2019)",
       "reason": "Obermeyer / Mitchell year"
     },
     {
       "value": "2006",
-      "line": 428,
+      "line": 429,
       "context": "is auto-flagged `DEGENERATE`. Decision curve analysis (Vickers & Elkin 2006) is",
       "reason": "Vickers & Elkin year"
     },
     {
       "value": "0.61",
-      "line": 655,
+      "line": 665,
       "context": "target (0.61\u20130.66). The contribution is reliability infrastructure, not",
       "reason": "published band lower bound (external)"
     },
     {
       "value": "0.66",
-      "line": 655,
+      "line": 665,
       "context": "target (0.61\u20130.66). The contribution is reliability infrastructure, not",
       "reason": "published band upper bound (external)"
     },
     {
       "value": "0.024",
-      "line": 685,
+      "line": 695,
       "context": "than the ~0.024 spread between the best and worst tree-based model across the",
       "reason": "spread between two EXTERNAL published numbers"
     },
     {
       "value": "2014",
-      "line": 690,
+      "line": 700,
       "context": "| Strack et al. (2014) | *not reported* | logistic regression, ~70k encounters | \u2014 |",
       "reason": "Strack et al. publication year"
     },
     {
       "value": "2024",
-      "line": 691,
+      "line": 701,
       "context": "| Liu, Sue & Wu (2024) | 0.64 [0.64, 0.65] | group 5-fold CV | \u2705 |",
       "reason": "Liu et al. publication year"
     },
     {
       "value": "0.65",
-      "line": 691,
+      "line": 701,
       "context": "| Liu, Sue & Wu (2024) | 0.64 [0.64, 0.65] | group 5-fold CV | \u2705 |",
       "reason": "Liu et al. published CI bound (external)"
     },
     {
       "value": "2026",
-      "line": 692,
+      "line": 702,
       "context": "| Salim & Ibrahim (2026) | 0.664 | nested stratified 5-fold CV | \u274c *(stated limitation)* |",
       "reason": "Salim & Ibrahim publication year"
     },
     {
       "value": "0.664",
-      "line": 692,
+      "line": 702,
       "context": "| Salim & Ibrahim (2026) | 0.664 | nested stratified 5-fold CV | \u274c *(stated limitation)* |",
       "reason": "Salim & Ibrahim published AUC (external)"
     },
     {
       "value": "2023",
-      "line": 740,
+      "line": 757,
       "context": "- Barber, Cand\u00e8s, Ramdas & Tibshirani (2023). Conformal prediction beyond exchangeability. *Ann. Statist.* 51(",
       "reason": "Barber et al. year"
     },
     {
       "value": "1995",
-      "line": 741,
+      "line": 758,
       "context": "- Benjamini & Hochberg (1995). Controlling the false discovery rate. *JRSS-B* 57(1), 289\u2013300.",
       "reason": "Benjamini & Hochberg year"
     },
     {
       "value": "1988",
-      "line": 742,
+      "line": 759,
       "context": "- DeLong, DeLong & Clarke-Pearson (1988). Comparing areas under correlated ROC curves. *Biometrics* 44(3), 837",
       "reason": "DeLong et al. year"
     },
     {
       "value": "2012",
-      "line": 745,
+      "line": 762,
       "context": "- Gretton et al. (2012). A kernel two-sample test. *JMLR* 13, 723\u2013773.",
       "reason": "Gretton et al. year"
     },
     {
       "value": "2016",
-      "line": 746,
+      "line": 763,
       "context": "- Kantchelian, Tygar & Joseph (2016). Evasion and hardening of tree ensemble classifiers. *ICML*.",
       "reason": "Kantchelian et al. year"
     },
     {
       "value": "2018",
-      "line": 747,
+      "line": 764,
       "context": "- Lipton, Wang & Smola (2018). Detecting and correcting for label shift with black box predictors. *ICML*.",
       "reason": "Lipton et al. year"
     },
     {
       "value": "2017",
-      "line": 749,
+      "line": 766,
       "context": "- Lopez-Paz & Oquab (2017). Revisiting classifier two-sample tests. *ICLR*.",
       "reason": "Lopez-Paz & Oquab year"
     }

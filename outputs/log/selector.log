@@ -6454,3 +6454,25 @@
 2026-08-04 21:54:22 | INFO     | selector             |   Removed  : 0
 2026-08-04 21:54:22 | INFO     | selector             |   Top 15 stability scores:
 2026-08-04 21:54:22 | INFO     | selector             |     [✓] a                                           stability=1.0000
+2026-08-04 22:01:18 | INFO     | selector             | ===== RUN 20260804-220114-b13794 | pid=5528 | started 2026-08-04 22:01:18 =====
+2026-08-04 22:01:18 | INFO     | selector             | --------------------------------------------------
+2026-08-04 22:01:18 | INFO     | selector             | Stage 5: SHAP Importance (GBM, n_estimators=300)
+2026-08-04 22:01:18 | WARNING  | selector             |   Stage 5 SKIPPED — Boruta confirmed 0 features, so there is nothing to rank. Contributing no votes.
+2026-08-04 22:01:18 | INFO     | selector             | --------------------------------------------------
+2026-08-04 22:01:18 | INFO     | selector             | Stage 6: Stability Selection (n_bootstrap=50, frac=0.75, threshold=0.6)
+2026-08-04 22:01:18 | WARNING  | selector             |   Stage 6 SKIPPED — no candidates from stage 5. Contributing no votes.
+2026-08-04 22:01:18 | INFO     | selector             | --------------------------------------------------
+2026-08-04 22:01:18 | INFO     | selector             | Stage 5: SHAP Importance (GBM, n_estimators=300)
+2026-08-04 22:01:19 | INFO     | selector             |   Input    : 1
+2026-08-04 22:01:19 | INFO     | selector             |   SHAP threshold (P20) : 1.314825
+2026-08-04 22:01:19 | INFO     | selector             |   Selected : 1
+2026-08-04 22:01:19 | INFO     | selector             |   Removed  : 0
+2026-08-04 22:01:19 | INFO     | selector             |   Top 15 SHAP scores:
+2026-08-04 22:01:19 | INFO     | selector             |     a                                             SHAP=1.314825
+2026-08-04 22:01:19 | INFO     | selector             | --------------------------------------------------
+2026-08-04 22:01:19 | INFO     | selector             | Stage 6: Stability Selection (n_bootstrap=50, frac=0.75, threshold=0.6)
+2026-08-04 22:01:24 | INFO     | selector             |   Input    : 1
+2026-08-04 22:01:24 | INFO     | selector             |   Selected : 1 (stability >= 0.6)
+2026-08-04 22:01:24 | INFO     | selector             |   Removed  : 0
+2026-08-04 22:01:24 | INFO     | selector             |   Top 15 stability scores:
+2026-08-04 22:01:24 | INFO     | selector             |     [✓] a                                           stability=1.0000

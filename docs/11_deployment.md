@@ -4,8 +4,41 @@
 
 ← [Back to README](../README.md)
 
-Build is complete and verified locally. **Connecting `share.streamlit.io` is the
-only remaining step and is left to the repository owner.**
+Build is complete and verified locally. The app is **deployed**.
+
+> ## ⚠ The app is currently PRIVATE — one setting away from being reviewable
+>
+> Every request to the deployed URL returns **HTTP 303** to
+> `share.streamlit.io/-/auth/app`, Streamlit's sign-in gateway. That includes
+> `/_stcore/health`. Only `/~/+/` (the static frontend bundle) answers 200, which
+> confirms the container is up and serving — **the app is running, it is just
+> gated.**
+>
+> **A reviewer following the README link hits a Google sign-in wall.** For an
+> artifact whose entire purpose is to be opened and checked by someone hostile to
+> its claims, that is worse than having no link: it looks like something is being
+> withheld.
+>
+> **Fix:** Streamlit Cloud dashboard → the app → **Settings → Sharing → Public**.
+> One toggle, no redeploy.
+>
+> Verify afterwards with:
+> ```bash
+> curl -sS -o /dev/null -w '%{http_code}\n' https://<app>.streamlit.app/_stcore/health
+> ```
+> **200** and a body of `ok` means public. **303** means still gated.
+
+### Where the URL lives
+
+The deployment URL appears **exactly once in the repository**: a reference-style
+link definition at the foot of `README.md`.
+
+```markdown
+[live-console]: https://<subdomain>.streamlit.app/
+```
+
+The header badge and section 9 both reference it as `[live-console]`. Changing
+subdomain is a **one-line edit**, and there is no second copy to forget.
 
 ---
 
@@ -130,6 +163,8 @@ Both would have failed on Community Cloud while working perfectly here.
 | `enableCORS` / `enableXsrfProtection` conflict | warning on every start; CORS setting silently ignored | the same test run |
 | Non-ASCII `print()` in a module's `__main__` | On Windows a **piped** stdout defaults to cp1252, so `evaluator.py` printing `Δ` raised `UnicodeEncodeError` and the stage exited non-zero **after** writing its artifact correctly. Invisible in a console, invisible on Linux CI — visible only when a Windows parent captures the pipe | `reproduce.py`, the first time the full chain was actually run end to end |
 
+| Deployed app private by default | every request 303s to a sign-in gateway; the app runs but no reviewer can see it | probing the URL rather than assuming a successful deploy is a reachable one |
+
 The third is the same shape as the hardcoded paths: **environment-dependent, and
 silent in the environment it was written in.** Fixed at the runner
 (`PYTHONIOENCODING=utf-8`, `PYTHONUTF8=1`, plus explicit `encoding=` on the
@@ -157,6 +192,28 @@ is the condition the deploy target actually imposes.
 | Evidence bundle matches its source artifacts | **IN_SYNC** |
 | `streamlit run app.py` boots headless | health `ok`, index HTTP 200 in 0.05 s |
 | CI job reproducing the deploy environment | `console` job added |
+
+## 6b. Verified on the live deployment
+
+| Check | Result |
+|---|---|
+| App container up and serving | **yes** — `/~/+/` returns HTTP 200 with the Streamlit bundle |
+| Reachable by an anonymous visitor | **NO** — `/` and `/_stcore/health` both 303 to the auth gateway |
+| Random-control toggle shows 0/6 against the 0.25 floor | **verified against the served data**, not in a browser |
+| Streamlit Cloud runtime logs | **not checked** — the dashboard is behind the owner's session |
+
+The toggle claim was checked the only way it could be without a browser: the
+deployed app reads the committed `app/demo_data/evidence.json`, so the values it
+will render are known. `regimes.random.firing_rates` is
+`{auc_drop 0.05, f1_drop 0.0, brier_increase 0.0, auc_slope_negative 0.15,
+prediction_drift 0.05, label_drift 0.0}`; the console's display convention marks
+a signal fired at a rate ≥ 0.5 across 20 seeds, so **all six render silent —
+0/6** — against `n_evidence_mean` **0.25 ± 0.55**, alert status `STABLE`, and an
+excess over floor of **−0.25**. The entry-cohort window shows **4/6** against a
+mean of 3.30.
+
+That is a check on the data and the code path, not on the rendered page. Stated
+as such rather than reported as a live confirmation.
 
 ## 7. What is NOT claimed
 
