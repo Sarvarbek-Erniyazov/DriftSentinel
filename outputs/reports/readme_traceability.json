@@ -3,7 +3,7 @@
   "title": "Every numeric claim in the README appears in a generated artifact",
   "why_not_a_generator": "The README is authored prose, not generated output, so 'regenerates identically' is not a property it has. The plan's acceptance criterion is traceability, which is checkable in the direction that matters: the README is checked AGAINST the artifacts, which is what a reviewer does by hand. A generator would only guarantee the README matches whatever the generator was told.",
   "n_artifacts_searched": 47,
-  "n_artifact_values": 19266,
+  "n_artifact_values": 19267,
   "n_numbers_found": 270,
   "n_traced": 246,
   "n_exempt": 24,

@@ -50,3 +50,11 @@
 2026-08-04 21:16:52 | INFO     | verify_readme_claims |   numbers: 270  traced 246  exempt 24  untraced 0
 2026-08-04 21:16:52 | INFO     | verify_readme_claims | VERDICT: PASS  |  Report: readme_traceability.json
 2026-08-04 21:16:52 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:25:28 | INFO     | verify_readme_claims | ===== RUN 20260804-212528-f5b83c | pid=9028 | started 2026-08-04 21:25:28 =====
+2026-08-04 21:25:28 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:25:28 | INFO     | verify_readme_claims | DriftSentinel — README numeric-claim traceability
+2026-08-04 21:25:28 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:25:28 | INFO     | verify_readme_claims |   corpus: 47 generated artifacts, 19,267 numeric values
+2026-08-04 21:25:28 | INFO     | verify_readme_claims |   numbers: 270  traced 246  exempt 24  untraced 0
+2026-08-04 21:25:28 | INFO     | verify_readme_claims | VERDICT: PASS  |  Report: readme_traceability.json
+2026-08-04 21:25:28 | INFO     | verify_readme_claims | ==============================================================================

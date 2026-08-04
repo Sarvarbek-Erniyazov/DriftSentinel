@@ -13,7 +13,7 @@ only remaining step and is left to the repository owner.**
 
 | Field | Value |
 |---|---|
-| Repository | `Sarvarbek13/DriftSentinel` |
+| Repository | `Sarvarbek-Erniyazov/DriftSentinel` |
 | Branch | `main` |
 | Main file path | `app.py` |
 | Python version | `3.12` |

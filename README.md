@@ -6,7 +6,7 @@
 
 ### Post-deployment reliability for a clinical prediction model — and a worked example of falsifying your own results
 
-[![CI](https://github.com/Sarvarbek13/DriftSentinel/actions/workflows/ci.yml/badge.svg)](https://github.com/Sarvarbek13/DriftSentinel/actions/workflows/ci.yml)
+[![CI](https://github.com/Sarvarbek-Erniyazov/DriftSentinel/actions/workflows/ci.yml/badge.svg)](https://github.com/Sarvarbek-Erniyazov/DriftSentinel/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://python.org)
 [![Determinism](https://img.shields.io/badge/determinism-24_artifacts_byte--identical-3FB950)](outputs/reports/determinism.json)
 [![Tests](https://img.shields.io/badge/tests-93_passing-3FB950)](tests/)
@@ -724,7 +724,7 @@ interpretable rather than ambiguous.
 ## Quick start
 
 ```bash
-git clone https://github.com/Sarvarbek13/DriftSentinel.git && cd DriftSentinel
+git clone https://github.com/Sarvarbek-Erniyazov/DriftSentinel.git && cd DriftSentinel
 
 pip install -r requirements.txt          # console only
 streamlit run app.py
