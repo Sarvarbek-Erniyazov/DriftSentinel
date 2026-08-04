@@ -6,13 +6,22 @@
 
 Build is complete and verified locally. The app is **deployed**.
 
-> ## ⚠ The app is currently PRIVATE — one setting away from being reviewable
+> ## ⚠ The app is STILL PRIVATE — the rename landed, the sharing setting did not
 >
-> Every request to the deployed URL returns **HTTP 303** to
-> `share.streamlit.io/-/auth/app`, Streamlit's sign-in gateway. That includes
-> `/_stcore/health`. Only `/~/+/` (the static frontend bundle) answers 200, which
-> confirms the container is up and serving — **the app is running, it is just
-> gated.**
+> **Re-measured 2026-08-04, after the subdomain was shortened to
+> `driftsentinel.streamlit.app`.** Three cache-busted requests six seconds apart,
+> against both `/` and `/_stcore/health`: **HTTP 303 →
+> `share.streamlit.io/-/auth/app` every time.**
+>
+> The rename itself worked, confirmed by two independent observations:
+> `driftsentinel.streamlit.app/~/+/` serves the 10,626-byte Streamlit bundle, and
+> the **old** subdomain's `/~/+/` now returns **404**. The app moved and the
+> container is up; only the viewer permission is unchanged.
+>
+> Streamlit exposes two settings that are easy to conflate — the app **URL** and
+> the app **viewer permissions**. Shortening the subdomain changes the first.
+> Public access is the second, and on a workspace with SSO enforced it can also be
+> overridden above the app level.
 >
 > **A reviewer following the README link hits a Google sign-in wall.** For an
 > artifact whose entire purpose is to be opened and checked by someone hostile to
@@ -24,9 +33,11 @@ Build is complete and verified locally. The app is **deployed**.
 >
 > Verify afterwards with:
 > ```bash
-> curl -sS -o /dev/null -w '%{http_code}\n' https://<app>.streamlit.app/_stcore/health
+> curl -sS -o /dev/null -w '%{http_code}\n' https://driftsentinel.streamlit.app/_stcore/health
 > ```
-> **200** and a body of `ok` means public. **303** means still gated.
+> **200** means public. **303** means still gated. Run it signed out, or in a
+> private window — signed in it returns 200 for the owner either way, which is
+> exactly how a private app comes to look public to the person who deployed it.
 
 ### Where the URL lives
 

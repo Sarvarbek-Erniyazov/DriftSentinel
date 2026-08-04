@@ -750,7 +750,7 @@ python src/monitoring/determinism.py --stage trainer   # byte-level determinism
      the link in section 9 both reference it as [live-console]. If the app moves
      to a different subdomain, this is the only line that changes.
      ───────────────────────────────────────────────────────────────────────── -->
-[live-console]: https://driftsentinel-wd3drnvwbcboqmfcvtanwg.streamlit.app/
+[live-console]: https://driftsentinel.streamlit.app/
 
 ## 12. References
 

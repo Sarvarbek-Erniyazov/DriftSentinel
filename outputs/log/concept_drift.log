@@ -17581,3 +17581,1189 @@
 2026-08-04 22:01:16 | INFO     | concept_drift        | ======================================================================
 2026-08-04 22:01:16 | INFO     | concept_drift        | Concept Drift Detection Complete — MILD
 2026-08-04 22:01:16 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | ===== RUN 20260804-221325-7f4416 | pid=30256 | started 2026-08-04 22:13:27 =====
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference  : t_ref  (1,200 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production : t_prod  (1,200 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:13:27 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        |   auc                   0.5724       0.5826   +0.0102 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   f1                    0.4346       0.4465   +0.0119 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   brier                 0.2794       0.2707   -0.0087 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_error            0.4839       0.4770   -0.0069 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   pos_rate              0.3142       0.3075   -0.0067 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_proba            0.5214       0.5076   -0.0138 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   precision             0.3453       0.3559   +0.0106 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   recall                0.5862       0.5989   +0.0127 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5713
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production windows mean AUC : 0.5807
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC trend across windows    : 0.558 → 0.583 → 0.533 → 0.572 → 0.611 → 0.571 → 0.579 → 0.558 → 0.569 → 0.626
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC slope (linear trend)    : +0.003792 (improving)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 5
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=488 (20.33% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error ref   : 0.4934
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error prod  : 0.4793
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   PH final value   : 0.1669
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref   mean proba : 0.5214
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod  mean proba : 0.5076
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta mean proba : -0.0138
+2026-08-04 22:13:27 | INFO     | concept_drift        |   KS stat/pval     : 0.0383 / 0.341327
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref  pos rate    : 0.3142
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod pos rate    : 0.3075
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta pos rate   : -0.0067 (-2.1% relative)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Two-proportion   : z=-0.353 p=7.242e-01
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Evidence signals (0/6 voting):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_slope_negative             ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:13:27 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : NONE
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC degradation       : -0.0102
+2026-08-04 22:13:27 | INFO     | concept_drift        |   F1  degradation       : -0.0119
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Brier increase        : -0.0087
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_sequential_signals_are_ne0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_sequential_signals_are_ne0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | Concept Drift Detection Complete — NONE
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference  : t_ref  (1,200 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production : t_prod  (1,200 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:13:27 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        |   auc                   0.5597       0.5595   -0.0002 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   f1                    0.4096       0.4134   +0.0038 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   brier                 0.2837       0.2788   -0.0049 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_error            0.4904       0.4871   -0.0033 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   pos_rate              0.2950       0.3125   +0.0175 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_proba            0.5218       0.5183   -0.0035 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   precision             0.3168       0.3276   +0.0108 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   recall                0.5791       0.5600   -0.0191 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5587
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production windows mean AUC : 0.5620
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC trend across windows    : 0.522 → 0.575 → 0.632 → 0.520 → 0.544 → 0.567 → 0.548 → 0.623 → 0.515 → 0.556
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC slope (linear trend)    : -0.000305 (declining)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 8
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=441 (18.38% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error ref   : 0.5067
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error prod  : 0.4871
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   PH final value   : 0.2149
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref   mean proba : 0.5218
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod  mean proba : 0.5183
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta mean proba : -0.0036
+2026-08-04 22:13:27 | INFO     | concept_drift        |   KS stat/pval     : 0.025 / 0.847702
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref  pos rate    : 0.295
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod pos rate    : 0.3125
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta pos rate   : +0.0175 (+5.9% relative)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Two-proportion   : z=+0.932 p=3.513e-01
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Evidence signals (0/6 voting):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_slope_negative             ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:13:27 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : NONE
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC degradation       : +0.0002
+2026-08-04 22:13:27 | INFO     | concept_drift        |   F1  degradation       : -0.0038
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Brier increase        : -0.0049
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_retired_signals_are_still0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_retired_signals_are_still0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | Concept Drift Detection Complete — NONE
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference  : t_ref  (1,200 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production : t_prod  (1,200 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:13:27 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        |   auc                   0.5851       0.5750   -0.0101 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   f1                    0.4488       0.4405   -0.0083 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   brier                 0.2764       0.2815   +0.0051 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_error            0.4808       0.4868   +0.0060 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   pos_rate              0.2942       0.3042   +0.0100 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_proba            0.5180       0.5255   +0.0075 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   precision             0.3439       0.3419   -0.0020 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   recall                0.6459       0.6192   -0.0267 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5875
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production windows mean AUC : 0.5712
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC trend across windows    : 0.589 → 0.611 → 0.603 → 0.549 → 0.586 → 0.621 → 0.567 → 0.528 → 0.519 → 0.621
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC slope (linear trend)    : -0.003895 (declining)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 6
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=399 (16.62% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error ref   : 0.4894
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error prod  : 0.4833
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   PH final value   : 0.7429
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref   mean proba : 0.518
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod  mean proba : 0.5255
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta mean proba : +0.0075
+2026-08-04 22:13:27 | INFO     | concept_drift        |   KS stat/pval     : 0.0283 / 0.721388
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref  pos rate    : 0.2942
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod pos rate    : 0.3042
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta pos rate   : +0.0100 (+3.4% relative)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Two-proportion   : z=+0.535 p=5.927e-01
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Evidence signals (1/6 voting):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_slope_negative             ✓ FIRED
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:13:27 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : MILD
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC degradation       : +0.0101
+2026-08-04 22:13:27 | INFO     | concept_drift        |   F1  degradation       : +0.0083
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Brier increase        : +0.0051
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_severity_boundaries_scale0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_severity_boundaries_scale0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | Concept Drift Detection Complete — MILD
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference  : t_ref  (4,000 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production : t_prod  (4,000 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:13:27 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        |   auc                   0.5510       0.5616   +0.0106 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   f1                    0.2036       0.1945   -0.0091 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   brier                 0.2886       0.2932   +0.0046 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_error            0.4950       0.4986   +0.0036 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   pos_rate              0.1123       0.1025   -0.0098 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_proba            0.5038       0.5088   +0.0050 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   precision             0.1244       0.1167   -0.0077 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   recall                0.5590       0.5829   +0.0239 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5500
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production windows mean AUC : 0.5621
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC trend across windows    : 0.564 → 0.566 → 0.539 → 0.552 → 0.529 → 0.636 → 0.529 → 0.577 → 0.533 → 0.534
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC slope (linear trend)    : -0.001577 (declining)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 38
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=234 (2.93% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error ref   : 0.5201
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error prod  : 0.4962
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   PH final value   : 1.1465
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref   mean proba : 0.5038
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod  mean proba : 0.5088
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta mean proba : +0.0049
+2026-08-04 22:13:27 | INFO     | concept_drift        |   KS stat/pval     : 0.0185 / 0.500411
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref  pos rate    : 0.1123
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod pos rate    : 0.1025
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta pos rate   : -0.0098 (-8.7% relative)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Two-proportion   : z=-1.408 p=1.590e-01
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Evidence signals (1/6 voting):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_slope_negative             ✓ FIRED
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:13:27 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : MILD
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC degradation       : -0.0106
+2026-08-04 22:13:27 | INFO     | concept_drift        |   F1  degradation       : +0.0091
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Brier increase        : +0.0046
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_no_label_shift_does_not_f0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_no_label_shift_does_not_f0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | Concept Drift Detection Complete — MILD
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference  : t_ref  (9,000 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production : t_prod  (9,000 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:13:27 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        |   auc                   0.5655       0.5712   +0.0057 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   f1                    0.2247       0.1816   -0.0431 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   brier                 0.2870       0.2900   +0.0030 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_error            0.4935       0.4963   +0.0028 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   pos_rate              0.1170       0.0916   -0.0254 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_proba            0.5042       0.5062   +0.0020 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   precision             0.1381       0.1070   -0.0311 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   recall                0.6030       0.6007   -0.0023 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5663
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production windows mean AUC : 0.5721
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC trend across windows    : 0.568 → 0.566 → 0.578 → 0.577 → 0.541 → 0.535 → 0.551 → 0.585 → 0.582 → 0.607
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC slope (linear trend)    : +0.002486 (improving)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 79
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=835 (4.64% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error ref   : 0.5146
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error prod  : 0.4947
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   PH final value   : 0.2994
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref   mean proba : 0.5042
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod  mean proba : 0.5062
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta mean proba : +0.0020
+2026-08-04 22:13:27 | INFO     | concept_drift        |   KS stat/pval     : 0.0093 / 0.827986
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref  pos rate    : 0.117
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod pos rate    : 0.0916
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta pos rate   : -0.0254 (-21.8% relative)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Two-proportion   : z=-5.585 p=2.338e-08
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Label drift      : True  (legacy absolute rule would say False)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Evidence signals (1/6 voting):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     label_drift                    ✓ FIRED
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_slope_negative             ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:13:27 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : MILD
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC degradation       : -0.0057
+2026-08-04 22:13:27 | INFO     | concept_drift        |   F1  degradation       : +0.0431
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Brier increase        : +0.0030
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_relative_shift_at_low_pre0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_relative_shift_at_low_pre0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | Concept Drift Detection Complete — MILD
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference  : t_ref  (60,000 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production : t_prod  (60,000 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:13:27 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        |   auc                   0.5710       0.5706   -0.0004 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   f1                    0.4345       0.4409   +0.0064 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   brier                 0.2778       0.2774   -0.0004 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_error            0.4838       0.4834   -0.0004 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   pos_rate              0.3010       0.3102   +0.0092 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_proba            0.5145       0.5150   +0.0005 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   precision             0.3417       0.3496   +0.0079 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   recall                0.5965       0.5970   +0.0005 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5710
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production windows mean AUC : 0.5705
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC trend across windows    : 0.579 → 0.565 → 0.571 → 0.579 → 0.561 → 0.569 → 0.561 → 0.583 → 0.570 → 0.570
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC slope (linear trend)    : -0.000183 (declining)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 266
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=308 (0.26% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error ref   : 0.4882
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error prod  : 0.4836
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   PH final value   : 2.6133
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref   mean proba : 0.5145
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod  mean proba : 0.515
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta mean proba : +0.0005
+2026-08-04 22:13:27 | INFO     | concept_drift        |   KS stat/pval     : 0.0045 / 0.581151
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref  pos rate    : 0.301
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod pos rate    : 0.3102
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta pos rate   : +0.0091 (+3.0% relative)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Two-proportion   : z=+3.428 p=6.086e-04
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Evidence signals (0/6 voting):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_slope_negative             ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:13:27 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : NONE
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC degradation       : +0.0004
+2026-08-04 22:13:27 | INFO     | concept_drift        |   F1  degradation       : -0.0064
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Brier increase        : -0.0004
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_significant_but_tiny_rela0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_significant_but_tiny_rela0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | Concept Drift Detection Complete — NONE
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference  : t_ref  (220 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production : t_prod  (220 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:13:27 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        |   auc                   0.5921       0.4981   -0.0940 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   f1                    0.2899       0.1460   -0.1439 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   brier                 0.2802       0.2919   +0.0117 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_error            0.4839       0.5008   +0.0169 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   pos_rate              0.1364       0.1136   -0.0228 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_proba            0.4982       0.5017   +0.0035 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   precision             0.1852       0.0893   -0.0959 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   recall                0.6667       0.4000   -0.2667 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5503
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production windows mean AUC : 0.5667
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC trend across windows    : 0.262 → 0.633 → 0.631 → 0.641 → 0.584 → 0.462 → 0.363 → 0.687 → 0.333 → 0.988
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC slope (linear trend)    : +0.022790 (improving)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 1
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=398 (90.45% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error ref   : 0.4837
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error prod  : 0.4995
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   PH final value   : 3.9168
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref   mean proba : 0.4982
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod  mean proba : 0.5017
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta mean proba : +0.0035
+2026-08-04 22:13:27 | INFO     | concept_drift        |   KS stat/pval     : 0.0636 / 0.765787
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref  pos rate    : 0.1364
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod pos rate    : 0.1136
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta pos rate   : -0.0227 (-16.7% relative)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Two-proportion   : z=-0.721 p=4.711e-01
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Evidence signals (3/6 voting):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_drop                       ✓ FIRED
+2026-08-04 22:13:27 | INFO     | concept_drift        |     f1_drop                        ✓ FIRED
+2026-08-04 22:13:27 | INFO     | concept_drift        |     brier_increase                 ✓ FIRED
+2026-08-04 22:13:27 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_slope_negative             ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:13:27 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : MODERATE
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC degradation       : +0.0940
+2026-08-04 22:13:27 | INFO     | concept_drift        |   F1  degradation       : +0.1439
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Brier increase        : +0.0117
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_large_relative_change_but0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_large_relative_change_but0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | Concept Drift Detection Complete — MODERATE
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference  : t_ref  (1,200 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production : t_prod  (1,200 rows)
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:13:27 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        |   auc                   0.5503       0.5423   -0.0080 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   f1                    0.4168       0.3967   -0.0201 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   brier                 0.2838       0.2856   +0.0018 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_error            0.4905       0.4917   +0.0012 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   pos_rate              0.2892       0.2967   +0.0075 ↑
+2026-08-04 22:13:27 | INFO     | concept_drift        |   mean_proba            0.5124       0.5109   -0.0015 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   precision             0.3228       0.3128   -0.0100 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        |   recall                0.5879       0.5421   -0.0458 ↓
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5498
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Production windows mean AUC : 0.5401
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC trend across windows    : 0.538 → 0.570 → 0.573 → 0.558 → 0.510 → 0.499 → 0.611 → 0.545 → 0.505 → 0.540
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC slope (linear trend)    : -0.002596 (declining)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 5
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=347 (14.46% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error ref   : 0.5017
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Mean error prod  : 0.4901
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:13:27 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:13:27 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   PH final value   : 2.0737
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref   mean proba : 0.5124
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod  mean proba : 0.5109
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta mean proba : -0.0015
+2026-08-04 22:13:27 | INFO     | concept_drift        |   KS stat/pval     : 0.02 / 0.970148
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Ref  pos rate    : 0.2892
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Prod pos rate    : 0.2967
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Delta pos rate   : +0.0075 (+2.6% relative)
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Two-proportion   : z=+0.404 p=6.865e-01
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:13:27 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:13:27 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Evidence signals (1/6 voting):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:13:27 | INFO     | concept_drift        |     auc_slope_negative             ✓ FIRED
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:13:27 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:13:27 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : MILD
+2026-08-04 22:13:27 | INFO     | concept_drift        |   AUC degradation       : +0.0080
+2026-08-04 22:13:27 | INFO     | concept_drift        |   F1  degradation       : +0.0201
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Brier increase        : +0.0018
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_rule_is_recorded_in_the_r0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:13:27 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-319\test_rule_is_recorded_in_the_r0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:13:27 | INFO     | concept_drift        | Concept Drift Detection Complete — MILD
+2026-08-04 22:13:27 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | ===== RUN 20260804-221437-0c28c3 | pid=3912 | started 2026-08-04 22:14:38 =====
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference  : t_ref  (1,200 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production : t_prod  (1,200 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:14:38 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        |   auc                   0.5724       0.5826   +0.0102 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   f1                    0.4346       0.4465   +0.0119 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   brier                 0.2794       0.2707   -0.0087 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_error            0.4839       0.4770   -0.0069 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   pos_rate              0.3142       0.3075   -0.0067 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_proba            0.5214       0.5076   -0.0138 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   precision             0.3453       0.3559   +0.0106 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   recall                0.5862       0.5989   +0.0127 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5713
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production windows mean AUC : 0.5807
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC trend across windows    : 0.558 → 0.583 → 0.533 → 0.572 → 0.611 → 0.571 → 0.579 → 0.558 → 0.569 → 0.626
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC slope (linear trend)    : +0.003792 (improving)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 5
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=488 (20.33% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error ref   : 0.4934
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error prod  : 0.4793
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   PH final value   : 0.1669
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Ref   mean proba : 0.5214
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prod  mean proba : 0.5076
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Delta mean proba : -0.0138
+2026-08-04 22:14:38 | INFO     | concept_drift        |   KS stat/pval     : 0.0383 / 0.341327
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Ref  pos rate    : 0.3142
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prod pos rate    : 0.3075
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Delta pos rate   : -0.0067 (-2.1% relative)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Two-proportion   : z=-0.353 p=7.242e-01
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Evidence signals (0/6 voting):
+2026-08-04 22:14:38 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     auc_slope_negative             ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:14:38 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:14:38 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:14:38 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : NONE
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC degradation       : -0.0102
+2026-08-04 22:14:38 | INFO     | concept_drift        |   F1  degradation       : -0.0119
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Brier increase        : -0.0087
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_sequential_signals_are_ne0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_sequential_signals_are_ne0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | Concept Drift Detection Complete — NONE
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference  : t_ref  (1,200 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production : t_prod  (1,200 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:14:38 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        |   auc                   0.5597       0.5595   -0.0002 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   f1                    0.4096       0.4134   +0.0038 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   brier                 0.2837       0.2788   -0.0049 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_error            0.4904       0.4871   -0.0033 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   pos_rate              0.2950       0.3125   +0.0175 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_proba            0.5218       0.5183   -0.0035 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   precision             0.3168       0.3276   +0.0108 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   recall                0.5791       0.5600   -0.0191 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5587
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production windows mean AUC : 0.5620
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC trend across windows    : 0.522 → 0.575 → 0.632 → 0.520 → 0.544 → 0.567 → 0.548 → 0.623 → 0.515 → 0.556
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC slope (linear trend)    : -0.000305 (declining)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 8
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=441 (18.38% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error ref   : 0.5067
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error prod  : 0.4871
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   PH final value   : 0.2149
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Ref   mean proba : 0.5218
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prod  mean proba : 0.5183
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Delta mean proba : -0.0036
+2026-08-04 22:14:38 | INFO     | concept_drift        |   KS stat/pval     : 0.025 / 0.847702
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Ref  pos rate    : 0.295
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prod pos rate    : 0.3125
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Delta pos rate   : +0.0175 (+5.9% relative)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Two-proportion   : z=+0.932 p=3.513e-01
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Evidence signals (0/6 voting):
+2026-08-04 22:14:38 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     auc_slope_negative             ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:14:38 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:14:38 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:14:38 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : NONE
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC degradation       : +0.0002
+2026-08-04 22:14:38 | INFO     | concept_drift        |   F1  degradation       : -0.0038
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Brier increase        : -0.0049
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_retired_signals_are_still0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_retired_signals_are_still0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | Concept Drift Detection Complete — NONE
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference  : t_ref  (1,200 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production : t_prod  (1,200 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:14:38 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        |   auc                   0.5851       0.5750   -0.0101 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   f1                    0.4488       0.4405   -0.0083 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   brier                 0.2764       0.2815   +0.0051 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_error            0.4808       0.4868   +0.0060 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   pos_rate              0.2942       0.3042   +0.0100 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_proba            0.5180       0.5255   +0.0075 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   precision             0.3439       0.3419   -0.0020 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   recall                0.6459       0.6192   -0.0267 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5875
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production windows mean AUC : 0.5712
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC trend across windows    : 0.589 → 0.611 → 0.603 → 0.549 → 0.586 → 0.621 → 0.567 → 0.528 → 0.519 → 0.621
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC slope (linear trend)    : -0.003895 (declining)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 6
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=399 (16.62% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error ref   : 0.4894
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error prod  : 0.4833
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   PH final value   : 0.7429
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Ref   mean proba : 0.518
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prod  mean proba : 0.5255
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Delta mean proba : +0.0075
+2026-08-04 22:14:38 | INFO     | concept_drift        |   KS stat/pval     : 0.0283 / 0.721388
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Ref  pos rate    : 0.2942
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prod pos rate    : 0.3042
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Delta pos rate   : +0.0100 (+3.4% relative)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Two-proportion   : z=+0.535 p=5.927e-01
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Evidence signals (1/6 voting):
+2026-08-04 22:14:38 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     auc_slope_negative             ✓ FIRED
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:14:38 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:14:38 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:14:38 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : MILD
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC degradation       : +0.0101
+2026-08-04 22:14:38 | INFO     | concept_drift        |   F1  degradation       : +0.0083
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Brier increase        : +0.0051
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_severity_boundaries_scale0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_severity_boundaries_scale0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | Concept Drift Detection Complete — MILD
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference  : t_ref  (4,000 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production : t_prod  (4,000 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:14:38 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        |   auc                   0.5510       0.5616   +0.0106 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   f1                    0.2036       0.1945   -0.0091 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   brier                 0.2886       0.2932   +0.0046 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_error            0.4950       0.4986   +0.0036 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   pos_rate              0.1123       0.1025   -0.0098 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_proba            0.5038       0.5088   +0.0050 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   precision             0.1244       0.1167   -0.0077 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   recall                0.5590       0.5829   +0.0239 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5500
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production windows mean AUC : 0.5621
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC trend across windows    : 0.564 → 0.566 → 0.539 → 0.552 → 0.529 → 0.636 → 0.529 → 0.577 → 0.533 → 0.534
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC slope (linear trend)    : -0.001577 (declining)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 38
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=234 (2.93% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error ref   : 0.5201
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error prod  : 0.4962
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   PH final value   : 1.1465
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Ref   mean proba : 0.5038
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prod  mean proba : 0.5088
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Delta mean proba : +0.0049
+2026-08-04 22:14:38 | INFO     | concept_drift        |   KS stat/pval     : 0.0185 / 0.500411
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Ref  pos rate    : 0.1123
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prod pos rate    : 0.1025
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Delta pos rate   : -0.0098 (-8.7% relative)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Two-proportion   : z=-1.408 p=1.590e-01
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Evidence signals (1/6 voting):
+2026-08-04 22:14:38 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     auc_slope_negative             ✓ FIRED
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:14:38 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:14:38 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:14:38 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : MILD
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC degradation       : -0.0106
+2026-08-04 22:14:38 | INFO     | concept_drift        |   F1  degradation       : +0.0091
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Brier increase        : +0.0046
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_no_label_shift_does_not_f0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_no_label_shift_does_not_f0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | Concept Drift Detection Complete — MILD
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference  : t_ref  (9,000 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production : t_prod  (9,000 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:14:38 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        |   auc                   0.5655       0.5712   +0.0057 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   f1                    0.2247       0.1816   -0.0431 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   brier                 0.2870       0.2900   +0.0030 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_error            0.4935       0.4963   +0.0028 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   pos_rate              0.1170       0.0916   -0.0254 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_proba            0.5042       0.5062   +0.0020 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   precision             0.1381       0.1070   -0.0311 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   recall                0.6030       0.6007   -0.0023 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5663
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production windows mean AUC : 0.5721
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC trend across windows    : 0.568 → 0.566 → 0.578 → 0.577 → 0.541 → 0.535 → 0.551 → 0.585 → 0.582 → 0.607
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC slope (linear trend)    : +0.002486 (improving)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 79
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=835 (4.64% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error ref   : 0.5146
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error prod  : 0.4947
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   PH final value   : 0.2994
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Ref   mean proba : 0.5042
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prod  mean proba : 0.5062
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Delta mean proba : +0.0020
+2026-08-04 22:14:38 | INFO     | concept_drift        |   KS stat/pval     : 0.0093 / 0.827986
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Ref  pos rate    : 0.117
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Prod pos rate    : 0.0916
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Delta pos rate   : -0.0254 (-21.8% relative)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Two-proportion   : z=-5.585 p=2.338e-08
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Label drift      : True  (legacy absolute rule would say False)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Evidence signals (1/6 voting):
+2026-08-04 22:14:38 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |     label_drift                    ✓ FIRED
+2026-08-04 22:14:38 | INFO     | concept_drift        |     auc_slope_negative             ✗ not fired
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:14:38 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:14:38 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:14:38 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : MILD
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC degradation       : -0.0057
+2026-08-04 22:14:38 | INFO     | concept_drift        |   F1  degradation       : +0.0431
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Brier increase        : +0.0030
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_relative_shift_at_low_pre0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_relative_shift_at_low_pre0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | Concept Drift Detection Complete — MILD
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference  : t_ref  (60,000 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production : t_prod  (60,000 rows)
+2026-08-04 22:14:38 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:14:38 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        |   auc                   0.5710       0.5706   -0.0004 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   f1                    0.4345       0.4409   +0.0064 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   brier                 0.2778       0.2774   -0.0004 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_error            0.4838       0.4834   -0.0004 ↓
+2026-08-04 22:14:38 | INFO     | concept_drift        |   pos_rate              0.3010       0.3102   +0.0092 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   mean_proba            0.5145       0.5150   +0.0005 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   precision             0.3417       0.3496   +0.0079 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        |   recall                0.5965       0.5970   +0.0005 ↑
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5710
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Production windows mean AUC : 0.5705
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC trend across windows    : 0.579 → 0.565 → 0.571 → 0.579 → 0.561 → 0.569 → 0.561 → 0.583 → 0.570 → 0.570
+2026-08-04 22:14:38 | INFO     | concept_drift        |   AUC slope (linear trend)    : -0.000183 (declining)
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:14:38 | INFO     | concept_drift        |   N alarms         : 266
+2026-08-04 22:14:38 | INFO     | concept_drift        |   First alarm at   : idx=308 (0.26% of stream)
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error ref   : 0.4882
+2026-08-04 22:14:38 | INFO     | concept_drift        |   Mean error prod  : 0.4836
+2026-08-04 22:14:38 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:38 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:14:39 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:14:39 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   PH final value   : 2.6133
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Ref   mean proba : 0.5145
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Prod  mean proba : 0.515
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Delta mean proba : +0.0005
+2026-08-04 22:14:39 | INFO     | concept_drift        |   KS stat/pval     : 0.0045 / 0.581151
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Ref  pos rate    : 0.301
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Prod pos rate    : 0.3102
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Delta pos rate   : +0.0091 (+3.0% relative)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Two-proportion   : z=+3.428 p=6.086e-04
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Evidence signals (0/6 voting):
+2026-08-04 22:14:39 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     auc_slope_negative             ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:14:39 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:14:39 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:14:39 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : NONE
+2026-08-04 22:14:39 | INFO     | concept_drift        |   AUC degradation       : +0.0004
+2026-08-04 22:14:39 | INFO     | concept_drift        |   F1  degradation       : -0.0064
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Brier increase        : -0.0004
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_significant_but_tiny_rela0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_significant_but_tiny_rela0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:14:39 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:39 | INFO     | concept_drift        | Concept Drift Detection Complete — NONE
+2026-08-04 22:14:39 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:39 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:39 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Reference  : t_ref  (220 rows)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Production : t_prod  (220 rows)
+2026-08-04 22:14:39 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:14:39 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        |   auc                   0.5921       0.4981   -0.0940 ↓
+2026-08-04 22:14:39 | INFO     | concept_drift        |   f1                    0.2899       0.1460   -0.1439 ↓
+2026-08-04 22:14:39 | INFO     | concept_drift        |   brier                 0.2802       0.2919   +0.0117 ↑
+2026-08-04 22:14:39 | INFO     | concept_drift        |   mean_error            0.4839       0.5008   +0.0169 ↑
+2026-08-04 22:14:39 | INFO     | concept_drift        |   pos_rate              0.1364       0.1136   -0.0228 ↓
+2026-08-04 22:14:39 | INFO     | concept_drift        |   mean_proba            0.4982       0.5017   +0.0035 ↑
+2026-08-04 22:14:39 | INFO     | concept_drift        |   precision             0.1852       0.0893   -0.0959 ↓
+2026-08-04 22:14:39 | INFO     | concept_drift        |   recall                0.6667       0.4000   -0.2667 ↓
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5503
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Production windows mean AUC : 0.5667
+2026-08-04 22:14:39 | INFO     | concept_drift        |   AUC trend across windows    : 0.262 → 0.633 → 0.631 → 0.641 → 0.584 → 0.462 → 0.363 → 0.687 → 0.333 → 0.988
+2026-08-04 22:14:39 | INFO     | concept_drift        |   AUC slope (linear trend)    : +0.022790 (improving)
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:14:39 | INFO     | concept_drift        |   N alarms         : 1
+2026-08-04 22:14:39 | INFO     | concept_drift        |   First alarm at   : idx=398 (90.45% of stream)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Mean error ref   : 0.4837
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Mean error prod  : 0.4995
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:14:39 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:14:39 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   PH final value   : 3.9168
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Ref   mean proba : 0.4982
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Prod  mean proba : 0.5017
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Delta mean proba : +0.0035
+2026-08-04 22:14:39 | INFO     | concept_drift        |   KS stat/pval     : 0.0636 / 0.765787
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Ref  pos rate    : 0.1364
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Prod pos rate    : 0.1136
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Delta pos rate   : -0.0227 (-16.7% relative)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Two-proportion   : z=-0.721 p=4.711e-01
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Evidence signals (3/6 voting):
+2026-08-04 22:14:39 | INFO     | concept_drift        |     auc_drop                       ✓ FIRED
+2026-08-04 22:14:39 | INFO     | concept_drift        |     f1_drop                        ✓ FIRED
+2026-08-04 22:14:39 | INFO     | concept_drift        |     brier_increase                 ✓ FIRED
+2026-08-04 22:14:39 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     auc_slope_negative             ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:14:39 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:14:39 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:14:39 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : MODERATE
+2026-08-04 22:14:39 | INFO     | concept_drift        |   AUC degradation       : +0.0940
+2026-08-04 22:14:39 | INFO     | concept_drift        |   F1  degradation       : +0.1439
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Brier increase        : +0.0117
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_large_relative_change_but0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_large_relative_change_but0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:14:39 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:39 | INFO     | concept_drift        | Concept Drift Detection Complete — MODERATE
+2026-08-04 22:14:39 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:39 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:39 | INFO     | concept_drift        | DriftSentinel — Concept Drift Detector
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Model      : test
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Reference  : t_ref  (1,200 rows)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Production : t_prod  (1,200 rows)
+2026-08-04 22:14:39 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 1: Reference vs Production Performance
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Metric             Reference   Production      Delta
+2026-08-04 22:14:39 | INFO     | concept_drift        |   ----------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        |   auc                   0.5503       0.5423   -0.0080 ↓
+2026-08-04 22:14:39 | INFO     | concept_drift        |   f1                    0.4168       0.3967   -0.0201 ↓
+2026-08-04 22:14:39 | INFO     | concept_drift        |   brier                 0.2838       0.2856   +0.0018 ↑
+2026-08-04 22:14:39 | INFO     | concept_drift        |   mean_error            0.4905       0.4917   +0.0012 ↑
+2026-08-04 22:14:39 | INFO     | concept_drift        |   pos_rate              0.2892       0.2967   +0.0075 ↑
+2026-08-04 22:14:39 | INFO     | concept_drift        |   mean_proba            0.5124       0.5109   -0.0015 ↓
+2026-08-04 22:14:39 | INFO     | concept_drift        |   precision             0.3228       0.3128   -0.0100 ↓
+2026-08-04 22:14:39 | INFO     | concept_drift        |   recall                0.5879       0.5421   -0.0458 ↓
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 2: Sliding Window Performance (5 windows)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Reference windows mean AUC  : 0.5498
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Production windows mean AUC : 0.5401
+2026-08-04 22:14:39 | INFO     | concept_drift        |   AUC trend across windows    : 0.538 → 0.570 → 0.573 → 0.558 → 0.510 → 0.499 → 0.611 → 0.545 → 0.505 → 0.540
+2026-08-04 22:14:39 | INFO     | concept_drift        |   AUC slope (linear trend)    : -0.002596 (declining)
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 3: CUSUM Sequential Test
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Drift detected   : True
+2026-08-04 22:14:39 | INFO     | concept_drift        |   N alarms         : 5
+2026-08-04 22:14:39 | INFO     | concept_drift        |   First alarm at   : idx=347 (14.46% of stream)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Mean error ref   : 0.5017
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Mean error prod  : 0.4901
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 4: Page-Hinkley Sequential Test
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Drift detected   : False
+2026-08-04 22:14:39 | INFO     | concept_drift        |   N alarms         : 0
+2026-08-04 22:14:39 | INFO     | concept_drift        |   First alarm at   : idx=None (None% of stream)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   PH final value   : 2.0737
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 5: Prediction Distribution Shift
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Ref   mean proba : 0.5124
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Prod  mean proba : 0.5109
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Delta mean proba : -0.0015
+2026-08-04 22:14:39 | INFO     | concept_drift        |   KS stat/pval     : 0.02 / 0.970148
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Prediction drift : False
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 6: Label Distribution Shift (P(Y) change)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Ref  pos rate    : 0.2892
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Prod pos rate    : 0.2967
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Delta pos rate   : +0.0075 (+2.6% relative)
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Two-proportion   : z=+0.404 p=6.865e-01
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Label drift      : False  (legacy absolute rule would say False)
+2026-08-04 22:14:39 | INFO     | concept_drift        | --------------------------------------------------
+2026-08-04 22:14:39 | INFO     | concept_drift        | Step 7: Concept Drift Verdict
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Evidence signals (1/6 voting):
+2026-08-04 22:14:39 | INFO     | concept_drift        |     auc_drop                       ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     f1_drop                        ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     brier_increase                 ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     prediction_drift               ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     label_drift                    ✗ not fired
+2026-08-04 22:14:39 | INFO     | concept_drift        |     auc_slope_negative             ✓ FIRED
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Diagnostics (NOT evidence — structurally broken, Tier 1.5):
+2026-08-04 22:14:39 | INFO     | concept_drift        |     cusum_alarm                    fired  [excluded from the count]
+2026-08-04 22:14:39 | INFO     | concept_drift        |     ph_alarm                       silent  [excluded from the count]
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Severity boundaries: CRITICAL >= 4, MODERATE >= 3 (fractions {'critical': 0.625, 'moderate': 0.375} of 6 voting signals)
+2026-08-04 22:14:39 | INFO     | concept_drift        | 
+  CONCEPT DRIFT VERDICT : MILD
+2026-08-04 22:14:39 | INFO     | concept_drift        |   AUC degradation       : +0.0080
+2026-08-04 22:14:39 | INFO     | concept_drift        |   F1  degradation       : +0.0201
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Brier increase        : +0.0018
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Concept drift report: C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_rule_is_recorded_in_the_r0\concept_drift_t_ref_t_prod.json
+2026-08-04 22:14:39 | INFO     | concept_drift        |   Sliding windows CSV : C:\Users\sharg\AppData\Local\Temp\pytest-of-sharg\pytest-320\test_rule_is_recorded_in_the_r0\sliding_windows_t_ref_t_prod.csv
+2026-08-04 22:14:39 | INFO     | concept_drift        | ======================================================================
+2026-08-04 22:14:39 | INFO     | concept_drift        | Concept Drift Detection Complete — MILD
+2026-08-04 22:14:39 | INFO     | concept_drift        | ======================================================================
