@@ -104,3 +104,30 @@ UnicodeEncodeError: 'charmap' codec can't encode character '\u0394' in position 
 2026-08-04 21:12:49 | INFO     | reproduce            | PASS — 6/6 stages in 248.95s
 2026-08-04 21:12:49 | INFO     | reproduce            | Report: reproduce_run.json
 2026-08-04 21:12:49 | INFO     | reproduce            | ==============================================================================
+2026-08-04 21:51:20 | INFO     | reproduce            | ===== RUN 20260804-215120-32cc0f | pid=8432 | started 2026-08-04 21:51:20 =====
+2026-08-04 21:51:20 | INFO     | reproduce            | ==============================================================================
+2026-08-04 21:51:20 | INFO     | reproduce            | DriftSentinel — rebuild the core artifact chain from raw data
+2026-08-04 21:51:20 | INFO     | reproduce            | ==============================================================================
+2026-08-04 21:51:20 | INFO     | reproduce            | Raw input: data/raw/diabetes_hospital/diabetic_data.csv
+2026-08-04 21:51:20 | INFO     | reproduce            | > src/pipelines/pipeline.py
+2026-08-04 21:51:20 | INFO     | reproduce            |     produces: splits, label encoders, FE stats, fitted selector, *_fs.parquet, production windows
+2026-08-04 21:52:25 | INFO     | reproduce            |   OK    src/pipelines/pipeline.py  (64.55s)
+2026-08-04 21:52:25 | INFO     | reproduce            | > src/models/trainer.py
+2026-08-04 21:52:25 | INFO     | reproduce            |     produces: lgbm_v1.pkl, logreg_v1.pkl, logreg_scaler.pkl, training_summary.json
+2026-08-04 21:53:12 | INFO     | reproduce            |   OK    src/models/trainer.py  (47.23s)
+2026-08-04 21:53:12 | INFO     | reproduce            | > src/models/evaluator.py
+2026-08-04 21:53:12 | INFO     | reproduce            |     produces: evaluation_report.json and the operating-point figures
+2026-08-04 21:53:16 | INFO     | reproduce            |   OK    src/models/evaluator.py  (4.22s)
+2026-08-04 21:53:16 | INFO     | reproduce            | > src/uncertainty/calibration.py
+2026-08-04 21:53:16 | INFO     | reproduce            |     produces: isotonic and temperature calibrators, calibration report
+2026-08-04 21:53:18 | INFO     | reproduce            |   OK    src/uncertainty/calibration.py  (2.19s)
+2026-08-04 21:53:18 | INFO     | reproduce            | > src/uncertainty/quantifier.py
+2026-08-04 21:53:18 | INFO     | reproduce            |     produces: conformal predictor and coverage report
+2026-08-04 21:53:21 | INFO     | reproduce            |   OK    src/uncertainty/quantifier.py  (2.61s)
+2026-08-04 21:53:21 | INFO     | reproduce            | > src/models/registry.py
+2026-08-04 21:53:21 | INFO     | reproduce            |     produces: model_registry.json, registry_history.csv, lgbm_v2.pkl, model_comparison.json
+2026-08-04 21:53:40 | INFO     | reproduce            |   OK    src/models/registry.py  (18.4s)
+2026-08-04 21:53:40 | INFO     | reproduce            | --------------------------------------------------------------
+2026-08-04 21:53:40 | INFO     | reproduce            | PASS — 6/6 stages in 139.21s
+2026-08-04 21:53:40 | INFO     | reproduce            | Report: reproduce_run.json
+2026-08-04 21:53:40 | INFO     | reproduce            | ==============================================================================

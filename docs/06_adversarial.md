@@ -166,4 +166,8 @@ most informative single statistic is **L5 Ensemble Agreement, AUC 0.638**.
 
 ---
 
-[→ Monitoring](07_monitoring.md)
+[→ Model Card](08_model_card.md) · [→ Literature Positioning](07_literature_positioning.md)
+
+*(This previously linked to `07_monitoring.md`, which never existed — a
+dangling next-page link from the original build. The monitoring content it
+promised is the console and the engineering section of the README.)*

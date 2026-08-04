@@ -2475,3 +2475,121 @@
 2026-08-04 21:08:44 | INFO     | validator            |   FAIL  : 0
 2026-08-04 21:08:44 | WARNING  | validator            | Validation passed with 2 warning(s) — review before proceeding
 2026-08-04 21:08:44 | INFO     | validator            | ======================================================================
+2026-08-04 21:51:23 | INFO     | validator            | ===== RUN 20260804-215121-72702a | pid=29620 | started 2026-08-04 21:51:23 =====
+2026-08-04 21:51:23 | INFO     | validator            | ======================================================================
+2026-08-04 21:51:23 | INFO     | validator            | DriftSentinel — Data Validator
+2026-08-04 21:51:23 | INFO     | validator            | ======================================================================
+2026-08-04 21:51:23 | INFO     | validator            | --------------------------------------------------
+2026-08-04 21:51:23 | INFO     | validator            | 1. Shape & Memory
+2026-08-04 21:51:23 | INFO     | validator            |   [PASS]  row_count                                     101,766 rows (expected 101,766)
+2026-08-04 21:51:23 | INFO     | validator            |   [PASS]  column_count                                  50 columns (expected 50)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  memory_usage                                  189.56 MB
+2026-08-04 21:51:24 | INFO     | validator            | --------------------------------------------------
+2026-08-04 21:51:24 | INFO     | validator            | 2. Column Presence
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  required_columns_present                      missing=none
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  unexpected_columns                            extra=none
+2026-08-04 21:51:24 | INFO     | validator            | --------------------------------------------------
+2026-08-04 21:51:24 | INFO     | validator            | 3. Dtype Validation
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_encounter_id                            int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_patient_nbr                             int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_admission_type_id                       int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_discharge_disposition_id                int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_admission_source_id                     int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_time_in_hospital                        int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_num_lab_procedures                      int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_num_procedures                          int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_num_medications                         int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_number_outpatient                       int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_number_emergency                        int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_number_inpatient                        int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_number_diagnoses                        int64 (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_race                                    object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_gender                                  object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_age                                     object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_weight                                  object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_payer_code                              object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_medical_specialty                       object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_max_glu_serum                           object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_A1Cresult                               object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_change                                  object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_diabetesMed                             object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_readmitted                              object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_diag_1                                  object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_diag_2                                  object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_diag_3                                  object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_metformin                               object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_repaglinide                             object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_nateglinide                             object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_chlorpropamide                          object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_glimepiride                             object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_acetohexamide                           object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_glipizide                               object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_glyburide                               object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_tolbutamide                             object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_pioglitazone                            object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_rosiglitazone                           object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_acarbose                                object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_miglitol                                object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_troglitazone                            object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_tolazamide                              object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_examide                                 object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_citoglipton                             object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_insulin                                 object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_glyburide-metformin                     object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_glipizide-metformin                     object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_glimepiride-pioglitazone                object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_metformin-rosiglitazone                 object (OK)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  dtype_metformin-pioglitazone                  object (OK)
+2026-08-04 21:51:24 | INFO     | validator            | --------------------------------------------------
+2026-08-04 21:51:24 | INFO     | validator            | 4. Null Value Audit
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  target_null_free                              readmitted nulls=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  medication_null_free                          total medication nulls=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  numeric_null_free                             total numeric nulls=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  expected_missing_weight                       null=96.9% (expected ~96%)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  expected_missing_max_glu_serum                null=94.7% (expected ~94%)
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  expected_missing_A1Cresult                    null=83.3% (expected ~83%)
+2026-08-04 21:51:24 | INFO     | validator            | --------------------------------------------------
+2026-08-04 21:51:24 | INFO     | validator            | 5. Clinical Range Validation
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_time_in_hospital                        [1, 14]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_num_lab_procedures                      [1, 132]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_num_procedures                          [0, 6]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_num_medications                         [1, 81]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_number_outpatient                       [0, 42]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_number_emergency                        [0, 76]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_number_inpatient                        [0, 21]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_number_diagnoses                        [1, 16]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_admission_type_id                       [1, 8]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_discharge_disposition_id                [1, 28]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  range_admission_source_id                     [1, 26]  out_of_range=0
+2026-08-04 21:51:24 | INFO     | validator            | --------------------------------------------------
+2026-08-04 21:51:24 | INFO     | validator            | 6. Categorical Value Integrity
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  target_values                                 found={'<30', '>30', 'NO'}
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  gender_values                                 found={'Unknown/Invalid', 'Female', 'Male'}
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  change_values                                 found={'Ch', 'No'}
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  diabetesMed_values                            found={'No', 'Yes'}
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  age_bin_values                                unexpected=none
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  medication_value_sets                         violations=none
+2026-08-04 21:51:24 | INFO     | validator            | --------------------------------------------------
+2026-08-04 21:51:24 | INFO     | validator            | 7. Zero-Variance Detection
+2026-08-04 21:51:24 | WARNING  | validator            |   [WARN]  zero_variance_medication_cols                 cols=['examide', 'citoglipton']  count=2
+2026-08-04 21:51:24 | INFO     | validator            | --------------------------------------------------
+2026-08-04 21:51:24 | INFO     | validator            | 8. Duplicate Integrity
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  encounter_id_unique                           duplicates=0
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  patient_nbr_multi_visit                       unique_patients=71,518  multi_visit=16,773 (23.5%)
+2026-08-04 21:51:24 | INFO     | validator            | --------------------------------------------------
+2026-08-04 21:51:24 | INFO     | validator            | 9. encounter_id Monotonicity (drift split prerequisite)
+2026-08-04 21:51:24 | WARNING  | validator            |   [WARN]  encounter_id_monotonic                        monotonic_increasing=False (informational; the split is by patient ENTRY COHORT and does not require this)
+2026-08-04 21:51:24 | INFO     | validator            |   encounter_id range: 12,522 — 443,867,222
+2026-08-04 21:51:24 | INFO     | validator            | --------------------------------------------------
+2026-08-04 21:51:24 | INFO     | validator            | 10. Target Class Balance
+2026-08-04 21:51:24 | INFO     | validator            |   NO    : 53.91%
+2026-08-04 21:51:24 | INFO     | validator            |   >30   : 34.93%
+2026-08-04 21:51:24 | INFO     | validator            |   <30   : 11.16%
+2026-08-04 21:51:24 | INFO     | validator            |   [PASS]  target_minority_class                         minority=11.16% (manageable)
+2026-08-04 21:51:24 | INFO     | validator            | ======================================================================
+2026-08-04 21:51:24 | INFO     | validator            | Validation Summary
+2026-08-04 21:51:24 | INFO     | validator            |   PASS  : 81
+2026-08-04 21:51:24 | INFO     | validator            |   WARN  : 2
+2026-08-04 21:51:24 | INFO     | validator            |   FAIL  : 0
+2026-08-04 21:51:24 | WARNING  | validator            | Validation passed with 2 warning(s) — review before proceeding
+2026-08-04 21:51:24 | INFO     | validator            | ======================================================================

@@ -91,3 +91,14 @@
 2026-08-04 21:16:52 | INFO     | demo_bundle          |   IN_SYNC  label_interval   <- temporal_validity.json
 2026-08-04 21:16:52 | INFO     | demo_bundle          | VERDICT: IN_SYNC  |  Report: demo_bundle_sync.json
 2026-08-04 21:16:52 | INFO     | demo_bundle          | ==============================================================================
+2026-08-04 21:54:23 | INFO     | demo_bundle          | ===== RUN 20260804-215423-6302df | pid=7344 | started 2026-08-04 21:54:23 =====
+2026-08-04 21:54:23 | INFO     | demo_bundle          | ==============================================================================
+2026-08-04 21:54:23 | INFO     | demo_bundle          | DriftSentinel — demo bundle verify
+2026-08-04 21:54:23 | INFO     | demo_bundle          | ==============================================================================
+2026-08-04 21:54:23 | INFO     | demo_bundle          |   IN_SYNC  fairness         <- fairness_audit.json
+2026-08-04 21:54:23 | INFO     | demo_bundle          |   IN_SYNC  verdict          <- temporal_validity.json
+2026-08-04 21:54:23 | INFO     | demo_bundle          |   IN_SYNC  anchors          <- temporal_validity.json
+2026-08-04 21:54:23 | INFO     | demo_bundle          |   IN_SYNC  multivariate     <- multivariate_drift.json
+2026-08-04 21:54:23 | INFO     | demo_bundle          |   IN_SYNC  label_interval   <- temporal_validity.json
+2026-08-04 21:54:23 | INFO     | demo_bundle          | VERDICT: IN_SYNC  |  Report: demo_bundle_sync.json
+2026-08-04 21:54:23 | INFO     | demo_bundle          | ==============================================================================

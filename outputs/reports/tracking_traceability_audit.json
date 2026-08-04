@@ -5,7 +5,7 @@
   "checks": {
     "T2_reports_record_seed_and_versions": {
       "requirement": "T2 \u2014 every report records seed and package versions",
-      "n_reports": 22,
+      "n_reports": 23,
       "n_exempt_by_nature": 2,
       "exempt": [
         {
@@ -17,8 +17,8 @@
           "reason": "an inventory of string occurrences; same"
         }
       ],
-      "n_checkable": 20,
-      "n_with_reproducibility_block": 19,
+      "n_checkable": 21,
+      "n_with_reproducibility_block": 20,
       "missing": [
         {
           "artifact": "threshold_policy_lgbm_v1.json",
@@ -29,10 +29,10 @@
     },
     "T3_predecessors_preserved": {
       "requirement": "T3 \u2014 superseding an artifact preserves its predecessor",
-      "n_preserved_files": 96,
+      "n_preserved_files": 97,
       "by_directory": {
         "superseded": 9,
-        "auto": 37,
+        "auto": 38,
         "tier0_8signal": 8,
         "tier2a_merged_target": 34,
         "tier2c5_registry_hardcoded_params": 4,
@@ -42,7 +42,7 @@
       "deepest_histories": [
         [
           "pipeline_summary.json",
-          8
+          9
         ],
         [
           "defense_report_lgbm_v1.json",

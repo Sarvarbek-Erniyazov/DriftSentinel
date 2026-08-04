@@ -16,8 +16,8 @@
 #      job is green" cannot be mistaken for "the code is clean".
 #
 # The alternative — selecting a rule subset that happens to pass and calling it
-# lint — is the anti-pattern this remediation exists to remove (CLAUDE.md: no
-# quality gate tuned to produce a desired output).
+# lint — is the anti-pattern this remediation exists to remove: no quality gate
+# may be tuned to produce a desired output.
 
 line-length = 100
 target-version = "py312"

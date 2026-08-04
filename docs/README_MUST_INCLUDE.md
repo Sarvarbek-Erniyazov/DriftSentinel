@@ -60,8 +60,7 @@ Related, same section:
 
 ## R-2 — The original split assumption was untested, not correct (Tier 0)
 
-Already applied to CLAUDE.md; must also appear in the README's scientific-story
-section. "Right by accident" is a process finding, not a retroactive
+Must appear in the README's scientific-story section. "Right by accident" is a process finding, not a retroactive
 justification, and must not be softened.
 
 ---

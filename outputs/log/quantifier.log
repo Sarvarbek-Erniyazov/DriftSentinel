@@ -453,3 +453,79 @@
 2026-08-04 21:12:11 | INFO     | quantifier           |   Drift signals     : 2/9
 2026-08-04 21:12:11 | INFO     | quantifier           |   Next: threshold.py
 2026-08-04 21:12:11 | INFO     | quantifier           | ======================================================================
+2026-08-04 21:53:20 | INFO     | quantifier           | ===== RUN 20260804-215320-b2e186 | pid=20052 | started 2026-08-04 21:53:20 =====
+2026-08-04 21:53:20 | INFO     | quantifier           | ======================================================================
+2026-08-04 21:53:20 | INFO     | quantifier           | DriftSentinel — Conformal Prediction Quantifier
+2026-08-04 21:53:20 | INFO     | quantifier           | ======================================================================
+2026-08-04 21:53:20 | INFO     | quantifier           |   Calibrated probabilities loaded
+2026-08-04 21:53:20 | INFO     | quantifier           |   Val  mean proba: 0.1056
+2026-08-04 21:53:20 | INFO     | quantifier           |   Test mean proba: 0.0961
+2026-08-04 21:53:20 | INFO     | quantifier           | 
+==================================================
+2026-08-04 21:53:20 | INFO     | quantifier           | Step 1: Multi-alpha Conformal Prediction
+2026-08-04 21:53:20 | INFO     | quantifier           | ==================================================
+2026-08-04 21:53:20 | INFO     | quantifier           |   Fitting 3 alpha × 3 method = 9 predictors
+2026-08-04 21:53:20 | INFO     | quantifier           |     [thr_a05] q_hat=0.8753  target_cov=95%
+2026-08-04 21:53:20 | INFO     | quantifier           |     [thr_a10] q_hat=0.7649  target_cov=90%
+2026-08-04 21:53:20 | INFO     | quantifier           |     [thr_a20] q_hat=0.1795  target_cov=80%
+2026-08-04 21:53:20 | INFO     | quantifier           |     [lac_a05] q_hat=0.8753  target_cov=95%
+2026-08-04 21:53:20 | INFO     | quantifier           |     [lac_a10] q_hat=0.7649  target_cov=90%
+2026-08-04 21:53:20 | INFO     | quantifier           |     [lac_a20] q_hat=0.1795  target_cov=80%
+2026-08-04 21:53:20 | INFO     | quantifier           |     [aps_a05] q_hat=1.0000  target_cov=95%
+2026-08-04 21:53:20 | INFO     | quantifier           |     [aps_a10] q_hat=1.0000  target_cov=90%
+2026-08-04 21:53:20 | INFO     | quantifier           |     [aps_a20] q_hat=0.9591  target_cov=80%
+2026-08-04 21:53:20 | INFO     | quantifier           | 
+  Coverage results on TEST split:
+2026-08-04 21:53:20 | INFO     | quantifier           |   Key            Target  Empirical      Gap  SetSize  Satisfied
+2026-08-04 21:53:20 | INFO     | quantifier           |   ------------------------------------------------------------
+2026-08-04 21:53:20 | INFO     | quantifier           |   aps_a05         0.950      1.000   +0.050    2.000          ✓
+2026-08-04 21:53:20 | INFO     | quantifier           |   aps_a10         0.900      1.000   +0.100    2.000          ✓
+2026-08-04 21:53:20 | INFO     | quantifier           |   aps_a20         0.800      0.999   +0.199    1.956          ✓
+2026-08-04 21:53:20 | INFO     | quantifier           |   lac_a05         0.950      0.947   -0.003    1.240 ✗ VIOLATED
+2026-08-04 21:53:20 | INFO     | quantifier           |   lac_a10         0.900      0.917   +0.017    1.017          ✓
+2026-08-04 21:53:20 | INFO     | quantifier           |   lac_a20         0.800      0.877   +0.077    0.955          ✓
+2026-08-04 21:53:20 | INFO     | quantifier           |   thr_a05         0.950      0.947   -0.003    1.240 ✗ VIOLATED
+2026-08-04 21:53:20 | INFO     | quantifier           |   thr_a10         0.900      0.917   +0.017    1.017          ✓
+2026-08-04 21:53:20 | INFO     | quantifier           |   thr_a20         0.800      0.877   +0.077    0.955          ✓
+2026-08-04 21:53:20 | INFO     | quantifier           | 
+==================================================
+2026-08-04 21:53:20 | INFO     | quantifier           | Step 2: Coverage Drift Analysis (val vs test)
+2026-08-04 21:53:20 | INFO     | quantifier           | ==================================================
+2026-08-04 21:53:20 | INFO     | quantifier           | 
+  Key           Val_cov  Test_cov    Delta  Guaranteed  DriftSignal
+2026-08-04 21:53:20 | INFO     | quantifier           |   -----------------------------------------------------------------
+2026-08-04 21:53:20 | INFO     | quantifier           |   thr_a05         0.950     0.947   -0.003 NO VIOLATED        DRIFT
+2026-08-04 21:53:20 | INFO     | quantifier           |   thr_a10         0.902     0.917   +0.015         YES       stable
+2026-08-04 21:53:20 | INFO     | quantifier           |   thr_a20         0.847     0.877   +0.031         YES       stable
+2026-08-04 21:53:20 | INFO     | quantifier           |   lac_a05         0.950     0.947   -0.003 NO VIOLATED        DRIFT
+2026-08-04 21:53:20 | INFO     | quantifier           |   lac_a10         0.902     0.917   +0.015         YES       stable
+2026-08-04 21:53:20 | INFO     | quantifier           |   lac_a20         0.847     0.877   +0.031         YES       stable
+2026-08-04 21:53:20 | INFO     | quantifier           |   aps_a05         1.000     1.000   +0.000         YES       stable
+2026-08-04 21:53:20 | INFO     | quantifier           |   aps_a10         1.000     1.000   +0.000         YES       stable
+2026-08-04 21:53:20 | INFO     | quantifier           |   aps_a20         0.999     0.999   -0.000         YES       stable
+2026-08-04 21:53:20 | INFO     | quantifier           | 
+==================================================
+2026-08-04 21:53:20 | INFO     | quantifier           | Step 3: Single Patient Prediction Example
+2026-08-04 21:53:20 | INFO     | quantifier           | ==================================================
+2026-08-04 21:53:20 | INFO     | quantifier           |   p=0.25 → set=['NO readmission', 'READMISSION']  certain=False  With 90% coverage guarantee: UNCERTAIN — both outcomes possible
+2026-08-04 21:53:20 | INFO     | quantifier           |   p=0.45 → set=['NO readmission', 'READMISSION']  certain=False  With 90% coverage guarantee: UNCERTAIN — both outcomes possible
+2026-08-04 21:53:20 | INFO     | quantifier           |   p=0.55 → set=['NO readmission', 'READMISSION']  certain=False  With 90% coverage guarantee: UNCERTAIN — both outcomes possible
+2026-08-04 21:53:20 | INFO     | quantifier           |   p=0.75 → set=['NO readmission', 'READMISSION']  certain=False  With 90% coverage guarantee: UNCERTAIN — both outcomes possible
+2026-08-04 21:53:20 | INFO     | quantifier           |   p=0.90 → set=['READMISSION']  certain=True  With 90% coverage guarantee: CERTAIN — READMISSION
+2026-08-04 21:53:20 | INFO     | quantifier           | 
+==================================================
+2026-08-04 21:53:20 | INFO     | quantifier           | Step 4: Generating plots
+2026-08-04 21:53:20 | INFO     | quantifier           | ==================================================
+2026-08-04 21:53:21 | INFO     | quantifier           |   Saved: 26_conformal_coverage_lgbm_v1.png
+2026-08-04 21:53:21 | INFO     | quantifier           |   Saved: 27_coverage_drift_lgbm_v1.png
+2026-08-04 21:53:21 | INFO     | quantifier           | 
+  Conformal predictor saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\conformal_predictor_lgbm_v1.pkl
+2026-08-04 21:53:21 | INFO     | quantifier           |   Conformal report saved: C:\Users\sharg\Desktop\github\DriftSentinel\outputs\log\conformal_report_lgbm_v1.json
+2026-08-04 21:53:21 | INFO     | quantifier           | ======================================================================
+2026-08-04 21:53:21 | INFO     | quantifier           | Conformal Prediction Complete
+2026-08-04 21:53:21 | INFO     | quantifier           |   THR 90% coverage  : 0.9168 (target=0.90)
+2026-08-04 21:53:21 | INFO     | quantifier           |   Coverage gap      : +0.0168
+2026-08-04 21:53:21 | INFO     | quantifier           |   Mean set size     : 1.0174
+2026-08-04 21:53:21 | INFO     | quantifier           |   Drift signals     : 2/9
+2026-08-04 21:53:21 | INFO     | quantifier           |   Next: threshold.py
+2026-08-04 21:53:21 | INFO     | quantifier           | ======================================================================

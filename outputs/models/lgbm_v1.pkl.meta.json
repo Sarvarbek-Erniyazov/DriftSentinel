@@ -1,6 +1,6 @@
 {
   "artifact": "lgbm_v1.pkl",
-  "created_at": "2026-08-04T21:11:54",
+  "created_at": "2026-08-04T21:53:08",
   "class": "lightgbm.sklearn.LGBMClassifier",
   "versions": {
     "python": "3.12.10",
@@ -10,7 +10,7 @@
     "scikit-learn": "1.9.0",
     "lightgbm": "4.7.0"
   },
-  "git_commit": "cb12747f6f7d36cdfbba2c356aa3b066a0c9191b",
+  "git_commit": "bf2873186727b48c479eace82a0080f28aaed533",
   "sha256": "c144618239cd126bf212e2c286eacc6d86047726a7a18e84ffe2afcc10c4f138",
   "serializer": "pickle",
   "model_name": "lgbm_v1",

@@ -10,8 +10,8 @@ WHY
         a scratch directory in src/investigation/split_regimes.py)
       * did overwrite `outputs/log/concept_drift_val_test.json` during Tier 1.5
         verification; the original was recovered from git
-      * makes the CLAUDE.md preservation rule ("never delete evidence of the
-        original framing") unenforceable, because the code deletes it silently
+      * makes the preservation rule — never delete evidence of the original
+        framing — unenforceable, because the code deletes it silently
 
     The audit trail is part of the contribution. Overwriting it must be a
     deliberate act, not the default.

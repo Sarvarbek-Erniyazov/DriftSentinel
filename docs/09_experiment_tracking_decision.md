@@ -30,7 +30,7 @@ traceability is not evidence.
 ## 2. What per-run traceability requires
 
 Six requirements. Each is checked by an observable that is **false when the
-property is false** (CLAUDE.md R6) — the point of listing them first is that the
+property is false** — the point of listing them first is that the
 answer could have come back negative, and on two of them it did.
 
 | | Requirement | Result |
@@ -133,9 +133,9 @@ nothing consumes: **a capability nothing calls protects nothing.**
 The audit therefore checks for the sidecar **file**, not for the existence of
 the sidecar-writing function. **That is a design decision, stated as one and not
 as an apology:** a check on the function would have passed while the property was
-false, which is CLAUDE.md R6 in a single line — *verify the property, not a
-side effect of it*. The audit was built to be able to return this answer, and it
-did.
+false. That is the whole discipline in a single line — *verify the property, not
+a side effect of it*. The audit was built to be able to return this answer, and
+it did.
 
 **Fix, applied.** `trainer.py` and `registry.py` now route through
 `model_io.save_model`. Every shipped model carries package versions, the git

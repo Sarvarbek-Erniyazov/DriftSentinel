@@ -484,4 +484,4 @@ Every requirement R-1 … R-12, and where it is discharged in this card:
 - Strack, B., et al. (2014). Impact of HbA1c measurement on hospital readmission rates. *BioMed Research International*, 2014, 781670.
 - Vickers, A. J., & Elkin, E. B. (2006). Decision curve analysis. *Medical Decision Making*, 26(6), 565–574.
 
-Full bibliography: [Literature Positioning §8](07_literature_positioning.md#8-references).
+Full bibliography: [Literature Positioning §9](07_literature_positioning.md#9-references).

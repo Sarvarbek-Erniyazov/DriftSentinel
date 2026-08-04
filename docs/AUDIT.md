@@ -2,7 +2,7 @@
 >
 > **This file is a historical record and its body is deliberately NOT edited.**
 > It is the adversarial audit as written, before any of it was tested. Editing it
-> would destroy the evidence of the original framing (CLAUDE.md, "Narrative
+> would destroy the evidence of the original framing (the preservation rule: "Narrative
 > honesty"). Tier 0 tested its central finding and returned a mixed verdict:
 >
 > | Audit claim | Tier 0 outcome |

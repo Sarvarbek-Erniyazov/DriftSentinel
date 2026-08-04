@@ -4,7 +4,9 @@ DriftSentinel — Tier 2A.2: repeated evaluation with confidence intervals
 WHY
     Every headline number in the repository came from a single split with
     `random_state=42`, with no variance, no interval, and no way to tell whether
-    a reported difference exceeded noise (audit F8, CLAUDE.md R1).
+    a reported difference exceeded noise (audit F8). No headline metric ships
+    as a single number: each is reported over repeated splits or seeds with a
+    bootstrap interval, or is marked single-run with the reason.
 
 THREE SOURCES OF VARIANCE, REPORTED SEPARATELY
     They answer different questions and collapsing them would be dishonest.
@@ -469,7 +471,7 @@ def run_repeated_eval() -> dict:
         "target": "readmitted_binary = 30-day readmission (<30)",
         "operating_threshold": threshold,
         "operating_threshold_provenance": threshold_provenance,
-        "rule": "CLAUDE.md R1 — no single-number claims",
+        "rule": "no single-number claims — every headline metric carries variance and a bootstrap interval, or is explicitly marked single-run",
         "variance_components": {
             "1_estimation_patient_clustered_bootstrap": {
                 "n_boot": N_BOOT,

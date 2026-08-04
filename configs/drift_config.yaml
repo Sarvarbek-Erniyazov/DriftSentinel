@@ -1,7 +1,7 @@
 # DriftSentinel — drift detection configuration
 #
 # Populated in Tier 1.4/1.5. This file was previously EMPTY while the constants
-# it was supposed to hold lived in module headers (CLAUDE.md: "No magic numbers
+# it was supposed to hold lived in module headers (no magic numbers
 # — everything in configs/*.yaml"). Only the constants changed in Tier 1.4/1.5
 # are moved here; the remainder still live in module headers and are tracked as
 # outstanding.

@@ -6,42 +6,42 @@
     {
       "script": "src/pipelines/pipeline.py",
       "returncode": 0,
-      "seconds": 133.8,
+      "seconds": 64.55,
       "stderr_tail": "",
       "produces": "splits, label encoders, FE stats, fitted selector, *_fs.parquet, production windows"
     },
     {
       "script": "src/models/trainer.py",
       "returncode": 0,
-      "seconds": 67.06,
+      "seconds": 47.23,
       "stderr_tail": "",
       "produces": "lgbm_v1.pkl, logreg_v1.pkl, logreg_scaler.pkl, training_summary.json"
     },
     {
       "script": "src/models/evaluator.py",
       "returncode": 0,
-      "seconds": 5.41,
+      "seconds": 4.22,
       "stderr_tail": "",
       "produces": "evaluation_report.json and the operating-point figures"
     },
     {
       "script": "src/uncertainty/calibration.py",
       "returncode": 0,
-      "seconds": 2.13,
+      "seconds": 2.19,
       "stderr_tail": "",
       "produces": "isotonic and temperature calibrators, calibration report"
     },
     {
       "script": "src/uncertainty/quantifier.py",
       "returncode": 0,
-      "seconds": 2.74,
+      "seconds": 2.61,
       "stderr_tail": "",
       "produces": "conformal predictor and coverage report"
     },
     {
       "script": "src/models/registry.py",
       "returncode": 0,
-      "seconds": 37.81,
+      "seconds": 18.4,
       "stderr_tail": "",
       "produces": "model_registry.json, registry_history.csv, lgbm_v2.pkl, model_comparison.json"
     }
@@ -50,7 +50,7 @@
   "n_completed": 6,
   "n_failed": 0,
   "verdict": "PASS",
-  "total_seconds": 248.95,
+  "total_seconds": 139.21,
   "analysis_modules_not_run_here": {
     "src/investigation/temporal_validity.py": "Tier 0.1 \u2014 split-validity anchors (slow)",
     "src/investigation/split_regimes.py": "Tier 0.2-0.4 \u2014 regime matrix, 20 seeds x 4 regimes (very slow)",

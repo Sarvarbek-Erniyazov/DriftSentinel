@@ -78,7 +78,8 @@ synthetic:
       of 0->1 and 1->0 so P(X) is preserved exactly and marginal P(Y) is held
       approximately constant — isolating P(Y|X) change from label shift.
 
-# Signal families (CLAUDE.md R5 — these are NOT independent signals).
+# Signal families. These are NOT independent signals: correlated views of one
+# degradation must not be counted as separate evidence.
 # Tier 1.5: the `sequential` family was REMOVED from the voting set. CUSUM and
 # Page-Hinkley are still measured and reported under
 # `diagnostic_firing_rates_NOT_EVIDENCE`, because the evidence that condemned

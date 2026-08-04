@@ -14,7 +14,8 @@ WHY THIS TEST EXISTS
     by: seven hardcoded absolute paths that worked on exactly one machine. The
     check therefore does not ask "does `import app` succeed here" — it succeeds
     here either way. It **makes the heavy packages unimportable first**, so the
-    assertion is false when the property is false (CLAUDE.md R6).
+    assertion is false when the property is false. An assertion that would
+    pass either way is not a check.
 """
 
 import builtins

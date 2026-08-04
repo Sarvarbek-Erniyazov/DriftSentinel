@@ -42,7 +42,7 @@ both and the two files cannot drift into disagreement about the runtime.
 **unimportable**, then imports `app.py`. Importing the module executes the whole
 Streamlit script top to bottom, so the test exercises every `st.*` call, not just
 the import line. A separate assertion checks that the guard itself blocks — a
-test that passes because nothing was blocked would prove nothing (CLAUDE.md R6).
+test that passes because nothing was blocked would prove nothing.
 
 CI runs this in its own `console` job that installs **only** the root
 `requirements.txt`, so the deploy environment is reproduced in CI rather than

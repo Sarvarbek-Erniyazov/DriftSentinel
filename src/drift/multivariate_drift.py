@@ -33,7 +33,8 @@ BENCHMARKED, NOT ASSERTED
     the random split (NO drift exists — anything that fires is mis-calibrated),
     the entry-cohort split, and the genuine temporal split. A detector that
     cannot stay silent on the random control is not evidence, whatever it does
-    elsewhere (CLAUDE.md: every experiment needs a negative control).
+    elsewhere: every experiment needs a negative control, and a detector
+    without one is unfalsifiable rather than merely untested.
 """
 
 from __future__ import annotations

@@ -719,7 +719,7 @@ interpretable rather than ambiguous.
 | [Drift Detection](docs/04_drift_detection.md) · [Uncertainty](docs/05_uncertainty.md) · [Adversarial](docs/06_adversarial.md) ⚠ *superseded, banner-marked* | original framing |
 | [Literature Positioning](docs/07_literature_positioning.md) · [Model Card](docs/08_model_card.md) · [Experiment Tracking Decision](docs/09_experiment_tracking_decision.md) | corrected |
 | [Threshold Reconciliation](docs/10_threshold_reconciliation.md) · [Deployment](docs/11_deployment.md) | generated / ops |
-| [AUDIT](docs/AUDIT.md) · [REMEDIATION_PLAN](docs/REMEDIATION_PLAN.md) · [README_MUST_INCLUDE](docs/README_MUST_INCLUDE.md) | the correction trail |
+| [AUDIT](docs/AUDIT.md) · [README_MUST_INCLUDE](docs/README_MUST_INCLUDE.md) | the correction trail: the adversarial audit that drove the remediation, and the running list of findings that had to reach this README |
 
 ## Quick start
 

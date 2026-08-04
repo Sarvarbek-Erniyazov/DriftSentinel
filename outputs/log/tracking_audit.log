@@ -84,3 +84,17 @@
 2026-08-04 21:13:26 | INFO     | tracking_audit       | 4/5 checks pass — SUBSTANTIALLY YES, WITH TWO NAMED GAPS
 2026-08-04 21:13:26 | INFO     | tracking_audit       | Report: tracking_traceability_audit.json
 2026-08-04 21:13:26 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 21:54:23 | INFO     | tracking_audit       | ===== RUN 20260804-215423-43c1b7 | pid=28860 | started 2026-08-04 21:54:23 =====
+2026-08-04 21:54:23 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 21:54:23 | INFO     | tracking_audit       | DriftSentinel — Tier 2C.5  traceability audit
+2026-08-04 21:54:23 | INFO     | tracking_audit       | ==============================================================================
+2026-08-04 21:54:24 | INFO     | tracking_audit       |   FAIL  T2_reports_record_seed_and_versions
+2026-08-04 21:54:24 | INFO     | tracking_audit       |           - threshold_policy_lgbm_v1.json: no `reproducibility` block
+2026-08-04 21:54:24 | INFO     | tracking_audit       |   PASS  T3_predecessors_preserved
+2026-08-04 21:54:24 | INFO     | tracking_audit       |   PASS  T4_model_lineage
+2026-08-04 21:54:24 | INFO     | tracking_audit       |   PASS  T5_model_binary_provenance
+2026-08-04 21:54:24 | INFO     | tracking_audit       |   PASS  T6_runs_are_byte_reproducible
+2026-08-04 21:54:24 | INFO     | tracking_audit       | --------------------------------------------------------------
+2026-08-04 21:54:24 | INFO     | tracking_audit       | 4/5 checks pass — SUBSTANTIALLY YES, WITH TWO NAMED GAPS
+2026-08-04 21:54:24 | INFO     | tracking_audit       | Report: tracking_traceability_audit.json
+2026-08-04 21:54:24 | INFO     | tracking_audit       | ==============================================================================

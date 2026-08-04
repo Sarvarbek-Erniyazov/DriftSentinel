@@ -26,7 +26,7 @@
       "predicted_positive_rate"
     ]
   },
-  "rule": "CLAUDE.md R1 \u2014 no single-number claims",
+  "rule": "no single-number claims \u2014 every headline metric carries variance and a bootstrap interval, or is explicitly marked single-run",
   "variance_components": {
     "1_estimation_patient_clustered_bootstrap": {
       "n_boot": 2000,

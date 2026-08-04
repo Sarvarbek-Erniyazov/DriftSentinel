@@ -58,3 +58,19 @@
 2026-08-04 21:25:28 | INFO     | verify_readme_claims |   numbers: 270  traced 246  exempt 24  untraced 0
 2026-08-04 21:25:28 | INFO     | verify_readme_claims | VERDICT: PASS  |  Report: readme_traceability.json
 2026-08-04 21:25:28 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:39:28 | INFO     | verify_readme_claims | ===== RUN 20260804-213928-a931f2 | pid=21856 | started 2026-08-04 21:39:28 =====
+2026-08-04 21:39:28 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:39:28 | INFO     | verify_readme_claims | DriftSentinel — README numeric-claim traceability
+2026-08-04 21:39:28 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:39:28 | INFO     | verify_readme_claims |   corpus: 47 generated artifacts, 19,266 numeric values
+2026-08-04 21:39:28 | INFO     | verify_readme_claims |   numbers: 270  traced 246  exempt 24  untraced 0
+2026-08-04 21:39:28 | INFO     | verify_readme_claims | VERDICT: PASS  |  Report: readme_traceability.json
+2026-08-04 21:39:28 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:54:22 | INFO     | verify_readme_claims | ===== RUN 20260804-215422-fe5dd1 | pid=30764 | started 2026-08-04 21:54:22 =====
+2026-08-04 21:54:22 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:54:22 | INFO     | verify_readme_claims | DriftSentinel — README numeric-claim traceability
+2026-08-04 21:54:22 | INFO     | verify_readme_claims | ==============================================================================
+2026-08-04 21:54:22 | INFO     | verify_readme_claims |   corpus: 47 generated artifacts, 19,254 numeric values
+2026-08-04 21:54:22 | INFO     | verify_readme_claims |   numbers: 270  traced 246  exempt 24  untraced 0
+2026-08-04 21:54:22 | INFO     | verify_readme_claims | VERDICT: PASS  |  Report: readme_traceability.json
+2026-08-04 21:54:22 | INFO     | verify_readme_claims | ==============================================================================

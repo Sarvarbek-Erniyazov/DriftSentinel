@@ -8,9 +8,9 @@ WHY THIS EXISTS
     "auc val 0.6865 -> 0.7987 +0.1122 lgbm_v2 WINS" and that verdict drove
     PROMOTE, and was written into model_registry.json and registry_history.csv.
 
-    Prose in a markdown file would not have caught it. These are assertions
-    (CLAUDE.md: "Anything that must hold is encoded as an assertion, a test, or a
-    CI check — not as prose").
+    Prose in a markdown file would not have caught it. These are assertions,
+    because anything that must hold has to be encoded as an assertion, a test or
+    a CI check — documentation cannot fail.
 
 CONTENTS
     validate_metrics_schema   explicit split labelling (R2)

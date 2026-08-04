@@ -5,7 +5,7 @@
       50
     ],
     "memory_mb": 189.56,
-    "load_time_s": 0.29,
+    "load_time_s": 0.278,
     "null_cols": 9
   },
   "stage2_validate": {
@@ -184,7 +184,7 @@
     "prod_test_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\data\\production\\production_test.parquet",
     "pipeline_pkl": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\outputs\\artifacts\\pipeline_objects.pkl"
   },
-  "total_time_s": 62.26,
+  "total_time_s": 131.26,
   "pipeline_ready": true,
   "readiness_gate": {
     "ready": true,

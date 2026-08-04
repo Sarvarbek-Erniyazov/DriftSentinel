@@ -8,7 +8,7 @@
       ],
       "model_name": "lgbm_v1",
       "model_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\outputs\\models\\lgbm_v1.pkl",
-      "registered_at": "2026-08-04T21:12:13.124473",
+      "registered_at": "2026-08-04T21:53:22.758156",
       "trigger": "manual",
       "status": "active",
       "notes": "Initial model. Trained on the train split = the EARLIEST-ENTERING 60% of patients by first encounter_id (entry cohort). Early stopping at 126 trees.",
@@ -126,7 +126,7 @@
         }
       },
       "drift_status": "CRITICAL",
-      "promoted_at": "2026-08-04T21:12:13.125476",
+      "promoted_at": "2026-08-04T21:53:22.759174",
       "archived_at": null
     },
     "lgbm_v2": {
@@ -136,7 +136,7 @@
       ],
       "model_name": "lgbm_v2",
       "model_path": "C:\\Users\\sharg\\Desktop\\github\\DriftSentinel\\outputs\\models\\lgbm_v2.pkl",
-      "registered_at": "2026-08-04T21:12:14.738011",
+      "registered_at": "2026-08-04T21:53:24.138350",
       "trigger": "drift_alert",
       "status": "registered",
       "notes": "Retrained after drift alert on train+val combined. NO held-out validation estimate exists for this model. UNCONTROLLED CONFOUND: v1 used early stopping (126 trees); v2 uses a fixed 300 with no early stopping, because val had been consumed. The two models differ in training data AND capacity AND stopping rule, so the test-set difference is not attributable to the extra data alone.",

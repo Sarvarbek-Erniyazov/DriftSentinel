@@ -113,3 +113,17 @@
 2026-08-04 21:21:51 | INFO     | determinism          | VERDICT: PASS — 24 artifacts byte-identical across two runs under different string-hash randomisation
 2026-08-04 21:21:51 | INFO     | determinism          | Report: determinism.json
 2026-08-04 21:21:51 | INFO     | determinism          | ==============================================================================
+2026-08-04 21:39:15 | INFO     | determinism          | ===== RUN 20260804-213915-f1bdfe | pid=15680 | started 2026-08-04 21:39:15 =====
+2026-08-04 21:39:15 | INFO     | determinism          | ==============================================================================
+2026-08-04 21:39:15 | INFO     | determinism          | DriftSentinel — Tier 2C.4  determinism check
+2026-08-04 21:39:15 | INFO     | determinism          | ==============================================================================
+2026-08-04 21:39:16 | INFO     | determinism          | Falsification arm: comparator detects a byte-only difference = True
+2026-08-04 21:39:16 | INFO     | determinism          | Sandbox: C:\Users\sharg\AppData\Local\Temp\ds_determinism_uhbhvm37
+2026-08-04 21:39:16 | INFO     | determinism          |   run a: stage=trainer PYTHONHASHSEED=0
+2026-08-04 21:40:50 | INFO     | determinism          |     probe hash 8007634863280269366  (94.4s)
+2026-08-04 21:40:50 | INFO     | determinism          |   run b: stage=trainer PYTHONHASHSEED=12345
+2026-08-04 21:42:31 | INFO     | determinism          |     probe hash 3446595664789613639  (100.7s)
+2026-08-04 21:42:31 | INFO     | determinism          | --------------------------------------------------------------
+2026-08-04 21:42:31 | INFO     | determinism          | VERDICT: PASS — 24 artifacts byte-identical across two runs under different string-hash randomisation
+2026-08-04 21:42:31 | INFO     | determinism          | Report: determinism.json
+2026-08-04 21:42:31 | INFO     | determinism          | ==============================================================================

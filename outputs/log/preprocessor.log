@@ -2961,3 +2961,127 @@
 2026-08-04 21:08:46 | INFO     | preprocessor         | ======================================================================
 2026-08-04 21:08:46 | INFO     | preprocessor         | transform complete [test] — shape: (17325, 42)
 2026-08-04 21:08:46 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:25 | INFO     | preprocessor         | ===== RUN 20260804-215121-72702a | pid=29620 | started 2026-08-04 21:51:25 =====
+2026-08-04 21:51:25 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:25 | INFO     | preprocessor         | DriftSentinel — Preprocessor  [fit_transform on TRAIN]
+2026-08-04 21:51:25 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:25 | INFO     | preprocessor         | --------------------------------------------------
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 1: Dropping zero-variance and ID columns
+2026-08-04 21:51:25 | INFO     | preprocessor         | Dropped 9 columns: ['encounter_id', 'patient_nbr', 'examide', 'citoglipton', 'acetohexamide', 'troglitazone', 'metformin-rosiglitazone', 'metformin-pioglitazone', 'glimepiride-pioglitazone']
+2026-08-04 21:51:25 | INFO     | preprocessor         | Remaining columns: 41
+2026-08-04 21:51:25 | INFO     | preprocessor         | --------------------------------------------------
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 2: Encoding missingness flags
+2026-08-04 21:51:25 | INFO     | preprocessor         |   weight_missing                      flagged=61,370 (96.7%)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   Original column 'weight' dropped after flag creation
+2026-08-04 21:51:25 | INFO     | preprocessor         |   max_glu_serum_missing               flagged=58,649 (92.4%)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   Original column 'max_glu_serum' dropped after flag creation
+2026-08-04 21:51:25 | INFO     | preprocessor         |   A1Cresult_missing                   flagged=53,887 (84.9%)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   Original column 'A1Cresult' dropped after flag creation
+2026-08-04 21:51:25 | INFO     | preprocessor         | --------------------------------------------------
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 3: ICD-9 chapter grouping (diag_1 / diag_2 / diag_3)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   diag_1 -> 18 chapters
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Circulatory          : 19,608
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Endocrine            : 7,604
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Respiratory          : 6,140
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Digestive            : 5,665
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Symptoms             : 4,969
+2026-08-04 21:51:25 | INFO     | preprocessor         |   diag_2 -> 19 chapters
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Circulatory          : 20,713
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Endocrine            : 13,953
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Respiratory          : 6,304
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Genitourinary        : 4,034
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Symptoms             : 2,775
+2026-08-04 21:51:25 | INFO     | preprocessor         |   diag_3 -> 19 chapters
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Circulatory          : 18,893
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Endocrine            : 16,963
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Respiratory          : 4,234
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Genitourinary        : 3,532
+2026-08-04 21:51:25 | INFO     | preprocessor         |     Symptoms             : 2,628
+2026-08-04 21:51:25 | INFO     | preprocessor         | --------------------------------------------------
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 4: Age ordinal encoding
+2026-08-04 21:51:25 | INFO     | preprocessor         |   age: 10 bins -> ordinal [0-9]  unmapped=0
+2026-08-04 21:51:25 | INFO     | preprocessor         | --------------------------------------------------
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 5: Medication encoding
+2026-08-04 21:51:25 | INFO     | preprocessor         |   metformin                           ordinal encoded [No=0,Steady=1,Up=2,Down=3]
+2026-08-04 21:51:25 | INFO     | preprocessor         |   repaglinide                         ordinal encoded [No=0,Steady=1,Up=2,Down=3]
+2026-08-04 21:51:25 | INFO     | preprocessor         |   nateglinide                         ordinal encoded [No=0,Steady=1,Up=2,Down=3]
+2026-08-04 21:51:25 | INFO     | preprocessor         |   glimepiride                         ordinal encoded [No=0,Steady=1,Up=2,Down=3]
+2026-08-04 21:51:25 | INFO     | preprocessor         |   glipizide                           ordinal encoded [No=0,Steady=1,Up=2,Down=3]
+2026-08-04 21:51:25 | INFO     | preprocessor         |   glyburide                           ordinal encoded [No=0,Steady=1,Up=2,Down=3]
+2026-08-04 21:51:25 | INFO     | preprocessor         |   pioglitazone                        ordinal encoded [No=0,Steady=1,Up=2,Down=3]
+2026-08-04 21:51:25 | INFO     | preprocessor         |   rosiglitazone                       ordinal encoded [No=0,Steady=1,Up=2,Down=3]
+2026-08-04 21:51:25 | INFO     | preprocessor         |   insulin                             ordinal encoded [No=0,Steady=1,Up=2,Down=3]
+2026-08-04 21:51:25 | INFO     | preprocessor         |   chlorpropamide                      binary encoded  prescribed=71 (0.11%)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   tolbutamide                         binary encoded  prescribed=19 (0.03%)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   acarbose                            binary encoded  prescribed=202 (0.32%)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   miglitol                            binary encoded  prescribed=30 (0.05%)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   tolazamide                          binary encoded  prescribed=38 (0.06%)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   glyburide-metformin                 binary encoded  prescribed=306 (0.48%)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   glipizide-metformin                 binary encoded  prescribed=10 (0.02%)
+2026-08-04 21:51:25 | INFO     | preprocessor         | --------------------------------------------------
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 6: Categorical imputation (fit on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   race                      mode imputed with 'Caucasian'  (fitted on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   medical_specialty         filled with 'Unknown'
+2026-08-04 21:51:25 | INFO     | preprocessor         |   payer_code                filled with 'Unknown'
+2026-08-04 21:51:25 | INFO     | preprocessor         | --------------------------------------------------
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 7: LabelEncoder (fit on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   race                      5 classes  (fitted on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   gender                    3 classes  (fitted on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   payer_code                17 classes  (fitted on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   medical_specialty         68 classes  (fitted on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   change                    2 classes  (fitted on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   diabetesMed               2 classes  (fitted on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   diag_1                    18 classes  (fitted on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   diag_2                    19 classes  (fitted on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         |   diag_3                    19 classes  (fitted on train)
+2026-08-04 21:51:25 | INFO     | preprocessor         | --------------------------------------------------
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 8: Log1p transformation
+2026-08-04 21:51:25 | INFO     | preprocessor         |   number_outpatient         skew: 7.645 -> 2.962
+2026-08-04 21:51:25 | INFO     | preprocessor         |   number_emergency          skew: 11.193 -> 3.786
+2026-08-04 21:51:25 | INFO     | preprocessor         | --------------------------------------------------
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 9: Target encoding
+2026-08-04 21:51:25 | INFO     | preprocessor         |   readmitted_binary: {0: np.int64(55875), 1: np.int64(7617)}
+2026-08-04 21:51:25 | INFO     | preprocessor         |   readmitted_multi : {0: np.int64(32398), 2: np.int64(23477), 1: np.int64(7617)}
+2026-08-04 21:51:25 | INFO     | preprocessor         | --------------------------------------------------
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 10: Saving fitted artifacts
+2026-08-04 21:51:25 | INFO     | preprocessor         |   label_encoders.pkl saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\label_encoders.pkl
+2026-08-04 21:51:25 | INFO     | preprocessor         |   impute_modes.json saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\impute_modes.json
+2026-08-04 21:51:25 | INFO     | preprocessor         |   age_ordinal_map.json saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\age_ordinal_map.json
+2026-08-04 21:51:25 | INFO     | preprocessor         |   preprocessor_config.json saved -> C:\Users\sharg\Desktop\github\DriftSentinel\outputs\artifacts\preprocessor_config.json
+2026-08-04 21:51:25 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:25 | INFO     | preprocessor         | fit_transform complete — shape: (63492, 42)
+2026-08-04 21:51:25 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:25 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:25 | INFO     | preprocessor         | DriftSentinel — Preprocessor  [transform on VAL]
+2026-08-04 21:51:25 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 1: Dropped 9 columns
+2026-08-04 21:51:25 | INFO     | preprocessor         | Step 2: Missingness flags applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 3: ICD-9 chapter grouping applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 4: Age ordinal encoding applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 5: Medication encoding applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 6: Imputation applied (train-fitted values)
+2026-08-04 21:51:26 | WARNING  | preprocessor         |   medical_specialty: 2 unseen categories -> mapped to fallback 'AllergyandImmunology'
+2026-08-04 21:51:26 | WARNING  | preprocessor         |   diag_1: 1 unseen categories -> mapped to fallback 'Blood'
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 7: LabelEncoder applied (train-fitted)  unseen_total=3
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 8: Log1p applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 9: Target encoding applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:26 | INFO     | preprocessor         | transform complete [val] — shape: (20949, 42)
+2026-08-04 21:51:26 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:26 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:26 | INFO     | preprocessor         | DriftSentinel — Preprocessor  [transform on TEST]
+2026-08-04 21:51:26 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 1: Dropped 9 columns
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 2: Missingness flags applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 3: ICD-9 chapter grouping applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 4: Age ordinal encoding applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 5: Medication encoding applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 6: Imputation applied (train-fitted values)
+2026-08-04 21:51:26 | WARNING  | preprocessor         |   payer_code: 1 unseen categories -> mapped to fallback 'BC'
+2026-08-04 21:51:26 | WARNING  | preprocessor         |   medical_specialty: 16 unseen categories -> mapped to fallback 'AllergyandImmunology'
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 7: LabelEncoder applied (train-fitted)  unseen_total=17
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 8: Log1p applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | Step 9: Target encoding applied
+2026-08-04 21:51:26 | INFO     | preprocessor         | ======================================================================
+2026-08-04 21:51:26 | INFO     | preprocessor         | transform complete [test] — shape: (17325, 42)
+2026-08-04 21:51:26 | INFO     | preprocessor         | ======================================================================

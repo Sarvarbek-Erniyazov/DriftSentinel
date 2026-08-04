@@ -70,13 +70,13 @@
         {
           "script": "src/pipelines/pipeline.py",
           "returncode": 0,
-          "seconds": 103.86,
+          "seconds": 63.62,
           "stderr_tail": ""
         },
         {
           "script": "src/models/trainer.py",
           "returncode": 0,
-          "seconds": 28.85,
+          "seconds": 30.76,
           "stderr_tail": ""
         }
       ]
@@ -88,13 +88,13 @@
         {
           "script": "src/pipelines/pipeline.py",
           "returncode": 0,
-          "seconds": 105.75,
+          "seconds": 71.14,
           "stderr_tail": ""
         },
         {
           "script": "src/models/trainer.py",
           "returncode": 0,
-          "seconds": 67.31,
+          "seconds": 29.59,
           "stderr_tail": ""
         }
       ]

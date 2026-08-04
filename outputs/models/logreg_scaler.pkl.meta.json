@@ -1,6 +1,6 @@
 {
   "artifact": "logreg_scaler.pkl",
-  "created_at": "2026-08-04T21:12:00",
+  "created_at": "2026-08-04T21:53:11",
   "class": "sklearn.preprocessing._data.StandardScaler",
   "versions": {
     "python": "3.12.10",
@@ -10,7 +10,7 @@
     "scikit-learn": "1.9.0",
     "lightgbm": "4.7.0"
   },
-  "git_commit": "cb12747f6f7d36cdfbba2c356aa3b066a0c9191b",
+  "git_commit": "bf2873186727b48c479eace82a0080f28aaed533",
   "sha256": "65530b9d86262391b1fbde88fd34fcb4df9ea3f48176b835ff1cc721091a444e",
   "serializer": "pickle",
   "model_name": "logreg_v1_scaler"

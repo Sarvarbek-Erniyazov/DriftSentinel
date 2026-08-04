@@ -1,3 +1,24 @@
+<!-- Phase 0.5 -->
+
+> **Note on two removed files.** This record cites `CLAUDE.md` and
+> `docs/REMEDIATION_PLAN.md` by line number. Both were **build-tooling artifacts**
+> — the working brief and the phased plan used to drive the remediation — and were
+> removed from the repository once the work they described was complete. They were
+> never research documentation and are not part of the evidence trail.
+>
+> The citations are left as they were rather than deleted: this document is a
+> record of a scan performed at a point in time, and rewriting its findings to
+> match a later repository state would make it a worse record, not a better one.
+> The same applies to the generated artifacts behind it —
+> `outputs/reports/language_audit_plan.{json,md}` and
+> `temporal_language_inventory.json` still list both files among the 17 scanned,
+> because **re-running the scan against a smaller repository would change the
+> documented occurrence counts and quietly invalidate the numbers this record
+> reports.** An evidence artifact that is regenerated to agree with the present is
+> no longer evidence about the past.
+>
+> `docs/AUDIT.md` — the adversarial audit that drove all of this — is kept.
+
 # Phase 0.5 — Language correction: applied changes and reasoning
 
 Policy: **surgical**, approved after Phase 0.1 returned `SUPPORTED` for
@@ -38,9 +59,9 @@ defect as the ones the audit was written to find.
 
 ## Files NOT edited, and why
 
-`docs/AUDIT.md` and `docs/REMEDIATION_PLAN.md` are **historical records**. Their
+`docs/AUDIT.md` and the remediation plan were **historical records**. Their
 bodies are preserved verbatim; each received a resolution banner at the top
-instead. CLAUDE.md's preservation rule — *never delete evidence of the original
+instead. The preservation rule — *never delete evidence of the original
 framing* — makes editing them the wrong move: the audit's F1(a) is now known to be
 wrong as framed, and a reader must be able to see both what was claimed and what
 was found. 24 of the flagged occurrences live in these two files and were left
@@ -59,12 +80,12 @@ Reviewable individually; the reasoning is the same principle in every row.
 
 | # | Location | Decision | Reasoning |
 |---|---|---|---|
-| 1 | `CLAUDE.md:109` "initial temporal-drift framing → falsification…" | **KEEP** | Describes the *arc*. "Initial framing" is historically accurate and is the thing being corrected |
+| 1 | build-tooling file, since removed: "initial temporal-drift framing → falsification…" | **KEEP** | Describes the *arc*. "Initial framing" is historically accurate and is the thing being corrected |
 | 2 | `README.md:46` "under temporal shift" | **REWRITE** → "under entry-cohort shift" | Describes the val→test contrast on the entry-cohort split |
 | 3 | `docs/03_model_training.md:148` "under temporal drift" | **REWRITE** → entry-cohort framing + no-drift baseline note | Same contrast; also needed the 2.15/8 baseline caveat |
 | 4 | `docs/04_drift_detection.md:115` `![Target Temporal Shift](…13_target_temporal_shift.png)` | **REWRITE alt text; KEEP filename** | Renaming a *generated artifact* is a pipeline change, not a language change. Deferred to Tier 1 with an inline comment so it is not lost |
 | 5–6 | `docs/AUDIT.md:71,124` | **KEEP** (banner) | Historical record — see above |
-| 7–15 | `docs/REMEDIATION_PLAN.md:25,29,33,37,51,57,120,297,539` | **KEEP** (banner) | Historical record. Several also refer to `temporal_validity.py`, which is the investigation and earns the term |
+| 7–15 | remediation plan, 9 occurrences (file since removed) | **KEEP** (banner) | Historical record. Several also referred to `temporal_validity.py`, which is the investigation and earns the term |
 | 16 | `src/drift/concept_drift.py:3` "degradation over time windows" | **REWRITE** → "across sequential evaluation windows" | The windows are index-based slices of a concatenated stream, not calendar intervals. "Over time" overstates what is measured |
 | 17 | `src/drift/concept_drift.py:155` "Simulates temporal performance monitoring" | **REWRITE** → "sequential", + explicit note that windows are index-based | Same reason; this is the function that actually cuts the windows |
 | 18–19 | `src/models/evaluator.py:286,444` "Across Temporal Windows" (figure titles) | **REWRITE** → "Across Sequential Windows" | Axis is window index. A reader would otherwise read the x-axis as calendar time |
@@ -79,7 +100,7 @@ does not make this a temporal split), `src/data/splitter.py` (module docstring,
 strategy bullet, `_get_patient_order` docstring, `split()` docstring, runtime log
 line), `src/data/validator.py` (the `encounter_id_monotonic` check no longer
 claims to be "required for temporal split" — the entry-cohort split does not
-require it), `src/pipelines/pipeline.py`. `CLAUDE.md` was rewritten more
+require it), `src/pipelines/pipeline.py`. The build-tooling brief was rewritten more
 substantially: it is a live instruction file whose "open question" section would
 have misdirected future sessions.
 
@@ -89,7 +110,7 @@ have misdirected future sessions.
 demographics shift over time", "hospital billing codes change"; replaced with the
 window contrast actually measured, plus a note recording that the claims were
 removed and why). `docs/04_drift_detection.md` intro and the `number_diagnoses`
-interpretation row. `CLAUDE.md`'s prohibition on such prose was strengthened from
+interpretation row. The prohibition on such prose was strengthened from
 conditional to absolute.
 
 ---
